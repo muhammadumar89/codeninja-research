@@ -285,7 +285,7 @@
       "links": []
     },
     {
-      "id": "modon_technician",
+      "id": "technician",
       "label": "Technical personnel",
       "kind": "person",
       "anchored_in": "the operator's staff directory",

@@ -1,1 +1,7 @@
 choice,picked,why
+Model,"IBM Granite Tiny Time Mixers TTM-R2, about 0.85M parameters, FP32, about 0.003 GB","CPU-only forecaster inside the operator's platform hosted in Saudi Arabia; Apache-2.0 with no field of use restriction leaves the artifact owned outright"
+Hardware class,"Rugged enclosure, mounting, power and UPS with NUT-class clean shutdown; IP ratings per IEC 60529; NEMA enclosure types; SABER conformity","Outdoor exposure to dust, direct sun and hose washing, with certification lead time built into the bill of materials"
+Hardware class,"Fanless hardened industrial switches; copper-versus-fibre run selection","Fibre between buildings and near the high-current systems being metered; copper for short powered drops"
+Sensing,"FACP general alarm status contacts; fire pump controller PLC IOs and relays","Read-only interface into certified life-safety equipment, never a write path"
+Sensing,"Submersible tank level transmitters; CT energy meters; LoRaWAN field sensors with store-and-forward gateways","The four monitored point families: panel status, pump status, water level and energy"
+Compute,"None purchased; CPU inside the operator's existing IoT platform; field gateways carry no model runtime","The requirement asks for no server or GPU, and compute that is not needed at the extremity is not deployed there"

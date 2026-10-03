@@ -1,1 +1,10 @@
 choice,picked,why
+Detection model,"RF-DETR, Nano to Large checkpoints, fine-tuned per product type and per mill","Apache-2.0 from package to checkpoints; the operator owns and hardens the weights that count its product"
+Tracking,"Roboflow trackers, OC-SORT and ByteTrack class","Apache-2.0; holds identity across frames so one billet crossing two camera fields counts once"
+Work surface model,"GLM 5.3, 753B parameter mixture of experts, FP8","Frontier open weights for the operator's compliance agents; 904 GB against one node of 1,128 GB; bespoke license allows commercial use, fine-tuning and redistribution"
+Edge compute,"GPU-accelerated industrial PC class, sealed, wide temperature, cooled enclosure","Sized from stream decode plus inference with headroom, hardened for mill heat, dust and electromagnetic interference"
+Frontier node,"One node of eight 141 GB HBM GPUs, H200 class, in a dedicated data center","The class is export controlled for Pakistan, so the node runs where an export license naming the end user holds, checked at the phase one licensing checkpoint"
+Cameras,"IP66/67 HDR industrial camera class, chosen from the pixel-density table per installation point; thermal, ECCN 6A003, only where hot billets blind visible cameras","Survives the mill environment while meeting country legality per model"
+Enclosures and power,"Closed-loop cooled enclosures, vibration-damping mounts, surge protection, UPS with clean shutdown under NUT monitoring","A failing cooler is caught before the industrial PC cooks"
+Site networking,"Hardened PoE industrial switches, VPN tunnel, IEC 62443 zoning","The camera zone stays segmented from mill control"
+Time synchronization,"PTP grandmaster with GNSS and OCXO","Count events reconcile across systems only when every clock agrees"
