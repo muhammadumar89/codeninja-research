@@ -1,0 +1,264 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar",
+    "url": "https://muhammadumar89.github.io/codeninja-research/port-digital-twin-us/",
+    "doi": ""
+  },
+  "sector": "maritime-and-ports",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper (5.1 objects and anchors, 5.2 human loop, 5.3 recorded form) and Figure 4 (typed links); properties and status vocabularies from the plan the paper was drawn from",
+  "write_paths": [
+    "adapter tier, read only from the systems of record; the twin never writes back into them",
+    "the twin's own records: utility gap records and inspection worklists"
+  ],
+  "human_loop": "the twin shows; planners, pilots, engineers and finance staff decide in their own systems; no automated action on any asset",
+  "objects": [
+    {
+      "id": "berth",
+      "label": "Berth",
+      "kind": "asset",
+      "anchored_in": "Port Community System",
+      "properties": [
+        "Berth ID",
+        "Alongside depth",
+        "Berth window",
+        "Occupancy state",
+        "Vessel draft limit"
+      ],
+      "status_vocabulary": [
+        "Occupied",
+        "Reserved",
+        "Available"
+      ],
+      "links": [
+        {
+          "to": "navigation_channel",
+          "label": "adjoins"
+        },
+        {
+          "to": "vessel_movement",
+          "label": "receives"
+        },
+        {
+          "to": "parcel_facility",
+          "label": "belongs to"
+        }
+      ]
+    },
+    {
+      "id": "navigation_channel",
+      "label": "Navigation channel",
+      "kind": "asset",
+      "anchored_in": "GIS estate",
+      "properties": [
+        "Channel name",
+        "Design depth",
+        "Vertical datum"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "bathymetric_survey",
+          "label": "surveyed by"
+        }
+      ]
+    },
+    {
+      "id": "subsurface_utility_layer",
+      "label": "Subsurface utility layer",
+      "kind": "asset",
+      "anchored_in": "GIS estate",
+      "properties": [
+        "Utility classification",
+        "Owner",
+        "Geometry"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "utility_gap_record",
+          "label": "exposes"
+        }
+      ]
+    },
+    {
+      "id": "environmental_sensor_feed",
+      "label": "Environmental sensor feed",
+      "kind": "asset",
+      "anchored_in": "sensor telemetry",
+      "properties": [
+        "Parameter (air quality, water, noise)",
+        "Station",
+        "Cadence"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "berth",
+          "label": "monitors"
+        }
+      ]
+    },
+    {
+      "id": "parcel_facility",
+      "label": "Parcel / facility",
+      "kind": "asset",
+      "anchored_in": "GIS estate and the lease register",
+      "properties": [
+        "Parcel ID",
+        "Lease reference",
+        "Revenue line"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "capital_project",
+          "label": "hosts"
+        },
+        {
+          "to": "truck_movement",
+          "label": "gates at"
+        }
+      ]
+    },
+    {
+      "id": "bathymetric_survey",
+      "label": "Bathymetric survey surface",
+      "kind": "record",
+      "anchored_in": "survey archive",
+      "properties": [
+        "Survey date",
+        "Vertical datum",
+        "Coverage"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "utility_gap_record",
+      "label": "Utility gap record",
+      "kind": "record",
+      "anchored_in": "the twin's own records",
+      "properties": [
+        "Utility type",
+        "Location",
+        "Gap class (missing, incomplete, conflicting)"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Closed"
+      ],
+      "links": [
+        {
+          "to": "berth",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden; the gap record carries a location on the port estate"
+        }
+      ]
+    },
+    {
+      "id": "capital_project",
+      "label": "Capital project",
+      "kind": "record",
+      "anchored_in": "the finance backbone",
+      "properties": [
+        "Project name",
+        "Project ID",
+        "Division"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "berth",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden; a project's footprint overlaps the assets it touches"
+        }
+      ]
+    },
+    {
+      "id": "inspection_record",
+      "label": "Inspection record",
+      "kind": "record",
+      "anchored_in": "the inspection system",
+      "properties": [
+        "Asset reference",
+        "Inspector",
+        "Date"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "engineering_document",
+          "label": "references"
+        },
+        {
+          "to": "berth",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden; the record carries an asset reference"
+        }
+      ]
+    },
+    {
+      "id": "vessel_movement",
+      "label": "Vessel movement record",
+      "kind": "event",
+      "anchored_in": "AIS and the Port Community System",
+      "properties": [
+        "Vessel identifier",
+        "Position",
+        "Timestamp"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "truck_movement",
+      "label": "Truck movement record",
+      "kind": "event",
+      "anchored_in": "gate system",
+      "properties": [
+        "Appointment reference",
+        "Gate",
+        "Timestamp"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "pcs_message",
+      "label": "PCS message",
+      "kind": "event",
+      "anchored_in": "Port Community System",
+      "properties": [
+        "Message type",
+        "Origin system",
+        "Update frequency"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "berth",
+          "label": "arrives via"
+        }
+      ]
+    },
+    {
+      "id": "engineering_document",
+      "label": "Engineering document",
+      "kind": "document",
+      "anchored_in": "document management system",
+      "properties": [
+        "Drawing number",
+        "Revision",
+        "Media type",
+        "Map features"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ]
+}

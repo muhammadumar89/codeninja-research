@@ -1,0 +1,322 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan",
+    "url": "https://muhammadumar89.github.io/codeninja-research/steel-production-count-pakistan/",
+    "doi": ""
+  },
+  "sector": "heavy-industry-and-construction",
+  "country": "Pakistan",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper (5.1 objects and anchors, 5.2 human loop, 5.3 recorded form) and Figure 4 (typed links); properties and status vocabularies from the plan the paper was drawn from",
+  "write_paths": [
+    "adapter tier, read only; counts leave each mill through a one-way link",
+    "discrepancy cases opened and assigned under a revenue field officer; the mill never edits a count"
+  ],
+  "human_loop": "every discrepancy case is judged by a named revenue field officer against the counted record; the audit team handles escalations; the design counts and reconciles, it never assesses",
+  "objects": [
+    {
+      "id": "steel_mill",
+      "label": "Steel melting and re-rolling unit",
+      "kind": "site",
+      "anchored_in": "mill register",
+      "properties": [
+        "Mill registration number",
+        "Furnace count",
+        "Product types",
+        "District"
+      ],
+      "status_vocabulary": [
+        "Onboarded",
+        "Installation pending",
+        "Live",
+        "Suspended"
+      ],
+      "links": [
+        {
+          "to": "installation_point",
+          "label": "hosts"
+        }
+      ]
+    },
+    {
+      "id": "installation_point",
+      "label": "Installation point",
+      "kind": "asset",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Strand or cooling bed",
+        "Product type",
+        "Camera positions",
+        "IPC serial",
+        "Commissioning date"
+      ],
+      "status_vocabulary": [
+        "Surveyed",
+        "Installed",
+        "Calibrated",
+        "Operational",
+        "Fault",
+        "Tamper"
+      ],
+      "links": [
+        {
+          "to": "ipc",
+          "label": "runs on"
+        }
+      ]
+    },
+    {
+      "id": "ipc",
+      "label": "Industrial PC",
+      "kind": "asset",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Serial number",
+        "GPU model",
+        "NVMe capacity",
+        "Firmware version",
+        "UPS state"
+      ],
+      "status_vocabulary": [
+        "Online",
+        "Offline",
+        "Degraded",
+        "Tamper alert"
+      ],
+      "links": [
+        {
+          "to": "count_event",
+          "label": "emits"
+        },
+        {
+          "to": "uptime_record",
+          "label": "",
+          "note": "drawn in Figure 4 as 'measures' from the daily uptime record"
+        },
+        {
+          "to": "tamper_alert",
+          "label": "",
+          "note": "drawn in Figure 4 as 'raised by' from the tamper or offline alert"
+        }
+      ]
+    },
+    {
+      "id": "count_event",
+      "label": "Production count event",
+      "kind": "event",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Timestamp",
+        "Product type",
+        "Quantity",
+        "Line",
+        "Confidence",
+        "Dedup decision"
+      ],
+      "status_vocabulary": [
+        "Counted",
+        "Rejected as noise",
+        "Reconciled",
+        "Disputed"
+      ],
+      "links": [
+        {
+          "to": "product_type",
+          "label": "classifies as"
+        }
+      ]
+    },
+    {
+      "id": "product_type",
+      "label": "Product type (Billets, Ingots, Rebars, Girders)",
+      "kind": "material",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Section",
+        "Grade",
+        "Unit",
+        "Calibration profile"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "declared_production",
+          "label": "",
+          "note": "drawn in Figure 4 with its label partly hidden ('reco…'); the declared production carries the property Product type"
+        }
+      ]
+    },
+    {
+      "id": "declared_production",
+      "label": "Declared production",
+      "kind": "record",
+      "anchored_in": "the mill's filings",
+      "properties": [
+        "Period",
+        "Quantity",
+        "Product type",
+        "Source system",
+        "Declared by"
+      ],
+      "status_vocabulary": [
+        "Declared",
+        "Under review",
+        "Reconciled",
+        "Discrepancy raised"
+      ],
+      "links": [
+        {
+          "to": "reconciliation_case",
+          "label": "opens against"
+        }
+      ]
+    },
+    {
+      "id": "reconciliation_case",
+      "label": "Discrepancy case",
+      "kind": "record",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Mill",
+        "Period",
+        "Counted vs declared",
+        "Officer",
+        "Findings",
+        "Resolution"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Investigating",
+        "Escalated",
+        "Closed"
+      ],
+      "links": [
+        {
+          "to": "field_officer",
+          "label": "assigned to"
+        }
+      ]
+    },
+    {
+      "id": "field_officer",
+      "label": "Revenue field officer",
+      "kind": "actor",
+      "anchored_in": "the authority's staff directory",
+      "properties": [
+        "Station",
+        "Assigned mills",
+        "Clearances"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "audit_team",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under the cards"
+        }
+      ]
+    },
+    {
+      "id": "audit_team",
+      "label": "Audit team",
+      "kind": "actor",
+      "anchored_in": "the authority's staff directory",
+      "properties": [
+        "Team",
+        "Jurisdiction",
+        "Case load"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "mill_operator",
+      "label": "Steel mill staff",
+      "kind": "person",
+      "anchored_in": "mill register",
+      "properties": [
+        "Shift",
+        "Role",
+        "Training record"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "tamper_alert",
+      "label": "Tamper or offline alert",
+      "kind": "event",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Type",
+        "Camera or IPC",
+        "Timestamp",
+        "Cleared by"
+      ],
+      "status_vocabulary": [
+        "Raised",
+        "Acknowledged",
+        "Cleared"
+      ],
+      "links": []
+    },
+    {
+      "id": "uptime_record",
+      "label": "Daily uptime record",
+      "kind": "measure",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Date",
+        "Ipc",
+        "Availability percent",
+        "Latency to dashboard"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "calibration",
+      "label": "Product calibration record",
+      "kind": "record",
+      "anchored_in": "the operator's central production record",
+      "properties": [
+        "Product type",
+        "Installation point",
+        "Accuracy vs weighbridge",
+        "Model version"
+      ],
+      "status_vocabulary": [
+        "Valid",
+        "Expired",
+        "In progress"
+      ],
+      "links": [
+        {
+          "to": "count_event",
+          "label": "validates"
+        },
+        {
+          "to": "weighbridge_record",
+          "label": "measured against"
+        }
+      ]
+    },
+    {
+      "id": "weighbridge_record",
+      "label": "Weighbridge record",
+      "kind": "record",
+      "anchored_in": "the mill's weighbridge",
+      "properties": [
+        "Batch",
+        "Tonnage",
+        "Timestamp",
+        "Mill"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ]
+}

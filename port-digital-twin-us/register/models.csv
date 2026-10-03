@@ -1,0 +1,7 @@
+choice,picked,why
+Document retrieval model,"BGE-M3 embedding model, 568M parameters, self-hosted at fp16","The only model in the register; hybrid dense and sparse search over drawings, inspections and messages, with no token stream and no external provider in any interactive path"
+Hardware classes,"None purchased; existing enterprise virtual machines only","The requirements buy no equipment; about 1.1 GB of fp16 weights fit standard virtual machine memory"
+Sizing rule,"Weights occupy about 2.27 GB at float32, about 1.1 GB at fp16, about 0.6 GB at 8 bit","The fp16 figure is the sizing basis; no KV cache applies because an embedding model generates no token stream"
+Sensing,"No new sensing; up to five existing environmental sensor feeds with threshold alerting and historical export, plus a sourced photorealistic 3D mesh","The requirements integrate existing feeds; no camera, sensor or server is purchased"
+Ground,"Port-managed servers under the port's own change management, inside the continental United States boundary","The port's own security requirements set the boundary; every workload runs on infrastructure the port already operates"
+Pattern,"Adapter tier, one object model, read-only systems of record, Esri GeoEvent Server as the sole feed path","Every source enters through an adapter and the twin never writes back into a system of record"
