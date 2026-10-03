@@ -8,6 +8,7 @@ For the safety and operations executive accountable for fire risk at a heavy ind
 
 **Canonical page:** https://muhammadumar89.github.io/codeninja-research/factory-fire-monitoring-saudi-arabia/
 **Paper:** [PDF](paper/factory-fire-watch-fire-protection-monitoring-industrial-cities-saudi-arabia.pdf) · [HTML](paper/factory-fire-watch-fire-protection-monitoring-industrial-cities-saudi-arabia.html) · [Word](paper/factory-fire-watch-fire-protection-monitoring-industrial-cities-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
+**DOI:** [10.5281/zenodo.23126565](https://doi.org/10.5281/zenodo.23126565) (all versions: [10.5281/zenodo.23126564](https://doi.org/10.5281/zenodo.23126564))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
 
 ## Abstract

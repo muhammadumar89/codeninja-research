@@ -16,4 +16,4 @@
 | Human control | Every discrepancy case is judged by a named revenue field officer; the system counts and reconciles, it never assesses, and the mill never edits a count |
 | The hard dependency | 141 GB-class accelerators need a US export licence for Pakistan (Country Group D:4); the node is ordered only once a licence naming the end user holds |
 
-**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0.
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI https://doi.org/10.5281/zenodo.23126563.

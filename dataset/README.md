@@ -61,8 +61,8 @@ print(objects.filter(lambda r: r["kind"] == "event")["label"])
 | wildfire-risk-distribution-us | energy and utilities | United States | [10.5281/zenodo.23119325](https://doi.org/10.5281/zenodo.23119325) |
 | port-digital-twin-us | maritime and ports | United States | [10.5281/zenodo.23126431](https://doi.org/10.5281/zenodo.23126431) |
 | structure-phase-construction-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) |
-| steel-production-count-pakistan | heavy industry and construction | Pakistan | pending |
-| factory-fire-monitoring-saudi-arabia | heavy industry and construction | Saudi Arabia | pending |
+| steel-production-count-pakistan | heavy industry and construction | Pakistan | [10.5281/zenodo.23126563](https://doi.org/10.5281/zenodo.23126563) |
+| factory-fire-monitoring-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126565](https://doi.org/10.5281/zenodo.23126565) |
 | truck-turn-container-terminal-us | maritime and ports | United States | [10.5281/zenodo.23119348](https://doi.org/10.5281/zenodo.23119348) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.

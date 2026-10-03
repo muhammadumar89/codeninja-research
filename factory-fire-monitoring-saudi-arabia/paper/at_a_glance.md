@@ -14,4 +14,4 @@
 | Three-year cost, 100 factories | About 328,000 to 439,000 US dollars with support and power; the eight-factory pilot is about 21,000 to 26,000 of equipment |
 | Human control | A monitoring officer acknowledges or escalates every safety-critical alert; the design monitors and never controls a panel, pump or valve |
 
-**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0.
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI https://doi.org/10.5281/zenodo.23126565.

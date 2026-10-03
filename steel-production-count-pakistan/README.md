@@ -8,6 +8,7 @@ For the director of the operator's audit unit, the revenue field officers and au
 
 **Canonical page:** https://muhammadumar89.github.io/codeninja-research/steel-production-count-pakistan/
 **Paper:** [PDF](paper/steel-count-ledger-production-monitoring-steel-mills-pakistan.pdf) · [HTML](paper/steel-count-ledger-production-monitoring-steel-mills-pakistan.html) · [Word](paper/steel-count-ledger-production-monitoring-steel-mills-pakistan.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
+**DOI:** [10.5281/zenodo.23126563](https://doi.org/10.5281/zenodo.23126563) (all versions: [10.5281/zenodo.23126562](https://doi.org/10.5281/zenodo.23126562))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
 
 ## Abstract
