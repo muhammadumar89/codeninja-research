@@ -10,6 +10,7 @@ For the terminal operations director, the yard, vessel and rail planners, and th
 
 **Canonical page:** https://muhammadumar89.github.io/codeninja-research/truck-turn-container-terminal-us/
 **Paper:** [PDF](paper/terminal-pulse-truck-turn-time-container-terminal-us.pdf) · [HTML](paper/terminal-pulse-truck-turn-time-container-terminal-us.html) · [Word](paper/terminal-pulse-truck-turn-time-container-terminal-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
+**DOI:** [10.5281/zenodo.23119348](https://doi.org/10.5281/zenodo.23119348) (all versions: [10.5281/zenodo.23119347](https://doi.org/10.5281/zenodo.23119347))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
 
 ## Abstract
