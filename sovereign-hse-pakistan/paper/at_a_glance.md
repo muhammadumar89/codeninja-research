@@ -11,8 +11,8 @@
 | Models | 6 self-hosted open-weight models, including GLM 5.3 (reasoning), Chronos-2 (forecasting), RF-DETR (vision), BGE-M3 (retrieval in English and Urdu) and PaddleOCR-VL 1.6 (scans) |
 | Frontier compute | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom) |
 | Three-year cost, owned | About 670,000 US dollars with support and power at Pakistan's industrial tariff |
-| Three-year cost, rented | 1.4 to 2.8 million US dollars for the same GPUs in the nearest cloud region; no hyperscaler runs a region in Pakistan |
+| Three-year cost, rented | 1.1 to 2.8 million US dollars for the same GPUs in the nearest cloud region; no hyperscaler runs a region in Pakistan |
 | Human control | Every recommendation is approved or rejected by a named person; nothing executes on equipment |
 | The hard dependency | 141 GB-class accelerators need a US export licence for Pakistan (Country Group D:4); the rollout's first gate confirms installed hardware first |
 
-**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0.
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI https://doi.org/10.5281/zenodo.23119714.

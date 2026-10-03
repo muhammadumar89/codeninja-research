@@ -1,10 +1,12 @@
 # Appendix A · What Ownership Costs Over Three Years
 
+*Version 2, 3 October 2026. Version 1 compared ownership with AWS's Compute Savings Plan (26 percent off) and printed "about one third"; AWS's deepest three-year plan makes it about three fifths. Every other number is unchanged.*
+
 The design runs on the operator's own hardware. This appendix prices that choice against the two ways an operator in Pakistan could otherwise get the same capability: renting the same accelerators from the nearest hyperscaler region, or buying a closed frontier model by the token. Every input is a public price, dated and cited. The arithmetic is shown so any reader can rerun it with a written quote.
 
 ## A.1 The Answer
 
-Owning the stack this design specifies costs about **670,000 US dollars over three years**, inside a range of 580,000 to 770,000. Renting the same capacity around the clock from the nearest hyperscaler region costs **1.4 to 2.8 million dollars** over the same period. Ownership is therefore between one half and one quarter of the cost of renting, and **about one third** against the most common enterprise commitment, a three-year savings plan. None of the rented options keeps the data in Pakistan, because no hyperscaler operates a region inside the country (Alskyline 2026).
+Owning the stack this design specifies costs about **670,000 US dollars over three years**, inside a range of 580,000 to 770,000. Renting the same capacity around the clock from the nearest hyperscaler region costs **1.1 to 2.8 million dollars** over the same period. Ownership is therefore between about one quarter and three fifths of the cost of renting, and **about three fifths** against the deepest three-year commitment, an AWS EC2 Instance Savings Plan paid up front. None of the rented options keeps the data in Pakistan, because no hyperscaler operates a region inside the country (Alskyline 2026).
 
 ## A.2 What Owning Costs
 
@@ -28,7 +30,7 @@ The same frontier server and site server, rented without a break for three years
 | Option | Basis | Three-year cost (USD) |
 |---|---|---|
 | AWS, UAE region, on demand | p5en.48xlarge at 75.96 dollars an hour in me-central-1, g6e.48xlarge at 30.13 (Vantage 2026) | 2.82 million |
-| AWS, three-year savings plan | 26 percent off the H200 instance (AWS 2025), g6e three-year reserved at 13.02 | 1.85 million |
+| AWS, three-year EC2 Instance Savings Plan | all upfront in me-central-1: 28.56 dollars an hour for p5en.48xlarge, 13.90 for g6e.48xlarge (AWS 2026) | 1.14 million |
 | Specialist GPU cloud, on demand | 50.44 dollars an hour for eight H200 cards, 18.00 for eight L40S (CoreWeave 2026) | 1.83 million |
 | Oracle, three-year commitment | 40 dollars an hour for eight H200 cards (Economize 2026), site tier as AWS reserved | 1.42 million |
 
@@ -58,7 +60,7 @@ At this volume even the cheapest closed model costs about one and a half times t
 
 - Alskyline. 2026. Cloud regions in Saudi Arabia, 2026 guide. https://alskyline.com/kb/cloud-regions-saudi-arabia-2026-guide
 - Anthropic. 2026. Pricing. https://claude.com/pricing
-- AWS. 2025. Savings Plans for P5en instances. https://aws.amazon.com/about-aws/whats-new/2025/06/
+- AWS. 2026. Compute and EC2 Instance Savings Plans price file, me-central-1, 3 October 2026. https://pricing.us-east-1.amazonaws.com/savingsPlan/v1.0/aws/AWSComputeSavingsPlan/current/region_index.json
 - CoreWeave. 2026. Pricing. https://www.coreweave.com/pricing
 - Dawn. 2026. NEPRA notifies new industrial tariffs. https://www.dawn.com/news/1973828
 - eCFR. 2026. 15 CFR Part 740, Supplement No. 1, Country Groups. https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-740

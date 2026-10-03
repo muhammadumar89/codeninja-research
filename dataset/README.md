@@ -54,7 +54,7 @@ print(objects.filter(lambda r: r["kind"] == "event")["label"])
 
 | design_id | Sector | Country | DOI |
 |---|---|---|---|
-| sovereign-hse-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23117038](https://doi.org/10.5281/zenodo.23117038) |
+| sovereign-hse-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23119714](https://doi.org/10.5281/zenodo.23119714) |
 | wildfire-risk-distribution-us | energy and utilities | United States | [10.5281/zenodo.23119325](https://doi.org/10.5281/zenodo.23119325) |
 | truck-turn-container-terminal-us | maritime and ports | United States | [10.5281/zenodo.23119348](https://doi.org/10.5281/zenodo.23119348) |
 
