@@ -1,0 +1,8 @@
+# CodeNinja Research
+
+> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.
+
+## Papers
+
+- [Sovereign HSE Watch: A Reference Architecture for Predictive Health, Safety and Environment Intelligence in Pakistan's Oil and Gas Operations](https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/): An open reference architecture for a sovereign, air-gapped HSE platform for an oil and gas operator in Pakistan: eight source systems, a twelve-object ontology, six self-hosted open-weight models on one GPU node, and a three-year cost comparison against cloud. DOI 10.5281/zenodo.23117038.
+  - [Object model as JSON](https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/ontology/objects.json)
