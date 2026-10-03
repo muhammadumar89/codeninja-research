@@ -6,7 +6,7 @@ and Early Warning on an HSE Control and Command Platform A sovereign, on-premise
 
 For the HSE director, department leads and site superintendents, and the data, platform, OT and machine learning engineers who would build and run it.
 
-**Canonical page:** https://codeninjaconsulting.com/research/sovereign-hse-platform-pakistan-oil-and-gas
+**Canonical page:** https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/
 **Paper:** [PDF](paper/sovereign-hse-platform-pakistan-oil-and-gas.pdf) · [HTML](paper/sovereign-hse-platform-pakistan-oil-and-gas.html) · [Word](paper/sovereign-hse-platform-pakistan-oil-and-gas.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23117038](https://doi.org/10.5281/zenodo.23117038) (all versions: [10.5281/zenodo.23117037](https://doi.org/10.5281/zenodo.23117037))
 **Licence:** CC BY 4.0. Cite the DOI.

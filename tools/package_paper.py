@@ -29,7 +29,8 @@ def main(folder, pdf, html, docx, appendix, slug):
     shutil.copy(appendix, f / "paper" / "appendix_a_cost.md")
     fm = json.loads((f / "front_matter.json").read_text(encoding="utf-8"))
     pkg = json.loads((f / "ontology" / "objects.json").read_text(encoding="utf-8"))
-    pkg["paper"]["url"] = f"https://codeninjaconsulting.com/research/{slug}"
+    canonical = f"https://muhammadumar89.github.io/codeninja-research/{f.name}/"  # the company site serves no /research yet (patch held)
+    pkg["paper"]["url"] = canonical
     (f / "ontology" / "objects.json").write_text(json.dumps(pkg, indent=2), encoding="utf-8")
     objs = pkg["objects"]
     kinds = {}
@@ -43,7 +44,7 @@ def main(folder, pdf, html, docx, appendix, slug):
 
 {fm['readers']}
 
-**Canonical page:** https://codeninjaconsulting.com/research/{slug}
+**Canonical page:** {canonical}
 **Paper:** [PDF](paper/{slug}.pdf) · [HTML](paper/{slug}.html) · [Word](paper/{slug}.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
 

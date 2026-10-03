@@ -4,7 +4,8 @@ Google Scholar read added, and the cost appendix in place.
     python web_edition.py paper.html summary.md appendix.md meta.json out.html
 
 meta.json: {"title", "subtitle", "authors": [...], "date": "YYYY-MM-DD",
-            "canonical", "pdf_url", "doi"?, "keywords": [...], "country", "sector"}
+            "canonical", "pdf_url", "doi"?, "keywords": [...], "country", "sector",
+            "about"?: [...topics after the sector; defaults to the first paper's]}
 
 Adds to <head>: canonical, Open Graph, Highwire citation_* tags, schema.org
 TechArticle + ScholarlyArticle JSON-LD. Adds after the cover: an "At a glance"
@@ -86,7 +87,7 @@ def head_tags(m):
           "headline": m["title"], "description": m["subtitle"], "abstract": m["subtitle"],
           "url": m["canonical"], "mainEntityOfPage": m["canonical"], "datePublished": m["date"],
           "dateModified": m["date"], "inLanguage": "en", "keywords": m["keywords"],
-          "about": [{"@type": "Thing", "name": k} for k in (m.get("sector"), "sovereign AI", "health, safety and environment") if k],
+          "about": [{"@type": "Thing", "name": k} for k in ([m.get("sector")] + m.get("about", ["sovereign AI", "health, safety and environment"])) if k],
           "spatialCoverage": {"@type": "Country", "name": m["country"]} if m.get("country") else None,
           "author": [{"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"}],
           "publisher": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},

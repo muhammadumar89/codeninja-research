@@ -1,0 +1,13 @@
+choice,picked,why
+Work surface model,"GLM 5.3, 753 billion parameters filed, FP8, on one 8-GPU node of the 141 GB HBM class",Bespoke license permits internal commercial use with attribution and no revenue trigger; one node holds the weights with KV headroom.
+Edge detector,"RF-DETR, Apache-2.0, Nano to 2XL checkpoints from about 61 to 254 MB at 16 bit","Real-time on edge GPUs, fine tunable on the operator's own footage, fixed auditable classes."
+Site forecaster,"Chronos-2, Apache-2.0, about 0.48 GB at FP32","Zero-shot multivariate forecasting with covariates for the two-hour turn time, queue and reefer predictions."
+Site embedding model,"Qwen3-Embedding-0.6B, Apache-2.0, about 1.2 GB at bf16",The 32K window holds a whole shift's gate and appointment record in one passage.
+Edge tracker,"Roboflow trackers, Apache-2.0 clean-room SORT, ByteTrack and OC-SORT","Per-object counts and conflict geometry at no model memory cost, on CPU beside the detector."
+Edge compute class,"Fanless IP-rated enclosures with accelerator at the yard blocks, gate and quay","Sized from actual streams and models by bench measurement, never from a datasheet."
+Site inference server,"One GPU node, H100-class 80 GB or L40S-class 48 GB",Holds forecaster and embedding model with room for 32K-window activation memory.
+Frontier node,"One 8-GPU node of the 141 GB HBM class, about 10 kW","904 GB required against 1,128 GB usable, inside the room's power envelope."
+Camera estate,"Reuse of the 220 existing fixed cameras, decided per camera by six gates",Reuse existing CCTV or not is the first sizing rule; new buys carry no domestic US license restriction.
+Positioning station,RTKLIB with a site-owned GNSS base external positioning service.,Grounds RTG and truck positions without an
+"Time synchronization OCXO, linuxptp and chrony",OCP Time Card grandmaster with holdover reads on one clock through power transfer.,"Keeps camera frames, PLC cycles and gate"
+One-way transfer,Lidi over a hardware data diode,Weights and images move inward; nothing queries back across the boundary.

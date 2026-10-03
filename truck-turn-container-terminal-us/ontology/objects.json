@@ -1,0 +1,303 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal",
+    "url": "https://muhammadumar89.github.io/codeninja-research/truck-turn-container-terminal-us/",
+    "doi": ""
+  },
+  "sector": "maritime-and-ports",
+  "country": "United States",
+  "scenario": "illustrative: the operator is a composite written for this design, not a CodeNinja customer",
+  "source": "chapter 5 of the paper (5.1 objects and anchors, 5.2 human loop) and Figure 4 (typed links); properties and status vocabularies from the plan the paper was drawn from, which match Figure 4 and the recorded object in 5.3",
+  "write_paths": [
+    "adapter tier, read only",
+    "the model's own records, chiefly safety event disposition and acknowledgment",
+    "write-back into the terminal operating system is a second-phase option gated on labour and IT sign-off"
+  ],
+  "human_loop": "every surface warns and proposes; the named planner acts inside the terminal operating system and the named safety supervisor acknowledges a safety event; the model never moves a crane or closes a lane",
+  "objects": [
+    {
+      "id": "vessel_call",
+      "label": "Vessel Call",
+      "kind": "event",
+      "anchored_in": "terminal operating system",
+      "properties": [
+        "Berth window",
+        "Discharge order",
+        "Crane split",
+        "ETA",
+        "Move count"
+      ],
+      "status_vocabulary": [
+        "Planned",
+        "Alongside",
+        "Working",
+        "Complete"
+      ],
+      "links": [
+        {
+          "to": "container",
+          "label": "discharges to"
+        }
+      ]
+    },
+    {
+      "id": "container",
+      "label": "Container",
+      "kind": "material",
+      "anchored_in": "terminal operating system",
+      "properties": [
+        "ISO number",
+        "Size type",
+        "Weight",
+        "Hazard class",
+        "Seal state"
+      ],
+      "status_vocabulary": [
+        "In yard",
+        "In transit",
+        "On vessel",
+        "On rail",
+        "Gate out"
+      ],
+      "links": [
+        {
+          "to": "rail_cut",
+          "label": "loads onto"
+        }
+      ]
+    },
+    {
+      "id": "yard_block",
+      "label": "Yard Block",
+      "kind": "site",
+      "anchored_in": "terminal operating system",
+      "properties": [
+        "Block id",
+        "Ground slots",
+        "Stack height",
+        "Assigned RTG",
+        "Housekeeping state"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Congested",
+        "Closed"
+      ],
+      "links": [
+        {
+          "to": "container",
+          "label": "contains"
+        },
+        {
+          "to": "rtg",
+          "label": "assigns"
+        }
+      ]
+    },
+    {
+      "id": "rtg",
+      "label": "RTG",
+      "kind": "asset",
+      "anchored_in": "crane management system (OEM)",
+      "properties": [
+        "Unit number",
+        "Cycle time",
+        "Fault codes",
+        "Fuel",
+        "Running hours"
+      ],
+      "status_vocabulary": [
+        "Available",
+        "Assigned",
+        "Faulted",
+        "Maintenance"
+      ],
+      "links": [
+        {
+          "to": "container",
+          "label": "lifts"
+        }
+      ]
+    },
+    {
+      "id": "ship_to_shore_crane",
+      "label": "Ship to Shore Crane",
+      "kind": "asset",
+      "anchored_in": "crane management system (OEM)",
+      "properties": [
+        "Crane number",
+        "Moves per hour",
+        "Cycle time",
+        "Fault codes"
+      ],
+      "status_vocabulary": [
+        "Available",
+        "Working",
+        "Faulted",
+        "Maintenance"
+      ],
+      "links": [
+        {
+          "to": "vessel_call",
+          "label": "works"
+        }
+      ]
+    },
+    {
+      "id": "truck_visit",
+      "label": "Truck Visit",
+      "kind": "event",
+      "anchored_in": "gate operating system",
+      "properties": [
+        "Appointment",
+        "Gate in",
+        "Gate out",
+        "OCR reads",
+        "RFID tag",
+        "Turn time"
+      ],
+      "status_vocabulary": [
+        "Appointment made",
+        "Gate in",
+        "In yard",
+        "Gate out",
+        "No show"
+      ],
+      "links": [
+        {
+          "to": "container",
+          "label": "carries"
+        },
+        {
+          "to": "gate_lane",
+          "label": "enters through"
+        }
+      ]
+    },
+    {
+      "id": "gate_lane",
+      "label": "Gate Lane",
+      "kind": "asset",
+      "anchored_in": "gate operating system",
+      "properties": [
+        "Lane id",
+        "OCR portal",
+        "Queue length",
+        "Exception type"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Exception hold",
+        "Closed"
+      ],
+      "links": []
+    },
+    {
+      "id": "rail_cut",
+      "label": "Rail Cut",
+      "kind": "record",
+      "anchored_in": "railroad switch lists",
+      "properties": [
+        "Cut id",
+        "Railroad",
+        "Cut off time",
+        "Car count",
+        "Ramp inventory"
+      ],
+      "status_vocabulary": [
+        "Planned",
+        "Loading",
+        "Made",
+        "Missed cut off"
+      ],
+      "links": []
+    },
+    {
+      "id": "reefer_plug",
+      "label": "Reefer Plug",
+      "kind": "asset",
+      "anchored_in": "reefer monitoring system",
+      "properties": [
+        "Plug id",
+        "Setpoint",
+        "Supply temp",
+        "Return temp",
+        "Power state"
+      ],
+      "status_vocabulary": [
+        "In range",
+        "Out of range trending",
+        "Alarm"
+      ],
+      "links": [
+        {
+          "to": "container",
+          "label": "powers"
+        }
+      ]
+    },
+    {
+      "id": "yard_person",
+      "label": "Yard Person",
+      "kind": "person",
+      "anchored_in": "access control and TWIC readers",
+      "properties": [
+        "TWIC status",
+        "Zone authority",
+        "Employer"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "transfer_zone",
+          "label": "enters"
+        }
+      ]
+    },
+    {
+      "id": "transfer_zone",
+      "label": "Transfer Zone",
+      "kind": "site",
+      "anchored_in": "terminal operating system",
+      "properties": [
+        "Zone geometry",
+        "Adjacent blocks",
+        "Pedestrian rule",
+        "Strobe location"
+      ],
+      "status_vocabulary": [
+        "Clear",
+        "Person present",
+        "Conflict"
+      ],
+      "links": []
+    },
+    {
+      "id": "safety_event",
+      "label": "Safety Event",
+      "kind": "record",
+      "anchored_in": "incident document system",
+      "properties": [
+        "Event type",
+        "Camera evidence",
+        "Zone",
+        "Reported by",
+        "Disposition"
+      ],
+      "status_vocabulary": [
+        "Detected",
+        "Acknowledged",
+        "Closed"
+      ],
+      "links": [
+        {
+          "to": "transfer_zone",
+          "label": "occurs in"
+        }
+      ]
+    }
+  ]
+}
