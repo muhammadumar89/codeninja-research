@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this reference architecture, please cite it as below."
+type: report
+title: "Sovereign HSE Watch: A Reference Architecture for Predictive Health, Safety and Environment Intelligence in Pakistan's Oil and Gas Operations"
+authors:
+  - name: "CodeNinja Engineering Team"
+  - family-names: "Bilal"
+    given-names: "Umar"
+    affiliation: "CodeNinja"
+date-released: 2026-10-03
+license: CC-BY-4.0
+url: "https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/"
+repository-code: "https://github.com/muhammadumar89/codeninja-research"
+keywords:
+  - sovereign AI
+  - Pakistan
+  - oil and gas
+  - health safety and environment
+  - HSE
+  - air-gapped AI
+  - open-weight models
+  - reference architecture
+  - ontology
+  - predictive safety

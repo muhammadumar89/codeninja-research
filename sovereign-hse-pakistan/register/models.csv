@@ -1,0 +1,13 @@
+choice,picked,why
+Frontier reasoning model,"GLM 5.3 open weights at FP8, self-hosted",Strongest open agentic model; the bespoke license exempts purely internal use from the model-as-a-service security-review trigger
+Detector,"RF-DETR, Apache-2.0 Nano to Large checkpoints, BF16",The practical sovereign answer to the AGPL gate; Plus XL and 2XL excluded from the serving path
+Forecaster,"Chronos-2, Apache-2.0, about 0.48 GB at 32 bit","Zero-shot multivariate forecasting with no field-of-use restriction; weights may be held, fine tuned and redistributed"
+Embeddings,"BGE-M3, MIT, FP16","Dense plus sparse plus multi-vector retrieval in one pass with an 8,192-token window"
+Document parsing,"PaddleOCR-VL 1.6, Apache-2.0, about 0.9B parameters, BF16",Strong on degraded multilingual scans; no user or revenue threshold; fine tuning permitted
+Tracking,"Roboflow trackers, Apache-2.0",Stable identity across frames without reintroducing copyleft after an Apache detector
+Frontier node class,One node of 8 x 141 GB HBM GPUs (H200 class),"1,128 GB holds the 904 GB FP8 footprint with KV cache headroom"
+Edge compute class,"The operator's NPU/GPU accelerators, sized from measured stream and decode load",Sizing is stated as a requirement and verified at the phase-one survey
+Cameras reused subject to ONVIF reuse gates,"The existing Vision AI IP camera estate, stream evidence, with gaps priced as new","Reuse on measured density, angle and class purchases"
+"Time synchronization holdover, driving linuxptp and chrony",OCP Time Card GNSS grandmaster with cameras and process tags,"One defensible chronology across detectors,"
+Edge orchestration disconnected install,"Red Hat OpenShift AI self-managed, model serving, registry, pipelines and",Documented disconnected procedure for workbenches
+Serving runtimes node,"KServe at the edge, vLLM on the central",Model serving matched to each tier's load

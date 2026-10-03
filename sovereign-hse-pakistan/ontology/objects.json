@@ -1,0 +1,211 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Sovereign HSE Watch: Predictive Risk and Early Warning on an HSE Control and Command Platform",
+    "url": "https://codeninjaconsulting.com/research/sovereign-hse-platform-pakistan-oil-and-gas",
+    "doi": ""
+  },
+  "sector": "oil-and-gas",
+  "country": "Pakistan",
+  "source": "chapter 5 of the paper, sections 5.1 and 5.3, verbatim",
+  "objects": [
+    {
+      "id": "facility",
+      "label": "Operating Facility / Site",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Facility name",
+        "Operating area",
+        "Area classification",
+        "Shift pattern"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "hse_equipment",
+          "label": "hosts"
+        },
+        {
+          "to": "hse_incident",
+          "label": "locates"
+        },
+        {
+          "to": "near_miss",
+          "label": "locates"
+        },
+        {
+          "to": "inspection_record",
+          "label": "locates"
+        }
+      ]
+    },
+    {
+      "id": "hse_equipment",
+      "label": "HSE Equipment",
+      "kind": "asset",
+      "anchored_in": "SAP PM",
+      "properties": [
+        "Criticality",
+        "Running hours"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "hse_incident",
+      "label": "HSE Incident",
+      "kind": "record",
+      "anchored_in": "SAP EHS",
+      "properties": [],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "corrective_action",
+          "label": "generates"
+        }
+      ]
+    },
+    {
+      "id": "near_miss",
+      "label": "Near Miss Report",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Potential severity",
+        "Failed barrier"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "corrective_action",
+      "label": "Corrective Action",
+      "kind": "record",
+      "anchored_in": "SAP",
+      "properties": [
+        "Owner",
+        "Closure evidence"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Closed",
+        "Verified"
+      ],
+      "links": []
+    },
+    {
+      "id": "inspection_record",
+      "label": "Inspection / Audit Record",
+      "kind": "record",
+      "anchored_in": "SAP QM",
+      "properties": [],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "corrective_action",
+          "label": "raises"
+        }
+      ]
+    },
+    {
+      "id": "hse_document",
+      "label": "HSE Document",
+      "kind": "document",
+      "anchored_in": "",
+      "properties": [
+        "OCR status"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "hse_incident",
+          "label": "evidences"
+        }
+      ]
+    },
+    {
+      "id": "sensor_reading",
+      "label": "Sensor Reading",
+      "kind": "event",
+      "anchored_in": "SCADA historian",
+      "properties": [],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "hse_equipment",
+          "label": "measured on"
+        },
+        {
+          "to": "anomaly_event",
+          "label": "precedes"
+        }
+      ]
+    },
+    {
+      "id": "anomaly_event",
+      "label": "Anomaly Event",
+      "kind": "event",
+      "anchored_in": "raised by a detection model",
+      "properties": [],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "hse_equipment",
+          "label": "affects"
+        },
+        {
+          "to": "agent_recommendation",
+          "label": "triggers"
+        }
+      ]
+    },
+    {
+      "id": "agent_recommendation",
+      "label": "Agent Recommendation",
+      "kind": "event",
+      "anchored_in": "raised by an agent",
+      "properties": [],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "hse_document",
+          "label": "cites"
+        },
+        {
+          "to": "hse_person",
+          "label": "names approver"
+        },
+        {
+          "to": "corrective_action",
+          "label": "becomes on approval"
+        }
+      ]
+    },
+    {
+      "id": "hse_person",
+      "label": "HSE Person",
+      "kind": "person",
+      "anchored_in": "the operator's identity provider",
+      "properties": [],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "hse_role",
+      "label": "HSE Role",
+      "kind": "person",
+      "anchored_in": "the operator's identity provider",
+      "properties": [],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ],
+  "write_paths": [
+    "adapter tier, read only",
+    "an approved agent_recommendation recorded into SAP as the owning system"
+  ],
+  "human_loop": "every agent_recommendation is approved or rejected by a named hse_person; nothing executes on operational equipment"
+}
