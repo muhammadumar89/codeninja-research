@@ -18,7 +18,7 @@ Read each paper online through its link below; the PDF, the object model and the
 
 | Paper | Sector | Country | DOI |
 |---|---|---|---|
-| [Sovereign HSE Watch: predictive health, safety and environment intelligence](sovereign-hse-pakistan/) ([read online](https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/)) | Oil and gas | Pakistan | pending |
+| [Sovereign HSE Watch: predictive health, safety and environment intelligence](sovereign-hse-pakistan/) ([read online](https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/)) | Oil and gas | Pakistan | [10.5281/zenodo.23117038](https://doi.org/10.5281/zenodo.23117038) |
 
 ## Licence
 
