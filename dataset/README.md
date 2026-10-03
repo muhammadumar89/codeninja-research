@@ -16,6 +16,9 @@ tags:
 - industrial-ai
 - oil-and-gas
 - pakistan
+- united-states
+- energy-utilities
+- ports
 configs:
 - config_name: designs
   data_files: designs.jsonl
@@ -52,6 +55,8 @@ print(objects.filter(lambda r: r["kind"] == "event")["label"])
 | design_id | Sector | Country | DOI |
 |---|---|---|---|
 | sovereign-hse-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23117038](https://doi.org/10.5281/zenodo.23117038) |
+| wildfire-risk-distribution-us | energy and utilities | United States | pending |
+| truck-turn-container-terminal-us | maritime and ports | United States | pending |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 
