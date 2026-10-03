@@ -1,0 +1,1 @@
+Figure 1. Steel Count Ledger on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
