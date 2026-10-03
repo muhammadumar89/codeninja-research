@@ -14,4 +14,4 @@
 | Three-year cost | No hardware line to price: the design adds software and integration work to servers the port already runs |
 | Human control | The twin shows; pilots, berth planners, engineers and finance staff decide in their own systems, and nothing writes back into a system of record |
 
-**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0.
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI https://doi.org/10.5281/zenodo.23126431.

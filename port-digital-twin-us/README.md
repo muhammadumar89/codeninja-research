@@ -8,6 +8,7 @@ For the port's information technology director, the digital twin program lead an
 
 **Canonical page:** https://muhammadumar89.github.io/codeninja-research/port-digital-twin-us/
 **Paper:** [PDF](paper/port-twin-governed-digital-twin-landlord-port-authority-us.pdf) · [HTML](paper/port-twin-governed-digital-twin-landlord-port-authority-us.html) · [Word](paper/port-twin-governed-digital-twin-landlord-port-authority-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
+**DOI:** [10.5281/zenodo.23126431](https://doi.org/10.5281/zenodo.23126431) (all versions: [10.5281/zenodo.23126430](https://doi.org/10.5281/zenodo.23126430))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
 
 ## Abstract

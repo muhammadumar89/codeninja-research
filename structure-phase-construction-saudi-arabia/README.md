@@ -8,6 +8,7 @@ For the construction director accountable for the structure phase, the planning,
 
 **Canonical page:** https://muhammadumar89.github.io/codeninja-research/structure-phase-construction-saudi-arabia/
 **Paper:** [PDF](paper/structure-phase-watch-construction-saudi-arabia.pdf) · [HTML](paper/structure-phase-watch-construction-saudi-arabia.html) · [Word](paper/structure-phase-watch-construction-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
+**DOI:** [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) (all versions: [10.5281/zenodo.23126447](https://doi.org/10.5281/zenodo.23126447))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
 
 ## Abstract

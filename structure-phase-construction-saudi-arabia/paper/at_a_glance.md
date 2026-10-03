@@ -16,4 +16,4 @@
 | Closed model break-even | The cheapest closed model matches the owned stack at about 31 users; above that, ownership is cheaper and the gap grows with every user |
 | Human control | Every re-sequencing is a recommendation a named planner approves; every breach alert is confirmed, dismissed or escalated by the HSE officer |
 
-**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0.
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI https://doi.org/10.5281/zenodo.23126448.

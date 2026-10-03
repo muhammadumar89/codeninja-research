@@ -56,6 +56,8 @@ print(objects.filter(lambda r: r["kind"] == "event")["label"])
 |---|---|---|---|
 | sovereign-hse-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23119714](https://doi.org/10.5281/zenodo.23119714) |
 | wildfire-risk-distribution-us | energy and utilities | United States | [10.5281/zenodo.23119325](https://doi.org/10.5281/zenodo.23119325) |
+| port-digital-twin-us | maritime and ports | United States | [10.5281/zenodo.23126431](https://doi.org/10.5281/zenodo.23126431) |
+| structure-phase-construction-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) |
 | truck-turn-container-terminal-us | maritime and ports | United States | [10.5281/zenodo.23119348](https://doi.org/10.5281/zenodo.23119348) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
