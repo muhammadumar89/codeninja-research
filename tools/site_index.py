@@ -50,6 +50,7 @@ def main():
 <style>body{{margin:0;font:16px/1.6 Arial,Helvetica,sans-serif;color:#222;background:#fff}}main{{max-width:760px;margin:0 auto;padding:40px 20px}}h1{{color:#1F3348}}li{{margin:0 0 22px}}span{{color:#555}}small{{color:#6B7683}}a{{color:#1F3348}}</style></head>
 <body><main><p style="letter-spacing:.18em;color:#B7791F;font-weight:700;font-size:11px">CODENINJA RESEARCH</p>
 <h1>Open reference architectures for sovereign AI in physical operations</h1>
+<p>Every design is also a row in the <a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">Vertical-Driven Architectures dataset</a>: designs, ontology objects, model choices, cost lines and full text, for agents to query.</p>
 <p>Every design here runs on the operator's own hardware, under open-weight licences, with no data leaving the country. Each paper ships with its object model as JSON, its model register and a cost appendix. Text, figures and data are CC BY 4.0.</p>
 <ul style="list-style:none;padding:0">{rows}</ul>
 <p><small>Source files: <a href="https://github.com/muhammadumar89/codeninja-research">github.com/muhammadumar89/codeninja-research</a> · Updated {today}</small></p></main></body></html>"""
@@ -60,6 +61,7 @@ def main():
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
     (ROOT / "feed.xml").write_text(f'<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeNinja Research</title><link href="{BASE}/"/><link rel="self" href="{BASE}/feed.xml"/><id>{BASE}/</id><updated>{today}T00:00:00Z</updated>\n{entries}</feed>\n', encoding="utf-8")
     llms = ["# CodeNinja Research", "",
+            "> The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures", "",
             "> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.", "",
             "## Papers", ""]
     for p in ps:

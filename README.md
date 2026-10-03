@@ -14,6 +14,10 @@ Each folder is one paper and carries the same five things:
 
 Read each paper online through its link below; the PDF, the object model and the register sit in its folder. Releases carry a DOI through Zenodo; cite that.
 
+## The dataset
+
+Every design here is also a row in [CodeNinjatools/vertical-driven-architectures](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures): tables of designs, ontology objects, model choices, cost lines and full text, one row per paper, mirrored in [`dataset/`](dataset/). Agents query the tables; people read the papers.
+
 ## Papers
 
 | Paper | Sector | Country | DOI |
