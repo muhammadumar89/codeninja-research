@@ -178,6 +178,7 @@ def main():
             llms.append(f"  - [Object model as JSON]({p['ontology']})")
     (ROOT / "llms.txt").write_text("\n".join(llms) + "\n", encoding="utf-8")
     print(f"{len(ps)} paper(s): index.html, sitemap.xml, feed.xml, llms.txt")
+    import dataset_ld; dataset_ld.main()  # Dataset markup for Google Dataset Search; index.html was just rewritten
 
 
 if __name__ == "__main__":
