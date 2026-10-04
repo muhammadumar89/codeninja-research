@@ -9,6 +9,10 @@
 - [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta, access by request.
 - [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.
 
+## For agents
+
+- [MCP server](https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server): codeninja-research-mcp exposes list_designs, get_design, read_paper and find over every design.
+
 ## Methods
 
 - [From Reference Architecture to Living Ontology: the hyper-ontology/1 Package and Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/ontology-method/): How a Praxis design's object model is packaged as hyper-ontology/1, what seven published packages contain, how to load and convert them, and how Hyper Ontology stands a package up as a living system over an operator's own systems of record. DOI 10.5281/zenodo.23132104.

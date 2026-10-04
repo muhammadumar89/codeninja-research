@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codeninja-research-mcp"
+version = "0.1.0"
+description = "MCP server over CodeNinja's Vertical-Driven Architectures: reference architectures for physical AI, their object models, model registers, cost lines and full text."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.2"]
+authors = [{name = "CodeNinja"}]
+keywords = ["mcp", "physical ai", "reference architecture", "ontology", "system design"]
+
+[project.scripts]
+codeninja-research-mcp = "codeninja_research_mcp.server:main"
+
+[project.urls]
+Homepage = "https://muhammadumar89.github.io/codeninja-research/"
+Source = "https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server"

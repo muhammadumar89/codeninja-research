@@ -124,6 +124,7 @@ def landing(ps, sols):
 <section id="data" class="wrap" style="padding-top:0"><div class="split"><div><p class="mono">For agents and engineers</p><h2>Everything here is data.</h2><p class="lede" style="color:var(--muted)">Load every design, object, model choice and cost line as one dataset, or read the site the way an agent does.</p></div>
 <ul class="list"><li><b><a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">Vertical-Driven Architectures dataset</a></b><br>designs, objects, models, costs and full text</li>
 <li><b><a href="https://huggingface.co/collections/CodeNinjatools/vertical-driven-architectures-6ac0d23c8b7b3938f1a4fd00">Hugging Face collection</a></b><br>a Space and an ontology package for every design</li>
+<li><b><a href="https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server">MCP server</a></b><br>give your coding agent every design: <code>codeninja-research-mcp</code></li>
 <li><b><a href="llms.txt">llms.txt</a></b> · <a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">sitemap</a></li>
 <li><b><a href="https://github.com/muhammadumar89/codeninja-research">Source files on GitHub</a></b><br>papers, packages, the package format and the loader</li></ul></div></section>
 <section id="access" class="wrap" style="padding-top:0;border-top:1px solid var(--line);padding-top:88px"><div class="split"><div><p class="mono">Beta access</p><h2>Start the conversation.</h2><p class="lede" style="color:var(--muted)">Praxis and Hyper Ontology are in beta with a small number of outside teams. Tell us the operation you want designed, or the systems you want to make living, and a CodeNinja engineer will reply.</p></div>
@@ -170,6 +171,8 @@ def main():
             "## Products", "",
             f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta, access by request.",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
+            "## For agents", "",
+            "- [MCP server](https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server): codeninja-research-mcp exposes list_designs, get_design, read_paper and find over every design.", "",
             "## Methods", ""] + [f"- [{p['title']}]({BASE}/{p['slug']}/): {p['description']}" + (f" DOI {p['doi']}." if p["doi"] else "") for p in ps if not p["ontology"]] + ["",
             "## Papers", ""]
     for p in [x for x in ps if x["ontology"]]:
