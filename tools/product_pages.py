@@ -4,6 +4,7 @@ evidence lists stay current; rerun after every new paper.
 """
 import html, json, datetime, re
 from pathlib import Path
+import brand
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://muhammadumar89.github.io/codeninja-research"
 E = lambda s: html.escape(str(s), quote=True)
@@ -36,6 +37,9 @@ small,.muted{color:var(--muted)}code{background:var(--tint);padding:1px 5px;bord
 nav a{margin-left:18px;font-size:13px;color:var(--muted)}.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}h1,h2,h3,p,li{overflow-wrap:anywhere}"""
 
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
+FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
+ACCESS = {"praxis": "Praxis is in beta with a small number of outside engineering teams. Tell us the operation you want designed and a CodeNinja engineer will reply.",
+          "hyper-ontology": "Hyper Ontology is in beta with a small number of outside teams. Tell us which systems you want to make living and a CodeNinja engineer will reply."}
 
 
 def page(slug, title, desc, body, ld):
@@ -47,12 +51,13 @@ def page(slug, title, desc, body, ld):
 <title>{E(title.split(':')[0])}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/{slug}/">
 <meta name="codeninja:kind" content="product">
-""" + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet"><style>{CSS}</style></head>
-<body><header class="top"><a href="{BASE}/"><b>CODENINJA</b></a><nav><a href="{BASE}/#research">Research</a><a href="{BASE}/praxis/">Praxis</a><a href="{BASE}/hyper-ontology/">Hyper Ontology</a></nav></header>
-<section class="hero"><img src="../assets/video/{v}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline poster="../assets/video/{v}.jpg" aria-hidden="true"><source src="../assets/video/{v}.mp4" type="video/mp4"></video><div class="in">{hero}</div></section>
+""" + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet"><style>{CSS}{brand.CSS}</style></head>
+<body><header class="top">{brand.header_brand(BASE + "/")}<nav><a href="{BASE}/#research">Research</a><a href="{BASE}/praxis/">Praxis</a><a href="{BASE}/hyper-ontology/">Hyper Ontology</a><a href="#access" style="color:#fff">Request access</a></nav></header>
+<section class="hero"><img src="../assets/video/{v}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline poster="../assets/video/{v}.jpg" aria-hidden="true"><source src="../assets/video/{v}.mp4" type="video/mp4"></video><div class="in">{hero}<p style="margin-top:22px"><a class="btn red" href="#access" style="display:inline-block;padding:12px 18px;text-decoration:none;font-size:14px">Request beta access</a></p></div></section>
 <main>
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
-<p><small>CodeNinja · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</small></p></main></body></html>"""
+<section id="access"><p class="eyebrow">Beta access</p><h2 style="margin-top:.3em">Start the conversation</h2><p>{ACCESS[slug]}</p>{brand.form(FORM[slug])}</section>
+</main><footer style="border-top:1px solid var(--line);padding:28px 16px"><div style="max-width:860px;margin:0 auto;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:center">{brand.footer_brand(BASE)}<small>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</small></div></footer></body></html>"""
 
 def faq(qs): return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
 
@@ -114,7 +119,9 @@ def main():
     hbody = f"""<p class="eyebrow">CodeNinja · Hyper Ontology</p>
 <h1>Hyper Ontology: turn a reference architecture into a living system</h1>
 <p class="lead">Hyper Ontology is CodeNinja's ontology platform: the control plane every system of record connects into and every application and agent reads from. It imports the object models <a href="{BASE}/praxis/">Praxis</a> designs and stands them up as a living ontology over the operator's own systems, owned by the operator and sovereign to them.</p>
-<div class="box"><strong>Status: beta.</strong> Used in house by CodeNinja. Access for outside teams is by request.</div>
+<div class="box"><strong>Status: beta (v0.9).</strong> Used in house by CodeNinja. Access for outside teams is by request. Product overview on <a href="https://codeninjaconsulting.com/products/hyper-ontology">codeninjaconsulting.com</a>.</div>
+<h2>Semantics and kinetics</h2>
+<p>Hyper Ontology is the semantic foundation of the Hyper stack, in two layers. <strong>Semantics</strong> fixes what every entity means: the objects, properties and typed links a Praxis package carries. <strong>Kinetics</strong> fixes how entities may interact, decide and act: the actions, the write paths and the named approval each design requires. Hyper's other platforms, including Pragma and Engram, read from the ontology and write back to it.</p>
 <h2>Ontologies are to agents what databases are to humans</h2>
 <p>A database assumes a reader who already knows what the columns mean, remembers what changed last year and reconciles two systems in their head. An agent has none of that. Give an agent a database and it guesses; give it an ontology and it resolves.</p>
 <h2>Three layers, and the order is the argument</h2>

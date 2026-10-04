@@ -1,3 +1,4 @@
+README.md
 pyproject.toml
 hyper_ontology/__init__.py
 hyper_ontology/cli.py

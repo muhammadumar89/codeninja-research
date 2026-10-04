@@ -9,6 +9,9 @@ import html
 import json
 import re
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import brand
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://muhammadumar89.github.io/codeninja-research"
@@ -106,9 +109,9 @@ def landing(ps, sols):
         sbody = ('<ul class="list"><li><b>The requirement as published.</b> What the operator asked for, read in its own words.</li>'
                  '<li><b>The complete solution design.</b> Scope, architecture, object model, models and hardware, rollout and cost, reasoned on Praxis.</li>'
                  '<li><b>The living system.</b> The object model packaged for Hyper Ontology, ready to stand up over the operator\'s own systems.</li></ul>')
-    return f"""<header class="top"><b>CODENINJA</b><nav><a href="#research">Research</a><a class="opt" href="#solutions">Solutions</a><a href="praxis/">Praxis</a><a href="hyper-ontology/">Hyper Ontology</a><a class="opt" href="#data">Data</a></nav></header>
+    return f"""<header class="top">{brand.header_brand("./")}<nav><a href="#research">Research</a><a class="opt" href="#solutions">Solutions</a><a href="praxis/">Praxis</a><a href="hyper-ontology/">Hyper Ontology</a><a class="opt" href="#data">Data</a><a href="#access" style="color:#fff">Request access</a></nav></header>
 <main>
-{film("port-night", f'<p class="mono">CodeNinja Research</p><h1>Autonomy in physical operations.</h1><p class="lede">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action. Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p><div class="cta"><a class="btn primary" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div>', eager=True)}
+{film("port-night", f'<p class="mono">CodeNinja Research</p><h1>Autonomy in physical operations.</h1><p class="lede">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action. Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p><div class="cta"><a class="btn red" href="#access">Request beta access</a><a class="btn primary" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div>', eager=True)}
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div>
 {film("control-room", '<p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, reasoned through eight lenses from first principles to hardware, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">How Praxis reasons</a></div>')}
 {film("rail-yard", '<p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div>')}
@@ -123,8 +126,10 @@ def landing(ps, sols):
 <li><b><a href="https://huggingface.co/collections/CodeNinjatools/vertical-driven-architectures-6ac0d23c8b7b3938f1a4fd00">Hugging Face collection</a></b><br>a Space and an ontology package for every design</li>
 <li><b><a href="llms.txt">llms.txt</a></b> · <a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">sitemap</a></li>
 <li><b><a href="https://github.com/muhammadumar89/codeninja-research">Source files on GitHub</a></b><br>papers, packages, the package format and the loader</li></ul></div></section>
+<section id="access" class="wrap" style="padding-top:0;border-top:1px solid var(--line);padding-top:88px"><div class="split"><div><p class="mono">Beta access</p><h2>Start the conversation.</h2><p class="lede" style="color:var(--muted)">Praxis and Hyper Ontology are in beta with a small number of outside teams. Tell us the operation you want designed, or the systems you want to make living, and a CodeNinja engineer will reply.</p></div>
+<div>{brand.form("both")}</div></div></section>
 </main>
-<footer><div class="wrapf"><span>CodeNinja · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
+<footer><div class="wrapf">{brand.footer_brand("./")}<span>CodeNinja Research is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
 
 
 def main():
@@ -149,7 +154,7 @@ def main():
 <meta property="og:type" content="website"><meta property="og:title" content="CodeNinja Research: autonomy in physical operations"><meta property="og:image" content="{BASE}/assets/video/port-night.jpg"><meta property="og:url" content="{BASE}/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 <script type="application/ld+json">{json.dumps(ld)}</script>
-<style>{CSS}</style></head><body>
+<style>{CSS}{brand.CSS}</style></head><body>
 {landing(ps, sols)}
 <script>(function(){{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var io=new IntersectionObserver(function(es){{es.forEach(function(e){{var v=e.target;if(e.isIntersecting){{v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){{}})}}else{{v.pause()}}}})}},{{threshold:0.15}});document.querySelectorAll('section.film video').forEach(function(v){{io.observe(v)}})}})();</script>
 </body></html>"""
