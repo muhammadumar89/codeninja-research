@@ -21,24 +21,36 @@ def designs():
                     "kinds": sorted({o["kind"] for o in objs})})
     return out
 
-CSS = """:root{--ink:#1F3348;--amber:#B7791F;--muted:#5B6673;--line:#E3E7EC;--tint:#F6F8FA;--bg:#fff;--fg:#222}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#9CC3E6;--amber:#E0A84A;--muted:#A9B3BE;--line:#2C3540;--tint:#161C22;--bg:#0E1215;--fg:#E6E9ED}}
-body{margin:0;font:16px/1.65 Arial,Helvetica,sans-serif;color:var(--fg);background:var(--bg)}main{max-width:820px;margin:0 auto;padding:40px 16px 64px}
-.eyebrow{letter-spacing:.18em;color:var(--amber);font-weight:700;font-size:11px;text-transform:uppercase}h1{color:var(--ink);font-size:34px;line-height:1.2;margin:.3em 0}
+CSS = """:root{--ink:#E8ECEF;--amber:#E0A84A;--muted:#9AA5AF;--line:rgba(255,255,255,.12);--tint:#0E1216;--bg:#07090B;--fg:#D5DCE1}
+*{box-sizing:border-box}body{margin:0;font:16px/1.65 "Inter",Arial,Helvetica,sans-serif;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased}main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
+.hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}.hero video,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,11,.35),rgba(7,9,11,.6) 50%,rgba(7,9,11,.96))}.hero .in{position:relative;z-index:2;max-width:860px;width:100%;margin:0 auto;padding:90px 16px 40px}
+header.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(7,9,11,.78);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}header.top b{letter-spacing:.24em;font-size:13px;color:var(--ink)}header.top a{text-decoration:none}
+@media (prefers-reduced-motion:reduce){.hero video{display:none}}
+.eyebrow{letter-spacing:.16em;color:var(--amber);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;text-transform:uppercase}h1{color:var(--ink);font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-.015em;font-weight:600;margin:.3em 0}
 h2{color:var(--ink);font-size:22px;margin-top:2em}h3{color:var(--ink);font-size:17px;margin-bottom:.2em}a{color:var(--ink)}.lead{font-size:19px;color:var(--fg)}
-.box{background:var(--tint);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin:20px 0}table{width:100%;border-collapse:collapse;font-size:14px}
+.box{background:var(--tint);border:1px solid var(--line);border-radius:2px;padding:16px 20px;margin:20px 0}table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{border:1px solid var(--line);background:var(--tint);padding:14px 16px}
 small,.muted{color:var(--muted)}code{background:var(--tint);padding:1px 5px;border-radius:4px;font-size:14px}pre{background:var(--tint);padding:12px;border-radius:6px;overflow:auto;font-size:13px}
-nav a{margin-right:16px;font-size:14px}.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}h1,h2,h3,p,li{overflow-wrap:anywhere}"""
+nav a{margin-left:18px;font-size:13px;color:var(--muted)}.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}h1,h2,h3,p,li{overflow-wrap:anywhere}"""
+
+VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
+
 
 def page(slug, title, desc, body, ld):
+    v = VIDEO.get(slug, "port-night")
+    m = re.search(r'(<p class="eyebrow">.*?</p>\s*<h1>.*?</h1>\s*<p class="lead">.*?</p>)', body, re.S)
+    hero = m.group(1) if m else ""
+    body = body.replace(hero, "", 1)
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(title.split(':')[0])}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/{slug}/">
 <meta name="codeninja:kind" content="product">
-""" + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""<style>{CSS}</style></head>
-<body><main><nav><a href="{BASE}/">CodeNinja Research</a><a href="{BASE}/praxis/">Praxis</a><a href="{BASE}/hyper-ontology/">Hyper Ontology</a></nav>
+""" + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet"><style>{CSS}</style></head>
+<body><header class="top"><a href="{BASE}/"><b>CODENINJA</b></a><nav><a href="{BASE}/#research">Research</a><a href="{BASE}/praxis/">Praxis</a><a href="{BASE}/hyper-ontology/">Hyper Ontology</a></nav></header>
+<section class="hero"><img src="../assets/video/{v}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline poster="../assets/video/{v}.jpg" aria-hidden="true"><source src="../assets/video/{v}.mp4" type="video/mp4"></video><div class="in">{hero}</div></section>
+<main>
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
 <p><small>CodeNinja · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</small></p></main></body></html>"""
 
