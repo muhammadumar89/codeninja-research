@@ -16,7 +16,7 @@ BASE = "https://muhammadumar89.github.io/codeninja-research"
 
 def papers():
     out = []
-    for d in sorted(p for p in ROOT.iterdir() if p.is_dir() and (p / "index.html").exists() and not p.name.startswith(".")):
+    for d in sorted(p for p in ROOT.iterdir() if p.is_dir() and (p / "index.html").exists() and (p / "paper").is_dir() and not p.name.startswith(".")):
         h = (d / "index.html").read_text(encoding="utf-8")
         g = lambda name: (re.search(rf'<meta name="{name}" content="([^"]*)"', h) or [None, ""])[1]
         pdf = next(iter(sorted((d / "paper").glob("*.pdf"))), None) if (d / "paper").exists() else None
@@ -52,10 +52,11 @@ def main():
 <h1>Open reference architectures for sovereign AI in physical operations</h1>
 <p>Every design is also a row in the <a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">Vertical-Driven Architectures dataset</a>: designs, ontology objects, model choices, cost lines and full text, for agents to query.</p>
 <p>Every design here runs on the operator's own hardware, under open-weight licences, with no data leaving the country. Each paper ships with its object model as JSON, its model register and a cost appendix. Text, figures and data are CC BY 4.0.</p>
+<p><strong>Made with:</strong> every design is reasoned on <a href="{BASE}/praxis/">Praxis</a>, CodeNinja's platform for designing physical AI systems, and its object model imports into <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>, which turns it into a living system.</p>
 <ul style="list-style:none;padding:0">{rows}</ul>
 <p><small>Source files: <a href="https://github.com/muhammadumar89/codeninja-research">github.com/muhammadumar89/codeninja-research</a> · Updated {today}</small></p></main></body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/"] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/"] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -63,6 +64,9 @@ def main():
     llms = ["# CodeNinja Research", "",
             "> The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures", "",
             "> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.", "",
+            "## Products", "",
+            f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta, access by request.",
+            f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
             "## Papers", ""]
     for p in ps:
         llms.append(f"- [{p['title']}]({BASE}/{p['slug']}/): {p['description']}" + (f" DOI {p['doi']}." if p["doi"] else ""))
