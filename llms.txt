@@ -9,6 +9,11 @@
 - [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta, access by request.
 - [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.
 
+## Methods
+
+- [From Reference Architecture to Living Ontology: the hyper-ontology/1 Package and Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/ontology-method/): How a Praxis design's object model is packaged as hyper-ontology/1, what seven published packages contain, how to load and convert them, and how Hyper Ontology stands a package up as a living system over an operator's own systems of record.
+- [How Praxis Designs Physical AI Systems: Method and Evidence from Seven Reference Architectures](https://muhammadumar89.github.io/codeninja-research/praxis-method/): The method behind the Vertical-Driven Architectures series: how Praxis turns an operator's requirement into a complete physical AI system design through eight reasoning lenses, and what seven published designs show about it.
+
 ## Papers
 
 - [Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory](https://muhammadumar89.github.io/codeninja-research/factory-fire-monitoring-saudi-arabia/): An open reference architecture for read-only fire protection monitoring across high-risk factories in industrial cities in Saudi Arabia: fire alarm panels, fire pumps, fire water tanks and energy meters read through LoRaWAN and contacts into an IoT platform hosted in Saudi Arabia, a fourteen-object ontology, a CPU-only forecaster, and never a write path into life-safety equipment. DOI 10.5281/zenodo.23126565.

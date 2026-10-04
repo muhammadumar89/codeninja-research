@@ -87,6 +87,9 @@ def film(video, inner, eager=False):
 
 def landing(ps, sols):
     E = lambda x: html.escape(str(x), quote=True)
+    ms = [p for p in ps if not p["ontology"]]; ps = [p for p in ps if p["ontology"]]
+    mcards = "".join(f'<article class="card"><div class="tags"><span class="tag">Method</span></div><h3><a class="t" href="{p["slug"]}/">{E(p["title"].split(":")[0])}</a></h3><p>{E(p["title"].split(":",1)[1].strip() if ":" in p["title"] else "")}</p>'
+                     f'<small><a href="{p["pdf"]}">PDF</a>' + (f' · DOI <a href="https://doi.org/{p["doi"]}">{p["doi"]}</a>' if p["doi"] else "") + "</small></article>" for p in ms)
     countries = sorted({p["country"] for p in ps if p["country"]}); sectors = sorted({p["sector"] for p in ps if p["sector"]})
     objs = sum(p["n_obj"] for p in ps); dois = sum(1 for p in ps if p["doi"])
     cards = "".join(
@@ -111,7 +114,8 @@ def landing(ps, sols):
 {film("rail-yard", '<p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div>')}
 <section id="research" class="wrap"><p class="mono">Research · Vertical-Driven Architectures</p><h2>One operation, one design, end to end.</h2>
 <p class="lede" style="color:var(--muted)">Each paper is a complete reference architecture for one real operation, written so an engineer, or their coding agent, can build it. Operators are described by class, never by name.</p>
-<div class="cols" style="margin-top:36px">{cards}</div></section>
+<div class="cols" style="margin-top:36px">{cards}</div>
+<p class="mono" style="margin-top:56px">Methods</p><h2 style="font-size:clamp(24px,3vw,34px)">How the designs are made, and how they come alive.</h2><div class="cols" style="margin-top:20px">{mcards}</div></section>
 {film("pylon-dusk", '<p class="mono">Solutions</p><h2>Published requirements, solved in the open.</h2><p class="lede">Operators publish what they need. We publish how to build it: the full solution design for a published requirement, from sensing to the living ontology.</p>')}
 <section id="solutions" class="wrap">{sbody}</section>
 <section id="data" class="wrap" style="padding-top:0"><div class="split"><div><p class="mono">For agents and engineers</p><h2>Everything here is data.</h2><p class="lede" style="color:var(--muted)">Load every design, object, model choice and cost line as one dataset, or read the site the way an agent does.</p></div>
@@ -161,8 +165,9 @@ def main():
             "## Products", "",
             f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta, access by request.",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
+            "## Methods", ""] + [f"- [{p['title']}]({BASE}/{p['slug']}/): {p['description']}" + (f" DOI {p['doi']}." if p["doi"] else "") for p in ps if not p["ontology"]] + ["",
             "## Papers", ""]
-    for p in ps:
+    for p in [x for x in ps if x["ontology"]]:
         llms.append(f"- [{p['title']}]({BASE}/{p['slug']}/): {p['description']}" + (f" DOI {p['doi']}." if p["doi"] else ""))
         if p["ontology"]:
             llms.append(f"  - [Object model as JSON]({p['ontology']})")
