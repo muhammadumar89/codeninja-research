@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hyper-ontology"
+version = "0.1.0"
+description = "Load, validate and convert hyper-ontology/1 packages: the object models Praxis designs and Hyper Ontology imports."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "CodeNinja"}]
+keywords = ["ontology", "knowledge graph", "physical AI", "reference architecture", "Praxis", "Hyper Ontology"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://muhammadumar89.github.io/codeninja-research/hyper-ontology/"
+Source = "https://github.com/muhammadumar89/codeninja-research/tree/main/hyper-ontology-py"
+
+[project.scripts]
+hyper-ontology = "hyper_ontology.cli:main"
+
+[tool.setuptools]
+packages = ["hyper_ontology"]

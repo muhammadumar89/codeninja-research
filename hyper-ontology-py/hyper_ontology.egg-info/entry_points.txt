@@ -1,0 +1,2 @@
+[console_scripts]
+hyper-ontology = hyper_ontology.cli:main

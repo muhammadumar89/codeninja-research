@@ -1,6 +1,8 @@
 # The ontology package
 
-Every paper folder carries `ontology/objects.json`. It is written as input for Hyper Ontology, CodeNinja's platform that implements the object models Praxis designs. Until Hyper Ontology publishes its import format, this file is the format, and the two will be kept in agreement.
+Every paper folder carries `ontology/objects.json`. [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/), CodeNinja's platform for designing physical AI systems, writes it for every design. [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/), CodeNinja's ontology platform, imports it and stands the model up as a living ontology over the operator's own systems. Until Hyper Ontology publishes its import format, this file is the format, and the two will be kept in agreement.
+
+To load, validate or convert a package (Mermaid, Cypher, JSON-LD), use the [hyper-ontology loader](hyper-ontology-py/).
 
 ## Shape
 
@@ -9,7 +11,7 @@ Every paper folder carries `ontology/objects.json`. It is written as input for H
   "package": "hyper-ontology/1",
   "designed_with": "Praxis",
   "implemented_with": "Hyper Ontology",
-  "paper": {"title": "...", "url": "https://codeninjaconsulting.com/research/<slug>", "doi": "..."},
+  "paper": {"title": "...", "url": "https://muhammadumar89.github.io/codeninja-research/<folder>/", "doi": "..."},
   "sector": "oil-and-gas",
   "country": "Pakistan",
   "objects": [
@@ -30,7 +32,7 @@ Every paper folder carries `ontology/objects.json`. It is written as input for H
 
 ## Rules
 
-- `kind` is one of `record`, `asset`, `document`, `person`, `event`, `system`. The paper's six kinds.
+- `kind` is one of `record`, `asset`, `document`, `person`, `event`, `system`, `site`, `material`, `actor`, `measure`.
 - `anchored_in` names the system of record the object is read from, or is empty for an object born inside the platform.
 - `links` are typed and directional. The reverse is implied.
 - Nothing in the file names the operator. The leak check that gates the paper gates this file too.

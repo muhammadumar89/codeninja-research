@@ -1,0 +1,45 @@
+# hyper-ontology
+
+Load, validate and convert `hyper-ontology/1` packages: the object models [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) designs and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) imports to stand up a living system.
+
+Every design in the [Vertical-Driven Architectures](https://muhammadumar89.github.io/codeninja-research/) series publishes its object model in this format: typed objects, their properties and status vocabularies, the system of record each is anchored in, and typed directional links. This package reads them, checks them, and turns them into a diagram, a graph database script or JSON-LD.
+
+No dependencies. Python 3.9 or later.
+
+## Install
+
+```bash
+pip install "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=hyper-ontology-py"
+```
+
+## Use it from the command line
+
+```bash
+hyper-ontology list                                   # every published design
+hyper-ontology show port-digital-twin-us              # what the model holds
+hyper-ontology validate steel-production-count-pakistan
+hyper-ontology reach port-digital-twin-us berth       # the typed paths one object reaches
+hyper-ontology mermaid factory-fire-monitoring-saudi-arabia > model.mmd
+hyper-ontology cypher truck-turn-container-terminal-us > load.cypher   # Neo4j or Memgraph
+hyper-ontology jsonld wildfire-risk-distribution-us > model.jsonld
+```
+
+A design slug resolves to its package on the research site; a local path or any URL works too.
+
+## Use it from Python
+
+```python
+from hyper_ontology import load, validate, summary, to_mermaid, traverse
+
+pkg = load("port-digital-twin-us")
+assert not validate(pkg)
+print(summary(pkg))
+for path in traverse(pkg, "berth", depth=2):
+    print(path)
+```
+
+## What this is not
+
+This loader reads and converts the schema of a design. Standing the model up over an operator's live systems of record, with adapters, actions, and the decision record, is what Hyper Ontology does. Hyper Ontology is in beta; access is by request.
+
+The format is specified in [ONTOLOGY_PACKAGE.md](../ONTOLOGY_PACKAGE.md). Code Apache-2.0; the packages themselves are CC BY 4.0 with their papers.
