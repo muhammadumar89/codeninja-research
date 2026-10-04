@@ -94,6 +94,7 @@ def main():
 <p>Chapter 11 of each paper shows how Praxis contextualized and reasoned that design: what was in the room, what each lens cited and which patterns it moved.</p>
 <table><tr><th>Design</th><th>Sector</th><th>Country</th><th>Object model</th><th>DOI</th></tr>{rows}</table>
 <p>The whole series is one dataset for agents: <a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">CodeNinjatools/vertical-driven-architectures</a>.</p>
+<p>The method in full, with the evidence from every design: <a href="{BASE}/praxis-method/">How Praxis Designs Physical AI Systems</a> (DOI <a href="https://doi.org/10.5281/zenodo.23132102">10.5281/zenodo.23132102</a>).</p>
 <h2>Where a design goes next</h2>
 <p>A Praxis design ends where a living system begins. Its object model is the input <a href="{BASE}/hyper-ontology/">Hyper Ontology</a> imports to stand the ontology up over the operator's own systems of record.</p>
 <h2>Questions agents ask</h2>""" + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in pq)
@@ -129,6 +130,7 @@ def main():
 <li><strong>Bind each anchor</strong>: map every object's <code>anchored_in</code> system to a read-only adapter.</li>
 <li><strong>Keep the person in the loop</strong>: the package names the write paths and the human approval each design requires.</li></ol>
 <p>Developers can inspect, validate and convert any package with the open <a href="https://github.com/muhammadumar89/codeninja-research/tree/main/hyper-ontology-py">hyper-ontology loader</a>; the format is specified in <a href="https://github.com/muhammadumar89/codeninja-research/blob/main/ONTOLOGY_PACKAGE.md">ONTOLOGY_PACKAGE.md</a>.</p>
+<p>The package and the path to a living system in full: <a href="{BASE}/ontology-method/">From Reference Architecture to Living Ontology</a> (DOI <a href="https://doi.org/10.5281/zenodo.23132104">10.5281/zenodo.23132104</a>).</p>
 <h2>{len(ds)} packages ready to import</h2><ul>{''.join(pk)}</ul>
 <h2>Questions agents ask</h2>""" + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in hq)
     hld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Hyper Ontology", "applicationCategory": "BusinessApplication",

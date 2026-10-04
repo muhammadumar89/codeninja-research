@@ -11,6 +11,7 @@ E = lambda s: html.escape(str(s), quote=True)
 EV = json.loads((ROOT / "methods" / "evidence.json").read_text())
 O, LN, D = EV["order"], EV["lenses"], EV["designs"]
 TODAY = "2026-10-04"
+DOIS = json.loads((ROOT / "methods" / "dois.json").read_text()) if (ROOT / "methods" / "dois.json").exists() else {}
 
 CSS = """@page{size:letter;margin:0.8in 0.85in}body{font:11pt/1.55 Arial,Helvetica,sans-serif;color:#222;max-width:760px;margin:0 auto;padding:32px 16px}
 .eyebrow{font-size:9pt;letter-spacing:.16em;color:#B7791F;font-weight:700;text-transform:uppercase}h1{font-size:25pt;line-height:1.15;color:#1F3348;margin:.3em 0 .4em}
@@ -22,11 +23,12 @@ th{font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;color:#B7791F;te
 .refs li{margin-bottom:4px;font-size:9.5pt}a{color:#1F3348}.tw{overflow-x:auto}"""
 
 def head(title, desc, url, pdf, kw):
+    folder = url.rstrip("/").split("/")[-1]; doi = DOIS.get(folder, "")
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title>'
             f'<meta name="description" content="{E(desc)}"><link rel="canonical" href="{url}"><meta name="codeninja:kind" content="method">'
             f'<meta name="citation_title" content="{E(title)}"><meta name="citation_author" content="CodeNinja Engineering Team"><meta name="citation_author" content="Umar Bilal">'
             f'<meta name="citation_publication_date" content="{TODAY.replace("-", "/")}"><meta name="citation_publisher" content="CodeNinja"><meta name="citation_abstract_html_url" content="{url}">'
-            f'<meta name="citation_pdf_url" content="{pdf}"><meta name="citation_keywords" content="{E("; ".join(kw))}"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}">'
+            + (f'<meta name="citation_doi" content="{doi}">' if doi else "") + f'<meta name="citation_pdf_url" content="{pdf}"><meta name="citation_keywords" content="{E("; ".join(kw))}"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}">'
             f'<script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":["TechArticle","ScholarlyArticle"],"headline":title,"description":desc,"url":url,"datePublished":TODAY,"author":[{"@type":"Organization","name":"CodeNinja"}],"keywords":kw,"license":"https://creativecommons.org/licenses/by/4.0/","about":[{"@type":"SoftwareApplication","name":"Praxis","url":BASE+"/praxis/"},{"@type":"SoftwareApplication","name":"Hyper Ontology","url":BASE+"/hyper-ontology/"}]})}</script>'
             f'<style>{CSS}</style></head><body>')
 
@@ -87,7 +89,7 @@ def praxis_paper():
                  f'<td>{sum(v for v in D[k]["lens"].values() if v != "gap")}</td><td>{sum(1 for v in D[k]["lens"].values() if v == "gap")}</td><td>{D[k]["phases"]} / {D[k]["items"]}</td><td>{D[k]["req_covered"]} of {D[k]["req_total"]}</td></tr>' for k in O)
     body = f"""<p class="eyebrow">Vertical-Driven Architectures · Methods · Designed with Praxis · October 2026</p>
 <h1>{E(title)}</h1><p class="sub">What it takes to design a system for the physical world, and how Praxis does it: the inputs, the eight reasoning lenses, the rules that hold on every design, and the evidence from seven published reference architectures.</p>
-<p class="authors">CodeNinja Engineering Team · Umar Bilal</p><p class="meta">CodeNinja · {TODAY} · CC BY 4.0 · Web edition: <a href="{url}">{url}</a></p>
+<p class="authors">CodeNinja Engineering Team · Umar Bilal</p><p class="meta">CodeNinja · {TODAY} · CC BY 4.0 · Web edition: <a href="{url}">{url}</a>{(' · DOI <a href="https://doi.org/' + DOIS.get(url.rstrip("/").split("/")[-1], "") + '">' + DOIS.get(url.rstrip("/").split("/")[-1], "") + '</a>') if DOIS.get(url.rstrip("/").split("/")[-1]) else ""}</p>
 <div class="abstract"><strong>Abstract.</strong> Designing physical AI, for a port, a grid, a mill or a construction site, has always needed deep domain expertise: what to sense, where each model may run, which rules bind, what the hardware must hold and who must approve each action. Praxis is CodeNinja's platform for designing such systems. It reads an operator's requirement in the operator's own words, loads the sector's knowledge as context, reasons through eight lenses (first principles, case studies, rules and regulations, approach, tooling and recency, history, domain fusion, and hardware and equipment) and renders one validated plan into a complete design: scope and rollout, layered architecture, object model, model and equipment register, cost and a live simulation. Across the seven designs published in the Vertical-Driven Architectures series, covering {len({D[k]["sector"] for k in O})} sectors in {len({D[k]["country"] for k in O})} countries, Praxis listed {listed:,} records as candidate context and read {read} of them in full, its lenses cited {cited} sources, and {gaps} times a lens found nothing citable and said so instead of filling the gap. {len(full)} of the seven designs cover every recorded requirement through a rollout gate; the other two print their lower coverage as counted. Every design ships its object model as a <code>hyper-ontology/1</code> package that <a href="{BASE}/hyper-ontology/">Hyper Ontology</a> imports to stand up a living system.</div>
 
 <h2>1. The problem: physical systems need a domain engineer's judgement</h2>
@@ -146,7 +148,7 @@ def ontology_paper():
     steel = load(ROOT / "steel-production-count-pakistan/ontology/objects.json"); reach2 = traverse(steel, "count_event", 2)
     body = f"""<p class="eyebrow">Vertical-Driven Architectures · Methods · Hyper Ontology · October 2026</p>
 <h1>{E(title)}</h1><p class="sub">Every design Praxis produces ends in an object model. This paper specifies the package that carries it, measures the seven published packages, shows how to load them, and describes how Hyper Ontology turns one into a living system.</p>
-<p class="authors">CodeNinja Engineering Team · Umar Bilal</p><p class="meta">CodeNinja · {TODAY} · CC BY 4.0 · Web edition: <a href="{url}">{url}</a></p>
+<p class="authors">CodeNinja Engineering Team · Umar Bilal</p><p class="meta">CodeNinja · {TODAY} · CC BY 4.0 · Web edition: <a href="{url}">{url}</a>{(' · DOI <a href="https://doi.org/' + DOIS.get(url.rstrip("/").split("/")[-1], "") + '">' + DOIS.get(url.rstrip("/").split("/")[-1], "") + '</a>') if DOIS.get(url.rstrip("/").split("/")[-1]) else ""}</p>
 <div class="abstract"><strong>Abstract.</strong> Ontologies are to agents what databases are to humans: a database assumes a reader who already knows what the columns mean, while an ontology writes that meaning down once, as objects, properties, typed links and actions, so an agent resolves instead of guessing. Every system design reasoned on <a href="{BASE}/praxis/">Praxis</a> ends in such a model, packaged as <code>hyper-ontology/1</code>: typed objects with properties and status vocabularies, the system of record each is anchored in, typed directional links, the write paths and the human approval the design requires. Seven packages are published with the Vertical-Driven Architectures series, holding {objs} objects and {links} typed links across {len(kinds)} object kinds. An open, dependency-free loader validates them and converts them to Mermaid, Cypher and JSON-LD. <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>, CodeNinja's ontology platform, imports a package and stands it up as a projection over the operator's own systems of record, connected through adapters that emit ontology events, with actions that write back under approval, so the model senses, decides, acts and learns.</div>
 
 <h2>1. Why the design ends in an ontology</h2>
