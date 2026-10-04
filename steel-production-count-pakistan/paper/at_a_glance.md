@@ -17,3 +17,5 @@
 | The hard dependency | 141 GB-class accelerators need a US export licence for Pakistan (Country Group D:4); the node is ordered only once a licence naming the end user holds |
 
 **Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI https://doi.org/10.5281/zenodo.23126563.
+
+**Made with.** Reasoned on [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/), CodeNinja's platform for designing physical AI systems. The object model imports into [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/), which turns it into a living system. Both are in beta; access by request.

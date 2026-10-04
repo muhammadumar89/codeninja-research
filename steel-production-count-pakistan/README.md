@@ -6,6 +6,9 @@ in Pakistan An ontology-anchored production monitoring system that counts billet
 
 For the director of the operator's audit unit, the revenue field officers and audit leads who decide discrepancies, and the edge, vision and platform engineers who would build and run it.
 
+
+**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show steel-production-count-pakistan`.
+
 **Canonical page:** https://muhammadumar89.github.io/codeninja-research/steel-production-count-pakistan/
 **Paper:** [PDF](paper/steel-count-ledger-production-monitoring-steel-mills-pakistan.pdf) · [HTML](paper/steel-count-ledger-production-monitoring-steel-mills-pakistan.html) · [Word](paper/steel-count-ledger-production-monitoring-steel-mills-pakistan.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23126563](https://doi.org/10.5281/zenodo.23126563) (all versions: [10.5281/zenodo.23126562](https://doi.org/10.5281/zenodo.23126562))

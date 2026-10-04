@@ -17,3 +17,5 @@
 | Human control | Every public safety power shutoff (PSPS) recommendation becomes a decision record a named operator approves or declines; the design never opens or closes a recloser |
 
 **Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0.
+
+**Made with.** Reasoned on [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/), CodeNinja's platform for designing physical AI systems. The object model imports into [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/), which turns it into a living system. Both are in beta; access by request.
