@@ -141,7 +141,7 @@ def landing(ps, sols):
     nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("Data", "#data")]
     return f"""{brand.header("./", nav)}
 <main>
-{film("port-night", '<p class="mono">CodeNinja Research</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
+{film("port-night", '<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
 <section class="light" id="intro"><div class="statement"><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
@@ -164,7 +164,7 @@ def landing(ps, sols):
 <li><b><a href="https://github.com/muhammadumar89/codeninja-research">Source files on GitHub</a></b><br>papers, packages, the package format and the loader</li></ul></div></div></section>
 {film("desert-flare", f'<div class="split"><div><p class="mono">Praxis beta</p><h2>Design for the physical world.</h2><p class="lede">Every design here was made on Praxis, and Praxis is opening to outside engineers in beta. Tell us the operation you want to design, or the systems you want to make living with Hyper Ontology, and we will reply with your place on the list.</p></div><div>{brand.form("both")}</div></div>', cls="access", sid="access")}
 </main>
-<footer class="site"><div class="wrapf">{brand.footer_brand("./")}<span>CodeNinja Research is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
+<footer class="site"><div class="wrapf">{brand.footer_brand("./")}<span>CodeNinja Atoms is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
 
 
 # Sector chips filter the research cards; without JS the chips stay hidden and every card shows.
@@ -183,16 +183,16 @@ def main():
         + (f' · <a href="{p["ontology"]}">ontology JSON</a>' if p["ontology"] else "")
         + (f' · DOI <a href="https://doi.org/{p["doi"]}">{p["doi"]}</a>' if p["doi"] else "")
         + "</small></li>" for p in ps)
-    ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "CodeNinja Research",
+    ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "CodeNinja Atoms",
           "description": "Open reference architectures for sovereign AI in physical operations.",
           "url": f"{BASE}/", "publisher": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
           "hasPart": [{"@type": "TechArticle", "headline": p["title"], "url": f"{BASE}/{p['slug']}/"} for p in ps]}
     sols = solutions()
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CodeNinja Research</title>
+<title>CodeNinja Atoms</title>
 <meta name="description" content="Sovereign system designs for physical AI in ports, grids, mills, plants and sites, designed on Praxis and made living with Hyper Ontology: open papers, open object models, open data.">
 <link rel="canonical" href="{BASE}/"><link rel="alternate" type="application/atom+xml" href="{BASE}/feed.xml">
-<meta property="og:type" content="website"><meta property="og:title" content="CodeNinja Research: autonomy in physical operations"><meta property="og:image" content="{BASE}/assets/video/port-night.jpg"><meta property="og:url" content="{BASE}/">
+<meta property="og:type" content="website"><meta property="og:title" content="CodeNinja Atoms: autonomy in physical operations"><meta property="og:image" content="{BASE}/assets/video/port-night.jpg"><meta property="og:url" content="{BASE}/">
 {brand.FONTS}{brand.JS_FLAG}
 <script type="application/ld+json">{json.dumps(ld)}</script>
 <style>{brand.CSS}{CSS}</style></head><body>
@@ -204,8 +204,8 @@ def main():
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
-    (ROOT / "feed.xml").write_text(f'<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeNinja Research</title><link href="{BASE}/"/><link rel="self" href="{BASE}/feed.xml"/><id>{BASE}/</id><updated>{today}T00:00:00Z</updated>\n{entries}</feed>\n', encoding="utf-8")
-    llms = ["# CodeNinja Research", "",
+    (ROOT / "feed.xml").write_text(f'<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><title>CodeNinja Atoms</title><link href="{BASE}/"/><link rel="self" href="{BASE}/feed.xml"/><id>{BASE}/</id><updated>{today}T00:00:00Z</updated>\n{entries}</feed>\n', encoding="utf-8")
+    llms = ["# CodeNinja Atoms", "",
             "> The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures", "",
             "> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.", "",
             "## Products", "",

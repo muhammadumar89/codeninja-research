@@ -1,4 +1,4 @@
-# CodeNinja Research
+# CodeNinja Atoms
 
 > The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures
 

@@ -1,4 +1,4 @@
-# codeninja-research-mcp
+# codeninja-research-mcp (CodeNinja Atoms)
 
 An MCP server that gives coding agents the **Vertical-Driven Architectures**: complete reference architectures for physical AI in ports, grids, mills, plants and construction sites. Each design says what to sense, where each model runs, what the object model holds, which open-weight models and hardware it needs, what it costs over three years, and who approves every action.
 

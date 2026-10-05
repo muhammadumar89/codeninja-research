@@ -1,4 +1,4 @@
-# CodeNinja Research
+# CodeNinja Atoms
 
 Reference architectures for autonomy in physical operations. Every design here is sovereign: it runs on the operator's own hardware, under open-weight licences, with no data leaving the country. Praxis designs them, Hyper Ontology implements the object model, Engram keeps the record of decisions.
 

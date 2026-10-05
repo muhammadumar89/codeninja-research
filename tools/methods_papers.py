@@ -200,7 +200,7 @@ def main():
         slug, title, desc, url, pdf, body, kw = fn()
         page = head(title, desc, url, pdf, kw) + body + "</body></html>"
         (ROOT / folder / "paper" / f"{slug}.html").write_text(page, encoding="utf-8")
-        nav = f'<p class="meta"><a href="{BASE}/">CodeNinja Research</a> · <a href="{BASE}/praxis/">Praxis</a> · <a href="{BASE}/hyper-ontology/">Hyper Ontology</a> · <a href="paper/{slug}.pdf">PDF</a></p>'
+        nav = f'<p class="meta"><a href="{BASE}/">CodeNinja Atoms</a> · <a href="{BASE}/praxis/">Praxis</a> · <a href="{BASE}/hyper-ontology/">Hyper Ontology</a> · <a href="paper/{slug}.pdf">PDF</a></p>'
         (ROOT / folder / "index.html").write_text(head(title, desc, url, pdf, kw) + nav + body + "</body></html>", encoding="utf-8")
         print(folder, len(body.split()), "words")
 

@@ -18,8 +18,8 @@ CSS = """:root{--sans:"Inter Tight","Helvetica Neue",Arial,sans-serif;--mono:"Ge
 body{margin:0;background:var(--night);color:var(--on-dark);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
 a{color:inherit}h1,h2,h3,p,li{overflow-wrap:break-word}:focus-visible{outline:1px solid var(--red);outline-offset:3px}
 .mono,.eyebrow{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-d);line-height:1.5}
-.logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:none}
-a.brand span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-d);border-left:1px solid var(--rule-d);padding-left:14px;line-height:20px}
+.logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:19.5px;line-height:20px;letter-spacing:.01em;text-transform:uppercase;color:#fff;margin-left:-4px}
 /* header */
 header.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:28px;padding:18px var(--gutter);background:rgba(11,12,16,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-d);transition:background .3s,border-color .3s}
 html.js header.top:not(.solid):not(.open){background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
@@ -66,7 +66,7 @@ footer.site .wrapf{max-width:var(--max);margin:0 auto;display:flex;gap:24px 40px
 footer.site .wrapf>span{max-width:46ch}
 @media (max-width:900px){header.top nav.links{gap:20px}}
 @media (max-width:820px){:root{--gutter:16px}
-header.top{padding:14px var(--gutter);gap:12px}header.top .acts{margin-left:auto}a.brand span{display:none}.logo{height:18px}
+header.top{padding:14px var(--gutter);gap:12px}header.top .acts{margin-left:auto}.logo{height:18px}a.brand span.atoms{font-size:17.5px;line-height:18px}
 .menu-btn{display:block}.btn-white{padding:9px 12px;font-size:13px}
 html.js header.top nav.links{display:none}
 header.top nav.links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;background:rgba(11,12,16,.97);border-bottom:1px solid var(--rule-d);padding:6px var(--gutter) 14px}
@@ -96,7 +96,7 @@ ARROW = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v1
 
 
 def header_brand(home):
-    return f'<a class="brand" href="{home}" aria-label="CodeNinja Research home">{LOGO}<span>Research</span></a>'
+    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms home">{LOGO}<span class="atoms">Atoms</span></a>'
 
 
 def form(product="both"):
@@ -117,4 +117,4 @@ location.href='mailto:{INBOX}?subject='+encodeURIComponent('Praxis beta: '+p+' (
 
 
 def footer_brand(home):
-    return f'<a class="brand" href="{PARENT}" aria-label="CodeNinja">{LOGO}</a>'
+    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms">{LOGO}<span class="atoms">Atoms</span></a>'
