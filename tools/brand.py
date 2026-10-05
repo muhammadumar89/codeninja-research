@@ -19,7 +19,7 @@ body{margin:0;background:var(--night);color:var(--on-dark);font:400 16px/1.6 var
 a{color:inherit}h1,h2,h3,p,li{overflow-wrap:break-word}:focus-visible{outline:1px solid var(--red);outline-offset:3px}
 .mono,.eyebrow{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-d);line-height:1.5}
 .logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
-a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:21px;line-height:20px;letter-spacing:-.01em;color:#E31E30;margin-left:-2px}
+a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:21px;line-height:20px;letter-spacing:-.01em;color:#D9C3A3;margin-left:-2px}
 /* header */
 header.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:28px;padding:18px var(--gutter);background:rgba(11,12,16,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-d);transition:background .3s,border-color .3s}
 html.js header.top:not(.solid):not(.open){background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
