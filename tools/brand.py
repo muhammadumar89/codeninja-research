@@ -88,7 +88,7 @@ def header(home, links, access="#access"):
     """Fixed header: logo left, compact menu, white rectangular access button. links = [(label, href), ...]."""
     nav = "".join(f'<a href="{h}">{t}</a>' for t, h in links)
     return (f'<header class="top">{header_brand(home)}<nav class="links" id="site-nav" aria-label="Primary">{nav}</nav>'
-            f'<div class="acts"><a class="btn-white" href="{access}">Request access</a>'
+            f'<div class="acts"><a class="btn-white" href="{access}">Join the beta</a>'
             f'<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button></div></header>')
 
 
@@ -108,12 +108,12 @@ def form(product="both"):
 <label>Interested in<select name="product"><option value="Praxis"{sel("Praxis")}>Praxis</option><option value="Hyper Ontology"{sel("Hyper Ontology")}>Hyper Ontology</option><option value="Praxis and Hyper Ontology"{sel("both")}>Both (recommended)</option></select></label>
 <label class="full">The operation you want to design or make living<textarea name="usecase" placeholder="For example: predict truck turn time at a container terminal, or stand up an ontology over our maintenance and ERP systems"></textarea></label>
 <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-<button type="submit">Request beta access</button>
+<button type="submit">Join the Praxis beta</button>
 <p class="note">Opens your email app with the request addressed to {INBOX}; nothing is stored on this site. Prefer a form? Use the <a href="{PARENT}/contact">CodeNinja contact page</a>.</p>
 </form>
 <script>(function(){{var f=document.getElementById('access-form');if(!f)return;f.addEventListener('submit',function(e){{e.preventDefault();if(f.hp.value)return;
 var p=f.product.value,b='Name: '+f.fullname.value+'\\nEmail: '+f.email.value+'\\nOrganization: '+f.org.value+'\\nInterested in: '+p+'\\n\\nOperation:\\n'+f.usecase.value+'\\n\\n(Sent from CodeNinja Research: '+location.href+')';
-location.href='mailto:{INBOX}?subject='+encodeURIComponent('Beta access request: '+p+' ('+f.org.value+')')+'&body='+encodeURIComponent(b);}});}})();</script>"""
+location.href='mailto:{INBOX}?subject='+encodeURIComponent('Praxis beta: '+p+' ('+f.org.value+')')+'&body='+encodeURIComponent(b);}});}})();</script>"""
 
 
 def footer_brand(home):

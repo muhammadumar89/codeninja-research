@@ -162,7 +162,7 @@ def landing(ps, sols):
 <li><b><a href="llms.txt">llms.txt</a></b> · <a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">sitemap</a></li>
 <li><b><a href="https://zenodo.org/communities/physical-ai-reference-architectures">Zenodo community</a></b><br>every paper with its DOI, in one place</li>
 <li><b><a href="https://github.com/muhammadumar89/codeninja-research">Source files on GitHub</a></b><br>papers, packages, the package format and the loader</li></ul></div></div></section>
-{film("desert-flare", f'<div class="split"><div><p class="mono">Beta access</p><h2>Start the conversation.</h2><p class="lede">Praxis and Hyper Ontology are in beta with a small number of outside teams. Tell us the operation you want designed, or the systems you want to make living, and a CodeNinja engineer will reply.</p></div><div>{brand.form("both")}</div></div>', cls="access", sid="access")}
+{film("desert-flare", f'<div class="split"><div><p class="mono">Praxis beta</p><h2>Design for the physical world.</h2><p class="lede">Every design here was made on Praxis, and Praxis is opening to outside engineers in beta. Tell us the operation you want to design, or the systems you want to make living with Hyper Ontology, and we will reply with your place on the list.</p></div><div>{brand.form("both")}</div></div>', cls="access", sid="access")}
 </main>
 <footer class="site"><div class="wrapf">{brand.footer_brand("./")}<span>CodeNinja Research is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
 

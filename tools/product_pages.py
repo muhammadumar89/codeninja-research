@@ -52,8 +52,8 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
-ACCESS = {"praxis": "Praxis is in beta with a small number of outside engineering teams. Tell us the operation you want designed and a CodeNinja engineer will reply.",
-          "hyper-ontology": "Hyper Ontology is in beta with a small number of outside teams. Tell us which systems you want to make living and a CodeNinja engineer will reply."}
+ACCESS = {"praxis": "Praxis is the platform these designs were made on, and it is opening to outside engineers in beta. Tell us the operation you want to design, and we will reply with your place on the list.",
+          "hyper-ontology": "Hyper Ontology turns a Praxis design into a living system, and it is opening to outside teams in beta. Tell us the systems you want to make living, and we will reply with your place on the list."}
 
 
 def page(slug, title, desc, body, ld):
@@ -72,12 +72,12 @@ def page(slug, title, desc, body, ld):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav)}
 <main>
-<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="#access">Request beta access</a></div></div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="#access">Join the Praxis beta</a></div></div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
 <section class="light" id="overview"><div class="doc">
 {lead}
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
 </div></section>
-<section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">Beta access</p><h2>Start the conversation</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.form(FORM[slug])}</div></div></section>
+<section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">Praxis beta</p><h2>Design for the physical world</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.form(FORM[slug])}</div></div></section>
 </main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
