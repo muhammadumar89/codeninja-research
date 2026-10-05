@@ -51,7 +51,7 @@ def main():
                            + "; ".join(sorted({f"{x['sector']} in {x['country']}" for x in designs}))
                            + "), as five tables: designs, ontology objects, model and hardware choices, three-year cost lines, and full text. "
                            "Every design was reasoned on Praxis and ships an object model for Hyper Ontology. CC BY 4.0."),
-           "url": f"{BASE}/#data", "sameAs": f"{HF}/vertical-driven-architectures", "license": LIC, "creator": ORG, "publisher": ORG,
+           "url": f"{BASE}/#data", "sameAs": [f"{HF}/vertical-driven-architectures", "https://doi.org/10.5281/zenodo.23160819"], "identifier": "https://doi.org/10.5281/zenodo.23160819", "license": LIC, "creator": ORG, "publisher": ORG,
            "isAccessibleForFree": True, "keywords": ["physical AI", "sovereign AI", "reference architecture", "ontology", "system design", "open-weight models"],
            "hasPart": [{"@type": "Dataset", "name": x["title"].split(":")[0], "url": x["canonical_url"] or f"{BASE}/{x['design_id']}/"} for x in designs],
            "distribution": [{"@type": "DataDownload", "encodingFormat": "application/x-ndjson",
