@@ -6,13 +6,93 @@ PARENT = "https://codeninjaconsulting.com"
 INBOX = "hello@codeninjaconsulting.com"
 LOGO = '<svg role="img" aria-label="CodeNinja" class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 223 34" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.95375 17.2038L24.2351 22.5743L27.8041 33.0773L0 22.1664V12.0712L27.8721 0.922363L24.2351 11.6633L7.95375 17.2038ZM51.3942 17.2037L35.1128 11.6972L31.6118 0.990234L59.348 12.0711V22.1663L31.6798 33.0092L35.1128 22.5402L51.3942 17.2037Z" fill="#E31E30"></path><path d="M70.8394 22.8223V10.5735C70.8394 9.18758 71.2631 8.07586 72.1106 7.23833C72.9581 6.39083 74.0648 5.96709 75.4308 5.96709H85.3764V8.88347L84.0005 10.2594H77.2704C76.044 10.2594 75.4308 10.8726 75.4308 12.099V21.2819C75.4308 22.5082 76.044 23.1214 77.2704 23.1214H85.3764V27.4138H75.4308C74.0648 27.4138 72.9581 26.995 72.1106 26.1575C71.2631 25.3199 70.8394 24.2082 70.8394 22.8223Z" fill="#FFFFFF"></path><path d="M93.9611 23.4355H97.4757C98.7021 23.4355 99.3153 22.8223 99.3153 21.5959V11.7999C99.3153 10.5735 98.7021 9.96029 97.4757 9.96029H93.9611C92.7347 9.96029 92.1215 10.5735 92.1215 11.7999V21.5959C92.1215 22.8223 92.7347 23.4355 93.9611 23.4355ZM87.5301 23.1214V10.2594C87.5301 8.8735 87.9538 7.76179 88.8013 6.92426C89.6488 6.08673 90.7555 5.66797 92.1215 5.66797H99.3153C100.701 5.66797 101.813 6.08673 102.65 6.92426C103.488 7.76179 103.907 8.8735 103.907 10.2594V23.1214C103.907 24.5073 103.488 25.6191 102.65 26.4566C101.813 27.2941 100.701 27.7129 99.3153 27.7129H92.1215C90.7555 27.7129 89.6488 27.2941 88.8013 26.4566C87.9538 25.6191 87.5301 24.5073 87.5301 23.1214Z" fill="#FFFFFF"></path><path d="M107.571 27.4138V5.96709H119.057C120.443 5.96709 121.555 6.38585 122.392 7.22338C123.23 8.0609 123.648 9.17761 123.648 10.5735V22.8223C123.648 24.2082 123.23 25.3199 122.392 26.1575C121.555 26.995 120.443 27.4138 119.057 27.4138H107.571ZM112.162 23.1214H117.217C118.444 23.1214 119.057 22.5082 119.057 21.2819V12.099C119.057 10.8726 118.444 10.2594 117.217 10.2594H112.162V23.1214Z" fill="#FFFFFF"></path><path d="M127.313 27.4138V5.96709H141.251V8.88347L139.875 10.2594H131.904V14.5517H138.185V18.6795H131.904V23.1214H141.251V27.4138H127.313Z" fill="#FFFFFF"></path><path d="M144.302 27.4138V5.96709H149.357L156.551 19.4573H156.716L156.252 15.6286V5.96709H160.844V27.4138H155.789L148.595 13.9385H148.445L148.894 17.7672V27.4138H144.302Z" fill="#FFFFFF"></path><path d="M164.822 27.4138V5.96709H169.413V27.4138H164.822Z" fill="#FFFFFF"></path><path d="M173.406 27.4138V5.96709H178.462L185.655 19.4573H185.82L185.356 15.6286V5.96709H189.948V27.4138H184.893L177.699 13.9385H177.549L177.998 17.7672V27.4138H173.406Z" fill="#FFFFFF"></path><path d="M192.236 27.7129V23.4355H196.992C198.218 23.4355 198.831 22.8223 198.831 21.5959V5.96709H203.423V23.1214C203.423 24.5073 202.999 25.6191 202.152 26.4566C201.304 27.2941 200.197 27.7129 198.831 27.7129H192.236Z" fill="#FFFFFF"></path><path d="M211.514 19.1432H216.405L214.116 10.1099H213.802L211.514 19.1432ZM204.918 27.4138V25.2751L211.05 5.96709H216.868L223 25.2751V27.4138H218.558L217.481 23.1214H210.437L209.36 27.4138H204.918Z" fill="#FFFFFF"></path></svg>\n'
 
-CSS = """.logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:12px;text-decoration:none}a.brand span{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--line);padding-left:12px}
-.btn.red,button.red{background:#E31E30;border-color:#E31E30;color:#fff}.btn.red:hover,button.red:hover{background:#c81a2a}
-form.access{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}form.access label{display:flex;flex-direction:column;gap:6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-form.access .full{grid-column:1/-1}form.access input,form.access select,form.access textarea{font:15px/1.4 "Inter",Arial,sans-serif;color:#E8ECEF;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:0;padding:11px 12px;text-transform:none;letter-spacing:0}
-form.access textarea{min-height:110px;resize:vertical}form.access input:focus,form.access select:focus,form.access textarea:focus{outline:none;border-color:#E31E30}form.access select option{background:#0E1216}
-form.access button{font:600 14px "Inter",Arial,sans-serif;padding:13px 20px;border:1px solid #E31E30;cursor:pointer;justify-self:start}form.access .hp{position:absolute;left:-9999px}form.access p.note{grid-column:1/-1;margin:0;font-size:13px;color:var(--muted)}
-@media (max-width:760px){form.access{grid-template-columns:1fr}a.brand span{display:none}header.top nav a:not([href$="#access"]){display:none}}"""
+FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+         '<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=Geist+Mono:wght@400&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet">')
+
+# Shared visual language: one grotesk at 300/400, a mono for tiny labels, a serif for statements.
+# Dark full-bleed film sections alternate with light paper sections; red is an accent only.
+CSS = """:root{--sans:"Inter Tight","Helvetica Neue",Arial,sans-serif;--mono:"Geist Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;--serif:"Newsreader","Source Serif 4",Georgia,serif;
+--night:#0B0C10;--night2:#121319;--on-dark:#F2F2F0;--muted-d:#A3A6AE;--rule-d:rgba(255,255,255,.14);
+--paper:#F5F5F3;--paper2:#EFEFEF;--ink:#1E1F2B;--muted-l:#666874;--rule-l:rgba(30,31,43,.14);--red:#E31E30;--gutter:40px;--max:1280px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--on-dark);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+a{color:inherit}h1,h2,h3,p,li{overflow-wrap:break-word}:focus-visible{outline:1px solid var(--red);outline-offset:3px}
+.mono,.eyebrow{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-d);line-height:1.5}
+.logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:none}
+a.brand span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-d);border-left:1px solid var(--rule-d);padding-left:14px;line-height:20px}
+/* header */
+header.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:28px;padding:18px var(--gutter);background:rgba(11,12,16,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-d);transition:background .3s,border-color .3s}
+html.js header.top:not(.solid):not(.open){background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+header.top nav.links{display:flex;gap:28px;margin-left:auto}header.top nav.links a{font-size:13.5px;text-decoration:none;color:rgba(242,242,240,.78);letter-spacing:-.005em}header.top nav.links a:hover{color:#fff}
+header.top .acts{display:flex;align-items:center;gap:10px}
+.btn-white{display:inline-flex;align-items:center;background:#fff;color:#111218;border:1px solid #fff;border-radius:0;padding:9px 16px;font:400 13.5px/1.2 var(--sans);text-decoration:none;white-space:nowrap;transition:background .2s}.btn-white:hover{background:#E6E6E3}
+.menu-btn{display:none;background:transparent;border:1px solid var(--rule-d);color:var(--on-dark);width:38px;height:36px;padding:0;cursor:pointer;border-radius:0}
+.menu-btn i{display:block;width:16px;height:1px;background:currentColor;margin:4px auto}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid var(--rule-d);border-radius:0;text-decoration:none;font:400 14px/1.2 var(--sans);color:var(--on-dark);background:transparent;transition:background .2s,border-color .2s}
+.btn:hover{border-color:currentColor}.btn.solid{background:var(--on-dark);color:var(--night);border-color:var(--on-dark)}
+.light .btn{color:var(--ink);border-color:var(--rule-l)}.light .btn:hover{border-color:var(--ink)}.light .btn.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}.light .btn.solid:hover{background:#000}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+/* film sections: full-bleed video, always dark */
+section.film{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--night);color:var(--on-dark)}
+section.film video,section.film img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+section.film::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,12,16,.45) 0%,rgba(11,12,16,.25) 40%,rgba(11,12,16,.88) 100%)}
+section.film .inner{position:relative;z-index:2;max-width:var(--max);width:100%;margin:0 auto;padding:0 var(--gutter) 80px}
+section.film.hero{min-height:100vh;min-height:100svh;align-items:center;justify-content:center;text-align:center}
+section.film.hero::after{background:radial-gradient(ellipse at center,rgba(11,12,16,.35) 0%,rgba(11,12,16,.6) 100%),linear-gradient(180deg,rgba(11,12,16,.4),rgba(11,12,16,.15) 40%,rgba(11,12,16,.7))}
+section.film.hero .inner{padding:120px var(--gutter) 140px;display:flex;flex-direction:column;align-items:center}
+section.film.hero h1{margin:.35em auto 0;max-width:14ch}
+a.scroll{position:absolute;z-index:3;left:50%;bottom:36px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,240,.75);white-space:nowrap}
+a.scroll svg{width:14px;height:14px;animation:nudge 2.4s ease-in-out infinite}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+h1{font-family:var(--sans);font-weight:300;font-size:clamp(44px,7.2vw,108px);line-height:1;letter-spacing:-.035em;margin:.25em 0 .3em}
+h2{font-family:var(--sans);font-weight:400;font-size:clamp(32px,4.4vw,60px);line-height:1.04;letter-spacing:-.03em;margin:.3em 0 .4em;max-width:18ch}
+.lede{font-size:clamp(16px,1.5vw,19px);line-height:1.55;max-width:52ch;color:rgba(242,242,240,.82);font-weight:400;letter-spacing:-.005em}
+/* light sections */
+.light{background:var(--paper);color:var(--ink)}.light.alt{background:var(--paper2)}.light .mono,.light .eyebrow{color:var(--muted-l)}.light .lede{color:var(--muted-l)}
+.rule{border-top:1px solid var(--rule-l)}
+/* access form */
+form.access{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+form.access label{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-d)}
+form.access .full{grid-column:1/-1}
+form.access input,form.access select,form.access textarea{font:400 15px/1.4 var(--sans);color:var(--on-dark);background:rgba(11,12,16,.55);border:1px solid var(--rule-d);border-radius:0;padding:12px 13px;text-transform:none;letter-spacing:0;width:100%;-webkit-appearance:none;appearance:none}
+form.access select{background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:34px}
+form.access textarea{min-height:120px;resize:vertical}form.access input:focus,form.access select:focus,form.access textarea:focus{outline:none;border-color:var(--red)}
+form.access select option{background:var(--night2);color:var(--on-dark)}
+form.access button{font:400 14px/1.2 var(--sans);padding:13px 22px;border:1px solid var(--red);border-radius:0;cursor:pointer;justify-self:start;background:var(--red);color:#fff;transition:background .2s}form.access button:hover{background:#c81a2a}
+form.access .hp{position:absolute;left:-9999px}form.access p.note{grid-column:1/-1;margin:0;font-size:13px;line-height:1.55;color:var(--muted-d)}
+/* footer */
+footer.site{background:var(--night);color:var(--muted-d);border-top:1px solid var(--rule-d);padding:56px var(--gutter) 48px;font-size:13px}
+footer.site .wrapf{max-width:var(--max);margin:0 auto;display:flex;gap:24px 40px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+footer.site .wrapf>span{max-width:46ch}
+@media (max-width:900px){header.top nav.links{gap:20px}}
+@media (max-width:820px){:root{--gutter:16px}
+header.top{padding:14px var(--gutter);gap:12px}header.top .acts{margin-left:auto}a.brand span{display:none}.logo{height:18px}
+.menu-btn{display:block}.btn-white{padding:9px 12px;font-size:13px}
+html.js header.top nav.links{display:none}
+header.top nav.links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;background:rgba(11,12,16,.97);border-bottom:1px solid var(--rule-d);padding:6px var(--gutter) 14px}
+html.js header.top.open nav.links{display:flex}header.top nav.links a{padding:13px 0;border-bottom:1px solid var(--rule-d);font-size:16px}header.top nav.links a:last-child{border-bottom:none}
+html:not(.js) header.top{flex-wrap:wrap}html:not(.js) header.top nav.links{position:static;order:3;width:100%;flex-direction:row;flex-wrap:wrap;gap:14px;padding:6px 0 0;background:none;border:none}html:not(.js) header.top nav.links a{padding:0;border:none;font-size:13px}html:not(.js) .menu-btn{display:none}
+form.access{grid-template-columns:1fr}section.film{min-height:82vh}section.film .inner{padding:0 var(--gutter) 56px}section.film.hero .inner{padding:110px var(--gutter) 120px}
+footer.site{padding:40px var(--gutter)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}section.film video{display:none}a.scroll svg{animation:none}}"""
+
+# Header scroll state, mobile menu, and play-on-visible for every film video (paused off screen).
+SCRIPT = """<script>(function(){var h=document.querySelector('header.top');if(h){var s=function(){h.classList.toggle('solid',window.scrollY>40)};s();addEventListener('scroll',s,{passive:true});
+var b=h.querySelector('.menu-btn');if(b){b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')});h.querySelectorAll('nav.links a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded','false')})})}}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}})},{threshold:0.15});document.querySelectorAll('section.film video').forEach(function(v){io.observe(v)})})();</script>"""
+
+JS_FLAG = "<script>document.documentElement.classList.add('js')</script>"
+
+
+def header(home, links, access="#access"):
+    """Fixed header: logo left, compact menu, white rectangular access button. links = [(label, href), ...]."""
+    nav = "".join(f'<a href="{h}">{t}</a>' for t, h in links)
+    return (f'<header class="top">{header_brand(home)}<nav class="links" id="site-nav" aria-label="Primary">{nav}</nav>'
+            f'<div class="acts"><a class="btn-white" href="{access}">Request access</a>'
+            f'<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button></div></header>')
+
+
+ARROW = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v11M2 7.5 7 12.5 12 7.5" stroke="currentColor" stroke-width="1"/></svg>'
 
 
 def header_brand(home):
@@ -28,7 +108,7 @@ def form(product="both"):
 <label>Interested in<select name="product"><option value="Praxis"{sel("Praxis")}>Praxis</option><option value="Hyper Ontology"{sel("Hyper Ontology")}>Hyper Ontology</option><option value="Praxis and Hyper Ontology"{sel("both")}>Both (recommended)</option></select></label>
 <label class="full">The operation you want to design or make living<textarea name="usecase" placeholder="For example: predict truck turn time at a container terminal, or stand up an ontology over our maintenance and ERP systems"></textarea></label>
 <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-<button class="red" type="submit">Request beta access</button>
+<button type="submit">Request beta access</button>
 <p class="note">Opens your email app with the request addressed to {INBOX}; nothing is stored on this site. Prefer a form? Use the <a href="{PARENT}/contact">CodeNinja contact page</a>.</p>
 </form>
 <script>(function(){{var f=document.getElementById('access-form');if(!f)return;f.addEventListener('submit',function(e){{e.preventDefault();if(f.hp.value)return;

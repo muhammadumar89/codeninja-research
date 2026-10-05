@@ -22,19 +22,33 @@ def designs():
                     "kinds": sorted({o["kind"] for o in objs})})
     return out
 
-CSS = """:root{--ink:#E8ECEF;--amber:#E0A84A;--muted:#9AA5AF;--line:rgba(255,255,255,.12);--tint:#0E1216;--bg:#07090B;--fg:#D5DCE1}
-*{box-sizing:border-box}body{margin:0;font:16px/1.65 "Inter",Arial,Helvetica,sans-serif;color:var(--fg);background:var(--bg);-webkit-font-smoothing:antialiased}main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
-.hero{position:relative;min-height:62vh;display:flex;align-items:flex-end;overflow:hidden;border-bottom:1px solid var(--line)}.hero video,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,11,.35),rgba(7,9,11,.6) 50%,rgba(7,9,11,.96))}.hero .in{position:relative;z-index:2;max-width:860px;width:100%;margin:0 auto;padding:90px 16px 40px}
-header.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(7,9,11,.78);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}header.top b{letter-spacing:.24em;font-size:13px;color:var(--ink)}header.top a{text-decoration:none}
-@media (prefers-reduced-motion:reduce){.hero video{display:none}}
-.eyebrow{letter-spacing:.16em;color:var(--amber);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;text-transform:uppercase}h1{color:var(--ink);font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-.015em;font-weight:600;margin:.3em 0}
-h2{color:var(--ink);font-size:22px;margin-top:2em}h3{color:var(--ink);font-size:17px;margin-bottom:.2em}a{color:var(--ink)}.lead{font-size:19px;color:var(--fg)}
-.box{background:var(--tint);border:1px solid var(--line);border-radius:2px;padding:16px 20px;margin:20px 0}table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{border:1px solid var(--line);background:var(--tint);padding:14px 16px}
-small,.muted{color:var(--muted)}code{background:var(--tint);padding:1px 5px;border-radius:4px;font-size:14px}pre{background:var(--tint);padding:12px;border-radius:6px;overflow:auto;font-size:13px}
-nav a{margin-left:18px;font-size:13px;color:var(--muted)}.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}h1,h2,h3,p,li{overflow-wrap:anywhere}"""
+CSS = """
+section.film.hero h1.prod{font-size:clamp(38px,5.6vw,80px);line-height:1.02;letter-spacing:-.032em;max-width:19ch}
+section.film.hero .cta{justify-content:center}
+.doc{max-width:920px;margin:0 auto;padding:128px var(--gutter) 128px;font-size:17px;line-height:1.68;color:rgba(30,31,43,.88)}
+.doc .lead{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.7vw,36px);line-height:1.3;letter-spacing:-.015em;color:var(--ink);margin:0 0 48px}
+.doc .lead a{text-decoration-thickness:1px;text-underline-offset:5px}
+.doc h2{font-size:clamp(28px,3.3vw,44px);line-height:1.08;letter-spacing:-.028em;color:var(--ink);max-width:24ch;margin:104px 0 28px;padding-top:28px;border-top:1px solid var(--ink)}
+.doc h3{font-family:var(--sans);font-weight:500;font-size:18px;line-height:1.3;letter-spacing:-.012em;color:var(--ink);margin:36px 0 8px}
+.doc p{margin:0 0 20px}.doc a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}.doc a:hover{color:#000}.doc strong{font-weight:500;color:var(--ink)}
+.doc ol,.doc ul{padding:0;margin:0 0 24px;list-style:none;border-top:1px solid var(--rule-l);counter-reset:n}
+.doc ol li,.doc ul li{padding:16px 0;border-bottom:1px solid var(--rule-l)}.doc ol li{counter-increment:n;position:relative;padding-left:48px}
+.doc ol li::before{content:counter(n,decimal-leading-zero);position:absolute;left:0;top:21px;font-family:var(--mono);font-size:11px;line-height:1;color:var(--muted-l)}
+.doc small,.doc .muted{color:var(--muted-l);font-size:14px}
+.box{border:1px solid var(--rule-l);border-left:2px solid var(--red);background:rgba(255,255,255,.55);padding:18px 22px;margin:32px 0;font-size:15.5px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:28px 0 32px}
+table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5}
+th,td{text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--rule-l);vertical-align:top}
+th{font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-l);border-bottom:1px solid var(--ink);padding-bottom:10px}
+td:first-child{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px;margin:32px 0 16px}
+.grid .card{border-top:1px solid var(--ink);padding-top:14px;font-size:15px;line-height:1.55;color:var(--muted-l)}.grid .card h3{margin:0 0 8px;font-size:19px;font-weight:400;letter-spacing:-.018em}
+code{font-family:var(--mono);background:rgba(30,31,43,.06);padding:1px 5px;font-size:.84em;color:var(--ink)}
+pre{font-family:var(--mono);background:rgba(30,31,43,.05);padding:14px;overflow:auto;font-size:13px}
+section.film.access{min-height:0;align-items:stretch}section.film.access::after{background:linear-gradient(180deg,rgba(11,12,16,.8),rgba(11,12,16,.9))}
+section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 64px;padding:128px var(--gutter)}
+@media (max-width:820px){.doc{padding:80px var(--gutter);font-size:16px}.doc h2{margin-top:72px}.grid{grid-template-columns:1fr}section.film.access .inner{grid-template-columns:1fr;padding:88px var(--gutter)}}
+"""
 
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
@@ -44,20 +58,28 @@ ACCESS = {"praxis": "Praxis is in beta with a small number of outside engineerin
 
 def page(slug, title, desc, body, ld):
     v = VIDEO.get(slug, "port-night")
-    m = re.search(r'(<p class="eyebrow">.*?</p>\s*<h1>.*?</h1>\s*<p class="lead">.*?</p>)', body, re.S)
-    hero = m.group(1) if m else ""
-    body = body.replace(hero, "", 1)
+    m = re.search(r'(<p class="eyebrow">.*?</p>)\s*(<h1>.*?</h1>)\s*(<p class="lead">.*?</p>)', body, re.S)
+    eyebrow, h1, lead = (m.group(1), m.group(2), m.group(3)) if m else ("", "", "")
+    if m:
+        body = body.replace(m.group(0), "", 1)
+    vid = lambda n, eager: (f'<img class="poster" src="../assets/video/{n}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline preload="{"auto" if eager else "none"}" poster="../assets/video/{n}.jpg" aria-hidden="true">'
+                            f'<source src="../assets/video/{n}.mp4" type="video/mp4"></video>')
+    nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("Data", f"{BASE}/#data")]
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(title.split(':')[0])}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/{slug}/">
 <meta name="codeninja:kind" content="product">
-""" + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet"><style>{CSS}{brand.CSS}</style></head>
-<body><header class="top">{brand.header_brand(BASE + "/")}<nav><a href="{BASE}/#research">Research</a><a href="{BASE}/praxis/">Praxis</a><a href="{BASE}/hyper-ontology/">Hyper Ontology</a><a href="#access" style="color:#fff">Request access</a></nav></header>
-<section class="hero"><img src="../assets/video/{v}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline poster="../assets/video/{v}.jpg" aria-hidden="true"><source src="../assets/video/{v}.mp4" type="video/mp4"></video><div class="in">{hero}<p style="margin-top:22px"><a class="btn red" href="#access" style="display:inline-block;padding:12px 18px;text-decoration:none;font-size:14px">Request beta access</a></p></div></section>
+""" + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
+<body>{brand.header(BASE + "/", nav)}
 <main>
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="#access">Request beta access</a></div></div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
+<section class="light" id="overview"><div class="doc">
+{lead}
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
-<section id="access"><p class="eyebrow">Beta access</p><h2 style="margin-top:.3em">Start the conversation</h2><p>{ACCESS[slug]}</p>{brand.form(FORM[slug])}</section>
-</main><footer style="border-top:1px solid var(--line);padding:28px 16px"><div style="max-width:860px;margin:0 auto;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:center">{brand.footer_brand(BASE)}<small>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</small></div></footer></body></html>"""
+</div></section>
+<section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">Beta access</p><h2>Start the conversation</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.form(FORM[slug])}</div></div></section>
+</main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
+{brand.SCRIPT}</body></html>"""
 
 def faq(qs): return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
 
