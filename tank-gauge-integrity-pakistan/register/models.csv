@@ -1,0 +1,12 @@
+choice,picked,why
+Model register,Zero entries; all integrity logic is deterministic thresholds and rules,"The failure modes are physical and protocol-level, so no learned model is needed, no weights are held and no license question arises"
+Hardware class,Flameproof enclosure discipline,"The junction boxes sit in the classified area, so the enclosure class is chosen against the zone at each exact position, not by part number"
+Hardware class,Area classification as the gating document,"The zone, gas group and temperature class are read from the operator's current classification drawing before any hardware is specified, and the position list is countersigned"
+Hardware class,Reading an Ex certification marking,"The Eex'n' marking is a Zone 2 restricted-breathing class, so a Zone 1 position would force a different, heavier enclosure and must be caught before ordering"
+Hardware class,Equipment protection levels drive the purchase,"Protection levels, not catalog convenience, decide the explosion proof junction boxes, 24VDC power supplies, breakers and M20 Exd glands"
+Sensing,radar tank gauges on all 13 tanks,"These are the field devices whose readings must arrive continuous, undistorted and unswapped; the design improves their signal path without modifying them"
+Sensing,24VDC field power supplies,"They power the boosters and the loop electronics, and their health is a named failure mode with its own degraded status"
+Sensing,3-core 2.5 sq.mm CU/PVC/SWA/PVC loop cabling,"The loop cabling is the medium the distortion travels in, so its schedule is recorded in the as-built against each loop"
+Sensing,Modbus RTU loop polling via the boosters,"The polling cycle is the pace of truth for every check, and the boosters are what make the three loops readable end to end"
+Pattern,"System of Context, primary","The central inventory picture is an ontology projection over the gauging host, never a shadow copy, so there is one place where tank truth lives"
+Ground,"The operator's own site application server, on-premises","The two containers run inside the operational technology boundary on the operator's own hardware, consistent with the Pakistani Cloud First posture, so nothing about tank truth depends on a link leaving the site"

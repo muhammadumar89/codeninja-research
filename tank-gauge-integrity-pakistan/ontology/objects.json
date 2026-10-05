@@ -1,0 +1,350 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm",
+    "url": "https://muhammadumar89.github.io/codeninja-research/tank-gauge-integrity-pakistan/",
+    "doi": "10.5281/zenodo.23157967"
+  },
+  "sector": "oil-and-gas",
+  "country": "Pakistan",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper and Figure 4 (typed links as drawn); properties and status vocabularies from the plan the paper was drawn from; Figure 4's title counts 14 typed links and draws 15 lines, all kept here; the location engineer is drawn in Figure 4 and named in chapter 5",
+  "write_paths": [
+    "the integrity monitor writes data quality events and status changes into the model; readings are never written by the design",
+    "gauging host configuration changes only under the OEM authorization letter and the operator's change control"
+  ],
+  "human_loop": "every data quality event moves from open to acknowledged to resolved under a named person; a named technician is assigned to each loop and the location engineer signs acceptance",
+  "objects": [
+    {
+      "id": "tank",
+      "label": "Fuel Tank",
+      "kind": "asset",
+      "anchored_in": "centralized gauging software",
+      "properties": [
+        "Tank number (TK-xxx)",
+        "Section (gasoline or kerosene)",
+        "Loop assignment",
+        "Product stored",
+        "Capacity",
+        "Current level"
+      ],
+      "status_vocabulary": [
+        "Reading",
+        "Distorted",
+        "Swapped",
+        "Offline"
+      ],
+      "links": [
+        {
+          "to": "reading",
+          "label": "records"
+        },
+        {
+          "to": "dq_event",
+          "label": "raises on"
+        },
+        {
+          "to": "picture",
+          "label": "projects"
+        }
+      ]
+    },
+    {
+      "id": "rtg",
+      "label": "Radar Tank Gauge (RTG)",
+      "kind": "asset",
+      "anchored_in": "centralized gauging software",
+      "properties": [
+        "Modbus slave address",
+        "Loop number",
+        "OEM",
+        "Last reading timestamp",
+        "Signal quality"
+      ],
+      "status_vocabulary": [
+        "Healthy",
+        "Degraded",
+        "No response"
+      ],
+      "links": [
+        {
+          "to": "tank",
+          "label": "measures"
+        },
+        {
+          "to": "loop",
+          "label": "",
+          "note": "drawn in Figure 4 without a label"
+        }
+      ]
+    },
+    {
+      "id": "loop",
+      "label": "RTG Communication Loop",
+      "kind": "asset",
+      "anchored_in": "loop wiring records",
+      "properties": [
+        "Loop number (Loop01-03)",
+        "Tanks served",
+        "Booster count",
+        "Segment length",
+        "Terminating resistance"
+      ],
+      "status_vocabulary": [
+        "Healthy",
+        "Degraded",
+        "Failed"
+      ],
+      "links": [
+        {
+          "to": "reading",
+          "label": "arrives over"
+        },
+        {
+          "to": "dq_event",
+          "label": "names"
+        },
+        {
+          "to": "asbuilt",
+          "label": "documented by"
+        }
+      ]
+    },
+    {
+      "id": "booster",
+      "label": "Modbus Booster (Repeater)",
+      "kind": "asset",
+      "anchored_in": "the service order",
+      "properties": [
+        "OEM",
+        "Serial number",
+        "Loops served",
+        "Supply voltage 24VDC",
+        "Commissioning date"
+      ],
+      "status_vocabulary": [
+        "In warranty",
+        "Out of warranty",
+        "Failed"
+      ],
+      "links": [
+        {
+          "to": "loop",
+          "label": "repeats"
+        }
+      ]
+    },
+    {
+      "id": "exjb",
+      "label": "Explosion Proof Junction Box",
+      "kind": "asset",
+      "anchored_in": "site hazardous-area register",
+      "properties": [
+        "Protection concept (Eex'n')",
+        "Location section",
+        "Contents (repeater, PSU, breakers, marshalling)",
+        "Certificate reference"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "reading",
+      "label": "Gauge Reading",
+      "kind": "measure",
+      "anchored_in": "centralized gauging software",
+      "properties": [
+        "Timestamp",
+        "Level",
+        "Temperature",
+        "Quality flag",
+        "Source loop"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "dq_event",
+      "label": "Data Quality Event",
+      "kind": "event",
+      "anchored_in": "the integrity monitor",
+      "properties": [
+        "Tank",
+        "Event type (stuck value, swapped data, distortion,",
+        "Detected at",
+        "Cleared by",
+        "Loop affected"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Acknowledged",
+        "Resolved"
+      ],
+      "links": [
+        {
+          "to": "picture",
+          "label": "aggregates"
+        }
+      ]
+    },
+    {
+      "id": "picture",
+      "label": "Central Inventory Picture",
+      "kind": "system",
+      "anchored_in": "the system of context",
+      "properties": [
+        "Tanks covered",
+        "Data availability",
+        "Open quality events",
+        "Last sync"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "asbuilt",
+      "label": "Loop Wiring As-Built",
+      "kind": "document",
+      "anchored_in": "loop wiring records",
+      "properties": [
+        "Loop number",
+        "Cable schedule",
+        "Gland schedule",
+        "Signal levels recorded",
+        "Revision"
+      ],
+      "status_vocabulary": [
+        "Draft",
+        "Issued for construction",
+        "As-built"
+      ],
+      "links": []
+    },
+    {
+      "id": "service_order",
+      "label": "Service Order",
+      "kind": "record",
+      "anchored_in": "the operator's procurement record",
+      "properties": [
+        "Public reference",
+        "Order number",
+        "Issue date",
+        "90-day completion deadline",
+        "Invoice number"
+      ],
+      "status_vocabulary": [
+        "Issued",
+        "In progress",
+        "Completed"
+      ],
+      "links": [
+        {
+          "to": "booster",
+          "label": "authorizes"
+        }
+      ]
+    },
+    {
+      "id": "warranty",
+      "label": "Warranty and Support Record",
+      "kind": "record",
+      "anchored_in": "the service order",
+      "properties": [
+        "Equipment covered",
+        "Start date",
+        "12-month end date",
+        "Support tickets",
+        "Resolution times"
+      ],
+      "status_vocabulary": [
+        "Expired"
+      ],
+      "links": [
+        {
+          "to": "service_order",
+          "label": "",
+          "note": "drawn in Figure 4 without a label"
+        }
+      ]
+    },
+    {
+      "id": "auth_letter",
+      "label": "OEM Authorization Letter",
+      "kind": "document",
+      "anchored_in": "the OEM",
+      "properties": [
+        "Issued by the host's OEM",
+        "Service provider named",
+        "Scope of authorization",
+        "Validity"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "warranty",
+          "label": "",
+          "note": "drawn in Figure 4 without a label"
+        }
+      ]
+    },
+    {
+      "id": "hse_permit",
+      "label": "HSE Work Permit",
+      "kind": "record",
+      "anchored_in": "the operator's HSE permit system",
+      "properties": [
+        "Permit type",
+        "Work location",
+        "Validity window",
+        "Isolation reference",
+        "Issuer"
+      ],
+      "status_vocabulary": [
+        "Requested",
+        "Issued",
+        "Closed"
+      ],
+      "links": [
+        {
+          "to": "exjb",
+          "label": "governs"
+        }
+      ]
+    },
+    {
+      "id": "tech",
+      "label": "Instrumentation Technician",
+      "kind": "person",
+      "anchored_in": "the service provider's roster",
+      "properties": [
+        "Name",
+        "Employer",
+        "Ex competence",
+        "Assigned loop"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "booster",
+          "label": "maintains"
+        }
+      ]
+    },
+    {
+      "id": "location_engineer",
+      "label": "Location Engineer",
+      "kind": "person",
+      "anchored_in": "the operator's directory",
+      "properties": [
+        "Name",
+        "Section",
+        "Approval authority",
+        "Acceptance sign-off"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ]
+}

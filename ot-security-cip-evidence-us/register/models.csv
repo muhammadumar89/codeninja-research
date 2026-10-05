@@ -1,0 +1,13 @@
+choice,picked,why
+Reasoning model,"GLM 5.2, 753B parameters, frontier class, FP8, 1M context",Plain MIT license with no revenue trigger or security-review clause; one node of eight 141 GB HBM GPUs holds it; the work surface's role demands long-context agentic reasoning
+Embedding model,"Qwen3-Embedding-0.6B, Apache-2.0, 32K window",Whole playbooks and CIP procedures retrieve as single passages; runs beside the frontier model for about 1.2 GB at BF16
+Sizing rule,1.2 planning factor over FP8 weights,"753 GB of weights times 1.2 is 904 GB against 1,128 GB of node memory, leaving governed headroom for KV cache and activations"
+Frontier compute,One node of eight 141 GB HBM GPUs,The smallest class that holds the FP8 weights; sized from the model's filed parameters
+Edge compute,"Fanless, extended-temperature, cabinet-mount class",Compute stays out of electronic security perimeters wherever topology allows
+Enclosure and power,NEMA 3R/4X class cabinets with uninterruptible power supplies under Network UPS Tools,Clean shutdown ordering protects capture integrity environment
+Time synchronization,"OCP Time Card GNSS grandmaster with holdover, Linuxptp and chrony","Pcap, sensor and log clocks must agree for evidence to correlate"
+One-way transfer,Hardware data diodes with the one-way transfer appliance at highest-impact perimeters,Demonstrable one-way flow where policy demands it; constrained DMZ conduit elsewhere
+Site networking,"Hardened, fanless, dual-DC industrial switches with SPAN/TAP ports","Segmentation remains the operator's policy decision; the design reads a copy, never the control path"
+Sensing,Passive network traffic capture via the procured OT monitoring sensors at SPAN/TAP sources,"The scope watches OT traffic, not premises; no cameras or video models"
+Primary pattern,System of Context over one Hyper-style object model of 14 objects,"The lasting asset is the living model of the OT estate, not any single alert"
+Ground,The operator's own on-premises OT hardware and data center,"Ownership of weights, ontology, decision record and boundary stays with the operator; identity and update paths run inside the air gap"

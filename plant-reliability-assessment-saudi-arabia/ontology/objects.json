@@ -1,0 +1,331 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit",
+    "url": "https://muhammadumar89.github.io/codeninja-research/plant-reliability-assessment-saudi-arabia/",
+    "doi": "10.5281/zenodo.23157965"
+  },
+  "sector": "energy-and-utilities",
+  "country": "Saudi Arabia",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper and Figure 4 (typed links as drawn); properties and status vocabularies from the plan the paper was drawn from; Figure 4's title counts 13 typed links and draws 14 lines, all kept here",
+  "write_paths": [
+    "read-only adapters over exports and document packs; the model is the only place state changes",
+    "predictions, RCA validations and rankings on the model, each moved only by a named reviewer or engineer"
+  ],
+  "human_loop": "an availability prediction is accepted only by a named reviewer and an RCA report is validated only by a named engineer; the design studies and never operates a plant",
+  "objects": [
+    {
+      "id": "plant",
+      "label": "Plant",
+      "kind": "site",
+      "anchored_in": "the operator's plant register",
+      "properties": [
+        "Design capacity (m3/day)",
+        "Technology (SWRO or sewage treatment)",
+        "Contract type",
+        "25-year contract term",
+        "Commercial operation date",
+        "Location"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "production_train",
+      "label": "Production train",
+      "kind": "asset",
+      "anchored_in": "plant historian",
+      "properties": [
+        "Train tag",
+        "Design capacity",
+        "Running hours",
+        "Downtime hours to date",
+        "Sparing configuration"
+      ],
+      "status_vocabulary": [
+        "In service",
+        "On planned maintenance",
+        "Tripped",
+        "Under repair",
+        "Spare"
+      ],
+      "links": [
+        {
+          "to": "plant",
+          "label": "belongs to"
+        },
+        {
+          "to": "equipment",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under a card"
+        }
+      ]
+    },
+    {
+      "id": "equipment",
+      "label": "Equipment",
+      "kind": "asset",
+      "anchored_in": "the plant CMMS",
+      "properties": [
+        "Equipment tag",
+        "Sub-system",
+        "Criticality class",
+        "Failure history count",
+        "MTBF",
+        "Spare held (yes/no)"
+      ],
+      "status_vocabulary": [
+        "Operating",
+        "Failed",
+        "Under maintenance",
+        "Removed"
+      ],
+      "links": [
+        {
+          "to": "work_order",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under a card"
+        }
+      ]
+    },
+    {
+      "id": "failure_mode",
+      "label": "Failure mode",
+      "kind": "record",
+      "anchored_in": "the plant failure studies",
+      "properties": [
+        "FMEA line",
+        "Affected equipment",
+        "Probability of failure",
+        "Consequence to production",
+        "Detection method"
+      ],
+      "status_vocabulary": [
+        "Identified",
+        "Assessed",
+        "Mitigated",
+        "Accepted"
+      ],
+      "links": [
+        {
+          "to": "equipment",
+          "label": "affects"
+        },
+        {
+          "to": "production_train",
+          "label": "hits"
+        }
+      ]
+    },
+    {
+      "id": "work_order",
+      "label": "Work order",
+      "kind": "record",
+      "anchored_in": "the plant CMMS",
+      "properties": [
+        "WO number",
+        "Equipment tag",
+        "Failure cause code",
+        "Downtime hours",
+        "Labor hours",
+        "Completion date"
+      ],
+      "status_vocabulary": [
+        "Raised",
+        "In progress",
+        "Closed",
+        "Overdue"
+      ],
+      "links": [
+        {
+          "to": "downtime_event",
+          "label": "records"
+        }
+      ]
+    },
+    {
+      "id": "downtime_event",
+      "label": "Downtime event",
+      "kind": "event",
+      "anchored_in": "plant historian",
+      "properties": [
+        "Start time",
+        "End time",
+        "Duration hours",
+        "Affected train",
+        "Production lost (m3)",
+        "Cause"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "production_train",
+          "label": "stops"
+        }
+      ]
+    },
+    {
+      "id": "availability_prediction",
+      "label": "Availability prediction",
+      "kind": "record",
+      "anchored_in": "the study",
+      "properties": [
+        "Predicted availability (%)",
+        "Method",
+        "Confidence band",
+        "Target comparison",
+        "Model version"
+      ],
+      "status_vocabulary": [
+        "Drafted",
+        "Reviewed",
+        "Accepted"
+      ],
+      "links": [
+        {
+          "to": "availability_target",
+          "label": "compares to"
+        }
+      ]
+    },
+    {
+      "id": "availability_target",
+      "label": "Availability target",
+      "kind": "measure",
+      "anchored_in": "the contract and study targets",
+      "properties": [
+        "Target value (%)",
+        "Source (contract or study)",
+        "Applicable system",
+        "Agreement date"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "criticality_index",
+      "label": "Criticality index",
+      "kind": "measure",
+      "anchored_in": "the study",
+      "properties": [
+        "Contribution to unavailability",
+        "Probability of failure score",
+        "System criticality score",
+        "Rank",
+        "Ranking date"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "production_train",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under a card"
+        }
+      ]
+    },
+    {
+      "id": "rca_report",
+      "label": "RCA report",
+      "kind": "document",
+      "anchored_in": "plant exports and document packs",
+      "properties": [
+        "Major event reference",
+        "Root causes",
+        "Validation findings",
+        "Recommendations",
+        "Revision number"
+      ],
+      "status_vocabulary": [
+        "Under review",
+        "Validated",
+        "Recommendations closed"
+      ],
+      "links": [
+        {
+          "to": "reliability_program",
+          "label": "cites"
+        }
+      ]
+    },
+    {
+      "id": "major_event",
+      "label": "Major event",
+      "kind": "event",
+      "anchored_in": "plant exports and document packs",
+      "properties": [
+        "Event date",
+        "Description",
+        "Production impact",
+        "RCAs raised",
+        "Status"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Under investigation",
+        "Closed"
+      ],
+      "links": [
+        {
+          "to": "production_train",
+          "label": "stops"
+        },
+        {
+          "to": "rca_report",
+          "label": "raises"
+        }
+      ]
+    },
+    {
+      "id": "spare_part",
+      "label": "Spare part",
+      "kind": "material",
+      "anchored_in": "the plant CMMS",
+      "properties": [
+        "Part number",
+        "Covered equipment",
+        "Stock level",
+        "Lead time",
+        "Criticality class"
+      ],
+      "status_vocabulary": [
+        "In stock",
+        "Reserved",
+        "On order",
+        "Out of stock"
+      ],
+      "links": [
+        {
+          "to": "equipment",
+          "label": "covers"
+        },
+        {
+          "to": "criticality_index",
+          "label": "ranks by"
+        }
+      ]
+    },
+    {
+      "id": "reliability_program",
+      "label": "Reliability program",
+      "kind": "document",
+      "anchored_in": "plant exports and document packs",
+      "properties": [
+        "Program type (RCM/RBI/RIS/RCA)",
+        "Applicable systems",
+        "Assessment findings",
+        "Maturity rating",
+        "Recommendations"
+      ],
+      "status_vocabulary": [
+        "Not adopted",
+        "Assessed",
+        "Recommended",
+        "Implemented"
+      ],
+      "links": []
+    }
+  ]
+}

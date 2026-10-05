@@ -1,0 +1,1 @@
+Figure 5. The 2 named systems, the adapter path each one takes, and the object model they all map into.

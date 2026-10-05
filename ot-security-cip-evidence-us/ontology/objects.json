@@ -1,0 +1,331 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Grid Context Watch: One system of context for OT Security and NERC CIP Evidence",
+    "url": "https://muhammadumar89.github.io/codeninja-research/ot-security-cip-evidence-us/",
+    "doi": "10.5281/zenodo.23157957"
+  },
+  "sector": "energy-and-utilities",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper and Figure 4 (typed links as drawn); properties and status vocabularies from the plan the paper was drawn from",
+  "write_paths": [
+    "adapter tier and services only, outbound and read only from the control networks (one-way transfer at the highest-impact perimeters)",
+    "cases, triage drafts and evidence bundles on the model; nothing writes to the energy management system, protection relays or the substation data platform"
+  ],
+  "human_loop": "every alert triage, case and vulnerability risk acceptance carries a named OT security analyst; agents draft, the analyst decides",
+  "objects": [
+    {
+      "id": "substation",
+      "label": "Substation",
+      "kind": "site",
+      "anchored_in": "OT monitoring platform inventory (to be created)",
+      "properties": [
+        "Substation ID",
+        "CIP impact rating",
+        "Electronic security perimeter boundary",
+        "Sensor count",
+        "Criticality"
+      ],
+      "status_vocabulary": [
+        "Not instrumented",
+        "Sensor commissioned",
+        "Baseline learning",
+        "Monitoring"
+      ],
+      "links": [
+        {
+          "to": "ot_asset",
+          "label": "holds"
+        },
+        {
+          "to": "network_sensor",
+          "label": "hosts"
+        },
+        {
+          "to": "cip_evidence",
+          "label": "owes"
+        }
+      ]
+    },
+    {
+      "id": "ot_asset",
+      "label": "OT Asset",
+      "kind": "asset",
+      "anchored_in": "OT monitoring platform inventory",
+      "properties": [
+        "IP/MAC address",
+        "Protocol (DNP3, TASE.2)",
+        "Vendor model",
+        "Firmware version",
+        "Last seen",
+        "CIP categorization"
+      ],
+      "status_vocabulary": [
+        "Passively discovered",
+        "Categorized",
+        "Unidentified",
+        "Retired"
+      ],
+      "links": [
+        {
+          "to": "cip_evidence",
+          "label": "categorizes"
+        }
+      ]
+    },
+    {
+      "id": "network_sensor",
+      "label": "Network Sensor",
+      "kind": "asset",
+      "anchored_in": "the procured OT monitoring sensors",
+      "properties": [
+        "SPAN/TAP source",
+        "Capture rate",
+        "Firmware version",
+        "Health status"
+      ],
+      "status_vocabulary": [
+        "Commissioned",
+        "Learning",
+        "Monitoring",
+        "Faulted"
+      ],
+      "links": [
+        {
+          "to": "ot_asset",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under a card"
+        }
+      ]
+    },
+    {
+      "id": "anomaly_alert",
+      "label": "Anomaly Alert",
+      "kind": "event",
+      "anchored_in": "OT monitoring platform detection store",
+      "properties": [
+        "Detection rule",
+        "MITRE ATT&CK for ICS technique",
+        "Associated activity group",
+        "Affected asset",
+        "Severity"
+      ],
+      "status_vocabulary": [
+        "New",
+        "Triaged",
+        "Escalated",
+        "Closed false positive"
+      ],
+      "links": [
+        {
+          "to": "ot_asset",
+          "label": "implicates"
+        },
+        {
+          "to": "investigation_case",
+          "label": "grouped into"
+        },
+        {
+          "to": "detection_rule",
+          "label": "raised by"
+        }
+      ]
+    },
+    {
+      "id": "investigation_case",
+      "label": "Investigation Case",
+      "kind": "record",
+      "anchored_in": "the system of context",
+      "properties": [
+        "Linked alerts",
+        "Attached pcap evidence",
+        "Assigned analyst",
+        "Playbook applied"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "In progress",
+        "Pending vendor IR",
+        "Closed"
+      ],
+      "links": [
+        {
+          "to": "evidence_pcap",
+          "label": "locks"
+        }
+      ]
+    },
+    {
+      "id": "vulnerability_finding",
+      "label": "Vulnerability Finding",
+      "kind": "record",
+      "anchored_in": "OT monitoring platform",
+      "properties": [
+        "CVE",
+        "OT-corrected CVSS score",
+        "Risk level",
+        "Affected assets",
+        "Compensating controls guidance"
+      ],
+      "status_vocabulary": [
+        "New",
+        "Open",
+        "Risk accepted",
+        "Mitigated",
+        "Closed",
+        "Reopened"
+      ],
+      "links": [
+        {
+          "to": "ot_asset",
+          "label": "scores"
+        },
+        {
+          "to": "analyst",
+          "label": "assigned to"
+        }
+      ]
+    },
+    {
+      "id": "detection_rule",
+      "label": "Detection Rule",
+      "kind": "record",
+      "anchored_in": "OT monitoring platform",
+      "properties": [
+        "Signature or heuristic class",
+        "Protocol scope",
+        "Threshold",
+        "Tuning history"
+      ],
+      "status_vocabulary": [
+        "Draft",
+        "Tuned",
+        "Disabled"
+      ],
+      "links": [
+        {
+          "to": "threat_intel_item",
+          "label": "seeded by"
+        }
+      ]
+    },
+    {
+      "id": "threat_intel_item",
+      "label": "Threat Intelligence Item",
+      "kind": "document",
+      "anchored_in": "collective and sector intelligence feeds",
+      "properties": [
+        "IOC set",
+        "TTP mapping",
+        "Source (vendor, E-ISAC, DOE, INL)",
+        "Received date"
+      ],
+      "status_vocabulary": [
+        "Received",
+        "Evaluated",
+        "Deployed to platform"
+      ],
+      "links": []
+    },
+    {
+      "id": "evidence_pcap",
+      "label": "Pcap Evidence Record",
+      "kind": "record",
+      "anchored_in": "sensor capture store",
+      "properties": [
+        "Capture file (pcap/pcapng)",
+        "Sensor of origin",
+        "Linked case",
+        "Retention clock"
+      ],
+      "status_vocabulary": [
+        "Captured",
+        "Locked to case",
+        "Retention expired"
+      ],
+      "links": []
+    },
+    {
+      "id": "cip_evidence",
+      "label": "CIP Evidence Artefact",
+      "kind": "document",
+      "anchored_in": "the system of context",
+      "properties": [
+        "Log category",
+        "CIP standard reference (CIP-007, CIP-008)",
+        "Retention period",
+        "Audit reviewer"
+      ],
+      "status_vocabulary": [
+        "Collected",
+        "Reviewed",
+        "Produced to auditor"
+      ],
+      "links": []
+    },
+    {
+      "id": "analyst",
+      "label": "OT Security Analyst",
+      "kind": "person",
+      "anchored_in": "the operator's directory",
+      "properties": [
+        "Role",
+        "RBAC entitlements",
+        "Training record"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "siem",
+      "label": "SIEM",
+      "kind": "system",
+      "anchored_in": "SIEM",
+      "properties": [
+        "Index set",
+        "Forwarder health",
+        "Data volumes"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "energy_management_system",
+      "label": "Energy management system",
+      "kind": "system",
+      "anchored_in": "energy management system",
+      "properties": [
+        "Front-end RTU links",
+        "DNP3 point list",
+        "Scan settings"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "ot_asset",
+          "label": "reports to"
+        }
+      ]
+    },
+    {
+      "id": "substation_data_platform",
+      "label": "Substation data platform",
+      "kind": "system",
+      "anchored_in": "substation data platform export",
+      "properties": [
+        "CSV header export schema",
+        "Export schedule"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "ot_asset",
+          "label": "enriches"
+        }
+      ]
+    }
+  ]
+}
