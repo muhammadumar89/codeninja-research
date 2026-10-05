@@ -1,10 +1,12 @@
 # Appendix A · What Ownership Costs Over Three Years
 
+*Version 2, 5 October 2026. Version 1 compared ownership with AWS's three-year EC2 Instance Savings Plan at the no upfront rate (27.34 dollars an hour) and printed "about four fifths"; the deepest three-year plan in the region, all upfront at 23.80, makes ownership about the same cost as renting. Every other number is unchanged.*
+
 The design runs on the operator's own hardware. This appendix prices that choice against the two ways an operator in the United States could otherwise get the same capability: renting the same accelerators from a cloud region, or buying a closed frontier model by the token. Every input is a public price, dated and cited. The arithmetic is shown so any reader can rerun it with a written quote. The operator in this design is an illustrative scenario, so the user count and the edge allowance below are assumptions, stated where they are used.
 
 ## A.1 The Answer
 
-Owning the stack this design specifies costs about **841,000 US dollars over three years**, inside a range of 741,000 to 946,000. Renting the same capacity around the clock costs **0.97 million to 1.92 million dollars** over the same period. Against the cheapest three-year commitment listed (AWS, three-year EC2 Instance Savings Plan), ownership is **about four fifths** the cost. Every rented option here can stay inside the United States, so for a US operator the case for ownership is cost, control and a site that keeps working when the link drops, not residency.
+Owning the stack this design specifies costs about **841,000 US dollars over three years**, inside a range of 741,000 to 946,000. Renting the same capacity around the clock costs **0.88 million to 1.92 million dollars** over the same period. Against the cheapest three-year commitment listed (AWS, three-year EC2 Instance Savings Plan, all upfront), ownership costs **about the same**. Every rented option here can stay inside the United States, so for a US operator the case for ownership is cost, control and a site that keeps working when the link drops, not residency.
 
 ## A.2 What Owning Costs
 
@@ -25,7 +27,7 @@ The same frontier server, rented without a break for three years, because wildfi
 | Option | Basis | Three-year cost (USD) |
 |---|---|---|
 | AWS, us-east-1, on demand | p5en.48xlarge at 63.296 dollars an hour (Vantage 2026) | 1.92 million |
-| AWS, three-year EC2 Instance Savings Plan | p5en.48xlarge at 27.34 dollars an hour, no upfront (AWS 2026) | 0.97 million |
+| AWS, three-year EC2 Instance Savings Plan, all upfront | p5en.48xlarge at 23.80 dollars an hour, all upfront, the deepest three-year plan in us-east-1 (AWS 2026) | 0.88 million |
 | Azure, three-year reservation | ND96isr H200 v5 at 1,109,592 dollars for three years in East US 2, about 42.22 an hour (Azure 2026) | 1.36 million |
 | Specialist GPU cloud, on demand | 50.44 dollars an hour for eight H200 cards (CoreWeave 2026) | 1.58 million |
 | Oracle, three-year commitment | 40 dollars an hour for eight H200 cards (Economize 2026) | 1.30 million |

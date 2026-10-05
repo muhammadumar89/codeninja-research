@@ -12,7 +12,7 @@
 | Frontier compute | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom), at about 10 kW |
 | Edge | Fanless IP-rated enclosures at the yard blocks, gate and quay; no safety reflex crosses a network hop |
 | Three-year cost, owned | About 722,000 US dollars with support and power at the US industrial power price |
-| Three-year cost, rented | 1.12 million to 2.52 million US dollars for the same GPUs around the clock; ownership is about two thirds the cheapest three-year commitment |
+| Three-year cost, rented | 0.99 million to 2.52 million US dollars for the same GPUs around the clock; ownership is about four fifths the deepest three-year commitment (version 2) |
 | Closed model break-even | The cheapest closed model matches the owned stack at about 35 users; above that, ownership is cheaper and the gap grows with every user |
 | Human control | Surfaces warn and propose; the named planner acts in the terminal operating system and the named safety supervisor acknowledges every safety event |
 

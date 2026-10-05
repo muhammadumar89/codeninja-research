@@ -62,12 +62,12 @@ Every design was reasoned on [Praxis](https://muhammadumar89.github.io/codeninja
 | design_id | Sector | Country | DOI |
 |---|---|---|---|
 | sovereign-hse-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23119714](https://doi.org/10.5281/zenodo.23119714) |
-| wildfire-risk-distribution-us | energy and utilities | United States | [10.5281/zenodo.23119325](https://doi.org/10.5281/zenodo.23119325) |
+| wildfire-risk-distribution-us | energy and utilities | United States | [10.5281/zenodo.23159328](https://doi.org/10.5281/zenodo.23159328) |
 | port-digital-twin-us | maritime and ports | United States | [10.5281/zenodo.23126431](https://doi.org/10.5281/zenodo.23126431) |
 | structure-phase-construction-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) |
 | steel-production-count-pakistan | heavy industry and construction | Pakistan | [10.5281/zenodo.23126563](https://doi.org/10.5281/zenodo.23126563) |
 | factory-fire-monitoring-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126565](https://doi.org/10.5281/zenodo.23126565) |
-| truck-turn-container-terminal-us | maritime and ports | United States | [10.5281/zenodo.23119348](https://doi.org/10.5281/zenodo.23119348) |
+| truck-turn-container-terminal-us | maritime and ports | United States | [10.5281/zenodo.23159331](https://doi.org/10.5281/zenodo.23159331) |
 | ot-security-cip-evidence-us | energy and utilities | United States | [10.5281/zenodo.23157957](https://doi.org/10.5281/zenodo.23157957) |
 | plant-reliability-assessment-saudi-arabia | energy and utilities | Saudi Arabia | [10.5281/zenodo.23157965](https://doi.org/10.5281/zenodo.23157965) |
 | tank-gauge-integrity-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23157967](https://doi.org/10.5281/zenodo.23157967) |

@@ -12,7 +12,7 @@
 | Frontier compute | One node of eight 141 GB HBM-class GPUs holds GLM 5.2 at FP8 (753 GB of weights, 904 GB with headroom) |
 | Edge | Sealed industrial boxes at substations and on patrol trucks detect smoke and damaged equipment when cellular coverage drops |
 | Three-year cost, owned | About 841,000 US dollars with support and power at the Texas industrial power price |
-| Three-year cost, rented | 0.97 million to 1.92 million US dollars for the same GPUs around the clock; ownership is about four fifths the cheapest three-year commitment |
+| Three-year cost, rented | 0.88 million to 1.92 million US dollars for the same GPUs around the clock; ownership costs about the same as the deepest three-year commitment (version 2) |
 | Closed model break-even | The cheapest closed model matches the owned stack at about 41 users; above that, ownership is cheaper and the gap grows with every user |
 | Human control | Every public safety power shutoff (PSPS) recommendation becomes a decision record a named operator approves or declines; the design never opens or closes a recloser |
 
