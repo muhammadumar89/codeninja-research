@@ -23,6 +23,8 @@ ORG_ID = f"{BASE}/#org"
 SITE_ID = f"{BASE}/#website"
 SKIP = {"tools", "mcp-server", "hyper-ontology-py", "assets", "dataset", ".git", ".github", "methods"}
 H0, H1 = "<!--seo-->", "<!--/seo-->"
+# Search engine ownership tokens (public by design). Google verifies by the file google5c8034f5c559d4ab.html at the root.
+VERIFY = '<meta name="msvalidate.01" content="C0BA30668F739D132B60D2147D569A8E">'
 B0, B1 = "<!--atoms-bar-->", "<!--/atoms-bar-->"
 F0, F1 = "<!--atoms-foot-->", "<!--/atoms-foot-->"
 E = lambda s: html.escape(str(s), quote=True)
@@ -114,6 +116,8 @@ def head_block(kind, url, title, desc, image, crumbs, md):
          f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{E(title)}"><meta name="twitter:description" content="{E(desc)}">']
     if image:
         t.append(f'<meta property="og:image" content="{E(image)}"><meta property="og:image:alt" content="{E(title)}"><meta name="twitter:image" content="{E(image)}">')
+    if kind == "home":
+        t.append(VERIFY)
     if md:
         t.append(f'<link rel="alternate" type="text/markdown" href="{md}" title="Markdown">')
     if crumbs:
