@@ -53,7 +53,8 @@ def solutions():
     return sorted(out, key=lambda m: m.get("date", ""), reverse=True)
 
 
-CSS = """
+CSS = """.faq details{border-top:1px solid var(--rule-l);padding:18px 0}.faq details:last-child{border-bottom:1px solid var(--rule-l)}.faq summary{cursor:pointer;font-size:19px;letter-spacing:-.012em;color:var(--ink);list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";float:right;color:var(--muted-l)}.faq details[open] summary::after{content:"\\2212"}.faq p{margin:12px 0 0;color:var(--muted-l);font-size:16px;line-height:1.6;max-width:62ch}
+
 .wrap{max-width:var(--max);margin:0 auto;padding:128px var(--gutter)}
 section.film .inner.two{display:grid;grid-template-columns:1.15fr .85fr;gap:24px 64px;align-items:end}section.film .inner.two .lede{margin:0 0 8px}
 section.film .inner.two h2{margin-bottom:0}section.film .inner.two .cta{margin-top:24px}
@@ -96,6 +97,41 @@ section.film.access .inner{padding:128px var(--gutter)}section.film.access .spli
 section.film .inner.two,.head,.split{grid-template-columns:1fr}.cards,.methods .cards{grid-template-columns:1fr;gap:48px}.methods{margin-top:88px}
 section.film.access .inner{padding:88px var(--gutter)}}
 """
+
+
+
+# Questions an engineer, a buyer or an AI search engine asks first. Shown on the page and
+# mirrored as FAQPage data, so the visible answer and the structured answer are the same text.
+FAQ = [
+    ("What is CodeNinja Atoms?",
+     "CodeNinja Atoms is building a sovereign AI operating system for the physical world. It publishes open reference architectures for physical AI in operations such as energy grids, ports, oil and gas, manufacturing and agriculture, designed on Praxis and made living with Hyper Ontology. CodeNinja Atoms is a fully owned subsidiary of CodeNinja."),
+    ("What is a reference architecture for physical AI?",
+     "A complete system design for one real operation: what to sense, which models run where and on which hardware, the object model (ontology) that joins the operator's existing systems, what it costs over three years, and which named person approves every action."),
+    ("What does sovereign AI mean here?",
+     "The system runs on hardware the operator owns, inside its own country, on open-weight models whose licences let the operator keep and change them, so no operational data has to leave and no single outside AI company sits in the serving path."),
+    ("What is Praxis?",
+     "Praxis is CodeNinja's platform for designing physical AI systems. It turns an operator's requirement into a complete design, reasoned through eight lenses from first principles to hardware. Every design on this site was made on Praxis. It is in beta."),
+    ("What is Hyper Ontology?",
+     "Hyper Ontology is CodeNinja's ontology platform. It imports the object model a Praxis design publishes (format hyper-ontology/1) and stands it up as a living system over the operator's own systems of record. It is in beta."),
+    ("Can I reuse the designs?",
+     "Yes. Every paper, object model, model register and dataset row is published under CC BY 4.0 with a DOI. The full set loads as one dataset on Hugging Face, and an MCP server gives coding agents every design."),
+]
+ORG_ID = "https://codeatoms.ai/#org"
+SITE_ID = "https://codeatoms.ai/#website"
+
+
+def identity_ld():
+    org = {"@context": "https://schema.org", "@type": "Organization", "@id": ORG_ID, "name": "CodeNinja Atoms", "url": "https://codeatoms.ai/",
+           "logo": {"@type": "ImageObject", "url": "https://codeatoms.ai/icon-512.png", "width": 512, "height": 512},
+           "description": "CodeNinja Atoms is building a sovereign AI operating system for the physical world: open reference architectures for physical AI, Praxis for designing them and Hyper Ontology for making them living.",
+           "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
+           "sameAs": ["https://github.com/muhammadumar89/codeninja-research", "https://huggingface.co/CodeNinjatools",
+                      "https://zenodo.org/communities/physical-ai-reference-architectures"],
+           "knowsAbout": ["physical AI", "sovereign AI", "ontology", "reference architecture", "industrial AI", "open-weight models"]}
+    site = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE_ID, "name": "CodeNinja Atoms", "alternateName": "codeatoms.ai",
+            "url": "https://codeatoms.ai/", "publisher": {"@id": ORG_ID}, "inLanguage": "en"}
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}
+    return [org, site, faq]
 
 
 def film(video, inner, eager=False, cls="", sid="", tail=""):
@@ -142,7 +178,7 @@ def landing(ps, sols):
     return f"""{brand.header("./", nav)}
 <main>
 {film("port-night", '<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
-<section class="light" id="intro"><div class="statement"><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
+<section class="light" id="intro"><div class="statement"><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
@@ -155,6 +191,8 @@ def landing(ps, sols):
 <div class="methods"><div class="head"><div><p class="mono">Methods</p><h2>How the designs are made, and how they come alive.</h2></div></div><div class="cards">{mcards}</div></div></div></section>
 {film("pylon-dusk", '<div><p class="mono">Solutions</p><h2>Published requirements, solved in the open.</h2></div><div><p class="lede">Operators publish what they need. We publish how to build it: the full solution design for a published requirement, from sensing to the living ontology.</p></div>', cls="two")}
 <section id="solutions" class="light alt"><div class="wrap">{sbody}</div></section>
+<section id="faq" class="light rule"><div class="wrap"><div class="split"><div><p class="mono">Questions</p><h2>What this is.</h2></div>
+<div class="faq">{"".join(f'<details{" open" if i == 0 else ""}><summary>{E(q)}</summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(FAQ))}</div></div></div></section>
 <section id="data" class="light rule"><div class="wrap"><div class="split"><div><p class="mono">For agents and engineers</p><h2>Everything here is data.</h2><p class="serif" style="margin-top:28px">Load every design, object, model choice and cost line as one dataset, or read the site the way an agent does.</p></div>
 <ul class="list"><li><b><a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">Vertical-Driven Architectures dataset</a></b><br>designs, objects, models, costs and full text; monthly snapshot DOI <a href="https://doi.org/10.5281/zenodo.23160819">10.5281/zenodo.23160819</a></li>
 <li><b><a href="https://huggingface.co/collections/CodeNinjatools/vertical-driven-architectures-6ac0d23c8b7b3938f1a4fd00">Hugging Face collection</a></b><br>a Space and an ontology package for every design</li>
@@ -185,16 +223,18 @@ def main():
         + "</small></li>" for p in ps)
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "CodeNinja Atoms",
           "description": "Open reference architectures for sovereign AI in physical operations.",
-          "url": f"{BASE}/", "publisher": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
+          "url": f"{BASE}/", "publisher": {"@id": ORG_ID}, "isPartOf": {"@id": SITE_ID},
           "hasPart": [{"@type": "TechArticle", "headline": p["title"], "url": f"{BASE}/{p['slug']}/"} for p in ps]}
     sols = solutions()
+    idld = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in identity_ld())
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CodeNinja Atoms</title>
-<meta name="description" content="Sovereign system designs for physical AI in ports, grids, mills, plants and sites, designed on Praxis and made living with Hyper Ontology: open papers, open object models, open data.">
+<title>CodeNinja Atoms | Sovereign AI for the Physical World</title>
+<meta name="description" content="CodeNinja Atoms is building a sovereign AI operating system for the physical world: open reference architectures for physical AI in grids, ports, oil and gas, plants and farms, designed on Praxis and made living with Hyper Ontology.">
 <link rel="canonical" href="{BASE}/"><link rel="alternate" type="application/atom+xml" href="{BASE}/feed.xml">
 <meta property="og:type" content="website"><meta property="og:title" content="CodeNinja Atoms: autonomy in physical operations"><meta property="og:image" content="{BASE}/assets/video/port-night.jpg"><meta property="og:url" content="{BASE}/">
 {brand.FONTS}{brand.JS_FLAG}
 <script type="application/ld+json">{json.dumps(ld)}</script>
+{idld}
 <style>{brand.CSS}{CSS}</style></head><body>
 {landing(ps, sols)}
 {brand.SCRIPT}{FILTER}
@@ -226,3 +266,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    import seo  # search and AI retrieval pass: always last
+    seo.main()

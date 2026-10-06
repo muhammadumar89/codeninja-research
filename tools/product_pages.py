@@ -50,6 +50,7 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 @media (max-width:820px){.doc{padding:80px var(--gutter);font-size:16px}.doc h2{margin-top:72px}.grid{grid-template-columns:1fr}section.film.access .inner{grid-template-columns:1fr;padding:88px var(--gutter)}}
 """
 
+SHORT = {"praxis": "Praxis: Design Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: From Design to Living System | CodeNinja Atoms"}
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
 ACCESS = {"praxis": "Praxis is the platform these designs were made on, and it is opening to outside engineers in beta. Tell us the operation you want to design, and we will reply with your place on the list.",
@@ -66,7 +67,7 @@ def page(slug, title, desc, body, ld):
                             f'<source src="../assets/video/{n}.mp4" type="video/mp4"></video>')
     nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("Data", f"{BASE}/#data"), ("About", f"{BASE}/about/")]
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{E(title.split(':')[0])}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
+<title>{E(SHORT.get(slug, title.split(':')[0]))}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/{slug}/">
 <meta name="codeninja:kind" content="product">
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>

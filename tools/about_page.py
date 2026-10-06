@@ -61,7 +61,7 @@ CSS = """
 def main():
     nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("Data", f"{BASE}/#data"), ("About", f"{BASE}/about/")]
     desc = "CodeNinja Atoms is building a sovereign AI operating system for the physical world. Its mission and its executive leadership."
-    org = {"@context": "https://schema.org", "@type": "Organization", "name": "CodeNinja Atoms", "url": BASE,
+    org = {"@context": "https://schema.org", "@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/",
            "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": brand.PARENT},
            "founder": [{"@type": "Person", "name": p["name"], "jobTitle": p["title"], "sameAs": p["link"]} for p in LEADERS]}
     page_ld = {"@context": "https://schema.org", "@type": "AboutPage", "name": "About CodeNinja Atoms", "url": f"{BASE}/about/", "description": desc}
@@ -70,7 +70,7 @@ def main():
 <figure><img src="img/{p['slug']}.jpg" alt="{E(p['name'])}" width="900" height="750" loading="{'eager' if i == 0 else 'lazy'}"></figure></article>
 """ for i, p in enumerate(LEADERS))
     out = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About CodeNinja Atoms</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/about/">
+<title>About CodeNinja Atoms: Mission and Leadership</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/about/">
 <meta property="og:type" content="website"><meta property="og:title" content="About CodeNinja Atoms"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/about/">
 <meta property="og:image" content="{BASE}/about/img/{LEADERS[0]['slug']}.jpg">
 <script type="application/ld+json">{json.dumps(page_ld, ensure_ascii=False)}</script>

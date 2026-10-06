@@ -46,3 +46,11 @@
   - [Object model as JSON](https://codeatoms.ai/truck-turn-container-terminal-us/ontology/objects.json)
 - [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/): An open reference architecture for live wildfire ignition and outage risk at an electric distribution cooperative in the United States: twelve source systems, a fourteen-object ontology, self-hosted open-weight models on the cooperative's own hardware, every de-energisation approved by a named operator, and a three-year cost comparison against cloud. DOI 10.5281/zenodo.23159328.
   - [Object model as JSON](https://codeatoms.ai/wildfire-risk-distribution-us/ontology/objects.json)
+
+<!--full-->
+## Full text
+
+- [llms-full.txt](https://codeatoms.ai/llms-full.txt): every paper on the site in one Markdown file
+- Each design page also has a Markdown copy at its address plus `index.md`, for example https://codeatoms.ai/wildfire-risk-distribution-us/index.md
+- [About CodeNinja Atoms](https://codeatoms.ai/about/): mission and executive leadership
+<!--/full-->
