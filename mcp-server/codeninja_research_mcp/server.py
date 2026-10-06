@@ -16,7 +16,7 @@ except ImportError:  # mcp 1.x
     from mcp.server.fastmcp import FastMCP
 
 RAW = "https://raw.githubusercontent.com/muhammadumar89/codeninja-research/main"
-SITE = "https://muhammadumar89.github.io/codeninja-research"
+SITE = "https://codeatoms.ai"
 PAGE = 12000
 
 mcp = FastMCP("codeninja-research", instructions=(

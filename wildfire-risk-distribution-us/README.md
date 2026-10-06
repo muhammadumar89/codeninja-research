@@ -9,9 +9,9 @@ For the operations and wildfire mitigation lead, the dispatch supervisor and veg
 *The operator in this design is an illustrative scenario written for it, not a CodeNinja customer.*
 
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show wildfire-risk-distribution-us`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show wildfire-risk-distribution-us`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/wildfire-risk-distribution-us/
+**Canonical page:** https://codeatoms.ai/wildfire-risk-distribution-us/
 **Paper:** [PDF](paper/feeder-firewatch-wildfire-risk-distribution-cooperative-us.pdf) · [HTML](paper/feeder-firewatch-wildfire-risk-distribution-cooperative-us.html) · [Word](paper/feeder-firewatch-wildfire-risk-distribution-cooperative-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23159328](https://doi.org/10.5281/zenodo.23159328) (version 2, corrected Appendix A; all versions: [10.5281/zenodo.23119324](https://doi.org/10.5281/zenodo.23119324))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.

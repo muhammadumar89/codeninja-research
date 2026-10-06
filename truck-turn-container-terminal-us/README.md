@@ -9,9 +9,9 @@ For the terminal operations director, the yard, vessel and rail planners, and th
 *The operator in this design is an illustrative scenario written for it, not a CodeNinja customer.*
 
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show truck-turn-container-terminal-us`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show truck-turn-container-terminal-us`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/truck-turn-container-terminal-us/
+**Canonical page:** https://codeatoms.ai/truck-turn-container-terminal-us/
 **Paper:** [PDF](paper/terminal-pulse-truck-turn-time-container-terminal-us.pdf) · [HTML](paper/terminal-pulse-truck-turn-time-container-terminal-us.html) · [Word](paper/terminal-pulse-truck-turn-time-container-terminal-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23159331](https://doi.org/10.5281/zenodo.23159331) (version 2, corrected Appendix A; all versions: [10.5281/zenodo.23119347](https://doi.org/10.5281/zenodo.23119347))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.

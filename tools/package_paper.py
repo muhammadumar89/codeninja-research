@@ -29,7 +29,7 @@ def main(folder, pdf, html, docx, appendix, slug):
     shutil.copy(appendix, f / "paper" / "appendix_a_cost.md")
     fm = json.loads((f / "front_matter.json").read_text(encoding="utf-8"))
     pkg = json.loads((f / "ontology" / "objects.json").read_text(encoding="utf-8"))
-    canonical = f"https://muhammadumar89.github.io/codeninja-research/{f.name}/"  # the company site serves no /research yet (patch held)
+    canonical = f"https://codeatoms.ai/{f.name}/"  # the company site serves no /research yet (patch held)
     pkg["paper"]["url"] = canonical
     (f / "ontology" / "objects.json").write_text(json.dumps(pkg, indent=2), encoding="utf-8")
     objs = pkg["objects"]

@@ -14,7 +14,7 @@ keywords = ["ontology", "knowledge graph", "physical AI", "reference architectur
 dependencies = []
 
 [project.urls]
-Homepage = "https://muhammadumar89.github.io/codeninja-research/hyper-ontology/"
+Homepage = "https://codeatoms.ai/hyper-ontology/"
 Source = "https://github.com/muhammadumar89/codeninja-research/tree/main/hyper-ontology-py"
 
 [project.scripts]

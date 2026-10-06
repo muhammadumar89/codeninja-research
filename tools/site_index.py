@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import brand
 
 ROOT = Path(__file__).resolve().parent.parent
-BASE = "https://muhammadumar89.github.io/codeninja-research"
+BASE = "https://codeatoms.ai"
 
 
 def papers():

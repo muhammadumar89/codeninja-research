@@ -7,9 +7,9 @@ High-Risk Factory A smart fire protection monitoring design that gives a heavy i
 For the safety and operations executive accountable for fire risk at a heavy industry and construction operator, factory and reliability leads, and the instrumentation, radio, integration and platform engineers who would build and run it.
 
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show factory-fire-monitoring-saudi-arabia`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show factory-fire-monitoring-saudi-arabia`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/factory-fire-monitoring-saudi-arabia/
+**Canonical page:** https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/
 **Paper:** [PDF](paper/factory-fire-watch-fire-protection-monitoring-industrial-cities-saudi-arabia.pdf) · [HTML](paper/factory-fire-watch-fire-protection-monitoring-industrial-cities-saudi-arabia.html) · [Word](paper/factory-fire-watch-fire-protection-monitoring-industrial-cities-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23126565](https://doi.org/10.5281/zenodo.23126565) (all versions: [10.5281/zenodo.23126564](https://doi.org/10.5281/zenodo.23126564))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.

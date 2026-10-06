@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "hyper-ontology-py"))
 from hyper_ontology import load, traverse
-BASE = "https://muhammadumar89.github.io/codeninja-research"
+BASE = "https://codeatoms.ai"
 E = lambda s: html.escape(str(s), quote=True)
 EV = json.loads((ROOT / "methods" / "evidence.json").read_text())
 O, LN, D = EV["order"], EV["lenses"], EV["designs"]

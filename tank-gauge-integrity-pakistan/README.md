@@ -6,9 +6,9 @@ An open reference architecture that restores continuous, undistorted radar tank 
 
 For the instrumentation and control lead accountable for tank gauging, the location engineer and HSE supervisor beside them, and the instrumentation, integration and platform engineers who would build and run it.
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show tank-gauge-integrity-pakistan`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show tank-gauge-integrity-pakistan`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/tank-gauge-integrity-pakistan/
+**Canonical page:** https://codeatoms.ai/tank-gauge-integrity-pakistan/
 **Paper:** [PDF](paper/loop-integrity-watch-radar-tank-gauge-integrity-fuel-terminal-pakistan.pdf) · [HTML](paper/loop-integrity-watch-radar-tank-gauge-integrity-fuel-terminal-pakistan.html) · [Word](paper/loop-integrity-watch-radar-tank-gauge-integrity-fuel-terminal-pakistan.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23157967](https://doi.org/10.5281/zenodo.23157967)
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.

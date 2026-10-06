@@ -6,9 +6,9 @@ An open reference architecture for operational technology security monitoring an
 
 For the operational technology security lead, the compliance and CIP lead, and the platform, network, data and integration engineers who would build and run it.
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show ot-security-cip-evidence-us`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show ot-security-cip-evidence-us`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/ot-security-cip-evidence-us/
+**Canonical page:** https://codeatoms.ai/ot-security-cip-evidence-us/
 **Paper:** [PDF](paper/grid-context-watch-ot-security-nerc-cip-evidence-utility-us.pdf) · [HTML](paper/grid-context-watch-ot-security-nerc-cip-evidence-utility-us.html) · [Word](paper/grid-context-watch-ot-security-nerc-cip-evidence-utility-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23157957](https://doi.org/10.5281/zenodo.23157957)
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.

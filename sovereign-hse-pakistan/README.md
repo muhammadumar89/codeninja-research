@@ -7,9 +7,9 @@ and Early Warning on an HSE Control and Command Platform A sovereign, on-premise
 For the HSE director, department leads and site superintendents, and the data, platform, OT and machine learning engineers who would build and run it.
 
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show sovereign-hse-pakistan`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show sovereign-hse-pakistan`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/
+**Canonical page:** https://codeatoms.ai/sovereign-hse-pakistan/
 **Paper:** [PDF](paper/sovereign-hse-platform-pakistan-oil-and-gas.pdf) · [HTML](paper/sovereign-hse-platform-pakistan-oil-and-gas.html) · [Word](paper/sovereign-hse-platform-pakistan-oil-and-gas.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23119714](https://doi.org/10.5281/zenodo.23119714), version 2 with the corrected Appendix A (all versions: [10.5281/zenodo.23117037](https://doi.org/10.5281/zenodo.23117037))
 **Licence:** CC BY 4.0. Cite the DOI.

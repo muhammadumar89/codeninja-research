@@ -7,9 +7,9 @@ Pour on a Construction Site One live model of the structure phase that joins pre
 For the construction director accountable for the structure phase, the planning, crane coordination and HSE leads beside them, and the platform, data integration and computer vision engineers who would build and run it.
 
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show structure-phase-construction-saudi-arabia`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show structure-phase-construction-saudi-arabia`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/structure-phase-construction-saudi-arabia/
+**Canonical page:** https://codeatoms.ai/structure-phase-construction-saudi-arabia/
 **Paper:** [PDF](paper/structure-phase-watch-construction-saudi-arabia.pdf) · [HTML](paper/structure-phase-watch-construction-saudi-arabia.html) · [Word](paper/structure-phase-watch-construction-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) (all versions: [10.5281/zenodo.23126447](https://doi.org/10.5281/zenodo.23126447))
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.

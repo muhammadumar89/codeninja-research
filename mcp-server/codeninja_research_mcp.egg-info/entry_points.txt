@@ -1,2 +1,0 @@
-[console_scripts]
-codeninja-research-mcp = codeninja_research_mcp.server:main

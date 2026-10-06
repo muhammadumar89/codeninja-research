@@ -1,6 +1,6 @@
 # The ontology package
 
-Every paper folder carries `ontology/objects.json`. [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/), CodeNinja's platform for designing physical AI systems, writes it for every design. [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/), CodeNinja's ontology platform, imports it and stands the model up as a living ontology over the operator's own systems. Until Hyper Ontology publishes its import format, this file is the format, and the two will be kept in agreement.
+Every paper folder carries `ontology/objects.json`. [Praxis](https://codeatoms.ai/praxis/), CodeNinja's platform for designing physical AI systems, writes it for every design. [Hyper Ontology](https://codeatoms.ai/hyper-ontology/), CodeNinja's ontology platform, imports it and stands the model up as a living ontology over the operator's own systems. Until Hyper Ontology publishes its import format, this file is the format, and the two will be kept in agreement.
 
 To load, validate or convert a package (Mermaid, Cypher, JSON-LD), use the [hyper-ontology loader](hyper-ontology-py/).
 
@@ -11,7 +11,7 @@ To load, validate or convert a package (Mermaid, Cypher, JSON-LD), use the [hype
   "package": "hyper-ontology/1",
   "designed_with": "Praxis",
   "implemented_with": "Hyper Ontology",
-  "paper": {"title": "...", "url": "https://muhammadumar89.github.io/codeninja-research/<folder>/", "doi": "..."},
+  "paper": {"title": "...", "url": "https://codeatoms.ai/<folder>/", "doi": "..."},
   "sector": "oil-and-gas",
   "country": "Pakistan",
   "objects": [

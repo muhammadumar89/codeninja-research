@@ -22,26 +22,26 @@ Every design here is also a row in [CodeNinjatools/vertical-driven-architectures
 
 | Paper | Sector | Country | DOI |
 |---|---|---|---|
-| [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](wildfire-risk-distribution-us/) ([read online](https://muhammadumar89.github.io/codeninja-research/wildfire-risk-distribution-us/)) | Energy and utilities | United States | [10.5281/zenodo.23159328](https://doi.org/10.5281/zenodo.23159328) |
-| [Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal](truck-turn-container-terminal-us/) ([read online](https://muhammadumar89.github.io/codeninja-research/truck-turn-container-terminal-us/)) | Maritime and ports | United States | [10.5281/zenodo.23159331](https://doi.org/10.5281/zenodo.23159331) |
-| [Sovereign HSE Watch: A Reference Architecture for Predictive Health, Safety and Environment Intelligence in Pakistan's Oil and Gas Operations](sovereign-hse-pakistan/) ([read online](https://muhammadumar89.github.io/codeninja-research/sovereign-hse-pakistan/)) | Oil and gas | Pakistan | [10.5281/zenodo.23119714](https://doi.org/10.5281/zenodo.23119714) |
-| [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](port-digital-twin-us/) ([read online](https://muhammadumar89.github.io/codeninja-research/port-digital-twin-us/)) | Maritime and ports | United States | [10.5281/zenodo.23126431](https://doi.org/10.5281/zenodo.23126431) |
-| [Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site](structure-phase-construction-saudi-arabia/) ([read online](https://muhammadumar89.github.io/codeninja-research/structure-phase-construction-saudi-arabia/)) | Heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) |
-| [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](steel-production-count-pakistan/) ([read online](https://muhammadumar89.github.io/codeninja-research/steel-production-count-pakistan/)) | Heavy industry and construction | Pakistan | [10.5281/zenodo.23126563](https://doi.org/10.5281/zenodo.23126563) |
-| [Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory](factory-fire-monitoring-saudi-arabia/) ([read online](https://muhammadumar89.github.io/codeninja-research/factory-fire-monitoring-saudi-arabia/)) | Heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126565](https://doi.org/10.5281/zenodo.23126565) |
+| [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](wildfire-risk-distribution-us/) ([read online](https://codeatoms.ai/wildfire-risk-distribution-us/)) | Energy and utilities | United States | [10.5281/zenodo.23159328](https://doi.org/10.5281/zenodo.23159328) |
+| [Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal](truck-turn-container-terminal-us/) ([read online](https://codeatoms.ai/truck-turn-container-terminal-us/)) | Maritime and ports | United States | [10.5281/zenodo.23159331](https://doi.org/10.5281/zenodo.23159331) |
+| [Sovereign HSE Watch: A Reference Architecture for Predictive Health, Safety and Environment Intelligence in Pakistan's Oil and Gas Operations](sovereign-hse-pakistan/) ([read online](https://codeatoms.ai/sovereign-hse-pakistan/)) | Oil and gas | Pakistan | [10.5281/zenodo.23119714](https://doi.org/10.5281/zenodo.23119714) |
+| [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](port-digital-twin-us/) ([read online](https://codeatoms.ai/port-digital-twin-us/)) | Maritime and ports | United States | [10.5281/zenodo.23126431](https://doi.org/10.5281/zenodo.23126431) |
+| [Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site](structure-phase-construction-saudi-arabia/) ([read online](https://codeatoms.ai/structure-phase-construction-saudi-arabia/)) | Heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) |
+| [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](steel-production-count-pakistan/) ([read online](https://codeatoms.ai/steel-production-count-pakistan/)) | Heavy industry and construction | Pakistan | [10.5281/zenodo.23126563](https://doi.org/10.5281/zenodo.23126563) |
+| [Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory](factory-fire-monitoring-saudi-arabia/) ([read online](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/)) | Heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126565](https://doi.org/10.5281/zenodo.23126565) |
 
 ## Methods
 
 | Paper | DOI |
 |---|---|
-| [How Praxis Designs Physical AI Systems](https://muhammadumar89.github.io/codeninja-research/praxis-method/) | [10.5281/zenodo.23132102](https://doi.org/10.5281/zenodo.23132102) |
-| [From Reference Architecture to Living Ontology](https://muhammadumar89.github.io/codeninja-research/ontology-method/) | [10.5281/zenodo.23132104](https://doi.org/10.5281/zenodo.23132104) |
+| [How Praxis Designs Physical AI Systems](https://codeatoms.ai/praxis-method/) | [10.5281/zenodo.23132102](https://doi.org/10.5281/zenodo.23132102) |
+| [From Reference Architecture to Living Ontology](https://codeatoms.ai/ontology-method/) | [10.5281/zenodo.23132104](https://doi.org/10.5281/zenodo.23132104) |
 
 ## For agents and developers
 
 - [`mcp-server/`](mcp-server/): an MCP server that gives coding agents every design (`list_designs`, `get_design`, `read_paper`, `find`).
 - [`hyper-ontology-py/`](hyper-ontology-py/): load, validate and convert any `ontology/objects.json` (Mermaid, Cypher, JSON-LD); format in [ONTOLOGY_PACKAGE.md](ONTOLOGY_PACKAGE.md).
-- [`llms.txt`](https://muhammadumar89.github.io/codeninja-research/llms.txt) and the [dataset](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures).
+- [`llms.txt`](https://codeatoms.ai/llms.txt) and the [dataset](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures).
 
 ## Licence
 

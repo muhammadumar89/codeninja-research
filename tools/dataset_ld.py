@@ -6,7 +6,7 @@ object models and the cumulative dataset. Idempotent: replaces the block tagged 
 import json, re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-BASE = "https://muhammadumar89.github.io/codeninja-research"
+BASE = "https://codeatoms.ai"
 HF = "https://huggingface.co/datasets/CodeNinjatools"
 ORG = {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"}
 LIC = "https://creativecommons.org/licenses/by/4.0/"

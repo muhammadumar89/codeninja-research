@@ -6,7 +6,7 @@ Praxis writes one for every design it reasons; Hyper Ontology imports it and sta
 a living ontology over the operator's own systems.
 
     from hyper_ontology import load, validate, to_mermaid, to_cypher
-    pkg = load("https://muhammadumar89.github.io/codeninja-research/port-digital-twin-us/ontology/objects.json")
+    pkg = load("https://codeatoms.ai/port-digital-twin-us/ontology/objects.json")
     assert not validate(pkg)
     print(to_mermaid(pkg))
 """

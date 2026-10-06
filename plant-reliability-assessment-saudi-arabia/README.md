@@ -6,9 +6,9 @@ An open reference architecture for a records-based reliability and availability 
 
 For the asset management and reliability lead accountable for plant availability, the plant and project managers who own the data and the decisions, and the reliability, data and platform engineers who would build and run it.
 
-**Made with:** [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) (design) and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show plant-reliability-assessment-saudi-arabia`.
+**Made with:** [Praxis](https://codeatoms.ai/praxis/) (design) and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) (living system). Load the object model with the [hyper-ontology loader](../hyper-ontology-py/): `hyper-ontology show plant-reliability-assessment-saudi-arabia`.
 
-**Canonical page:** https://muhammadumar89.github.io/codeninja-research/plant-reliability-assessment-saudi-arabia/
+**Canonical page:** https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/
 **Paper:** [PDF](paper/reliability-atlas-plant-reliability-assessment-saudi-arabia.pdf) · [HTML](paper/reliability-atlas-plant-reliability-assessment-saudi-arabia.html) · [Word](paper/reliability-atlas-plant-reliability-assessment-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** [10.5281/zenodo.23157965](https://doi.org/10.5281/zenodo.23157965)
 **Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.

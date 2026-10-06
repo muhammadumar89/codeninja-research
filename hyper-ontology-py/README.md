@@ -1,8 +1,8 @@
 # hyper-ontology
 
-Load, validate and convert `hyper-ontology/1` packages: the object models [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/) designs and [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/) imports to stand up a living system.
+Load, validate and convert `hyper-ontology/1` packages: the object models [Praxis](https://codeatoms.ai/praxis/) designs and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) imports to stand up a living system.
 
-Every design in the [Vertical-Driven Architectures](https://muhammadumar89.github.io/codeninja-research/) series publishes its object model in this format: typed objects, their properties and status vocabularies, the system of record each is anchored in, and typed directional links. This package reads them, checks them, and turns them into a diagram, a graph database script or JSON-LD.
+Every design in the [Vertical-Driven Architectures](https://codeatoms.ai/) series publishes its object model in this format: typed objects, their properties and status vocabularies, the system of record each is anchored in, and typed directional links. This package reads them, checks them, and turns them into a diagram, a graph database script or JSON-LD.
 
 No dependencies. Python 3.9 or later.
 

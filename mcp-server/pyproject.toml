@@ -17,5 +17,5 @@ keywords = ["mcp", "physical ai", "reference architecture", "ontology", "system 
 codeninja-research-mcp = "codeninja_research_mcp.server:main"
 
 [project.urls]
-Homepage = "https://muhammadumar89.github.io/codeninja-research/"
+Homepage = "https://codeatoms.ai/"
 Source = "https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server"

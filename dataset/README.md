@@ -55,7 +55,7 @@ print(objects.filter(lambda r: r["kind"] == "event")["label"])
 
 ## Made with
 
-Every design was reasoned on [Praxis](https://muhammadumar89.github.io/codeninja-research/praxis/), CodeNinja's platform for designing physical AI systems. Every object model imports into [Hyper Ontology](https://muhammadumar89.github.io/codeninja-research/hyper-ontology/), CodeNinja's ontology platform, which stands it up as a living system. Load any one with the [hyper-ontology loader](https://github.com/muhammadumar89/codeninja-research/tree/main/hyper-ontology-py): `pip install "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=hyper-ontology-py"`, then `hyper-ontology show <design_id>`.
+Every design was reasoned on [Praxis](https://codeatoms.ai/praxis/), CodeNinja's platform for designing physical AI systems. Every object model imports into [Hyper Ontology](https://codeatoms.ai/hyper-ontology/), CodeNinja's ontology platform, which stands it up as a living system. Load any one with the [hyper-ontology loader](https://github.com/muhammadumar89/codeninja-research/tree/main/hyper-ontology-py): `pip install "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=hyper-ontology-py"`, then `hyper-ontology show <design_id>`.
 
 ## Cite the dataset
 

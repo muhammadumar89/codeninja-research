@@ -6,7 +6,7 @@ from pathlib import Path
 
 FORMAT = "hyper-ontology/1"
 KINDS = ("record", "asset", "document", "person", "event", "system", "site", "material", "actor", "measure")
-INDEX = "https://muhammadumar89.github.io/codeninja-research/"
+INDEX = "https://codeatoms.ai/"
 
 
 @dataclass
@@ -135,7 +135,7 @@ def to_jsonld(pkg: Package) -> dict:
         graph.append({"@id": f"{base}{a}--{re.sub(r'[^a-z0-9]+', '-', (label or 'links-to').lower())}--{b}", "@type": "rdf:Property",
                       "rdfs:label": label, "rdfs:domain": {"@id": base + a}, "rdfs:range": {"@id": base + b}})
     return {"@context": {"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-                         "hyper": "https://muhammadumar89.github.io/codeninja-research/hyper-ontology/#"},
+                         "hyper": "https://codeatoms.ai/hyper-ontology/#"},
             "@graph": graph}
 
 
