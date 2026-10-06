@@ -1,0 +1,309 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Baseline: One Flight of 4 Band Orthoimagery and LiDAR for Vegetation Mapping",
+    "url": "https://codeatoms.ai/vegetation-mapping-lidar-us/",
+    "doi": "10.5281/zenodo.23186673"
+  },
+  "sector": "agriculture-and-earth-observation",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper (5.1 objects, 5.3 recorded form) and Figure 4 (cards and typed links as drawn)",
+  "write_paths": [
+    "delivered files bound into the model in the operator's ArcGIS Enterprise",
+    "acceptance and QA status on the model; the survey firm's pipeline is never written to"
+  ],
+  "human_loop": "the operator's project manager accepts each deliverable against the QA/QC report; vegetation analysis stays with the operator's own analysts",
+  "objects": [
+    {
+      "id": "site",
+      "label": "The site",
+      "kind": "site",
+      "anchored_in": "the operator's ArcGIS Enterprise",
+      "properties": [
+        "Mapping boundary geometry",
+        "50-meter buffer",
+        "Area in acres",
+        "Purpose"
+      ],
+      "status_vocabulary": [
+        "Acquisition pending",
+        "Flown",
+        "Processed",
+        "Delivered",
+        "Accepted"
+      ],
+      "links": [
+        {
+          "to": "unit",
+          "label": "contains"
+        },
+        {
+          "to": "dam",
+          "label": "contains"
+        }
+      ]
+    },
+    {
+      "id": "unit",
+      "label": "The unit",
+      "kind": "site",
+      "anchored_in": "the operator's ArcGIS Enterprise",
+      "properties": [
+        "Unit boundary geometry",
+        "Class",
+        "Area",
+        "Stewardship owner"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "watercourse",
+          "label": "contains",
+          "note": "drawn in Figure 4 with its label partly hidden ('contai…')"
+        }
+      ]
+    },
+    {
+      "id": "watercourse",
+      "label": "Watercourse",
+      "kind": "asset",
+      "anchored_in": "the operator's ArcGIS Enterprise",
+      "properties": [
+        "Alignment",
+        "Bank vegetation class",
+        "Identifier"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "dam",
+      "label": "Dam",
+      "kind": "asset",
+      "anchored_in": "the operator's ArcGIS Enterprise",
+      "properties": [
+        "Dam structure footprint",
+        "Operating agency",
+        "Reservoir pool extent"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "watercourse",
+          "label": "impounds"
+        }
+      ]
+    },
+    {
+      "id": "flight_mission",
+      "label": "Flight Mission",
+      "kind": "event",
+      "anchored_in": "the survey firm's flight log",
+      "properties": [
+        "Acquisition date",
+        "Flight window compliance",
+        "Sun angle",
+        "Weather conditions",
+        "Flight lines flown"
+      ],
+      "status_vocabulary": [
+        "Planned",
+        "Flown",
+        "Reflown",
+        "Aborted"
+      ],
+      "links": [
+        {
+          "to": "camera_system",
+          "label": "flew"
+        },
+        {
+          "to": "lidar_system",
+          "label": "flew"
+        },
+        {
+          "to": "gnss_imu_chain",
+          "label": "positioned"
+        },
+        {
+          "to": "las_point_cloud",
+          "label": "acquired"
+        },
+        {
+          "to": "orthoimagery",
+          "label": "captured"
+        }
+      ]
+    },
+    {
+      "id": "camera_system",
+      "label": "4-Band Aerial Camera System",
+      "kind": "asset",
+      "anchored_in": "the survey firm",
+      "properties": [
+        "Bands R,G,B,NIR",
+        "Ground sample distance",
+        "Calibration date"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "lidar_system",
+      "label": "QL1 LiDAR Sensor System",
+      "kind": "asset",
+      "anchored_in": "the survey firm",
+      "properties": [
+        "Pulse density setting",
+        "Scan angle",
+        "Calibration date"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "gnss_imu_chain",
+      "label": "GNSS/IMU Georeferencing Chain",
+      "kind": "system",
+      "anchored_in": "the survey firm",
+      "properties": [
+        "Base station placement",
+        "Correction source",
+        "Test evidence"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "orthoimagery",
+      "label": "Multispectral Orthoimagery Product",
+      "kind": "record",
+      "anchored_in": "the operator's ArcGIS Enterprise",
+      "properties": [
+        "Tile scheme",
+        "Ground sample distance (3-inch)",
+        "Bands",
+        "Projection"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "las_point_cloud",
+      "label": "Classified LAS Point Cloud",
+      "kind": "record",
+      "anchored_in": "the operator's ArcGIS Enterprise",
+      "properties": [
+        "LAS 1.4 version",
+        "Achieved pulse density",
+        "Classification schema",
+        "Vertical accuracy"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dems",
+          "label": "produced"
+        }
+      ]
+    },
+    {
+      "id": "dems",
+      "label": "Bare-Earth and Highest-Hit DEMs",
+      "kind": "record",
+      "anchored_in": "the operator's ArcGIS Enterprise",
+      "properties": [
+        "Raster type",
+        "Cell size",
+        "Projection"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "qaqc_report",
+      "label": "QA/QC Accuracy Report",
+      "kind": "document",
+      "anchored_in": "the survey firm's QA",
+      "properties": [
+        "Checkpoints used",
+        "RMSE by axis",
+        "Error matrix"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "orthoimagery",
+          "label": "attests"
+        },
+        {
+          "to": "las_point_cloud",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under a card"
+        }
+      ]
+    },
+    {
+      "id": "services_agreement",
+      "label": "Professional Services Agreement",
+      "kind": "document",
+      "anchored_in": "the operator's contract records",
+      "properties": [
+        "Term (one year)",
+        "Task fee table"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "invoice",
+          "label": "governs"
+        }
+      ]
+    },
+    {
+      "id": "invoice",
+      "label": "Monthly Itemized Invoice",
+      "kind": "document",
+      "anchored_in": "the operator's accounts",
+      "properties": [
+        "PO number",
+        "Agreement number",
+        "Hours by person and rate"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "contractor_pm",
+      "label": "Contractor Project Manager",
+      "kind": "person",
+      "anchored_in": "the survey firm",
+      "properties": [
+        "Contact information",
+        "Reporting cadence"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "operator_pm",
+          "label": "reports to"
+        }
+      ]
+    },
+    {
+      "id": "operator_pm",
+      "label": "Operator Project Manager",
+      "kind": "person",
+      "anchored_in": "the operator's directory",
+      "properties": [
+        "Direct reporting line",
+        "Approval authority"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ]
+}

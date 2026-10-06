@@ -1,0 +1,13 @@
+choice,picked,why
+Detector,"RF-DETR, Apache-2.0, fine-tuned per region, BF16, about 61 to 68 MB at 16 bit","No field-of-use restriction, so the operator owns the fine-tuned weights outright"
+Forecaster,"Chronos-2, Apache-2.0, zero-shot, about 120M parameters, FP32, about 0.48 GB",Thousands of independent per-parcel index series with no fine-tuning dependency
+Checkpoint exclusions,"RF-DETR XL and 2XL under Roboflow's Platform Model License, excluded",Field-of-use terms would compromise in-Kingdom weight ownership
+Inference node,"48 GB PCIe GPU class (L40S class), air-cooled, in the sovereign facility",Footprint rule: combined weights under 0.55 GB leave batch and cache headroom
+Positioning,"RTKLIB class GNSS with optional site base station, field tablets at 3 to 5 m grade","Arrival coordinate checked against the flagged polygon, so phantom visits file as not-reached"
+Optical sensing,"Sentinel-2 multispectral, 10 m, 5-day revisit",Resolves center pivots for crop class without a foreign processing dependency
+Radar sensing,Sentinel-1 C-band SAR,"Cloud-proof complement; dust and haze, not cloud, are the optical channel's real attacker"
+Archive sensing,"Landsat 8/9, 8-day combined, archive reaching back decades",History for per-parcel baseline series
+Cloud evidence,Sentinel-2 scene classification and cloud probability layer,"Treated as evidence, not truth, in the screening rule"
+Aerial sensing,national aerial survey products,"Rounds over the sedimentary shelf, matching the operator's existing method"
+Field truth,GNSS field tablets on inspector visits,Confirmed and refuted visits become the labelled corpus for each season's retraining
+Pattern: triage,Per-parcel signature time series with traffic-light triage,Only the flagged minority reaches a human inspector

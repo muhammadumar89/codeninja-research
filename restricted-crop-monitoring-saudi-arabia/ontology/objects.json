@@ -1,0 +1,269 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Fodder Watch: Earth Observation That Turns Restricted-Crop Detections Into Enforceable Case Files",
+    "url": "https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/",
+    "doi": "10.5281/zenodo.23186675"
+  },
+  "sector": "agriculture-and-earth-observation",
+  "country": "Saudi Arabia",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper (5.1 objects, 5.3 recorded form) and Figure 4 (cards and typed links as drawn); Figure 4's title counts 13 typed links and draws 14 lines, all kept here",
+  "write_paths": [
+    "read-only scheduled extracts from the register and the license records",
+    "detection flags, case files and GIS layers on the model, published to the operator's own enforcement channel"
+  ],
+  "human_loop": "every detection flag is verified on the ground by a named field inspector and every case file reviewed by a senior inspector; the design screens and never applies a penalty",
+  "objects": [
+    {
+      "id": "farm_holding",
+      "label": "Farm holding",
+      "kind": "site",
+      "anchored_in": "the national agricultural register",
+      "properties": [
+        "Register number",
+        "Region and governorate",
+        "Farm coordinates",
+        "Area tier",
+        "Crop and livestock activities"
+      ],
+      "status_vocabulary": [
+        "Registered",
+        "Unregistered",
+        "Under review"
+      ],
+      "links": [
+        {
+          "to": "farm_enterprise",
+          "label": "belongs to"
+        },
+        {
+          "to": "crop_licence",
+          "label": "holds licence"
+        },
+        {
+          "to": "fuel_electricity_record",
+          "label": "conditions"
+        }
+      ]
+    },
+    {
+      "id": "centre_pivot",
+      "label": "Centre pivot / cultivated field",
+      "kind": "site",
+      "anchored_in": "the operator's geospatial databases",
+      "properties": [
+        "Pivot diameter",
+        "Cultivated area"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "farm_holding",
+          "label": "sits within"
+        }
+      ]
+    },
+    {
+      "id": "farm_enterprise",
+      "label": "Farm enterprise / large farmer",
+      "kind": "actor",
+      "anchored_in": "the national agricultural register",
+      "properties": [
+        "Register number",
+        "Tier",
+        "Region"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "crop_licence",
+      "label": "Crop licence (wheat / seasonal fodder)",
+      "kind": "record",
+      "anchored_in": "the crop license records",
+      "properties": [
+        "Licence number",
+        "Licensed crop and area"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "water_licence",
+          "label": "",
+          "note": "drawn in Figure 4 without a label"
+        }
+      ]
+    },
+    {
+      "id": "water_licence",
+      "label": "Water source (well) use licence",
+      "kind": "record",
+      "anchored_in": "the crop license records",
+      "properties": [
+        "Well coordinates",
+        "Permitted use"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "farm_holding",
+          "label": "serves"
+        },
+        {
+          "to": "green_fodder_ban",
+          "label": "",
+          "note": "drawn in Figure 4 without a label"
+        }
+      ]
+    },
+    {
+      "id": "green_fodder_ban",
+      "label": "Green fodder ban control",
+      "kind": "record",
+      "anchored_in": "the council resolutions behind the restriction",
+      "properties": [
+        "Applicable regions",
+        "Council resolution"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "fuel_electricity_record",
+      "label": "Agricultural fuel / electricity service condition record",
+      "kind": "record",
+      "anchored_in": "fuel supplier and electricity utility coordination",
+      "properties": [
+        "Register validity",
+        "Licence validity"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "tasking_order",
+      "label": "Imagery tasking order",
+      "kind": "record",
+      "anchored_in": "the imagery adapter",
+      "properties": [
+        "Region",
+        "Revisit window",
+        "Source (archive mirror / vendor tasking)"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "image_capture",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under a card"
+        }
+      ]
+    },
+    {
+      "id": "image_capture",
+      "label": "Satellite image capture",
+      "kind": "event",
+      "anchored_in": "the mirrored Sentinel-2, Sentinel-1 and Landsat archive",
+      "properties": [
+        "Scene identifier",
+        "Sensor (Sentinel-2 / Sentinel-1 / Landsat)"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "imagery_product",
+          "label": "produces"
+        }
+      ]
+    },
+    {
+      "id": "imagery_product",
+      "label": "Processed imagery product",
+      "kind": "record",
+      "anchored_in": "the imagery pipeline",
+      "properties": [
+        "Product level"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "detection_flag",
+          "label": "evidences"
+        }
+      ]
+    },
+    {
+      "id": "detection_flag",
+      "label": "Restricted-crop detection flag",
+      "kind": "event",
+      "anchored_in": "the screening service",
+      "properties": [
+        "Parcel reference",
+        "Crop class",
+        "Probability",
+        "Observation dates"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "crop_licence",
+          "label": "checked against"
+        },
+        {
+          "to": "case_file",
+          "label": "opens"
+        }
+      ]
+    },
+    {
+      "id": "case_file",
+      "label": "Violation case file",
+      "kind": "record",
+      "anchored_in": "the enforcement channel",
+      "properties": [
+        "Hectares measured",
+        "Fine basis (SAR 4,000 per hectare per year, doubling on repeat)"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "field_inspector",
+          "label": "assigned to"
+        }
+      ]
+    },
+    {
+      "id": "field_inspector",
+      "label": "Field inspector",
+      "kind": "person",
+      "anchored_in": "the operator's directory",
+      "properties": [
+        "Region",
+        "Assigned dispatches"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "classifier",
+      "label": "Restricted-crop classifier",
+      "kind": "system",
+      "anchored_in": "the model registry",
+      "properties": [
+        "Model version",
+        "Training window and region",
+        "User's accuracy on the reference sample"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "detection_flag",
+          "label": "scores"
+        }
+      ]
+    }
+  ]
+}

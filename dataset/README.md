@@ -75,6 +75,9 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | ot-security-cip-evidence-us | energy and utilities | United States | [10.5281/zenodo.23157957](https://doi.org/10.5281/zenodo.23157957) |
 | plant-reliability-assessment-saudi-arabia | energy and utilities | Saudi Arabia | [10.5281/zenodo.23157965](https://doi.org/10.5281/zenodo.23157965) |
 | tank-gauge-integrity-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23157967](https://doi.org/10.5281/zenodo.23157967) |
+| farm-data-dashboard-pakistan | agriculture and earth observation | Pakistan | [10.5281/zenodo.23186671](https://doi.org/10.5281/zenodo.23186671) |
+| vegetation-mapping-lidar-us | agriculture and earth observation | United States | [10.5281/zenodo.23186673](https://doi.org/10.5281/zenodo.23186673) |
+| restricted-crop-monitoring-saudi-arabia | agriculture and earth observation | Saudi Arabia | [10.5281/zenodo.23186675](https://doi.org/10.5281/zenodo.23186675) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 

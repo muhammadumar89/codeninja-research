@@ -1,0 +1,253 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns",
+    "url": "https://codeatoms.ai/farm-data-dashboard-pakistan/",
+    "doi": "10.5281/zenodo.23186671"
+  },
+  "sector": "agriculture-and-earth-observation",
+  "country": "Pakistan",
+  "scenario": "the operator is described by class, never by name; the design answers a public requirement in this sector",
+  "source": "chapter 5 of the paper (5.1 objects, 5.3 recorded form) and Figure 4 (cards and typed links as drawn); Figure 4's title counts 14 typed links and draws 12 lines, all kept here",
+  "write_paths": [
+    "read-only adapters over the repository, the historical datasets and the site sensor feeds",
+    "alerts, reports and acknowledgements on the model; nothing writes back into a source system"
+  ],
+  "human_loop": "every alert is acknowledged by a named dashboard user under a role the operator assigns; the dashboard reports and never controls farm equipment",
+  "objects": [
+    {
+      "id": "site",
+      "label": "The site",
+      "kind": "site",
+      "anchored_in": "the operator's farm register",
+      "properties": [
+        "Farm name",
+        "Location",
+        "Crops under cultivation",
+        "Number of sensors",
+        "Connectivity status"
+      ],
+      "status_vocabulary": [
+        "Online",
+        "Degraded",
+        "Offline"
+      ],
+      "links": [
+        {
+          "to": "field",
+          "label": "contains"
+        }
+      ]
+    },
+    {
+      "id": "field",
+      "label": "The field",
+      "kind": "site",
+      "anchored_in": "the operator's farm register",
+      "properties": [
+        "Plot ID",
+        "Area",
+        "Soil type",
+        "Crop variety",
+        "Boundary geometry"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "crop_cycle",
+          "label": "carries"
+        },
+        {
+          "to": "sensor_device",
+          "label": "",
+          "note": "drawn in Figure 4 with its label hidden under a card"
+        }
+      ]
+    },
+    {
+      "id": "crop_cycle",
+      "label": "Crop Cycle",
+      "kind": "event",
+      "anchored_in": "the operator's farm records",
+      "properties": [
+        "Crop variety",
+        "Sowing date",
+        "Expected harvest date"
+      ],
+      "status_vocabulary": [
+        "Planned",
+        "Sown",
+        "Growing",
+        "Harvested"
+      ],
+      "links": []
+    },
+    {
+      "id": "sensor_device",
+      "label": "Sensor Device",
+      "kind": "asset",
+      "anchored_in": "the site sensor feeds",
+      "properties": [
+        "Device ID",
+        "Parameter measured",
+        "Location on farm",
+        "Health"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "sensor_reading",
+          "label": "produces"
+        }
+      ]
+    },
+    {
+      "id": "sensor_reading",
+      "label": "Sensor Reading",
+      "kind": "measure",
+      "anchored_in": "the site sensor feeds",
+      "properties": [
+        "Timestamp",
+        "Parameter",
+        "Value",
+        "Unit",
+        "Source device"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "historical_dataset",
+      "label": "Historical Dataset",
+      "kind": "document",
+      "anchored_in": "the big data and analytics repository (BDAR)",
+      "properties": [
+        "Dataset title",
+        "Source agency",
+        "Format",
+        "Coverage period"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "access_role",
+          "label": "restricted by"
+        }
+      ]
+    },
+    {
+      "id": "publication",
+      "label": "Publication",
+      "kind": "document",
+      "anchored_in": "the big data and analytics repository (BDAR)",
+      "properties": [
+        "Title",
+        "Authors",
+        "Year"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "crop_cycle",
+          "label": "relates to"
+        }
+      ]
+    },
+    {
+      "id": "dashboard_user",
+      "label": "Dashboard User",
+      "kind": "person",
+      "anchored_in": "the operator's directory",
+      "properties": [
+        "Name",
+        "Organisation",
+        "Assigned role"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "access_role",
+      "label": "Access Role",
+      "kind": "record",
+      "anchored_in": "the dashboard's role-based access control",
+      "properties": [
+        "Role name",
+        "Permissions",
+        "Dashboard scope"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dashboard_user",
+          "label": "governs"
+        }
+      ]
+    },
+    {
+      "id": "alert",
+      "label": "Alert",
+      "kind": "event",
+      "anchored_in": "the dashboard",
+      "properties": [
+        "Alert type",
+        "Triggering threshold",
+        "Sensor or dataset"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "sensor_device",
+          "label": "points to"
+        },
+        {
+          "to": "sensor_reading",
+          "label": "points to"
+        },
+        {
+          "to": "dashboard_user",
+          "label": "acknowledged by"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "label": "Report",
+      "kind": "document",
+      "anchored_in": "the dashboard",
+      "properties": [
+        "Title",
+        "Reporting period",
+        "Format (CSV/Excel/PDF)"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "crop_cycle",
+          "label": "summarizes"
+        }
+      ]
+    },
+    {
+      "id": "data_source_connection",
+      "label": "Data Source Connection",
+      "kind": "system",
+      "anchored_in": "the adapter tier",
+      "properties": [
+        "Source system name",
+        "Protocol/interface",
+        "Refresh cadence",
+        "Last successful pull"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "site",
+          "label": "feeds"
+        }
+      ]
+    }
+  ]
+}

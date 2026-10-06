@@ -1,0 +1,7 @@
+choice,picked,why
+Model,Zero models committed; a forecaster over sensor time series stays open work gated on Milestone 1 evidence,"The requirement commits aggregations, drill-down and reporting, and no model was verified for this run"
+Hardware class,"No compute procured; all compute runs on operator-provided servers, storage and connectivity","The operator provides the hosting infrastructure and the sensors already generate the data, so no field compute or inference server is bought"
+Sizing rule,"Database and buffer sizing set against the recorded server specification at the Milestone 1 kick-off, re-estimated on measured sensor volumes before full-farm integration","Sensor formats, volumes and refresh rates are settled by the prototype, not assumed at bid time"
+Sensing,"The operator's existing sensor devices, read-only; no cameras and no new field hardware","The world is sensed by farm rather than watched, and the engagement installs no equipment"
+Pattern,"System of Context, with the ontology as a versioned schema and mapping projection inside the database","Farm, field, crop cycle, sensor device and dataset objects answer the cross-system questions no single source can"
+Ground,"Open-source PostgreSQL with PostGIS, on operator premises in Pakistan, under permissive and copyleft open-source licenses",The open-source database mandate and the source code and intellectual property transfer make the operator the owner of every artefact
