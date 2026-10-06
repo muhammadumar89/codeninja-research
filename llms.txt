@@ -47,6 +47,14 @@
 - [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/): An open reference architecture for live wildfire ignition and outage risk at an electric distribution cooperative in the United States: twelve source systems, a fourteen-object ontology, self-hosted open-weight models on the cooperative's own hardware, every de-energisation approved by a named operator, and a three-year cost comparison against cloud. DOI 10.5281/zenodo.23159328.
   - [Object model as JSON](https://codeatoms.ai/wildfire-risk-distribution-us/ontology/objects.json)
 
+## Sectors: questions answered
+
+- [Physical AI for agriculture and earth observation](https://codeatoms.ai/sectors/agriculture-and-earth-observation/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/agriculture-and-earth-observation/index.md
+- [Physical AI for energy and utilities](https://codeatoms.ai/sectors/energy-and-utilities/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/energy-and-utilities/index.md
+- [Physical AI for heavy industry and construction](https://codeatoms.ai/sectors/heavy-industry-and-construction/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/heavy-industry-and-construction/index.md
+- [Physical AI for maritime and ports](https://codeatoms.ai/sectors/maritime-and-ports/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/maritime-and-ports/index.md
+- [Physical AI for oil and gas](https://codeatoms.ai/sectors/oil-and-gas/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/oil-and-gas/index.md
+
 <!--full-->
 ## Full text
 

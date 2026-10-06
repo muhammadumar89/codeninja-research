@@ -180,7 +180,8 @@ def foot(slug, ds):
     if me:
         others.sort(key=lambda d: (d["sector"] != me["sector"], d["country"] != me["country"], d["title"]))
     items = "".join(f'<li><a href="{BASE}/{d["slug"]}/">{E(d["title"].split(":")[0])}</a><small>{E(d["sector"])} · {E(d["country"])}</small></li>' for d in others[:6])
-    return (f'{F0}<footer class="atoms-foot"><div class="w"><h2>More reference architectures</h2><ul>{items}</ul>'
+    sec = (f'<p>Questions engineers ask about AI in {E(me["sector"])}, answered: <a href="{BASE}/sectors/{me["sector"].replace(" and ", "-and-").replace(" ", "-")}/">physical AI for {E(me["sector"])}</a>.</p>' if me else "")
+    return (f'{F0}<footer class="atoms-foot"><div class="w"><h2>More reference architectures</h2><ul>{items}</ul>{sec}'
             f'<p>Part of <a href="{BASE}/">CodeNinja Atoms</a>, a sovereign AI operating system for the physical world. Designed on <a href="{BASE}/praxis/">Praxis</a>, made living with '
             f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Pages, papers, object models and data are CC BY 4.0. CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a>.</p>'
             f"</div></footer>{F1}")
@@ -263,17 +264,17 @@ def main():
     ds = designs()
     dslugs = {d["slug"] for d in ds}
     mds, stats = [], []
-    pages = [p for p in ROOT.glob("*/index.html") if p.parent.name not in SKIP] + [ROOT / "index.html"]
+    pages = [p for p in ROOT.glob("*/index.html") if p.parent.name not in SKIP] + [ROOT / "index.html"] + sorted(ROOT.glob("sectors/*/index.html"))
     copies = [p for p in ROOT.glob("*/paper/*.html") if p.parent.parent.name not in SKIP]
     for p in sorted(pages):
         h = strip_block(p.read_text(encoding="utf-8"), H0, H1)
         before = len(h)
         folder = p.parent
-        slug = "" if folder == ROOT else folder.name
+        slug = "" if folder == ROOT else folder.relative_to(ROOT).as_posix()
         url = f"{BASE}/{slug + '/' if slug else ''}"
         title = html.unescape((re.search(r"<title>(.*?)</title>", h, re.S) or [None, "CodeNinja Atoms"])[1])
         desc = meta(h, "description")
-        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else "page"))
+        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else "page")))
         if kind in ("design", "method"):
             h = deinline(h, folder, absolute=False)
             h = size_imgs(h, folder)
@@ -285,11 +286,15 @@ def main():
         crumbs = [("CodeNinja Atoms", f"{BASE}/")]
         if kind == "design":
             crumbs += [("Research", f"{BASE}/#research"), (meta(h, "citation_title").split(":")[0] or title.split(":")[0], url)]
+        elif kind == "sector":
+            crumbs += [("Sectors", f"{BASE}/sectors/"), (title.split(":")[0].split("|")[0].strip(), url)]
         elif slug:
             crumbs += [(title.split(":")[0].split("|")[0].strip(), url)]
         else:
             crumbs = []
-        md = None
+        md = "index.md" if kind == "sector" and (folder / "index.md").exists() else None
+        if kind == "sector" and md:
+            mds.append((folder / "index.md").read_text(encoding="utf-8"))
         if kind in ("design", "method"):
             h = enrich_article(h, image if kind == "design" else None, slug)
             h = add_bar_foot(h, slug, ds)

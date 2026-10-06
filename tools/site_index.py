@@ -173,6 +173,7 @@ def landing(ps, sols):
         sbody = ('<ul class="list"><li><b>The requirement as published.</b> What the operator asked for, read in its own words.</li>'
                  '<li><b>The complete solution design.</b> Scope, architecture, object model, models and hardware, rollout and cost, reasoned on Praxis.</li>'
                  '<li><b>The living system.</b> The object model packaged for Hyper Ontology, ready to stand up over the operator\'s own systems.</li></ul>')
+    seclinks = '<p class="serif" style="margin:-8px 0 28px;font-size:17px">Questions answered by sector: ' + ' · '.join(f'<a href="sectors/{x.replace(" and ", "-and-").replace(" ", "-")}/">{E(x)}</a>' for x in sectors) + '</p>'
     scroll = f'<a class="scroll" href="#intro">Scroll to explore{brand.ARROW}</a>'
     nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("Data", "#data"), ("About", "about/")]
     return f"""{brand.header("./", nav)}
@@ -186,6 +187,7 @@ def landing(ps, sols):
 {film("rail-yard", '<div><p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2></div><div><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div></div>', cls="two")}
 <section id="research" class="light"><div class="wrap"><div class="head"><div><p class="mono">Research · Vertical-Driven Architectures</p><h2>One operation, one design, end to end.</h2></div>
 <p class="serif">Each paper is a complete reference architecture for one real operation, written so an engineer, or their coding agent, can build it. Operators are described by class, never by name.</p></div>
+{seclinks}
 {chips}
 <div class="cards" id="research-cards">{cards}</div>
 <div class="methods"><div class="head"><div><p class="mono">Methods</p><h2>How the designs are made, and how they come alive.</h2></div></div><div class="cards">{mcards}</div></div></div></section>
@@ -240,7 +242,7 @@ def main():
 {brand.SCRIPT}{FILTER}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/"] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/sectors/"] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -259,12 +261,17 @@ def main():
         llms.append(f"- [{p['title']}]({BASE}/{p['slug']}/): {p['description']}" + (f" DOI {p['doi']}." if p["doi"] else ""))
         if p["ontology"]:
             llms.append(f"  - [Object model as JSON]({p['ontology']})")
+    secs = sorted((ROOT / "sectors").glob("*/index.html"))
+    if secs:
+        llms += ["", "## Sectors: questions answered", ""] + [f"- [Physical AI for {q.parent.name.replace('-', ' ')}]({BASE}/sectors/{q.parent.name}/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: {BASE}/sectors/{q.parent.name}/index.md" for q in secs]
     (ROOT / "llms.txt").write_text("\n".join(llms) + "\n", encoding="utf-8")
     print(f"{len(ps)} paper(s): index.html, sitemap.xml, feed.xml, llms.txt")
     import dataset_ld; dataset_ld.main()  # Dataset markup for Google Dataset Search; index.html was just rewritten
 
 
 if __name__ == "__main__":
+    import sector_pages  # sector question pages first: the sitemap lists them
+    sector_pages.main()
     main()
     import seo  # search and AI retrieval pass: always last
     seo.main()
