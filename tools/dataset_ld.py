@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://codeatoms.ai"
 HF = "https://huggingface.co/datasets/CodeNinjatools"
-ORG = {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"}
+ORG = {"@type": "Organization", "@id": "https://codeatoms.ai/#org", "name": "CodeNinja Atoms", "url": "https://codeatoms.ai/"}
 LIC = "https://creativecommons.org/licenses/by/4.0/"
 TAG = re.compile(r'<script type="application/ld\+json" id="dataset-ld">.*?</script>\n?', re.S)
 
@@ -53,7 +53,10 @@ def main():
                            "Every design was reasoned on Praxis and ships an object model for Hyper Ontology. CC BY 4.0."),
            "url": f"{BASE}/#data", "sameAs": [f"{HF}/vertical-driven-architectures", "https://doi.org/10.5281/zenodo.23160819"], "identifier": "https://doi.org/10.5281/zenodo.23160819", "license": LIC, "creator": ORG, "publisher": ORG,
            "isAccessibleForFree": True, "keywords": ["physical AI", "sovereign AI", "reference architecture", "ontology", "system design", "open-weight models"],
-           "hasPart": [{"@type": "Dataset", "name": x["title"].split(":")[0], "url": x["canonical_url"] or f"{BASE}/{x['design_id']}/"} for x in designs],
+           "hasPart": [{"@type": "Dataset", "name": f'{x["title"].split(":")[0]} ontology and model register',
+                         "description": (x.get("summary") or x["title"])[:4900] if len(x.get("summary") or "") >= 50 else f'{x["title"]}: object model and model register, a reference architecture for physical AI in {x["sector"]} ({x["country"]}).',
+                         "url": x["canonical_url"] or f"{BASE}/{x['design_id']}/", "license": LIC, "creator": ORG,
+                         **({"identifier": f"https://doi.org/{x['doi']}"} if x.get("doi") else {})} for x in designs],
            "distribution": [{"@type": "DataDownload", "encodingFormat": "application/x-ndjson",
                              "contentUrl": f"https://raw.githubusercontent.com/muhammadumar89/codeninja-research/main/dataset/{t}.jsonl"}
                             for t in ("designs", "objects", "models", "costs", "fulltext")]}
