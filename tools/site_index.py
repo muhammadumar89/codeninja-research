@@ -88,6 +88,9 @@ section.film .inner.two h2{margin-bottom:0}section.film .inner.two .cta{margin-t
 .split{display:grid;grid-template-columns:1fr 1fr;gap:48px 64px;align-items:start}.list{list-style:none;padding:0;margin:0;border-top:1px solid var(--ink)}
 .list li{padding:18px 0;border-bottom:1px solid var(--rule-l);color:var(--muted-l);font-size:15px}.list li b{color:var(--ink);font-weight:400;font-size:17px;letter-spacing:-.01em}.list li a{color:var(--ink)}
 .light code{font-family:var(--mono);font-size:13px;background:rgba(30,31,43,.06);padding:1px 5px}
+/* film */
+.watch{background:var(--night);color:var(--on-dark)}.watch .head{border-bottom-color:var(--rule-d);margin-bottom:48px}.watch .head h2{color:var(--on-dark)}
+.watch video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border:1px solid var(--rule-d)}
 /* access */
 section.film.access{min-height:0;align-items:stretch}section.film.access::after{background:linear-gradient(180deg,rgba(11,12,16,.78),rgba(11,12,16,.9))}
 section.film.access .inner{padding:128px var(--gutter)}section.film.access .split{align-items:start}
@@ -133,7 +136,11 @@ def identity_ld():
     site = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE_ID, "name": "CodeNinja Atoms", "alternateName": "codeatoms.ai",
             "url": "https://codeatoms.ai/", "publisher": {"@id": ORG_ID}, "inLanguage": "en"}
     faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}
-    return [org, site, faq]
+    video = {"@context": "https://schema.org", "@type": "VideoObject", "name": "Praxis in three minutes",
+             "description": "Umar Bilal, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.",
+             "thumbnailUrl": "https://codeatoms.ai/assets/video/praxis-walkthrough.jpg", "contentUrl": "https://codeatoms.ai/assets/video/praxis-walkthrough.mp4",
+             "uploadDate": "2026-10-08", "duration": "PT3M1S", "embedUrl": "https://codeatoms.ai/#watch", "publisher": {"@id": ORG_ID}}
+    return [org, site, faq, video]
 
 
 def film(video, inner, eager=False, cls="", sid="", tail=""):
@@ -190,6 +197,9 @@ def landing(ps, sols):
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
 {padi_html}
 {film("control-room", '<div><p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2></div><div><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, reasoned through eight lenses from first principles to hardware, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">How Praxis reasons</a></div></div>', cls="two")}
+<section id="watch" class="watch"><div class="wrap"><div class="head"><div><p class="mono">Praxis in three minutes</p><h2>Watch it work</h2></div>
+<p class="lede">Umar Bilal, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.</p></div>
+<video controls playsinline preload="none" poster="assets/video/praxis-walkthrough.jpg" width="1280" height="720"><source src="assets/video/praxis-walkthrough.mp4" type="video/mp4"></video></div></section>
 {film("rail-yard", '<div><p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2></div><div><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div></div>', cls="two")}
 <section id="research" class="light"><div class="wrap"><div class="head"><div><p class="mono">Research · Vertical-Driven Architectures</p><h2>One operation, one design, end to end.</h2></div>
 <p class="serif">Each paper is a complete reference architecture for one real operation, written so an engineer, or their coding agent, can build it. Operators are described by class, never by name.</p></div>
