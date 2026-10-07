@@ -188,9 +188,9 @@ def landing(ps, sols):
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
+{padi_html}
 {film("control-room", '<div><p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2></div><div><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, reasoned through eight lenses from first principles to hardware, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">How Praxis reasons</a></div></div>', cls="two")}
 {film("rail-yard", '<div><p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2></div><div><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div></div>', cls="two")}
-{padi_html}
 <section id="research" class="light"><div class="wrap"><div class="head"><div><p class="mono">Research · Vertical-Driven Architectures</p><h2>One operation, one design, end to end.</h2></div>
 <p class="serif">Each paper is a complete reference architecture for one real operation, written so an engineer, or their coding agent, can build it. Operators are described by class, never by name.</p></div>
 {seclinks}

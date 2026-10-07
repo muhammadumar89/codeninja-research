@@ -5,15 +5,15 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 One question about system design: given the same short requirement for physical AI in a real operation, does Praxis produce a better system design than frontier AI on its own? PADI scores both on fresh tasks across 13 industries in three countries.
 
-PADI is the benchmark CodeNinja uses to improve Praxis release by release. Scores are far from saturated: the goal is every check on every task in all 13 industries.
+PADI is the benchmark CodeNinja uses to improve Praxis, one RSI loop (recursive self improvement loop) at a time. Scores are far from saturated: the goal is every check on every task in all 13 industries.
 
-Latest cycle 16 (2026-10-07): Praxis platform 36.5%, frontier AI 26.0% of checks passed.
-All 5 cycles: Praxis platform 37.7%, frontier AI 34.6% over 546 checks per arm.
+Latest RSI Loop 16 (2026-10-07): Praxis platform 36.5%, frontier AI 26.0% of checks passed.
+All 5 RSI loops: Praxis platform 37.7%, frontier AI 34.6% over 546 checks per arm.
 Industries measured: 10 of 13.
 
 ## Industries
 
-| Industry | Praxis platform | Frontier AI | Cycles |
+| Industry | Praxis platform | Frontier AI | RSI loops |
 |---|---|---|---|
 | Agriculture and Earth Observation | 35.0% | 40.0% | 14 |
 | Aviation Manufacturing | not yet measured | not yet measured | |
@@ -29,9 +29,9 @@ Industries measured: 10 of 13.
 | Supply Chain and Logistics | 34.2% | 26.3% | 15, 16 |
 | Warehousing and Intralogistics | not yet measured | not yet measured | |
 
-## Results by cycle
+## Results by RSI loop
 
-| Cycle | Date | Tasks | Praxis platform | Frontier AI | Rubric |
+| RSI Loop | Date | Tasks | Praxis platform | Frontier AI | Rubric |
 |---|---|---|---|---|---|
 | 12 | 2026-10-03 | 6 | 37.5% | 38.4% | 0.1 |
 | 13 | 2026-10-04 | 6 | 29.5% | 32.1% | 0.2 |
@@ -39,7 +39,7 @@ Industries measured: 10 of 13.
 | 15 | 2026-10-05 | 6 | 41.7% | 35.7% | 0.2 |
 | 16 | 2026-10-07 | 5 | 36.5% | 26.0% | 0.2 |
 
-Different tasks each cycle, so cycles are not like for like.
+Different tasks each RSI loop, so RSI loops are not like for like.
 
 ## Methodology
 
@@ -53,12 +53,12 @@ Different tasks each cycle, so cycles are not like for like.
 
 - **Design judgement, not deployment.** PADI scores designs on paper. No plant, sensor or model was run.
 - **One judge model.** A single model reads every design through three lenses. Judging the same text again can move a few checks. No human has scored the outputs yet.
-- **Small samples.** Each cycle is five or six tasks and roughly a hundred checks per arm. A swing of a few points is within noise, so no single cycle is a trend.
-- **Different tasks every cycle.** Fresh tasks keep the measure honest, and they also mean cycles are not like for like.
+- **Small samples.** Each RSI loop is five or six tasks and roughly a hundred checks per arm. A swing of a few points is within noise, so no single RSI loop is a trend.
+- **Different tasks every RSI loop.** Fresh tasks keep the measure honest, and they also mean RSI loops are not like for like.
 - **Written by CodeNinja.** Tasks and checks were written by CodeNinja with model assistance and reviewed adversarially. Independent expert grading is planned and not yet done.
 - **Two arms.** Only frontier AI on its own and the same model inside Praxis are scored. No other system or model is in the index yet.
 - **Partial coverage.** Ten of thirteen industries are measured. Aviation manufacturing, semiconductors and warehousing have not been run.
-- **One rubric change.** Cycle 12 used rubric 0.1. Every later cycle uses 0.2.
+- **One rubric change.** RSI Loop 12 used rubric 0.1. Every later RSI loop uses 0.2.
 
 ## Questions
 
@@ -76,6 +76,6 @@ Checks passed divided by checks total, for each arm, with no partial credit and 
 
 ### How often is PADI updated?
 
-Once per Praxis release cycle, on tasks never run before. A third of the task bank is held out for a final blind evaluation and never run in a cycle.
+Once per RSI loop, on tasks never run before. A third of the task bank is held out for a final blind evaluation and never run in an RSI loop.
 
-Updated each Praxis release cycle. Last published: cycle 16, 2026-10-07. Cycle 17 is under way.
+Updated each RSI loop. Last published: RSI Loop 16, 2026-10-07. RSI Loop 17 is under way.

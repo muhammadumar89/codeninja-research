@@ -17,25 +17,25 @@ SRC = Path.home() / "codeninja-launch" / "padi" / "padi_results.json"
 BASE = "https://codeatoms.ai"
 E = lambda s: html.escape(str(s), quote=True)
 NAME = "Physical AI Design Index"
-# The cycle running now, beyond the last published export. Set to None when the export catches up.
+# The RSI loop running now, beyond the last published export. Set to None when the export catches up.
 RUNNING = 17
 CC = {"United States": "US", "Saudi Arabia": "SA", "Pakistan": "PK"}
 ONE_LINE = ("One question about system design: given the same short requirement for physical AI in a real operation, does Praxis "
             "produce a better system design than frontier AI on its own? PADI scores both on fresh tasks across 13 industries in three countries.")
 SHORT = ("Does Praxis produce a better system design than frontier AI on its own? Scored on fresh tasks across 13 industries in three countries.")
-FRAMING = ("PADI is the benchmark CodeNinja uses to improve Praxis release by release. Scores are far from saturated: the goal is every "
+FRAMING = ("PADI is the benchmark CodeNinja uses to improve Praxis, one RSI loop (recursive self improvement loop) at a time. Scores are far from saturated: the goal is every "
            "check on every task in all 13 industries.")
 HEADINGS = ["What it does", "What it reads", "Where things run", "Sensing classes", "Models and provenance",
             "Human decisions", "Phase one and its exit test", "Open questions", "Risks"]
 LIMITS = [
     ("Design judgement, not deployment.", "PADI scores designs on paper. No plant, sensor or model was run."),
     ("One judge model.", "A single model reads every design through three lenses. Judging the same text again can move a few checks. No human has scored the outputs yet."),
-    ("Small samples.", "Each cycle is five or six tasks and roughly a hundred checks per arm. A swing of a few points is within noise, so no single cycle is a trend."),
-    ("Different tasks every cycle.", "Fresh tasks keep the measure honest, and they also mean cycles are not like for like."),
+    ("Small samples.", "Each RSI loop is five or six tasks and roughly a hundred checks per arm. A swing of a few points is within noise, so no single RSI loop is a trend."),
+    ("Different tasks every RSI loop.", "Fresh tasks keep the measure honest, and they also mean RSI loops are not like for like."),
     ("Written by CodeNinja.", "Tasks and checks were written by CodeNinja with model assistance and reviewed adversarially. Independent expert grading is planned and not yet done."),
     ("Two arms.", "Only frontier AI on its own and the same model inside Praxis are scored. No other system or model is in the index yet."),
     ("Partial coverage.", "Ten of thirteen industries are measured. Aviation manufacturing, semiconductors and warehousing have not been run."),
-    ("One rubric change.", "Cycle 12 used rubric 0.1. Every later cycle uses 0.2."),
+    ("One rubric change.", "RSI Loop 12 used rubric 0.1. Every later RSI loop uses 0.2."),
 ]
 FAQ = [
     ("What is the Physical AI Design Index?",
@@ -45,7 +45,7 @@ FAQ = [
     ("How is PADI scored?",
      "Checks passed divided by checks total, for each arm, with no partial credit and no weighting. The judge is glm-4.6 through three lenses (a strict reviewer, a plant engineer and a technical assessor); a check passes when the majority say yes. Both arms use glm-5.3-flash."),
     ("How often is PADI updated?",
-     "Once per Praxis release cycle, on tasks never run before. A third of the task bank is held out for a final blind evaluation and never run in a cycle."),
+     "Once per RSI loop, on tasks never run before. A third of the task bank is held out for a final blind evaluation and never run in an RSI loop."),
 ]
 # Family wording for the page: system design terms only.
 LENSES = ["strict reviewer", "plant engineer", "technical assessor"]
@@ -101,6 +101,7 @@ CSS = """
 .padi-tiles p{margin:10px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-l);line-height:1.55}
 .padi-key{display:flex;gap:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-l);margin:0 0 14px}
 .padi-key span::before{content:"";display:inline-block;width:10px;height:8px;background:var(--ink);margin-right:7px}.padi-key span.bare::before{background:rgba(30,31,43,.32)}
+.chart .sc{overflow-x:auto;-webkit-overflow-scrolling:touch}.chart svg{width:100%;min-width:680px;height:auto;display:block}.chart .note{font-size:14px;color:var(--muted-l);margin:14px 0 0}
 .padi-frame{font-size:14px;line-height:1.6;color:var(--muted-l);max-width:62ch;margin:22px 0 0}
 @media (max-width:820px){.padi-ind li{grid-template-columns:1fr}}
 """
@@ -115,19 +116,19 @@ def bars(i):
 
 def industry_list(j, only_ahead=False):
     rows = "".join(f'<li class="{"" if i["measured"] else "off"}"><div class="nm">{E(i["label"])}<small>'
-                   + (f'Cycle{"s" if len(i["cycles"]) > 1 else ""} {", ".join(map(str, i["cycles"]))} · {i["checks"]} checks' if i["measured"] else f'{i["tasks_total"]} tasks in the bank')
+                   + (f'RSI Loop{"s" if len(i["cycles"]) > 1 else ""} {", ".join(map(str, i["cycles"]))} · {i["checks"]} checks' if i["measured"] else f'{i["tasks_total"]} tasks in the bank')
                    + f'</small></div>{bars(i)}</li>' for i in (j["ahead"] if only_ahead else j["industries"]))
     return f'<div class="padi-key"><span>Praxis platform</span><span class="bare">Frontier AI</span></div><ul class="padi-ind">{rows}</ul>'
 
 
 def featured(j):
     F = j["featured"]
-    return f'<b>{F["p"]:.1f}%<span>vs {F["b"]:.1f}%</span></b><p>{E(F["label"])}: Praxis platform vs frontier AI, all cycles</p>' if F else ""
+    return f'<b>{F["p"]:.1f}%<span>vs {F["b"]:.1f}%</span></b><p>{E(F["label"])}: Praxis platform vs frontier AI, all RSI loops</p>' if F else ""
 
 
 def tiles(j, rel=""):
     L, C, B = j["latest"], j["cumulative"], j["benchmark"]
-    return (f'<div class="padi-tiles"><div><b>{L["platform_pct"]:.1f}%<span>vs {L["bare_pct"]:.1f}%</span></b><p>Cycle {L["cycle"]}: Praxis platform vs frontier AI, checks passed</p></div>'
+    return (f'<div class="padi-tiles"><div><b>{L["platform_pct"]:.1f}%<span>vs {L["bare_pct"]:.1f}%</span></b><p>RSI Loop {L["cycle"]}: Praxis platform vs frontier AI, checks passed</p></div>'
             f'<div>{featured(j)}</div>'
             f'<div><b>{B["sectors_measured"]}<span>of {B["sector_count"]}</span></b><p>Industries measured, in the United States, Saudi Arabia and Pakistan</p></div></div>')
 
@@ -139,9 +140,10 @@ def home_block():
         return "", ""
     body = (f'<section id="padi" class="light alt"><div class="wrap"><div class="head"><div><p class="mono">Benchmark · PADI</p><h2>{NAME}</h2></div>'
             f'<p class="serif">{E(SHORT)}</p></div>'
+            f'<div style="margin-top:48px">{chart(j)}</div>'
             f'<div class="split" style="margin-top:56px"><div>{tiles(j)}<p class="padi-frame">{E(FRAMING)}</p>'
             f'<div class="cta"><a class="btn solid" href="padi/">Explore the index</a><a class="btn" href="padi/#method">Methodology</a></div></div>'
-            f'<div><p class="mono" style="margin:0 0 14px">Where Praxis leads · checks passed, all cycles</p>{industry_list(j, only_ahead=True)}'
+            f'<div><p class="mono" style="margin:0 0 14px">Where Praxis leads · checks passed, all RSI loops</p>{industry_list(j, only_ahead=True)}'
             f'<p class="padi-frame"><a href="padi/#industries">All 13 industries</a></p></div></div></div></section>')
     return body, CSS
 
@@ -191,44 +193,44 @@ def chart(j):
     y = lambda v: t + (H - t - b) * (1 - v / 100)
     g = "".join(f'<line x1="{l}" x2="{W - r}" y1="{y(v):.1f}" y2="{y(v):.1f}" stroke="rgba(30,31,43,.10)"/><text x="{l - 10}" y="{y(v) + 4:.1f}" text-anchor="end" class="ax">{v}%</text>' for v in (0, 25, 50, 75))
     goal = f'<line x1="{l}" x2="{W - r}" y1="{y(100)}" y2="{y(100)}" stroke="#1E1F2B" stroke-dasharray="5 5"/><text x="{l - 10}" y="{y(100) + 4}" text-anchor="end" class="ax">100%</text><text x="{W - r}" y="{y(100) - 9}" text-anchor="end" class="gl">Goal: every check</text>'
-    xs = "".join(f'<text x="{x(i):.1f}" y="{H - 14}" text-anchor="middle" class="ax">Cycle {c["cycle"]}</text>' for i, c in enumerate(cs))
+    xs = "".join(f'<text x="{x(i):.1f}" y="{H - 14}" text-anchor="middle" class="ax">RSI Loop {c["cycle"]}</text>' for i, c in enumerate(cs))
 
     # label each point above for the higher arm and below for the lower one, so the two never collide
     def pline(k, other, col):
         pts = " ".join(f"{x(i):.1f},{y(c[k]):.1f}" for i, c in enumerate(cs))
         dots = "".join(f'<circle cx="{x(i):.1f}" cy="{y(c[k]):.1f}" r="4" fill="{col}"/><text x="{x(i):.1f}" y="{y(c[k]) + (-12 if c[k] >= c[other] else 22):.1f}" text-anchor="middle" class="vl" fill="{col}">{c[k]:.1f}%</text>' for i, c in enumerate(cs))
         return f'<polyline points="{pts}" fill="none" stroke="{col}" stroke-width="2"/>{dots}'
-    svg = (f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Checks passed per cycle, Praxis platform against frontier AI on its own, on a scale to 100 percent">'
+    svg = (f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Checks passed per RSI loop, Praxis platform against frontier AI on its own, on a scale to 100 percent">'
            '<style>.ax{font:400 11px "Geist Mono",monospace;fill:#666874;letter-spacing:.04em}.gl{font:400 11px "Geist Mono",monospace;fill:#1E1F2B;letter-spacing:.04em;text-transform:uppercase}.vl{font:500 12px "Inter Tight",sans-serif}</style>'
            f'{g}{goal}{xs}{pline("bare_pct", "platform_pct", "#9A9BA3")}{pline("platform_pct", "bare_pct", "#1E1F2B")}</svg>')
     return (f'<div class="chart"><div class="padi-key"><span>Praxis platform</span><span class="bare">Frontier AI</span></div><div class="sc">{svg}</div>'
-            '<p class="note">Different tasks each cycle, five or six tasks per cycle, so cycles are not like for like.</p></div>')
+            '<p class="note">Different tasks each RSI loop, five or six tasks per RSI loop, so RSI loops are not like for like.</p></div>')
 
 
 def tables(j):
     cs = j["cycles"]; C = j["cumulative"]
     f = lambda a, b: f'{pct(a, b):.1f}%'
     pb = lambda d: f'{pct(d["platform"], d["of"]):.1f}% <span class="v">vs {pct(d["bare"], d["of"]):.1f}%</span>'
-    rows = "".join(f'<tr><td>Cycle {c["cycle"]}</td><td>{datetime.date.fromisoformat(c["date"]).strftime("%-d %b %Y")}</td><td class="n">{c["tasks"]}</td><td class="n">{c["checks_total"]}</td>'
+    rows = "".join(f'<tr><td>RSI Loop {c["cycle"]}</td><td>{datetime.date.fromisoformat(c["date"]).strftime("%-d %b %Y")}</td><td class="n">{c["tasks"]}</td><td class="n">{c["checks_total"]}</td>'
                    f'<td class="n">{c["platform_pct"]:.1f}%</td><td class="n">{c["bare_pct"]:.1f}%</td>'
                    f'<td class="n">{c.get("platform_ahead_on_tasks", 0)} · {c.get("platform_tied_on_tasks", 0)} · {c.get("platform_behind_on_tasks", 0)}</td><td>{E(c["rubric_version"])}</td></tr>' for c in cs)
     tot = [sum(c.get(k, 0) for c in cs) for k in ("tasks", "platform_ahead_on_tasks", "platform_tied_on_tasks", "platform_behind_on_tasks")]
-    rows += (f'<tr class="sum"><td>All cycles</td><td></td><td class="n">{tot[0]}</td><td class="n">{C["checks_total"]}</td><td class="n">{C["platform_pct"]:.1f}%</td><td class="n">{C["bare_pct"]:.1f}%</td>'
+    rows += (f'<tr class="sum"><td>All RSI loops</td><td></td><td class="n">{tot[0]}</td><td class="n">{C["checks_total"]}</td><td class="n">{C["platform_pct"]:.1f}%</td><td class="n">{C["bare_pct"]:.1f}%</td>'
              f'<td class="n">{tot[1]} · {tot[2]} · {tot[3]}</td><td></td></tr>')
-    t1 = ('<div class="tw"><table><thead><tr><th>Cycle</th><th>Date</th><th>Tasks</th><th>Checks per arm</th><th>Praxis platform</th><th>Frontier AI</th><th>Tasks: platform ahead · tied · behind</th><th>Rubric</th></tr></thead>'
+    t1 = ('<div class="tw"><table><thead><tr><th>RSI Loop</th><th>Date</th><th>Tasks</th><th>Checks per arm</th><th>Praxis platform</th><th>Frontier AI</th><th>Tasks: platform ahead · tied · behind</th><th>Rubric</th></tr></thead>'
           f'<tbody>{rows}</tbody></table></div>')
     fam = [x["id"] for x in j["methodology"]["families"]]; flab = {x["id"]: x["label"] for x in j["methodology"]["families"]}
-    t2 = ('<div class="tw"><table><thead><tr><th>Cycle</th>' + "".join(f'<th>{E(flab[k])}: Praxis vs frontier AI</th>' for k in fam) + '</tr></thead><tbody>'
-          + "".join(f'<tr><td>Cycle {c["cycle"]}</td>' + "".join(f'<td class="n">{pb(c["by_family"][k])}</td>' for k in fam) + '</tr>' for c in cs) + '</tbody></table></div>')
+    t2 = ('<div class="tw"><table><thead><tr><th>RSI Loop</th>' + "".join(f'<th>{E(flab[k])}: Praxis vs frontier AI</th>' for k in fam) + '</tr></thead><tbody>'
+          + "".join(f'<tr><td>RSI Loop {c["cycle"]}</td>' + "".join(f'<td class="n">{pb(c["by_family"][k])}</td>' for k in fam) + '</tr>' for c in cs) + '</tbody></table></div>')
     cn = j["benchmark"]["countries"]
-    t3 = ('<div class="tw"><table><thead><tr><th>Cycle</th>' + "".join(f'<th>{E(k)}: Praxis vs frontier AI</th>' for k in cn) + '</tr></thead><tbody>'
-          + "".join(f'<tr><td>Cycle {c["cycle"]}</td>' + "".join(f'<td class="n">{pb(c["by_country"][k]) if k in c["by_country"] else ""}</td>' for k in cn) + '</tr>' for c in cs) + '</tbody></table></div>')
+    t3 = ('<div class="tw"><table><thead><tr><th>RSI Loop</th>' + "".join(f'<th>{E(k)}: Praxis vs frontier AI</th>' for k in cn) + '</tr></thead><tbody>'
+          + "".join(f'<tr><td>RSI Loop {c["cycle"]}</td>' + "".join(f'<td class="n">{pb(c["by_country"][k]) if k in c["by_country"] else ""}</td>' for k in cn) + '</tr>' for c in cs) + '</tbody></table></div>')
     lab = {s["id"]: s["label"] for s in j["sectors"]}
-    t4 = ('<div class="tw"><table><thead><tr><th>Industry</th><th>Cycle</th><th>Checks per arm</th><th>Praxis platform</th><th>Frontier AI</th></tr></thead><tbody>'
-          + "".join(f'<tr><td>{E(lab.get(s, s))}</td><td>Cycle {c["cycle"]}</td><td class="n">{v["of"]}</td><td class="n">{f(v["platform"], v["of"])}</td><td class="n">{f(v["bare"], v["of"])}</td></tr>'
+    t4 = ('<div class="tw"><table><thead><tr><th>Industry</th><th>RSI Loop</th><th>Checks per arm</th><th>Praxis platform</th><th>Frontier AI</th></tr></thead><tbody>'
+          + "".join(f'<tr><td>{E(lab.get(s, s))}</td><td>RSI Loop {c["cycle"]}</td><td class="n">{v["of"]}</td><td class="n">{f(v["platform"], v["of"])}</td><td class="n">{f(v["bare"], v["of"])}</td></tr>'
                     for s in sorted(lab, key=lambda k: lab[k]) for c in cs for k2, v in c["by_sector"].items() if k2 == s)
           + '</tbody></table></div>')
-    panes = [("p-cycle", "By cycle", t1), ("p-ind", "By industry", t4), ("p-fam", "By check family", t2), ("p-cty", "By country", t3)]
+    panes = [("p-cycle", "By RSI loop", t1), ("p-ind", "By industry", t4), ("p-fam", "By check family", t2), ("p-cty", "By country", t3)]
     return ('<div class="tabs" role="tablist" hidden>' + "".join(f'<button type="button" role="tab" data-p="{i}">{E(n)}</button>' for i, n, _ in panes) + '</div>'
             + "".join(f'<div class="panel" id="{i}" role="tabpanel"><h3>{E(n)}</h3>{t}</div>' for i, n, t in panes))
 
@@ -237,14 +239,14 @@ def coverage(j):
     def cell(c):
         s = c["status"]
         if s == "measured":
-            return f'<span class="m">Cycle {c["cycle"]}</span>'
+            return f'<span class="m">RSI Loop {c["cycle"]}</span>'
         if s == "held_out":
             return '<span class="h">Held out</span>'
         return '<span>Not run</span>'
     cn = j["benchmark"]["countries"]
     rows = "".join(f'<tr><td>{E(s["label"])}</td>' + "".join(f'<td><div class="cell">{"".join(cell(c) for c in s["grid"][k]["cells"])}</div></td>' for k in cn) + '</tr>'
                    for s in sorted(j["sectors"], key=lambda x: x["label"]))
-    return ('<div class="legend"><div class="cell"><span class="m">Cycle 16</span></div><span class="mono">measured in that cycle</span>'
+    return ('<div class="legend"><div class="cell"><span class="m">RSI Loop 16</span></div><span class="mono">measured in that RSI loop</span>'
             '<div class="cell"><span class="h">Held out</span></div><span class="mono">kept for a final blind evaluation</span>'
             '<div class="cell"><span>Not run</span></div><span class="mono">in the bank, not yet measured</span></div>'
             f'<div class="tw grid"><table><thead><tr><th>Industry</th>' + "".join(f'<th>{E(k)}</th>' for k in cn) + f'</tr></thead><tbody>{rows}</tbody></table></div>')
@@ -253,7 +255,7 @@ def coverage(j):
 def page(j):
     B, L, M = j["benchmark"], j["latest"], j["methodology"]
     fams = M["families"]; bank = B["checks_by_family_in_bank"]
-    running = f" Cycle {RUNNING} is under way." if RUNNING and RUNNING > L["cycle"] else ""
+    running = f" RSI Loop {RUNNING} is under way." if RUNNING and RUNNING > L["cycle"] else ""
     asof = datetime.date.fromisoformat(L["date"]).strftime("%-d %B %Y")
     task = (f'<div class="task"><div><p class="mono">1 · The requirement</p><h3>A short pack</h3><p>What a customer would send for one operation: at most two pages, anonymised, '
             'for a site in the United States, Saudi Arabia or Pakistan. Packs leave out facts a good design should ask for.</p></div>'
@@ -266,40 +268,40 @@ def page(j):
     mc = [("Arms", "Same model, twice", arms),
           ("Judge", "Three lenses", f'<p><code>{E(J["model"])}</code> reads each design and answers every check yes or no through three lenses: {E(", ".join(LENSES[:-1]))} and {E(LENSES[-1])}.</p><p>A check passes when the majority of the lenses say yes.</p>'),
           ("Families", "Name, flag, never", "".join(f'<p><strong>{E(f["label"])}</strong> · {pct(bank[f["id"]], B["checks_in_bank"]):.0f}% of the bank<br>{E(FAMS[f["id"]][0])}</p>' for f in fams)),
-          ("Fresh tasks", "Never run twice", f'<p>A third of the bank ({B["tasks_held_out"]} of {B["task_bank_size"]} tasks) is held out for a final blind evaluation and never run in a cycle.</p><p>Each cycle picks up to six unused tasks from the rest, two per country where the pool allows. No task or check ever enters the platform\'s corpus or briefs.</p>'),
-          ("Score", "Checks passed", '<p>Checks passed divided by checks total, for each arm. No partial credit and no weighting.</p><p>Industry, family and country figures are the same count over their subset. Cycles use different tasks, so compare percentages, not counts.</p>'),
-          ("Rubric", "Version 0.2", '<p>Version 0.1 judged cycle 12. Version 0.2 (4 October 2026) judges cycles 13 onward: an open weight model named for self hosting, or a product named with its licence, is not a part number.</p>')]
+          ("Fresh tasks", "Never run twice", f'<p>A third of the bank ({B["tasks_held_out"]} of {B["task_bank_size"]} tasks) is held out for a final blind evaluation and never run in an RSI loop.</p><p>Each RSI loop picks up to six unused tasks from the rest, two per country where the pool allows. No task or check ever enters the platform\'s corpus or briefs.</p>'),
+          ("Score", "Checks passed", '<p>Checks passed divided by checks total, for each arm. No partial credit and no weighting.</p><p>Industry, family and country figures are the same count over their subset. RSI loops use different tasks, so compare percentages, not counts.</p>'),
+          ("Rubric", "Version 0.2", '<p>Version 0.1 judged RSI Loop 12. Version 0.2 (4 October 2026) judges RSI Loops 13 onward: an open weight model named for self hosting, or a product named with its licence, is not a part number.</p>')]
     mcards = "".join(f'<div class="mcard"><p class="mono">{E(a)}</p><h3>{E(b)}</h3>{c}</div>' for a, b, c in mc)
     lims = "".join(f'<li><b>{E(a)}</b> {E(b)}</li>' for a, b in LIMITS)
     faq = "".join(f'<details{" open" if i == 0 else ""}><summary>{E(q)}</summary><p>{E(a)}</p></details>' for i, (q, a) in enumerate(FAQ))
     return f"""<section class="ph"><div class="in"><p class="eyebrow">Benchmark · PADI</p><h1>{NAME}</h1><p class="lede">{E(ONE_LINE)}</p>
-<div class="t3"><div><b>{L["platform_pct"]:.1f}%<span>vs {L["bare_pct"]:.1f}%</span></b><p>Cycle {L["cycle"]}: Praxis platform vs frontier AI, checks passed</p></div>
+<div class="t3"><div><b>{L["platform_pct"]:.1f}%<span>vs {L["bare_pct"]:.1f}%</span></b><p>RSI Loop {L["cycle"]}: Praxis platform vs frontier AI, checks passed</p></div>
 <div>{featured(j)}</div>
 <div><b>{B["sectors_measured"]}<span>of {B["sector_count"]}</span></b><p>Industries measured across three countries</p></div></div>
 <p class="fr">{E(FRAMING)}</p><div class="cta"><a class="btn" href="#industries">By industry</a><a class="btn" href="#method">Methodology</a><a class="btn" href="#limits">Limitations</a></div></div></section>
-<section class="light" id="industries"><div class="wrap"><div class="head"><h2>Industries</h2><p>Checks passed in each industry, all cycles to date, for the Praxis platform and frontier AI on its own, on the same tasks. Three industries are in the bank and not yet measured.</p></div>{industry_list(j)}</div></section>
-<section class="light alt" id="trajectory"><div class="wrap"><div class="head"><h2>Trajectory</h2><p>Every cycle on a scale to 100%, so the distance to the goal stays in view.</p></div>{chart(j)}</div></section>
+<section class="light" id="industries"><div class="wrap"><div class="head"><h2>Industries</h2><p>Checks passed in each industry, all RSI loops to date, for the Praxis platform and frontier AI on its own, on the same tasks. Three industries are in the bank and not yet measured.</p></div>{industry_list(j)}</div></section>
+<section class="light alt" id="trajectory"><div class="wrap"><div class="head"><h2>Trajectory</h2><p>Every RSI loop on a scale to 100%, so the distance to the goal stays in view.</p></div>{chart(j)}</div></section>
 <section class="light" id="results"><div class="wrap"><div class="head"><h2>Results</h2><p>Every figure is checks passed as a percentage of checks judged, for each arm.</p></div>{tables(j)}</div></section>
 <section class="light alt" id="coverage"><div class="wrap"><div class="head"><h2>Coverage</h2><p>{B["sectors_measured"]} of {B["sector_count"]} industries measured. {B["task_bank_size"]} tasks in the bank, at least one per industry in each country, because operations differ with the place.</p></div>{coverage(j)}</div></section>
 <section class="light" id="task"><div class="wrap"><div class="head"><h2>A task</h2><p>What one task looks like, described generically. Task text, packs and checks are never published, so the held out set stays clean.</p></div>{task}</div></section>
 <section class="light alt" id="method"><div class="wrap"><div class="head"><h2>Methodology</h2><p>Both arms run the same model on the same pack, so the difference between them is the platform, not the model.</p></div><div class="mcards">{mcards}</div></div></section>
 <section class="light" id="limits"><div class="wrap"><div class="head"><h2>Limitations</h2><p>What PADI is good for: seeing whether Praxis improves on design judgement from one release to the next, on tasks it has never seen, and where it still misses. What it is not:</p></div><ul class="lim">{lims}</ul></div></section>
 <section class="light alt" id="faq"><div class="wrap"><div class="split"><div><h2>Questions</h2></div><div class="faq">{faq}</div></div></div></section>
-<section class="light" id="cadence"><div class="wrap"><div class="split"><div><p class="mono">Cadence</p><p class="cad">Updated each Praxis release cycle. Last published: cycle {L["cycle"]}, {asof}.{running}</p></div>
+<section class="light" id="cadence"><div class="wrap"><div class="split"><div><p class="mono">Cadence</p><p class="cad">Updated each RSI loop. Last published: RSI Loop {L["cycle"]}, {asof}.{running}</p></div>
 <div><p class="mono">Contact</p><p class="cad" style="font-size:20px">Questions about PADI, or a task from your own operation you would like measured: <a href="mailto:{brand.INBOX}?subject=PADI">{brand.INBOX}</a></p></div></div></div></section>"""
 
 
 def markdown(j):
     B, L, C = j["benchmark"], j["latest"], j["cumulative"]
     out = [f"# {NAME} (PADI)", "", f"Canonical: {BASE}/padi/", "Publisher: CodeNinja Atoms (https://codeatoms.ai)", "", ONE_LINE, "", FRAMING, "",
-           f"Latest cycle {L['cycle']} ({L['date']}): Praxis platform {L['platform_pct']:.1f}%, frontier AI {L['bare_pct']:.1f}% of checks passed.",
-           f"All {len(C['cycles'])} cycles: Praxis platform {C['platform_pct']:.1f}%, frontier AI {C['bare_pct']:.1f}% over {C['checks_total']} checks per arm.",
+           f"Latest RSI Loop {L['cycle']} ({L['date']}): Praxis platform {L['platform_pct']:.1f}%, frontier AI {L['bare_pct']:.1f}% of checks passed.",
+           f"All {len(C['cycles'])} RSI loops: Praxis platform {C['platform_pct']:.1f}%, frontier AI {C['bare_pct']:.1f}% over {C['checks_total']} checks per arm.",
            f"Industries measured: {B['sectors_measured']} of {B['sector_count']}.", "", "## Industries", "",
-           "| Industry | Praxis platform | Frontier AI | Cycles |", "|---|---|---|---|"]
+           "| Industry | Praxis platform | Frontier AI | RSI loops |", "|---|---|---|---|"]
     out += [f"| {i['label']} | {i['p']:.1f}% | {i['b']:.1f}% | {', '.join(map(str, i['cycles']))} |" if i["measured"] else f"| {i['label']} | not yet measured | not yet measured | |" for i in j["industries"]]
-    out += ["", "## Results by cycle", "", "| Cycle | Date | Tasks | Praxis platform | Frontier AI | Rubric |", "|---|---|---|---|---|---|"]
+    out += ["", "## Results by RSI loop", "", "| RSI Loop | Date | Tasks | Praxis platform | Frontier AI | Rubric |", "|---|---|---|---|---|---|"]
     out += [f"| {c['cycle']} | {c['date']} | {c['tasks']} | {c['platform_pct']:.1f}% | {c['bare_pct']:.1f}% | {c['rubric_version']} |" for c in j["cycles"]]
-    out += ["", "Different tasks each cycle, so cycles are not like for like.", "", "## Methodology", "",
+    out += ["", "Different tasks each RSI loop, so RSI loops are not like for like.", "", "## Methodology", "",
             f"- Arms: frontier AI on its own and the same model inside Praxis, both {j['methodology']['arms'][0]['model']}, on the same pack and instruction.",
             f"- Judge: {j['methodology']['judge']['model']} through three lenses ({', '.join(LENSES)}); a check passes on a majority yes.",
             "- Families: must name, must flag, must never, all about the system design.",
@@ -307,7 +309,7 @@ def markdown(j):
             "- Score: checks passed divided by checks total, per arm, no partial credit.", "", "## Limitations", ""]
     out += [f"- **{a}** {b}" for a, b in LIMITS]
     out += ["", "## Questions", ""] + [x for q, a in FAQ for x in (f"### {q}", "", a, "")]
-    out += [f"Updated each Praxis release cycle. Last published: cycle {L['cycle']}, {L['date']}." + (f" Cycle {RUNNING} is under way." if RUNNING and RUNNING > L["cycle"] else "")]
+    out += [f"Updated each RSI loop. Last published: RSI Loop {L['cycle']}, {L['date']}." + (f" RSI Loop {RUNNING} is under way." if RUNNING and RUNNING > L["cycle"] else "")]
     return "\n".join(out) + "\n"
 
 
@@ -322,7 +324,7 @@ def main():
         print("padi: no export at", SRC, "(page left as it is)"); return
     L = j["latest"]
     title = f"{NAME} (PADI) | CodeNinja Atoms"
-    desc = (f"PADI scores physical AI designs across 13 industries in the United States, Saudi Arabia and Pakistan. Cycle {L['cycle']}: "
+    desc = (f"PADI scores physical AI designs across 13 industries in the United States, Saudi Arabia and Pakistan. RSI Loop {L['cycle']}: "
             f"Praxis platform {L['platform_pct']:.1f}% vs frontier AI {L['bare_pct']:.1f}% of checks passed.")
     ld = [{"@context": "https://schema.org", "@type": "WebPage", "name": f"{NAME} (PADI)", "url": f"{BASE}/padi/", "description": desc,
            "dateModified": L["date"], "isPartOf": {"@id": f"{BASE}/#website"}, "publisher": {"@id": f"{BASE}/#org"},
@@ -340,7 +342,7 @@ def main():
     out.mkdir(exist_ok=True)
     (out / "index.html").write_text(doc, encoding="utf-8")
     (out / "index.md").write_text(markdown(j), encoding="utf-8")
-    print(f"padi/: cycle {L['cycle']}, {sum(1 for i in j['industries'] if i['measured'])} of {len(j['industries'])} industries measured")
+    print(f"padi/: RSI Loop {L['cycle']}, {sum(1 for i in j['industries'] if i['measured'])} of {len(j['industries'])} industries measured")
 
 
 if __name__ == "__main__":
