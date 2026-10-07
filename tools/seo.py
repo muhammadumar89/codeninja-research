@@ -107,11 +107,14 @@ def size_imgs(h, folder):
 
 
 # ---------------------------------------------------------------- head
-def head_block(kind, url, title, desc, image, crumbs, md):
+DELIST = {"praxis-method"}
+
+
+def head_block(kind, url, title, desc, image, crumbs, md, noindex=False):
     t = [H0,
          '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml">',
          '<link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#0B0C10">',
-         '<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">' if kind != "copy" else "",
+         '<meta name="robots" content="noindex,follow">' if noindex else ('<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">' if kind != "copy" else ""),
          '<meta property="og:site_name" content="CodeNinja Atoms"><meta property="og:locale" content="en_US">',
          f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{E(title)}"><meta name="twitter:description" content="{E(desc)}">']
     if image:
@@ -306,7 +309,7 @@ def main():
             doc = to_markdown(h, url, meta(h, "citation_title") or title, meta(h, "citation_doi"), meta(h, "citation_pdf_url"))
             (folder / "index.md").write_text(doc, encoding="utf-8")
             mds.append(doc)
-        h = inject_head(h, head_block(kind, url, title, desc, "" if own_image else image, crumbs, md))
+        h = inject_head(h, head_block(kind, url, title, desc, "" if own_image else image, crumbs, md, noindex=slug in DELIST))
         p.write_text(h, encoding="utf-8")
         stats.append((str(p.relative_to(ROOT)), before // 1024, len(h) // 1024))
     for p in sorted(copies):

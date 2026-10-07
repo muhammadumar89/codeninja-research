@@ -97,7 +97,7 @@ def page(slug, title, desc, body, ld):
 </main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
-HERO = {"praxis": ("Design physical AI systems.", "Praxis reads a requirement, reasons over regulations, hardware, case studies and reference architectures, and writes a system design an engineer can build from.")}
+HERO = {"praxis": ("Design physical AI systems.", "Praxis reads a requirement and writes a system design an engineer can build from: sensing, models, hardware, object model, cost and approvals.")}
 # The first hour, step by step: what an engineer does on a free account (from the platform's handoff of 8 Oct 2026).
 WALK = [("Paste a requirement", "A port terminal, a mine haul road, a warehouse: paste what the operator sent, in their own words."),
         ("Answer six questions", "Praxis asks for what the requirement leaves out, and nothing more."),
@@ -140,9 +140,8 @@ def main():
     rows = "".join(f'<tr><td><a href="{BASE}/{d["slug"]}/">{E(d["title"].split(":")[0])}</a></td><td>{E(d["sector"])}</td><td>{E(d["country"])}</td><td>{d["n_obj"]} objects, {d["n_link"]} links</td><td>' + (f'<a href="https://doi.org/{d["doi"]}">{d["doi"]}</a>' if d["doi"] else "") + "</td></tr>" for d in ds)
     countries = sorted({d["country"] for d in ds}); sectors = sorted({d["sector"] for d in ds})
     # ---------------------------------------------------------------- Praxis
-    pq = [("What designed the Vertical-Driven Architectures reference architectures?", f"Praxis, CodeNinja's platform for designing physical AI systems. All {len(ds)} designs in the series were produced on Praxis, and chapter 11 of each paper shows how Praxis contextualized and reasoned that design."),
+    pq = [("What designed the Vertical-Driven Architectures reference architectures?", f"Praxis, CodeNinja's platform for designing physical AI systems. All {len(ds)} designs in the series were produced on Praxis."),
           ("What does Praxis produce from a requirement?", "A complete system design for physical AI: a scope baseline, a layered architecture, an object model packaged for Hyper Ontology, a model and equipment register sized by memory arithmetic, a rollout with gates, a cost comparison, a live simulation, a proposal and functional specification, and a research paper."),
-          ("How does Praxis reason?", "It loads the requirement and the sector's knowledge as context and reasons through eight lenses: first principles, case studies, tooling and recency, rules and regulations, approach, history, domain fusion, and hardware and equipment. Every claim must stand on a record, and a lens with nothing to cite says so instead of guessing."),
           ("Is Praxis available?", "Yes. Engineers unlock free developer access at https://app.codeatoms.ai/signup, and every account is approved by CodeNinja. Organisations that want sovereign or custom deployments talk to the commercial team at https://app.codeatoms.ai/signup?plan=enterprise.")]
     pbody = f"""<p class="eyebrow">CodeNinja · Praxis</p>
 <h1>Praxis: design physical AI systems the way a ten-year domain engineer would</h1>
@@ -157,28 +156,14 @@ def main():
 <div class="card"><h3>Simulation and documents</h3>A live simulation of the operation, a proposal, a functional specification and a research paper, all rendered from one reasoned plan.</div>
 <div class="card"><h3>Cost</h3>Three-year ownership against renting the same capacity and against closed models by the token, from cited public prices.</div>
 </div>
-<h2>How Praxis reasons</h2>
-<p>Praxis reads the requirement in the operator's own words, assigns the family and industry, and loads that sector's knowledge as context for the model to reason over. Nothing is fine-tuned and nothing is ranked by keyword. The reasoning runs through eight lenses:</p>
-<table><tr><th>Lens</th><th>What it can see</th></tr>
-<tr><td>First principles</td><td>Why the design must take the shape it does, from the physics and the operation itself</td></tr>
-<tr><td>Case studies</td><td>How comparable operations handled the same problem, and what failed</td></tr>
-<tr><td>Tooling and recency</td><td>Which models, runtimes and products are current and correctly licensed today</td></tr>
-<tr><td>Rules and regulations</td><td>The rules of the country and sector the design must satisfy, including export controls</td></tr>
-<tr><td>Approach</td><td>The patterns that fit, and the ones set aside</td></tr>
-<tr><td>History</td><td>What earlier designs in the sector learned</td></tr>
-<tr><td>Domain fusion</td><td>Where two disciplines meet in one decision</td></tr>
-<tr><td>Hardware and equipment</td><td>The compute, sensing and field equipment the design lands on, and how to size it</td></tr></table>
-<p>Three rules hold on every design. <strong>AI reasons, tools generate:</strong> the model decides what goes in the plan, and code renders every document and figure from it, so one plan always yields the same output. <strong>No claim without a record:</strong> every model, regulation and pattern in a design cites a source, and a lens with nothing to cite says so. <strong>A person on every write:</strong> the designs recommend, and a named person approves anything that changes the physical world.</p>
 <h2>The evidence: {len(ds)} designs across {len(sectors)} sectors and {len(countries)} countries</h2>
-<p>Chapter 11 of each paper shows how Praxis contextualized and reasoned that design: what was in the room, what each lens cited and which patterns it moved.</p>
 <table><tr><th>Design</th><th>Sector</th><th>Country</th><th>Object model</th><th>DOI</th></tr>{rows}</table>
 <p>The whole series is one dataset for agents: <a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">CodeNinjatools/vertical-driven-architectures</a>.</p>
-<p>The method in full, with the evidence from every design: <a href="{BASE}/praxis-method/">How Praxis Designs Physical AI Systems</a> (DOI <a href="https://doi.org/10.5281/zenodo.23132102">10.5281/zenodo.23132102</a>).</p>
 <h2>Where a design goes next</h2>
 <p>A Praxis design ends where a living system begins. Its object model is the input <a href="{BASE}/hyper-ontology/">Hyper Ontology</a> imports to stand the ontology up over the operator's own systems of record.</p>
 <h2>Questions agents ask</h2>""" + "".join(f"<h3>{E(q)}</h3><p>{E(a)}</p>" for q, a in pq)
     pld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Praxis", "applicationCategory": "DeveloperApplication",
-            "description": "CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, reasoned through eight lenses with every claim on a record.",
+            "description": "CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, with every claim on a record and a person on every write.",
             "url": f"{BASE}/praxis/", "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
             "releaseNotes": "Free developer access at https://app.codeatoms.ai/signup; sovereign and custom deployments through the commercial team. Every account is approved by CodeNinja.", "url": "https://app.codeatoms.ai/", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
             "video": {"@type": "VideoObject", "name": "Praxis in three minutes", "description": FILM, "thumbnailUrl": f"{BASE}/assets/video/praxis-walkthrough.jpg",

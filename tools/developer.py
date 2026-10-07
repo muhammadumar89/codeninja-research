@@ -26,9 +26,9 @@ LEDE = ("Hyper is the architecture CodeNinja's platforms are built on. Praxis de
 # One card per capability. The sentences are Umar's own (the About page, the Praxis page, the first blog post).
 CAPS = [
     {"name": "Praxis", "verb": "Design a physical AI system", "status": "Beta, open to outside engineers",
-     "what": "Praxis turns an operator's requirement into a complete design for physical AI, reasoned through eight lenses from first principles to hardware, with every claim on a record and a person on every write.",
+     "what": "Praxis turns an operator's requirement into a complete design for physical AI, with every claim on a record and a person on every write.",
      "build": "A complete system design for one operation: what to sense, where each model runs, the object model, the hardware, the three-year cost and who approves every action.",
-     "links": [("How Praxis reasons", f"{BASE}/praxis/"), ("Join the beta", brand.SIGNUP)]},
+     "links": [("Praxis", f"{BASE}/praxis/"), ("Join the beta", brand.SIGNUP)]},
     {"name": "Hyper Ontology", "verb": "Structure the operation", "status": "Beta, a small number of teams",
      "what": "Hyper Ontology holds the governed model of the organization. It imports the object model a Praxis design publishes and stands it up as a living system over the operator's own systems of record.",
      "build": "A living ontology over an operator's existing systems: typed objects, typed links, and actions that sense, decide, act and learn.",

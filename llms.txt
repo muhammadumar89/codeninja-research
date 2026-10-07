@@ -20,7 +20,6 @@
 ## Methods
 
 - [From Reference Architecture to Living Ontology: the hyper-ontology/1 Package and Hyper Ontology](https://codeatoms.ai/ontology-method/): How a Praxis design's object model is packaged as hyper-ontology/1, what seven published packages contain, how to load and convert them, and how Hyper Ontology stands a package up as a living system over an operator's own systems of record. DOI 10.5281/zenodo.23132104.
-- [How Praxis Designs Physical AI Systems: Method and Evidence from Seven Reference Architectures](https://codeatoms.ai/praxis-method/): The method behind the Vertical-Driven Architectures series: how Praxis turns an operator's requirement into a complete physical AI system design through eight reasoning lenses, and what seven published designs show about it. DOI 10.5281/zenodo.23132102.
 
 ## Papers
 

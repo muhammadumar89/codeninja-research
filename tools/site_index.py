@@ -17,9 +17,12 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://codeatoms.ai"
 
 
+DELIST = {"praxis-method"}  # how Praxis works stays internal; the paper keeps its DOI on Zenodo but the site no longer lists it
+
+
 def papers():
     out = []
-    for d in sorted(p for p in ROOT.iterdir() if p.is_dir() and (p / "index.html").exists() and (p / "paper").is_dir() and not p.name.startswith(".")):
+    for d in sorted(p for p in ROOT.iterdir() if p.is_dir() and (p / "index.html").exists() and (p / "paper").is_dir() and not p.name.startswith(".") and p.name not in DELIST):
         h = (d / "index.html").read_text(encoding="utf-8")
         g = lambda name: (re.search(rf'<meta name="{name}" content="([^"]*)"', h) or [None, ""])[1]
         pdf = next(iter(sorted((d / "paper").glob("*.pdf"))), None) if (d / "paper").exists() else None
@@ -196,7 +199,7 @@ def landing(ps, sols):
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
 {padi_html}
-{film("control-room", '<div><p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2></div><div><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">How Praxis reasons</a></div></div>', cls="two")}
+{film("control-room", '<div><p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2></div><div><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">Praxis</a></div></div>', cls="two")}
 <section id="watch" class="watch"><div class="wrap"><div class="head"><div><p class="mono">Praxis in three minutes</p><h2>Watch it work</h2></div>
 <p class="lede">Umar Bilal, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.</p></div>
 <video controls playsinline preload="none" poster="assets/video/praxis-walkthrough.jpg" width="1280" height="720"><source src="assets/video/praxis-walkthrough.mp4" type="video/mp4"></video></div></section>
