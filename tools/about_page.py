@@ -59,7 +59,7 @@ CSS = """
 
 
 def main():
-    nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
     desc = "CodeNinja Atoms is building a sovereign AI operating system for the physical world. Its mission and its executive leadership."
     org = {"@context": "https://schema.org", "@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/",
            "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": brand.PARENT},

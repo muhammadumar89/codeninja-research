@@ -113,6 +113,8 @@ FAQ = [
      "Praxis is CodeNinja's platform for designing physical AI systems. It turns an operator's requirement into a complete design, reasoned through eight lenses from first principles to hardware. Every design on this site was made on Praxis. It is in beta: sign up at https://app.codeatoms.ai/signup, and during the beta every account is approved by hand, usually within a day."),
     ("What is Hyper Ontology?",
      "Hyper Ontology is CodeNinja's ontology platform. It imports the object model a Praxis design publishes (format hyper-ontology/1) and stands it up as a living system over the operator's own systems of record. It is in beta."),
+    ("What is PADI?",
+     "PADI, the Physical AI Design Index, is CodeNinja's benchmark for design judgement in physical AI. It scores the same model bare and inside the Praxis platform on fresh tasks across 13 industries in the United States, Saudi Arabia and Pakistan: whether a design names the rules that bind in that country, flags what the requirement leaves out, and avoids invented specifics. Results are published by industry at https://codeatoms.ai/padi/."),
     ("Can I reuse the designs?",
      "Yes. Every paper, object model, model register and dataset row is published under CC BY 4.0 with a DOI. The full set loads as one dataset on Hugging Face, and an MCP server gives coding agents every design."),
 ]
@@ -175,7 +177,10 @@ def landing(ps, sols):
                  '<li><b>The living system.</b> The object model packaged for Hyper Ontology, ready to stand up over the operator\'s own systems.</li></ul>')
     seclinks = '<p class="serif" style="margin:-8px 0 28px;font-size:17px">Questions answered by sector: ' + ' · '.join(f'<a href="sectors/{x.replace(" and ", "-and-").replace(" ", "-")}/">{E(x)}</a>' for x in sectors) + '</p>'
     scroll = f'<a class="scroll" href="#intro">Scroll to explore{brand.ARROW}</a>'
-    nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("Data", "#data"), ("Developers", "developer/"), ("Blog", "blog/"), ("About", "about/")]
+    import padi
+    padi_html, padi_css = padi.home_block()
+    padi_html = (f'<style>{padi_css}</style>' + padi_html) if padi_html else ''
+    nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("PADI", "padi/"), ("Data", "#data"), ("Developers", "developer/"), ("Blog", "blog/"), ("About", "about/")]
     return f"""{brand.header("./", nav)}
 <main>
 {film("port-night", '<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
@@ -185,6 +190,7 @@ def landing(ps, sols):
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
 {film("control-room", '<div><p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2></div><div><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, reasoned through eight lenses from first principles to hardware, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">How Praxis reasons</a></div></div>', cls="two")}
 {film("rail-yard", '<div><p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2></div><div><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div></div>', cls="two")}
+{padi_html}
 <section id="research" class="light"><div class="wrap"><div class="head"><div><p class="mono">Research · Vertical-Driven Architectures</p><h2>One operation, one design, end to end.</h2></div>
 <p class="serif">Each paper is a complete reference architecture for one real operation, written so an engineer, or their coding agent, can build it. Operators are described by class, never by name.</p></div>
 {seclinks}
@@ -242,7 +248,7 @@ def main():
 {brand.SCRIPT}{FILTER}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/"] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/padi/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/"] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -253,6 +259,7 @@ def main():
             "## Products", "",
             f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by hand during the beta, usually within a day).",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
+            f"- [PADI, the Physical AI Design Index]({BASE}/padi/): CodeNinja's benchmark for design judgement in physical AI, the same model scored bare and inside Praxis on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: {BASE}/padi/index.md", "",
             "## For agents", "",
             "- [Developers: Hyper, the architecture under everything CodeNinja builds](https://codeatoms.ai/developer/): capabilities (Praxis, Hyper Ontology, Hyper Pragma, Hyper Engram, Hyper Noesis), getting started, reference, samples, platform updates, community.",
             "- [Reference: hyper-ontology/1 package format](https://codeatoms.ai/developer/reference/hyper-ontology-1/) · [loader](https://codeatoms.ai/developer/reference/loader/) · [MCP server](https://codeatoms.ai/developer/reference/mcp-server/) · [dataset](https://codeatoms.ai/developer/reference/dataset/)",
@@ -286,6 +293,8 @@ if __name__ == "__main__":
     blog.main()
     import developer  # developer home: hub, reference, updates
     developer.main()
+    import padi  # PADI page; the home block reads the same export
+    padi.main()
     main()
     import seo  # search and AI retrieval pass: always last
     seo.main()
