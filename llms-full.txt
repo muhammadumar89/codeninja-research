@@ -127,6 +127,267 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 
 ---
 
+# The Vertical-Driven Architectures dataset
+
+Canonical: https://codeatoms.ai/developer/reference/dataset/
+Source: https://github.com/muhammadumar89/codeninja-research/blob/main/dataset/README.md
+
+---
+license: cc-by-4.0
+language:
+- en
+pretty_name: Vertical-Driven Architectures, system designs for physical AI
+size_categories:
+- n<1K
+tags:
+- physical-ai
+- system-design
+- sovereign-ai
+- reference-architecture
+- ontology
+- open-weight-models
+- air-gapped
+- industrial-ai
+- oil-and-gas
+- pakistan
+- united-states
+- saudi-arabia
+- heavy-industry
+- maritime
+- energy-utilities
+- ports
+configs:
+- config_name: designs
+  data_files: designs.jsonl
+- config_name: objects
+  data_files: objects.jsonl
+- config_name: models
+  data_files: models.jsonl
+- config_name: costs
+  data_files: costs.jsonl
+- config_name: fulltext
+  data_files: fulltext.jsonl
+---
+
+# Vertical-Driven Architectures: system designs for physical AI
+
+One row per design, growing with every paper CodeNinja publishes. Each design puts intelligence into a physical-world operation on the operator's own hardware, under open-weight licences, with no data leaving the country. The tables are the papers with their structured parts pulled out, so an agent can query them instead of reading thirty pages.
+
+| Table | One row per | Columns |
+|---|---|---|
+| `designs` | paper | design_id, title, summary, sector, country, published, doi, canonical_url, designed_with, implemented_with, n_objects, n_links, n_models, keywords, licence, write_paths, human_loop |
+| `objects` | ontology object | design_id, object_id, label, kind, anchored_in, properties, status_vocabulary, links (typed, directed) |
+| `models` | model or hardware choice | design_id, choice, picked, why |
+| `costs` | cost line | design_id, section, line, basis, three_year_usd |
+| `fulltext` | paper | design_id, title, text |
+
+```python
+from datasets import load_dataset
+objects = load_dataset("CodeNinjatools/vertical-driven-architectures", "objects", split="train")
+print(objects.filter(lambda r: r["kind"] == "event")["label"])
+```
+
+## Made with
+
+Every design was reasoned on [Praxis](https://codeatoms.ai/praxis/), CodeNinja's platform for designing physical AI systems. Every object model imports into [Hyper Ontology](https://codeatoms.ai/hyper-ontology/), CodeNinja's ontology platform, which stands it up as a living system. Load any one with the [hyper-ontology loader](https://github.com/muhammadumar89/codeninja-research/tree/main/hyper-ontology-py): `pip install "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=hyper-ontology-py"`, then `hyper-ontology show <design_id>`.
+
+## Cite the dataset
+
+Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versions as https://doi.org/10.5281/zenodo.23160819, or this release as https://doi.org/10.5281/zenodo.23160820. The tables here on Hugging Face update daily between releases.
+
+## Designs so far
+
+| design_id | Sector | Country | DOI |
+|---|---|---|---|
+| sovereign-hse-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23119714](https://doi.org/10.5281/zenodo.23119714) |
+| wildfire-risk-distribution-us | energy and utilities | United States | [10.5281/zenodo.23159328](https://doi.org/10.5281/zenodo.23159328) |
+| port-digital-twin-us | maritime and ports | United States | [10.5281/zenodo.23126431](https://doi.org/10.5281/zenodo.23126431) |
+| structure-phase-construction-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126448](https://doi.org/10.5281/zenodo.23126448) |
+| steel-production-count-pakistan | heavy industry and construction | Pakistan | [10.5281/zenodo.23126563](https://doi.org/10.5281/zenodo.23126563) |
+| factory-fire-monitoring-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.23126565](https://doi.org/10.5281/zenodo.23126565) |
+| truck-turn-container-terminal-us | maritime and ports | United States | [10.5281/zenodo.23159331](https://doi.org/10.5281/zenodo.23159331) |
+| ot-security-cip-evidence-us | energy and utilities | United States | [10.5281/zenodo.23157957](https://doi.org/10.5281/zenodo.23157957) |
+| plant-reliability-assessment-saudi-arabia | energy and utilities | Saudi Arabia | [10.5281/zenodo.23157965](https://doi.org/10.5281/zenodo.23157965) |
+| tank-gauge-integrity-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23157967](https://doi.org/10.5281/zenodo.23157967) |
+| farm-data-dashboard-pakistan | agriculture and earth observation | Pakistan | [10.5281/zenodo.23186671](https://doi.org/10.5281/zenodo.23186671) |
+| vegetation-mapping-lidar-us | agriculture and earth observation | United States | [10.5281/zenodo.23186673](https://doi.org/10.5281/zenodo.23186673) |
+| restricted-crop-monitoring-saudi-arabia | agriculture and earth observation | Saudi Arabia | [10.5281/zenodo.23186675](https://doi.org/10.5281/zenodo.23186675) |
+
+Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
+
+Designed with Praxis, CodeNinja's platform for designing physical AI systems; object models are written as Hyper Ontology input. CC BY 4.0.
+
+
+---
+
+# The hyper-ontology/1 package format
+
+Canonical: https://codeatoms.ai/developer/reference/hyper-ontology-1/
+Source: https://github.com/muhammadumar89/codeninja-research/blob/main/ONTOLOGY_PACKAGE.md
+
+# The ontology package
+
+Every paper folder carries `ontology/objects.json`. [Praxis](https://codeatoms.ai/praxis/), CodeNinja's platform for designing physical AI systems, writes it for every design. [Hyper Ontology](https://codeatoms.ai/hyper-ontology/), CodeNinja's ontology platform, imports it and stands the model up as a living ontology over the operator's own systems. Until Hyper Ontology publishes its import format, this file is the format, and the two will be kept in agreement.
+
+To load, validate or convert a package (Mermaid, Cypher, JSON-LD), use the [hyper-ontology loader](hyper-ontology-py/).
+
+## Shape
+
+```json
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {"title": "...", "url": "https://codeatoms.ai/<folder>/", "doi": "..."},
+  "sector": "oil-and-gas",
+  "country": "Pakistan",
+  "objects": [
+    {
+      "id": "hse-incident",
+      "label": "HSE Incident",
+      "kind": "record",
+      "anchored_in": "SAP EHS",
+      "properties": ["Incident type", "Location", "Severity classification", "Root cause category", "Barrier status", "Reporting date"],
+      "status_vocabulary": ["Reported", "Under investigation", "Investigation complete", "Closed"],
+      "links": [{"to": "operational-site", "label": "occurs at"}, {"to": "work-order", "label": "opens"}]
+    }
+  ],
+  "write_paths": ["adapter tier", "decision record"],
+  "human_loop": "every anomaly event moves Raised, Explained, Recommendation issued, Approved or Rejected, Closed; each transition is made by a named person"
+}
+```
+
+## Rules
+
+- `kind` is one of `record`, `asset`, `document`, `person`, `event`, `system`, `site`, `material`, `actor`, `measure`.
+- `anchored_in` names the system of record the object is read from, or is empty for an object born inside the platform.
+- `links` are typed and directional. The reverse is implied.
+- Nothing in the file names the operator. The leak check that gates the paper gates this file too.
+- The file is CC BY 4.0 like the paper. An operator that imports it owns its instance.
+
+## What an agent does with it
+
+1. Read the paper to understand why the objects are what they are.
+2. Import `objects.json` into Hyper Ontology to stand the model up.
+3. Map each `anchored_in` system to an adapter, read only.
+4. Keep the decision record in Engram.
+
+Step 2 is the step this package exists for.
+
+
+---
+
+# The hyper-ontology loader
+
+Canonical: https://codeatoms.ai/developer/reference/loader/
+Source: https://github.com/muhammadumar89/codeninja-research/blob/main/hyper-ontology-py/README.md
+
+# hyper-ontology
+
+Load, validate and convert `hyper-ontology/1` packages: the object models [Praxis](https://codeatoms.ai/praxis/) designs and [Hyper Ontology](https://codeatoms.ai/hyper-ontology/) imports to stand up a living system.
+
+Every design in the [Vertical-Driven Architectures](https://codeatoms.ai/) series publishes its object model in this format: typed objects, their properties and status vocabularies, the system of record each is anchored in, and typed directional links. This package reads them, checks them, and turns them into a diagram, a graph database script or JSON-LD.
+
+No dependencies. Python 3.9 or later.
+
+## Install
+
+```bash
+pip install "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=hyper-ontology-py"
+```
+
+## Use it from the command line
+
+```bash
+hyper-ontology list                                   # every published design
+hyper-ontology show port-digital-twin-us              # what the model holds
+hyper-ontology validate steel-production-count-pakistan
+hyper-ontology reach port-digital-twin-us berth       # the typed paths one object reaches
+hyper-ontology mermaid factory-fire-monitoring-saudi-arabia > model.mmd
+hyper-ontology cypher truck-turn-container-terminal-us > load.cypher   # Neo4j or Memgraph
+hyper-ontology jsonld wildfire-risk-distribution-us > model.jsonld
+```
+
+A design slug resolves to its package on the research site; a local path or any URL works too.
+
+## Use it from Python
+
+```python
+from hyper_ontology import load, validate, summary, to_mermaid, traverse
+
+pkg = load("port-digital-twin-us")
+assert not validate(pkg)
+print(summary(pkg))
+for path in traverse(pkg, "berth", depth=2):
+    print(path)
+```
+
+## What this is not
+
+This loader reads and converts the schema of a design. Standing the model up over an operator's live systems of record, with adapters, actions, and the decision record, is what Hyper Ontology does. Hyper Ontology is in beta; access is by request.
+
+The format is specified in [ONTOLOGY_PACKAGE.md](../ONTOLOGY_PACKAGE.md). Code Apache-2.0; the packages themselves are CC BY 4.0 with their papers.
+
+
+---
+
+# The MCP server
+
+Canonical: https://codeatoms.ai/developer/reference/mcp-server/
+Source: https://github.com/muhammadumar89/codeninja-research/blob/main/mcp-server/README.md
+
+# codeninja-research-mcp (CodeNinja Atoms)
+
+An MCP server that gives coding agents the **Vertical-Driven Architectures**: complete reference architectures for physical AI in ports, grids, mills, plants and construction sites. Each design says what to sense, where each model runs, what the object model holds, which open-weight models and hardware it needs, what it costs over three years, and who approves every action.
+
+Every design was reasoned on [Praxis](https://codeatoms.ai/praxis/) and ships an object model in the `hyper-ontology/1` format for [Hyper Ontology](https://codeatoms.ai/hyper-ontology/). Papers, object models and data are CC BY 4.0; cite the design's DOI.
+
+## Tools
+
+| Tool | What it returns |
+|---|---|
+| `list_designs(sector, country)` | Every design, filterable, with DOI and object counts |
+| `get_design(design_id)` | Summary, object model, model and hardware register with reasons, cost lines, write paths, human approval loop |
+| `read_paper(design_id, page)` | The full paper as text, paged |
+| `find(text)` | Where a model, system, regulation or object appears across all designs |
+| `about_praxis_and_hyper_ontology()` | Where the designs come from, and how to request access |
+
+The server reads the published dataset at call time, so it always serves the latest designs. Set `CODENINJA_RESEARCH_DATA` to a local `dataset/` folder to run offline.
+
+## Install
+
+With [uv](https://docs.astral.sh/uv/):
+
+```json
+{
+  "mcpServers": {
+    "codeninja-research": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=mcp-server", "codeninja-research-mcp"]
+    }
+  }
+}
+```
+
+Claude Code:
+
+```bash
+claude mcp add codeninja-research -- uvx --from "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=mcp-server" codeninja-research-mcp
+```
+
+With pip: `pip install "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=mcp-server"`, then use `codeninja-research-mcp` as the command.
+
+## Ask it
+
+- "Which designs run vision at the edge, and on what hardware?"
+- "Show me the object model for the container terminal design and turn it into Postgres tables."
+- "What does it cost to own versus rent the GPUs for the wildfire design?"
+
+Licence: code Apache-2.0; data CC BY 4.0. By [CodeNinja](https://codeninjaconsulting.com).
+
+
+---
+
 # Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory
 
 Canonical: https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/

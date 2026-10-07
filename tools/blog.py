@@ -175,7 +175,7 @@ body{background:var(--paper)}html.js header.top:not(.solid):not(.open){backgroun
 
 def nav():
     return [("Research", f"{BASE}/#research"), ("Sectors", f"{BASE}/sectors/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"),
-            ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+            ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
 
 
 def shell(path, title, desc, body, ld, og_image, og_type="website", extra_head=""):

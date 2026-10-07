@@ -11,6 +11,8 @@
 
 ## For agents
 
+- [Developers: Hyper, the architecture under everything CodeNinja builds](https://codeatoms.ai/developer/): capabilities (Praxis, Hyper Ontology, Hyper Pragma, Hyper Engram, Hyper Noesis), getting started, reference, samples, platform updates, community.
+- [Reference: hyper-ontology/1 package format](https://codeatoms.ai/developer/reference/hyper-ontology-1/) · [loader](https://codeatoms.ai/developer/reference/loader/) · [MCP server](https://codeatoms.ai/developer/reference/mcp-server/) · [dataset](https://codeatoms.ai/developer/reference/dataset/)
 - [MCP server](https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server): codeninja-research-mcp exposes list_designs, get_design, read_paper and find over every design.
 
 ## Methods

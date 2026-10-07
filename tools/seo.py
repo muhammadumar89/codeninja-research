@@ -169,7 +169,7 @@ BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items
 
 
 def bar():
-    nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("Data", f"{BASE}/#data"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
     return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar"><a class="brand" href="{BASE}/" aria-label="CodeNinja Atoms home">{brand.LOGO}<span class="atoms">Atoms</span></a>'
             f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a class="join" href="{brand.SIGNUP}">Join the Praxis beta</a></nav></div>{B1}')
 
@@ -264,7 +264,7 @@ def main():
     ds = designs()
     dslugs = {d["slug"] for d in ds}
     mds, stats = [], []
-    pages = [p for p in ROOT.glob("*/index.html") if p.parent.name not in SKIP] + [ROOT / "index.html"] + sorted(ROOT.glob("sectors/*/index.html")) + sorted(ROOT.glob("blog/*/index.html"))
+    pages = [p for p in ROOT.glob("*/index.html") if p.parent.name not in SKIP] + [ROOT / "index.html"] + sorted(ROOT.glob("sectors/*/index.html")) + sorted(ROOT.glob("blog/*/index.html")) + sorted(ROOT.glob("developer/**/index.html"))
     copies = [p for p in ROOT.glob("*/paper/*.html") if p.parent.parent.name not in SKIP]
     for p in sorted(pages):
         h = strip_block(p.read_text(encoding="utf-8"), H0, H1)
@@ -274,7 +274,7 @@ def main():
         url = f"{BASE}/{slug + '/' if slug else ''}"
         title = html.unescape((re.search(r"<title>(.*?)</title>", h, re.S) or [None, "CodeNinja Atoms"])[1])
         desc = meta(h, "description")
-        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("post" if slug.startswith("blog/") else "page"))))
+        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("post" if slug.startswith("blog/") else ("dev" if slug.startswith("developer") else "page")))))
         if kind in ("design", "method"):
             h = deinline(h, folder, absolute=False)
             h = size_imgs(h, folder)
@@ -286,6 +286,8 @@ def main():
         crumbs = [("CodeNinja Atoms", f"{BASE}/")]
         if kind == "design":
             crumbs += [("Research", f"{BASE}/#research"), (meta(h, "citation_title").split(":")[0] or title.split(":")[0], url)]
+        elif kind == "dev":
+            crumbs += [("Developers", f"{BASE}/developer/")] + ([(title.split("|")[0].strip(), url)] if slug != "developer" else [])
         elif kind == "post":
             crumbs += [("Blog", f"{BASE}/blog/"), (title.split("|")[0].strip(), url)]
         elif kind == "sector":
@@ -294,8 +296,8 @@ def main():
             crumbs += [(title.split(":")[0].split("|")[0].strip(), url)]
         else:
             crumbs = []
-        md = "index.md" if kind in ("sector", "post") and (folder / "index.md").exists() else None
-        if kind in ("sector", "post") and md:
+        md = "index.md" if kind in ("sector", "post", "dev") and (folder / "index.md").exists() else None
+        if kind in ("sector", "post", "dev") and md:
             mds.append((folder / "index.md").read_text(encoding="utf-8"))
         if kind in ("design", "method"):
             h = enrich_article(h, image if kind == "design" else None, slug)
