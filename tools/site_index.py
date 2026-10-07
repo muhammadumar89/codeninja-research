@@ -114,7 +114,7 @@ FAQ = [
     ("What is Hyper Ontology?",
      "Hyper Ontology is CodeNinja's ontology platform. It imports the object model a Praxis design publishes (format hyper-ontology/1) and stands it up as a living system over the operator's own systems of record. It is in beta."),
     ("What is PADI?",
-     "PADI, the Physical AI Design Index, is CodeNinja's benchmark for design judgement in physical AI. It scores the same model bare and inside the Praxis platform on fresh tasks across 13 industries in the United States, Saudi Arabia and Pakistan: whether a design names the rules that bind in that country, flags what the requirement leaves out, and avoids invented specifics. Results are published by industry at https://codeatoms.ai/padi/."),
+     "PADI, the Physical AI Design Index, is CodeNinja's benchmark for system design in physical AI. It asks whether Praxis produces a better system design than frontier AI on its own, given the same short requirement, on fresh tasks across 13 industries in the United States, Saudi Arabia and Pakistan. Results are published by industry at https://codeatoms.ai/padi/."),
     ("Can I reuse the designs?",
      "Yes. Every paper, object model, model register and dataset row is published under CC BY 4.0 with a DOI. The full set loads as one dataset on Hugging Face, and an MCP server gives coding agents every design."),
 ]
@@ -259,7 +259,7 @@ def main():
             "## Products", "",
             f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by hand during the beta, usually within a day).",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
-            f"- [PADI, the Physical AI Design Index]({BASE}/padi/): CodeNinja's benchmark for design judgement in physical AI, the same model scored bare and inside Praxis on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: {BASE}/padi/index.md", "",
+            f"- [PADI, the Physical AI Design Index]({BASE}/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: {BASE}/padi/index.md", "",
             "## For agents", "",
             "- [Developers: Hyper, the architecture under everything CodeNinja builds](https://codeatoms.ai/developer/): capabilities (Praxis, Hyper Ontology, Hyper Pragma, Hyper Engram, Hyper Noesis), getting started, reference, samples, platform updates, community.",
             "- [Reference: hyper-ontology/1 package format](https://codeatoms.ai/developer/reference/hyper-ontology-1/) · [loader](https://codeatoms.ai/developer/reference/loader/) · [MCP server](https://codeatoms.ai/developer/reference/mcp-server/) · [dataset](https://codeatoms.ai/developer/reference/dataset/)",

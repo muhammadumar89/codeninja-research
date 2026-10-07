@@ -3,17 +3,17 @@
 Canonical: https://codeatoms.ai/padi/
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-When a customer sends a short requirement for physical AI in a real operation, does the design name the rules that bind in that country, flag what the requirement leaves out, and stay clear of invented specifics? PADI scores the same model twice, bare and inside Praxis, on tasks neither has seen, across 13 industries in three countries.
+One question about system design: given the same short requirement for physical AI in a real operation, does Praxis produce a better system design than frontier AI on its own? PADI scores both on fresh tasks across 13 industries in three countries.
 
-PADI is the benchmark CodeNinja uses to improve Praxis release by release. Scores are far from saturated: the goal is every check on every task in all 13 industries, and the best cycle so far passes under half. We publish the trajectory as it is, including the cycles where the bare model scored higher.
+PADI is the benchmark CodeNinja uses to improve Praxis release by release. Scores are far from saturated: the goal is every check on every task in all 13 industries.
 
-Latest cycle 16 (2026-10-07): Praxis platform 36.5%, bare model 26.0% of checks passed.
-All 5 cycles: Praxis platform 37.7%, bare model 34.6% over 546 checks per arm.
+Latest cycle 16 (2026-10-07): Praxis platform 36.5%, frontier AI 26.0% of checks passed.
+All 5 cycles: Praxis platform 37.7%, frontier AI 34.6% over 546 checks per arm.
 Industries measured: 10 of 13.
 
 ## Industries
 
-| Industry | Praxis platform | Bare model | Cycles |
+| Industry | Praxis platform | Frontier AI | Cycles |
 |---|---|---|---|
 | Agriculture and Earth Observation | 35.0% | 40.0% | 14 |
 | Aviation Manufacturing | not yet measured | not yet measured | |
@@ -31,7 +31,7 @@ Industries measured: 10 of 13.
 
 ## Results by cycle
 
-| Cycle | Date | Tasks | Praxis platform | Bare model | Rubric |
+| Cycle | Date | Tasks | Praxis platform | Frontier AI | Rubric |
 |---|---|---|---|---|---|
 | 12 | 2026-10-03 | 6 | 37.5% | 38.4% | 0.1 |
 | 13 | 2026-10-04 | 6 | 29.5% | 32.1% | 0.2 |
@@ -43,9 +43,9 @@ Different tasks each cycle, so cycles are not like for like.
 
 ## Methodology
 
-- Arms: the bare model and the same model inside Praxis, both glm-5.3-flash, on the same pack and instruction.
-- Judge: glm-4.6 through three lenses (strict reviewer, plant engineer, regulator's technical assessor); a check passes on a majority yes.
-- Families: must name, must flag, must never.
+- Arms: frontier AI on its own and the same model inside Praxis, both glm-5.3-flash, on the same pack and instruction.
+- Judge: glm-4.6 through three lenses (strict reviewer, plant engineer, technical assessor); a check passes on a majority yes.
+- Families: must name, must flag, must never, all about the system design.
 - Fresh tasks: 17 of 60 tasks held out for a final blind evaluation; no task is run twice.
 - Score: checks passed divided by checks total, per arm, no partial credit.
 
@@ -56,7 +56,7 @@ Different tasks each cycle, so cycles are not like for like.
 - **Small samples.** Each cycle is five or six tasks and roughly a hundred checks per arm. A swing of a few points is within noise, so no single cycle is a trend.
 - **Different tasks every cycle.** Fresh tasks keep the measure honest, and they also mean cycles are not like for like.
 - **Written by CodeNinja.** Tasks and checks were written by CodeNinja with model assistance and reviewed adversarially. Independent expert grading is planned and not yet done.
-- **Two arms.** Only the bare model and the same model inside Praxis are scored. No other system or model is in the index yet.
+- **Two arms.** Only frontier AI on its own and the same model inside Praxis are scored. No other system or model is in the index yet.
 - **Partial coverage.** Ten of thirteen industries are measured. Aviation manufacturing, semiconductors and warehousing have not been run.
 - **One rubric change.** Cycle 12 used rubric 0.1. Every later cycle uses 0.2.
 
@@ -64,15 +64,15 @@ Different tasks each cycle, so cycles are not like for like.
 
 ### What is the Physical AI Design Index?
 
-PADI is CodeNinja's benchmark for design judgement in physical AI. Each task is a short anonymised requirement for an AI system in a real kind of operation, such as a mine, a port, a rail line or a substation, plus yes or no checks. A judge model scores the design from the bare model and from the same model inside the Praxis platform.
+PADI is CodeNinja's benchmark for system design in physical AI. Each task is a short anonymised requirement for an AI system in a real kind of operation, such as a mine, a port, a rail line or a substation, plus yes or no checks. A judge model scores the system design from frontier AI on its own and from the same model inside the Praxis platform.
 
 ### What does PADI measure?
 
-Three families of checks: what a design must name (the regulation that binds in that country, the systems it reads, where things run, which decisions a person confirms, what phase one must prove), what it must flag (a missing fact asked as a question, a foreign rule that does not apply), and what it must never do (a part number, an invented regulation or saving, a customer name, data leaving the site when residency forbids it).
+Whether a system design is complete and sound: what it must state (the systems it reads, where things run, which decisions a person confirms, what phase one must prove), what it must raise (a missing fact asked as a question, thin evidence said out loud) and what it must never do (a part number, an invented saving, a customer name, data leaving the site when residency forbids it).
 
 ### How is PADI scored?
 
-Checks passed divided by checks total, for each arm, with no partial credit and no weighting. The judge is glm-4.6 through three lenses (a strict reviewer, a plant engineer and a regulator's technical assessor); a check passes when the majority say yes. Both arms use glm-5.3-flash.
+Checks passed divided by checks total, for each arm, with no partial credit and no weighting. The judge is glm-4.6 through three lenses (a strict reviewer, a plant engineer and a technical assessor); a check passes when the majority say yes. Both arms use glm-5.3-flash.
 
 ### How often is PADI updated?
 

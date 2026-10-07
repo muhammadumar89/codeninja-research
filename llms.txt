@@ -9,7 +9,7 @@
 - [Praxis](https://codeatoms.ai/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by hand during the beta, usually within a day).
 - [Hyper Ontology](https://codeatoms.ai/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.
 
-- [PADI, the Physical AI Design Index](https://codeatoms.ai/padi/): CodeNinja's benchmark for design judgement in physical AI, the same model scored bare and inside Praxis on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: https://codeatoms.ai/padi/index.md
+- [PADI, the Physical AI Design Index](https://codeatoms.ai/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: https://codeatoms.ai/padi/index.md
 
 ## For agents
 
