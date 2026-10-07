@@ -48,8 +48,8 @@ CAPS = [
 ]
 
 START = [
-    ("Design a system on Praxis", "Sign up, describe the operation, and Praxis returns a complete design. During the beta every account is approved by hand, usually within a day.",
-     None, [("Join the Praxis beta", brand.SIGNUP), ("Sign in", brand.SIGNIN)]),
+    ("Design a system on Praxis", "Unlock free access, paste a requirement, and Praxis returns a complete system design. Every account is approved by CodeNinja, usually within a day.",
+     None, [(brand.FREE, brand.SIGNUP), ("Sign in", brand.SIGNIN)]),
     ("Give your coding agent every design", "The MCP server lists, searches and reads the published designs: object models, model and hardware registers, cost lines and full papers.",
      'claude mcp add codeninja-research -- uvx --from "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=mcp-server" codeninja-research-mcp',
      [("MCP server reference", f"{BASE}/developer/reference/mcp-server/")]),

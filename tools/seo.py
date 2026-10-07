@@ -171,7 +171,7 @@ BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items
 def bar():
     nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
     return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar"><a class="brand" href="{BASE}/" aria-label="CodeNinja Atoms home">{brand.LOGO}<span class="atoms">Atoms</span></a>'
-            f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a class="join" href="{brand.SIGNUP}">Join the Praxis beta</a></nav></div>{B1}')
+            f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a class="join" href="{brand.SIGNUP}">{brand.FREE}</a></nav></div>{B1}')
 
 
 def foot(slug, ds):

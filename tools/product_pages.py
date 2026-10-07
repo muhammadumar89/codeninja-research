@@ -25,7 +25,17 @@ def designs():
 CSS = """
 section.film.hero h1.prod{font-size:clamp(38px,5.6vw,80px);line-height:1.02;letter-spacing:-.032em;max-width:19ch}
 section.film.hero .cta{justify-content:center}
-section.film.hero p.plans-line{margin:22px auto 0;max-width:52ch;text-transform:none;letter-spacing:.01em;font-size:12.5px;color:rgba(242,242,240,.78)}
+section.film.hero p.hero-line{margin:4px auto 0;max-width:58ch;text-align:center}
+.pwrap{max-width:var(--max);margin:0 auto;padding:128px var(--gutter)}.phead{display:grid;grid-template-columns:1fr 1fr;gap:24px 64px;align-items:end;padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid var(--rule-l)}
+.phead h2{font-size:clamp(32px,4.4vw,60px);margin:.2em 0 0;max-width:16ch}.phead>p{margin:0;color:var(--muted-l);font-size:17px;line-height:1.6;max-width:50ch}
+.walk{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px 32px}.walk li{border-top:1px solid var(--ink);padding-top:16px}
+.walk .n{font-family:var(--mono);font-size:11px;color:var(--muted-l)}.walk h3,.ent h3{font-weight:400;font-size:22px;line-height:1.2;letter-spacing:-.02em;color:var(--ink);margin:10px 0 8px}
+.walk p,.ent p{margin:0;color:var(--muted-l);font-size:15.5px;line-height:1.6}
+.ent{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.ent>div{border-top:1px solid var(--ink);padding-top:16px}
+.pfoot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:56px}.pfoot p{margin:0;color:var(--ink);font-size:17px}
+.pline{padding-top:96px;padding-bottom:96px}.pline .big{font-weight:300;font-size:clamp(24px,2.8vw,38px);line-height:1.2;letter-spacing:-.02em;color:var(--ink);max-width:34ch;margin:12px 0 28px}
+@media (max-width:1000px){.walk,.ent{grid-template-columns:1fr 1fr}}
+@media (max-width:820px){.pwrap{padding:88px var(--gutter)}.phead,.walk,.ent{grid-template-columns:1fr}}
 .doc{max-width:920px;margin:0 auto;padding:128px var(--gutter) 128px;font-size:17px;line-height:1.68;color:rgba(30,31,43,.88)}
 .doc .lead{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.7vw,36px);line-height:1.3;letter-spacing:-.015em;color:var(--ink);margin:0 0 48px}
 .doc .lead a{text-decoration-thickness:1px;text-underline-offset:5px}
@@ -54,9 +64,9 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 SHORT = {"praxis": "Praxis: Design Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: From Design to Living System | CodeNinja Atoms"}
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
-ACCESS = {"praxis": "Praxis is the platform these designs were made on, and it is now open to outside engineers in beta.",
+ACCESS = {"praxis": "Every design on this site was made on Praxis. Engineers start free; organisations talk to our commercial team.",
           "hyper-ontology": "Hyper Ontology turns a Praxis design into a living system. It is in beta with a small number of teams; the way in is a Praxis account."}
-ACCESS_NOTE = {"praxis": ("Having trouble?", "Praxis beta"), "hyper-ontology": ("Asking about Hyper Ontology?", "Hyper Ontology")}
+ACCESS_NOTE = {"praxis": ("Having trouble?", "Praxis"), "hyper-ontology": ("Asking about Hyper Ontology?", "Hyper Ontology")}
 
 
 def page(slug, title, desc, body, ld):
@@ -75,16 +85,40 @@ def page(slug, title, desc, body, ld):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav)}
 <main>
-<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">Join the Praxis beta</a><a class="btn" href="{brand.SIGNIN}">Sign in</a></div>{PLANS_LINE if slug == "praxis" else ""}</div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{('<h1 class="prod">' + E(HERO[slug][0]) + '</h1><p class="lede hero-line">' + E(HERO[slug][1]) + '</p>') if slug in HERO else h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">{brand.FREE}</a>{f'<a class="btn" href="{brand.COMMERCIAL}">{brand.TALK}</a>' if slug == "praxis" else f'<a class="btn" href="{brand.SIGNIN}">Sign in</a>'}</div></div><a class="scroll" href="#{"engineers" if slug == "praxis" else "overview"}">Scroll to explore{brand.ARROW}</a></section>
+{praxis_top() if slug == "praxis" else ""}
 <section class="light" id="overview"><div class="doc">
 {lead}
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
 </div></section>
-<section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">Praxis beta</p><h2>Design for the physical world</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.access_block(*ACCESS_NOTE[slug])}</div></div></section>
+<section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">{FORM[slug]}</p><h2>Design for the physical world</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.access_block(*ACCESS_NOTE[slug])}</div></div></section>
 </main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
-PLANS_LINE = '<p class="mono plans-line">Praxis has two plans, Engineer and Enterprise. You choose when you sign up; every account is approved by CodeNinja.</p>'
+HERO = {"praxis": ("Design physical AI systems.", "Praxis reads a requirement, reasons over regulations, hardware, case studies and reference architectures, and writes a system design an engineer can build from.")}
+# The first hour, step by step: what an engineer does on a free account (from the platform's handoff of 8 Oct 2026).
+WALK = [("Paste a requirement", "A port terminal, a mine haul road, a warehouse: paste what the operator sent, in their own words."),
+        ("Answer six questions", "Praxis asks for what the requirement leaves out, and nothing more."),
+        ("Read the plan with its reasons", "Every choice in the plan arrives with the reason behind it and the record it stands on."),
+        ("Open the architecture and the live simulation", "See the layered architecture, then watch the operation run on the design before anything is built."),
+        ("Download the System Design Specification", "Word and PDF, ready for the engineers who will build it."),
+        ("Export the object model to Hyper Ontology", "One hyper-ontology/1 package, ready to stand up over your own systems of record.")]
+ENTERPRISE = [("Your organisation's own space", "Proposals and functional specifications in your own brand, and an admin who invites the team."),
+              ("Deployed where you decide", "On our cloud, in your cloud, or in your own data centre. Your data and your models never leave your control."),
+              ("Memory kept to you", "Your organisation's memory, voice and precedents stay with your organisation.")]
+
+
+def praxis_top():
+    steps = "".join(f'<li><span class="n">{i:02d}</span><h3>{E(t)}</h3><p>{E(d)}</p></li>' for i, (t, d) in enumerate(WALK, 1))
+    ent = "".join(f'<div><h3>{E(t)}</h3><p>{E(d)}</p></div>' for t, d in ENTERPRISE)
+    return (f'<section class="light" id="engineers"><div class="pwrap"><div class="phead"><div><p class="eyebrow">For engineers</p><h2>Your first hour on Praxis</h2></div>'
+            f'<p>One requirement in, a system design out. This is what a free account does on day one.</p></div><ol class="walk">{steps}</ol>'
+            f'<div class="pfoot"><p>Free developer access. Private by default, your name on the document.</p><a class="btn solid" href="{brand.SIGNUP}">{brand.FREE}</a></div></div></section>'
+            f'<section class="light alt" id="padi-line"><div class="pwrap pline"><p class="eyebrow">Measured</p><p class="big">Praxis is measured every RSI loop against frontier AI on its own, on fresh tasks across 13 industries. '
+            f'The score is published as a trajectory, not a claim.</p><a class="btn" href="{BASE}/padi/">See PADI</a></div></section>'
+            f'<section class="light" id="enterprise"><div class="pwrap"><div class="phead"><div><p class="eyebrow">For enterprises</p><h2>Sovereign and custom deployments</h2></div>'
+            f'<p>For organisations that design physical AI for their own operations, or for their customers.</p></div><div class="ent">{ent}</div>'
+            f'<div class="pfoot"><a class="btn solid" href="{brand.COMMERCIAL}">{brand.TALK}</a></div></div></section>')
 
 
 def faq(qs): return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
@@ -97,11 +131,11 @@ def main():
     pq = [("What designed the Vertical-Driven Architectures reference architectures?", f"Praxis, CodeNinja's platform for designing physical AI systems. All {len(ds)} designs in the series were produced on Praxis, and chapter 11 of each paper shows how Praxis contextualized and reasoned that design."),
           ("What does Praxis produce from a requirement?", "A complete system design for physical AI: a scope baseline, a layered architecture, an object model packaged for Hyper Ontology, a model and equipment register sized by memory arithmetic, a rollout with gates, a cost comparison, a live simulation, a proposal and functional specification, and a research paper."),
           ("How does Praxis reason?", "It loads the requirement and the sector's knowledge as context and reasons through eight lenses: first principles, case studies, tooling and recency, rules and regulations, approach, history, domain fusion, and hardware and equipment. Every claim must stand on a record, and a lens with nothing to cite says so instead of guessing."),
-          ("Is Praxis available?", "Praxis is in beta and open to outside engineers. Sign up at https://app.codeatoms.ai/signup; every account is approved by CodeNinja, usually within a day.")]
+          ("Is Praxis available?", "Yes. Engineers unlock free developer access at https://app.codeatoms.ai/signup, and every account is approved by CodeNinja. Organisations that want sovereign or custom deployments talk to the commercial team at https://app.codeatoms.ai/signup?plan=enterprise.")]
     pbody = f"""<p class="eyebrow">CodeNinja · Praxis</p>
 <h1>Praxis: design physical AI systems the way a ten-year domain engineer would</h1>
 <p class="lead">Praxis turns an operator's requirement into a complete system design for physical AI: what to sense, where each model runs, what the object model holds, what it costs, and who approves every action. Every paper in the <a href="{BASE}/">Vertical-Driven Architectures</a> series was designed on Praxis.</p>
-<div class="box"><strong>Status: beta.</strong> Open to outside engineers. Praxis has two plans, Engineer and Enterprise; you choose when you <a href="https://app.codeatoms.ai/signup">sign up</a>, and every account is approved by CodeNinja.</div>
+<div class="box"><strong>Two ways in.</strong> Engineers <a href="https://app.codeatoms.ai/signup">unlock free access</a>; organisations <a href="https://app.codeatoms.ai/signup?plan=enterprise">talk to our commercial team</a> about sovereign and custom deployments. Every account is approved by CodeNinja.</div>
 <h2>What Praxis produces</h2>
 <div class="grid">
 <div class="card"><h3>Scope and rollout</h3>A scope baseline with phases that carry item counts and gates, never durations, and an honest count of which requirements are covered.</div>
@@ -134,7 +168,7 @@ def main():
     pld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Praxis", "applicationCategory": "DeveloperApplication",
             "description": "CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, reasoned through eight lenses with every claim on a record.",
             "url": f"{BASE}/praxis/", "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
-            "releaseNotes": "Beta. Sign up at https://app.codeatoms.ai/signup; every account is approved by hand during the beta.", "url": "https://app.codeatoms.ai/", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
+            "releaseNotes": "Free developer access at https://app.codeatoms.ai/signup; sovereign and custom deployments through the commercial team. Every account is approved by CodeNinja.", "url": "https://app.codeatoms.ai/", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
             "subjectOf": [{"@type": "TechArticle", "headline": d["title"], "url": f"{BASE}/{d['slug']}/"} for d in ds]}, faq(pq)]
     (ROOT / "praxis" / "index.html").write_text(page("praxis", "Praxis: design physical AI systems the way a ten-year domain engineer would",
         "Praxis is CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, from sensing and models to object model, cost and approvals.", pbody, pld), encoding="utf-8")
