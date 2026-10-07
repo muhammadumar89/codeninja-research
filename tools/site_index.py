@@ -110,7 +110,7 @@ FAQ = [
     ("What does sovereign AI mean here?",
      "The system runs on hardware the operator owns, inside its own country, on open-weight models whose licences let the operator keep and change them, so no operational data has to leave and no single outside AI company sits in the serving path."),
     ("What is Praxis?",
-     "Praxis is CodeNinja's platform for designing physical AI systems. It turns an operator's requirement into a complete design, reasoned through eight lenses from first principles to hardware. Every design on this site was made on Praxis. It is in beta."),
+     "Praxis is CodeNinja's platform for designing physical AI systems. It turns an operator's requirement into a complete design, reasoned through eight lenses from first principles to hardware. Every design on this site was made on Praxis. It is in beta: sign up at https://app.codeatoms.ai/signup, and during the beta every account is approved by hand, usually within a day."),
     ("What is Hyper Ontology?",
      "Hyper Ontology is CodeNinja's ontology platform. It imports the object model a Praxis design publishes (format hyper-ontology/1) and stands it up as a living system over the operator's own systems of record. It is in beta."),
     ("Can I reuse the designs?",
@@ -202,7 +202,7 @@ def landing(ps, sols):
 <li><b><a href="llms.txt">llms.txt</a></b> · <a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">sitemap</a></li>
 <li><b><a href="https://zenodo.org/communities/physical-ai-reference-architectures">Zenodo community</a></b><br>every paper with its DOI, in one place</li>
 <li><b><a href="https://github.com/muhammadumar89/codeninja-research">Source files on GitHub</a></b><br>papers, packages, the package format and the loader</li></ul></div></div></section>
-{film("desert-flare", f'<div class="split"><div><p class="mono">Praxis beta</p><h2>Design for the physical world.</h2><p class="lede">Every design here was made on Praxis, and Praxis is opening to outside engineers in beta. Tell us the operation you want to design, or the systems you want to make living with Hyper Ontology, and we will reply with your place on the list.</p></div><div>{brand.form("both")}</div></div>', cls="access", sid="access")}
+{film("desert-flare", f'<div class="split"><div><p class="mono">Praxis beta</p><h2>Design for the physical world.</h2><p class="lede">Every design here was made on Praxis, and Praxis is now open to outside engineers in beta.</p></div><div>{brand.access_block()}</div></div>', cls="access", sid="access")}
 </main>
 <footer class="site"><div class="wrapf">{brand.footer_brand("./")}<span>CodeNinja Atoms is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
 
@@ -251,7 +251,7 @@ def main():
             "> The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures", "",
             "> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.", "",
             "## Products", "",
-            f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta, access by request.",
+            f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by hand during the beta, usually within a day).",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
             "## For agents", "",
             "- [MCP server](https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server): codeninja-research-mcp exposes list_designs, get_design, read_paper and find over every design.", "",

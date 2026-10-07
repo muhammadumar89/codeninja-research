@@ -53,8 +53,9 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 SHORT = {"praxis": "Praxis: Design Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: From Design to Living System | CodeNinja Atoms"}
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
-ACCESS = {"praxis": "Praxis is the platform these designs were made on, and it is opening to outside engineers in beta. Tell us the operation you want to design, and we will reply with your place on the list.",
-          "hyper-ontology": "Hyper Ontology turns a Praxis design into a living system, and it is opening to outside teams in beta. Tell us the systems you want to make living, and we will reply with your place on the list."}
+ACCESS = {"praxis": "Praxis is the platform these designs were made on, and it is now open to outside engineers in beta.",
+          "hyper-ontology": "Hyper Ontology turns a Praxis design into a living system. It is in beta with a small number of teams; the way in is a Praxis account."}
+ACCESS_NOTE = {"praxis": ("Having trouble?", "Praxis beta"), "hyper-ontology": ("Asking about Hyper Ontology?", "Hyper Ontology")}
 
 
 def page(slug, title, desc, body, ld):
@@ -73,12 +74,12 @@ def page(slug, title, desc, body, ld):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav)}
 <main>
-<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="#access">Join the Praxis beta</a></div></div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">Join the Praxis beta</a><a class="btn" href="{brand.SIGNIN}">Sign in</a></div></div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
 <section class="light" id="overview"><div class="doc">
 {lead}
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
 </div></section>
-<section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">Praxis beta</p><h2>Design for the physical world</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.form(FORM[slug])}</div></div></section>
+<section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">Praxis beta</p><h2>Design for the physical world</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.access_block(*ACCESS_NOTE[slug])}</div></div></section>
 </main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
@@ -92,7 +93,7 @@ def main():
     pq = [("What designed the Vertical-Driven Architectures reference architectures?", f"Praxis, CodeNinja's platform for designing physical AI systems. All {len(ds)} designs in the series were produced on Praxis, and chapter 11 of each paper shows how Praxis contextualized and reasoned that design."),
           ("What does Praxis produce from a requirement?", "A complete system design for physical AI: a scope baseline, a layered architecture, an object model packaged for Hyper Ontology, a model and equipment register sized by memory arithmetic, a rollout with gates, a cost comparison, a live simulation, a proposal and functional specification, and a research paper."),
           ("How does Praxis reason?", "It loads the requirement and the sector's knowledge as context and reasons through eight lenses: first principles, case studies, tooling and recency, rules and regulations, approach, history, domain fusion, and hardware and equipment. Every claim must stand on a record, and a lens with nothing to cite says so instead of guessing."),
-          ("Is Praxis available?", "Praxis is in beta. CodeNinja's forward deployed engineers use it in house, and access for outside engineering teams is by request.")]
+          ("Is Praxis available?", "Praxis is in beta and open to outside engineers. Sign up at https://app.codeatoms.ai/signup; during the beta every account is approved by hand, usually within a day.")]
     pbody = f"""<p class="eyebrow">CodeNinja · Praxis</p>
 <h1>Praxis: design physical AI systems the way a ten-year domain engineer would</h1>
 <p class="lead">Praxis turns an operator's requirement into a complete system design for physical AI: what to sense, where each model runs, what the object model holds, what it costs, and who approves every action. Every paper in the <a href="{BASE}/">Vertical-Driven Architectures</a> series was designed on Praxis.</p>
@@ -129,7 +130,7 @@ def main():
     pld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Praxis", "applicationCategory": "DeveloperApplication",
             "description": "CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, reasoned through eight lenses with every claim on a record.",
             "url": f"{BASE}/praxis/", "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
-            "releaseNotes": "Beta. Access by request.", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
+            "releaseNotes": "Beta. Sign up at https://app.codeatoms.ai/signup; every account is approved by hand during the beta.", "url": "https://app.codeatoms.ai/", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
             "subjectOf": [{"@type": "TechArticle", "headline": d["title"], "url": f"{BASE}/{d['slug']}/"} for d in ds]}, faq(pq)]
     (ROOT / "praxis" / "index.html").write_text(page("praxis", "Praxis: design physical AI systems the way a ten-year domain engineer would",
         "Praxis is CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, from sensing and models to object model, cost and approvals.", pbody, pld), encoding="utf-8")
