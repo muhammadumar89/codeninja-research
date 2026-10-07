@@ -257,7 +257,7 @@ def main():
             "> The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures", "",
             "> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.", "",
             "## Products", "",
-            f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by hand during the beta, usually within a day).",
+            f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by CodeNinja, usually within a day). Pricing: Engineer $39 a month (free to start), Enterprise $600 a seat a month billed annually, platform agreement from $1M a year; tokens are the only meter. Details: https://codeatoms.ai/praxis/#pricing",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
             f"- [PADI, the Physical AI Design Index]({BASE}/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: {BASE}/padi/index.md", "",
             "## For agents", "",
