@@ -33,6 +33,8 @@ section.film.hero p.hero-line{margin:4px auto 0;max-width:58ch;text-align:center
 .walk p,.ent p{margin:0;color:var(--muted-l);font-size:15.5px;line-height:1.6}
 .ent{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.ent>div{border-top:1px solid var(--ink);padding-top:16px}
 .pfoot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:56px}.pfoot p{margin:0;color:var(--ink);font-size:17px}
+.filmsec{background:var(--night);color:var(--on-dark)}.filmsec video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border:1px solid var(--rule-d)}
+.phead.dark{border-bottom-color:var(--rule-d)}.phead.dark>p{color:var(--muted-d)}.filmsec h2{color:var(--on-dark)}
 .pline{padding-top:96px;padding-bottom:96px}.pline .big{font-weight:300;font-size:clamp(24px,2.8vw,38px);line-height:1.2;letter-spacing:-.02em;color:var(--ink);max-width:34ch;margin:12px 0 28px}
 @media (max-width:1000px){.walk,.ent{grid-template-columns:1fr 1fr}}
 @media (max-width:820px){.pwrap{padding:88px var(--gutter)}.phead,.walk,.ent{grid-template-columns:1fr}}
@@ -85,8 +87,8 @@ def page(slug, title, desc, body, ld):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav)}
 <main>
-<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{('<h1 class="prod">' + E(HERO[slug][0]) + '</h1><p class="lede hero-line">' + E(HERO[slug][1]) + '</p>') if slug in HERO else h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">{brand.FREE}</a>{f'<a class="btn" href="{brand.COMMERCIAL}">{brand.TALK}</a>' if slug == "praxis" else f'<a class="btn" href="{brand.SIGNIN}">Sign in</a>'}</div></div><a class="scroll" href="#{"engineers" if slug == "praxis" else "overview"}">Scroll to explore{brand.ARROW}</a></section>
-{praxis_top() if slug == "praxis" else ""}
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{('<h1 class="prod">' + E(HERO[slug][0]) + '</h1><p class="lede hero-line">' + E(HERO[slug][1]) + '</p>') if slug in HERO else h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">{brand.FREE}</a>{f'<a class="btn" href="{brand.COMMERCIAL}">{brand.TALK}</a><a class="btn" href="#watch">Watch it work</a>' if slug == "praxis" else f'<a class="btn" href="{brand.SIGNIN}">Sign in</a>'}</div></div><a class="scroll" href="#{"engineers" if slug == "praxis" else "overview"}">Scroll to explore{brand.ARROW}</a></section>
+{(film_section() + praxis_top()) if slug == "praxis" else ""}
 <section class="light" id="overview"><div class="doc">
 {lead}
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
@@ -106,6 +108,16 @@ WALK = [("Paste a requirement", "A port terminal, a mine haul road, a warehouse:
 ENTERPRISE = [("Your organisation's own space", "Proposals and functional specifications in your own brand, and an admin who invites the team."),
               ("Deployed where you decide", "On our cloud, in your cloud, or in your own data centre. Your data and your models never leave your control."),
               ("Memory kept to you", "Your organisation's memory, voice and precedents stay with your organisation.")]
+
+
+FILM = ("Umar Bilal, cofounder of CodeNinja, walks through Praxis on a real kind of requirement, an open pit mine: "
+        "the ask goes in, the sector is resolved, and out come the system design, the architecture, a live simulation and the proposal.")
+
+
+def film_section():
+    return (f'<section class="filmsec" id="watch"><div class="pwrap"><div class="phead dark"><div><p class="eyebrow">Praxis in three minutes</p><h2>Watch it work</h2></div><p>{E(FILM)}</p></div>'
+            f'<video controls playsinline preload="none" poster="{BASE}/assets/video/praxis-walkthrough.jpg" width="1280" height="720">'
+            f'<source src="{BASE}/assets/video/praxis-walkthrough.mp4" type="video/mp4"></video></div></section>')
 
 
 def praxis_top():
@@ -169,6 +181,8 @@ def main():
             "description": "CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, reasoned through eight lenses with every claim on a record.",
             "url": f"{BASE}/praxis/", "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
             "releaseNotes": "Free developer access at https://app.codeatoms.ai/signup; sovereign and custom deployments through the commercial team. Every account is approved by CodeNinja.", "url": "https://app.codeatoms.ai/", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
+            "video": {"@type": "VideoObject", "name": "Praxis in three minutes", "description": FILM, "thumbnailUrl": f"{BASE}/assets/video/praxis-walkthrough.jpg",
+                      "contentUrl": f"{BASE}/assets/video/praxis-walkthrough.mp4", "uploadDate": "2026-10-08", "duration": "PT3M1S", "embedUrl": f"{BASE}/praxis/#watch"},
             "subjectOf": [{"@type": "TechArticle", "headline": d["title"], "url": f"{BASE}/{d['slug']}/"} for d in ds]}, faq(pq)]
     (ROOT / "praxis" / "index.html").write_text(page("praxis", "Praxis: design physical AI systems the way a ten-year domain engineer would",
         "Praxis is CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, from sensing and models to object model, cost and approvals.", pbody, pld), encoding="utf-8")
