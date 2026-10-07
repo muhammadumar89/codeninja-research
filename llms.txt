@@ -6,7 +6,7 @@
 
 ## Products
 
-- [Praxis](https://codeatoms.ai/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by CodeNinja, usually within a day). Pricing: Engineer $39 a month (free to start), Enterprise $600 a seat a month billed annually, platform agreement from $1M a year; tokens are the only meter. Details: https://codeatoms.ai/praxis/#pricing
+- [Praxis](https://codeatoms.ai/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Beta: sign up at https://app.codeatoms.ai/signup (every account is approved by CodeNinja, usually within a day). Two plans, Engineer and Enterprise, chosen at signup.
 - [Hyper Ontology](https://codeatoms.ai/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.
 
 - [PADI, the Physical AI Design Index](https://codeatoms.ai/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: https://codeatoms.ai/padi/index.md

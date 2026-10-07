@@ -25,6 +25,7 @@ def designs():
 CSS = """
 section.film.hero h1.prod{font-size:clamp(38px,5.6vw,80px);line-height:1.02;letter-spacing:-.032em;max-width:19ch}
 section.film.hero .cta{justify-content:center}
+section.film.hero p.plans-line{margin:22px auto 0;max-width:52ch;text-transform:none;letter-spacing:.01em;font-size:12.5px;color:rgba(242,242,240,.78)}
 .doc{max-width:920px;margin:0 auto;padding:128px var(--gutter) 128px;font-size:17px;line-height:1.68;color:rgba(30,31,43,.88)}
 .doc .lead{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.7vw,36px);line-height:1.3;letter-spacing:-.015em;color:var(--ink);margin:0 0 48px}
 .doc .lead a{text-decoration-thickness:1px;text-underline-offset:5px}
@@ -47,14 +48,6 @@ code{font-family:var(--mono);background:rgba(30,31,43,.06);padding:1px 5px;font-
 pre{font-family:var(--mono);background:rgba(30,31,43,.05);padding:14px;overflow:auto;font-size:13px}
 section.film.access{min-height:0;align-items:stretch}section.film.access::after{background:linear-gradient(180deg,rgba(11,12,16,.8),rgba(11,12,16,.9))}
 section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 64px;padding:128px var(--gutter)}
-#pricing .pwrap{max-width:var(--max);margin:0 auto;padding:128px var(--gutter)}#pricing h2{font-size:clamp(32px,4.4vw,60px);margin:.2em 0 48px}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.plan{display:flex;flex-direction:column;border-top:1px solid var(--ink);padding-top:18px;color:var(--muted-l);font-size:15px;line-height:1.55}
-.plan .price{margin:6px 0 22px;color:var(--muted-l)}.plan .price b{display:block;font-weight:300;font-size:clamp(44px,4.6vw,64px);line-height:1;letter-spacing:-.04em;color:var(--ink);margin-bottom:8px}
-.plan dl{margin:0 0 18px;border-top:1px solid var(--rule-l)}.plan dl div{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule-l)}
-.plan dt{font-family:var(--mono);font-size:13px;color:var(--ink)}.plan dd{margin:0}
-.plan ul{list-style:none;padding:0;margin:0 0 28px}.plan li{padding:8px 0 8px 16px;position:relative}.plan li::before{content:"";position:absolute;left:0;top:17px;width:6px;height:1px;background:var(--ink)}
-.plan .btn{margin-top:auto;align-self:flex-start}.meter{max-width:72ch;margin:40px 0 0;color:var(--muted-l);font-size:15px}.meter+.meter{margin-top:8px}
-@media (max-width:1000px){.plans{grid-template-columns:1fr;gap:56px}#pricing .pwrap{padding:88px var(--gutter)}}
 @media (max-width:820px){.doc{padding:80px var(--gutter);font-size:16px}.doc h2{margin-top:72px}.grid{grid-template-columns:1fr}section.film.access .inner{grid-template-columns:1fr;padding:88px var(--gutter)}}
 """
 
@@ -82,56 +75,16 @@ def page(slug, title, desc, body, ld):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav)}
 <main>
-<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">Join the Praxis beta</a>{'<a class="btn" href="#pricing">Pricing</a>' if slug == "praxis" else ""}<a class="btn" href="{brand.SIGNIN}">Sign in</a></div></div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">Join the Praxis beta</a><a class="btn" href="{brand.SIGNIN}">Sign in</a></div>{PLANS_LINE if slug == "praxis" else ""}</div><a class="scroll" href="#overview">Scroll to explore{brand.ARROW}</a></section>
 <section class="light" id="overview"><div class="doc">
 {lead}
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
 </div></section>
-{pricing() if slug == "praxis" else ""}
 <section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">Praxis beta</p><h2>Design for the physical world</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.access_block(*ACCESS_NOTE[slug])}</div></div></section>
 </main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
-# Pricing, copied from the platform's handoff of 7 Oct 2026 (live twin: https://app.codeatoms.ai/api/plans).
-# Links only: nothing on the site charges anyone; every account is approved by CodeNinja.
-PLANS = [
-    {"name": "Engineer", "price": "$39", "per": "a month, or $390 a year",
-     "nums": [("1", "seat"), ("50M", "tokens a month"), ("about 25", "designs a month")],
-     "items": ["Free to start: 5M tokens, two designs, no card",
-               "System Design Specification (Word and PDF), architecture, scope, simulation, Hyper Ontology export",
-               "Private by default, your name on the document", "Over the limit: $1 per extra 1M tokens"],
-     "button": ("Start free", "https://app.codeatoms.ai/signup?plan=engineer")},
-    {"name": "Enterprise", "price": "$600", "per": "a seat a month, billed annually",
-     "nums": [("5", "seats minimum ($36k a year), add seats any time"), ("150M", "tokens a seat a month, pooled across your house"), ("about 75", "designs a seat a month")],
-     "items": ["Your own house: proposals (PDF, Word, deck) and Functional Specification in your brand, house admin, member invites, usage reporting, isolated memory and voice",
-               "Over the pool: $0.50 per extra 1M tokens, or add a seat",
-               "90 day paid pilot: 5 seats, 3 live tenders, your house built, credited against the annual"],
-     "button": ("Request your house", "https://app.codeatoms.ai/signup?plan=enterprise")},
-    {"name": "Platform agreement", "price": "from $1M", "per": "a year, paid upfront",
-     "nums": [("100", "seats"), ("15B", "tokens a year"), ("about 7,500", "designs a year")],
-     "items": ["Sovereign deployment in your cloud or data centre, your keys",
-               "House build, embedded engineers for the first quarter, private corpus, named support"],
-     "button": ("Talk to us", "mailto:hello@codeninjaconsulting.com?subject=Praxis%20platform%20agreement")},
-]
-METER = "Tokens are the only meter. Allowances reset monthly. Warning at 80 percent, new work pauses at 100 percent, nothing running is cut off."
-APPROVAL = "Every account is approved by CodeNinja, usually within a day. Paid plans are confirmed with us by email and invoiced."
-
-
-def pricing():
-    cards = "".join(
-        f'<div class="plan"><p class="eyebrow">{E(p["name"])}</p><p class="price"><b>{E(p["price"])}</b> {E(p["per"])}</p>'
-        f'<dl>' + "".join(f'<div><dt>{E(n)}</dt><dd>{E(t)}</dd></div>' for n, t in p["nums"]) + '</dl>'
-        f'<ul>' + "".join(f'<li>{E(i)}</li>' for i in p["items"]) + '</ul>'
-        f'<a class="btn{" solid" if i < 2 else ""}" href="{E(p["button"][1])}">{E(p["button"][0])}</a></div>' for i, p in enumerate(PLANS))
-    return (f'<section class="light alt" id="pricing"><div class="pwrap"><p class="eyebrow">Praxis</p><h2>Pricing</h2>'
-            f'<div class="plans">{cards}</div><p class="meter">{E(METER)}</p><p class="meter">{E(APPROVAL)}</p></div></section>')
-
-
-def offers():
-    return [{"@type": "Offer", "name": "Engineer", "price": "39", "priceCurrency": "USD", "url": "https://app.codeatoms.ai/signup?plan=engineer",
-             "priceSpecification": {"@type": "UnitPriceSpecification", "price": "39", "priceCurrency": "USD", "unitText": "month"}},
-            {"@type": "Offer", "name": "Enterprise", "price": "600", "priceCurrency": "USD", "url": "https://app.codeatoms.ai/signup?plan=enterprise",
-             "priceSpecification": {"@type": "UnitPriceSpecification", "price": "600", "priceCurrency": "USD", "unitText": "seat per month, billed annually"}}]
+PLANS_LINE = '<p class="mono plans-line">Praxis has two plans, Engineer and Enterprise. You choose when you sign up; every account is approved by CodeNinja.</p>'
 
 
 def faq(qs): return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
@@ -144,12 +97,11 @@ def main():
     pq = [("What designed the Vertical-Driven Architectures reference architectures?", f"Praxis, CodeNinja's platform for designing physical AI systems. All {len(ds)} designs in the series were produced on Praxis, and chapter 11 of each paper shows how Praxis contextualized and reasoned that design."),
           ("What does Praxis produce from a requirement?", "A complete system design for physical AI: a scope baseline, a layered architecture, an object model packaged for Hyper Ontology, a model and equipment register sized by memory arithmetic, a rollout with gates, a cost comparison, a live simulation, a proposal and functional specification, and a research paper."),
           ("How does Praxis reason?", "It loads the requirement and the sector's knowledge as context and reasons through eight lenses: first principles, case studies, tooling and recency, rules and regulations, approach, history, domain fusion, and hardware and equipment. Every claim must stand on a record, and a lens with nothing to cite says so instead of guessing."),
-          ("Is Praxis available?", "Praxis is in beta and open to outside engineers. Sign up at https://app.codeatoms.ai/signup; every account is approved by CodeNinja, usually within a day."),
-          ("How much does Praxis cost?", "Engineer is $39 a month or $390 a year for one seat and 50M tokens a month, about 25 designs, and is free to start with 5M tokens and two designs, no card. Enterprise is $600 a seat a month billed annually, five seats minimum, with 150M tokens a seat a month pooled across your own house. A platform agreement for sovereign deployment in your cloud or data centre starts at $1M a year. Tokens are the only meter.")]
+          ("Is Praxis available?", "Praxis is in beta and open to outside engineers. Sign up at https://app.codeatoms.ai/signup; every account is approved by CodeNinja, usually within a day.")]
     pbody = f"""<p class="eyebrow">CodeNinja · Praxis</p>
 <h1>Praxis: design physical AI systems the way a ten-year domain engineer would</h1>
 <p class="lead">Praxis turns an operator's requirement into a complete system design for physical AI: what to sense, where each model runs, what the object model holds, what it costs, and who approves every action. Every paper in the <a href="{BASE}/">Vertical-Driven Architectures</a> series was designed on Praxis.</p>
-<div class="box"><strong>Status: beta.</strong> Open to outside engineers. Free to start, then from $39 a month: see <a href="#pricing">pricing</a>. Every account is approved by CodeNinja, usually within a day.</div>
+<div class="box"><strong>Status: beta.</strong> Open to outside engineers. Praxis has two plans, Engineer and Enterprise; you choose when you <a href="https://app.codeatoms.ai/signup">sign up</a>, and every account is approved by CodeNinja.</div>
 <h2>What Praxis produces</h2>
 <div class="grid">
 <div class="card"><h3>Scope and rollout</h3>A scope baseline with phases that carry item counts and gates, never durations, and an honest count of which requirements are covered.</div>
@@ -182,7 +134,7 @@ def main():
     pld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Praxis", "applicationCategory": "DeveloperApplication",
             "description": "CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, reasoned through eight lenses with every claim on a record.",
             "url": f"{BASE}/praxis/", "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
-            "releaseNotes": "Beta. Sign up at https://app.codeatoms.ai/signup; every account is approved by hand during the beta.", "url": "https://app.codeatoms.ai/", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"}, "offers": offers(),
+            "releaseNotes": "Beta. Sign up at https://app.codeatoms.ai/signup; every account is approved by hand during the beta.", "url": "https://app.codeatoms.ai/", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
             "subjectOf": [{"@type": "TechArticle", "headline": d["title"], "url": f"{BASE}/{d['slug']}/"} for d in ds]}, faq(pq)]
     (ROOT / "praxis" / "index.html").write_text(page("praxis", "Praxis: design physical AI systems the way a ten-year domain engineer would",
         "Praxis is CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, from sensing and models to object model, cost and approvals.", pbody, pld), encoding="utf-8")
