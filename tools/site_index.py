@@ -113,7 +113,7 @@ FAQ = [
     ("What does sovereign AI mean here?",
      "The system runs on hardware the operator owns, inside its own country, on open-weight models whose licences let the operator keep and change them, so no operational data has to leave and no single outside AI company sits in the serving path."),
     ("What is Praxis?",
-     "Praxis is CodeNinja's platform for designing physical AI systems. It turns an operator's requirement into a complete design, reasoned through eight lenses from first principles to hardware. Every design on this site was made on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup, and every account is approved by CodeNinja; organisations talk to the commercial team about sovereign and custom deployments."),
+     "Praxis is CodeNinja's platform for designing physical AI systems. It turns an operator's requirement into a complete design for physical AI. Every design on this site was made on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup, and every account is approved by CodeNinja; organisations talk to the commercial team about sovereign and custom deployments."),
     ("What is Hyper Ontology?",
      "Hyper Ontology is CodeNinja's ontology platform. It imports the object model a Praxis design publishes (format hyper-ontology/1) and stands it up as a living system over the operator's own systems of record. It is in beta."),
     ("What is PADI?",
@@ -196,7 +196,7 @@ def landing(ps, sols):
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
 {padi_html}
-{film("control-room", '<div><p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2></div><div><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, reasoned through eight lenses from first principles to hardware, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">How Praxis reasons</a></div></div>', cls="two")}
+{film("control-room", '<div><p class="mono">Praxis</p><h2>Design the system a ten-year domain engineer would.</h2></div><div><p class="lede">Praxis turns an operator\'s requirement into a complete design for physical AI, with every claim on a record and a person on every write.</p><div class="cta"><a class="btn" href="praxis/">How Praxis reasons</a></div></div>', cls="two")}
 <section id="watch" class="watch"><div class="wrap"><div class="head"><div><p class="mono">Praxis in three minutes</p><h2>Watch it work</h2></div>
 <p class="lede">Umar Bilal, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.</p></div>
 <video controls playsinline preload="none" poster="assets/video/praxis-walkthrough.jpg" width="1280" height="720"><source src="assets/video/praxis-walkthrough.mp4" type="video/mp4"></video></div></section>

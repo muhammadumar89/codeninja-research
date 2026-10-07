@@ -39,13 +39,9 @@ LIMITS = [
 ]
 FAQ = [
     ("What is the Physical AI Design Index?",
-     "PADI is CodeNinja's benchmark for system design in physical AI. Each task is a short anonymised requirement for an AI system in a real kind of operation, such as a mine, a port, a rail line or a substation, plus yes or no checks. A judge model scores the system design from frontier AI on its own and from the same model inside the Praxis platform."),
-    ("What does PADI measure?",
-     "Whether a system design is complete and sound: what it must state (the systems it reads, where things run, which decisions a person confirms, what phase one must prove), what it must raise (a missing fact asked as a question, thin evidence said out loud) and what it must never do (a part number, an invented saving, a customer name, data leaving the site when residency forbids it)."),
-    ("How is PADI scored?",
-     "Checks passed divided by checks total, for each arm, with no partial credit and no weighting. The judge is glm-4.6 through three lenses (a strict reviewer, a plant engineer and a technical assessor); a check passes when the majority say yes. Both arms use glm-5.3-flash."),
+     "PADI is CodeNinja's benchmark for system design in physical AI. It scores Praxis against frontier AI on its own, on the same short requirements from real kinds of operations such as a mine, a port, a rail line or a substation, across 13 industries in three countries."),
     ("How often is PADI updated?",
-     "Once per RSI loop, on tasks never run before. A third of the task bank is held out for a final blind evaluation and never run in an RSI loop."),
+     "Once per RSI loop, on tasks never run before."),
 ]
 # Family wording for the page: system design terms only.
 LENSES = ["strict reviewer", "plant engineer", "technical assessor"]
@@ -142,7 +138,7 @@ def home_block():
             f'<p class="serif">{E(SHORT)}</p></div>'
             f'<div style="margin-top:48px">{chart(j)}</div>'
             f'<div class="split" style="margin-top:56px"><div>{tiles(j)}<p class="padi-frame">{E(FRAMING)}</p>'
-            f'<div class="cta"><a class="btn solid" href="padi/">Explore the index</a><a class="btn" href="padi/#method">Methodology</a></div></div>'
+            f'<div class="cta"><a class="btn solid" href="padi/">Explore the index</a></div></div>'
             f'<div><p class="mono" style="margin:0 0 14px">Where Praxis leads · checks passed, all RSI loops</p>{industry_list(j, only_ahead=True)}'
             f'<p class="padi-frame"><a href="padi/#industries">All 13 industries</a></p></div></div></div></section>')
     return body, CSS
@@ -204,7 +200,7 @@ def chart(j):
            '<style>.ax{font:400 11px "Geist Mono",monospace;fill:#666874;letter-spacing:.04em}.gl{font:400 11px "Geist Mono",monospace;fill:#1E1F2B;letter-spacing:.04em;text-transform:uppercase}.vl{font:500 12px "Inter Tight",sans-serif}</style>'
            f'{g}{goal}{xs}{pline("bare_pct", "platform_pct", "#9A9BA3")}{pline("platform_pct", "bare_pct", "#1E1F2B")}</svg>')
     return (f'<div class="chart"><div class="padi-key"><span>Praxis platform</span><span class="bare">Frontier AI</span></div><div class="sc">{svg}</div>'
-            '<p class="note">Different tasks each RSI loop, five or six tasks per RSI loop, so RSI loops are not like for like.</p></div>')
+            '</div>')
 
 
 def tables(j):
@@ -213,11 +209,11 @@ def tables(j):
     pb = lambda d: f'{pct(d["platform"], d["of"]):.1f}% <span class="v">vs {pct(d["bare"], d["of"]):.1f}%</span>'
     rows = "".join(f'<tr><td>RSI Loop {c["cycle"]}</td><td>{datetime.date.fromisoformat(c["date"]).strftime("%-d %b %Y")}</td><td class="n">{c["tasks"]}</td><td class="n">{c["checks_total"]}</td>'
                    f'<td class="n">{c["platform_pct"]:.1f}%</td><td class="n">{c["bare_pct"]:.1f}%</td>'
-                   f'<td class="n">{c.get("platform_ahead_on_tasks", 0)} · {c.get("platform_tied_on_tasks", 0)} · {c.get("platform_behind_on_tasks", 0)}</td><td>{E(c["rubric_version"])}</td></tr>' for c in cs)
+                   f'<td class="n">{c.get("platform_ahead_on_tasks", 0)} · {c.get("platform_tied_on_tasks", 0)} · {c.get("platform_behind_on_tasks", 0)}</td></tr>' for c in cs)
     tot = [sum(c.get(k, 0) for c in cs) for k in ("tasks", "platform_ahead_on_tasks", "platform_tied_on_tasks", "platform_behind_on_tasks")]
     rows += (f'<tr class="sum"><td>All RSI loops</td><td></td><td class="n">{tot[0]}</td><td class="n">{C["checks_total"]}</td><td class="n">{C["platform_pct"]:.1f}%</td><td class="n">{C["bare_pct"]:.1f}%</td>'
-             f'<td class="n">{tot[1]} · {tot[2]} · {tot[3]}</td><td></td></tr>')
-    t1 = ('<div class="tw"><table><thead><tr><th>RSI Loop</th><th>Date</th><th>Tasks</th><th>Checks per arm</th><th>Praxis platform</th><th>Frontier AI</th><th>Tasks: platform ahead · tied · behind</th><th>Rubric</th></tr></thead>'
+             f'<td class="n">{tot[1]} · {tot[2]} · {tot[3]}</td></tr>')
+    t1 = ('<div class="tw"><table><thead><tr><th>RSI Loop</th><th>Date</th><th>Tasks</th><th>Checks per arm</th><th>Praxis platform</th><th>Frontier AI</th><th>Tasks: platform ahead · tied · behind</th></tr></thead>'
           f'<tbody>{rows}</tbody></table></div>')
     fam = [x["id"] for x in j["methodology"]["families"]]; flab = {x["id"]: x["label"] for x in j["methodology"]["families"]}
     t2 = ('<div class="tw"><table><thead><tr><th>RSI Loop</th>' + "".join(f'<th>{E(flab[k])}: Praxis vs frontier AI</th>' for k in fam) + '</tr></thead><tbody>'
@@ -230,7 +226,7 @@ def tables(j):
           + "".join(f'<tr><td>{E(lab.get(s, s))}</td><td>RSI Loop {c["cycle"]}</td><td class="n">{v["of"]}</td><td class="n">{f(v["platform"], v["of"])}</td><td class="n">{f(v["bare"], v["of"])}</td></tr>'
                     for s in sorted(lab, key=lambda k: lab[k]) for c in cs for k2, v in c["by_sector"].items() if k2 == s)
           + '</tbody></table></div>')
-    panes = [("p-cycle", "By RSI loop", t1), ("p-ind", "By industry", t4), ("p-fam", "By check family", t2), ("p-cty", "By country", t3)]
+    panes = [("p-cycle", "By RSI loop", t1), ("p-ind", "By industry", t4), ("p-cty", "By country", t3)]
     return ('<div class="tabs" role="tablist" hidden>' + "".join(f'<button type="button" role="tab" data-p="{i}">{E(n)}</button>' for i, n, _ in panes) + '</div>'
             + "".join(f'<div class="panel" id="{i}" role="tabpanel"><h3>{E(n)}</h3>{t}</div>' for i, n, t in panes))
 
@@ -240,15 +236,12 @@ def coverage(j):
         s = c["status"]
         if s == "measured":
             return f'<span class="m">RSI Loop {c["cycle"]}</span>'
-        if s == "held_out":
-            return '<span class="h">Held out</span>'
-        return '<span>Not run</span>'
+        return '<span>Not yet measured</span>'
     cn = j["benchmark"]["countries"]
     rows = "".join(f'<tr><td>{E(s["label"])}</td>' + "".join(f'<td><div class="cell">{"".join(cell(c) for c in s["grid"][k]["cells"])}</div></td>' for k in cn) + '</tr>'
                    for s in sorted(j["sectors"], key=lambda x: x["label"]))
     return ('<div class="legend"><div class="cell"><span class="m">RSI Loop 16</span></div><span class="mono">measured in that RSI loop</span>'
-            '<div class="cell"><span class="h">Held out</span></div><span class="mono">kept for a final blind evaluation</span>'
-            '<div class="cell"><span>Not run</span></div><span class="mono">in the bank, not yet measured</span></div>'
+            '<div class="cell"><span>Not yet measured</span></div></div>'
             f'<div class="tw grid"><table><thead><tr><th>Industry</th>' + "".join(f'<th>{E(k)}</th>' for k in cn) + f'</tr></thead><tbody>{rows}</tbody></table></div>')
 
 
@@ -278,14 +271,11 @@ def page(j):
 <div class="t3"><div><b>{L["platform_pct"]:.1f}%<span>vs {L["bare_pct"]:.1f}%</span></b><p>RSI Loop {L["cycle"]}: Praxis platform vs frontier AI, checks passed</p></div>
 <div>{featured(j)}</div>
 <div><b>{B["sectors_measured"]}<span>of {B["sector_count"]}</span></b><p>Industries measured across three countries</p></div></div>
-<p class="fr">{E(FRAMING)}</p><div class="cta"><a class="btn" href="#industries">By industry</a><a class="btn" href="#method">Methodology</a><a class="btn" href="#limits">Limitations</a></div></div></section>
+<p class="fr">{E(FRAMING)}</p><div class="cta"><a class="btn" href="#industries">By industry</a><a class="btn" href="#results">Results</a><a class="btn" href="#coverage">Coverage</a></div></div></section>
 <section class="light" id="industries"><div class="wrap"><div class="head"><h2>Industries</h2><p>Checks passed in each industry, all RSI loops to date, for the Praxis platform and frontier AI on its own, on the same tasks. Three industries are in the bank and not yet measured.</p></div>{industry_list(j)}</div></section>
 <section class="light alt" id="trajectory"><div class="wrap"><div class="head"><h2>Trajectory</h2><p>Every RSI loop on a scale to 100%, so the distance to the goal stays in view.</p></div>{chart(j)}</div></section>
 <section class="light" id="results"><div class="wrap"><div class="head"><h2>Results</h2><p>Every figure is checks passed as a percentage of checks judged, for each arm.</p></div>{tables(j)}</div></section>
 <section class="light alt" id="coverage"><div class="wrap"><div class="head"><h2>Coverage</h2><p>{B["sectors_measured"]} of {B["sector_count"]} industries measured. {B["task_bank_size"]} tasks in the bank, at least one per industry in each country, because operations differ with the place.</p></div>{coverage(j)}</div></section>
-<section class="light" id="task"><div class="wrap"><div class="head"><h2>A task</h2><p>What one task looks like, described generically. Task text, packs and checks are never published, so the held out set stays clean.</p></div>{task}</div></section>
-<section class="light alt" id="method"><div class="wrap"><div class="head"><h2>Methodology</h2><p>Both arms run the same model on the same pack, so the difference between them is the platform, not the model.</p></div><div class="mcards">{mcards}</div></div></section>
-<section class="light" id="limits"><div class="wrap"><div class="head"><h2>Limitations</h2><p>What PADI is good for: seeing whether Praxis improves on design judgement from one release to the next, on tasks it has never seen, and where it still misses. What it is not:</p></div><ul class="lim">{lims}</ul></div></section>
 <section class="light alt" id="faq"><div class="wrap"><div class="split"><div><h2>Questions</h2></div><div class="faq">{faq}</div></div></div></section>
 <section class="light" id="cadence"><div class="wrap"><div class="split"><div><p class="mono">Cadence</p><p class="cad">Updated each RSI loop. Last published: RSI Loop {L["cycle"]}, {asof}.{running}</p></div>
 <div><p class="mono">Contact</p><p class="cad" style="font-size:20px">Questions about PADI, or a task from your own operation you would like measured: <a href="mailto:{brand.INBOX}?subject=PADI">{brand.INBOX}</a></p></div></div></div></section>"""
@@ -299,15 +289,8 @@ def markdown(j):
            f"Industries measured: {B['sectors_measured']} of {B['sector_count']}.", "", "## Industries", "",
            "| Industry | Praxis platform | Frontier AI | RSI loops |", "|---|---|---|---|"]
     out += [f"| {i['label']} | {i['p']:.1f}% | {i['b']:.1f}% | {', '.join(map(str, i['cycles']))} |" if i["measured"] else f"| {i['label']} | not yet measured | not yet measured | |" for i in j["industries"]]
-    out += ["", "## Results by RSI loop", "", "| RSI Loop | Date | Tasks | Praxis platform | Frontier AI | Rubric |", "|---|---|---|---|---|---|"]
-    out += [f"| {c['cycle']} | {c['date']} | {c['tasks']} | {c['platform_pct']:.1f}% | {c['bare_pct']:.1f}% | {c['rubric_version']} |" for c in j["cycles"]]
-    out += ["", "Different tasks each RSI loop, so RSI loops are not like for like.", "", "## Methodology", "",
-            f"- Arms: frontier AI on its own and the same model inside Praxis, both {j['methodology']['arms'][0]['model']}, on the same pack and instruction.",
-            f"- Judge: {j['methodology']['judge']['model']} through three lenses ({', '.join(LENSES)}); a check passes on a majority yes.",
-            "- Families: must name, must flag, must never, all about the system design.",
-            f"- Fresh tasks: {B['tasks_held_out']} of {B['task_bank_size']} tasks held out for a final blind evaluation; no task is run twice.",
-            "- Score: checks passed divided by checks total, per arm, no partial credit.", "", "## Limitations", ""]
-    out += [f"- **{a}** {b}" for a, b in LIMITS]
+    out += ["", "## Results by RSI loop", "", "| RSI Loop | Date | Tasks | Praxis platform | Frontier AI |", "|---|---|---|---|---|"]
+    out += [f"| {c['cycle']} | {c['date']} | {c['tasks']} | {c['platform_pct']:.1f}% | {c['bare_pct']:.1f}% |" for c in j["cycles"]]
     out += ["", "## Questions", ""] + [x for q, a in FAQ for x in (f"### {q}", "", a, "")]
     out += [f"Updated each RSI loop. Last published: RSI Loop {L['cycle']}, {L['date']}." + (f" RSI Loop {RUNNING} is under way." if RUNNING and RUNNING > L["cycle"] else "")]
     return "\n".join(out) + "\n"
