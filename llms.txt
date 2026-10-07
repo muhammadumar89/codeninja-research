@@ -47,6 +47,10 @@
 - [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/): An open reference architecture for live wildfire ignition and outage risk at an electric distribution cooperative in the United States: twelve source systems, a fourteen-object ontology, self-hosted open-weight models on the cooperative's own hardware, every de-energisation approved by a named operator, and a three-year cost comparison against cloud. DOI 10.5281/zenodo.23159328.
   - [Object model as JSON](https://codeatoms.ai/wildfire-risk-distribution-us/ontology/objects.json)
 
+## Engineering blog
+
+- [Don't Baptize the GPUs](https://codeatoms.ai/blog/dont-baptize-the-gpus/): Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category. By Umar Bilal, 2026-10-06. Markdown: https://codeatoms.ai/blog/dont-baptize-the-gpus/index.md
+
 ## Sectors: questions answered
 
 - [Physical AI for agriculture and earth observation](https://codeatoms.ai/sectors/agriculture-and-earth-observation/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/agriculture-and-earth-observation/index.md

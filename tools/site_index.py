@@ -175,7 +175,7 @@ def landing(ps, sols):
                  '<li><b>The living system.</b> The object model packaged for Hyper Ontology, ready to stand up over the operator\'s own systems.</li></ul>')
     seclinks = '<p class="serif" style="margin:-8px 0 28px;font-size:17px">Questions answered by sector: ' + ' · '.join(f'<a href="sectors/{x.replace(" and ", "-and-").replace(" ", "-")}/">{E(x)}</a>' for x in sectors) + '</p>'
     scroll = f'<a class="scroll" href="#intro">Scroll to explore{brand.ARROW}</a>'
-    nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("Data", "#data"), ("About", "about/")]
+    nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("Data", "#data"), ("Blog", "blog/"), ("About", "about/")]
     return f"""{brand.header("./", nav)}
 <main>
 {film("port-night", '<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
@@ -242,7 +242,7 @@ def main():
 {brand.SCRIPT}{FILTER}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/sectors/"] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/sectors/", f"{BASE}/blog/"] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -261,6 +261,14 @@ def main():
         llms.append(f"- [{p['title']}]({BASE}/{p['slug']}/): {p['description']}" + (f" DOI {p['doi']}." if p["doi"] else ""))
         if p["ontology"]:
             llms.append(f"  - [Object model as JSON]({p['ontology']})")
+    bposts = []
+    try:
+        import blog as _blog
+        bposts = _blog.load()
+    except Exception:
+        pass
+    if bposts:
+        llms += ["", "## Engineering blog", ""] + [f"- [{b['title']}]({b['url']}): {b['subtitle']} By {b['author']}, {b['date']}. Markdown: {b['url']}index.md" for b in bposts]
     secs = sorted((ROOT / "sectors").glob("*/index.html"))
     if secs:
         llms += ["", "## Sectors: questions answered", ""] + [f"- [Physical AI for {q.parent.name.replace('-', ' ')}]({BASE}/sectors/{q.parent.name}/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: {BASE}/sectors/{q.parent.name}/index.md" for q in secs]
@@ -272,6 +280,8 @@ def main():
 if __name__ == "__main__":
     import sector_pages  # sector question pages first: the sitemap lists them
     sector_pages.main()
+    import blog  # engineering blog: the sitemap and llms.txt list its posts
+    blog.main()
     main()
     import seo  # search and AI retrieval pass: always last
     seo.main()
