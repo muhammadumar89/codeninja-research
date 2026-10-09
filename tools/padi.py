@@ -297,8 +297,7 @@ def markdown(j):
 
 
 def nav():
-    return [("Research", f"{BASE}/#research"), ("Sectors", f"{BASE}/sectors/"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"),
-            ("PADI", f"{BASE}/padi/"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    return brand.nav(BASE + "/")
 
 
 def main():
@@ -319,7 +318,7 @@ def main():
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}{PCSS}</style></head>
 <body>{brand.header(BASE + "/", nav(), access=brand.SIGNUP)}
 <main>{page(j)}</main>
-<footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Updated {datetime.date.today().isoformat()}</span></div></footer>
+<footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}{brand.footer_links(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}{TABS}</body></html>"""
     out = ROOT / "padi"
     out.mkdir(exist_ok=True)

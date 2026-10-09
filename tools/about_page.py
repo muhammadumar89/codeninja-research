@@ -59,7 +59,7 @@ CSS = """
 
 
 def main():
-    nav = [("Research", f"{BASE}/#research"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    nav = brand.nav(BASE + "/")
     desc = "CodeNinja Atoms is building a sovereign AI operating system for the physical world. Its mission and its executive leadership."
     org = {"@context": "https://schema.org", "@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/",
            "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": brand.PARENT},
@@ -84,7 +84,7 @@ def main():
 {rows}</section>
 <p class="owner">CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a>.</p>
 </div></main>
-<footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Updated {datetime.date.today().isoformat()}</span></div></footer>
+<footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}{brand.footer_links(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
     (ROOT / "about").mkdir(exist_ok=True)
     (ROOT / "about" / "index.html").write_text(out, encoding="utf-8")

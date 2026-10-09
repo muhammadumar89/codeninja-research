@@ -178,7 +178,7 @@ body{background:var(--paper)}html.js header.top:not(.solid):not(.open){backgroun
 
 
 def shell(path, title, desc, body, ld, form_html, form_eyebrow, form_lede, depth=2):
-    nav = [("Research", f"{BASE}/#research"), ("Sectors", f"{BASE}/sectors/"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("PADI", f"{BASE}/padi/"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    nav = brand.nav(BASE + "/")
     up = "../" * depth
     vid = (f'<img class="poster" src="{up}assets/video/control-room.jpg" alt="" aria-hidden="true">'
            f'<video autoplay muted loop playsinline preload="none" poster="{up}assets/video/control-room.jpg" aria-hidden="true">'
@@ -191,7 +191,7 @@ def shell(path, title, desc, body, ld, form_html, form_eyebrow, form_lede, depth
 <body>{brand.header(BASE + "/", nav, access="#ask")}
 <main><section class="light"><div class="doc top">{body}</div></section>
 <section class="film cb" id="ask">{vid}<div class="inner"><div><p class="eyebrow">{E(form_eyebrow)}</p><h2>Ask to co build</h2><p class="lede">{E(form_lede)}</p></div><div>{form_html}</div></div></section>
-</main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Pages, papers, object models and data are CC BY 4.0 · Updated {TODAY}</span></div></footer>
+</main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}{brand.footer_links(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Pages, papers, object models and data are CC BY 4.0 · Updated {TODAY}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
 

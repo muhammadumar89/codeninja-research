@@ -79,7 +79,7 @@ def page(slug, title, desc, body, ld):
         body = body.replace(m.group(0), "", 1)
     vid = lambda n, eager: (f'<img class="poster" src="../assets/video/{n}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline preload="{"auto" if eager else "none"}" poster="../assets/video/{n}.jpg" aria-hidden="true">'
                             f'<source src="../assets/video/{n}.mp4" type="video/mp4"></video>')
-    nav = [("Research", f"{BASE}/#research"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    nav = brand.nav(BASE + "/")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(SHORT.get(slug, title.split(':')[0]))}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/{slug}/">
@@ -94,7 +94,7 @@ def page(slug, title, desc, body, ld):
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
 </div></section>
 <section class="film access" id="access">{vid("desert-flare", False)}<div class="inner"><div><p class="eyebrow">{FORM[slug]}</p><h2>Design for the physical world</h2><p class="lede">{ACCESS[slug]}</p></div><div>{brand.access_block(*ACCESS_NOTE[slug])}</div></div></section>
-</main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
+</main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}{brand.footer_links(BASE + "/")}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
 HERO = {"praxis": ("Design physical AI systems.", "Praxis reads a requirement and writes a system design an engineer can build from: sensing, models, hardware, object model, cost and approvals.")}

@@ -194,8 +194,7 @@ code{font-family:var(--mono);font-size:.9em}p code,li code,td code{background:rg
 
 
 def nav():
-    return [("Research", f"{BASE}/#research"), ("Sectors", f"{BASE}/sectors/"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"),
-            ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    return brand.nav(BASE + "/")
 
 
 def shell(path, title, desc, body, ld, og_type="website"):
@@ -205,7 +204,7 @@ def shell(path, title, desc, body, ld, og_type="website"):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav(), access=brand.SIGNUP)}
 <main>{body}</main>
-<footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Code Apache-2.0 · Papers, object models and data CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
+<footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}{brand.footer_links(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Code Apache-2.0 · Papers, object models and data CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
 

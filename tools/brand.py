@@ -31,7 +31,7 @@ a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:21px;line-h
 /* header */
 header.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:28px;padding:18px var(--gutter);background:rgba(11,12,16,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-d);transition:background .3s,border-color .3s}
 html.js header.top:not(.solid):not(.open){background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
-header.top nav.links{display:flex;gap:28px;margin-left:auto}header.top nav.links a{font-size:13.5px;text-decoration:none;color:rgba(242,242,240,.78);letter-spacing:-.005em}header.top nav.links a:hover{color:#fff}
+header.top nav.links{display:flex;gap:30px;margin-left:auto;align-items:center}header.top nav.links a,header.top nav.links button.tab{font:400 13.5px/1.2 var(--sans);text-decoration:none;color:rgba(242,242,240,.78);letter-spacing:-.005em}header.top nav.links a:hover,header.top nav.links button.tab:hover{color:#fff}header.top .grp{position:relative}header.top button.tab{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer}header.top button.tab svg{width:9px;height:6px;opacity:.7;transition:transform .18s}header.top .grp.open button.tab svg{transform:rotate(180deg)}header.top .menu{display:none;position:absolute;top:calc(100% + 14px);left:-18px;min-width:230px;flex-direction:column;background:rgba(11,12,16,.98);border:1px solid var(--rule-d);padding:6px 0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}header.top .grp.open .menu,header.top .grp:hover .menu,header.top .grp:focus-within .menu{display:flex}header.top .menu a{padding:10px 18px;white-space:nowrap}header.top .menu a:hover{background:rgba(255,255,255,.06);color:#fff}header.top .grp::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px}
 header.top .acts{display:flex;align-items:center;gap:14px}header.top .acts a.signin{font-size:13.5px;color:rgba(242,242,240,.78);text-decoration:none}header.top .acts a.signin:hover{color:#fff}header.top nav.links a.m-only{display:none}.join .cta{margin-top:24px}.join p.fallback{margin-top:18px;font-size:13.5px;color:var(--muted-d)}.join p.fallback a{color:inherit}
 .btn-white{display:inline-flex;align-items:center;background:#fff;color:#111218;border:1px solid #fff;border-radius:0;padding:9px 16px;font:400 13.5px/1.2 var(--sans);text-decoration:none;white-space:nowrap;transition:background .2s}.btn-white:hover{background:#E6E6E3}
 .menu-btn{display:none;background:transparent;border:1px solid var(--rule-d);color:var(--on-dark);width:38px;height:36px;padding:0;cursor:pointer;border-radius:0}
@@ -71,33 +71,80 @@ form.access .hp{position:absolute;left:-9999px}form.access p.note{grid-column:1/
 /* footer */
 footer.site{background:var(--night);color:var(--muted-d);border-top:1px solid var(--rule-d);padding:56px var(--gutter) 48px;font-size:13px}
 footer.site .wrapf{max-width:var(--max);margin:0 auto;display:flex;gap:24px 40px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
-footer.site .wrapf>span{max-width:46ch}
+footer.site .wrapf>span{max-width:46ch}footer.site .flinks{max-width:none}footer.site .flinks a{color:var(--on-dark);text-decoration:none}footer.site .flinks a:hover{text-decoration:underline}
 @media (max-width:900px){header.top nav.links{gap:20px}}
 @media (max-width:820px){:root{--gutter:16px}
 header.top{padding:14px var(--gutter);gap:12px}header.top .acts{margin-left:auto}.logo{height:18px}a.brand span.atoms{font-size:17.5px;line-height:18px}
 .menu-btn{display:block;flex:none}.btn-white{padding:8px 10px;font-size:12.5px}header.top .acts{gap:8px}@media (max-width:420px){.logo{height:15px}a.brand{gap:7px}a.brand span.atoms{font-size:15px;line-height:15px}.btn-white{padding:7px 9px;font-size:12px}header.top{gap:8px}}
 html.js header.top nav.links{display:none}header.top .acts a.signin{display:none}header.top nav.links a.m-only{display:block}
-header.top nav.links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;background:rgba(11,12,16,.97);border-bottom:1px solid var(--rule-d);padding:6px var(--gutter) 14px}
-html.js header.top.open nav.links{display:flex}header.top nav.links a{padding:13px 0;border-bottom:1px solid var(--rule-d);font-size:16px}header.top nav.links a:last-child{border-bottom:none}
-html:not(.js) header.top{flex-wrap:wrap}html:not(.js) header.top nav.links{position:static;order:3;width:100%;flex-direction:row;flex-wrap:wrap;gap:14px;padding:6px 0 0;background:none;border:none}html:not(.js) header.top nav.links a{padding:0;border:none;font-size:13px}html:not(.js) .menu-btn{display:none}
+header.top nav.links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;background:#0B0C10;max-height:calc(100vh - 64px);overflow-y:auto;border-bottom:1px solid var(--rule-d);padding:6px var(--gutter) 14px}
+html.js header.top.open nav.links{display:flex}header.top nav.links a{padding:13px 0;border-bottom:1px solid var(--rule-d);font-size:16px}header.top nav.links a:last-child{border-bottom:none}header.top nav.links .grp{position:static}header.top nav.links button.tab{width:100%;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--rule-d);font-size:16px}header.top nav.links .menu{display:flex;position:static;min-width:0;border:0;padding:0 0 6px 16px;background:none}header.top nav.links .menu a{padding:10px 0;border-bottom:none;font-size:15px;color:rgba(242,242,240,.66)}header.top .grp::after{display:none}
+html:not(.js) header.top{flex-wrap:wrap}html:not(.js) header.top nav.links{position:static;order:3;width:100%;flex-direction:row;flex-wrap:wrap;gap:14px;padding:6px 0 0;background:none;border:none}html:not(.js) header.top nav.links a{padding:0;border:none;font-size:13px}html:not(.js) header.top nav.links .menu{display:flex;position:static;flex-direction:row;flex-wrap:wrap;gap:14px;border:0;padding:0;background:none;min-width:0}html:not(.js) header.top nav.links .menu a{padding:0;font-size:13px}html:not(.js) header.top button.tab{display:none}html:not(.js) .menu-btn{display:none}
 form.access{grid-template-columns:1fr}section.film{min-height:82vh}section.film .inner{padding:0 var(--gutter) 56px}section.film.hero .inner{padding:110px var(--gutter) 120px}
 footer.site{padding:40px var(--gutter)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}section.film video{display:none}a.scroll svg{animation:none}}"""
 
 # Header scroll state, mobile menu, and play-on-visible for every film video (paused off screen).
 SCRIPT = """<script>(function(){var h=document.querySelector('header.top');if(h){var s=function(){h.classList.toggle('solid',window.scrollY>40)};s();addEventListener('scroll',s,{passive:true});
+h.querySelectorAll('.grp').forEach(function(g){var t=g.querySelector('button.tab');if(!t)return;
+t.addEventListener('click',function(e){e.stopPropagation();var o=!g.classList.contains('open');
+h.querySelectorAll('.grp').forEach(function(x){x.classList.remove('open');var y=x.querySelector('button.tab');if(y)y.setAttribute('aria-expanded','false')});
+g.classList.toggle('open',o);t.setAttribute('aria-expanded',o?'true':'false')})});
+document.addEventListener('click',function(){h.querySelectorAll('.grp.open').forEach(function(g){g.classList.remove('open');var t=g.querySelector('button.tab');if(t)t.setAttribute('aria-expanded','false')})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')h.querySelectorAll('.grp.open').forEach(function(g){g.classList.remove('open');var t=g.querySelector('button.tab');if(t)t.setAttribute('aria-expanded','false')})});
 var b=h.querySelector('.menu-btn');if(b){b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false')});h.querySelectorAll('nav.links a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded','false')})})}}
 if(matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}})},{threshold:0.15});document.querySelectorAll('section.film video').forEach(function(v){io.observe(v)})})();</script>"""
 
 JS_FLAG = "<script>document.documentElement.classList.add('js')</script>"
 
 
-def header(home, links, access="#access"):
-    """Fixed header: logo left, compact menu, white rectangular access button. links = [(label, href), ...]."""
-    nav = "".join(f'<a href="{h}">{t}</a>' for t, h in links) + f'<a class="m-only" href="{SIGNIN}">Sign in</a>'
-    return (f'<header class="top">{header_brand(home)}<nav class="links" id="site-nav" aria-label="Primary">{nav}</nav>'
+def nav(base=""):
+    """The canonical header, four tabs (Umar, 9 Oct 2026: a clean bar, never a line of buttons).
+    base is "" for the home page (relative links) or "https://codeatoms.ai/" for every other page.
+    An item is (label, href) for a direct tab or (label, [(label, href), ...]) for a tab that opens."""
+    b = base
+    return [
+        ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("PADI", f"{b}padi/")]),
+        ("Research", [("Reference architectures", f"{b}#research"), ("Sectors", f"{b}sectors/"),
+                      ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/")]),
+        ("Co-build", f"{b}co-build/"),
+        ("Developers", f"{b}developer/"),
+    ]
+
+
+def nav_flat(base=""):
+    """The four destinations for a strip that cannot open a menu (the bar on a design page)."""
+    b = base
+    return [("Research", f"{b}#research"), ("Praxis", f"{b}praxis/"), ("Co-build", f"{b}co-build/"), ("Developers", f"{b}developer/")]
+
+
+def header(home, links=None, access="#access"):
+    """Fixed header: logo left, four tabs, white rectangular access button.
+    links defaults to the canonical nav; an item whose href is a list becomes a tab that opens."""
+    if links is None:
+        links = nav("" if home in ("./", "/", "") else home.rstrip("/") + "/")
+    out = []
+    for i, (label, href) in enumerate(links):
+        if isinstance(href, (list, tuple)):
+            items = "".join(f'<a href="{h}">{t}</a>' for t, h in href)
+            out.append(f'<div class="grp"><button type="button" class="tab" aria-expanded="false" aria-controls="m{i}">{label}'
+                       f'<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.2"/></svg>'
+                       f'</button><div class="menu" id="m{i}">{items}</div></div>')
+        else:
+            out.append(f'<a class="tab" href="{href}">{label}</a>')
+    nav_html = "".join(out) + f'<a class="m-only" href="{SIGNIN}">Sign in</a>'
+    return (f'<header class="top">{header_brand(home)}<nav class="links" id="site-nav" aria-label="Primary">{nav_html}</nav>'
             f'<div class="acts"><a class="signin" href="{SIGNIN}">Sign in</a><a class="btn-white" href="{SIGNUP}">{FREE}</a>'
             f'<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button></div></header>')
+
+
+def footer_links(base=""):
+    """The links the header no longer carries, kept on every page for readers and crawlers."""
+    b = base
+    return ('<span class="flinks">'
+            f'<a href="{b}about/">About</a> · <a href="{b}sectors/">Sectors</a> · <a href="{b}co-build/">Co-build</a> · '
+            f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}padi/">PADI</a>'
+            "</span>")
 
 
 ARROW = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v11M2 7.5 7 12.5 12 7.5" stroke="currentColor" stroke-width="1"/></svg>'

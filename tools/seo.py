@@ -172,7 +172,7 @@ BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items
 
 
 def bar():
-    nav = [("Research", f"{BASE}/#research"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    nav = brand.nav_flat(BASE + "/")  # a one line strip: no menus, so the four destinations flat
     return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar"><a class="brand" href="{BASE}/" aria-label="CodeNinja Atoms home">{brand.LOGO}<span class="atoms">Atoms</span></a>'
             f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a class="join" href="{brand.SIGNUP}">{brand.FREE}</a></nav></div>{B1}')
 
@@ -187,6 +187,7 @@ def foot(slug, ds):
     return (f'{F0}<footer class="atoms-foot"><div class="w"><h2>More reference architectures</h2><ul>{items}</ul>{sec}'
             f'<p>Part of <a href="{BASE}/">CodeNinja Atoms</a>, a sovereign AI operating system for the physical world. Designed on <a href="{BASE}/praxis/">Praxis</a>, made living with '
             f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Pages, papers, object models and data are CC BY 4.0. CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a>.</p>'
+            f'<p>{brand.footer_links(BASE + "/")}</p>'
             f"</div></footer>{F1}")
 
 

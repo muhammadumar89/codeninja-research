@@ -190,7 +190,7 @@ def landing(ps, sols):
     import padi
     padi_html, padi_css = padi.home_block()
     padi_html = (f'<style>{padi_css}</style>' + padi_html) if padi_html else ''
-    nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Co-build", "co-build/"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("PADI", "padi/"), ("Data", "#data"), ("Developers", "developer/"), ("Blog", "blog/"), ("About", "about/")]
+    nav = brand.nav()
     return f"""{brand.header("./", nav)}
 <main>
 {film("port-night", '<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
@@ -223,7 +223,7 @@ def landing(ps, sols):
 <li><b><a href="https://github.com/muhammadumar89/codeninja-research">Source files on GitHub</a></b><br>papers, packages, the package format and the loader</li></ul></div></div></section>
 {film("desert-flare", f'<div class="split"><div><p class="mono">Praxis</p><h2>Design for the physical world.</h2><p class="lede">Every design here was made on Praxis. Engineers start free; organisations talk to our commercial team about sovereign and custom deployments.</p></div><div>{brand.access_block()}</div></div>', cls="access", sid="access")}
 </main>
-<footer class="site"><div class="wrapf">{brand.footer_brand("./")}<span>CodeNinja Atoms is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
+<footer class="site"><div class="wrapf">{brand.footer_brand("./")}{brand.footer_links()}<span>CodeNinja Atoms is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
 
 
 # Sector chips filter the research cards; without JS the chips stay hidden and every card shows.
