@@ -79,7 +79,7 @@ def page(slug, title, desc, body, ld):
         body = body.replace(m.group(0), "", 1)
     vid = lambda n, eager: (f'<img class="poster" src="../assets/video/{n}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline preload="{"auto" if eager else "none"}" poster="../assets/video/{n}.jpg" aria-hidden="true">'
                             f'<source src="../assets/video/{n}.mp4" type="video/mp4"></video>')
-    nav = [("Research", f"{BASE}/#research"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
+    nav = [("Research", f"{BASE}/#research"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"), ("Data", f"{BASE}/#data"), ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(SHORT.get(slug, title.split(':')[0]))}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/{slug}/">

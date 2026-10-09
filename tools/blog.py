@@ -174,7 +174,7 @@ body{background:var(--paper)}html.js header.top:not(.solid):not(.open){backgroun
 
 
 def nav():
-    return [("Research", f"{BASE}/#research"), ("Sectors", f"{BASE}/sectors/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"),
+    return [("Research", f"{BASE}/#research"), ("Sectors", f"{BASE}/sectors/"), ("Co-build", f"{BASE}/co-build/"), ("Praxis", f"{BASE}/praxis/"), ("Hyper Ontology", f"{BASE}/hyper-ontology/"), ("PADI", f"{BASE}/padi/"),
             ("Developers", f"{BASE}/developer/"), ("Blog", f"{BASE}/blog/"), ("About", f"{BASE}/about/")]
 
 

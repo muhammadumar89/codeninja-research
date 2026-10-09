@@ -54,6 +54,23 @@
 
 - [Don't Baptize the GPUs](https://codeatoms.ai/blog/dont-baptize-the-gpus/): Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category. By Umar Bilal, 2026-10-06. Markdown: https://codeatoms.ai/blog/dont-baptize-the-gpus/index.md
 
+## Co-build an ontology for your operation
+
+- [Co-build](https://codeatoms.ai/co-build/): CodeNinja Atoms designs the physical AI system for one of your operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. One form, 13 sectors. Markdown: https://codeatoms.ai/co-build/index.md
+- [Co-build: agriculture and earth observation](https://codeatoms.ai/co-build/agriculture-and-earth-observation/)
+- [Co-build: aviation manufacturing](https://codeatoms.ai/co-build/aviation-manufacturing/)
+- [Co-build: defense and intelligence](https://codeatoms.ai/co-build/defense-and-intelligence/)
+- [Co-build: discrete manufacturing and automotive](https://codeatoms.ai/co-build/discrete-manufacturing-and-automotive/)
+- [Co-build: energy and utilities](https://codeatoms.ai/co-build/energy-and-utilities/)
+- [Co-build: heavy industry and construction](https://codeatoms.ai/co-build/heavy-industry-and-construction/)
+- [Co-build: maritime and ports](https://codeatoms.ai/co-build/maritime-and-ports/)
+- [Co-build: mining](https://codeatoms.ai/co-build/mining/)
+- [Co-build: oil and gas](https://codeatoms.ai/co-build/oil-and-gas/)
+- [Co-build: rail transport](https://codeatoms.ai/co-build/rail-transport/)
+- [Co-build: semiconductors](https://codeatoms.ai/co-build/semiconductors/)
+- [Co-build: supply chain and logistics](https://codeatoms.ai/co-build/supply-chain-and-logistics/)
+- [Co-build: warehousing and intralogistics](https://codeatoms.ai/co-build/warehousing-and-intralogistics/)
+
 ## Sectors: questions answered
 
 - [Physical AI for agriculture and earth observation](https://codeatoms.ai/sectors/agriculture-and-earth-observation/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/agriculture-and-earth-observation/index.md

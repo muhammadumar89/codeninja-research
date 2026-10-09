@@ -127,6 +127,738 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 
 ---
 
+# Co-build an ontology for agriculture and earth observation
+
+Canonical: https://codeatoms.ai/co-build/agriculture-and-earth-observation/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Farms, irrigation and land use are watched by sensors, satellites and aircraft, but the readings, the licences and the field records usually sit in separate systems.
+
+Recommended path: start from the nearest published agriculture and earth observation design; we extend its object model to your site.
+
+## What we bring
+
+- [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (Pakistan): 12 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23186671
+- [Fodder Watch: Earth Observation That Turns Restricted-Crop Detections Into Enforceable Case Files](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) (Saudi Arabia): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23186675
+- [Baseline: One Flight of 4 Band Orthoimagery and LiDAR for Vegetation Mapping](https://codeatoms.ai/vegetation-mapping-lidar-us/) (United States): 16 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23186673
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your agriculture and earth observation operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a agriculture and earth observation design to read?
+
+Yes. 3 published agriculture and earth observation reference architectures in Pakistan, Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
+
+Ask to co-build: https://codeatoms.ai/co-build/agriculture-and-earth-observation/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an aviation manufacturing ontology
+
+Canonical: https://codeatoms.ai/co-build/aviation-manufacturing/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Aerostructures carry an inspection and conformity record for every part, and that record usually lives apart from the shop floor that produced it.
+
+Recommended path: no aviation manufacturing design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your aviation manufacturing operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a aviation manufacturing design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first aviation manufacturing design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/aviation-manufacturing/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for defense and intelligence
+
+Canonical: https://codeatoms.ai/co-build/defense-and-intelligence/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Sustainment, readiness and surveillance data are held under rules about where they may sit and who may read them, which is what a sovereign design has to answer first.
+
+Recommended path: no defense and intelligence design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your defense and intelligence operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a defense and intelligence design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first defense and intelligence design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/defense-and-intelligence/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for discrete manufacturing and automotive
+
+Canonical: https://codeatoms.ai/co-build/discrete-manufacturing-and-automotive/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+An assembly line measures quality, downtime and traceability in different systems, and none of them holds the whole build history of one unit.
+
+Recommended path: no discrete manufacturing and automotive design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your discrete manufacturing and automotive operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a discrete manufacturing and automotive design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first discrete manufacturing and automotive design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/discrete-manufacturing-and-automotive/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for energy and utilities
+
+Canonical: https://codeatoms.ai/co-build/energy-and-utilities/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Grids and plants run on control systems, maintenance records and field crews that were never designed to share one picture of risk.
+
+Recommended path: start from the nearest published energy and utilities design; we extend its object model to your site.
+
+## What we bring
+
+- [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (Saudi Arabia): 13 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23157965
+- [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23159328
+- [Grid Context Watch: One system of context for OT Security and NERC CIP Evidence](https://codeatoms.ai/ot-security-cip-evidence-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23157957
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your energy and utilities operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a energy and utilities design to read?
+
+Yes. 3 published energy and utilities reference architectures in Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
+
+Ask to co-build: https://codeatoms.ai/co-build/energy-and-utilities/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for heavy industry and construction
+
+Canonical: https://codeatoms.ai/co-build/heavy-industry-and-construction/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Mills, factories and building sites produce counts, alarms and progress data in many systems, and each one sees only part of the operation.
+
+Recommended path: start from the nearest published heavy industry and construction design; we extend its object model to your site.
+
+## What we bring
+
+- [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (Pakistan): 14 objects, 3 models, DOI https://doi.org/10.5281/zenodo.23126563
+- [Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site](https://codeatoms.ai/structure-phase-construction-saudi-arabia/) (Saudi Arabia): 15 objects, 4 models, DOI https://doi.org/10.5281/zenodo.23126448
+- [Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) (Saudi Arabia): 14 objects, 1 models, DOI https://doi.org/10.5281/zenodo.23126565
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your heavy industry and construction operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a heavy industry and construction design to read?
+
+Yes. 3 published heavy industry and construction reference architectures in Pakistan and Saudi Arabia, each with a DOI, an object model and a cost appendix.
+
+Ask to co-build: https://codeatoms.ai/co-build/heavy-industry-and-construction/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for your operation
+
+Canonical: https://codeatoms.ai/co-build/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+
+We publish the design. You bring the operation. Together they become an object model your systems can run on.
+
+13 reference architectures are published so far, across 5 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
+
+## Sectors
+
+- [Mining](https://codeatoms.ai/co-build/mining/): first design open
+- [Discrete manufacturing and automotive](https://codeatoms.ai/co-build/discrete-manufacturing-and-automotive/): first design open
+- [Energy and utilities](https://codeatoms.ai/co-build/energy-and-utilities/): 3 published designs
+- [Maritime and ports](https://codeatoms.ai/co-build/maritime-and-ports/): 2 published designs
+- [Rail transport](https://codeatoms.ai/co-build/rail-transport/): first design open
+- [Aviation manufacturing](https://codeatoms.ai/co-build/aviation-manufacturing/): first design open
+- [Defense and intelligence](https://codeatoms.ai/co-build/defense-and-intelligence/): first design open
+- [Heavy industry and construction](https://codeatoms.ai/co-build/heavy-industry-and-construction/): 3 published designs
+- [Semiconductors](https://codeatoms.ai/co-build/semiconductors/): first design open
+- [Supply chain and logistics](https://codeatoms.ai/co-build/supply-chain-and-logistics/): first design open
+- [Agriculture and earth observation](https://codeatoms.ai/co-build/agriculture-and-earth-observation/): 3 published designs
+- [Oil and gas](https://codeatoms.ai/co-build/oil-and-gas/): 2 published designs
+- [Warehousing and intralogistics](https://codeatoms.ai/co-build/warehousing-and-intralogistics/): first design open
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+
+---
+
+# Co-build an ontology for maritime and ports
+
+Canonical: https://codeatoms.ai/co-build/maritime-and-ports/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Terminals and port authorities run gates, cranes, yards and finance on separate systems, so nobody sees the whole flow of a box or a truck.
+
+Recommended path: start from the nearest published maritime and ports design; we extend its object model to your site.
+
+## What we bring
+
+- [Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal](https://codeatoms.ai/truck-turn-container-terminal-us/) (United States): 12 objects, 4 models, DOI https://doi.org/10.5281/zenodo.23159331
+- [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (United States): 13 objects, 1 models, DOI https://doi.org/10.5281/zenodo.23126431
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your maritime and ports operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a maritime and ports design to read?
+
+Yes. 2 published maritime and ports reference architectures in the United States, each with a DOI, an object model and a cost appendix.
+
+Ask to co-build: https://codeatoms.ai/co-build/maritime-and-ports/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build a mining ontology
+
+Canonical: https://codeatoms.ai/co-build/mining/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Haul roads, pits and plants put people, light vehicles and very large machines in the same space, and the records of what happened sit in separate systems.
+
+Recommended path: no mining design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your mining operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a mining design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first mining design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/mining/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for oil and gas
+
+Canonical: https://codeatoms.ai/co-build/oil-and-gas/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Wells, terminals and plants hold safety, inventory and process data in systems that were never joined, often on sites where the data may not leave the country.
+
+Recommended path: start from the nearest published oil and gas design; we extend its object model to your site.
+
+## What we bring
+
+- [Sovereign HSE Watch: A Reference Architecture for Predictive Health, Safety and Environment Intelligence in Pakistan's Oil and Gas Operations](https://codeatoms.ai/sovereign-hse-pakistan/) (Pakistan): 12 objects, 5 models, DOI https://doi.org/10.5281/zenodo.23119714
+- [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (Pakistan): 15 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23157967
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your oil and gas operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a oil and gas design to read?
+
+Yes. 2 published oil and gas reference architectures in Pakistan, each with a DOI, an object model and a cost appendix.
+
+Ask to co-build: https://codeatoms.ai/co-build/oil-and-gas/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build a rail transport ontology
+
+Canonical: https://codeatoms.ai/co-build/rail-transport/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Track, rolling stock, signalling and the works programme are measured by different teams, and a condition record rarely reaches the people planning the work.
+
+Recommended path: no rail transport design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your rail transport operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a rail transport design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first rail transport design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/rail-transport/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build a semiconductor ontology
+
+Canonical: https://codeatoms.ai/co-build/semiconductors/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+A fab already measures almost everything, so the question is not more sensing but one object model that ties tool, lot, recipe and yield together.
+
+Recommended path: no semiconductor design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your semiconductors operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a semiconductor design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first semiconductor design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/semiconductors/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for supply chain and logistics
+
+Canonical: https://codeatoms.ai/co-build/supply-chain-and-logistics/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+A shipment is handed between carriers, yards and customs systems, and each handover loses part of what the last one knew.
+
+Recommended path: no supply chain and logistics design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your supply chain and logistics operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a supply chain and logistics design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first supply chain and logistics design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/supply-chain-and-logistics/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
+# Co-build an ontology for warehousing and intralogistics
+
+Canonical: https://codeatoms.ai/co-build/warehousing-and-intralogistics/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+A warehouse knows its stock and its orders, but not usually where its people, trucks and handling equipment are at the same moment.
+
+Recommended path: no warehousing and intralogistics design is published yet, so the first one is built with a partner, starting from the published neighbours.
+
+## What we bring
+
+- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
+- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
+- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your warehousing and intralogistics operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a warehousing and intralogistics design to read?
+
+Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first warehousing and intralogistics design is built with a partner.
+
+Ask to co-build: https://codeatoms.ai/co-build/warehousing-and-intralogistics/#ask
+Every sector: https://codeatoms.ai/co-build/
+
+
+---
+
 # The Vertical-Driven Architectures dataset
 
 Canonical: https://codeatoms.ai/developer/reference/dataset/

@@ -1,0 +1,48 @@
+# Co-build an ontology for energy and utilities
+
+Canonical: https://codeatoms.ai/co-build/energy-and-utilities/
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+License: CC BY 4.0
+
+Grids and plants run on control systems, maintenance records and field crews that were never designed to share one picture of risk.
+
+Recommended path: start from the nearest published energy and utilities design; we extend its object model to your site.
+
+## What we bring
+
+- [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (Saudi Arabia): 13 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23157965
+- [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23159328
+- [Grid Context Watch: One system of context for OT Security and NERC CIP Evidence](https://codeatoms.ai/ot-security-cip-evidence-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23157957
+- Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
+- Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
+
+## What you bring
+
+- The operation: One plant, terminal, mine, farm or network, and the outcome you want from it, in your own words. One operation, not a programme.
+- The systems that already hold the records: Control systems, maintenance and ERP records, cameras, inspection sheets, whatever already exists. Nothing new has to be bought to start.
+- One engineer who knows the place: Somebody who can say what an alarm really means on your site and where a number comes from.
+- Where the data may sit: Your rule, not ours: in country, on your own hardware, air gapped, or in a region you name.
+
+## What comes out
+
+- A reference architecture for your operation: Sensing, edge, compute, the models and their licences, the sizing arithmetic and the three year cost against the alternatives.
+- An object model you own: The operation written as objects and links in the hyper-ontology/1 package format, ready to load into Hyper Ontology over your own systems.
+- A document your own engineers can argue with: Every number sourced, every choice stated against what it was chosen over, and the approvals and human control written down.
+- Published or private, your call: Every design published on this site has the operator removed. Yours is published the same way, under CC BY 4.0, or stays private.
+
+## Questions
+
+### What does co-building an ontology mean?
+
+CodeNinja Atoms designs the physical AI system for one of your energy and utilities operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. You bring the operation, the systems that already hold its records and one engineer who knows the site. You get the reference architecture, the object model, the sizing arithmetic and the three year cost.
+
+### Does our data leave our country?
+
+That is your rule, not ours. Every published design is sovereign by default: open weight models on hardware the operator owns, in country, air gapped where the operation requires it.
+
+### Is there already a energy and utilities design to read?
+
+Yes. 3 published energy and utilities reference architectures in Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
+
+Ask to co-build: https://codeatoms.ai/co-build/energy-and-utilities/#ask
+Every sector: https://codeatoms.ai/co-build/

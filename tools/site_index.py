@@ -190,7 +190,7 @@ def landing(ps, sols):
     import padi
     padi_html, padi_css = padi.home_block()
     padi_html = (f'<style>{padi_css}</style>' + padi_html) if padi_html else ''
-    nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("PADI", "padi/"), ("Data", "#data"), ("Developers", "developer/"), ("Blog", "blog/"), ("About", "about/")]
+    nav = [("Research", "#research"), ("Solutions", "#solutions"), ("Co-build", "co-build/"), ("Praxis", "praxis/"), ("Hyper Ontology", "hyper-ontology/"), ("PADI", "padi/"), ("Data", "#data"), ("Developers", "developer/"), ("Blog", "blog/"), ("About", "about/")]
     return f"""{brand.header("./", nav)}
 <main>
 {film("port-night", '<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
@@ -261,7 +261,7 @@ def main():
 {brand.SCRIPT}{FILTER}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/padi/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/"] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/padi/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/"] + [f"{BASE}/co-build/"] + [f"{BASE}/co-build/{q.parent.name}/" for q in sorted((ROOT / "co-build").glob("*/index.html"))] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -291,6 +291,11 @@ def main():
         pass
     if bposts:
         llms += ["", "## Engineering blog", ""] + [f"- [{b['title']}]({b['url']}): {b['subtitle']} By {b['author']}, {b['date']}. Markdown: {b['url']}index.md" for b in bposts]
+    cbs = sorted((ROOT / "co-build").glob("*/index.html"))
+    if cbs:
+        llms += ["", "## Co-build an ontology for your operation", "",
+                 f"- [Co-build]({BASE}/co-build/): CodeNinja Atoms designs the physical AI system for one of your operations and writes the operation as an object model you own, in the hyper-ontology/1 package format. One form, 13 sectors. Markdown: {BASE}/co-build/index.md"] + [
+                 f"- [Co-build: {q.parent.name.replace('-', ' ')}]({BASE}/co-build/{q.parent.name}/)" for q in cbs]
     secs = sorted((ROOT / "sectors").glob("*/index.html"))
     if secs:
         llms += ["", "## Sectors: questions answered", ""] + [f"- [Physical AI for {q.parent.name.replace('-', ' ')}]({BASE}/sectors/{q.parent.name}/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: {BASE}/sectors/{q.parent.name}/index.md" for q in secs]
@@ -308,6 +313,8 @@ if __name__ == "__main__":
     developer.main()
     import padi  # PADI page; the home block reads the same export
     padi.main()
+    import co_build  # co-build doors: /co-build/ and one page per sector, listed in the sitemap
+    co_build.main()
     main()
     import seo  # search and AI retrieval pass: always last
     seo.main()
