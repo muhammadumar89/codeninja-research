@@ -52,6 +52,7 @@
 
 ## Engineering blog
 
+- [Own or Rent the GPUs](https://codeatoms.ai/blog/own-or-rent-the-gpus/): Seven published reference architectures, priced the same way, say owning the reasoning node costs between about half and nearly all of the deepest three year cloud commitment. Not a tenth. By CodeNinja Atoms, 2026-10-10. Markdown: https://codeatoms.ai/blog/own-or-rent-the-gpus/index.md
 - [Don't Baptize the GPUs](https://codeatoms.ai/blog/dont-baptize-the-gpus/): Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category. By Umar Bilal, 2026-10-06. Markdown: https://codeatoms.ai/blog/dont-baptize-the-gpus/index.md
 
 ## Co-build an ontology for your operation
