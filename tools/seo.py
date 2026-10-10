@@ -268,7 +268,7 @@ def main():
     ds = designs()
     dslugs = {d["slug"] for d in ds}
     mds, stats = [], []
-    pages = [p for p in ROOT.glob("*/index.html") if p.parent.name not in SKIP] + [ROOT / "index.html"] + sorted(ROOT.glob("sectors/*/index.html")) + sorted(ROOT.glob("blog/*/index.html")) + sorted(ROOT.glob("developer/**/index.html")) + sorted(ROOT.glob("co-build/*/index.html"))
+    pages = [p for p in ROOT.glob("*/index.html") if p.parent.name not in SKIP] + [ROOT / "index.html"] + sorted(ROOT.glob("sectors/*/index.html")) + sorted(ROOT.glob("blog/*/index.html")) + sorted(ROOT.glob("developer/**/index.html")) + sorted(ROOT.glob("co-build/*/index.html")) + sorted(ROOT.glob("memos/*/index.html"))
     copies = [p for p in ROOT.glob("*/paper/*.html") if p.parent.parent.name not in SKIP]
     for p in sorted(pages):
         h = strip_block(p.read_text(encoding="utf-8"), H0, H1)
@@ -278,7 +278,7 @@ def main():
         url = f"{BASE}/{slug + '/' if slug else ''}"
         title = html.unescape((re.search(r"<title>(.*?)</title>", h, re.S) or [None, "CodeNinja Atoms"])[1])
         desc = meta(h, "description")
-        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("post" if slug.startswith("blog/") else ("dev" if slug.startswith("developer") else ("cobuild" if slug.startswith("co-build") else ("padi" if slug == "padi" else "page")))))))
+        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("memo" if slug.startswith("memos") else ("post" if slug.startswith("blog/") else ("dev" if slug.startswith("developer") else ("cobuild" if slug.startswith("co-build") else ("padi" if slug == "padi" else "page"))))))))
         if kind in ("design", "method"):
             h = deinline(h, folder, absolute=False)
             h = size_imgs(h, folder)
@@ -292,6 +292,8 @@ def main():
             crumbs += [("Research", f"{BASE}/#research"), (meta(h, "citation_title").split(":")[0] or title.split(":")[0], url)]
         elif kind == "dev":
             crumbs += [("Developers", f"{BASE}/developer/")] + ([(title.split("|")[0].strip(), url)] if slug != "developer" else [])
+        elif kind == "memo":
+            crumbs += [("Memos", f"{BASE}/memos/")] + ([(title.split("|")[0].strip(), url)] if slug != "memos" else [])
         elif kind == "post":
             crumbs += [("Blog", f"{BASE}/blog/"), (title.split("|")[0].strip(), url)]
         elif kind == "sector":
@@ -302,8 +304,8 @@ def main():
             crumbs += [(title.split(":")[0].split("|")[0].strip(), url)]
         else:
             crumbs = []
-        md = "index.md" if kind in ("sector", "post", "dev", "padi", "cobuild") and (folder / "index.md").exists() else None
-        if kind in ("sector", "post", "dev", "padi", "cobuild") and md:
+        md = "index.md" if kind in ("sector", "post", "dev", "padi", "cobuild", "memo") and (folder / "index.md").exists() else None
+        if kind in ("sector", "post", "dev", "padi", "cobuild", "memo") and md:
             mds.append((folder / "index.md").read_text(encoding="utf-8"))
         if kind in ("design", "method"):
             h = enrich_article(h, image if kind == "design" else None, slug)

@@ -29,7 +29,11 @@ a{color:inherit}h1,h2,h3,p,li{overflow-wrap:break-word}:focus-visible{outline:1p
 .logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
 a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:21px;line-height:20px;letter-spacing:-.01em;color:#D9C3A3;margin-left:-2px}
 /* header */
-header.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:28px;padding:18px var(--gutter);background:rgba(11,12,16,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-d);transition:background .3s,border-color .3s}
+.topwrap{position:fixed;top:0;left:0;right:0;z-index:20}
+.annbar{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 16px;background:#07080B;border-bottom:1px solid var(--rule-d);color:rgba(242,242,240,.9);font:400 14px/1.35 var(--sans);letter-spacing:-.005em;text-decoration:none;text-align:center}
+.annbar b{font-weight:400;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;color:#fff}
+.annbar i{font-style:normal;transition:transform .2s}.annbar:hover i{transform:translateX(3px)}.annbar:hover{color:#fff}
+header.top{position:relative;z-index:1;display:flex;align-items:center;gap:28px;padding:18px var(--gutter);background:rgba(11,12,16,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule-d);transition:background .3s,border-color .3s}
 html.js header.top:not(.solid):not(.open){background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 header.top nav.links{display:flex;gap:30px;margin-left:auto;align-items:center}header.top nav.links a,header.top nav.links button.tab{font:400 13.5px/1.2 var(--sans);text-decoration:none;color:rgba(242,242,240,.78);letter-spacing:-.005em}header.top nav.links a:hover,header.top nav.links button.tab:hover{color:#fff}header.top .grp{position:relative}header.top button.tab{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer}header.top button.tab svg{width:9px;height:6px;opacity:.7;transition:transform .18s}header.top .grp.open button.tab svg{transform:rotate(180deg)}header.top .menu{display:none;position:absolute;top:calc(100% + 14px);left:-18px;min-width:230px;flex-direction:column;background:rgba(11,12,16,.98);border:1px solid var(--rule-d);padding:6px 0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}header.top .grp.open .menu,header.top .grp:hover .menu,header.top .grp:focus-within .menu{display:flex}header.top .menu a{padding:10px 18px;white-space:nowrap}header.top .menu a:hover{background:rgba(255,255,255,.06);color:#fff}header.top .grp::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px}
 header.top .acts{display:flex;align-items:center;gap:14px}header.top .acts a.signin{font-size:13.5px;color:rgba(242,242,240,.78);text-decoration:none}header.top .acts a.signin:hover{color:#fff}header.top nav.links a.m-only{display:none}.join .cta{margin-top:24px}.join p.fallback{margin-top:18px;font-size:13.5px;color:var(--muted-d)}.join p.fallback a{color:inherit}
@@ -48,7 +52,7 @@ section.film::after{content:"";position:absolute;inset:0;z-index:1;background:li
 section.film .inner{position:relative;z-index:2;max-width:var(--max);width:100%;margin:0 auto;padding:0 var(--gutter) 80px}
 section.film.hero{min-height:100vh;min-height:100svh;align-items:center;justify-content:center;text-align:center}
 section.film.hero::after{background:radial-gradient(ellipse at center,rgba(11,12,16,.35) 0%,rgba(11,12,16,.6) 100%),linear-gradient(180deg,rgba(11,12,16,.4),rgba(11,12,16,.15) 40%,rgba(11,12,16,.7))}
-section.film.hero .inner{padding:120px var(--gutter) 140px;display:flex;flex-direction:column;align-items:center}
+section.film.hero .inner{padding:150px var(--gutter) 140px;display:flex;flex-direction:column;align-items:center}
 section.film.hero h1{margin:.35em auto 0;max-width:14ch}
 a.scroll{position:absolute;z-index:3;left:50%;bottom:36px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,242,240,.75);white-space:nowrap}
 a.scroll svg{width:14px;height:14px;animation:nudge 2.4s ease-in-out infinite}@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
@@ -73,6 +77,7 @@ footer.site{background:var(--night);color:var(--muted-d);border-top:1px solid va
 footer.site .wrapf{max-width:var(--max);margin:0 auto;display:flex;gap:24px 40px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
 footer.site .wrapf>span{max-width:46ch}footer.site .flinks{max-width:none}footer.site .flinks a{color:var(--on-dark);text-decoration:none}footer.site .flinks a:hover{text-decoration:underline}
 @media (max-width:900px){header.top nav.links{gap:20px}}
+@media (max-width:640px){.annbar{padding:10px 14px;font-size:12.5px;gap:6px}.annbar .full{display:none}}
 @media (max-width:820px){:root{--gutter:16px}
 header.top{padding:14px var(--gutter);gap:12px}header.top .acts{margin-left:auto}.logo{height:18px}a.brand span.atoms{font-size:17.5px;line-height:18px}
 .menu-btn{display:block;flex:none}.btn-white{padding:8px 10px;font-size:12.5px}header.top .acts{gap:8px}@media (max-width:420px){.logo{height:15px}a.brand{gap:7px}a.brand span.atoms{font-size:15px;line-height:15px}.btn-white{padding:7px 9px;font-size:12px}header.top{gap:8px}}
@@ -106,7 +111,7 @@ def nav(base=""):
     return [
         ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("PADI", f"{b}padi/")]),
         ("Research", [("Reference architectures", f"{b}#research"), ("Sectors", f"{b}sectors/"),
-                      ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/")]),
+                      ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/")]),
         ("Co-build", f"{b}co-build/"),
         ("Developers", f"{b}developer/"),
     ]
@@ -116,6 +121,21 @@ def nav_flat(base=""):
     """The four destinations for a strip that cannot open a menu (the bar on a design page)."""
     b = base
     return [("Research", f"{b}#research"), ("Praxis", f"{b}praxis/"), ("Co-build", f"{b}co-build/"), ("Developers", f"{b}developer/")]
+
+
+def announce():
+    """The site wide bar above the header, carrying the newest memo. Palantir style: one
+    sentence, the title underlined. Returns '' when there is no memo to announce."""
+    try:
+        import memos
+        b = memos.banner()
+    except Exception:
+        b = None
+    if not b:
+        return ""
+    before, title, after, href = b
+    return (f'<a class="annbar" href="{href}"><span class="full">{before}</span><b>{title}</b>'
+            f'<span class="full">{after}</span><i aria-hidden="true">\u2192</i></a>')
 
 
 def header(home, links=None, access="#access"):
@@ -133,9 +153,9 @@ def header(home, links=None, access="#access"):
         else:
             out.append(f'<a class="tab" href="{href}">{label}</a>')
     nav_html = "".join(out) + f'<a class="m-only" href="{SIGNIN}">Sign in</a>'
-    return (f'<header class="top">{header_brand(home)}<nav class="links" id="site-nav" aria-label="Primary">{nav_html}</nav>'
+    return (f'<div class="topwrap">{announce()}<header class="top">{header_brand(home)}<nav class="links" id="site-nav" aria-label="Primary">{nav_html}</nav>'
             f'<div class="acts"><a class="signin" href="{SIGNIN}">Sign in</a><a class="btn-white" href="{SIGNUP}">{FREE}</a>'
-            f'<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button></div></header>')
+            f'<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button></div></header></div>')
 
 
 def footer_links(base=""):
@@ -143,7 +163,7 @@ def footer_links(base=""):
     b = base
     return ('<span class="flinks">'
             f'<a href="{b}about/">About</a> · <a href="{b}sectors/">Sectors</a> · <a href="{b}co-build/">Co-build</a> · '
-            f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}padi/">PADI</a>'
+            f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}memos/">Memos</a> · <a href="{b}padi/">PADI</a>'
             "</span>")
 
 

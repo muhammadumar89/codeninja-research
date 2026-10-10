@@ -50,6 +50,10 @@
 - [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/): An open reference architecture for live wildfire ignition and outage risk at an electric distribution cooperative in the United States: twelve source systems, a fourteen-object ontology, self-hosted open-weight models on the cooperative's own hardware, every de-energisation approved by a named operator, and a three-year cost comparison against cloud. DOI 10.5281/zenodo.23159328.
   - [Object model as JSON](https://codeatoms.ai/wildfire-risk-distribution-us/ontology/objects.json)
 
+## Memos
+
+- [Compression and Reinflation](https://codeatoms.ai/memos/compression-and-reinflation/): Why we do not fine tune, and how we build physical AI systems that get better when the next model arrives A memo by Umar Bilal, 2026-10-10. Markdown: https://codeatoms.ai/memos/compression-and-reinflation/index.md
+
 ## Engineering blog
 
 - [Own or Rent the GPUs](https://codeatoms.ai/blog/own-or-rent-the-gpus/): Seven published reference architectures, priced the same way, say owning the reasoning node costs between about half and nearly all of the deepest three year cloud commitment. Not a tenth. By CodeNinja Atoms, 2026-10-10. Markdown: https://codeatoms.ai/blog/own-or-rent-the-gpus/index.md
