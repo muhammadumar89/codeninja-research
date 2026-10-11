@@ -44,7 +44,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a defense and intelligence design to read?
 
-Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first defense and intelligence design is built with a partner.
+Not yet. 14 designs are published across 6 other sectors, and the nearest ones are linked on this page. The first defense and intelligence design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/defense-and-intelligence/#ask
 Every sector: https://codeatoms.ai/co-build/

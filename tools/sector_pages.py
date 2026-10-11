@@ -16,6 +16,7 @@ E = lambda s: html.escape(str(s), quote=True)
 # One plain, true sentence per sector on why the question matters there. Sector facts only.
 WHY = {
     "agriculture and earth observation": "Farms, irrigation and land use are watched by sensors, satellites and aircraft, but the readings, the licences and the field records usually sit in separate systems.",
+    "discrete manufacturing and automotive": "Vehicles and people share plant roads, test tracks and yards, and the cameras, gates and test schedules that should prove who was where are usually separate systems.",
     "energy and utilities": "Grids and plants run on control systems, maintenance records and field crews that were never designed to share one picture of risk.",
     "heavy industry and construction": "Mills, factories and building sites produce counts, alarms and progress data in many systems, and each one sees only part of the operation.",
     "maritime and ports": "Terminals and port authorities run gates, cranes, yards and finance on separate systems, so nobody sees the whole flow of a box or a truck.",

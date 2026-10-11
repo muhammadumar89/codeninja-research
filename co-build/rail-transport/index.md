@@ -11,6 +11,7 @@ Recommended path: no rail transport design is published yet, so the first one is
 ## What we bring
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -44,7 +45,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a rail transport design to read?
 
-Not yet. 13 designs are published across 5 other sectors, and the nearest ones are linked on this page. The first rail transport design is built with a partner.
+Not yet. 14 designs are published across 6 other sectors, and the nearest ones are linked on this page. The first rail transport design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/rail-transport/#ask
 Every sector: https://codeatoms.ai/co-build/

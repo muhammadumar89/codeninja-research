@@ -1,0 +1,286 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site",
+    "url": "https://codeatoms.ai/test-site-camera-monitoring-us/",
+    "doi": ""
+  },
+  "sector": "discrete-manufacturing-and-automotive",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name: a vehicle proving ground in the United States",
+  "source": "chapter 5 of the paper (5.1 objects, 5.3 recorded form) and Figure 4 (cards and typed links as drawn); Figure 4 counts 13 typed links and draws 13 lines, one of them (camera head to underground fiber run) without a label, named 'streams over' here after chapter 5's trace from clip to fiber strand; property lists the figure truncates are kept as drawn",
+  "write_paths": [
+    "the safety office export into the archive's export log, the only write path into the evidence chain",
+    "detector model version changes only under site change control"
+  ],
+  "human_loop": "booth operators watch named views and decide; gate officers hold drop authority at each safety gate; the safety office reviewer holds download authority over the archive; nothing raises an automated alarm",
+  "objects": [
+    {
+      "id": "the-site",
+      "label": "The site",
+      "kind": "site",
+      "anchored_in": "",
+      "properties": [
+        "Turn count",
+        "The pit access",
+        "The area",
+        "Posted speed"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "the-site-operator",
+          "label": "staffed by"
+        },
+        {
+          "to": "the-operator-s-own-system-power-fiber-assessment-package",
+          "label": "assessed by"
+        }
+      ]
+    },
+    {
+      "id": "camera-pole",
+      "label": "Camera Pole",
+      "kind": "asset",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "Pole number",
+        "Voltage class (277/120/24 V)",
+        "Fiber strand"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "camera-head",
+      "label": "Camera Head",
+      "kind": "asset",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "ONVIF profile",
+        "Resolution",
+        "Mount height"
+      ],
+      "status_vocabulary": [
+        "Streaming",
+        "Degraded",
+        "Offline"
+      ],
+      "links": [
+        {
+          "to": "camera-pole",
+          "label": "mounts on"
+        },
+        {
+          "to": "vehicle-under-test",
+          "label": "observes"
+        },
+        {
+          "to": "underground-fiber-run",
+          "label": "streams over"
+        }
+      ]
+    },
+    {
+      "id": "underground-fiber-run",
+      "label": "Underground Fiber Run",
+      "kind": "asset",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "Strand count",
+        "NEMA box rating",
+        "FODP port"
+      ],
+      "status_vocabulary": [
+        "Installed",
+        "Tested",
+        "Damaged",
+        "Repaired"
+      ],
+      "links": [
+        {
+          "to": "recorder-server",
+          "label": "terminates at"
+        }
+      ]
+    },
+    {
+      "id": "safety-gate",
+      "label": "Safety Gate",
+      "kind": "asset",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "Gate id",
+        "Reaction lag",
+        "Drop button"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "gate-officer",
+          "label": "operated by"
+        }
+      ]
+    },
+    {
+      "id": "operator-booth-display",
+      "label": "Operator Booth Display",
+      "kind": "asset",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "Display id",
+        "Layout",
+        "Assigned views"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "recorder-server",
+      "label": "Server (the operator's own system)",
+      "kind": "system",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "Role (primary/failover)",
+        "HDD"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "30-day-footage-archive",
+      "label": "30-Day Footage Archive",
+      "kind": "record",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "Retention days",
+        "Role-over rule",
+        "Export log"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "incident-accident-record",
+      "label": "Incident/Accident Record",
+      "kind": "record",
+      "anchored_in": "the recorder's configuration under site change control",
+      "properties": [
+        "Date",
+        "Cameras cited",
+        "Exported clips"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "safety-office-reviewer",
+          "label": "reviewed by"
+        },
+        {
+          "to": "safety-gate",
+          "label": "cites"
+        },
+        {
+          "to": "30-day-footage-archive",
+          "label": "links to"
+        }
+      ]
+    },
+    {
+      "id": "the-site-operator",
+      "label": "The site Operator",
+      "kind": "person",
+      "anchored_in": "the operator's identity policy",
+      "properties": [
+        "Shift",
+        "Certification",
+        "Booth position"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "operator-booth-display",
+          "label": "assigned to"
+        }
+      ]
+    },
+    {
+      "id": "gate-officer",
+      "label": "Gate Officer",
+      "kind": "person",
+      "anchored_in": "the operator's identity policy",
+      "properties": [
+        "Gate assignment",
+        "Drop authority"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "safety-office-reviewer",
+      "label": "Safety Office Reviewer",
+      "kind": "person",
+      "anchored_in": "the operator's identity policy",
+      "properties": [
+        "Download authority",
+        "Review queue"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "vehicle-under-test",
+      "label": "Vehicle Under Test",
+      "kind": "asset",
+      "anchored_in": "the operator's test schedule",
+      "properties": [
+        "Vehicle type",
+        "Test program"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "test-cycle",
+          "label": "runs within"
+        }
+      ]
+    },
+    {
+      "id": "test-cycle",
+      "label": "Test Cycle",
+      "kind": "event",
+      "anchored_in": "the operator's test schedule",
+      "properties": [
+        "Start time",
+        "Route",
+        "Turns exercised"
+      ],
+      "status_vocabulary": [
+        "Planned",
+        "Running",
+        "Aborted",
+        "Complete"
+      ],
+      "links": [
+        {
+          "to": "30-day-footage-archive",
+          "label": "recorded in"
+        }
+      ]
+    },
+    {
+      "id": "the-operator-s-own-system-power-fiber-assessment-package",
+      "label": "The operator's own system Power/Fiber assessment package",
+      "kind": "document",
+      "anchored_in": "the operator's own system, read only",
+      "properties": [
+        "Power loads per pole",
+        "Fiber"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ]
+}

@@ -5,7 +5,7 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 We publish the design. You bring the operation. Together they become an object model your systems can run on.
 
-13 reference architectures are published so far, across 5 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
+14 reference architectures are published so far, across 6 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
 
 ## Sectors
 

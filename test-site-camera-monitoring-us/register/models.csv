@@ -1,0 +1,12 @@
+choice,picked,why
+Detection model,"D-FINE, Apache-2.0, BF16, N to X tiers",Unconditional license keeps the weights in the operator's hands; N through L fit the 48 GB card; ahead of DEIM on matched compute in the July 2026 comparison.
+Site inference server,"48 GB PCIe inference GPU class server in the ASHRAE A2 conditioned server room, N+1","The entry class for plant server rooms running vision, and retrospective search plus 80 to 120 streams of decode fit it with headroom for a second model."
+Recorder and serving runtime,Frigate NVR v0.18.0 with its built-in ONNX detector runtime,"Open source the operator owns outright; keeps 30-day retention, ONVIF and RTSP exits and local detection without per-camera license rents."
+Camera heads,"Fixed multi-sensor thermal and visible heads, no wireless radios, Section 889 screened with producer-of-record statements","Zone coverage needs always-present calibrated views, and camera provenance is the first procurement gate on a test site."
+Site networking,"Managed PoE switches over underground single-mode fiber, two strands per pole","The requirement fixes the fiber architecture, and PoE Type 1 and 2 per-port budgets cover the heads without pole-side power electronics."
+Enclosures and power,"NEMA-rated outdoor enclosures, 277/120/24 V step-down transformer feeds, Network UPS Tools for clean shutdown","Heat, storms and sun angle degrade heads and light budgets, and clean shutdown protects the archive."
+Time synchronization,"OCP Time Card GNSS grandmaster with holdover oscillator, Chrony 4.9, linuxptp where PTP-aware switches exist",Evidentiary ordering across 80 to 120 recorded streams requires one clock.
+Identity,Keycloak on-premise single sign-on with hardware token sign on for Linux hosts,"Only booth operators and the safety office reach the isolated network, under the operator's identity policy."
+Observability,"Prometheus, Grafana and Loki on the isolated network","Camera uptime must be a first-class metric, not a vendor health page."
+Sizing rules,"The survey evidence pack, pixels on target first, low light as a budget, mounting geometry decides what you see","Coverage is proven in phase one evidence, never assumed from a camera count."
+Patterns,A site-scale camera onboarding reference architecture and an on-premises video search blueprint,"Onboarding, clip retrieval and search patterns adopted with no managed cloud, keeping the audio visual core on-premises."

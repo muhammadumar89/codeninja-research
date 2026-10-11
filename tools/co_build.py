@@ -289,6 +289,11 @@ def sector_page(slug, name, ds, neighbours, why, totals):
         f'{len(ds)} published design{"s" if len(ds) != 1 else ""} · {E(clist(countries))}' if covered else "first design open") + "</span></li>"
 
 
+# Designs reframed away from a military or government operator are never offered as the defense
+# neighbour (Umar, 11 Oct 2026: CodeNinja is not to be caught up in any military or government framing).
+NOT_NEAR = {"defense-and-intelligence": {"test-site-camera-monitoring-us"}}
+
+
 def main():
     by, rows = designs()
     totals = {"designs": len(rows), "sectors": len({r.get("sector") for r in rows})}
@@ -299,7 +304,9 @@ def main():
         neighbours = []
         if not ds:
             for sec in sorted(by):
-                neighbours.append(sorted(by[sec], key=lambda r: r.get("published") or "", reverse=True)[0])
+                pool = [r for r in by[sec] if r.get("design_id") not in NOT_NEAR.get(slug, set())]
+                if pool:
+                    neighbours.append(sorted(pool, key=lambda r: r.get("published") or "", reverse=True)[0])
         items.append(sector_page(slug, name, ds, neighbours, why, totals))
 
     covered = totals["sectors"]
