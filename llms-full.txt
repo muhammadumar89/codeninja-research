@@ -1087,7 +1087,7 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | farm-data-dashboard-pakistan | agriculture and earth observation | Pakistan | [10.5281/zenodo.23186671](https://doi.org/10.5281/zenodo.23186671) |
 | vegetation-mapping-lidar-us | agriculture and earth observation | United States | [10.5281/zenodo.23186673](https://doi.org/10.5281/zenodo.23186673) |
 | restricted-crop-monitoring-saudi-arabia | agriculture and earth observation | Saudi Arabia | [10.5281/zenodo.23186675](https://doi.org/10.5281/zenodo.23186675) |
-| test-site-camera-monitoring-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23295991](https://doi.org/10.5281/zenodo.23295991) |
+| test-site-camera-monitoring-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23296077](https://doi.org/10.5281/zenodo.23296077) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 
@@ -4992,7 +4992,7 @@ In every published discrete manufacturing and automotive design a named person m
 
 ## Sources
 
-- [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23295991
+- [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23296077
 
 
 ---
@@ -7368,7 +7368,7 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 # Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site
 
 Canonical: https://codeatoms.ai/test-site-camera-monitoring-us/
-DOI: https://doi.org/10.5281/zenodo.23295991
+DOI: https://doi.org/10.5281/zenodo.23296077
 PDF: https://codeatoms.ai/test-site-camera-monitoring-us/paper/pit-camera-watch-on-premises-camera-monitoring-test-site-us.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -7405,7 +7405,7 @@ At a glance
 | Three-year cost | About 474,000 to 871,000 US dollars to own over three years, mostly camera heads; the two recorder hosts alone cost about four fifths of the deepest three-year AWS commitment, and there is no per camera license at any pole count (Appendix A) |
 | Human control | Booth operators watch and decide; nothing raises an automated alarm; only the safety office can export a clip |
 
-**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI <https://doi.org/10.5281/zenodo.23295991.>
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI <https://doi.org/10.5281/zenodo.23296077.>
 
 **Made with.** Reasoned on [CodeNinja Praxis](<https://codeatoms.ai/praxis/>), the CodeNinja Atoms platform for designing physical AI systems. The object model imports into [Hyper Ontology](<https://codeatoms.ai/hyper-ontology/>), which turns it into a living system. Both are in beta; access by request.
 
@@ -7782,19 +7782,40 @@ PART IV · CHAPTER 11
 
 ## How Praxis Contextualized and Reasoned This Design
 
-Every choice in this paper, from the pixels-on-target rule to the Section 889 screens, follows one chain of thought through eight lenses.
+Every choice in this paper, from the pixels-on-target rule to the Section 889 screens, traces back through eight lenses to the records read in the room.
 
-Chapter 10 placed the estate, the weights and the boundary in the operator's hands. This closing chapter shows the chain of thought that produced the design: how the ask was read, the eight lenses it passed through in order, and where the reasoning lands. Every design in this series is produced on Praxis.
+Chapter 10 placed the estate, the weights and the boundary in the operator's hands. This closing chapter shows how the design itself was produced, so that any choice in it, from the pixels-on-target rule to the Section 889 screens, can be traced back to what justified it. Every design in this series is produced on Praxis, and this chapter is the trace. Figure 9 shows the path in one view: the ask, the family and industry Praxis assigned, the records read in the room, the eight lenses applied to those records, and the patterns and equipment classes the reasoning landed on.
 
 ### 11.1  Contextualizing the Ask
 
-The ask was to replace an end-of-life camera monitoring system, purchased in 2013 and decayed into outage and dead-head territory, with a fully on-premises estate for a vehicle proving ground: fixed camera heads on new underground single-mode fiber, an N+1 recorder pair with 30-day retention, a four-display operator booth, and supply-chain screens on every network-capable component. Praxis assigned the design to the Physical AI family and to the discrete manufacturing and automotive industry. The site statement was read in full, including the later revision confirming that no fiber route diagrams exist and that camera view diagrams may come later.
+The ask was to replace an end-of-life camera monitoring system, purchased in 2013 and decayed into outage and dead-head territory, with a fully on-premises estate for a vehicle proving ground: fixed camera heads on new underground single-mode fiber, an N+1 recorder pair with 30-day retention, a four-display operator booth, and supply-chain screens on every network-capable component. Praxis assigned the design to the Physical AI family and to the discrete manufacturing and automotive industry; the industry pin is the analyst's own decision on this project, not a reasoned match against the requirement, and the brief was still read as a reasoning input. What was in the room matters as much as the assignment: 891 records were listed, 126 of them read in full, and the remaining 765 available on demand. The site statement itself was read in full, including the later revision confirming that no fiber route diagrams exist and that camera view diagrams may come later.
 
-### 11.2  The Eight Lenses
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
 
-Praxis reads every ask through eight lenses, in order, and each one settled something. First principles settled the rules that shape the workflow: sensor health is treated as an asset, existing camera locations are reused wherever they still serve, and alarms are routed apart from alerts. Case studies found no comparable camera estate replacement, and the design says so rather than leaning on a weak precedent. Tooling and recency settled the open software, from the recorder and the time card grandmaster to power monitoring, each read with its license, and checked the detector live. Rules and regulations settled the supply-chain screens, their two reporting clocks and the component-level bill of materials. Approach settled prototype-first phasing, the spares and repair-time budget, and the time sync rules that make failover and evidence ordering real commitments. History settled uptime as a first-class acceptance metric for each use case, and showed that covered equipment can arrive under another label. Domain fusion joined the camera wall, the health telemetry and the coverage table into one design. Hardware and equipment settled the survey evidence pack, pixel density on target, the low-light budget, mounting geometry, stream sizing, the power classes and the server room class.
+Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 
-### 11.3  Where the Reasoning Lands
+### 11.2  The Lenses
+
+Praxis reads every ask through eight lenses, and Table 6 records what each could see, what it cited, and what it contributed. One lens returned nothing sector-specific and is shown as a gap rather than papered over.
+
+Table 6 · The Lenses and What They Contributed
+
+| Lens | Could see | Cited | What it contributed |
+| --- | --- | --- | --- |
+| First principles | The pinned brief and the doctrine reads on sensor health, reuse and alarm routing | 4 | The sensor-health-as-asset rule, the reuse-existing-camera rule and the alarm-versus-alert routing that shape the workflow, health monitoring and reuse items |
+| Case studies | 16 precedents in the case corpus | 0 | A gap: the corpus holds no comparable camera-estate replacement and its precedents bear on program governance, so none is cited |
+| Tooling and recency | 333 records on the shelf | 2 | Frigate NVR, the time-card grandmaster, Network UPS Tools and the GPU class rows read with licenses; the one model role, D-FINE, was checked live |
+| Hardware and equipment | 29 records on the shelf | 6 | The survey evidence pack, pixels-on-target density, the low-light budget, mounting geometry, stream sizing, PoE classes, the ASHRAE server-room class and the Section 889 procurement gate; the lightning and surge class row is absent, a gap filled by the vendor's alternate exactly as the site statement expects |
+| Rules and regulations | 393 records | 2 | Both Section 889 family clauses read in full, fixing the banned-producer screens, the two report clocks and the component-level bill of materials |
+| Approach | 57 records | 3 | Prototype-first phasing, the spares and MTTR budget, and the time-sync rules that make N+1 and evidentiary ordering real commitments |
+| History | 63 records | 2 | The 2026 oversight record on Section 889 labeling failures and the safe-city acceptance record that fixed per-use-case acceptance with uptime as a first-class metric |
+| Domain fusion | The camera-onboarding pattern set fused with the domain's sensor-health and reuse doctrine | 2 | Turned the camera wall, the health telemetry and the coverage table into one design rather than vendor boilerplate |
+
+### 11.3  Patterns Adopted and Set Aside
+
+Two pattern sets were adopted. The primary set, from the site-scale camera-onboarding reference architecture, contributes four patterns: convert pixels to metadata once and run analytics on structured events, decouple stages so each scales independently, keep each capability an independent service, and prefer opinionated reference workflows over a monolith. The supporting set, from the on-premises video search blueprint, contributes three parallel representations of video at ingest and the rule that every answer grounds in a retrievable clip. No named pattern was set aside outright, but several adopted patterns were deliberately not instantiated as running components: no event broker stands up because no downstream subscribers exist, no container orchestration because the estate is one recorder pair in one room, and no model registry because one detector file on one host is staged under existing change control. The patterns shape the architecture; the components stay only where a duty exists.
+
+### 11.4  Where the Reasoning Lands
 
 The reasoning lands in a short list of equipment classes: an ASHRAE A2 conditioned server room holding a 48 GB PCIe inference GPU class server, managed PoE switches over the underground single-mode fiber plant, NEMA-rated enclosures fed through step-down transformers, a GNSS grandmaster card with holdover for time sync, a fixed thermal and visible camera class bought through the Section 889 gate, and a hardened open-source recorder running a retrospective detector over the archive. Everything shown in this paper was recorded reading: every rule cites a record read in the room, every component carries its license terms, and nothing is inferred.
 

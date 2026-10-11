@@ -40,7 +40,7 @@ The paper covers the problem and its cost in Part I, the constraints, stack, obj
 
 ## Figures
 
-`figures/figure_01.png` to `figure_08.png`, each with its caption in the matching `.txt`. The operator is described by class, never by name.
+`figures/figure_01.png` to `figure_09.png`, each with its caption in the matching `.txt`. The operator is described by class, never by name.
 
 ## How it was built
 

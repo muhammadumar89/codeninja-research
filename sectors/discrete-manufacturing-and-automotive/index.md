@@ -32,4 +32,4 @@ In every published discrete manufacturing and automotive design a named person m
 
 ## Sources
 
-- [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23295991
+- [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23296077
