@@ -1087,10 +1087,11 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | farm-data-dashboard-pakistan | agriculture and earth observation | Pakistan | [10.5281/zenodo.23186671](https://doi.org/10.5281/zenodo.23186671) |
 | vegetation-mapping-lidar-us | agriculture and earth observation | United States | [10.5281/zenodo.23186673](https://doi.org/10.5281/zenodo.23186673) |
 | restricted-crop-monitoring-saudi-arabia | agriculture and earth observation | Saudi Arabia | [10.5281/zenodo.23186675](https://doi.org/10.5281/zenodo.23186675) |
+| test-site-camera-monitoring-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23295991](https://doi.org/10.5281/zenodo.23295991) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 
-Designed with Praxis, CodeNinja's platform for designing physical AI systems; object models are written as Hyper Ontology input. CC BY 4.0.
+Designed with CodeNinja Praxis, the CodeNinja Atoms platform for designing physical AI systems; object models are written as Hyper Ontology input. CC BY 4.0.
 
 
 ---
@@ -4991,7 +4992,7 @@ In every published discrete manufacturing and automotive design a named person m
 
 ## Sources
 
-- [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States)
+- [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23295991
 
 
 ---
@@ -7367,6 +7368,7 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 # Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site
 
 Canonical: https://codeatoms.ai/test-site-camera-monitoring-us/
+DOI: https://doi.org/10.5281/zenodo.23295991
 PDF: https://codeatoms.ai/test-site-camera-monitoring-us/paper/pit-camera-watch-on-premises-camera-monitoring-test-site-us.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -7403,7 +7405,7 @@ At a glance
 | Three-year cost | About 474,000 to 871,000 US dollars to own over three years, mostly camera heads; the two recorder hosts alone cost about four fifths of the deepest three-year AWS commitment, and there is no per camera license at any pole count (Appendix A) |
 | Human control | Booth operators watch and decide; nothing raises an automated alarm; only the safety office can export a clip |
 
-**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as <https://codeatoms.ai/test-site-camera-monitoring-us/.>
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI <https://doi.org/10.5281/zenodo.23295991.>
 
 **Made with.** Reasoned on [CodeNinja Praxis](<https://codeatoms.ai/praxis/>), the CodeNinja Atoms platform for designing physical AI systems. The object model imports into [Hyper Ontology](<https://codeatoms.ai/hyper-ontology/>), which turns it into a living system. Both are in beta; access by request.
 
