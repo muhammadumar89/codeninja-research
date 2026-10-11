@@ -63,7 +63,7 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 @media (max-width:820px){.doc{padding:80px var(--gutter);font-size:16px}.doc h2{margin-top:72px}.grid{grid-template-columns:1fr}section.film.access .inner{grid-template-columns:1fr;padding:88px var(--gutter)}}
 """
 
-SHORT = {"praxis": "Praxis: Design Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: From Design to Living System | CodeNinja Atoms"}
+SHORT = {"praxis": "CodeNinja Praxis: AI That Designs Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: From Design to Living System | CodeNinja Atoms"}
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
 ACCESS = {"praxis": "Every design on this site was made on Praxis. Engineers start free; organisations talk to our commercial team.",
@@ -97,7 +97,7 @@ def page(slug, title, desc, body, ld):
 </main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}{brand.footer_links(BASE + "/")}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
-HERO = {"praxis": ("Design physical AI systems.", "Praxis reads a requirement and writes a system design an engineer can build from: sensing, models, hardware, object model, cost and approvals.")}
+HERO = {"praxis": ("Design physical AI systems.", "CodeNinja Praxis reads a requirement and writes a system design an engineer can build from: sensing, models, hardware, object model, cost and approvals.")}
 # The first hour, step by step: what an engineer does on a free account (from the platform's handoff of 8 Oct 2026).
 WALK = [("Paste a requirement", "A port terminal, a mine haul road, a warehouse: paste what the operator sent, in their own words."),
         ("Answer six questions", "Praxis asks for what the requirement leaves out, and nothing more."),
@@ -143,7 +143,7 @@ def main():
     pq = [("What designed the Vertical-Driven Architectures reference architectures?", f"Praxis, CodeNinja's platform for designing physical AI systems. All {len(ds)} designs in the series were produced on Praxis."),
           ("What does Praxis produce from a requirement?", "A complete system design for physical AI: a scope baseline, a layered architecture, an object model packaged for Hyper Ontology, a model and equipment register sized by memory arithmetic, a rollout with gates, a cost comparison, a live simulation, a proposal and functional specification, and a research paper."),
           ("Is Praxis available?", "Yes. Engineers unlock free developer access at https://app.codeatoms.ai/signup, and every account is approved by CodeNinja. Organisations that want sovereign or custom deployments talk to the commercial team at https://app.codeatoms.ai/signup?plan=enterprise.")]
-    pbody = f"""<p class="eyebrow">CodeNinja · Praxis</p>
+    pbody = f"""<p class="eyebrow">CodeNinja Praxis</p>
 <h1>Praxis: design physical AI systems the way a ten-year domain engineer would</h1>
 <p class="lead">Praxis turns an operator's requirement into a complete system design for physical AI: what to sense, where each model runs, what the object model holds, what it costs, and who approves every action. Every paper in the <a href="{BASE}/">Vertical-Driven Architectures</a> series was designed on Praxis.</p>
 <div class="box"><strong>Two ways in.</strong> Engineers <a href="https://app.codeatoms.ai/signup">unlock free access</a>; organisations <a href="https://app.codeatoms.ai/signup?plan=enterprise">talk to our commercial team</a> about sovereign and custom deployments. Every account is approved by CodeNinja.</div>
@@ -170,7 +170,7 @@ def main():
                       "contentUrl": f"{BASE}/assets/video/praxis-walkthrough.mp4", "uploadDate": "2026-10-08", "duration": "PT3M1S", "embedUrl": f"{BASE}/praxis/#watch"},
             "subjectOf": [{"@type": "TechArticle", "headline": d["title"], "url": f"{BASE}/{d['slug']}/"} for d in ds]}, faq(pq)]
     (ROOT / "praxis" / "index.html").write_text(page("praxis", "Praxis: design physical AI systems the way a ten-year domain engineer would",
-        "Praxis is CodeNinja's platform for designing physical AI systems: requirement in, complete system design out, from sensing and models to object model, cost and approvals.", pbody, pld), encoding="utf-8")
+        "CodeNinja Praxis is the CodeNinja Atoms AI platform for designing physical AI systems: requirement in, complete system design out, from sensing and models to object model, cost and approvals.", pbody, pld), encoding="utf-8")
     # ---------------------------------------------------------------- Hyper Ontology
     pk = [f'<li><a href="{BASE}/{d["slug"]}/ontology/objects.json">{E(d["title"].split(":")[0])}</a> <small>({d["n_obj"]} objects, {d["n_link"]} links; {E(d["country"])})</small></li>' for d in ds]
     hq = [("How do I turn a reference architecture into a living system?", "Import its object model into Hyper Ontology. Hyper Ontology stands the model up as a projection over the operator's own systems of record, connected through adapters that emit ontology events, so applications and agents read one model instead of the silos."),
