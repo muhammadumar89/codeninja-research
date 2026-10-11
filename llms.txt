@@ -84,3 +84,11 @@
 - [Physical AI for heavy industry and construction](https://codeatoms.ai/sectors/heavy-industry-and-construction/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/heavy-industry-and-construction/index.md
 - [Physical AI for maritime and ports](https://codeatoms.ai/sectors/maritime-and-ports/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/maritime-and-ports/index.md
 - [Physical AI for oil and gas](https://codeatoms.ai/sectors/oil-and-gas/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/oil-and-gas/index.md
+
+<!--full-->
+## Full text
+
+- [llms-full.txt](https://codeatoms.ai/llms-full.txt): every paper on the site in one Markdown file
+- Each design page also has a Markdown copy at its address plus `index.md`, for example https://codeatoms.ai/wildfire-risk-distribution-us/index.md
+- [About CodeNinja Atoms](https://codeatoms.ai/about/): mission and executive leadership
+<!--/full-->

@@ -16,7 +16,7 @@ index.md per design, llms-full.txt, and the llms.txt full-text section.
 import base64, hashlib, html, io, json, re
 from pathlib import Path
 import brand
-SEARCH = {k: v for k, v in json.loads((pathlib.Path(__file__).resolve().parent / "search_titles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
+SEARCH = {k: v for k, v in json.loads((Path(__file__).resolve().parent / "search_titles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://codeatoms.ai"
