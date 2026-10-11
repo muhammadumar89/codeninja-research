@@ -28,6 +28,7 @@ a{color:inherit}h1,h2,h3,p,li{overflow-wrap:break-word}:focus-visible{outline:1p
 .mono,.eyebrow{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-d);line-height:1.5}
 .logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
 a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:21px;line-height:20px;letter-spacing:-.01em;color:#D9C3A3;margin-left:-2px}
+.vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 /* header */
 .topwrap{position:fixed;top:0;left:0;right:0;z-index:20}
 .annbar{display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 16px;background:#07080B;border-bottom:1px solid var(--rule-d);color:rgba(242,242,240,.9);font:400 14px/1.35 var(--sans);letter-spacing:-.005em;text-decoration:none;text-align:center}
@@ -171,7 +172,7 @@ ARROW = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v1
 
 
 def header_brand(home):
-    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms home">{LOGO}<span class="atoms">Atoms</span></a>'
+    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms home">{LOGO}<span class="atoms"><span class="vh">CodeNinja </span>Atoms</span></a>'
 
 
 def form(product="both"):
@@ -200,4 +201,4 @@ def access_block(note="Having trouble?", subject="Praxis"):
 
 
 def footer_brand(home):
-    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms">{LOGO}<span class="atoms">Atoms</span></a>'
+    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms">{LOGO}<span class="atoms"><span class="vh">CodeNinja </span>Atoms</span></a>'

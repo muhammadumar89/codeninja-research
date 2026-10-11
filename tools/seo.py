@@ -161,7 +161,7 @@ def inject_head(h, block):
 # ---------------------------------------------------------------- bar and footer
 BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:22px;padding:12px 24px;background:#0B0C10;border-bottom:1px solid rgba(255,255,255,.12);"
            "font:400 13.5px/1.2 'Inter Tight','Helvetica Neue',Arial,sans-serif}.atoms-bar a{color:rgba(242,242,240,.8);text-decoration:none}.atoms-bar a:hover{color:#fff}"
-           ".atoms-bar .logo{height:17px;width:auto;display:block}.atoms-bar a.brand{display:flex;align-items:center;gap:8px}.atoms-bar span.atoms{font-weight:700;font-size:18px;color:#D9C3A3}"
+           ".atoms-bar .logo{height:17px;width:auto;display:block}.atoms-bar a.brand{display:flex;align-items:center;gap:8px}.atoms-bar span.atoms{font-weight:700;font-size:18px;color:#D9C3A3}.vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}"
            ".atoms-bar nav{display:flex;gap:20px;margin-left:auto;flex-wrap:wrap;align-items:center}.atoms-bar nav a.join{background:#fff;color:#111218;padding:7px 12px}.atoms-bar nav a.join:hover{background:#E6E6E3}"
            ".atoms-foot{background:#0B0C10;color:#A3A6AE;padding:48px 24px;font:400 14px/1.6 'Inter Tight','Helvetica Neue',Arial,sans-serif;margin-top:64px}"
            ".atoms-foot .w{max-width:1100px;margin:0 auto}.atoms-foot h2{color:#F2F2F0;font-weight:400;font-size:22px;margin:0 0 16px;letter-spacing:-.02em;border:0;padding:0}"
@@ -173,7 +173,7 @@ BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items
 
 def bar():
     nav = brand.nav_flat(BASE + "/")  # a one line strip: no menus, so the four destinations flat
-    return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar"><a class="brand" href="{BASE}/" aria-label="CodeNinja Atoms home">{brand.LOGO}<span class="atoms">Atoms</span></a>'
+    return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar"><a class="brand" href="{BASE}/" aria-label="CodeNinja Atoms home">{brand.LOGO}<span class="atoms"><span class="vh">CodeNinja </span>Atoms</span></a>'
             f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a class="join" href="{brand.SIGNUP}">{brand.FREE}</a></nav></div>{B1}')
 
 
