@@ -1,0 +1,9 @@
+{
+ "_why": "Per-page search overrides for design pages (step 16d, 11 Oct 2026). The paper's own title stays as H1 and citation_title; only the HTML <title>, the social titles and the meta description change, so the page is found by the words people actually search. One entry per fix, with the query and the ledger date, so the file is the history of 16c(b).",
+ "ot-security-cip-evidence-us": {
+  "title": "OT Security Monitoring and NERC CIP Evidence: Grid Context Watch",
+  "description": "OT security monitoring and NERC CIP audit evidence for a US utility on one system of context: passive, one way out of the control networks, on the operator's own hardware. An open reference architecture by CodeNinja Atoms.",
+  "query": "OT security, NERC CIP (tier A); page at 36 impressions, position 5.4, 0 clicks, 28 days to 8 Oct 2026",
+  "fixed": "2026-10-11"
+ }
+}

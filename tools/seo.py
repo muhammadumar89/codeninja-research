@@ -16,6 +16,7 @@ index.md per design, llms-full.txt, and the llms.txt full-text section.
 import base64, hashlib, html, io, json, re
 from pathlib import Path
 import brand
+SEARCH = {k: v for k, v in json.loads((pathlib.Path(__file__).resolve().parent / "search_titles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://codeatoms.ai"
@@ -278,6 +279,12 @@ def main():
         url = f"{BASE}/{slug + '/' if slug else ''}"
         title = html.unescape((re.search(r"<title>(.*?)</title>", h, re.S) or [None, "CodeNinja Atoms"])[1])
         desc = meta(h, "description")
+        if slug in SEARCH:  # 16d: the words people search, on the title and description only; H1 and citation_title stay the paper's
+            title, desc = SEARCH[slug]["title"], SEARCH[slug]["description"]
+            h = re.sub(r"<title>.*?</title>", f"<title>{E(title)}</title>", h, count=1, flags=re.S)
+            h = re.sub(r'(<meta name="description" content=")[^"]*(")', lambda m: m.group(1) + E(desc) + m.group(2), h, count=1)
+            h = re.sub(r'(<meta property="og:title" content=")[^"]*(")', lambda m: m.group(1) + E(title) + m.group(2), h, count=1)
+            h = re.sub(r'(<meta property="og:description" content=")[^"]*(")', lambda m: m.group(1) + E(desc) + m.group(2), h, count=1)
         kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("memo" if slug.startswith("memos") else ("post" if slug.startswith("blog/") else ("dev" if slug.startswith("developer") else ("cobuild" if slug.startswith("co-build") else ("padi" if slug == "padi" else "page"))))))))
         if kind in ("design", "method"):
             h = deinline(h, folder, absolute=False)
