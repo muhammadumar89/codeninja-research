@@ -5,5 +5,11 @@
   "description": "OT security monitoring and NERC CIP audit evidence for a US utility on one system of context: passive, one way out of the control networks, on the operator's own hardware. An open reference architecture by CodeNinja Atoms.",
   "query": "OT security, NERC CIP (tier A); page at 36 impressions, position 5.4, 0 clicks, 28 days to 8 Oct 2026",
   "fixed": "2026-10-11"
+ },
+ "restricted-crop-monitoring-saudi-arabia": {
+  "title": "Earth Observation for Restricted Crop Enforcement: Fodder Watch, Saudi Arabia",
+  "description": "An earth observation system design that screens farm parcels with Sentinel-2, Sentinel-1 and Landsat, turns restricted crop detections into enforceable case files, and keeps imagery, weights and detections in the Kingdom. An open reference architecture by CodeNinja Atoms.",
+  "query": "earth observation cluster (tier B, 7 named queries at positions 1 to 10); page at 35 impressions, position 5.5, 0 clicks, 28 days to 8 Oct 2026; rd_keywords.py pick on 12 Oct 2026",
+  "fixed": "2026-10-12"
  }
 }

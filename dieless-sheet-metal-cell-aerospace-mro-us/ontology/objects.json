@@ -1,0 +1,296 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud",
+    "url": "https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/",
+    "doi": "10.5281/zenodo.23308095"
+  },
+  "sector": "aviation-and-aerospace-manufacturing",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name: an aircraft maintenance, repair and overhaul facility in the United States running one dieless robotic sheet metal cell beside its existing capability",
+  "source": "chapter 5 of the paper (5.1 objects, 5.3 recorded form) and Figure 4 (cards and typed links as drawn); Figure 4 counts 14 typed links, eleven of them labelled; the three it draws without a readable label are named here from chapter 5's own traversal: the part formed in the cell, the program released by a named facility operator, and the scan scored by the cell model service; the four object names the platform's scrub printed as 'The operator's own system ...' are restored to the nouns chapter 5 uses",
+  "write_paths": [
+    "the five services, the only write path into the object model, each stamping the acting person, the time and the provenance onto every event",
+    "the model and baseline governance queue, the only path that changes the cell model service's release state"
+  ],
+  "human_loop": "a program moves from Draft to Released only on the action of a named facility operator; a nonconforming part reaches MRB dispositioned only through an authorized person's disposition with the evidence pack attached; the certified safety function admits no software verdict as a control input",
+  "objects": [
+    {
+      "id": "formed-structural-part",
+      "label": "Formed structural part",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Part number",
+        "Serial number",
+        "Alloy and temper",
+        "Sheet thickness",
+        "As-built deviation to CAD",
+        "Formability verdict"
+      ],
+      "status_vocabulary": [
+        "Blank staged",
+        "Forming",
+        "In-process scan",
+        "Final scan",
+        "Conforming",
+        "Nonconforming",
+        "MRB dispositioned"
+      ],
+      "links": [
+        {
+          "to": "sheet-blank",
+          "label": "formed from"
+        },
+        {
+          "to": "dieless-cell",
+          "label": "formed in"
+        },
+        {
+          "to": "part-cad-model",
+          "label": "defined by"
+        },
+        {
+          "to": "formability-analysis",
+          "label": "judged by"
+        },
+        {
+          "to": "in-process-metrology-scan",
+          "label": "verified by"
+        },
+        {
+          "to": "force-trace",
+          "label": "traced by"
+        },
+        {
+          "to": "work-order",
+          "label": "ordered under"
+        }
+      ]
+    },
+    {
+      "id": "sheet-blank",
+      "label": "Sheet blank",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Alloy",
+        "Temper",
+        "Thickness",
+        "Mill certificate reference",
+        "Lot number"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "dieless-cell",
+      "label": "Dieless cell",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Work envelope X/Y/Z",
+        "Cell id",
+        "Power feed",
+        "Enclosure state"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "robot-arm",
+      "label": "Robot arm",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Axis count",
+        "Reach",
+        "Payload",
+        "Calibration state",
+        "Encoder health"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dieless-cell",
+          "label": "housed in"
+        }
+      ]
+    },
+    {
+      "id": "forming-stylus",
+      "label": "Forming stylus",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Stylus type",
+        "Wear count",
+        "Last assignment"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "robot-arm",
+          "label": "mounted on"
+        }
+      ]
+    },
+    {
+      "id": "toolpath-program",
+      "label": "Toolpath program",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "CAD revision",
+        "Toolpath version",
+        "Springback compensation passes"
+      ],
+      "status_vocabulary": [
+        "Draft",
+        "Released"
+      ],
+      "links": [
+        {
+          "to": "dieless-cell",
+          "label": "executed in"
+        },
+        {
+          "to": "facility-operator",
+          "label": "released by"
+        }
+      ]
+    },
+    {
+      "id": "part-cad-model",
+      "label": "Part CAD model",
+      "kind": "document",
+      "anchored_in": "CAD import, read only",
+      "properties": [
+        "STEP/IGES source file",
+        "Revision",
+        "Design authority",
+        "Tolerance callouts"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "formability-analysis",
+      "label": "Formability analysis",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Material verdict",
+        "Predicted thinning",
+        "Predicted springback"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "part-cad-model",
+          "label": "attached to"
+        }
+      ]
+    },
+    {
+      "id": "in-process-metrology-scan",
+      "label": "In-process metrology scan",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Scan instrument id",
+        "Calibration state",
+        "Deviation map against CAD"
+      ],
+      "status_vocabulary": [
+        "Conforming",
+        "Out of tolerance"
+      ],
+      "links": [
+        {
+          "to": "cell-model-service",
+          "label": "scored by"
+        }
+      ]
+    },
+    {
+      "id": "force-trace",
+      "label": "Force trace",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Arm",
+        "Stylus",
+        "Peak load",
+        "Signature residual"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "work-order",
+      "label": "Work order",
+      "kind": "record",
+      "anchored_in": "the production systems, read only",
+      "properties": [
+        "Work order number",
+        "Aircraft",
+        "Due date",
+        "Priority"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "nonconformance",
+      "label": "Nonconformance",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Disposition",
+        "Authorised person",
+        "Evidence pack"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "formed-structural-part",
+          "label": "raised on"
+        }
+      ]
+    },
+    {
+      "id": "facility-operator",
+      "label": "Facility operator",
+      "kind": "person",
+      "anchored_in": "",
+      "properties": [
+        "Training record",
+        "Task qualification",
+        "Shift"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "cell-model-service",
+      "label": "Cell model service",
+      "kind": "system",
+      "anchored_in": "",
+      "properties": [
+        "Model version",
+        "Weights hash",
+        "Thresholds"
+      ],
+      "status_vocabulary": [
+        "Released",
+        "Shadow",
+        "Superseded",
+        "Rolled back"
+      ],
+      "links": []
+    }
+  ]
+}

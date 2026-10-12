@@ -1,0 +1,288 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Corridor Guard: Validated DC Interference Assessment and Mitigation for Every Gas Pipeline Near the Electrode Station",
+    "url": "https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/",
+    "doi": "10.5281/zenodo.23308093"
+  },
+  "sector": "oil-and-gas",
+  "country": "Pakistan",
+  "scenario": "the operator is described by class, never by name: a transmission and distribution gas pipeline operator in Pakistan whose buried lines run within 1000 m of a high-voltage direct current electrode station",
+  "source": "chapter 5 of the paper (5.1 objects, 5.3 recorded form) and Figure 4 (cards and typed links as drawn); Figure 4 counts 9 typed links; the eight it labels are kept as labelled and the ninth, the thermoelectric generator unit feeding the cathodic protection system, is named 'feeds' from chapter 5's trace from test point to generator unit; the two pipeline cards the platform printed as 'The line0' and 'The line' are labelled by their diameters as chapter 5 names them",
+  "write_paths": [
+    "the reconciliation stage, the only write path into the validation register, with every value labelled measured, inherited, assumed or unknown",
+    "the status ladders of the assessment and each mitigation measure, advanced only by a named person's decision"
+  ],
+  "human_loop": "two-keyer capture with reconciliation routes every discrepancy to the operator's corrosion control engineer before modelling; an assessment moves from reviewed to accepted, and a measure from designed to priced, only through a named person's decision, and the register records who made it",
+  "objects": [
+    {
+      "id": "the-line0",
+      "label": "The 8-inch line",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Diameter 8 inch",
+        "Insulating joint PFIJ Short at KP-0",
+        "Coating condition report",
+        "Buried up to 30 ft"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "insulating-joints-pfij",
+          "label": "insulating joint"
+        }
+      ]
+    },
+    {
+      "id": "the-line",
+      "label": "The 10-inch loop line",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Diameter 10 inch",
+        "Loop line tied in after commissioning",
+        "Insulating joint PFIJ OK at KP-0",
+        "Coating condition report"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "insulating-joints-pfij",
+          "label": "insulating joint"
+        }
+      ]
+    },
+    {
+      "id": "the-unit",
+      "label": "The original anode bed",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Installed 2000",
+        "High silicon cast iron anodes"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "teg-unit",
+      "label": "TEG Unit",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Installed 1972",
+        "Thermoelectric generator feeding cathodic protection"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "cathodic-protection-system",
+          "label": "feeds"
+        }
+      ]
+    },
+    {
+      "id": "anode-1-mp-3-40",
+      "label": "Anode 1 (MP-3.40)",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Test point MP-3.40",
+        "Installed 2025",
+        "Serves the 10-inch loop line"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "anode-2-mp-6-97",
+      "label": "Anode 2 (MP-6.97)",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Test point MP-6.97",
+        "Installed 2025",
+        "Serves the 10-inch loop line"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "insulating-joints-pfij",
+      "label": "Insulating Joints PFIJ",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "8-inch line KP-0 PFIJ Short",
+        "10-inch line KP-0 PFIJ OK",
+        "Location along the line",
+        "As-found condition, subject to field verification"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "the-station",
+      "label": "The electrode station",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Electrode element 75 mm diameter x 1200 mm length",
+        "High silicon iron rod material",
+        "Coke bed volume about six cubic meters",
+        "Backfill resistivity 0.02 ohm-meter",
+        "Bed length sixty meters"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "hvdc-transmission-system",
+      "label": "HVDC Transmission System",
+      "kind": "system",
+      "anchored_in": "the direct current system's configuration record, read only",
+      "properties": [
+        "Main transmission line \u00b1500 kV",
+        "Electrode line 66 kV",
+        "Bipolar rating 1300 MW",
+        "Per-pole current 1300 A",
+        "Monopolar ground return up to 1.3 kA",
+        "DC fault current 5 to 7 kA",
+        "Converter blocking under 20 ms"
+      ],
+      "status_vocabulary": [
+        "Bipolar operation, no electrode current",
+        "Monopolar return",
+        "Converter blocked",
+        "Backup protection interrupt"
+      ],
+      "links": [
+        {
+          "to": "the-station",
+          "label": "terminates at"
+        },
+        {
+          "to": "dc-interference-assessment",
+          "label": "drives assessment"
+        }
+      ]
+    },
+    {
+      "id": "cp-test-point",
+      "label": "CP Test Point",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "MP designation",
+        "Coordinates",
+        "Pipe-to-soil DC potential reading, V vs CSE",
+        "Survey date",
+        "Crew"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dc-interference-assessment",
+          "label": "reads potential"
+        }
+      ]
+    },
+    {
+      "id": "cathodic-protection-system",
+      "label": "Cathodic Protection System",
+      "kind": "system",
+      "anchored_in": "",
+      "properties": [
+        "TEG-fed protected sections",
+        "Protective criterion -0.85 V vs CSE"
+      ],
+      "status_vocabulary": [
+        "Protected",
+        "Under-protected",
+        "Interference detected"
+      ],
+      "links": []
+    },
+    {
+      "id": "soil-investigation-report",
+      "label": "Soil Investigation Report",
+      "kind": "document",
+      "anchored_in": "the operator's data package, read only",
+      "properties": [
+        "Soil resistivity, layered and variable from region to region",
+        "Backfill and coke bed resistivity",
+        "Route sections",
+        "Survey dates"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dc-interference-assessment",
+          "label": "calibrates model"
+        }
+      ]
+    },
+    {
+      "id": "detail-of-available-data-for-assessment",
+      "label": "Detail of Available Data for Assessment",
+      "kind": "document",
+      "anchored_in": "the operator's data package, read only",
+      "properties": [
+        "Initial assessment report by the operator",
+        "Index of the furnished package"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "soil-investigation-report",
+          "label": "lists report"
+        }
+      ]
+    },
+    {
+      "id": "dc-interference-assessment",
+      "label": "DC Interference Assessment",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Modelled pipe-to-soil potential shift",
+        "Safe-distance finding",
+        "Validation basis and its limits",
+        "Operating state modelled"
+      ],
+      "status_vocabulary": [
+        "Modelled",
+        "Calibrated",
+        "Reviewed",
+        "Accepted"
+      ],
+      "links": [
+        {
+          "to": "mitigation-measure",
+          "label": "motivates measure"
+        }
+      ]
+    },
+    {
+      "id": "mitigation-measure",
+      "label": "Mitigation Measure",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Measure type",
+        "BOQ item and quantity",
+        "Target pipeline and section"
+      ],
+      "status_vocabulary": [
+        "Proposed",
+        "Designed",
+        "Priced in the bill of quantities",
+        "Accepted"
+      ],
+      "links": []
+    }
+  ]
+}

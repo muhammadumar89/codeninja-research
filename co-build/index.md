@@ -5,7 +5,7 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 We publish the design. You bring the operation. Together they become an object model your systems can run on.
 
-14 reference architectures are published so far, across 6 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
+16 reference architectures are published so far, across 7 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
 
 ## Sectors
 
@@ -14,13 +14,13 @@ We publish the design. You bring the operation. Together they become an object m
 - [Energy and utilities](https://codeatoms.ai/co-build/energy-and-utilities/): 3 published designs
 - [Maritime and ports](https://codeatoms.ai/co-build/maritime-and-ports/): 2 published designs
 - [Rail transport](https://codeatoms.ai/co-build/rail-transport/): first design open
-- [Aviation manufacturing](https://codeatoms.ai/co-build/aviation-manufacturing/): first design open
+- [Aviation manufacturing](https://codeatoms.ai/co-build/aviation-manufacturing/): 1 published designs
 - [Defense and intelligence](https://codeatoms.ai/co-build/defense-and-intelligence/): first design open
 - [Heavy industry and construction](https://codeatoms.ai/co-build/heavy-industry-and-construction/): 3 published designs
 - [Semiconductors](https://codeatoms.ai/co-build/semiconductors/): first design open
 - [Supply chain and logistics](https://codeatoms.ai/co-build/supply-chain-and-logistics/): first design open
 - [Agriculture and earth observation](https://codeatoms.ai/co-build/agriculture-and-earth-observation/): 3 published designs
-- [Oil and gas](https://codeatoms.ai/co-build/oil-and-gas/): 2 published designs
+- [Oil and gas](https://codeatoms.ai/co-build/oil-and-gas/): 3 published designs
 - [Warehousing and intralogistics](https://codeatoms.ai/co-build/warehousing-and-intralogistics/): first design open
 
 ## What you bring

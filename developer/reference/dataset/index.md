@@ -84,6 +84,8 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | vegetation-mapping-lidar-us | agriculture and earth observation | United States | [10.5281/zenodo.23186673](https://doi.org/10.5281/zenodo.23186673) |
 | restricted-crop-monitoring-saudi-arabia | agriculture and earth observation | Saudi Arabia | [10.5281/zenodo.23186675](https://doi.org/10.5281/zenodo.23186675) |
 | test-site-camera-monitoring-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23296077](https://doi.org/10.5281/zenodo.23296077) |
+| dc-interference-gas-pipelines-pakistan | oil and gas | Pakistan | [10.5281/zenodo.23308093](https://doi.org/10.5281/zenodo.23308093) |
+| dieless-sheet-metal-cell-aerospace-mro-us | aviation and aerospace manufacturing | United States | [10.5281/zenodo.23308095](https://doi.org/10.5281/zenodo.23308095) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 

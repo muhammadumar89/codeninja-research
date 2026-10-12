@@ -31,7 +31,7 @@ SECTORS = [
      "Terminals and port authorities run gates, cranes, yards and finance on separate systems, so nobody sees the whole flow of a box or a truck."),
     ("rail-transport", "Rail transport", None,
      "Track, rolling stock, signalling and the works programme are measured by different teams, and a condition record rarely reaches the people planning the work."),
-    ("aviation-manufacturing", "Aviation manufacturing", None,
+    ("aviation-manufacturing", "Aviation manufacturing", "aviation and aerospace manufacturing",
      "Aerostructures carry an inspection and conformity record for every part, and that record usually lives apart from the shop floor that produced it."),
     ("defense-and-intelligence", "Defense and intelligence", None,
      "Sustainment, readiness and surveillance data are held under rules about where they may sit and who may read them, which is what a sovereign design has to answer first."),

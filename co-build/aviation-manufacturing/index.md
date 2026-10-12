@@ -6,16 +6,11 @@ License: CC BY 4.0
 
 Aerostructures carry an inspection and conformity record for every part, and that record usually lives apart from the shop floor that produced it.
 
-Recommended path: no aviation manufacturing design is published yet, so the first one is built with a partner, starting from the published neighbours.
+Recommended path: start from the nearest published aviation manufacturing design; we extend its object model to your site.
 
 ## What we bring
 
-- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
-- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
-- Nearest published work: [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (energy and utilities, Saudi Arabia)
-- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
-- Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
-- Nearest published work: [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (oil and gas, Pakistan)
+- [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (United States): 14 objects, 1 models, DOI https://doi.org/10.5281/zenodo.23308095
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
 
@@ -45,7 +40,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a aviation manufacturing design to read?
 
-Not yet. 14 designs are published across 6 other sectors, and the nearest ones are linked on this page. The first aviation manufacturing design is built with a partner.
+Yes. 1 published aviation manufacturing reference architecture in the United States, each with a DOI, an object model and a cost appendix.
 
 Ask to co-build: https://codeatoms.ai/co-build/aviation-manufacturing/#ask
 Every sector: https://codeatoms.ai/co-build/

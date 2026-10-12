@@ -20,6 +20,7 @@ WHY = {
     "energy and utilities": "Grids and plants run on control systems, maintenance records and field crews that were never designed to share one picture of risk.",
     "heavy industry and construction": "Mills, factories and building sites produce counts, alarms and progress data in many systems, and each one sees only part of the operation.",
     "maritime and ports": "Terminals and port authorities run gates, cranes, yards and finance on separate systems, so nobody sees the whole flow of a box or a truck.",
+    "aviation and aerospace manufacturing": "Aircraft parts carry a conformity record for every serialized piece, and that record usually lives apart from the shop floor, the metrology bay and the work order that produced it.",
     "oil and gas": "Wells, terminals and plants hold safety, inventory and process data in systems that were never joined, often on sites where the data may not leave the country.",
 }
 

@@ -1,0 +1,534 @@
+# Corridor Guard: Validated DC Interference Assessment and Mitigation for Every Gas Pipeline Near the Electrode Station
+
+Canonical: https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/
+DOI: https://doi.org/10.5281/zenodo.23308093
+PDF: https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/paper/corridor-guard-dc-interference-assessment-gas-pipelines-pakistan.pdf
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
+
+VERTICAL-DRIVEN ARCHITECTURES · OIL & GAS · DESIGNED WITH PRAXIS · OCTOBER 2026
+
+# Corridor Guard: Validated DC Interference Assessment and Mitigation for Every Gas Pipeline Near the Electrode Station
+
+A validation-first study design that digitises, field-verifies and models the interference a high-voltage direct current electrode system imposes on the operator's transmission and distribution gas pipelines in Pakistan, and turns it into a safe-distance assessment, a priced mitigation strategy and a re-runnable model handed over on the operator's own hardware.
+
+CodeNinja Engineering Team
+
+For the Corrosion Control lead accountable for pipeline integrity, the cathodic protection and DC interference engineers, and the data, GIS and modelling engineers who would build and run it.
+
+---
+
+Vertical-Driven Architectures is a CodeNinja Atoms series of system designs. Every design in the series is driven by a real-world problem and scenario in a single industry, and every one is designed on CodeNinja Praxis, the CodeNinja Atoms platform for designing physical AI systems. Operations are described by class, never by name.
+
+At a glance
+
+## Validated DC interference assessment for gas pipelines in Pakistan
+
+**What this is.** An open reference architecture for system design in physical AI: a validation-first study that digitises an operator's scanned pipeline records, verifies the corridor in the field, calibrates a direct current interference model in validated software and hands the re-runnable model over on the operator's own hardware, so every safe distance ships with its evidence. It is written for the corrosion control lead accountable for pipeline integrity and for the cathodic protection, GIS and modelling engineers who would build and run it. The operator is described by class, never by name.
+
+**The answer in numbers.**
+
+| Part | The design |
+| --- | --- |
+| Sources | Two: the operator's furnished data package (alignments, coatings, soils, test points, insulating joints) and the HVDC system's stated configuration, entering through one integration adapter family |
+| Object model | 15 typed objects with provenance on every attribute, from the two lines and their insulating joints through the electrode station and test points to the interference assessment and each mitigation measure, published as JSON for reuse |
+| Model | PaddleOCR-VL 1.6, about 0.9 billion parameters, Apache-2.0, digitising scanned surveys with two-keyer human reconciliation; the interference physics stays in validated commercial software (CDEGS or COMSOL class) |
+| Compute | One server-class host of the 48 GB PCIe inference GPU class inside the operator's estate; no field compute, no cloud, nothing crosses the boundary |
+| Rollout | Three gated phases carrying 15 items: data validation, DC modelling and simulation, mitigation strategy and handover, calibrated against bipolar-baseline readings with the 1.3 kA monopolar return modelled as a conservative envelope |
+| Three-year cost | About 19,500 US dollars to own the host over three years (18,700 to 20,200), about four fifths of the deepest three-year AWS commitment for one L40S card, which could not keep the data in Pakistan in any case (Appendix A) |
+| Human control | A named corrosion control engineer closes every discrepancy and accepts every assessment; no value enters the register without provenance and no safe distance ships without its evidence |
+
+**Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI <https://doi.org/10.5281/zenodo.23308093.>
+
+**Made with.** Reasoned on [CodeNinja Praxis](<https://codeatoms.ai/praxis/>), the CodeNinja Atoms platform for designing physical AI systems. The object model imports into [Hyper Ontology](<https://codeatoms.ai/hyper-ontology/>), which turns it into a living system. Both are in beta; access by request.
+
+ABSTRACT
+
+## A Safe Distance Must Be Argued From Validated Records
+
+The operation needs one answer argued end to end: how much direct current from a nearby high-voltage direct current electrode station shifts the pipe-to-soil potential of its transmission and distribution gas pipelines, where that shift pushes cathodic protection outside its criterion, and what mitigation with what bill of quantities restores it. It cannot be answered today because the corridor's evidence is scattered across scanned survey sheets, coating reports, layouts and soil investigations with no recorded provenance, the supplied soil figure is a single quoted value for ground the records themselves describe as layered and variable, and no calibrated interference model exists, while the governing terms make every data error the contractor's cost and release payment only after the final report.
+
+Corridor Guard designs the work as a validation-first, three-phase study on a deliberately small stack: two named sources, the operator's own data package and the direct current system's stated configuration, entering through one integration adapter family into a governed validation register of fifteen objects with provenance carried on every attribute, served by six services and read through three surfaces, with one open-weight document parser doing the digitisation. Everything runs inside the operator's own estate on a single site-tier server: the parser turns scans into keyed values, the interference model is built and calibrated in validated commercial software against field readings, and the re-runnable model package is handed over on the operator's own hardware with no copy left outside the boundary.
+
+The paper sets out the problem and the corridor scenario, the join failure across the supplied records, the four constraints the governing clauses impose, the stack, the fifteen-object model, ingestion through the adapter tier, inference placement inside the estate, the model and its license, the three gated phases with their item counts and exit criteria, ownership of everything the study produces, and finally how Praxis contextualized and reasoned the design.
+
+---
+
+![Figure 1. Corridor Guard on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+
+Figure 1. Corridor Guard on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
+
+## Contents
+
+Each chapter is tagged for the reader it serves most directly: Executive, Team Lead, FDE, Reference.
+
+|  |  |  |
+| --- | --- | --- |
+|  | Abstract · A Safe Distance Must Be Argued From Validated Records | Executive |
+| PART I · THE PROBLEM | | |
+| 1 | [Electrode Current Can Strip a Pipeline's Protection](#ch1) | Executive |
+| 2 | [Every Supplied Record Sees One Slice of the Corridor](#ch2) | ExecutiveTeam Lead |
+| PART II · THE DESIGN | | |
+| 3 | [Data Error Costs and Deadlines Shape Everything Downstream](#ch3) | Team Lead |
+| 4 | [One Lightweight Stack Runs From Records to Deliverables](#ch4) | Team LeadFDE |
+| 5 | [Fifteen Objects Turn Scattered Records Into One Argument](#ch5) | FDE |
+| 6 | [Every Attribute Enters the Register with Provenance Attached](#ch6) | FDE |
+| 7 | [All Modelling Runs Inside the Operator's Own Estate](#ch7) | FDE |
+| 8 | [An Open-Weight Parser Turns Scanned Records Into Model Inputs](#ch8) | FDEExecutive |
+| PART III · THE ROLLOUT | | |
+| 9 | [Gated Phases Spend Data Risk Before the Clock Does](#ch9) | Team LeadExecutive |
+| 10 | [The Intelligence Should Stay with the Pipeline's Owner](#ch10) | Executive |
+| PART IV · HOW IT WAS DESIGNED | | |
+|  | Conclusion · Every Safe Distance Ships With Its Evidence | Executive |
+| 11 | [How Praxis Contextualized and Reasoned This Design](#ch11) | Team LeadFDE |
+|  | [Sources](#sources) | Reference |
+
+PART I · CHAPTER 1
+
+## Electrode Current Can Strip a Pipeline's Protection
+
+Direct current returning through the ground from a high-voltage direct current electrode station shifts pipe-to-soil potentials on nearby gas pipelines, and no one in the operation can currently show where that shift breaches the cathodic protection criterion.
+
+The abstract posed the question as one of proof: where, along the corridor, does the ground return current breach protection, and who can show it. This chapter establishes why that proof matters, what answering it requires, and the ground the operation stands on.
+
+### 1.1  The Question, the Data and the Regimes
+
+The operation needs one question answered: along which sections of its transmission and distribution gas pipelines, within 1000 m of the direct current electrode station, does interference from the ground return shift pipe-to-soil potential far enough to breach the cathodic protection criterion of -0.85 V measured against a copper-copper sulfate reference electrode. Answering it requires data the operation already holds in fragments: pipeline alignments and depths, which reach 30 ft in the corridor; coating condition per section; layered soil resistivity along the route; test point potentials with their coordinates; insulating joint locations and condition; anode bed geometry and outputs; and the direct current system's configuration, from its ±500 kV main line and 66 kV electrode line to its 1300 A per pole rating and its 5 to 7 kA fault current limit.
+
+Three regimes govern the answer. The national gas regulator's licensing conditions impose record-keeping and integrity duties on buried pipelines, and corrosion control is a codified duty in mature pipeline safety regimes, with a dedicated regulatory subpart for it (ECFR n.d.). The tender itself is a regime: it fixes a three-month completion, releases payment only after the final report, and makes every data error the contractor's cost. The contract is governed by the laws of Pakistan, and a national cloud first policy for federal public sector corporations constrains where the data and the compute may sit.
+
+### 1.2  What the Failure Costs
+
+External corrosion is not a marginal failure mode. A book chapter published by ASM International reports that 36 percent of oil and natural gas pipeline accidents were caused by external corrosion (EXA 2006), and a statistical analysis of reportable onshore accidents in the United States between 2010 and 2021 attributes a persistent share of them to external corrosion specifically (Plusstd 2022). Corrosion is encountered across many stages of the industry, pipelines and refineries alike, rather than at a single point (Corrosion 2020). When it goes critical the outcome can be fatal: the National Transportation Safety Board determined that a fatal natural gas pipeline rupture in New Mexico in August 2000 was caused by corrosion (Ehstoday 2000). Interference-driven under-protection moves a healthy pipeline into exactly this population, silently, while every survey reading still looks like protection.
+
+### 1.3  The Operation as a Scenario
+
+The operator runs transmission and distribution gas pipelines across its service area, including an 8 inch line and a 10 inch loop line tied in after commissioning, both buried at depths up to 30 ft and both crossing or lying near the corridor within 1000 m of the electrode station. Cathodic protection comes from thermoelectric generator units feeding high silicon cast iron anode beds at test points MP-3.40 and MP-6.97, both installed in 2025, with insulating joints at chainage zero on both lines; the 8 inch joint is recorded as shorted and the 10 inch as intact, both subject to field verification. The interference source is a bipolar direct current transmission system: a main line at ±500 kV, an electrode line at 66 kV, rated up to 1300 MW with 1300 A per pole, returning up to 1.3 kA through the ground under monopolar operation, with converter blocking under 20 ms and fault current limited to 5 to 7 kA.
+
+Two named roles sit in the loop: the Executive Engineer accountable for corrosion control, and certified inspectors, with a certified Level 4 cathodic protection expert mandatory under the tender's eligibility clauses. The physical environments are a buried pipeline corridor in layered soil, the electrode station switchyard, and the operator's own facility that hosts the study compute. The counts that scope the design: two named source systems, the operator's data package and the direct current system's configuration record; two named roles; and three places, the corridor, the electrode station and the estate facility.
+
+PART I · CHAPTER 2
+
+## Every Supplied Record Sees One Slice of the Corridor
+
+The pipeline data package, the direct current system configuration, the coating and soil reports and the cathodic protection survey records each describe one fragment of the same corridor, and none of them can be joined today because none carries provenance.
+
+Chapter 1 fixed the question and the corridor it applies to. This chapter walks the records the tender supplies, family by family, and shows that none of them, alone or together, can answer that question today.
+
+### 2.1  One Record, One Slice
+
+The operator's data package sees the geometry: every pipeline crossing or lying near the direct current line, the electrode station and converter station, the initial assessment report, the layouts, and the electrode geometry, including the 75 mm by 1200 mm high silicon iron electrode elements and their roughly six cubic meter coke beds behind 0.02 ohm-meter backfill. What it misses is any statement of where each value came from: the package is scanned paper and PDFs, and no attribute in it is marked measured, inherited, assumed or unknown.
+
+The direct current system's configuration record sees the electrical machine: the bipolar rating, the per-pole current, the fault current limits, the converter blocking behavior and its operating states, bipolar operation without electrode current, monopolar return at 1.3 kA, blocked converter, backup protection interrupt. It misses the ground between its electrodes and the operator's steel: it holds no soil measurement and no pipe reading.
+
+The coating condition reports see the state of the coating per section; they miss the soil aggressiveness around it and the test points it is meant to protect. The soil investigation reports see resistivity values and survey dates per route section; they miss layering continuity, and the tender quotes a single backfill value against ground described as layered and variable from region to region. The cathodic protection survey records see pipe-to-soil potentials at named test points; they miss which part of any reading is protection and which part is interference. The insulating joint records see locations and as-found condition, including one joint recorded as shorted; they miss whether that condition still holds in the ground today.
+
+### 2.2  What None of Them See Together
+
+No record joins a test point reading to the coating state, the soil layer, the joint condition and the direct current operating mode prevailing when the reading was taken. Figure 2 sets the six record families side by side and shows them converging on the question none can answer. The cost in practice is a provenance failure with a price attached: an assumed resistivity silently calibrates the model, a safe distance computed from it cannot be defended, and the tender makes every data error the contractor's cost while the completion window stays fixed. This is why the design treats provenance capture as the first deliverable rather than a documentation afterthought.
+
+![Figure 2. Six systems, each seeing one part of the answer. the question needs all of them in one place at once.](figures/figure_02.png)
+
+Figure 2. Six systems, each seeing one part of the answer. the question needs all of them in one place at once.
+
+PART II · CHAPTER 3
+
+## Data Error Costs and Deadlines Shape Everything Downstream
+
+The governing clauses make every data error the contractor's cost, fix a short completion window, release payment only after the final report and keep all compiled records as the procuring agency's absolute property, so the design must spend validation effort first.
+
+Chapter 2 ended on records that cannot be joined because none carries provenance. This chapter turns that gap into design goals anchored to the tender's own clauses, and then states what the design deliberately does not do.
+
+### 3.1  Prove Every Input Before It Models Anything
+
+The first goal is a validation register that carries provenance, measured, inherited, assumed or unknown, on every attribute before any model consumes it. The industry makes this hard: the supplied records are scanned paper and PDFs that may be incomplete, illegible or simply wrong, and the tender makes every data error found during verification the contractor's cost. The design therefore specifies two-keyer capture with reconciliation for every digitised value, corridor-specific four-pin soil resistivity measurements in the first phase, and routing of every discrepancy to the operator's corrosion control engineer before modeling starts.
+
+### 3.2  Spend the Schedule Where the Risk Sits
+
+The second goal is to spend schedule risk early. The completion window is fixed at three months and payment is released only after the final report, so a data problem discovered late collapses the schedule with no payment recourse. The design runs three gated phases, data validation, dc modeling and simulation, then mitigation strategy and handover, each with item counts and dated exit criteria, so validation and calibration risk is spent down in the first two phases rather than discovered in the third.
+
+### 3.3  Keep the Data and the Model Inside the Estate
+
+The third goal is residency. The pipeline route data is critical-infrastructure data, the tender makes all compiled records and software the procuring agency's absolute property, the national regulator's statute imposes confidentiality that bars consultant-side reuse, and the cloud first policy for federal public sector corporations constrains where compute may sit. The design therefore runs everything on one server-class host inside the operator's own estate and hands over the re-runnable model on the operator's own hardware, with no consultant-side copy surviving handover.
+
+### 3.4  Model with Validated Software Against a Calibrated Field
+
+The fourth goal is a calibrated model in validated software. The tender requires industry-recognized electromagnetic or grounding modeling software and scores modeling without software support lower, yet the monopolar 1.3 kA events that drive the worst interference are rare and short, so no measured interference event exists to validate against. The design calibrates against bipolar-baseline field readings, models the monopolar and fault cases as a conservative envelope, carries the layered soil into the model as separate regions rather than one bulk value, and states the validation basis and its limits explicitly in the report.
+
+### 3.5  Scoping Decisions and Their Costs
+
+Two further decisions trade capability for certainty, and Table 1 states what each buys and what it costs.
+
+Table 1 · Scoping Decisions
+
+| Decision | What it buys | What it costs |
+| --- | --- | --- |
+| Validation-first sequencing: digitise, provenance-check and field-verify before any model runs | Defensible inputs and a discrepancy trail that makes every correction cost-claimable under the data-error clause | Calendar effort in phase one before any model output exists |
+| Document-only inputs through one integration adapter | No cross-boundary interfaces to build, and the operating scenario set frozen to the supplied configuration | Scenarios update only when the operator re-issues its data package |
+| One estate server, with the model handed over on the operator's own hardware | Data never leaves the boundary and the operator owns a re-runnable model after the study | One procurement action and capacity sizing done up front for concurrent model runs |
+
+### 3.6  What the Design Chose Against
+
+The design also refused several easier paths, and Table 2 records each refusal with its reason, ending with the boundary of the study itself.
+
+Table 2 · What the Design Chose Against
+
+| Where | What was picked | Instead of, and why |
+| --- | --- | --- |
+| Modeling platform | CDEGS or COMSOL, calibrated against field readings | A bespoke numerical electromagnetics code, which would forfeit evaluation marks and carry no validation pedigree |
+| Input control | One governed validation register with provenance on every attribute and two-keyer capture | Ad-hoc spreadsheet reconciliation, which leaves assumed values silently inside safety computations and every error billable to the contractor |
+| Compute and residency | One server-class host inside the operator's estate, sized to the 48 GB PCIe inference GPU class | A consultant-hosted or cloud-served model, barred by the cloud first policy, the absolute property clause and the regulator's confidentiality duty |
+| Sensing | Electrical measurement at cathodic protection test points by survey crews | Camera corridors and fixed imaging, for which the tender holds no scope and which would put invented footage in front of the decision maker |
+| Data movement | The supplied document package as the only input, read through one integration adapter | Live feeds to the direct current system or its converter operator, which no supplied clause authorizes and which would need change control the study window cannot absorb |
+| Scope boundary | Validation, field verification, modeling, mitigation strategy and handover as three gated phases | The tender's firm-qualification items, such as sector experience, engineer certifications and registration, which the procurement regime scores as eligibility rather than design |
+
+PART II · CHAPTER 4
+
+## One Lightweight Stack Runs From Records to Deliverables
+
+A study that consumes a fixed document package needs one adapter family, one governed register, one site-tier server and validated modelling software, and it deliberately needs no streaming backbone, historian, orchestrator or field compute.
+
+Chapter 3 fixed the constraints: the study consumes a fixed document package, runs inside the operator's estate, leaves every decision to a named person and must close against dated gates. This chapter shapes the smallest stack those constraints allow and names what it deliberately leaves out.
+
+### 4.1  The Architectural Pattern and Why It Fits
+
+The pattern is a narrow hourglass. Systems of record sit at the bottom and stay untouched: the operator's pipeline records, its cathodic protection surveys and its coating and soil reports remain where they live, and the tender's own data clauses govern how they are furnished. In the middle sits one object model, the validation register's fifteen typed objects, which is the only thing every application reads and every finding writes into. Above it live the applications and agents: the validated modelling software, six services and three surfaces. The pattern fits because the coupling the study needs is exactly one register. With the object model as the sole meeting point, the parser, the field crews and the modelling engineer proceed independently, and the register can be handed over as part of the deliverable without untangling a single system integration. Figure 3 shows the layered stack with its counts per layer: two sources, one adapter family, fifteen objects, six services, three surfaces and one model on a single site-tier server.
+
+The stack is as notable for what it omits as for what it contains. No event streaming and messaging exists, because the study consumes a furnished document package, not live streams. No historian is built, because field readings are a finite, keyed set and the operator's own records remain the system of record. No video ingest exists, because the tender carries no imaging duty and the physical world here is sensed by electrical measurement rather than imaging. No container orchestration is justified for two long-running workloads on one host, and an orchestrator would be one more thing to hand over inside the contracted window. No edge compute is installed, because survey instruments are portable and read on site. No language model is served, because the deliverable is an engineering report authored in the mandated modelling software, with the work surface offered rather than built. One server inside the operator's estate carries everything, and no data leaves it.
+
+![Figure 3. The layered stack: 2 sources, 1 adapter family, 15 objects, 6 services and 3 surfaces.](figures/figure_03.png)
+
+Figure 3. The layered stack: 2 sources, 1 adapter family, 15 objects, 6 services and 3 surfaces.
+
+### 4.2  The Stack Stage by Stage
+
+Table 3 walks the stack stage by stage and names the components in each. The stages are deliberately few: where a conventional physical AI stack spreads its effort across streaming, tracking and fleet inference, this design concentrates it in the object model and one modelling environment. Each stage hands its output to the next through exactly one channel: sources reach the adapters as documents, adapters reach the object model as keyed attributes, the object model reaches inference as calibrated input, and inference reaches the services and surfaces as records whose status a person must advance.
+
+Table 3 · The Stack, Stage by Stage
+
+| Stage | What it is responsible for | How |
+| --- | --- | --- |
+| Sources | Furnish the record base the study is contracted to validate: pipeline detail for the crossings and vicinity, the initial assessment report, layouts, coating condition reports, soil investigation reports, electrode geometry, and the power scheme's stated configuration and ratings | Read-only document packages and coordinate tables furnished under the tender's data clauses, both carrying the operator-supplied provenance class |
+| Sensing | Measure the physical corridor where documents fall silent | Electrical measurement at CP test points (pipe-to-soil DC potential in V vs CSE) and four-pin soil resistivity along the corridor, taken by portable instruments read on site; no cameras, because no imaging duty exists anywhere in the scope |
+| Adapters | Turn scanned paper and PDFs into keyed, provenance-labelled attributes without altering the originals | One integration adapter family built around the document parser, with two-keyer capture and human reconciliation before any value enters the register |
+| Object model | Hold fifteen typed objects as the single point every stage reads and writes | The governed validation register inside the operator's estate, carrying a provenance label and, where the record demands it, a status vocabulary on every attribute and record |
+| Inference | Digitise the package and compute the interference physics | PaddleOCR-VL 1.6 for parsing, under its Apache-2.0 license, and the validated CDEGS and COMSOL environments for the DC interference model, both on one site-tier server of the 48 GB PCIe inference GPU class |
+| Services | Carry the contracted workstreams end to end | Data Validation, Field Verification, DC Modelling & Simulation, Mitigation Strategy & BOQ, HSE & Site Compliance, and Delivery & Handover |
+| Surfaces | Put the findings in front of the people who decide | The comprehensive mitigation report as the contracted deliverable, an Executive Engineer view for acceptance, and a Certified Inspectors view for the field evidence behind each reading |
+
+PART II · CHAPTER 5
+
+## Fifteen Objects Turn Scattered Records Into One Argument
+
+Fifteen typed objects, from the two lines and their insulating joints through the electrode station and test points to the interference assessment and each mitigation measure, let a single query reach everything a safe-distance claim depends on.
+
+Chapter 4 placed one object model at the center of the stack. This chapter opens that model object by object and shows what the typed links between them let a single query reach.
+
+### 5.1  The Fifteen Objects and Their Links
+
+The fifteen objects fall into three groups. The first group is the buried estate: the 8-inch line; the 10-inch loop line tied in after commissioning; the insulating joints at KP-0 where the two lines separate, with the 8-inch joint recorded as shorted and the 10-inch joint as sound, both subject to field verification; the original anode bed installed in 2000 with high silicon cast iron anodes; the thermoelectric generator unit installed in 1972 that feeds cathodic protection; the two newer anodes serving the loop line at test points MP-3.40 and MP-6.97; the CP test points that key every reading; and the cathodic protection system itself, which ties the protected sections together and carries the status vocabulary of protected, under-protected and interference detected.
+
+The second group is the source of the interference: the high-voltage direct current transmission system, held with its bipolar rating in the gigawatt class, its electrode return at about 1.3 kA per pole, its DC fault current in the low kiloampere band and its converter blocking in tens of milliseconds, together with its electrode station, held with the element dimensions, the high silicon iron rod material, the coke bed volume, the 0.02 ohm-meter backfill resistivity and the sixty meter bed length. The system object also carries the operating state vocabulary, from bipolar operation with no electrode current through monopolar return to converter blocked, because the operating state is what decides how much current flows through the ground.
+
+The third group is the paper trail: the soil investigation report; the detail of available data for assessment that indexes the furnished package; the DC interference assessment, with its status ladder from modelled through calibrated and reviewed to accepted; and each mitigation measure, with its own ladder from proposed through designed and priced in the bill of quantities to accepted.
+
+Figure 4 draws every object and its typed links. What a query can reach across the links is the point. From one test point reading, a query walks to the anode feeding that section, to the generator unit powering that anode, to the insulating joint bounding the section and to the coating condition report for that chainage. From the electrode station, a query reaches the operating state that drives current through the ground, and from there to the assessment record whose safe-distance claim depends on that state. A document store can hold the same fifteen artifacts but cannot answer along those edges, because the edges, not the documents, are where the argument lives: every safe-distance claim in the final report resolves to a path through these links.
+
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+
+Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
+
+### 5.2  Where the Human Loop Lives and How It Is Hosted
+
+The human loop sits at two points. The first is reconciliation at ingestion, where two-keyer disagreements and every assumed or unknown attribute route to the operator's Corrosion Control engineer before modelling starts. The second is the status ladder itself: an assessment cannot move from reviewed to accepted, and a mitigation measure cannot move from designed to priced in the bill of quantities, except through a named person's decision, and the register records who made it.
+
+The hosting posture follows the contract rather than preference. The register and the model run on the operator's own hardware inside its estate, so data residency is settled by construction because no value crosses the boundary; as a federal public sector corporation the operator sits under the national cloud first policy, which the estate-hosted posture satisfies without exception handling. Identity is governed by the operator's existing estate controls, backed by the confidentiality the tender imposes contractually. No object carries an external link. The only write path into the register is the reconciliation stage, and the platform writes nothing back to the systems of record.
+
+### 5.3  One Object in Its Recorded Form
+
+The object below is the DC interference assessment in its recorded form, chosen because its status vocabulary is the acceptance gate the contract reads.
+
+```
+{
+  "id": "the-line0",
+  "label": "The line0",
+  "kind": "asset",
+  "anchored_in": "",
+  "properties": [
+    "Diameter 8 inch",
+    "Insulating joint PFIJ Short at KP-0",
+    "Coating condition report"
+  ],
+  "status_vocabulary": [],
+  "links": [
+    {
+      "to": "insulating-joints-pfij",
+      "label": "insulating joint"
+    }
+  ]
+}
+```
+
+PART II · CHAPTER 6
+
+## Every Attribute Enters the Register with Provenance Attached
+
+One integration adapter family digitises the supplied package with two-keyer capture, labels each value measured, inherited, assumed or unknown, and routes every discrepancy to the corrosion engineer before modelling begins.
+
+Chapter 5 showed what the register holds and who may change it. This chapter shows how anything gets into it at all, and what the adapter tier promises on the way.
+
+### 6.1  The Source Systems and Their Provenance Classes
+
+Every named source enters through the same single adapter family, and both carry the operator-supplied provenance class with a read-only direction. The first source is the operator's own data package: the tender fixes what it furnishes, namely complete detail of the pipelines crossing or lying near the power line, the electrode station and the converter station, together with the initial assessment report, the layouts and coating condition reports, the soil investigation reports and the electrode geometry. The second is the direct current system's configuration record, the stated configuration and ratings of the HVDC scheme that drive the model. No live feed to the transmission or converter operator exists, so the model relies only on what the furnished package states. Figure 5 maps each source, its provenance class and its adapter path, and the map is short by design: the data crosses as documents and coordinate tables under the tender's data clauses, not as a system interface, and any live historian tap would need change control outside this scope.
+
+![Figure 5. The 2 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+
+Figure 5. The 2 named systems, the adapter path each one takes, and the object model they all map into.
+
+### 6.2  What the Adapter Tier Guarantees
+
+The adapter tier makes five guarantees. First, it parses but never alters the originals: the parser runs as released, with no training on operator data, and every extracted value passes a human reconciliation stage before it enters the register. Second, every attribute carries a provenance label, one of measured, inherited, assumed or unknown, so a modelling engineer can see at a glance whether a value was field-verified or merely inherited from a decades-old survey. Third, critical values are captured by two independent keyers, and disagreement between them becomes a logged discrepancy rather than a silent pick. Fourth, no value is ever silently corrected: an illegible or contradictory figure stays flagged and routes to the Corrosion Control engineer before modelling begins, which matters because the contract places the cost of every data error on the consultant, and because pipeline records that quietly misstate condition have preceded corrosion-driven ruptures before (Ehstoday 2000). Fifth, the adapter emits nothing outside the estate: its output lands in the register and nowhere else.
+
+### 6.3  The Event Backbone
+
+The design builds no event backbone, and it says so deliberately. There is nothing to order across streams: each reading is keyed to its test point, its date and its crew by the register itself, which is the only ordering the analysis claims. Delivery is a one-way document handover under the tender's data clauses, so there is no delivery guarantee to honour, no buffering to size and no replay semantics to reason about. Replication reduces to the handover media the contract names: two hard copies, one electronic copy and the versioned, re-runnable model package, the only artefact whose copies must be provably identical. Where a streaming design would spend its effort on ordering and replay, this design spends it on provenance, because inside the contract's fixed completion window the expensive failure is not a lost event but an untraceable number.
+
+PART II · CHAPTER 7
+
+## All Modelling Runs Inside the Operator's Own Estate
+
+The parser and the interference model both live on one site-tier server inside the operator's boundary, so no corridor data crosses any network edge and the handover package runs where the data already sits.
+
+Chapter 6 closed the only way in: the operator's data package passes through one integration adapter into the provenance-carrying register, and the platform writes nothing back to any system of record. This chapter places the compute that reads that register and runs the interference physics, and fixes the boundary both sit behind.
+
+### 7.1  One Tier, One Host, One Boundary
+
+Figure 6 shows the whole inference placement, and it is deliberately short: one tier, no edge nodes, no cloud region and no field hardware. A single server-class host stands inside the operator's own facility on existing power and cooling, and carries both long-running workloads: the document parser that turns scanned records into register entries, and the validated dc interference model that turns register values into safe-distance findings. The contract fixes this shape twice over: the package crosses as documents rather than as a system interface, and all compiled records and software become the procuring agency's absolute property, so a consultant-side copy would breach the property clause as well as the national cloud-first policy that binds a federal public sector corporation.
+
+The memory arithmetic is small and stated exactly. The parser, PaddleOCR-VL 1.6, runs in bf16 precision at about 0.9 billion parameters: about 1.9 GB of weights at 16-bit, with reduced forms of about 1 GB at 8-bit and about 0.5 GB at 4-bit held as fallback. The host is sized by the 48 GB PCIe inference GPU class: parser weights occupy under 2 GB of the card, and the balance is the working budget for the commercial solver's meshed runs and for concurrent parser sessions. That balance, not sequence length, is the sizing rule the design stands on. The kv cache, the per-token working memory a language model holds against its context, never becomes the binding constraint: the parser reads one scanned page at a time under a short context, so cache demand does not scale with the corridor and the card's capacity is spent on solver memory instead.
+
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+
+Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
+
+### 7.2  The Latency Budget
+
+No latency-sensitive path exists anywhere in this design. Nothing moves, nothing is tracked, and the physics is quasi-static dc, so no inference output ever expires while it is being computed. The budget is therefore stated in working terms rather than milliseconds: parsing and two-keyer reconciliation run continuously through the first phase so the register is complete before modelling starts; solver runs are batched on the same card, sized with headroom so a calibration iteration does not queue behind a parsing batch; and the master budget is the fixed completion period the contract sets, which the phase gates consume in order, data first, calibration second, mitigation last. The only hard deadline the design recognizes is that completion period, and every earlier gate exists to keep data and calibration risk from arriving inside it.
+
+### 7.3  What Crosses the Boundary, and What Happens When It Fails
+
+What crosses the boundary is nothing, in either direction. Inputs arrive as a document handover into the estate; outputs leave as the mitigation report in two hard copies and one electronic copy, plus the versioned re-runnable model package handed over on media. No live link to the transmission system operator or the converter station exists, and the model assumes none: it runs on the stated configurations and ratings in the supplied package, so no corridor data ever crosses a network edge.
+
+Failure therefore degrades gently. A link failure cannot stall the work, because no work depends on a link. A power failure interrupts the host, but the register is checkpointed continuously and solver runs are restartable, so an outage costs a rerun, never a record. The update path is the quiet one: the parser runs as released and is never fine-tuned on operator records, the solver runs offline under its commercial license, and any future parser upgrade is evaluated and installed inside the estate by the operator's own staff. Every state that matters lives in the register and the model package, and the operator owns both at handover.
+
+PART II · CHAPTER 8
+
+## An Open-Weight Parser Turns Scanned Records Into Model Inputs
+
+One Apache-licensed document parser digitises the scanned surveys under a license that lets the operator hold the weights outright, while the interference physics stays in the validated commercial software the governing clauses require.
+
+Chapter 7 fixed where inference runs: one host inside the estate, nothing crossing the boundary in either direction. This chapter fixes what runs there: one open-weight parser whose license lets the operator keep the weights outright, and the interference physics in the validated commercial software the governing clauses require.
+
+![Figure 7. The one model, their placement, and the work each one does.](figures/figure_07.png)
+
+Figure 7. The one model, their placement, and the work each one does.
+
+### 8.1  The Model Stack
+
+Figure 7 shows the model stack, and it is short by intent: two entries, both at the site tier, and no agentic surface anywhere. No language model serves a conversational or workforce role, because the deliverable is an engineering report authored in the mandated modelling software, and no frontier weights are specified for the same reason.
+
+The first entry is PaddleOCR-VL 1.6, a vision-language document parsing model released under the Apache-2.0 license, and it carries the study's only neural workload. It reads about 0.9 billion parameters in bf16 precision, about 1.9 GB of weights at 16-bit, reducible to about 1 GB at 8-bit or about 0.5 GB at 4-bit if the host ever needs the headroom. Its role is fixed and narrow: digitise the operator's scanned cathodic protection survey reports, coating condition reports, layouts and soil investigation reports into register entries, with provenance attached to every attribute. It runs as released, and every value it extracts passes a two-keyer human reconciliation stage before it enters the register.
+
+The license is the reason the choice holds. Apache-2.0 grants a perpetual, royalty-free right to use, copy, modify and distribute, with no copyleft trigger and no field-of-use restriction: the operator can hold the weights outright, keep the parser running after handover, and owe no continuing relationship to any vendor. Because the study never fine-tunes the model on operator records, no training-data obligation arises, and the weights handed over on media are the released weights.
+
+The choice is urgent because of how the contract allocates risk: every data error found during verification is the contractor's cost, and the industry record shows what assumed values do to buried steel, from the share of pipeline accidents attributed to external corrosion (EXA 2006) to the fatal rupture the national safety board traced to corrosion on a transmission line (Ehstoday 2000). A parser that runs as released, with a human reconciliation gate in front of the register, keeps invented digits out of safety computations.
+
+The second entry in the stack is not a neural network. The dc interference physics lives in CDEGS or COMSOL, the industry-recognized, validated electromagnetic and grounding software the governing clauses require, and the evaluation scheme scores modelling without software support lower. No open-weight model ever touches a safety calculation: the parser produces inputs, the solver produces the interference assessment, and the register is the boundary between them.
+
+### 8.2  The Model and Equipment Register
+
+Table 4 gathers every choice in the stack into one register: the models, the hardware class and its sizing rule, the sensing, the patterns the design stands on, and the ground it all runs on.
+
+Table 4 · Model and Equipment Register
+
+| The choice | What was picked | Why here |
+| --- | --- | --- |
+| Model | PaddleOCR-VL 1.6, a vision-language document parser of about 0.9 billion parameters, bf16 precision, Apache-2.0 | Digitises the scanned package under a license the operator holds outright, running as released with human reconciliation before any value enters the register |
+| Model | CDEGS or COMSOL, industry-recognized validated electromagnetic and grounding software at the site tier | The governing clauses require validated software and score unsupported modelling lower, so the interference physics never leaves mandated tools |
+| Hardware class | One server-class host of the 48 GB PCIe inference GPU class inside the operator's estate | Holds the parser weights under 2 GB and leaves the balance of the card for concurrent solver runs and parser sessions |
+| Sizing rule | Weights against usable memory first, solver memory with headroom second; context length never binds | The parser reads single scanned pages, so the kv cache ceiling is never the constraint the card is sized on |
+| Sensing | Pipe-to-soil dc potential at corridor test points, in volts against the copper-copper sulfate electrode with the protective criterion at -0.85 V, plus four-pin soil resistivity by corridor section | The physical world is sensed by electrical measurement, not imaging: no camera duty exists anywhere in the scope |
+| Pattern | A provenance-carrying validation register, marking every attribute measured, inherited, assumed or unknown | Data errors are the contractor's cost, so every correction has to be traceable and cost-defensible |
+| Pattern | A re-runnable model handed over on the operator's own hardware, with no consultant-side copy surviving handover | The compiled records and software are the procuring agency's absolute property, and a federal public sector corporation sits under the national cloud-first policy |
+| Ground | One site-tier host on existing power and cooling inside the operator's facility | No field compute, no new network and no data crossing the boundary, so the stack runs where the data already sits |
+
+PART III · CHAPTER 9
+
+## Gated Phases Spend Data Risk Before the Clock Does
+
+Three phases with fixed item counts and dated exit gates push validation and calibration into the opening work so that no data problem survives to the final report, when payment depends on it.
+
+Chapter 8 fixed the model, its license and the host it runs on. This chapter fixes the order of work: which items are produced in which phase, what each phase must prove before the next opens, what the rollout measures while it runs, and where the honest risks sit.
+
+### 9.1  Three Phases with Fixed Item Counts and Dated Exit Gates
+
+The rollout runs as three phases carrying fifteen items in total: six in Phase 1 Data Validation, four in Phase 2 DC Modelling & Simulation and five in Phase 3 Mitigation Strategy and Handover. Figure 8 shows the phases, their gates and the requirement coverage in one view. Phase 1 runs four workstreams together: Data Validation, Field Verification, HSE & Site Compliance and Delivery & Handover. Phase 2 concentrates on DC Modelling & Simulation. Phase 3 combines Mitigation Strategy & BOQ, the priced bill of quantities the operator would tender against, with Delivery & Handover. Each phase closes on a dated exit gate fixed at the start, so slippage is visible when it happens rather than at the end. Phase 1 exits when three things hold: the validation register is complete with a provenance value (measured, inherited, assumed or unknown) on every attribute, every discrepancy is closed with the operator's Corrosion Control engineer, and field verification of the corridors within 1000 m of the electrode station is done. Phase 2 exits when the DC interference model is calibrated against bipolar-baseline pipe-to-soil readings and the safe-distance assessment has been reviewed and accepted. Phase 3 exits when the mitigation strategy and its bill of quantities are accepted and the re-runnable model has been handed over on the operator's own hardware. Requirement coverage is registered explicitly: 31 tender requirements map to named design elements with none left partial, and the remainder are bid-eligibility and contract-administration clauses that sit outside the technical baseline. The clock is the contract's own: the tender fixes a three-month completion and releases payment only after the final report, which is precisely why the gates are dated and front-loaded, because a data problem found after the final report has no schedule or payment recourse at all.
+
+![Figure 8. The three phases and their gates, and coverage of the 40 requirements across them.](figures/figure_08.png)
+
+Figure 8. The three phases and their gates, and coverage of the 40 requirements across them.
+
+### 9.2  What the Rollout Measures
+
+Two measurements carry the proof. The first is pipe-to-soil DC potential at the corridor test points, read in volts against a copper-copper sulfate reference electrode, the standard half-cell for buried-pipeline surveys. The protective criterion is -0.85 V against that electrode: a reading below it means the pipeline is under-protected and the cathodic protection system has lost margin, while a positive shift means external current is pushing the pipe's potential and interference is live. The second is the DC interference potential shift itself, evaluated for the 1.3 kA monopolar return of the HVDC electrode system, the operating state in which return current flows through the ground and the electrode station instead of the paired conductor. Every field reading is keyed to its test point, date and crew in the validation register, so each measurement stays traceable to the reading that calibrates or tests the model.
+
+### 9.3  Failure Modes
+
+The design names its failure modes before work starts and attaches a response to each; Table 5 lists them.
+
+Table 5 · Failure Modes
+
+| What fails | What the design does |
+| --- | --- |
+| The supplied records are scanned, incomplete, illegible or wrong, and every data error found during verification is the contractor's cost | Digitise first with a provenance value on every attribute, capture with two keyers and reconcile, and route every discrepancy to the operator's Corrosion Control engineer before any modelling starts |
+| Soil resistivity is layered and variable from region to region while the tender quotes a single backfill value, so one number cannot calibrate a corridor-scale model | Take corridor-specific four-pin soil resistivity measurements in phase one and carry the layering into the model as separate regions rather than one bulk value |
+| Monopolar 1.3 kA electrode-return events are rare and short, so no measured interference event exists to validate the model against | Validate against bipolar-baseline field readings, model the monopolar and fault cases as a conservative envelope, and state the validation basis and its limits explicitly in the report |
+| A late data problem collapses a fixed schedule under a payment-after-final-report rule, leaving no recourse | Gate each phase on dated exit criteria so validation and calibration risk is spent down in the opening work rather than discovered at handover |
+| Mandatory certified staffing is absent at bid or at mobilisation, which disqualifies the firm or stalls the start | Confirm and document the locally based corrosion protection Level 4 certified expert, the DC engineers and two or more Level 4 certified inspectors before bid submission, and treat the staffing table as a bid gate |
+| Critical-infrastructure data leaves the estate, or a consultant-side copy survives handover, breaching the property and confidentiality duties | Keep the parser, the register and the re-runnable model wholly inside the operator's estate on the operator's hardware, hand over on media and write the reuse bar into the data agreement |
+
+### 9.4  Lessons
+
+**Provenance is the cheapest insurance the schedule can buy.** Corrosion has caused fatal pipeline ruptures where protection and the records behind it failed (Ehstoday 2000), and external corrosion remains a leading cause of reportable onshore pipeline accidents (Plusstd 2022). The design spends its first phase making every number traceable before any model consumes it, because an assumed value that persists silently into a safety computation is the failure both records describe. Calibrate against what can be measured and envelope what cannot. A rare, short monopolar return will not oblige the schedule by occurring on cue, and the design says so openly: bipolar baseline for calibration, a conservative envelope for the monopolar and fault cases, limits stated in the report. A stated limit is defensible; a hidden one is not. The staffing table is a bid gate, not a formality. Certification is a disqualification trigger and evaluation marks ride on the certified people as much as on the method, so the personnel are confirmed and documented before submission rather than assumed into existence afterwards.
+
+### 9.5  What Is Still Open
+
+Three questions stay open. First, whether a monopolar return occurs during the study window: if one does, the model gains an event-verified validation case and the envelope assumption can be relaxed; if not, the envelope stands with its stated limits. Second, whether the 8-inch line's insulating joint recorded as short at KP-0 is actually shorted: field verification settles it, and the answer changes the boundary condition the model applies at that joint. Third, whether the four-pin survey resolution is deep enough to fix the layered soil structure: if it is not, additional borehole resistivity data would be required and the model's soil regions would be redefined before calibration. Settling each question changes a model input or a validation claim, which is why each is named now rather than left to surface later.
+
+PART III · CHAPTER 10
+
+## The Intelligence Should Stay with the Pipeline's Owner
+
+The object model, the validation register, the re-runnable model and every compiled record belong on the operator's own hardware under its own controls, with the public-sector cloud policy and the absolute-property clause making that the only defensible posture.
+
+Chapter 9 sequenced the work and named its gates. This chapter settles who keeps what the work produces, and on whose hardware.
+
+### 10.1  What the Operator Owns, and Where It Sits
+
+The object model, fifteen objects with their typed links, lives in the validation register inside the operator's own estate, and the contract's absolute-property clause makes every compiled record and every piece of study software the procuring agency's property, so ownership was never in question; location was. The register, the discrepancy log and the re-runnable model all sit on one server-class host inside the operator's facility, consistent with the public-sector cloud policy that binds a federal corporation of this kind, and no data crosses the estate boundary at any point in the study. The weights carry the smallest possible burden: no model is trained on the operator's data, the document parser runs as released under its Apache-2.0 license, and that license places no restriction stopping the operator from holding, rerunning and archiving the weights on its own hardware indefinitely. There is no fine-tune to govern and no vendor entitlement to renew. The decision record is the register itself: every provenance value, every reconciliation and every discrepancy closed by the named Corrosion Control engineer is kept, so the next decision, whether a future integrity assessment or a mitigation redesign, reads the record instead of repeating the argument. The boundary is the last owned thing: the reuse bar written into the data agreement, the handover on media, and the rule that no consultant-side copy survives the handover.
+
+### 10.2  The Offer Behind the Design
+
+This design is CodeNinja's work in shape as much as in substance. Hyper Ontology is the object model: fifteen objects and their typed links turning pipelines, anode beds, electrode stations and assessment records into one queryable argument. Decision Systems is the reconciliation discipline: provenance, discrepancy routing and safe-distance recommendations that a named Corrosion Control engineer accepts or rejects. Sovereign Infrastructure is the hosting posture: the operator's own hardware, an open-weight Apache-2.0 parser and an in-country estate that nothing leaves. Praxis is the platform that produced the design, and the chapter that follows traces every choice it made back to what justified it.
+
+PART IV · CONCLUSION
+
+## Every Safe Distance Ships With Its Evidence
+
+Corridor Guard is one disciplined argument: scanned records enter through a single adapter into a provenance-carrying register, corridors are verified in the field before any number is trusted, a calibrated interference model turns that verified data into safe distances and a priced mitigation strategy, and the whole chain, parser, register and re-runnable model, stays inside the operator's estate where the governing clauses already say it belongs.
+
+Running the same shape elsewhere asks for little: a boundary that fixes what data exists, a register that attaches provenance to every attribute it accepts, field verification before modelling, a calibrated model in software the industry already validates, and gates that spend data risk early because payment and credibility both arrive only at the end.
+
+PART IV · CHAPTER 11
+
+## How Praxis Contextualized and Reasoned This Design
+
+Every choice in this paper traces back to recorded reading: this chapter shows the ask as Praxis framed it, the records in the room, the eight lenses and the patterns adopted and set aside.
+
+Chapter 10 settled who keeps what the design builds. This closing chapter shows how the design was reasoned in the first place: what Praxis was given, which lenses it read through and where the reasoning landed. Every design in the Vertical-Driven Architectures series is produced on CodeNinja Praxis, the design team platform for designing physical AI systems, and this chapter exists so a reader can trace any choice in the paper back to what justified it. Figure 9 shows the reasoning in one view: the ask as Praxis framed it, the records that were in the room, the eight lenses, the patterns adopted and set aside, and the equipment classes the reasoning landed on.
+
+### 11.1  The Ask, the Family and What Was in the Room
+
+The ask is a public tender from the Corrosion Control department of an oil and gas operator in Pakistan: data validation, modelling and a mitigation design against the interference that a high-voltage direct current transmission system's electrode ground current imposes on the operator's transmission and distribution gas pipelines. Praxis assigned the design to the Physical AI family and to oil and gas, because the tender's own subject matter places the work on a Pakistani gas utility's buried pipeline network, where the physics is electrochemical and the assets are fixed and buried. What was in the room: 1,289 records were listed, 118 were read in full and 1,171 were available on demand. The tender document itself, its terms of reference, its data annexures and its evaluation schedule were read in full; the sector precedents and the regulatory record were read as far as the design needed them.
+
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+
+Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
+
+### 11.2  The Eight Lenses
+
+Praxis reads every design through eight lenses, and Table 6 records what each could see, how many times each was cited in the recorded reasoning and what each contributed. Six lenses returned recorded material; one, domain fusion, returned nothing and is recorded as a gap: no reference architecture was assigned to this design, so the domain brief is the only fusion input and the design proceeds on it alone.
+
+Table 6 · The Lenses and What They Contributed
+
+| Lens | Could see | Cited | What it contributed |
+| --- | --- | --- | --- |
+| First principles | The electrochemistry of DC interference and the physics of cathodic protection | 1 | Framed the corridor problem from electrode geometry, soil resistivity and pipe-to-soil potential rather than from precedent |
+| Case studies | Four builds and projects in this sector, read as precedents | 4 | Grounded the design in work that happened in this sector, including a gas control center build and a metering loss-reduction program |
+| Tooling and recency | The document-parsing family and current optical character recognition models | 2 | Selected PaddleOCR-VL 1.6 for digitising the scanned record package, verified live against the model card |
+| Hardware and equipment | Compute classes and the constraints of field equipment | 1 | Fixed one site-tier inference host in the 48 GB PCIe inference GPU class and confirmed that no hardware is installed in the field |
+| Rules and regulations | The national gas-utility licensing regime and provincial safety law | 2 | Anchored the record duties and the confidentiality bar that shape the ownership posture |
+| Approach | Phase shapes and gate-exit patterns from prior platform work | 2 | Adopted the gate-exit phase shape that pushes validation risk into the opening work |
+| History | Record-keeping failures with safety consequences in pipelines | 1 | Supplied the records-as-safety lesson that made a provenance value mandatory on every attribute |
+| Domain fusion | A reference architecture fusing adjacent domains | 0 | Nothing returned; recorded as a gap, with the domain brief as the only fusion input |
+
+### 11.3  Patterns Adopted and Set Aside
+
+The recorded reasoning adopted one pattern and set a family of them aside. The adopted pattern is the validation-first, gate-exit phase shape: prove the data before the model, and date every gate. The set-aside family is longer: event streaming, a platform-scale graph store, telemetry storage, video ingest, edge model serving, on-site language model serving, object tracking, container orchestration, a model registry, labelling and retraining, distributed time synchronisation, observability of a running service and a frontier inference cluster. Each was considered against a stated duty and found to have none: the study consumes a document package rather than live streams, nothing moves or is tracked, two long-running workloads share one host, and no model is trained on the operator's data. Setting them aside is itself a design decision, because each one would have been another thing to hand over inside a fixed schedule.
+
+### 11.4  Where the Reasoning Lands
+
+The equipment conclusion is deliberately thin: one server-class host in the 48 GB PCIe inference GPU class inside the operator's estate, running the document parser and serving the re-runnable interference model, and no field-installed compute at all, because the sensing is electrical measurement at cathodic protection test points and the survey instruments are portable and read on site. No hazardous-area equipment is specified because nothing in this design energises the field. That thinness is the point of the chapter: every element in this paper, from the fifteen objects to the single hardware class to the one model and its Apache-2.0 license, was recorded reading, and nothing is inferred.
+
+Appendix A
+
+## What the Study Host Costs Over Three Years
+
+The design buys one server-class host of the 48 GB PCIe inference GPU class inside the operator's estate, and nothing in the field: the survey instruments are portable, and the interference physics runs in the commercial modelling software the governing clauses require. This appendix prices the host from public list prices, dated and cited, against renting the same card from the nearest hyperscaler region. The modelling software is licensed by written quotation and is priced by none of the public pages read, so it is named and left out of the total rather than guessed. Every number can be rerun with a written quote.
+
+### A.1 The Answer
+
+Owning the host costs about **19,500 US dollars over three years**, inside a range of 18,700 to 20,200. Renting one L40S card around the clock from the nearest region costs **22,500 to 60,000 dollars** over the same period, so ownership is **about four fifths** the deepest three-year commitment (an AWS EC2 Instance Savings Plan, all upfront, in the UAE region). The comparison is printed for reference only: no hyperscaler operates a region inside Pakistan, and the governing clauses make every compiled record and every piece of study software the procuring agency's absolute property, so a rented host outside the estate would breach the property clause before it saved a dollar. The document parser is Apache-2.0 and carries no license line.
+
+### A.2 What Owning Costs
+
+| Line | Basis | Three-year cost (USD) |
+| --- | --- | --- |
+| Inference host | One 48 GB L40S-class card with its share of host, memory and power supply, priced as one eighth of an eight-card L40S server at 85,271 dollars (Newegg 2026) | 10,700 |
+| Clean shutdown | One APC Smart-UPS 3 kVA at 2,425.00 dollars (Markertek 2026), driven by Network UPS Tools | 2,400 |
+| **Equipment** |  | **13,100** |
+| Support | 8 to 12 percent of equipment value a year (Introl 2026) | 3,100 to 4,700 |
+| Power | 0.6 kW average draw for the card and its host share (an assumption: the L40S is rated at 350 W) at a power usage effectiveness of 1.6 (Uptime Institute 2025), 25,229 kWh at the industrial B3 average of 27 rupees per kWh (Dawn 2026) at 277.38 rupees to the dollar (SBP 2026) | 2,500 |
+| **Total** |  | **18,700 to 20,200** |
+
+Not in the table: the validated electromagnetic and grounding modelling software (CDEGS or COMSOL class), which the tender requires and which is sold by quotation; the certified field crews, four-pin soil resistivity surveys and the mitigation bill of quantities, which are the study's deliverables rather than its compute; and the operator's existing facility power and cooling, which the host uses.
+
+### A.3 What Renting the Card Would Cost
+
+| Option | Basis | Three-year cost (USD) |
+| --- | --- | --- |
+| AWS, UAE region, on demand | g6e.xlarge, one L40S, at 2.283 dollars an hour in me-central-1 (AWS 2026a); outside Pakistan | 60,000 |
+| AWS, UAE region, three-year EC2 Instance Savings Plan, all upfront | g6e.xlarge at 0.858 dollars an hour, the deepest three-year plan in the region (AWS 2026b); outside Pakistan | 22,500 |
+
+Egress, storage and the network link from Pakistan to the region are excluded, so every rented figure is a floor. Neither option satisfies the residency the design is built on.
+
+### A.4 Sources for This Appendix
+
+- AWS. 2026a. Amazon EC2 on-demand prices, Middle East (UAE), Linux, g6e.xlarge, as read 6 October 2026. <https://aws.amazon.com/ec2/pricing/on-demand/>
+- AWS. 2026b. EC2 Instance Savings Plans price file, me-central-1, version 20261005200132, as read 6 October 2026. <https://pricing.us-east-1.amazonaws.com/savingsPlan/v1.0/aws/AWSComputeSavingsPlan/current/region_index.json>
+- Dawn. 2026. NEPRA notifies new industrial tariffs. <https://www.dawn.com/news/1973828>
+- Introl. 2026. GPU infrastructure TCO model. <https://introl.com/blog/gpu-infrastructure-tco-model-5-year-enterprise-ai-deployment>
+- Markertek. 2026. APC SMT3000RM2UC Smart-UPS 3000VA RM 2U LCD 120V with SmartConnect, read 12 October 2026. <https://www.markertek.com/product/apc-smt3000rm2uc/apc-smt3000rm2u-smart-ups-3000va-rm-2u-lcd-120v-with-smartconnec>
+- Newegg. 2026. Supermicro SYS-421GE-TNRT-02-G1, eight L40S cards, 85,271 dollars, read 12 October 2026. <https://www.newegg.com/p/N82E16859152404>
+- SBP. 2026. Conversion rates, 4 September 2026. <https://www.sbp.org.pk>
+- Uptime Institute. 2025. Global Data Center Survey 2025. <https://uptimeinstitute.com>
+
+SOURCES
+
+## Source Register
+
+EXA. 2006. External Corrosion of Oil and Natural Gas Pipelines. <https://exa.ai/library/publication/8w7sqtq804w>
+
+Plusstd. 2022. Statistical Analysis of Reportable Onshore Hazardous Liquid and Natural Gas Pipeline Accidents/Incidents Due to External Corrosion in the United States, 2010 to. <https://plusstd.com/standard/2074018270/ampp-paper-18525-2022/>
+
+Ehstoday. 2000. NTSB: Fatal N.M. Pipeline Rupture Caused by Corrosion EHS Today. <https://www.ehstoday.com/archive/article/21907202/ntsb-fatal-nm-pipeline-rupture-caused-by-corrosion>
+
+ECFR. n.d.. eCFR :: 49 CFR Part 195 Subpart H -- Corrosion Control. <https://www.ecfr.gov/current/title-49/subtitle-B/chapter-I/subchapter-D/part-195/subpart-H>
+
+Corrosion. 2020. Cost of Corrosion Part 2 , Oil and Gas. <https://www.corrosion.com.au/cost-of-corrosion-oil-and-gas-part-2/>
+
+---
+
+### About CodeNinja
+
+CodeNinja is a Middle Eastern-American artificial intelligence lab focused on building self-improving systems. We are reinventing knowledge work to close the loop between vertical AI use cases and the generalized intelligence that fuels it, accelerating the path toward organizational superintelligence.

@@ -1,0 +1,13 @@
+choice,picked,why
+Vision anomaly detection,"Anomalib 2.7.0, FP32, exported to ONNX Runtime",Unsupervised fit on the facility's own good panels needs no labeled defect set; Apache-2.0 keeps the trained detector the operator's own
+Force baseline model,"Chronos-Bolt, Apache-2.0","Learns per-arm, per-stylus load baselines on the edge box and flags drifting pass signatures"
+Edge AI compute,Fanless industrial inference computer class,Sized from the camera and sensor stream budget with headroom; bench-measured on the actual streams before order
+Facility inference server,Eight-card 48 GB PCIe air-cooled inference server class,Holds the registered models with KV and batch headroom on the facility's own power
+Time synchronization,OCP Time Card grandmaster with linuxptp,"Sub-millisecond ordering across scan, force and pose streams"
+One-way transfer,lidi and Eurydice over a hardware data diode,One-way egress from the cell OT zone to the facility tier
+"Enclosures, mounting and power",Rugged enclosure class with Network UPS Tools,Clean shutdown on power loss; rated for shop-floor temperature and dust
+Cameras,"Fixed, RTSP-serving class from the facility's approved list",Pixels-on-target density per zone; no export license applies to domestic installation in the United States
+Sensing set,"Force-feedback load cells at the styli, joint encoders and torque telemetry, a structured-light 3D scanner at the metrology bay, a laser tracker reference channel, frame and fixture temperature sensors, safety PLC and interlock state via MTConnect","Covers force, as-built geometry, thermal drift and interlock state beside every measurement"
+Platform pattern,On-premises AI platform reference architecture,"Two layers with a clean contract, GPUs managed as declarative Kubernetes operators, compute facility-owned on-premise"
+Robotics pattern,Simulation-first robotics reference architecture,Every asset converted to OpenUSD once; software-in-the-loop path validation before metal is moved
+Ground it runs on,"K3s at both tiers, Harbor, Kafka 4.3 in KRaft mode, BaSyx, InfluxDB 3 Core, MediaMTX with Frigate NVR, Keycloak, Prometheus, Grafana and Loki","Open components the facility operates, patches and owns inside its own perimeter"
