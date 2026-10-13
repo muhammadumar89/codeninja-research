@@ -11,5 +11,11 @@
   "description": "An earth observation system design that screens farm parcels with Sentinel-2, Sentinel-1 and Landsat, turns restricted crop detections into enforceable case files, and keeps imagery, weights and detections in the Kingdom. An open reference architecture by CodeNinja Atoms.",
   "query": "earth observation cluster (tier B, 7 named queries at positions 1 to 10); page at 35 impressions, position 5.5, 0 clicks, 28 days to 8 Oct 2026; rd_keywords.py pick on 12 Oct 2026",
   "fixed": "2026-10-12"
+ },
+ "blog/dont-baptize-the-gpus": {
+  "title": "Don't Baptize the GPUs: Chris Olah, Anthropic and the religious question about Claude",
+  "description": "Anthropic co-founder Chris Olah spent months convening religious and philosophical thinkers on whether Claude might be conscious. Umar Bilal argues the instinct is understandable and the method is wrong: measure an AI system by running it, train it to seek truth, and let the organizations that depend on it own it.",
+  "query": "\"chris olah\" (tier B, entity noise cluster; the only named query on the page, 9 impressions, position 8.9, 0 clicks, 28 days to 10 Oct 2026); page at 25 impressions, position 7.2; rd_keywords.py pick on 13 Oct 2026",
+  "fixed": "2026-10-13"
  }
 }
