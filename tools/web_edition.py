@@ -107,6 +107,9 @@ def head_tags(m):
 
 def main(paper_html, summary_md, appendix_md, meta_json, out):
     h = Path(paper_html).read_text(encoding="utf-8")
+    # seo.py gives every paper copy its own canonical (to the design page); strip it so the
+    # web edition carries exactly one canonical, the one from meta.json (13 Oct 2026).
+    h = re.sub(r'<link rel="canonical"[^>]*>', "", h)
     m = json.loads(Path(meta_json).read_text(encoding="utf-8"))
     if "<title>" in h:
         h = re.sub(r"<title>.*?</title>", f"<title>{html.escape(m['title'])}</title>", h, count=1, flags=re.S)

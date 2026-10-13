@@ -44,6 +44,8 @@ At a glance
 
 **Made with.** Reasoned on [Praxis](<https://codeatoms.ai/praxis/>), CodeNinja's platform for designing physical AI systems. The object model imports into [Hyper Ontology](<https://codeatoms.ai/hyper-ontology/>), which turns it into a living system. Both are in beta; access by request.
 
+**Open item (13 Oct 2026).** The paper names dust, glare and heat as what degrades the camera lenses but sets no cleaning trigger. A reader asked whether cleaning follows a confidence drop or a fixed rota; the answer is both, a rota set by the site's dust season and a confidence drop on a fixed reference target in each camera's view that opens a work order for a named person, and the camera's health belongs in the object model as a record someone owns. Raised on the [Dev.to build log](<https://dev.to/umar_bilal_fd6e1f54398cec/system-design-for-physical-ai-forecasting-construction-schedule-slips-with-edge-vision-and-an-55h1>).
+
 ABSTRACT
 
 ## A Slip Should Be Forecast Three Days Out, Not Found at the Thursday Meeting
@@ -56,7 +58,7 @@ The paper opens with the problem and the join failure that keeps four systems bl
 
 ---
 
-![Figure 1. Structure Phase Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Structure Phase Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_01.png)
 
 Figure 1. Structure Phase Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -117,7 +119,7 @@ Chapter 1 defined the question and the operation that holds the evidence. This c
 
 The schedule of record, Primavera P6, sees planned dates, float and pour and lift codes for the owner's baseline and the joint venture's fragnets; it misses everything that happens between exports, so a slip exists there only after someone edits the plan to match reality. The precast register spreadsheet sees cast dates, curing state and quality release for every bed and unit; it misses the pour and the crane waiting on the unit, so a curing delay looks like a yard number with no downstream consequence. The batch plant SCADA sees every ticket, with mix design, batch time, temperature and quantity against a target pour; it misses erection, so a slow pour cycle leaves no trace of the delivery chain that caused it. The Excel lift schedule sees planned lifts per crane; it misses what the cranes actually did, which lives in the anti-collision systems' logs of load, radius, wind state and alarms. The haulage contractor's GPS portal sees where the tracked trucks are against their windows; it misses the gate queue and the untracked mixers. The paper gate logs see one line per movement; they miss anything until a hand transcribes them, and no process joins them to a window or a crane. Crawler crane telematics sees hours, location and fault codes but has no planned-lift denominator. The HSE document system sees yesterday's forms, never a live breach. The biometric turnstiles see presence at the main gates but not which zone, permit or load path each worker was exposed to. The weather station sees wind and temperature but not which lift each reading stopped. The paper permits see who may work in a zone but not the conflicts between overlapping permits and crane operations.
 
-![Figure 2. Twelve systems, each seeing one part of the answer. the question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Twelve systems, each seeing one part of the answer. the question needs all of them in one place at once.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_02.png)
 
 Figure 2. Twelve systems, each seeing one part of the answer. the question needs all of them in one place at once.
 
@@ -187,7 +189,7 @@ Chapter 3 fixed the four constraints the design must honor: the twelve systems o
 
 The design is a three-layer pattern. Below sit the systems of record: the owner's Primavera P6 baseline, the batch plant SCADA, the casting bed register, the lift schedule, the gate logs and the rest, all left exactly where they are and all read only. In the middle sits one object model that holds the fifteen typed objects of the structure phase and the links between them. Above sit the eight services that read that model and the six surfaces where the planning team, the crane coordinator, the yard manager and the HSE officers make their calls. Figure 3 shows the layered stack with the component counts per layer: twelve sources, three adapter families, fifteen objects, eight services and six surfaces, on JV hardware in the site data room. The pattern fits because the problem defined in Chapter 2 is a join failure, not a missing feature in any one system. Point-to-point integrations would multiply the join problem by pairing systems two at a time; a shared object model pairs every system once, against the model. The same pattern also serves the sovereignty constraint: because the middle layer is the only place systems meet, the perimeter needs only one defended interior rather than a mesh of connections, and because no adapter ever writes back to a source, the systems of record carry no new risk.
 
-![Figure 3. The layered stack: 12 sources, 3 adapter families, 15 objects, 8 services and 6 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 12 sources, 3 adapter families, 15 objects, 8 services and 6 surfaces.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_03.png)
 
 Figure 3. The layered stack: 12 sources, 3 adapter families, 15 objects, 8 services and 6 surfaces.
 
@@ -219,7 +221,7 @@ Chapter 4 placed one object model in the middle of the stack. This chapter opens
 
 The model holds fifteen objects in five kinds. Four are assets that do the work: tower\_crane for the 14 tower cranes and crawler\_crane for the 6 crawler cranes, casting\_bed and precast\_unit for the yard's output, and truck for the 60 vehicle fleet. Four are records: batch\_ticket from the plant SCADA, p6\_activity from the owner's baseline and the joint venture's fragnets, permit from the paper permit to work system, and hse\_observation from the incident and observation forms. Four are events: gate\_movement, delivery\_window, lift\_plan\_entry and pour. One is a person, worker, anchored in the biometric turnstiles, and one is a place, zone, covering the four work zones. Figure 4 draws every object and every typed link between them, with the pour as the focal object because the pour is where schedule and safety meet. The links are what make the model an argument rather than an archive. Start at a pour showing status Delayed and the query reaches the batch tickets behind it, the precast units and their casting beds and curing state, the p6\_activity that carries the float, the delivery\_window objects and the trucks and gate\_movements that explain whether the delay arrived by road, and the tower cranes and lift\_plan\_entries that show what idled while it waited. The same query continues into the zone, the permits active there and the workers present, which is the exposure picture an HSE officer needs. A document store can hold each of these records but cannot traverse between them, so each answer would be a separate search in a separate system; here one query reaches the whole story, which is exactly what the Thursday look-ahead meeting cannot do today.
 
-![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_04.png)
 
 Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
 
@@ -272,7 +274,7 @@ Chapter 5 defined what the object model holds and who may write to it. This chap
 
 Twelve named systems feed the model, and Figure 5 maps each one to its adapter path. The owner's Primavera P6 baseline and the joint venture's fragnets arrive as daily XER or XML exports from the planning team, with the REST API held as an upgrade behind an owner consent checkpoint. The batch plant SCADA of the Command Alkon style is integrated as a read-only historian mirror on the joint venture's own network, so no OT zone is crossed. The casting bed register and QC release spreadsheet, the Excel lift schedule and the paper gate logs enter through the file and doc adapter family, the gate logs after the one zone's paper digitisation in phase one. The haulage contractor GPS portal and the 20 proposed trackers for the untracked mixers enter through the telemetry family, as do the crane anti-collision systems of the SMIE and AMCS style, the crawler crane telematics, the site weather station and the biometric turnstiles. The HSE document system and the paper permits to work enter through the integration and file and doc families respectively. Every source carries the same provenance class, an operator system of record, and every integration is read only, so the design changes no system it depends on.
 
-![Figure 5. The 12 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 12 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_05.png)
 
 Figure 5. The 12 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -296,7 +298,7 @@ Chapter 6 closed the path from source to backbone: every system enters through a
 
 Figure 6 shows the three inference tiers. The lowest tier is the edge: Jetson Orin industrial edge class compute in solar powered IP66 enclosures with NUT managed UPS and sunshields, placed at the main gate truck queue, laydown area east, the crane TC-07 slew zone, the batch plant loading bay and the haul road junction. Each node runs detection and tracking locally under K3s: RF-DETR served through ONNX Runtime finds flatbeds, mixer trucks, workers, precast panels, suspended loads and tower cranes, and the ByteTrack class tracker holds identity across frames for queue counts, dwell and slew radius entry. Frigate NVR records beside it. The edge exists because private LTE coverage at laydown areas and under crane zones is patchy: detection at the point of risk must not depend on a stream that drops. The middle tier is the site inference server in the site data room, eight L40S class PCIe GPUs of 48 GB class each. It runs Chronos-2 forecasting over the series held in InfluxDB 3 Core, BGE-M3 embeddings for retrieval across permits, forms and work surface queries, and the cross zone aggregation behind live breach detection. The top tier is one node of eight 141 GB HBM GPUs (H200 class) serving GLM 5.3 for the agentic work surface. The arithmetic is the register's: 753 billion parameters at FP8, one byte per parameter, give 753 GB of weights; multiplied by 1.2 for KV cache and activations, the node must hold 904 GB; its 1,128 GB holds that, leaving about 224 GB of headroom that covers concurrent planner sessions rather than weights. The frontier weights sit on JV hardware inside the Kingdom beside the record they reason over, and the 141 GB HBM class ships to Saudi Arabia only under a US export licence, so the frontier node's order date is a phase one checkpoint on the licence timeline.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -316,7 +318,7 @@ Five models carry the design, and each is chosen so the joint venture can hold i
 
 Chapter 7 placed the compute: detection at the edge, forecasting and aggregation in the data room, one frontier node for reasoning. This chapter names the models that run there and the licenses that make owning them possible.
 
-![Figure 7. The five models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The five models, their placement, and the work each one does.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_07.png)
 
 Figure 7. The five models, their placement, and the work each one does.
 
@@ -361,7 +363,7 @@ Chapter 8 fixed the models, their licenses and the hardware classes they run on.
 
 Figure 8 shows the rollout as three phases with item counts, workstreams and exit gates. No phase carries a duration; each phase ends when its gate is met, not when a calendar page turns. Phase 1 is a one zone pilot carrying nine items across five workstreams: camera and edge detection, HSE live breach detection, records and permits, the sovereign platform and the structure phase model. The items integrate Primavera P6, the yard register and the batch plant feeds, digitise one zone's paper records, mount the first edge nodes and stand up the ontology. The exit gate is the built structure phase ontology: every object from Chapter 5 instantiated for one zone, with its sources joined and its provenance classes recorded. Phase 2 carries six items across five workstreams: the agentic work surface, camera and edge detection, forecasting, logistics re-sequencing and records and permits. Its exit gate is the forecast: pour slips predicted three days out against the P6 record, shadowed so planners see the forecast but the schedule of record is untouched. The delivery re-sequencing console and the work surface launch inside this phase, both in recommendation-only mode. Phase 3 carries three items across three workstreams: the agentic work surface, logistics re-sequencing and the sovereign platform. Its exit gate is the drafted weekly look ahead: the Thursday meeting reads its first draft from the record rather than assembling it from four systems by hand. Model governance and retraining become standing operations here. Requirement coverage is counted, not asserted: of the seven recorded requirements, two are covered by the gates above, none is partial, and five sit outside this baseline as later scope the JV may take up.
 
-![Figure 8. The three phases and their gates, and coverage of the 7 requirements across them.](figures/figure_08.png)
+![Figure 8. The three phases and their gates, and coverage of the 7 requirements across them.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_08.png)
 
 Figure 8. The three phases and their gates, and coverage of the 7 requirements across them.
 
@@ -428,7 +430,7 @@ Chapter 10 established that the record of decisions belongs to the joint venture
 
 Every design in the series is produced on Praxis, and this chapter is the audit trail. The ask, in the operator's words, was one live picture of the structure phase: precast production against the pour sequence, crane utilisation and lift plan compliance, truck flow through gates and laydown areas, and the people and equipment conflicts that cause both delay and injury, with warnings before a slip reaches the look ahead and breach detection while it happens. Praxis assigned the design to the physical operations family in heavy industry and construction. What was in the room and read in full, listed here and available on request: the operator's written requirement and its hypothesis about crane idle time and laydown exposure; the inventory of 12 named systems and their data; the object and link plan; the stack cards with their tooling and hardware readings; the model catalog entries; the risk register; and the phase plan with its gates. Nothing in this paper rests on a conversation that was not written down.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/structure-phase-construction-saudi-arabia/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 
