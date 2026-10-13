@@ -132,7 +132,7 @@ def identity_ld():
     org = {"@context": "https://schema.org", "@type": "Organization", "@id": ORG_ID, "name": "CodeNinja Atoms", "url": "https://codeatoms.ai/",
            "logo": {"@type": "ImageObject", "url": "https://codeatoms.ai/icon-512.png", "width": 512, "height": 512},
            "description": "CodeNinja Atoms is building a sovereign AI operating system for the physical world: open reference architectures for physical AI, Praxis for designing them and Hyper Ontology for making them living.",
-           "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
+           "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com", "sameAs": "https://www.wikidata.org/wiki/Q141718224"},
            "alternateName": ["CodeNinja Atoms Research", "codeatoms.ai"],
            "disambiguatingDescription": ("CodeNinja Atoms publishes open reference architectures for AI in physical operations and builds "
                                          "CodeNinja Praxis and Hyper Ontology. It is a subsidiary of CodeNinja (codeninjaconsulting.com) and is "
@@ -142,7 +142,8 @@ def identity_ld():
                       "https://zenodo.org/communities/physical-ai-reference-architectures",
                       "https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures",
                       "https://doi.org/10.5281/zenodo.23160819",
-                      "https://dev.to/umar_bilal_fd6e1f54398cec"],
+                      "https://dev.to/umar_bilal_fd6e1f54398cec",
+                      "https://www.wikidata.org/wiki/Q141718227"],
            "knowsAbout": ["physical AI", "sovereign AI", "ontology", "reference architecture", "industrial AI", "open-weight models"]}
     site = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE_ID, "name": "CodeNinja Atoms", "alternateName": "codeatoms.ai",
             "url": "https://codeatoms.ai/", "publisher": {"@id": ORG_ID}, "inLanguage": "en"}
