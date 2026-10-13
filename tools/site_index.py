@@ -139,7 +139,10 @@ def identity_ld():
                                          "unrelated to any other company or product whose name contains the word Atoms."),
            "sameAs": ["https://codeninjaconsulting.com", "https://github.com/muhammadumar89",
                       "https://github.com/muhammadumar89/codeninja-research", "https://huggingface.co/CodeNinjatools",
-                      "https://zenodo.org/communities/physical-ai-reference-architectures"],
+                      "https://zenodo.org/communities/physical-ai-reference-architectures",
+                      "https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures",
+                      "https://doi.org/10.5281/zenodo.23160819",
+                      "https://dev.to/umar_bilal_fd6e1f54398cec"],
            "knowsAbout": ["physical AI", "sovereign AI", "ontology", "reference architecture", "industrial AI", "open-weight models"]}
     site = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE_ID, "name": "CodeNinja Atoms", "alternateName": "codeatoms.ai",
             "url": "https://codeatoms.ai/", "publisher": {"@id": ORG_ID}, "inLanguage": "en"}
