@@ -49,3 +49,5 @@ The paper opens with the problem and the join failure that keeps four systems bl
 ## How it was built
 
 Designed on Praxis, CodeNinja's platform for designing physical AI systems. The platform scrubs the operator from text and figures and refuses to publish a file that still carries the operator's words. The country is the FDE's statement of where the design is written to run.
+
+**Open item (13 Oct 2026).** The paper names dust, glare and heat as what degrades the camera lenses but sets no cleaning trigger. A reader asked whether cleaning follows a confidence drop or a fixed rota; the answer is both, a rota set by the site's dust season and a confidence drop on a fixed reference target in each camera's view that opens a work order for a named person, and the camera's health belongs in the object model as a record someone owns. Raised on the [Dev.to build log](https://dev.to/umar_bilal_fd6e1f54398cec/system-design-for-physical-ai-forecasting-construction-schedule-slips-with-edge-vision-and-an-55h1).

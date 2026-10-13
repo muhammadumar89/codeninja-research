@@ -19,3 +19,5 @@
 **Reuse it.** The object model, the model register and the figures are free to reuse under CC BY 4.0. Cite as DOI https://doi.org/10.5281/zenodo.23126448.
 
 **Made with.** Reasoned on [Praxis](https://codeatoms.ai/praxis/), CodeNinja's platform for designing physical AI systems. The object model imports into [Hyper Ontology](https://codeatoms.ai/hyper-ontology/), which turns it into a living system. Both are in beta; access by request.
+
+**Open item (13 Oct 2026).** The paper names dust, glare and heat as what degrades the camera lenses but sets no cleaning trigger. A reader asked whether cleaning follows a confidence drop or a fixed rota; the answer is both, a rota set by the site's dust season and a confidence drop on a fixed reference target in each camera's view that opens a work order for a named person, and the camera's health belongs in the object model as a record someone owns. Raised on the [Dev.to build log](https://dev.to/umar_bilal_fd6e1f54398cec/system-design-for-physical-ai-forecasting-construction-schedule-slips-with-edge-vision-and-an-55h1).
