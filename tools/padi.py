@@ -18,7 +18,7 @@ BASE = "https://codeatoms.ai"
 E = lambda s: html.escape(str(s), quote=True)
 NAME = "Physical AI Design Index"
 # The RSI loop running now, beyond the last published export. Set to None when the export catches up.
-RUNNING = 17
+RUNNING = 22
 CC = {"United States": "US", "Saudi Arabia": "SA", "Pakistan": "PK"}
 ONE_LINE = ("One question about system design: given the same short requirement for physical AI in a real operation, does Praxis "
             "produce a better system design than frontier AI on its own? PADI scores both on fresh tasks across 13 industries in three countries.")
@@ -34,7 +34,7 @@ LIMITS = [
     ("Different tasks every RSI loop.", "Fresh tasks keep the measure honest, and they also mean RSI loops are not like for like."),
     ("Written by CodeNinja.", "Tasks and checks were written by CodeNinja with model assistance and reviewed adversarially. Independent expert grading is planned and not yet done."),
     ("Two arms.", "Only frontier AI on its own and the same model inside Praxis are scored. No other system or model is in the index yet."),
-    ("Partial coverage.", "Ten of thirteen industries are measured. Aviation manufacturing, semiconductors and warehousing have not been run."),
+    ("Thin coverage per industry.", "All thirteen industries are measured, most only once or twice, so each industry figure rests on a few tasks."),
     ("One rubric change.", "RSI Loop 12 used rubric 0.1. Every later RSI loop uses 0.2."),
 ]
 FAQ = [
@@ -240,7 +240,7 @@ def coverage(j):
     cn = j["benchmark"]["countries"]
     rows = "".join(f'<tr><td>{E(s["label"])}</td>' + "".join(f'<td><div class="cell">{"".join(cell(c) for c in s["grid"][k]["cells"])}</div></td>' for k in cn) + '</tr>'
                    for s in sorted(j["sectors"], key=lambda x: x["label"]))
-    return ('<div class="legend"><div class="cell"><span class="m">RSI Loop 16</span></div><span class="mono">measured in that RSI loop</span>'
+    return (f'<div class="legend"><div class="cell"><span class="m">RSI Loop {j["latest"]["cycle"]}</span></div><span class="mono">measured in that RSI loop</span>'
             '<div class="cell"><span>Not yet measured</span></div></div>'
             f'<div class="tw grid"><table><thead><tr><th>Industry</th>' + "".join(f'<th>{E(k)}</th>' for k in cn) + f'</tr></thead><tbody>{rows}</tbody></table></div>')
 
@@ -249,6 +249,8 @@ def page(j):
     B, L, M = j["benchmark"], j["latest"], j["methodology"]
     fams = M["families"]; bank = B["checks_by_family_in_bank"]
     running = f" RSI Loop {RUNNING} is under way." if RUNNING and RUNNING > L["cycle"] else ""
+    un = B["sector_count"] - B["sectors_measured"]
+    unmeasured = (f" {un} industr{'y is' if un == 1 else 'ies are'} in the bank and not yet measured." if un else " Every industry is measured at least once.")
     asof = datetime.date.fromisoformat(L["date"]).strftime("%-d %B %Y")
     task = (f'<div class="task"><div><p class="mono">1 · The requirement</p><h3>A short pack</h3><p>What a customer would send for one operation: at most two pages, anonymised, '
             'for a site in the United States, Saudi Arabia or Pakistan. Packs leave out facts a good design should ask for.</p></div>'
@@ -261,7 +263,7 @@ def page(j):
     mc = [("Arms", "Same model, twice", arms),
           ("Judge", "Three lenses", f'<p><code>{E(J["model"])}</code> reads each design and answers every check yes or no through three lenses: {E(", ".join(LENSES[:-1]))} and {E(LENSES[-1])}.</p><p>A check passes when the majority of the lenses say yes.</p>'),
           ("Families", "Name, flag, never", "".join(f'<p><strong>{E(f["label"])}</strong> · {pct(bank[f["id"]], B["checks_in_bank"]):.0f}% of the bank<br>{E(FAMS[f["id"]][0])}</p>' for f in fams)),
-          ("Fresh tasks", "Never run twice", f'<p>A third of the bank ({B["tasks_held_out"]} of {B["task_bank_size"]} tasks) is held out for a final blind evaluation and never run in an RSI loop.</p><p>Each RSI loop picks up to six unused tasks from the rest, two per country where the pool allows. No task or check ever enters the platform\'s corpus or briefs.</p>'),
+          ("Fresh tasks", "Never run twice", f'<p>Each RSI loop runs up to six tasks never run before, two per country where the pool allows. No task or check ever enters the platform\'s corpus or briefs.</p><p>{B["tasks_held_out_original"]} tasks were first held out for a final blind evaluation. As the fresh pool ran out, {B["tasks_held_out_run"]} of them were run in RSI Loops 19 to 21; {B["tasks_held_out"]} are still held out, and the final blind evaluation will use tasks never run in an RSI loop.</p>'),
           ("Score", "Checks passed", '<p>Checks passed divided by checks total, for each arm. No partial credit and no weighting.</p><p>Industry, family and country figures are the same count over their subset. RSI loops use different tasks, so compare percentages, not counts.</p>'),
           ("Rubric", "Version 0.2", '<p>Version 0.1 judged RSI Loop 12. Version 0.2 (4 October 2026) judges RSI Loops 13 onward: an open weight model named for self hosting, or a product named with its licence, is not a part number.</p>')]
     mcards = "".join(f'<div class="mcard"><p class="mono">{E(a)}</p><h3>{E(b)}</h3>{c}</div>' for a, b, c in mc)
@@ -272,7 +274,7 @@ def page(j):
 <div>{featured(j)}</div>
 <div><b>{B["sectors_measured"]}<span>of {B["sector_count"]}</span></b><p>Industries measured across three countries</p></div></div>
 <p class="fr">{E(FRAMING)}</p><div class="cta"><a class="btn" href="#industries">By industry</a><a class="btn" href="#results">Results</a><a class="btn" href="#coverage">Coverage</a></div></div></section>
-<section class="light" id="industries"><div class="wrap"><div class="head"><h2>Industries</h2><p>Checks passed in each industry, all RSI loops to date, for the Praxis platform and frontier AI on its own, on the same tasks. Three industries are in the bank and not yet measured.</p></div>{industry_list(j)}</div></section>
+<section class="light" id="industries"><div class="wrap"><div class="head"><h2>Industries</h2><p>Checks passed in each industry, all RSI loops to date, for the Praxis platform and frontier AI on its own, on the same tasks.{unmeasured}</p></div>{industry_list(j)}</div></section>
 <section class="light alt" id="trajectory"><div class="wrap"><div class="head"><h2>Trajectory</h2><p>Every RSI loop on a scale to 100%, so the distance to the goal stays in view.</p></div>{chart(j)}</div></section>
 <section class="light" id="results"><div class="wrap"><div class="head"><h2>Results</h2><p>Every figure is checks passed as a percentage of checks judged, for each arm.</p></div>{tables(j)}</div></section>
 <section class="light alt" id="coverage"><div class="wrap"><div class="head"><h2>Coverage</h2><p>{B["sectors_measured"]} of {B["sector_count"]} industries measured. {B["task_bank_size"]} tasks in the bank, at least one per industry in each country, because operations differ with the place.</p></div>{coverage(j)}</div></section>
