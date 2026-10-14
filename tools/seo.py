@@ -175,7 +175,7 @@ BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items
 def bar():
     nav = brand.nav_flat(BASE + "/")  # a one line strip: no menus, so the four destinations flat
     return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar"><a class="brand" href="{BASE}/" aria-label="CodeNinja Atoms home">{brand.LOGO}<span class="atoms"><span class="vh">CodeNinja </span>Atoms</span></a>'
-            f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a class="join" href="{brand.SIGNUP}">{brand.FREE}</a></nav></div>{B1}')
+            f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a href="{brand.SIGNUP}">{brand.FREE}</a><a class="join" href="{brand.CONTACT}">{brand.TALK}</a></nav></div>{B1}')
 
 
 def foot(slug, ds):
@@ -185,7 +185,7 @@ def foot(slug, ds):
         others.sort(key=lambda d: (d["sector"] != me["sector"], d["country"] != me["country"], d["title"]))
     items = "".join(f'<li><a href="{BASE}/{d["slug"]}/">{E(d["title"].split(":")[0])}</a><small>{E(d["sector"])} · {E(d["country"])}</small></li>' for d in others[:6])
     sec = (f'<p>Questions engineers ask about AI in {E(me["sector"])}, answered: <a href="{BASE}/sectors/{me["sector"].replace(" and ", "-and-").replace(" ", "-")}/">physical AI for {E(me["sector"])}</a>.</p>' if me else "")
-    return (f'{F0}<footer class="atoms-foot"><div class="w"><h2>More reference architectures</h2><ul>{items}</ul>{sec}'
+    return (f'{F0}<footer class="atoms-foot"><div class="w"><p class="talk" style="font-size:20px;color:#F2F2F0;margin:0 0 36px">Want this design for your own operation? <a href="{brand.CONTACT}">Talk to us</a>.</p><h2>More reference architectures</h2><ul>{items}</ul>{sec}'
             f'<p>Part of <a href="{BASE}/">CodeNinja Atoms</a>, a sovereign AI operating system for the physical world. Designed on <a href="{BASE}/praxis/">Praxis</a>, made living with '
             f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Pages, papers, object models and data are CC BY 4.0. CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a>.</p>'
             f'<p>{brand.footer_links(BASE + "/")}</p>'

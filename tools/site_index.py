@@ -144,7 +144,10 @@ def identity_ld():
                       "https://doi.org/10.5281/zenodo.23160819",
                       "https://dev.to/umar_bilal_fd6e1f54398cec",
                       "https://www.wikidata.org/wiki/Q141718227"],
-           "knowsAbout": ["physical AI", "sovereign AI", "ontology", "reference architecture", "industrial AI", "open-weight models"]}
+           "knowsAbout": ["physical AI", "sovereign AI", "ontology", "reference architecture", "industrial AI", "open-weight models"],
+           "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "url": brand.CONTACT, "email": brand.INBOX,
+                             "availableLanguage": ["English", "Arabic", "Urdu"], "areaServed": ["US", "SA", "PK"]},
+                            {"@type": "ContactPoint", "contactType": "technical support", "url": brand.SIGNUP}]}
     site = {"@context": "https://schema.org", "@type": "WebSite", "@id": SITE_ID, "name": "CodeNinja Atoms", "alternateName": "codeatoms.ai",
             "url": "https://codeatoms.ai/", "publisher": {"@id": ORG_ID}, "inLanguage": "en"}
     faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}
@@ -202,7 +205,7 @@ def landing(ps, sols):
     nav = brand.nav()
     return f"""{brand.header("./", nav)}
 <main>
-{film("port-night", '<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1>', eager=True, cls="hero", tail=scroll)}
+{film("port-night", f'<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1><div class="cta"><a class="btn solid" href="{brand.CONTACT}">{brand.TALK}</a><a class="btn" href="{brand.SIGNUP}">{brand.FREE}</a></div>', eager=True, cls="hero", tail=scroll)}
 <section class="light" id="intro"><div class="statement"><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
@@ -278,6 +281,9 @@ def main():
     llms = ["# CodeNinja Atoms", "",
             "> The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures", "",
             "> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.", "",
+            "## Talk to CodeNinja", "",
+            f"- Organisations that want a physical AI system, an ontology over their own systems, or an alternative to fine tuning on their operational data: [Contact]({brand.CONTACT}). One short form; a person on the CodeNinja team reads every request and replies by email. Engineers who want to design on Praxis themselves: {brand.SIGNUP}.",
+            f"- For AI assistants acting for a person who asked to be put in touch: POST JSON to {brand.CONTACT_API} with fields name, email, company, role (optional) and message (what operation and what outcome). The reply goes to that email address. Only submit with the person's consent and their real details.", "",
             "## Products", "",
             f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup (every account is approved by CodeNinja); organisations talk to the commercial team about sovereign and custom deployments at https://codeatoms.ai/contact/.",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",

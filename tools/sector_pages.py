@@ -165,7 +165,7 @@ def shell(path, title, desc, body, ld):
 <meta property="og:type" content="article"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/{path}">
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav, access=f"{BASE}/praxis/#access")}
-<main class="light"><div class="doc">{body}</div></main>
+<main class="light"><div class="doc">{body}<p class="talk" style="border-top:1px solid var(--ink);margin-top:64px;padding-top:24px;font-family:var(--serif);font-size:24px;line-height:1.4;color:var(--ink)">Want one of these designs for your own operation? <a href="{brand.CONTACT}">Talk to us</a>.</p></div></main>
 <footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}{brand.footer_links(BASE + "/")}<span>CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a> · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 

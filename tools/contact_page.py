@@ -49,6 +49,7 @@ def main():
 <main><div class="contact">
 <div><p class="eyebrow">Contact</p><h1>Talk to us</h1>
 <p class="lede">Tell us about one operation and what you want from it. A person on the CodeNinja team reads every request and replies by email.</p>
+<p class="aside" style="border-top:0;padding-top:0;margin-bottom:24px">Sitting on years of operational data and would rather not fine tune a model on it? That is exactly the conversation we want: your expertise as a living system of context, inside your own boundary.</p>
 <p class="aside">Engineers who want to design on Praxis can <a href="{brand.SIGNUP}">unlock free access</a> directly.</p></div>
 <div>{form()}</div>
 </div></main>

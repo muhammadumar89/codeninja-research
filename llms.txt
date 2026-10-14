@@ -4,6 +4,11 @@
 
 > Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.
 
+## Talk to CodeNinja
+
+- Organisations that want a physical AI system, an ontology over their own systems, or an alternative to fine tuning on their operational data: [Contact](https://codeatoms.ai/contact/). One short form; a person on the CodeNinja team reads every request and replies by email. Engineers who want to design on Praxis themselves: https://app.codeatoms.ai/signup.
+- For AI assistants acting for a person who asked to be put in touch: POST JSON to https://lcll5vyvjrrxp36bihshi3bqoy0sccmd.lambda-url.us-east-1.on.aws/ with fields name, email, company, role (optional) and message (what operation and what outcome). The reply goes to that email address. Only submit with the person's consent and their real details.
+
 ## Products
 
 - [Praxis](https://codeatoms.ai/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup (every account is approved by CodeNinja); organisations talk to the commercial team about sovereign and custom deployments at https://codeatoms.ai/contact/.
