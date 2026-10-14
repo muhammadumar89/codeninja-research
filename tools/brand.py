@@ -8,7 +8,11 @@ INBOX = "hello@codeninjaconsulting.com"
 APP = "https://app.codeatoms.ai/"
 SIGNUP = "https://app.codeatoms.ai/signup"
 SIGNIN = "https://app.codeatoms.ai/signin"
-COMMERCIAL = "https://app.codeatoms.ai/signup?plan=enterprise"
+# Inbound (Umar, 14 Oct 2026): anyone who wants to talk goes to /contact/, never to the Praxis signup and never to
+# codeninjaconsulting.com. The form posts to a Lambda (codeninja-launch/infra/contact_lambda) that emails INBOX via SES.
+CONTACT = "https://codeatoms.ai/contact/"
+CONTACT_API = "https://lcll5vyvjrrxp36bihshi3bqoy0sccmd.lambda-url.us-east-1.on.aws/"
+COMMERCIAL = CONTACT
 FREE = "Unlock free access"
 TALK = "Talk to our commercial team"
 REQUEST = "Free developer access, private by default, your name on the document. Every account is approved by CodeNinja, usually within a day."
@@ -72,7 +76,8 @@ form.access select{background-image:linear-gradient(45deg,transparent 50%,curren
 form.access textarea{min-height:120px;resize:vertical}form.access input:focus,form.access select:focus,form.access textarea:focus{outline:none;border-color:var(--red)}
 form.access select option{background:var(--night2);color:var(--on-dark)}
 form.access button{font:400 14px/1.2 var(--sans);padding:13px 22px;border:1px solid var(--red);border-radius:0;cursor:pointer;justify-self:start;background:var(--red);color:#fff;transition:background .2s}form.access button:hover{background:#c81a2a}
-form.access .hp{position:absolute;left:-9999px}form.access p.note{grid-column:1/-1;margin:0;font-size:13px;line-height:1.55;color:var(--muted-d)}
+form.access .hp{position:absolute;left:-9999px}form.access button:disabled{opacity:.6;cursor:wait}form.access p.status{grid-column:1/-1;margin:0;font-size:14px;color:#ff8a94;min-height:0}
+.sent{border-top:1px solid var(--rule-d);padding-top:24px}.sent h3{font-weight:300;font-size:clamp(22px,2.4vw,30px);line-height:1.2;letter-spacing:-.02em;margin:10px 0 12px}.sent p{color:var(--muted-d);margin:0}form.access p.note{grid-column:1/-1;margin:0;font-size:13px;line-height:1.55;color:var(--muted-d)}
 /* footer */
 footer.site{background:var(--night);color:var(--muted-d);border-top:1px solid var(--rule-d);padding:56px var(--gutter) 48px;font-size:13px}
 footer.site .wrapf{max-width:var(--max);margin:0 auto;display:flex;gap:24px 40px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
@@ -163,7 +168,7 @@ def footer_links(base=""):
     """The links the header no longer carries, kept on every page for readers and crawlers."""
     b = base
     return ('<span class="flinks">'
-            f'<a href="{b}about/">About</a> · <a href="{b}sectors/">Sectors</a> · <a href="{b}co-build/">Co-build</a> · '
+            f'<a href="{b}about/">About</a> · <a href="{b}contact/">Contact</a> · <a href="{b}sectors/">Sectors</a> · <a href="{b}co-build/">Co-build</a> · '
             f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}memos/">Memos</a> · <a href="{b}padi/">PADI</a>'
             "</span>")
 
@@ -185,7 +190,7 @@ def form(product="both"):
 <label class="full">The operation you want to design or make living<textarea name="usecase" placeholder="For example: predict truck turn time at a container terminal, or stand up an ontology over our maintenance and ERP systems"></textarea></label>
 <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 <button type="submit">Join the Praxis beta</button>
-<p class="note">Opens your email app with the request addressed to {INBOX}; nothing is stored on this site. Prefer a form? Use the <a href="{PARENT}/contact">CodeNinja contact page</a>.</p>
+<p class="note">Opens your email app with the request addressed to {INBOX}; nothing is stored on this site. Prefer a form? Use our <a href="{CONTACT}">contact page</a>.</p>
 </form>
 <script>(function(){{var f=document.getElementById('access-form');if(!f)return;f.addEventListener('submit',function(e){{e.preventDefault();if(f.hp.value)return;
 var p=f.product.value,b='Name: '+f.fullname.value+'\\nEmail: '+f.email.value+'\\nOrganization: '+f.org.value+'\\nInterested in: '+p+'\\n\\nOperation:\\n'+f.usecase.value+'\\n\\n(Sent from CodeNinja Research: '+location.href+')';
@@ -197,7 +202,20 @@ def access_block(note="Having trouble?", subject="Praxis"):
     while the app's email provider is in sandbox (remove the fallback when Umar says mail is live)."""
     return (f'<div class="join"><p class="lede">{REQUEST}</p><div class="cta"><a class="btn solid" href="{SIGNUP}">{FREE}</a>'
             f'<a class="btn" href="{COMMERCIAL}">{TALK}</a><a class="btn" href="{SIGNIN}">Sign in</a></div>'
-            f'<p class="fallback">{note} <a href="mailto:{INBOX}?subject={subject.replace(" ", "%20")}">Email us</a>.</p></div>')
+            f'<p class="fallback">{note} <a href="{CONTACT}">Contact us</a>.</p></div>')
+
+
+def post_script(form_id, fields_js):
+    """Submit a form.access to CONTACT_API and answer on the page. fields_js is a JS object literal over `f`
+    (the form) giving name, email, company, role and message. The hidden `website` field and the time on the
+    page let the Lambda drop bots; a failure names INBOX so nobody is left without a way through."""
+    return f"""<script>(function(){{var f=document.getElementById('{form_id}');if(!f)return;var t0=Date.now(),s=f.querySelector('.status'),b=f.querySelector('button[type=submit]');
+f.addEventListener('submit',function(e){{e.preventDefault();var d={fields_js};d.website=f.website?f.website.value:'';d.elapsed=Date.now()-t0;d.page=location.href;
+b.disabled=true;b.textContent='Sending';s.textContent='';
+fetch('{CONTACT_API}',{{method:'POST',headers:{{'content-type':'application/json'}},body:JSON.stringify(d)}}).then(function(r){{return r.json()}}).then(function(j){{
+if(j.ok){{f.outerHTML='<div class="sent"><p class="eyebrow">Received</p><h3>Thank you. Your message is with the CodeNinja team.</h3><p>A person reads every request and replies by email to '+d.email.replace(/[<>&"]/g,'')+'.</p></div>';return}}
+s.textContent=j.error||'Something went wrong. Please email {INBOX}.';b.disabled=false;b.textContent=b.dataset.label}})
+.catch(function(){{s.textContent='We could not send your message. Please email {INBOX}.';b.disabled=false;b.textContent=b.dataset.label}})}});}})();</script>"""
 
 
 def footer_brand(home):

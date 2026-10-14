@@ -129,8 +129,7 @@ def neighbour_note(d):
 
 
 def form(sector_name):
-    """The one co-build form. Composes an email to CodeNinja's inbound address; the static site stores nothing."""
-    inbox = brand.INBOX
+    """The one co-build form. Posts to the contact endpoint, which emails CodeNinja's inbound address; the static site stores nothing."""
     return f"""<form class="access" id="cb-form">
 <label>Name<input name="fullname" required autocomplete="name"></label>
 <label>Work email<input name="email" type="email" required autocomplete="email"></label>
@@ -139,13 +138,13 @@ def form(sector_name):
 <label>Where the operation is<select name="country"><option>United States</option><option>Saudi Arabia</option><option>Pakistan</option><option>Elsewhere</option></select></label>
 <label>Where you want to start<select name="start"><option value="Start from the nearest published design" selected>Start from the nearest published design (recommended)</option><option value="A new design for our operation">A new design for our operation</option><option value="An ontology over systems we already have">An ontology over systems we already have</option></select></label>
 <label class="full">The operation you want to make living<textarea name="usecase" required placeholder="One operation and the outcome you want from it. For example: fewer near misses between haul trucks and people on one open pit, or one record of every lot and tool in one fab."></textarea></label>
-<input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-<button type="submit">Ask to co build</button>
-<p class="note">Opens your email app with the request addressed to {inbox}; nothing is stored on this site. Prefer a form? Use the <a href="{brand.PARENT}/contact">CodeNinja contact page</a>. Organisations that would rather talk first: <a href="{brand.COMMERCIAL}">our commercial team</a>.</p>
+<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="status" role="status" aria-live="polite"></p>
+<button type="submit" data-label="Ask to co build">Ask to co build</button>
+<p class="note">Goes straight to the CodeNinja team, and a person replies by email. Organisations that would rather talk first: <a href="{brand.CONTACT}">contact us</a>.</p>
 </form>
-<script>(function(){{var f=document.getElementById('cb-form');if(!f)return;f.addEventListener('submit',function(e){{e.preventDefault();if(f.hp.value)return;
-var b='Sector: {sector_name}\\nName: '+f.fullname.value+'\\nEmail: '+f.email.value+'\\nOrganization: '+f.org.value+'\\nRole: '+f.role.value+'\\nOperation is in: '+f.country.value+'\\nStart: '+f.start.value+'\\n\\nOperation:\\n'+f.usecase.value+'\\n\\n(Sent from CodeNinja Atoms: '+location.href+')';
-location.href='mailto:{inbox}?subject='+encodeURIComponent('Co-build: {sector_name} ('+f.org.value+')')+'&body='+encodeURIComponent(b);}});}})();</script>"""
+""" + brand.post_script("cb-form", "{name:f.fullname.value,email:f.email.value,company:f.org.value,role:f.role.value,"
+                         f"message:'Co-build request, sector: {sector_name}\\nOperation is in: '+f.country.value+'\\nStart: '+f.start.value+'\\n\\n'+f.usecase.value}}")
 
 
 CSS = """

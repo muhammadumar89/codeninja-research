@@ -6,7 +6,7 @@
 
 ## Products
 
-- [Praxis](https://codeatoms.ai/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup (every account is approved by CodeNinja); organisations talk to the commercial team about sovereign and custom deployments at https://app.codeatoms.ai/signup?plan=enterprise.
+- [Praxis](https://codeatoms.ai/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup (every account is approved by CodeNinja); organisations talk to the commercial team about sovereign and custom deployments at https://codeatoms.ai/contact/.
 - [Hyper Ontology](https://codeatoms.ai/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.
 
 - [PADI, the Physical AI Design Index](https://codeatoms.ai/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: https://codeatoms.ai/padi/index.md
@@ -47,7 +47,7 @@
   - [Object model as JSON](https://codeatoms.ai/port-digital-twin-us/ontology/objects.json)
 - [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/): An open reference architecture for independent production counting at steel melting and re-rolling mills in Pakistan: cameras and GPU industrial PCs at every installation point count billets, ingots, rebars and girders, publish into one operator-owned record, and let revenue officers reconcile counted against declared production, with a fourteen-object ontology, a frontier model behind an export licence checkpoint, and a three-year cost comparison. DOI 10.5281/zenodo.23126563.
   - [Object model as JSON](https://codeatoms.ai/steel-production-count-pakistan/ontology/objects.json)
-- [Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site](https://codeatoms.ai/structure-phase-construction-saudi-arabia/): An open reference architecture for forecasting schedule slips three days out and seeing crane, delivery and safety evidence live on a construction site in Saudi Arabia: twelve source systems, a fifteen-object ontology, solar powered edge vision, a frontier model on hardware inside the Kingdom, and a three-year cost comparison against cloud. DOI 10.5281/zenodo.23126448.
+- [Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site](https://codeatoms.ai/structure-phase-construction-saudi-arabia/): A construction progress monitoring system design that joins precast production, crane utilisation and truck flow into one live model of the structure phase, forecasts schedule slips three days out and shows safety breaches as they happen, on the contractor's own hardware in the Kingdom. An open reference architecture by CodeNinja Atoms. DOI 10.5281/zenodo.23126448.
   - [Object model as JSON](https://codeatoms.ai/structure-phase-construction-saudi-arabia/ontology/objects.json)
 - [Sovereign HSE Watch: A Reference Architecture for Predictive Health, Safety and Environment Intelligence in Pakistan's Oil and Gas Operations](https://codeatoms.ai/sovereign-hse-pakistan/): An open reference architecture for a sovereign, air-gapped HSE platform for an oil and gas operator in Pakistan: eight source systems, a twelve-object ontology, six self-hosted open-weight models on one GPU node, and a three-year cost comparison against cloud. DOI 10.5281/zenodo.23119714.
   - [Object model as JSON](https://codeatoms.ai/sovereign-hse-pakistan/ontology/objects.json)
@@ -101,4 +101,5 @@
 - [llms-full.txt](https://codeatoms.ai/llms-full.txt): every paper on the site in one Markdown file
 - Each design page also has a Markdown copy at its address plus `index.md`, for example https://codeatoms.ai/wildfire-risk-distribution-us/index.md
 - [About CodeNinja Atoms](https://codeatoms.ai/about/): mission and executive leadership
+- [Contact](https://codeatoms.ai/contact/): talk to the CodeNinja team, one short form answered by email
 <!--/full-->

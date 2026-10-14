@@ -260,7 +260,7 @@ def llms_full(mds):
     s = strip_block(p.read_text(encoding="utf-8"), "<!--full-->", "<!--/full-->").rstrip() + "\n"
     s += ("\n<!--full-->\n## Full text\n\n- [llms-full.txt](" + BASE + "/llms-full.txt): every paper on the site in one Markdown file\n"
           "- Each design page also has a Markdown copy at its address plus `index.md`, for example " + BASE + "/wildfire-risk-distribution-us/index.md\n"
-          "- [About CodeNinja Atoms](" + BASE + "/about/): mission and executive leadership\n<!--/full-->\n")
+          "- [About CodeNinja Atoms](" + BASE + "/about/): mission and executive leadership\n- [Contact](" + BASE + "/contact/): talk to the CodeNinja team, one short form answered by email\n<!--/full-->\n")
     p.write_text(s, encoding="utf-8")
 
 

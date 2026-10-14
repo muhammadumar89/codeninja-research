@@ -142,11 +142,11 @@ def main():
     # ---------------------------------------------------------------- Praxis
     pq = [("What designed the Vertical-Driven Architectures reference architectures?", f"Praxis, CodeNinja's platform for designing physical AI systems. All {len(ds)} designs in the series were produced on Praxis."),
           ("What does Praxis produce from a requirement?", "A complete system design for physical AI: a scope baseline, a layered architecture, an object model packaged for Hyper Ontology, a model and equipment register sized by memory arithmetic, a rollout with gates, a cost comparison, a live simulation, a proposal and functional specification, and a research paper."),
-          ("Is Praxis available?", "Yes. Engineers unlock free developer access at https://app.codeatoms.ai/signup, and every account is approved by CodeNinja. Organisations that want sovereign or custom deployments talk to the commercial team at https://app.codeatoms.ai/signup?plan=enterprise.")]
+          ("Is Praxis available?", "Yes. Engineers unlock free developer access at https://app.codeatoms.ai/signup, and every account is approved by CodeNinja. Organisations that want sovereign or custom deployments talk to the commercial team at https://codeatoms.ai/contact/.")]
     pbody = f"""<p class="eyebrow">CodeNinja Praxis</p>
 <h1>CodeNinja Praxis solves the biggest bottleneck in physical AI system design: deep domain expertise</h1>
 <p class="lead">Praxis turns an operator's requirement into a complete system design for physical AI: what to sense, where each model runs, what the object model holds, what it costs, and who approves every action. Every paper in the <a href="{BASE}/">Vertical-Driven Architectures</a> series was designed on Praxis.</p>
-<div class="box"><strong>Two ways in.</strong> Engineers <a href="https://app.codeatoms.ai/signup">unlock free access</a>; organisations <a href="https://app.codeatoms.ai/signup?plan=enterprise">talk to our commercial team</a> about sovereign and custom deployments. Every account is approved by CodeNinja.</div>
+<div class="box"><strong>Two ways in.</strong> Engineers <a href="https://app.codeatoms.ai/signup">unlock free access</a>; organisations <a href="https://codeatoms.ai/contact/">talk to our commercial team</a> about sovereign and custom deployments. Every account is approved by CodeNinja.</div>
 <h2>What Praxis produces</h2>
 <div class="grid">
 <div class="card"><h3>Scope and rollout</h3>A scope baseline with phases that carry item counts and gates, never durations, and an honest count of which requirements are covered.</div>

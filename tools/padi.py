@@ -278,7 +278,7 @@ def page(j):
 <section class="light alt" id="coverage"><div class="wrap"><div class="head"><h2>Coverage</h2><p>{B["sectors_measured"]} of {B["sector_count"]} industries measured. {B["task_bank_size"]} tasks in the bank, at least one per industry in each country, because operations differ with the place.</p></div>{coverage(j)}</div></section>
 <section class="light alt" id="faq"><div class="wrap"><div class="split"><div><h2>Questions</h2></div><div class="faq">{faq}</div></div></div></section>
 <section class="light" id="cadence"><div class="wrap"><div class="split"><div><p class="mono">Cadence</p><p class="cad">Updated each RSI loop. Last published: RSI Loop {L["cycle"]}, {asof}.{running}</p></div>
-<div><p class="mono">Contact</p><p class="cad" style="font-size:20px">Questions about PADI, or a task from your own operation you would like measured: <a href="mailto:{brand.INBOX}?subject=PADI">{brand.INBOX}</a></p></div></div></div></section>"""
+<div><p class="mono">Contact</p><p class="cad" style="font-size:20px">Questions about PADI, or a task from your own operation you would like measured: <a href="{brand.CONTACT}">contact us</a></p></div></div></div></section>"""
 
 
 def markdown(j):

@@ -270,7 +270,7 @@ def main():
 {brand.SCRIPT}{FILTER}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/padi/", f"{BASE}/memos/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/"] + [f"{BASE}/co-build/"] + [f"{BASE}/co-build/{q.parent.name}/" for q in sorted((ROOT / "co-build").glob("*/index.html"))] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/memos/{q.parent.name}/" for q in sorted((ROOT / "memos").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/contact/", f"{BASE}/padi/", f"{BASE}/memos/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/"] + [f"{BASE}/co-build/"] + [f"{BASE}/co-build/{q.parent.name}/" for q in sorted((ROOT / "co-build").glob("*/index.html"))] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/memos/{q.parent.name}/" for q in sorted((ROOT / "memos").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -279,7 +279,7 @@ def main():
             "> The cumulative dataset of every design (designs, objects, models, costs, full text): https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures", "",
             "> Open reference architectures for sovereign AI in physical operations: designs an operator can run on its own hardware, under open-weight licences, with no data leaving the country. CC BY 4.0.", "",
             "## Products", "",
-            f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup (every account is approved by CodeNinja); organisations talk to the commercial team about sovereign and custom deployments at https://app.codeatoms.ai/signup?plan=enterprise.",
+            f"- [Praxis]({BASE}/praxis/): CodeNinja's platform for designing physical AI systems. Every design below was reasoned on Praxis. Engineers unlock free access at https://app.codeatoms.ai/signup (every account is approved by CodeNinja); organisations talk to the commercial team about sovereign and custom deployments at https://codeatoms.ai/contact/.",
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
             f"- [PADI, the Physical AI Design Index]({BASE}/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: {BASE}/padi/index.md", "",
             "## For agents", "",
@@ -331,6 +331,8 @@ if __name__ == "__main__":
     developer.main()
     import padi  # PADI page; the home block reads the same export
     padi.main()
+    import contact_page  # the one inbound form, listed in the sitemap
+    contact_page.main()
     import co_build  # co-build doors: /co-build/ and one page per sector, listed in the sitemap
     co_build.main()
     main()
