@@ -1,0 +1,1 @@
+Figure 13: Coverage matrix for a predictive maintenance rolling stock design, matching each requirement in the operator's ask to the component of the system that answers it.

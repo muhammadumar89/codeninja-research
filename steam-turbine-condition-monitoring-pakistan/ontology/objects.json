@@ -1,0 +1,246 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan",
+    "url": "https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/",
+    "doi": "10.5281/zenodo.23365092"
+  },
+  "sector": "energy-and-utilities",
+  "country": "Pakistan",
+  "scenario": "the operator is described by class, never by name: a grid-connected generation company in Pakistan rehabilitating a steam turbine generator at a combined cycle plant",
+  "source": "chapter 5 of the paper (the object list and its typed-link prose) and the plan the paper was drawn from; Figure 5 draws the generic object grammar, so the typed links are written from chapter 5 sentences and labelled as they read there",
+  "write_paths": [
+    "condition work orders written to the document management system through its own interface",
+    "the alert status ladder, advanced only by the shift operator or the warranty engineer"
+  ],
+  "human_loop": "every alert carries a prescribed action that a named shift operator acknowledges; the platform advises and the protection layer trips; no write to the DCS",
+  "objects": [
+    {
+      "id": "steam-turbine",
+      "label": "Steam Turbine STG-1",
+      "kind": "asset",
+      "anchored_in": "the DCS",
+      "properties": [
+        "KKS tag",
+        "ISO 20816 Zone A/B vibration band per bearing",
+        "operating hours since overhaul",
+        "HEI damage item status"
+      ],
+      "status_vocabulary": [
+        "rehabilitated",
+        "commissioning",
+        "reliability test",
+        "performance test",
+        "operating",
+        "trip"
+      ],
+      "links": []
+    },
+    {
+      "id": "stg",
+      "label": "New Steam Turbine Generator (280 MW, 20 kV hydrogen-cooled)",
+      "kind": "asset",
+      "anchored_in": "the DCS",
+      "properties": [
+        "MCR rating",
+        "hydrogen pressure",
+        "rotor winding short-circuit detection status",
+        "excitation system state"
+      ],
+      "status_vocabulary": [
+        "installed",
+        "pre-commissioning",
+        "synchronised",
+        "operating",
+        "trip"
+      ],
+      "links": [
+        {
+          "to": "steam-turbine",
+          "label": "driven by"
+        }
+      ]
+    },
+    {
+      "id": "vibration-rack",
+      "label": "3500 Vibration Monitoring Rack",
+      "kind": "asset",
+      "anchored_in": "the DCS",
+      "properties": [
+        "channel list",
+        "probe health",
+        "alarm setpoints"
+      ],
+      "status_vocabulary": [
+        "rehabilitated",
+        "calibrated",
+        "online",
+        "degraded"
+      ],
+      "links": [
+        {
+          "to": "steam-turbine",
+          "label": "monitors bearings of"
+        },
+        {
+          "to": "calibration-record",
+          "label": "channel proven by"
+        }
+      ]
+    },
+    {
+      "id": "anomaly-alert",
+      "label": "Condition Anomaly Alert",
+      "kind": "event",
+      "anchored_in": "Hyper Ontology",
+      "properties": [
+        "source channel and KKS tag",
+        "trigger threshold or model",
+        "severity (ISO 20816 zone)",
+        "prescribed action",
+        "acknowledgement timestamps"
+      ],
+      "status_vocabulary": [
+        "raised",
+        "acknowledged",
+        "in review",
+        "prescribed",
+        "closed",
+        "false positive"
+      ],
+      "links": [
+        {
+          "to": "vibration-rack",
+          "label": "raised from the channel on"
+        },
+        {
+          "to": "steam-turbine",
+          "label": "on asset"
+        },
+        {
+          "to": "work-order",
+          "label": "closed by"
+        },
+        {
+          "to": "commissioning-test",
+          "label": "closed out by"
+        }
+      ]
+    },
+    {
+      "id": "work-order",
+      "label": "Condition Work Order",
+      "kind": "record",
+      "anchored_in": "Document Management System",
+      "properties": [
+        "linked alert",
+        "priority from the specification's list",
+        "corrective measure",
+        "closure evidence"
+      ],
+      "status_vocabulary": [
+        "raised",
+        "approved",
+        "in progress",
+        "completed",
+        "verified"
+      ],
+      "links": [
+        {
+          "to": "warranty-engineer",
+          "label": "attached engineer"
+        }
+      ]
+    },
+    {
+      "id": "calibration-record",
+      "label": "Instrument Calibration Record",
+      "kind": "record",
+      "anchored_in": "Document Management System",
+      "properties": [
+        "instrument KKS tag",
+        "calibration date",
+        "pass or fail result",
+        "next due date"
+      ],
+      "status_vocabulary": [
+        "due",
+        "passed",
+        "failed",
+        "replaced"
+      ],
+      "links": []
+    },
+    {
+      "id": "commissioning-test",
+      "label": "Commissioning and Performance Test Record",
+      "kind": "record",
+      "anchored_in": "Document Management System",
+      "properties": [
+        "test type",
+        "AGPO against GGPO result",
+        "trip root-cause findings",
+        "approval status"
+      ],
+      "status_vocabulary": [
+        "procedures submitted",
+        "approved",
+        "executed",
+        "shortfall",
+        "passed"
+      ],
+      "links": []
+    },
+    {
+      "id": "shift-operator",
+      "label": "Shift Operator (Employer's operational personnel)",
+      "kind": "actor",
+      "anchored_in": "the DCS",
+      "properties": [
+        "PTW authorisations held",
+        "units under watch",
+        "acknowledgement authority"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "anomaly-alert",
+          "label": "acknowledges"
+        }
+      ]
+    },
+    {
+      "id": "warranty-engineer",
+      "label": "Warranty Engineer (Contractor, DLP)",
+      "kind": "actor",
+      "anchored_in": "Document Management System",
+      "properties": [
+        "assigned defects",
+        "response due dates",
+        "corrective actions owned"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "unit-availability",
+      "label": "STG-1 Availability (RTR-derived)",
+      "kind": "measure",
+      "anchored_in": "the DCS",
+      "properties": [
+        "hours at base load in 72-hour window",
+        "trips during RTR",
+        "GGPO shortfall magnitude"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "steam-turbine",
+          "label": "derived for"
+        }
+      ]
+    }
+  ]
+}

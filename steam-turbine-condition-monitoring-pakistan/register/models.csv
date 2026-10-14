@@ -1,0 +1,17 @@
+choice,picked,why
+Model,"MOMENT-1, a time series foundation model for anomaly detection, MIT","Runs zero-shot on the 48 GB-class site card over vibration, hydrogen, winding and process telemetry, with no training run, because the rehabilitated unit's history may be too sparse to baseline"
+Model,"IBM Granite 4.2 8B, Apache-2.0","Drafts diagnostic notes and test reports for engineer review; licence-clean with an enterprise vendor behind it and real KV headroom on one site card, chosen over Qwen3.8 at 27B"
+Hardware class,48 GB PCIe inference GPU class on ruggedised edge servers inside the plant perimeter,"Pakistan has no hyperscaler region, so every tier runs on the operator's own hardware"
+Tool: event streaming and messaging,"Apache Kafka 4.3 (KRaft, three dedicated controllers, dynamic quorum), Apache-2.0",Condition streams need a self-managed backbone inside the plant that no managed service can serve from Pakistan.
+Tool: time series and telemetry storage,"InfluxDB 3 Core, MIT",Thousands of condition channels need a self-hosted OT historian whose retention the five-year NEPRA log rule stands on.
+Tool: edge model serving,"ONNX Runtime, MIT",The anomaly model runs exported to ONNX at the site tier so serving survives without internet pulls.
+Tool: on site language model serving,"vLLM, Apache-2.0",Granite 4.2 8B is served on the site inference card with the KV headroom vLLM's memory discipline gives.
+Tool: edge orchestration of containers,"Red Hat OpenShift AI 3.5 on OpenShift Container Platform 4.20, Red Hat subscription","The primary architecture's operator-managed, mirrored-install platform delivers serving, pipelines and the registry coherently to a plant with no internet route."
+Tool: an air gapped artifact and model registry,"MLflow model registry with the mirrored private registry as the artifact supply chain, Apache-2.0",Every model version entering the plant crosses the mirror once and carries provenance into the NEPRA log trail.
+Tool: labelling and retraining,"Label Studio, Apache-2.0",Engineer-confirmed vibration events become labelled training evidence for the anomaly model without leaving the perimeter.
+Tool: time synchronisation across sensors and systems,"linuxptp with PTP-aware switches, GPL-2.0","The specification requires accurate stamping to a common time reference for sequence-of-events logs, which only a designed PTP spine delivers."
+Tool: observability of the running system,"Prometheus, Grafana and Loki, Apache-2.0 / AGPL-3.0 (Loki)",The 2003 blackout lesson demands a positive heartbeat and freshness indication for the monitoring layer itself.
+Tool: identity and access on site,"Keycloak, Apache-2.0",NEPRA least-privilege and approved-remote-access duties need an on-site identity provider without credentials inside the control zone.
+Tool: integration with the sector's own operational systems,"open62541 OPC UA client, MPL-2.0","The read contract into the DCS, vibration rack and detection systems is OPC UA subscriptions with bounded queues, run from the DMZ side."
+Tool: time synchronisation hardware,"OCP Time Card (PTP grandmaster with GNSS and holdover), MIT (repository; third-party FPGA cores LGPL-3.0)","One open grandmaster card disciplines the whole estate for sequence-of-events ordering, with a second unit for failover."
+Tool: one way data transfer,"lidi beside a hardware data diode, LGPL-3.0",The platform reads the DCS through a physically one-way egress path so no inbound route into the control network exists.

@@ -1,0 +1,291 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Consist Watch: Executing the Operator's Own Fault Logic Across a 225-Car Commuter Fleet",
+    "url": "https://codeatoms.ai/rail-fleet-condition-monitoring-us/",
+    "doi": "10.5281/zenodo.23365118"
+  },
+  "sector": "rail-and-transportation",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name: a commuter railroad in the United States running a 225-car fleet under FRA regulation",
+  "source": "chapter 5 of the paper (the object list and its typed-link prose) and the plan the paper was drawn from; Figure 5 draws the generic object grammar, so the typed links are written from chapter 5 sentences and labelled as they read there",
+  "write_paths": [
+    "the fault and alert status ladders, advanced by the mechanical desk controller",
+    "alert notifications sent to the recipient group by severity"
+  ],
+  "human_loop": "the module executes the operator's own fault-logic table; a named mechanical desk controller owns every active fault in that car's territory",
+  "objects": [
+    {
+      "id": "car",
+      "label": "the operator's car",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "car number in the RRD",
+        "active cab (F Cab Active / R Cab Active)",
+        "GPS location from the car system router",
+        "vehicle battery voltage (24 to 48 VDC nominal 37.5 V system)",
+        "in-service status"
+      ],
+      "status_vocabulary": [
+        "in service",
+        "removed from service",
+        "in yard",
+        "under prototype test"
+      ],
+      "links": [
+        {
+          "to": "onboard_monitoring_module",
+          "label": "monitoring module"
+        },
+        {
+          "to": "car_system_router",
+          "label": "the car system"
+        },
+        {
+          "to": "digital_input_channel",
+          "label": "digital input channel"
+        },
+        {
+          "to": "analog_input_channel",
+          "label": "analog input channel"
+        }
+      ]
+    },
+    {
+      "id": "onboard_monitoring_module",
+      "label": "Onboard monitoring module",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "module serial number",
+        "enclosure IP62 rating and 8x8x8 inch footprint",
+        "firmware version",
+        "last telemetry heartbeat",
+        "spare or installed state"
+      ],
+      "status_vocabulary": [
+        "reporting",
+        "stale",
+        "failed",
+        "spare"
+      ],
+      "links": []
+    },
+    {
+      "id": "car_system_router",
+      "label": "The car system",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "cellular connection state",
+        "GPS fix quality",
+        "NAT and port-forwarding configuration",
+        "M12 X-code ethernet link to the module"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "digital_input_channel",
+      "label": "Digital input channel",
+      "kind": "measure",
+      "anchored_in": "",
+      "properties": [
+        "voltage threshold (1 when 24 to 48 VDC, not below 24 VDC)",
+        "state 0/1",
+        "owning car"
+      ],
+      "status_vocabulary": [
+        "on",
+        "off"
+      ],
+      "links": []
+    },
+    {
+      "id": "analog_input_channel",
+      "label": "Analog input channel",
+      "kind": "measure",
+      "anchored_in": "",
+      "properties": [
+        "conditioned value and unit",
+        "conditioning performed onboard or externally"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "active_fault",
+      "label": "Active fault",
+      "kind": "event",
+      "anchored_in": "",
+      "properties": [
+        "activation time and clear time",
+        "severity",
+        "car and GPS location at activation"
+      ],
+      "status_vocabulary": [
+        "active",
+        "acknowledged",
+        "cleared",
+        "resolved"
+      ],
+      "links": [
+        {
+          "to": "analog_input_channel",
+          "label": "produced by"
+        },
+        {
+          "to": "car",
+          "label": "on car"
+        },
+        {
+          "to": "fault_history_record",
+          "label": "logged as"
+        },
+        {
+          "to": "alert_notification",
+          "label": "notifies through"
+        }
+      ]
+    },
+    {
+      "id": "fault_history_record",
+      "label": "Fault history record",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "logged fault with values",
+        "time fault occurred and time fault cleared",
+        "resettable counter value (DBOL, Failed Blower, No Power)",
+        "car and subsystem"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "alert_notification",
+      "label": "Alert notification",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "channel (email or text message)",
+        "recipient group",
+        "severity",
+        "sent time and acknowledgement time"
+      ],
+      "status_vocabulary": [
+        "sent",
+        "delivered",
+        "acknowledged",
+        "escalated"
+      ],
+      "links": [
+        {
+          "to": "notification_recipient_group",
+          "label": "sent to"
+        }
+      ]
+    },
+    {
+      "id": "mechanical_desk_controller",
+      "label": "Mechanical desk controller",
+      "kind": "actor",
+      "anchored_in": "",
+      "properties": [
+        "shift",
+        "fleet view or single-vehicle view in use",
+        "user-specific configuration"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "active_fault",
+          "label": "responsible for"
+        },
+        {
+          "to": "control_center",
+          "label": "works at"
+        }
+      ]
+    },
+    {
+      "id": "yard_employee",
+      "label": "Yard employee",
+      "kind": "person",
+      "anchored_in": "",
+      "properties": [
+        "yard",
+        "assigned smart device",
+        "shift"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "yard_office",
+          "label": "works at"
+        }
+      ]
+    },
+    {
+      "id": "control_center",
+      "label": "the control center mechanical desk",
+      "kind": "site",
+      "anchored_in": "",
+      "properties": [
+        "fleet-wide active fault view",
+        "PF&I-style graphical screen",
+        "historical data window"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "yard_office",
+      "label": "the yard office",
+      "kind": "site",
+      "anchored_in": "",
+      "properties": [
+        "trains in the yard",
+        "pre-departure fault checks",
+        "smart-device access"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "slippery_rail_hotspot",
+      "label": "Slippery rail hotspot",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "GPS location",
+        "slip/slide counts from SS1-SS4 across all trains",
+        "contributing cars and dates",
+        "seasonal trend over 13 months"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "car",
+          "label": "contributing cars"
+        }
+      ]
+    },
+    {
+      "id": "notification_recipient_group",
+      "label": "Notification recipient group",
+      "kind": "actor",
+      "anchored_in": "",
+      "properties": [
+        "severity levels routed",
+        "member roles",
+        "channels (email, text)"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ]
+}

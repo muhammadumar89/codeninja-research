@@ -1,0 +1,1 @@
+Figure 11: Three layer model stack of a predictive maintenance rolling stock platform, pairing a self hosted Apache licensed large language model for the agent work surface with zero shot forecasting over analog channels.

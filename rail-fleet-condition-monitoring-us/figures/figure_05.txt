@@ -1,0 +1,1 @@
+Figure 5: Object model of a rail fleet condition monitoring system showing the operator's cars, monitoring modules, digital and analog input channels, faults, alerts and notification groups with their typed links.

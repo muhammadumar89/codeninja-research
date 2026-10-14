@@ -118,8 +118,14 @@ def main(paper_html, summary_md, appendix_md, meta_json, out):
     assert "</header>" in h, "no cover header"
     h = h.replace("</header>", "</header>\n" + glance, 1)
     apx = '<section id="appendix-a">' + md_block(Path(appendix_md).read_text(encoding="utf-8")) + "</section>"
-    assert '<section id="sources">' in h, "no source register"
-    h = h.replace('<section id="sources">', apx + '\n<section id="sources">', 1)
+    if '<section id="sources">' in h:
+        h = h.replace('<section id="sources">', apx + '\n<section id="sources">', 1)
+    else:
+        # the blog-format paper (RSI Loop 21 on, 14 Oct 2026) has no source register section:
+        # Appendix A goes before the References heading
+        mref = re.search(r'<h2[^>]*>References</h2>', h)
+        assert mref, "no source register and no References heading"
+        h = h[:mref.start()] + apx + "\n" + h[mref.start():]
     Path(out).write_text(h, encoding="utf-8")
     print(f"web edition: {len(h) // 1024} KB -> {out}")
 

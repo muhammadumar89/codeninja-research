@@ -1,0 +1,1 @@
+Figure 7: How data moves: each named source into the adapter family that maps it, the adapters into the one ontology core, the core out to the surfaces a person opens.

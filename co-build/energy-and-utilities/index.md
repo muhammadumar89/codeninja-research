@@ -10,6 +10,7 @@ Recommended path: start from the nearest published energy and utilities design; 
 
 ## What we bring
 
+- [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (Pakistan): 10 objects, 5 models, DOI https://doi.org/10.5281/zenodo.23365092
 - [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (Saudi Arabia): 13 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23157965
 - [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23159328
 - [Grid Context Watch: One system of context for OT Security and NERC CIP Evidence](https://codeatoms.ai/ot-security-cip-evidence-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23157957
@@ -42,7 +43,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a energy and utilities design to read?
 
-Yes. 3 published energy and utilities reference architectures in Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
+Yes. 4 published energy and utilities reference architectures in Pakistan, Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
 
 Ask to co-build: https://codeatoms.ai/co-build/energy-and-utilities/#ask
 Every sector: https://codeatoms.ai/co-build/

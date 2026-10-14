@@ -28,6 +28,10 @@
 
 ## Papers
 
+- [Consist Watch: Executing the Operator's Own Fault Logic Across a 225-Car Commuter Fleet](https://codeatoms.ai/rail-fleet-condition-monitoring-us/): How we designed a rail fleet condition monitoring system for a 225-car commuter fleet, from EN 50155 modules to agent surfaces. DOI 10.5281/zenodo.23365118.
+  - [Object model as JSON](https://codeatoms.ai/rail-fleet-condition-monitoring-us/ontology/objects.json)
+- [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/): How we designed a steam turbine condition monitoring system for a combined cycle plant in Pakistan, from one-way OPC UA reads to alerts. DOI 10.5281/zenodo.23365092.
+  - [Object model as JSON](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/ontology/objects.json)
 - [Corridor Guard: Validated DC Interference Assessment and Mitigation for Every Gas Pipeline Near the Electrode Station](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/): An open reference architecture for a validation-first DC interference study on buried gas pipelines near a high-voltage direct current electrode station in Pakistan, in oil and gas: a fifteen-object provenance-carrying register, one Apache-2.0 document parser, validated interference modelling, three gated phases, and a re-runnable model handed over on the operator's own 48 GB inference host. DOI 10.5281/zenodo.23308093.
   - [Object model as JSON](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/ontology/objects.json)
 - [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/): An open reference architecture for a dieless robotic sheet metal cell at an aircraft maintenance, repair and overhaul facility in the United States, in aviation and aerospace manufacturing: dual-arm synchronized forming with generic styli, an offline CAD-to-path and springback compensation stack, in-process metrology, a fourteen-object Asset Administration Shell record per serialized part, two Apache-2.0 models on a cell edge box, and an eight-card 48 GB inference server behind a hardware data diode. DOI 10.5281/zenodo.23308095.
@@ -99,6 +103,7 @@
 - [Physical AI for heavy industry and construction](https://codeatoms.ai/sectors/heavy-industry-and-construction/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/heavy-industry-and-construction/index.md
 - [Physical AI for maritime and ports](https://codeatoms.ai/sectors/maritime-and-ports/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/maritime-and-ports/index.md
 - [Physical AI for oil and gas](https://codeatoms.ai/sectors/oil-and-gas/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/oil-and-gas/index.md
+- [Physical AI for rail and transportation](https://codeatoms.ai/sectors/rail-and-transportation/): models, compute, three-year cost, ontology and human control, answered from the published designs. Markdown: https://codeatoms.ai/sectors/rail-and-transportation/index.md
 
 <!--full-->
 ## Full text

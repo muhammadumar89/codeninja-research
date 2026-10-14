@@ -1,0 +1,1 @@
+Figure 11: Three layer model stack for power plant predictive maintenance, with an anomaly detection foundation model and a report drafting language model running on a 48 GB site inference card.

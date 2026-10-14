@@ -1,0 +1,1 @@
+Figure 13: Coverage matrix of a steam turbine condition monitoring system, mapping each requirement from vibration monitoring and hydrogen leakage detection to NEPRA compliance and the maintenance loop.

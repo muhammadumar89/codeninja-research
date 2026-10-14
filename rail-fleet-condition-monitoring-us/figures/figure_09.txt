@@ -1,0 +1,1 @@
+Figure 9: The hero workflow end to end: smoothing reactor overtemperature fault at the site, from the reading that carries it to the recovery written back to the ledger.

@@ -1,0 +1,1 @@
+Figure 8: The 1 named systems this build integrates with, mapped through 1 adapter family, each row carrying its provenance class.

@@ -1,0 +1,1 @@
+Figure 4: The layered stack for this project: 8 named sources feed 4 adapters, which map into an ontology core of 10 objects taken from the object model this engagement builds for the customer, grounding 8 delivered capabilities and the 4 surfaces the customer's own people open.

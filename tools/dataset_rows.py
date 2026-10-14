@@ -28,6 +28,11 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "dataset"
 
 
+def _sector(x):
+    # the blog-format paper (14 Oct 2026) names its sector 'Energy & Utilities'; the series uses 'energy and utilities'
+    return (x or '').replace(' & ', ' and ').replace('-', ' ').lower() if x and (x[:1].isupper() or '&' in x or '-' in x) else (x or '')
+
+
 def meta_of(index_html: Path) -> dict:
     h = index_html.read_text(encoding="utf-8")
     g = lambda n: html.unescape((re.search(rf'<meta name="{n}" content="([^"]*)"', h) or [None, ""])[1])
@@ -77,7 +82,7 @@ def main(folder):
     reg = list(csv.DictReader(open(f / "register" / "models.csv", encoding="utf-8")))
     costs = costs_of(f / "paper" / "appendix_a_cost.md") if (f / "paper" / "appendix_a_cost.md").exists() else []
     objs = pkg["objects"]
-    designs = [{"design_id": design_id, "title": m["title"], "summary": m["description"], "sector": m["sector"] or pkg.get("sector", ""),
+    designs = [{"design_id": design_id, "title": m["title"], "summary": m["description"], "sector": _sector(m["sector"] or pkg.get("sector", "")),
                 "country": m["country"] or pkg.get("country", ""), "published": m["date"], "doi": m["doi"], "canonical_url": m["canonical_url"],
                 "designed_with": pkg.get("designed_with", "Praxis"), "implemented_with": pkg.get("implemented_with", "Hyper Ontology"),
                 "n_objects": len(objs), "n_links": sum(len(o.get("links", [])) for o in objs), "n_models": sum(1 for r in reg if re.search(r"model|detector|tracking|forecast|embedding|ocr", r.get("choice", ""), re.I)),

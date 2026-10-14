@@ -1,0 +1,1 @@
+Figure 10: The camera wall at the moment of the event, smoothing reactor overtemperature fault at the site: four feeds with the detections drawn on them, the event stream resolving each one onto the object model, and active faults across the fleet on the excursion in faults.
