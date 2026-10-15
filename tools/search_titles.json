@@ -23,5 +23,11 @@
   "description": "A construction progress monitoring system design that joins precast production, crane utilisation and truck flow into one live model of the structure phase, forecasts schedule slips three days out and shows safety breaches as they happen, on the contractor's own hardware in the Kingdom. An open reference architecture by CodeNinja Atoms.",
   "query": "construction cluster (tier B); no named query reaches the page, Google anonymises them, so the title uses the page's own vocabulary for what a searcher in this cluster asks (construction progress monitoring, schedule slip forecasting); page at 20 impressions, position 4.6, 0 clicks, 28 days to 11 Oct 2026; rd_keywords.py pick on 14 Oct 2026",
   "fixed": "2026-10-14"
+ },
+ "vegetation-mapping-lidar-us": {
+  "title": "Earth Observation for Vegetation Mapping: LiDAR and Orthoimagery Baseline, United States",
+  "description": "An earth observation system design for one summer flight of 3-inch 4 band orthoimagery and Quality Level 1 LiDAR, with every tile, point cloud and elevation model bound into a site ontology the operator's own analysts work in the GIS they already run, so the next season starts from a comparison. An open reference architecture by CodeNinja Atoms.",
+  "query": "earth observation cluster (tier B, 8 named queries at positions 1 to 10, none naming the page: Google anonymises them, so the title takes the cluster's word and the page's own vocabulary); page at 28 impressions, position 7.3, 0 clicks, 28 days to 12 Oct 2026; rd_keywords.py pick on 15 Oct 2026",
+  "fixed": "2026-10-15"
  }
 }
