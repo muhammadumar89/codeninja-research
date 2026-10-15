@@ -12,7 +12,8 @@
   "Cost"
  ],
  "audience": "For engineers and buyers sizing a physical AI system who need the own or rent number before the architecture is settled.",
- "description": "A cross design comparison built from the sourced cost appendices of seven open reference architectures: what owning the reasoning node actually costs against the cheapest three year cloud commitment, where owning barely wins, and the one design where the question is the wrong one."
+ "description": "A cross design comparison built from the sourced cost appendices of seven open reference architectures: what owning the reasoning node actually costs against the cheapest three year cloud commitment, where owning barely wins, and the one design where the question is the wrong one.",
+ "cluster": "GPU economics"
 }
 ---
 

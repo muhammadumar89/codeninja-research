@@ -12,7 +12,8 @@
   "Sovereign AI"
  ],
  "audience": "For a mining operator's operations, safety or asset management lead, and the engineers who would build with them, deciding what a first physical AI system should hold.",
- "description": "A mining sector guide built from eight published open reference architectures: which design answers haul road and pedestrian interaction, fleet and fixed plant condition monitoring, HSE incident prediction, read-only fire and life safety monitoring, independent production counting and a records-only reliability study, what every one of them keeps constant, and what a first mining design would have to name."
+ "description": "A mining sector guide built from eight published open reference architectures: which design answers haul road and pedestrian interaction, fleet and fixed plant condition monitoring, HSE incident prediction, read-only fire and life safety monitoring, independent production counting and a records-only reliability study, what every one of them keeps constant, and what a first mining design would have to name.",
+ "cluster": "mining"
 }
 ---
 

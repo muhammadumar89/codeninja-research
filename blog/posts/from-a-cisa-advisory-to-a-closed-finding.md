@@ -11,7 +11,8 @@
   "OT Security",
   "Sovereign AI"
  ],
- "description": "How an OT security system of context handles a CISA advisory about an actively exploited vulnerability: threat intelligence item, detection rule, vulnerability finding, risk acceptance by a named analyst, and the NERC CIP evidence trail, read from the Grid Context Watch reference architecture."
+ "description": "How an OT security system of context handles a CISA advisory about an actively exploited vulnerability: threat intelligence item, detection rule, vulnerability finding, risk acceptance by a named analyst, and the NERC CIP evidence trail, read from the Grid Context Watch reference architecture.",
+ "cluster": "OT vulnerability advisories"
 }
 ---
 

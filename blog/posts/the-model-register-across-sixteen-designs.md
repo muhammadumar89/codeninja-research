@@ -12,7 +12,8 @@
   "Sovereign AI"
  ],
  "audience": "For engineers and their coding agents choosing models for a physical AI system, who want to see what sixteen published designs chose, under which licence, and why.",
- "description": "Every model the sixteen published reference architectures chose, by name and licence: GLM 5.3 and GLM 5.2 as reasoning models, RF-DETR and D-FINE as detectors, Chronos-2, Chronos-Bolt and Granite TTM-R2 as forecasters, BGE-M3 and Qwen3-Embedding-0.6B for retrieval, PaddleOCR-VL for document parsing, Anomalib for anomaly detection, plus the four designs whose register is empty by decision."
+ "description": "Every model the sixteen published reference architectures chose, by name and licence: GLM 5.3 and GLM 5.2 as reasoning models, RF-DETR and D-FINE as detectors, Chronos-2, Chronos-Bolt and Granite TTM-R2 as forecasters, BGE-M3 and Qwen3-Embedding-0.6B for retrieval, PaddleOCR-VL for document parsing, Anomalib for anomaly detection, plus the four designs whose register is empty by decision.",
+ "cluster": "model names"
 }
 ---
 

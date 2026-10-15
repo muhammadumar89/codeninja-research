@@ -12,7 +12,8 @@
   "Sovereign AI"
  ],
  "audience": "For engineers designing an earth observation or remote sensing system who are about to start with the model.",
- "description": "A cross design read of the three open earth observation reference architectures in the Vertical-Driven Architectures corpus: how each one chose its sensing, why two of the three carry no model at all, and the one case where the cheapest rental is still the wrong answer."
+ "description": "A cross design read of the three open earth observation reference architectures in the Vertical-Driven Architectures corpus: how each one chose its sensing, why two of the three carry no model at all, and the one case where the cheapest rental is still the wrong answer.",
+ "cluster": "earth observation"
 }
 ---
 
