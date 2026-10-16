@@ -110,6 +110,11 @@ def cover(p):
         return
     mark = re.search(r'<path fill-rule="evenodd" clip-rule="evenodd" d="([^"]+)" fill="#E31E30">', brand.LOGO).group(1)
     tag = " · ".join(p.get("tags", []))
+    # A long title ran off the tile (mining and warehousing guides, 16 Oct 2026): the cover shows the part before the colon,
+    # and the type shrinks with its length so it always fits in the space above the subtitle.
+    ct = p.get("cover_title") or (p["title"].split(":")[0] if len(p["title"]) > 48 else p["title"])
+    fs = 132 if len(ct) <= 40 else max(76, int(132 * 40 / len(ct)))
+    mw = "11ch" if fs == 132 else "15ch"
     page = f"""<!doctype html><html><head><meta charset="utf-8">{brand.FONTS}<style>
 html,body{{margin:0;width:1600px;height:900px;background:#0B0C10;overflow:hidden}}
 .t{{position:absolute;inset:0;padding:92px 104px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;color:#F2F2F0;font-family:'Inter Tight',Arial,sans-serif}}
@@ -118,12 +123,12 @@ html,body{{margin:0;width:1600px;height:900px;background:#0B0C10;overflow:hidden
 .ring.b{{right:-60px;top:230px;width:520px;height:520px;border-color:rgba(227,30,48,.55)}}
 .top{{display:flex;align-items:center;gap:18px;font-family:'Geist Mono',monospace;font-size:22px;letter-spacing:.08em;text-transform:uppercase;color:#A3A6AE}}
 .top svg{{height:30px}}.top b{{color:#D9C3A3;font-weight:400}}
-h1{{font-weight:300;font-size:132px;line-height:.98;letter-spacing:-.04em;margin:0;max-width:11ch}}
+h1{{font-weight:300;font-size:{fs}px;line-height:.98;letter-spacing:-.04em;margin:0;max-width:{mw}}}
 .sub{{font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:34px;line-height:1.3;color:rgba(242,242,240,.82);max-width:30ch;margin-top:28px}}
 .bot{{display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:#A3A6AE}}
 </style></head><body><div class="grid"></div><div class="ring"></div><div class="ring b"></div><div class="t">
 <div class="top"><svg viewBox="0 0 60 34"><path fill-rule="evenodd" d="{mark}" fill="#E31E30"/></svg><span>CodeNinja <b>Atoms</b> · {E(tag)}</span></div>
-<div><h1>{E(p['title'])}</h1><div class="sub">{E(p.get('cover_line') or p['subtitle'].split(',')[0])}</div></div>
+<div><h1>{E(ct)}</h1><div class="sub">{E(p.get('cover_line') or p['subtitle'].split(',')[0])}</div></div>
 <div class="bot"><span>{E(p['author'])}</span><span>{E(nice_date(p['date']))}</span></div></div></body></html>"""
     tmp = BLOG / p["slug"] / "_cover.html"
     tmp.write_text(page, encoding="utf-8")

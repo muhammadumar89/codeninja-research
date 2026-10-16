@@ -60,7 +60,7 @@ CSS = """
 
 def main():
     nav = brand.nav(BASE + "/")
-    desc = "CodeNinja Atoms is building a sovereign AI operating system for the physical world. Its mission and its executive leadership."
+    desc = "About CodeNinja Atoms (codeatoms.ai): building a sovereign AI operating system for the physical world. Its mission, its executive leadership, and its parent company CodeNinja."
     org = {"@context": "https://schema.org", "@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/",
            "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": brand.PARENT},
            "founder": [{"@type": "Person", "name": p["name"], "jobTitle": p["title"], "sameAs": p["link"]} for p in LEADERS]}
@@ -70,15 +70,15 @@ def main():
 <figure><img src="img/{p['slug']}.jpg" alt="{E(p['name'])}" width="900" height="750" loading="{'eager' if i == 0 else 'lazy'}"></figure></article>
 """ for i, p in enumerate(LEADERS))
     out = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About CodeNinja Atoms: Mission and Leadership</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/about/">
-<meta property="og:type" content="website"><meta property="og:title" content="About CodeNinja Atoms"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/about/">
+<title>About CodeNinja Atoms: Sovereign AI for the Physical World, Mission and Leadership</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/about/">
+<meta property="og:type" content="website"><meta property="og:title" content="About CodeNinja Atoms: Sovereign AI for the Physical World"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/about/">
 <meta property="og:image" content="{BASE}/about/img/{LEADERS[0]['slug']}.jpg">
 <script type="application/ld+json">{json.dumps(page_ld, ensure_ascii=False)}</script>
 <script type="application/ld+json">{json.dumps(org, ensure_ascii=False)}</script>
 {brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}body{{background:var(--paper)}}html.js header.top:not(.solid):not(.open){{background:rgba(11,12,16,.94);border-bottom-color:var(--rule-d);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}}</style></head>
 <body>{brand.header(BASE + "/", nav, access=f"{BASE}/praxis/#access")}
 <main class="light"><div class="about">
-<h1>About</h1>
+<h1>About CodeNinja Atoms</h1>
 <section class="mission" aria-labelledby="mission-h"><p class="eyebrow" id="mission-h">Our mission</p><div>{mission}</div></section>
 <section aria-labelledby="leaders-h"><div class="leaders-h"><h2 id="leaders-h">Executive Leadership</h2><p class="eyebrow">CodeNinja founders</p></div>
 {rows}</section>
