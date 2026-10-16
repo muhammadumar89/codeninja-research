@@ -7,7 +7,8 @@ One question about system design: given the same short requirement for physical 
 
 PADI is the benchmark CodeNinja uses to improve Praxis, one RSI loop (recursive self improvement loop) at a time. Scores are far from saturated: the goal is every check on every task in all 13 industries.
 
-Latest RSI Loop 21 (2026-10-14): Praxis platform 54.4%, frontier AI 37.7% of checks passed.
+RSI Loop 22 (2026-10-16), blind evaluation on 7 unseen tasks: Praxis platform 48.5%, frontier AI 28.4% of checks passed; Praxis ahead on 7 of 7 tasks.
+Latest RSI Loop in the trend, 21 (2026-10-14): Praxis platform 54.4%, frontier AI 37.7% of checks passed.
 All 10 RSI loops: Praxis platform 38.5%, frontier AI 31.5% over 1122 checks per arm.
 Industries measured: 13 of 13.
 
@@ -43,6 +44,7 @@ Industries measured: 13 of 13.
 | 19 | 2026-10-11 | 6 | 41.7% | 27.0% |
 | 20 | 2026-10-11 | 6 | 39.1% | 30.4% |
 | 21 | 2026-10-14 | 6 | 54.4% | 37.7% |
+| 22, blind | 2026-10-16 | 7 | 48.5% | 28.4% |
 
 ## Questions
 
@@ -54,4 +56,4 @@ PADI is CodeNinja's benchmark for system design in physical AI. It scores Praxis
 
 Once per RSI loop, on tasks never run before.
 
-Updated each RSI loop. Last published: RSI Loop 21, 2026-10-14. RSI Loop 22 is under way.
+Updated each RSI loop. Last published: RSI Loop 22, 2026-10-16. RSI Loop 23 is under way.
