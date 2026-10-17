@@ -33,5 +33,17 @@
   "description": "An earth observation system design for one summer flight of 3-inch 4 band orthoimagery and Quality Level 1 LiDAR, with every tile, point cloud and elevation model bound into a site ontology the operator's own analysts work in the GIS they already run, so the next season starts from a comparison. An open reference architecture by CodeNinja Atoms.",
   "query": "earth observation cluster (tier B, 8 named queries at positions 1 to 10, none naming the page: Google anonymises them, so the title takes the cluster's word and the page's own vocabulary); page at 28 impressions, position 7.3, 0 clicks, 28 days to 12 Oct 2026; rd_keywords.py pick on 15 Oct 2026",
   "fixed": "2026-10-15"
+ },
+ "port-digital-twin-us": {
+  "title": "Port Authority Digital Twin Architecture: GIS, Sensors and Finance in One Governed Twin",
+  "description": "A port authority digital twin architecture that binds eight operational systems, five live sensor feeds and the finance backbone into one thirteen object ontology, self hosted on the port's own virtual machines in the United States. An open reference architecture by CodeNinja Atoms.",
+  "query": "digital twin cluster (tier B); Google names no query for the page, so the title uses the words a port searcher asks (port authority digital twin, GIS, sensors, finance; the same words as Saturday question m2, where Bing ranks the page 3); page at 39 impressions, position 5.1, 0 clicks, 28 days to 14 Oct 2026; rd_keywords.py pick on 17 Oct 2026",
+  "fixed": "2026-10-17"
+ },
+ "rail-fleet-condition-monitoring-us": {
+  "title": "Predictive Maintenance for a Commuter Rail Fleet: Consist Watch, United States",
+  "description": "Predictive maintenance and real time condition monitoring for a 225 car commuter rail fleet: onboard modules read 64 named signals per car, execute the operator's own fault logic at the car and send severity ranked faults to the mechanical desk through one fleet ontology. An open reference architecture by CodeNinja Atoms.",
+  "query": "predictive maintenance (tier A owner since 15 Oct); title waited for the page's first Search Console impression, which arrived in the 28 days to 14 Oct 2026 (1 impression at 3.0), read 17 Oct 2026; baseline for the fix: 1 impression, position 3.0, 0 clicks",
+  "fixed": "2026-10-17"
  }
 }

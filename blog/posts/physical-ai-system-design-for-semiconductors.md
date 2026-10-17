@@ -1,0 +1,87 @@
+---
+{
+ "title": "Physical AI System Design for Semiconductors: What the Published Designs Already Answer",
+ "subtitle": "No semiconductor design has been published in this series yet. Nine of the eighteen open reference architectures already answer the questions a fab or a packaging and test plant asks first: one picture of the operation from the systems it already runs, subfab and facility equipment condition, what is connected to the control networks and how to prove it, bulk tank readings that can be trusted, fire and life safety, people near equipment on camera, incidents before they happen, counting what leaves, and what a records only study can settle before any sensor is bought.",
+ "author": "CodeNinja Atoms",
+ "author_role": "Research distribution",
+ "author_url": "https://codeatoms.ai/about/",
+ "date": "2026-10-17",
+ "tags": [
+  "Engineering",
+  "Semiconductors",
+  "Sovereign AI"
+ ],
+ "audience": "For a semiconductor fab or packaging and test plant's operations, facilities, EHS or OT security lead, and the engineers who would build with them, deciding what a first physical AI system should hold.",
+ "description": "A semiconductor sector guide built from nine published open reference architectures: which design answers a governed twin of the operation from existing systems, equipment condition with advice that never trips, OT security monitoring with compliance evidence, deterministic gauge integrity on bulk tanks, read only fire and life safety monitoring, owned camera footage of people near equipment, incident prediction on self hosted models, independent counting of what leaves and a records only reliability study, what every one of them keeps constant, and what a first semiconductor design would have to name.",
+ "cluster": "semiconductors",
+ "cover_line": "Nine of the eighteen open reference architectures already answer the first questions a fab asks"
+}
+---
+
+A fab asks the same first questions whether it is a front end wafer fab in the United States or a packaging and test plant anywhere else: what is happening across the site right now in one picture, which pump, chiller or scrubber in the subfab is drifting toward a stop, what is actually connected to the tool and facility networks and can that be proven to an auditor, does the level reading on a bulk chemical tank belong to the tank it claims, is the fire protection actually armed, who is standing near moving equipment, which shift is drifting toward an incident, and how many units left the building against what the records say shipped. The series on this site holds no semiconductor design yet. It holds eighteen open reference architectures in other sectors, and nine of them are written for an operation that asks one of those questions in another setting. This guide reads them as a fab operator would, using only what each paper says.
+
+## The map
+
+| The fab's question | The published design that answers it | Where it was written for |
+|---|---|---|
+| One picture of the operation from the systems it already runs | [Port Twin](https://codeatoms.ai/port-digital-twin-us/) | A landlord port authority in the United States |
+| Which subfab or facility machine is about to fail | [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) | A combined cycle power plant in Pakistan |
+| What is on the control networks, and the evidence an audit asks for | [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/) | An energy and utilities operator in the United States |
+| Whether a bulk tank reading can be trusted | [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/) | A fuel terminal in Pakistan |
+| Is the fire protection armed | [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) | High risk factories in Saudi Arabia |
+| Who is near the equipment, on footage the fab owns | [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/) | A vehicle proving ground in the United States |
+| Which shift is drifting toward an incident | [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) | An oil and gas operator in Pakistan |
+| How many units left the building | [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/) | Steel mills in Pakistan, counted for a public authority |
+| What the records already prove | [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) | Desalination and treatment plants in Saudi Arabia |
+
+## One picture from the systems already running
+
+Port Twin is the design to read when the problem is that every dashboard is a slice. It binds 8 operational systems, 5 live sensor feeds and 1 finance backbone into 13 typed objects and 13 links with the berth as the focal object, joined through three adapter families and one event backbone. The rule a fab will recognise is the boundary: the twin shows, and pilots, berth planners, engineers and finance staff decide in their own systems, with nothing written back into a system of record. The only model in the register is one self hosted open model, BGE-M3, for document retrieval, about 1.1 GB of fp16 weights on the port's existing enterprise virtual machines, so no equipment is bought. For a fab, the manufacturing execution system, the facility monitoring system, the maintenance system and the document store take the places of the port's systems; the pattern of a read only twin over owned systems carries across unchanged, and the object at the centre is the one the fab chooses.
+
+## Subfab and facility equipment: advise, never trip
+
+Turbine Island Watch reads a rehabilitated 280 MW hydrogen cooled steam turbine generator through a one way OPC UA read from the DCS, the vibration monitoring rack and the generator protection systems, eight named plant systems in all entering through four adapter families. Three of its rules transfer to a vacuum pump, a chiller, an abatement unit or a makeup air handler without change. The read is one way and nothing writes to the DCS. The platform advises and the protection layer trips, so every alert carries a prescribed action that a named shift operator acknowledges. And the rollout gate is a number: 2 false alerts per week, with thresholds tuned only on channels with provable history, because the paper names alert flooding as what trains operators to ignore a platform. MOMENT-1 (MIT) detects anomalies zero shot over the telemetry, IBM Granite 4.2 8B (Apache-2.0) drafts diagnostic notes and test reports, and no training run is needed. The compute is one 48 GB PCIe inference GPU class card on ruggedised edge servers inside the plant perimeter, costed at about 22,500 US dollars to own the site envelope over three years.
+
+## What is on the control networks, with the evidence
+
+Grid Context Watch is the design for the question an OT security lead and a compliance lead ask together: what is connected to the control networks, whether anything on them is behaving abnormally, and whether that can be proven with evidence when the auditor arrives. It joins 10 source systems, among them the SIEM, an OT detection tool, an IT monitoring platform, the energy management system and the substation data platform, through 2 adapter families into 14 typed objects and 14 links with the OT asset as the focal object, including the vulnerability finding, the detection rule, the pcap evidence record and the CIP evidence artefact. The boundary is read only and one way out of the control networks; nothing writes into an electronic security perimeter, and no data leaves the operator. Detection stays in the procured sensors. GLM 5.2 (MIT) reasons and Qwen3-Embedding-0.6B (Apache-2.0) retrieves, on one node of eight 141 GB HBM class GPUs: 753 GB of FP8 weights, 904 GB with the 1.2 planning factor, against 1,128 GB. Owning that node costs about 510,000 dollars over three years, about four fifths the deepest three-year AWS commitment. Every triage, case and risk acceptance carries a named OT security analyst; agents draft, the analyst decides. The paper's evidence artefacts are written for NERC CIP; a fab puts its own security standard and its customers' audit questions in that place, and the shape of tool and facility networks watched one way and proven by record carries across.
+
+## Bulk tank readings that fail loudly
+
+Loop Integrity Watch answers a question that a bulk chemical or gas yard shares with a fuel terminal: is the level reading arriving at the central host continuous, undistorted and attributed to the right tank. The paper's own framing names the failure a fab's facilities team will know, a flatlined gauge reads as a plausible low level and a swapped gauge makes two tanks trade identities. The design covers 13 fuel tanks on 3 Modbus RTU loops, with 3 booster installations engineered from a measured signal survey inside explosion proof junction boxes, and a governed inventory ontology of 15 typed objects with the fuel tank as the focal object, joined from 2 named source systems through 1 integration adapter family. The model register is empty: every integrity check (stuck value, swap, distortion) is deterministic. The compute is two containers on the operator's own site application server, inside its OT boundary, and every data quality event is acknowledged and resolved by a named person, with the location engineer signing acceptance.
+
+## Fire and life safety, read only
+
+Factory Fire Watch gives live, read only visibility of fire alarm panels, fire pumps, fire water tanks and energy meters across an operator's highest risk factories, read through panel contacts, PLC inputs and LoRaWAN into an IoT platform hosted in Saudi Arabia, with never a write path into certified life safety equipment. The object model holds 14 typed objects and 12 links with the monitored point as the focal object. The one model, IBM Granite Tiny Time Mixers (TTM-R2), about 0.85 million parameters, runs on CPU inside the platform, and threshold evaluation on the safety path is rule logic. No server or GPU is bought. The field equipment per factory is about 2,600 to 3,200 US dollars in list prices, and a monitoring officer acknowledges or escalates every safety critical alert. The paper's framing suits a fab well: a sensor that has stopped reporting still reads as normal, so the worst failure mode is silence that looks like safety. For a fab and its fire pumps and water reserves, the design is the same read only estate with the sites renamed.
+
+## People near equipment, on footage the fab owns
+
+Pit Camera Watch is a fully on premises camera system for a vehicle proving ground: 40 to 60 poles of fixed thermal and visible camera heads on new underground single mode fiber, 80 to 120 streams, recorded on an N+1 recorder pair running Frigate NVR, each holding 30 days of footage on local disk inside an isolated network. Its human rule is the conservative one an EHS office may want first. Booth operators watch and decide, nothing raises an automated alarm, and only the safety office can export a clip. The one model, D-FINE under Apache-2.0 at about 8 to 124 MB of weights, searches the archive after the fact for a test vehicle, a support vehicle or a pedestrian, on one 48 GB L40S class card per recorder host in the conditioned server room and nothing at the poles. Two choices carry straight to a United States fab. Section 889 supply chain screens come before any purchase, and camera uptime is a first class acceptance metric. The paper costs the estate at about 474,000 to 871,000 US dollars to own over three years, mostly camera heads, with no per camera license at any pole count.
+
+## Incidents before they happen
+
+Sovereign HSE Watch predicts health, safety and environment incidents by joining 8 systems: SAP EHS, PM and QM; SCADA; fire and gas; Vision AI cameras; SQL databases; scanned files; and the identity provider. Its 12 typed objects include the HSE incident, the near miss report, the corrective action, the sensor reading, the anomaly event and the agent recommendation, which is the shape an EHS team in a fab with toxic and pyrophoric gas systems already keeps on paper and in separate tools. Six self hosted open weight models carry the work, including GLM 5.3 for reasoning, Chronos-2 for forecasting, RF-DETR for vision, BGE-M3 for retrieval and PaddleOCR-VL 1.6 for scans, with GLM 5.3 held at FP8 on one node of eight 141 GB HBM class GPUs (753 GB of weights, 904 GB with headroom). Every recommendation is approved or rejected by a named person, and nothing executes on equipment. The paper is written for Pakistan, so its export licence gate does not apply to a fab in the United States; the sizing arithmetic and the human rule do.
+
+## Counting what leaves the building
+
+Steel Count Ledger puts IP66 HDR cameras and one sealed GPU industrial PC at every installation point, counts product as it is made, and publishes the counts through a one way link into one record the authority owns. Counting survives a slow wide area link because it happens at the edge, tracker models keep one item from counting twice, and the weighbridge feed serves as acceptance ground truth. Three self hosted open models carry it: RF-DETR for detection, fine tuned per product type and mill, Roboflow trackers for identity across camera fields, and GLM 5.3 for the compliance work surface. Every discrepancy case is judged by a named revenue field officer; the system counts and reconciles and never assesses, and the mill never edits a count. The paper also states a break even: the cheapest closed model matches the owned node at about 33 users, and above that, ownership is cheaper. The same pattern counts trays, reels or boxes at a packaging and test plant's outbound dock against what the manufacturing execution system says shipped, with the detector fine tuned per product type and site as the paper describes.
+
+## What the records already prove
+
+Reliability Atlas is the design to read before any sensor is bought. It joins each plant's work orders, trip history and design documents through 3 read only adapters, as exports rather than live interfaces, into a reliability object model of 13 typed objects the operator owns, among them the equipment, the failure mode, the downtime event, the criticality index and the spare part. Availability is computed by Monte Carlo simulation on reliability block diagrams built from each plant's own failure study, auditable to ISO 55000, with predictions accepted only by a named reviewer and root cause reports validated only by a named engineer. The model register is empty by design, no hardware is bought, and the study runs on the operator's own in country servers. A fab with a maintenance system and years of facility downtime records can run this study first and let it decide which of the designs above it needs second.
+
+## What every one of them keeps constant
+
+Across all nine, four things do not vary. The system runs on hardware the operator controls, or in a cloud or region the operator chose. A named person owns every decision, and nothing executes on equipment. The object model is published as JSON in the hyper-ontology/1 format, so a fab can read the exact objects and links before building any of its own. And the cost is computed the same way in every appendix, from the paper's own sizing with every price cited, so the own or rent question has one answer per design rather than a slogan; the comparison across designs is in [Own or Rent the GPUs](https://codeatoms.ai/blog/own-or-rent-the-gpus/).
+
+## What a first semiconductor design would have to name
+
+None of the nine holds a wafer, a lot, a carrier, a process tool, a chamber, a recipe, a reticle, a die or a test bin as an object, and none reasons over how they join. No published design covers wafer defect detection or fab yield analytics yet: none links an inspection result to the tool, chamber and recipe that produced it, and none traces a yield loss back through the lot's history. A first semiconductor design adds that object model, and the join between tool, lot, recipe and yield with it. It is the design the [co-build page for semiconductors](https://codeatoms.ai/co-build/semiconductors/) is open for: the operator brings the operation, the systems that already hold its records and one engineer who knows the fab; the published designs above are the proof of what comes out.
+
+## Use the designs
+
+Every object model named here is in the paper's package as `ontology/objects.json`, and the same rows are in the [Vertical-Driven Architectures dataset](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures) and served live by the [codeninja-research MCP server](https://github.com/muhammadumar89/codeninja-research/tree/main/mcp-server), so a coding agent can ask which published design holds a vulnerability finding or a data quality event object and read why. Each paper is citable by its DOI on its page. All were reasoned on [CodeNinja Praxis](https://codeatoms.ai/praxis/) and their object models import into [Hyper Ontology](https://codeatoms.ai/hyper-ontology/).
+
+## About CodeNinja
+
+CodeNinja is a Middle Eastern-American artificial intelligence lab focused on building self-improving systems. We are reinventing knowledge work to close the loop between vertical AI use cases and the generalized intelligence that fuels it, accelerating the path toward organizational superintelligence.

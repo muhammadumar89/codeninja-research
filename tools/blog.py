@@ -22,6 +22,14 @@ INTRO = "Writing from the engineers building a sovereign AI operating system for
 
 
 # ---------------------------------------------------------------- markdown
+def post_title(title):
+    # Bing flags a <title> past about 60 characters: keep the brand suffix only while it fits.
+    for t in (title, title.split(":")[0].strip()):
+        if len(f"{t} | CodeNinja Atoms") <= 60:
+            return f"{t} | CodeNinja Atoms"
+    return title if len(title) <= 60 else title.split(":")[0].strip()
+
+
 def inline(s):
     s = E(s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
@@ -219,7 +227,7 @@ def post_page(p):
           "citation": sources}
     head = (f'<meta property="article:published_time" content="{p["date"]}"><meta property="article:author" content="{E(p["author"])}">'
             + "".join(f'<meta property="article:tag" content="{E(t)}">' for t in p.get("tags", [])))
-    return shell(f"blog/{p['slug']}/", f"{p['title']} | CodeNinja Atoms Engineering Blog", p["description"], body, [ld], img, "article", head)
+    return shell(f"blog/{p['slug']}/", post_title(p['title']), p["description"], body, [ld], img, "article", head)
 
 
 def index_page(posts):
