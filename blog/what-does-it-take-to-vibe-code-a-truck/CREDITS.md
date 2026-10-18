@@ -1,0 +1,2 @@
+# Image credits
+- `truck.jpg`: "A Construction Truck in a Barren Landscape", photo by Gansham Ramchandani, Pexels id 5125104, https://www.pexels.com/photo/a-construction-truck-in-a-barren-landscape-5125104/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 18 Oct 2026 because it shows no equipment maker's logo. Used as the post's cover and share image.

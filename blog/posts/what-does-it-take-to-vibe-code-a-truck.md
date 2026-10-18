@@ -6,6 +6,10 @@
  "author_role": "Cofounder, CodeNinja",
  "author_url": "https://codeatoms.ai/about/#muhammad-umar-bilal",
  "date": "2026-10-18",
+ "cover_photo": "truck.jpg",
+ "cover_position": "right center",
+ "cover_line": "Deep domain expertise for physical AI system design.",
+ "cover_credit": "Photo by Gansham Ramchandani on Pexels (https://www.pexels.com/photo/5125104/), Pexels License",
  "tags": [
   "Engineering",
   "Physical AI",

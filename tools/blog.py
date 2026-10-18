@@ -123,6 +123,14 @@ def cover(p):
     ct = p.get("cover_title") or (p["title"].split(":")[0] if len(p["title"]) > 48 else p["title"])
     fs = 132 if len(ct) <= 40 else max(76, int(132 * 40 / len(ct)))
     mw = "11ch" if fs == 132 else "15ch"
+    # Optional photo cover (Umar, 18 Oct 2026): front matter "cover_photo" names an image in blog/<slug>/; it fills the
+    # tile under a left-to-right dark wash so the title stays readable. Posts without it keep the grid and rings.
+    photo = p.get("cover_photo")
+    if photo:  # keep the title on two lines in the dark half, clear of the subject on the right
+        fs, mw = min(fs, 100), "18ch"
+    backdrop = (f'<div style="position:absolute;inset:0;background:url({E(photo)}) {E(p.get("cover_position", "center"))}/cover no-repeat"></div>'
+                '<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,12,16,.94) 0%,rgba(11,12,16,.82) 34%,rgba(11,12,16,.35) 62%,rgba(11,12,16,.05) 100%)"></div>'
+                if photo else '<div class="grid"></div><div class="ring"></div><div class="ring b"></div>')
     page = f"""<!doctype html><html><head><meta charset="utf-8">{brand.FONTS}<style>
 html,body{{margin:0;width:1600px;height:900px;background:#0B0C10;overflow:hidden}}
 .t{{position:absolute;inset:0;padding:92px 104px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;color:#F2F2F0;font-family:'Inter Tight',Arial,sans-serif}}
@@ -133,8 +141,8 @@ html,body{{margin:0;width:1600px;height:900px;background:#0B0C10;overflow:hidden
 .top svg{{height:30px}}.top b{{color:#D9C3A3;font-weight:400}}
 h1{{font-weight:300;font-size:{fs}px;line-height:.98;letter-spacing:-.04em;margin:0;max-width:{mw}}}
 .sub{{font-family:'Newsreader',Georgia,serif;font-weight:300;font-size:34px;line-height:1.3;color:rgba(242,242,240,.82);max-width:30ch;margin-top:28px}}
-.bot{{display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:#A3A6AE}}
-</style></head><body><div class="grid"></div><div class="ring"></div><div class="ring b"></div><div class="t">
+.bot{{display:flex;justify-content:{"flex-start;gap:28px" if photo else "space-between"};font-family:'Geist Mono',monospace;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:#A3A6AE}}
+</style></head><body>{backdrop}<div class="t">
 <div class="top"><svg viewBox="0 0 60 34"><path fill-rule="evenodd" d="{mark}" fill="#E31E30"/></svg><span>CodeNinja <b>Atoms</b> · {E(tag)}</span></div>
 <div><h1>{E(ct)}</h1><div class="sub">{E(p.get('cover_line') or p['subtitle'].split(',')[0])}</div></div>
 <div class="bot"><span>{E(p['author'])}</span><span>{E(nice_date(p['date']))}</span></div></div></body></html>"""
