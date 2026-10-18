@@ -16,6 +16,11 @@
 
 - [PADI, the Physical AI Design Index](https://codeatoms.ai/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: https://codeatoms.ai/padi/index.md
 
+## Collections
+
+- [Sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/): every published design as a sovereign reference architecture, with sector, country, compute, three-year cost and DOI. Markdown: https://codeatoms.ai/sovereign-ai-reference-architectures/index.md
+- [Industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/): every published object model, browsable, each downloadable as hyper-ontology/1 JSON. Markdown: https://codeatoms.ai/industrial-ontology-examples/index.md
+
 ## For agents
 
 - [Developers: Hyper, the architecture under everything CodeNinja builds](https://codeatoms.ai/developer/): capabilities (Praxis, Hyper Ontology, Hyper Pragma, Hyper Engram, Hyper Noesis), getting started, reference, samples, platform updates, community.
@@ -28,7 +33,7 @@
 
 ## Papers
 
-- [Consist Watch: Executing the Operator's Own Fault Logic Across a 225-Car Commuter Fleet](https://codeatoms.ai/rail-fleet-condition-monitoring-us/): How we designed a rail fleet condition monitoring system for a 225-car commuter fleet, from EN 50155 modules to agent surfaces. DOI 10.5281/zenodo.23365118.
+- [Consist Watch: Executing the Operator's Own Fault Logic Across a 225-Car Commuter Fleet](https://codeatoms.ai/rail-fleet-condition-monitoring-us/): Predictive maintenance and real time condition monitoring for a 225 car commuter rail fleet: onboard modules read 64 named signals per car, execute the operator's own fault logic at the car and send severity ranked faults to the mechanical desk through one fleet ontology. An open reference architecture by CodeNinja Atoms. DOI 10.5281/zenodo.23365118.
   - [Object model as JSON](https://codeatoms.ai/rail-fleet-condition-monitoring-us/ontology/objects.json)
 - [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/): How we designed a steam turbine condition monitoring system for a combined cycle plant in Pakistan, from one-way OPC UA reads to alerts. DOI 10.5281/zenodo.23365092.
   - [Object model as JSON](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/ontology/objects.json)
@@ -52,7 +57,7 @@
   - [Object model as JSON](https://codeatoms.ai/tank-gauge-integrity-pakistan/ontology/objects.json)
 - [Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/): An open reference architecture for read-only fire protection monitoring across high-risk factories in industrial cities in Saudi Arabia: fire alarm panels, fire pumps, fire water tanks and energy meters read through LoRaWAN and contacts into an IoT platform hosted in Saudi Arabia, a fourteen-object ontology, a CPU-only forecaster, and never a write path into life-safety equipment. DOI 10.5281/zenodo.23126565.
   - [Object model as JSON](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/ontology/objects.json)
-- [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/): An open reference architecture for a port-owned digital twin at a landlord port authority in the United States: eight operational systems, five live sensor feeds and one finance backbone bound into a thirteen-object ontology on the port's own virtual machines inside the continental United States, with one self-hosted embedding model and no equipment to buy. DOI 10.5281/zenodo.23126431.
+- [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/): A port authority digital twin architecture that binds eight operational systems, five live sensor feeds and the finance backbone into one thirteen object ontology, self hosted on the port's own virtual machines in the United States. An open reference architecture by CodeNinja Atoms. DOI 10.5281/zenodo.23126431.
   - [Object model as JSON](https://codeatoms.ai/port-digital-twin-us/ontology/objects.json)
 - [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/): An open reference architecture for independent production counting at steel melting and re-rolling mills in Pakistan: cameras and GPU industrial PCs at every installation point count billets, ingots, rebars and girders, publish into one operator-owned record, and let revenue officers reconcile counted against declared production, with a fourteen-object ontology, a frontier model behind an export licence checkpoint, and a three-year cost comparison. DOI 10.5281/zenodo.23126563.
   - [Object model as JSON](https://codeatoms.ai/steel-production-count-pakistan/ontology/objects.json)

@@ -320,6 +320,8 @@ def main():
             f'under open weight licences, with the data staying where the operation requires. There are {totals["designs"]} published so far, across '
             f'{covered} of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan. Co-building is the same work done for '
             f'your operation, with the object model handed to you.</p>'
+            f'<p>Every design so far is listed in one table at <a href="{BASE}/sovereign-ai-reference-architectures/">sovereign AI reference architectures</a>, '
+            f'and every object model at <a href="{BASE}/industrial-ontology-examples/">industrial ontology examples</a>.</p>'
             f'<ul class="sectorlist">{"".join(items)}</ul>'
             f'<h2>What this is not</h2><p>It is not a pilot that ends in a slide pack, and it is not a licence you buy before anything is designed. '
             f'It is one operation, one design document your engineers can argue with number by number, and one object model you own. '
