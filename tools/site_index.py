@@ -206,13 +206,13 @@ def landing(ps, sols):
     nav = brand.nav()
     return f"""{brand.header("./", nav)}
 <main>
-{film("port-night", f'<p class="mono">CodeNinja Atoms</p><h1>Autonomy in physical operations.</h1><div class="cta"><a class="btn solid" href="{brand.CONTACT}">{brand.TALK}</a><a class="btn" href="{brand.SIGNUP}">{brand.FREE}</a></div>', eager=True, cls="hero", tail=scroll)}
+{film("port-night", f'<p class="mono">CodeNinja Atoms</p><h1 class="prod">We are solving the biggest bottleneck in physical AI system design: deep domain expertise.</h1><div class="cta"><a class="btn solid" href="{brand.CONTACT}">{brand.TALK}</a><a class="btn" href="{brand.SIGNUP}">{brand.FREE}</a></div>', eager=True, cls="hero", tail=scroll)}
 <section class="light" id="intro"><div class="statement"><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
 {padi_html}
-{film("control-room", '<div><p class="mono">Praxis</p><h2>We are solving the biggest bottleneck in physical AI system design: deep domain expertise.</h2></div><div><p class="lede">CodeNinja Praxis brings that expertise to the hardest problems in physical AI, from mines to test tracks.</p><div class="cta"><a class="btn" href="praxis/">Praxis</a></div></div>', cls="two")}
+{film("control-room", '<div><p class="mono">Praxis</p><h2>Autonomy in physical operations.</h2></div><div><p class="lede">CodeNinja Praxis brings that expertise to the hardest problems in physical AI, from mines to test tracks.</p><div class="cta"><a class="btn" href="praxis/">Praxis</a></div></div>', cls="two")}
 <section id="watch" class="watch"><div class="wrap"><div class="head"><div><p class="mono">Praxis in three minutes</p><h2>Watch it work</h2></div>
 <p class="lede">Umar Bilal, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.</p></div>
 <video controls playsinline preload="none" poster="assets/video/praxis-walkthrough.jpg" width="1280" height="720"><source src="assets/video/praxis-walkthrough.mp4" type="video/mp4"></video></div></section>
