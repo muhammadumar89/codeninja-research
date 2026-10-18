@@ -169,12 +169,13 @@ BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items
            ".atoms-foot ul{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px 28px}"
            ".atoms-foot li{border-top:1px solid rgba(255,255,255,.14);padding-top:10px}.atoms-foot a{color:#F2F2F0}.atoms-foot small{display:block;color:#A3A6AE}"
            "@media (max-width:640px){.atoms-bar{padding:10px 16px;gap:12px}.atoms-bar nav{gap:12px;font-size:12.5px}.atoms-foot{padding:36px 16px}}"
+           ".atoms-bar a.brand .flags{display:flex;align-items:center;gap:4px;margin-left:4px}.atoms-bar a.brand .flags img{display:block;width:15px;height:11px;border-radius:1.5px;box-shadow:0 0 0 .5px rgba(255,255,255,.28)}"
            "@media print{.atoms-bar,.atoms-foot{display:none}}")
 
 
 def bar():
     nav = brand.nav_flat(BASE + "/")  # a one line strip: no menus, so the four destinations flat
-    return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar"><a class="brand" href="{BASE}/" aria-label="CodeNinja Atoms home">{brand.LOGO}<span class="atoms"><span class="vh">CodeNinja </span>Atoms</span></a>'
+    return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar">{brand.header_brand(BASE + "/")}'
             f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a href="{brand.SIGNUP}">{brand.FREE}</a><a class="join" href="{brand.CONTACT}">{brand.TALK}</a></nav></div>{B1}')
 
 

@@ -31,7 +31,7 @@ body{margin:0;background:var(--night);color:var(--on-dark);font:400 16px/1.6 var
 a{color:inherit}h1,h2,h3,p,li{overflow-wrap:break-word}:focus-visible{outline:1px solid var(--red);outline-offset:3px}
 .mono,.eyebrow{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-d);line-height:1.5}
 .logo{height:20px;width:auto;display:block}a.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
-a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:21px;line-height:20px;letter-spacing:-.01em;color:#D9C3A3;margin-left:-2px}
+a.brand span.atoms{font-family:var(--sans);font-weight:700;font-size:21px;line-height:20px;letter-spacing:-.01em;color:#D9C3A3;margin-left:-2px}a.brand .flags{display:flex;align-items:center;gap:4px;margin-left:4px}a.brand .flags img{display:block;width:15px;height:11px;border-radius:1.5px;box-shadow:0 0 0 .5px rgba(255,255,255,.28);object-fit:cover}
 .vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 /* header */
 .topwrap{position:fixed;top:0;left:0;right:0;z-index:20}
@@ -87,7 +87,7 @@ footer.site .wrapf>span{max-width:46ch}footer.site .flinks{max-width:none}footer
 @media (max-width:640px){.annbar{padding:10px 14px;font-size:12.5px;gap:6px}.annbar .full{display:none}}
 @media (max-width:820px){:root{--gutter:16px}
 header.top{padding:14px var(--gutter);gap:12px}header.top .acts{margin-left:auto}.logo{height:18px}a.brand span.atoms{font-size:17.5px;line-height:18px}
-.menu-btn{display:block;flex:none}.btn-white{padding:8px 10px;font-size:12.5px}header.top .acts{gap:8px}@media (max-width:420px){.logo{height:15px}a.brand{gap:7px}a.brand span.atoms{font-size:15px;line-height:15px}.btn-white{padding:7px 9px;font-size:12px}header.top{gap:8px}}
+.menu-btn{display:block;flex:none}.btn-white{padding:8px 10px;font-size:12.5px}header.top .acts{gap:8px}@media (max-width:420px){.logo{height:15px}a.brand{gap:7px}a.brand .flags{gap:3px;margin-left:2px}a.brand .flags img{width:12px;height:9px}a.brand span.atoms{font-size:15px;line-height:15px}.btn-white{padding:7px 9px;font-size:12px}header.top{gap:8px}}
 html.js header.top nav.links{display:none}header.top .acts a.signin,header.top .acts a.btn-line{display:none}header.top nav.links a.m-only{display:block}
 header.top nav.links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;background:#0B0C10;max-height:calc(100vh - 64px);overflow-y:auto;border-bottom:1px solid var(--rule-d);padding:6px var(--gutter) 14px}
 html.js header.top.open nav.links{display:flex}header.top nav.links a{padding:13px 0;border-bottom:1px solid var(--rule-d);font-size:16px}header.top nav.links a:last-child{border-bottom:none}header.top nav.links .grp{position:static}header.top nav.links button.tab{width:100%;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--rule-d);font-size:16px}header.top nav.links .menu{display:flex;position:static;min-width:0;border:0;padding:0 0 6px 16px;background:none}header.top nav.links .menu a{padding:10px 0;border-bottom:none;font-size:15px;color:rgba(242,242,240,.66)}header.top .grp::after{display:none}
@@ -178,8 +178,12 @@ def footer_links(base=""):
 ARROW = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v11M2 7.5 7 12.5 12 7.5" stroke="currentColor" stroke-width="1"/></svg>'
 
 
+FLAGS = (("us", "United States"), ("sa", "Saudi Arabia"), ("pk", "Pakistan"))  # Umar, 18 Oct 2026: where CodeNinja works
+
+
 def header_brand(home):
-    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms home">{LOGO}<span class="atoms"><span class="vh">CodeNinja </span>Atoms</span></a>'
+    flags = "".join(f'<img src="{home}assets/flags/{c}.svg" alt="{n}" title="{n}" width="15" height="11">' for c, n in FLAGS)
+    return f'<a class="brand" href="{home}" aria-label="CodeNinja Atoms home">{LOGO}<span class="atoms"><span class="vh">CodeNinja </span>Atoms</span><span class="flags">{flags}</span></a>'
 
 
 def form(product="both"):
