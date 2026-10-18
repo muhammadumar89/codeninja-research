@@ -7,7 +7,7 @@ Structure follows the posts on the Palantir blog: tag chips, title, one-line sub
 date and reading time, a cover, prose in short sections with captioned figures, an author
 block at the end.
 """
-import html, json, re, datetime, subprocess, math
+import html, json, re, datetime, subprocess, math, hashlib
 from pathlib import Path
 import brand
 
@@ -214,7 +214,10 @@ def shell(path, title, desc, body, ld, og_image, og_type="website", extra_head="
 def post_page(p):
     body_html, _toc = md_to_html(p["body"], p["slug"])
     a = AUTHORS.get(p["author"], {})
-    img = f"{p['url']}cover.png"
+    # The share image URL carries a hash of the cover (18 Oct 2026): LinkedIn cached a cover with an old byline, and a new
+    # URL is the only way to make a social card fetch the redrawn tile.
+    cv = BLOG / p["slug"] / "cover.png"
+    img = f"{p['url']}cover.png" + (f"?v={hashlib.md5(cv.read_bytes()).hexdigest()[:8]}" if cv.exists() else "")
     tags = "".join(f'<a href="{BASE}/blog/#{slugify(t)}">{E(t)}</a>' for t in p.get("tags", []))
     byline = (f'<div class="byline">' + (f'<img src="{a["photo"]}" alt="{E(p["author"])}" width="44" height="44">' if a.get("photo") else "")
               + f'<div><b><a href="{a.get("url", "#")}">{E(p["author"])}</a></b><br>{E(p.get("author_role", ""))} · {nice_date(p["date"])} · {p["minutes"]} min read</div></div>')
