@@ -272,6 +272,20 @@ def markdown_copy(p):
     return "\n".join(head) + body + "\n"
 
 
+def share_alias(p):
+    """A fresh share address at /s/<alias>/ (18 Oct 2026). LinkedIn caches a link card for days under the page's og:url,
+    so a redrawn cover never reaches it; this copy carries its own og:url, keeps rel=canonical on the real post and is
+    noindex, so search engines see one page. seo.py does not touch /s/, and the sitemap does not list it."""
+    a = p["share_alias"]
+    h = post_page(p)
+    h = h.replace(f'<meta property="og:url" content="{p["url"]}">', f'<meta property="og:url" content="{BASE}/s/{a}/">')
+    h = h.replace('<link rel="canonical"', '<meta name="robots" content="noindex,follow"><link rel="canonical"', 1)
+    h = h.replace('src="cover.png"', f'src="{p["url"]}cover.png"').replace('src="figures/', f'src="{p["url"]}figures/').replace('href="figures/', f'href="{p["url"]}figures/')
+    out = ROOT / "s" / a
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "index.html").write_text(h, encoding="utf-8")
+
+
 def main():
     posts = load()
     for p in posts:
@@ -280,6 +294,8 @@ def main():
         cover(p)
         (d / "index.html").write_text(post_page(p), encoding="utf-8")
         (d / "index.md").write_text(markdown_copy(p), encoding="utf-8")
+        if p.get("share_alias"):
+            share_alias(p)
     (BLOG / "index.html").write_text(index_page(posts), encoding="utf-8")
     (BLOG / "feed.xml").write_text(feed(posts), encoding="utf-8")
     print(f"blog: {len(posts)} post(s): " + ", ".join(f"{p['slug']} ({p['minutes']} min)" for p in posts))

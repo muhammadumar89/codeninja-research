@@ -6,6 +6,7 @@
  "author_role": "Cofounder, CodeNinja",
  "author_url": "https://codeatoms.ai/about/#muhammad-umar-bilal",
  "date": "2026-10-18",
+ "share_alias": "vibe-code-a-truck",
  "cover_photo": "truck.jpg",
  "cover_position": "right center",
  "cover_line": "Deep domain expertise for physical AI system design.",
