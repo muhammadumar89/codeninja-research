@@ -2,12 +2,12 @@
 {
  "title": "Compression and Reinflation",
  "subtitle": "Why we do not fine tune, and how we build physical AI systems that get better when the next model arrives",
- "author": "Umar Bilal",
+ "author": "Muhammad Umar",
  "author_role": "Cofounder, CodeNinja",
  "date": "2026-10-10",
- "description": "A memo from CodeNinja cofounder Umar Bilal on compression and reinflation, the alternative to fine tuning: compress what the system learns into something small and meaningful, keep it where you can read it, and let a strong model reinflate it at the moment of use.",
+ "description": "A memo from CodeNinja cofounder Muhammad Umar on compression and reinflation, the alternative to fine tuning: compress what the system learns into something small and meaningful, keep it where you can read it, and let a strong model reinflate it at the moment of use.",
  "cover_line": "An alternative to fine tuning, taken from biology",
- "banner": "Read cofounder Umar Bilal's memo, Compression and Reinflation"
+ "banner": "Read cofounder Muhammad Umar's memo, Compression and Reinflation"
 }
 ---
 

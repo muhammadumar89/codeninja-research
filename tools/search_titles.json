@@ -18,7 +18,7 @@
  },
  "blog/dont-baptize-the-gpus": {
   "title": "Don't Baptize the GPUs: Chris Olah, Anthropic and the religious question about Claude",
-  "description": "Anthropic co-founder Chris Olah spent months convening religious and philosophical thinkers on whether Claude might be conscious. Umar Bilal argues the instinct is understandable and the method is wrong: measure an AI system by running it, train it to seek truth, and let the organizations that depend on it own it.",
+  "description": "Anthropic co-founder Chris Olah spent months convening religious and philosophical thinkers on whether Claude might be conscious. Muhammad Umar argues the instinct is understandable and the method is wrong: measure an AI system by running it, train it to seek truth, and let the organizations that depend on it own it.",
   "query": "\"chris olah\" (tier B, entity noise cluster; the only named query on the page, 9 impressions, position 8.9, 0 clicks, 28 days to 10 Oct 2026); page at 25 impressions, position 7.2; rd_keywords.py pick on 13 Oct 2026",
   "fixed": "2026-10-13"
  },

@@ -2,7 +2,7 @@
 {
  "title": "Don't Baptize the GPUs",
  "subtitle": "Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category.",
- "author": "Umar Bilal",
+ "author": "Muhammad Umar",
  "author_role": "Co-founder, CodeNinja",
  "author_url": "https://codeatoms.ai/about/#muhammad-umar-bilal",
  "date": "2026-10-06",

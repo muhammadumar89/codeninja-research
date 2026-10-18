@@ -110,7 +110,7 @@ ENTERPRISE = [("Your organisation's own space", "Proposals and functional specif
               ("Memory kept to you", "Your organisation's memory, voice and precedents stay with your organisation.")]
 
 
-FILM = ("Umar Bilal, cofounder of CodeNinja, walks through Praxis on a real kind of requirement, an open pit mine: "
+FILM = ("Muhammad Umar, cofounder of CodeNinja, walks through Praxis on a real kind of requirement, an open pit mine: "
         "the ask goes in, the sector is resolved, and out come the system design, the architecture, a live simulation and the proposal.")
 
 

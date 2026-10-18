@@ -6,7 +6,7 @@
 *Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category.*
 
 Canonical: https://codeatoms.ai/blog/dont-baptize-the-gpus/
-Author: Umar Bilal, Co-founder, CodeNinja
+Author: Muhammad Umar, Co-founder, CodeNinja
 Published: 2026-10-06
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -652,7 +652,7 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 *Software can now be described into existence. Physical systems cannot, because the knowledge needed to design them lives in the heads of senior engineers. This is how CodeNinja Atoms is building the missing piece: deep domain expertise for physical AI system design, carried as context instead of trained into weights.*
 
 Canonical: https://codeatoms.ai/blog/what-does-it-take-to-vibe-code-a-truck/
-Author: Umar Bilal, Cofounder, CodeNinja
+Author: Muhammad Umar, Cofounder, CodeNinja
 Published: 2026-10-18
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -4284,7 +4284,7 @@ Design: https://codeatoms.ai/sovereign-hse-pakistan/ · JSON: https://codeatoms.
 
 Why we do not fine tune, and how we build physical AI systems that get better when the next model arrives
 
-A memo by Umar Bilal, Cofounder, CodeNinja, October 10, 2026.
+A memo by Muhammad Umar, Cofounder, CodeNinja, October 10, 2026.
 Canonical: https://codeatoms.ai/memos/compression-and-reinflation/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)

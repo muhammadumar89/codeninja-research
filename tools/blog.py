@@ -16,7 +16,7 @@ BLOG = ROOT / "blog"
 BASE = "https://codeatoms.ai"
 E = lambda s: html.escape(str(s), quote=True)
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-AUTHORS = {"Umar Bilal": {"photo": f"{BASE}/about/img/muhammad-umar-bilal.jpg", "sameAs": "https://www.linkedin.com/in/muhammadumargiki/",
+AUTHORS = {"Muhammad Umar": {"photo": f"{BASE}/about/img/muhammad-umar-bilal.jpg", "sameAs": "https://www.linkedin.com/in/muhammadumargiki/",
                           "url": f"{BASE}/about/#muhammad-umar-bilal"}}
 INTRO = "Writing from the engineers building a sovereign AI operating system for the physical world."
 

@@ -25,7 +25,7 @@ LEADERS = [
     {"slug": "adil-khalil", "name": "Adil Khalil", "title": "Co-Founder and Chief Technology Officer",
      "bio": "Mr. Khalil is one of the co-founders of CodeNinja and serves as its Chief Technology Officer, responsible for the engineering behind CodeNinja's sovereign systems.",
      "link": "https://www.linkedin.com/in/adilkhalil/"},
-    {"slug": "muhammad-umar-bilal", "name": "Muhammad Umar Bilal", "title": "Co-Founder and Chief Operating Officer",
+    {"slug": "muhammad-umar-bilal", "name": "Muhammad Umar", "title": "Co-Founder and Chief Operating Officer",
      "bio": "Mr. Bilal is one of the co-founders of CodeNinja and serves as its Chief Operating Officer. He works on Hyper Anthologies, the memory and interpretability layer underneath CodeNinja's enterprise AI deployments, and is the author of the Own the Loop research series.",
      "link": "https://www.linkedin.com/in/muhammadumargiki/"},
     {"slug": "ibrar-hussain", "name": "Ibrar Hussain", "title": "Co-Founder and Chief Product Officer",

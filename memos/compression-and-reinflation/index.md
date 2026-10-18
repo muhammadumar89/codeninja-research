@@ -2,7 +2,7 @@
 
 Why we do not fine tune, and how we build physical AI systems that get better when the next model arrives
 
-A memo by Umar Bilal, Cofounder, CodeNinja, October 10, 2026.
+A memo by Muhammad Umar, Cofounder, CodeNinja, October 10, 2026.
 Canonical: https://codeatoms.ai/memos/compression-and-reinflation/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)

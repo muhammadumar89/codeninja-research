@@ -3,7 +3,7 @@
 *Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category.*
 
 Canonical: https://codeatoms.ai/blog/dont-baptize-the-gpus/
-Author: Umar Bilal, Co-founder, CodeNinja
+Author: Muhammad Umar, Co-founder, CodeNinja
 Published: 2026-10-06
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja

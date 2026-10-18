@@ -152,7 +152,7 @@ def identity_ld():
             "url": "https://codeatoms.ai/", "publisher": {"@id": ORG_ID}, "inLanguage": "en"}
     faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}
     video = {"@context": "https://schema.org", "@type": "VideoObject", "name": "Praxis in three minutes",
-             "description": "Umar Bilal, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.",
+             "description": "Muhammad Umar, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.",
              "thumbnailUrl": "https://codeatoms.ai/assets/video/praxis-walkthrough.jpg", "contentUrl": "https://codeatoms.ai/assets/video/praxis-walkthrough.mp4",
              "uploadDate": "2026-10-08", "duration": "PT3M1S", "embedUrl": "https://codeatoms.ai/#watch", "publisher": {"@id": ORG_ID}}
     return [org, site, faq, video]
@@ -214,7 +214,7 @@ def landing(ps, sols):
 {padi_html}
 {film("control-room", '<div><p class="mono">Praxis</p><h2>Autonomy in physical operations.</h2></div><div><p class="lede">CodeNinja Praxis brings that expertise to the hardest problems in physical AI, from mines to test tracks.</p><div class="cta"><a class="btn" href="praxis/">Praxis</a></div></div>', cls="two")}
 <section id="watch" class="watch"><div class="wrap"><div class="head"><div><p class="mono">Praxis in three minutes</p><h2>Watch it work</h2></div>
-<p class="lede">Umar Bilal, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.</p></div>
+<p class="lede">Muhammad Umar, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.</p></div>
 <video controls playsinline preload="none" poster="assets/video/praxis-walkthrough.jpg" width="1280" height="720"><source src="assets/video/praxis-walkthrough.mp4" type="video/mp4"></video></div></section>
 {film("rail-yard", '<div><p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2></div><div><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div></div>', cls="two")}
 <section id="research" class="light"><div class="wrap"><div class="head"><div><p class="mono">Research · Vertical-Driven Architectures</p><h2>One operation, one design, end to end.</h2></div>

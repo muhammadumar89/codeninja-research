@@ -2,7 +2,7 @@
 {
  "title": "What Does It Take to Vibe Code a Truck?",
  "subtitle": "Software can now be described into existence. Physical systems cannot, because the knowledge needed to design them lives in the heads of senior engineers. This is how CodeNinja Atoms is building the missing piece: deep domain expertise for physical AI system design, carried as context instead of trained into weights.",
- "author": "Umar Bilal",
+ "author": "Muhammad Umar",
  "author_role": "Cofounder, CodeNinja",
  "author_url": "https://codeatoms.ai/about/#muhammad-umar-bilal",
  "date": "2026-10-18",

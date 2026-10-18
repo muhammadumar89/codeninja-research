@@ -3,7 +3,7 @@
 *Software can now be described into existence. Physical systems cannot, because the knowledge needed to design them lives in the heads of senior engineers. This is how CodeNinja Atoms is building the missing piece: deep domain expertise for physical AI system design, carried as context instead of trained into weights.*
 
 Canonical: https://codeatoms.ai/blog/what-does-it-take-to-vibe-code-a-truck/
-Author: Umar Bilal, Cofounder, CodeNinja
+Author: Muhammad Umar, Cofounder, CodeNinja
 Published: 2026-10-18
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
