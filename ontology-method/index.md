@@ -14,7 +14,7 @@ Vertical-Driven Architectures · Methods · Hyper Ontology · October 2026
 
 Every design Praxis produces ends in an object model. This paper specifies the package that carries it, measures the seven published packages, shows how to load them, and describes how Hyper Ontology turns one into a living system.
 
-CodeNinja Engineering Team · Umar Bilal
+CodeNinja Engineering Team · Muhammad Umar
 
 CodeNinja · 2026-10-04 · CC BY 4.0 · Web edition: <https://codeatoms.ai/ontology-method/> · DOI [10.5281/zenodo.23132104](https://doi.org/10.5281/zenodo.23132104)
 
@@ -112,10 +112,10 @@ A package is schema, not data: it names what the model holds and how it links, n
 
 ## References
 
-1. CodeNinja Engineering Team and Umar Bilal. 2026. *Sovereign HSE Watch: Predictive Risk and Early Warning on an HSE Control and Command Platform*. CodeNinja. <https://doi.org/10.5281/zenodo.23119714>
-2. CodeNinja Engineering Team and Umar Bilal. 2026. *Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder*. CodeNinja. <https://doi.org/10.5281/zenodo.23119325>
-3. CodeNinja Engineering Team and Umar Bilal. 2026. *Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal*. CodeNinja. <https://doi.org/10.5281/zenodo.23119348>
-4. CodeNinja Engineering Team and Umar Bilal. 2026. *Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site*. CodeNinja. <https://doi.org/10.5281/zenodo.23126448>
-5. CodeNinja Engineering Team and Umar Bilal. 2026. *Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan*. CodeNinja. <https://doi.org/10.5281/zenodo.23126563>
-6. CodeNinja Engineering Team and Umar Bilal. 2026. *Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory*. CodeNinja. <https://doi.org/10.5281/zenodo.23126565>
-7. CodeNinja Engineering Team and Umar Bilal. 2026. *Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar*. CodeNinja. <https://doi.org/10.5281/zenodo.23126431>
+1. CodeNinja Engineering Team and Muhammad Umar. 2026. *Sovereign HSE Watch: Predictive Risk and Early Warning on an HSE Control and Command Platform*. CodeNinja. <https://doi.org/10.5281/zenodo.23119714>
+2. CodeNinja Engineering Team and Muhammad Umar. 2026. *Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder*. CodeNinja. <https://doi.org/10.5281/zenodo.23119325>
+3. CodeNinja Engineering Team and Muhammad Umar. 2026. *Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal*. CodeNinja. <https://doi.org/10.5281/zenodo.23119348>
+4. CodeNinja Engineering Team and Muhammad Umar. 2026. *Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site*. CodeNinja. <https://doi.org/10.5281/zenodo.23126448>
+5. CodeNinja Engineering Team and Muhammad Umar. 2026. *Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan*. CodeNinja. <https://doi.org/10.5281/zenodo.23126563>
+6. CodeNinja Engineering Team and Muhammad Umar. 2026. *Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory*. CodeNinja. <https://doi.org/10.5281/zenodo.23126565>
+7. CodeNinja Engineering Team and Muhammad Umar. 2026. *Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar*. CodeNinja. <https://doi.org/10.5281/zenodo.23126431>
