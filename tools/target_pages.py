@@ -9,7 +9,7 @@ import json, datetime
 from collections import Counter
 from pathlib import Path
 import brand
-from sector_pages import load, shell, table, link, md_inline, plain, stop, E, BASE, COMPUTE, COST, CSS as _CSS
+from sector_pages import an, load, shell, table, link, md_inline, plain, stop, E, BASE, COMPUTE, COST, CSS as _CSS
 
 ROOT = Path(__file__).resolve().parent.parent
 SOV, ONT = "sovereign-ai-reference-architectures", "industrial-ontology-examples"
@@ -98,6 +98,24 @@ def sovereign(ds, today):
     return n
 
 
+def worked(ds, objs):
+    """One worked example near the first screen: the published object with the most links (then most properties), chosen
+    by rule from the data, never by hand, so it changes only when the corpus does."""
+    o = max(objs, key=lambda x: (len(x.get("links", [])), len(x.get("properties", [])), x["object_id"]))
+    d = next(x for x in ds if x["design_id"] == o["design_id"])
+    labels = {x["object_id"]: x["label"] for x in objs if x["design_id"] == o["design_id"]}
+    snippet = json.dumps({k: o[k] for k in ("object_id", "label", "kind", "anchored_in", "properties", "status_vocabulary", "links") if k in o}, indent=2, ensure_ascii=False)
+    links = "".join(f"<li><strong>{E(l['label'])}</strong> {E(labels.get(l['to'], l['to']))}</li>" for l in o.get("links", []))
+    return (f'<h2 id="example">An industrial ontology example, read object by object</h2>'
+            f'<p class="ans">Take one object from {link(d)} ({E(d["sector"])}, {E(d["country"])}): <strong>{E(o["label"])}</strong>, '
+            f'{an(o.get("kind", "object"))} {E(o.get("kind", "object"))}' + (f' held in {E(o["anchored_in"])}' if o.get("anchored_in") else "") + '. '
+            f'Its properties are what the operation records about it: {E(", ".join(o.get("properties", [])) or "none listed")}. '
+            'Its links are what make this an ontology rather than a table: each one is typed and points at another object in the same model.</p>'
+            f'<ul class="ans">{links}</ul>'
+            '<p class="ans">The same object as it appears in the package, hyper-ontology/1 JSON:</p>'
+            f'<pre style="overflow-x:auto;font-size:13px;line-height:1.5;background:rgba(30,31,43,.04);padding:16px">{E(snippet)}</pre>')
+
+
 def ontology(ds, today):
     objs = [json.loads(l) for l in (ROOT / "dataset" / "objects.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
     no, nl = sum(d["n_objects"] for d in ds), sum(d["n_links"] for d in ds)
@@ -115,10 +133,12 @@ def ontology(ds, today):
                     E("; ".join(f'{l["label"]} {l["to"]}' for l in o.get("links", [])))] for o in mine])
         browse.append(f'<details id="{E(d["design_id"])}"><summary>{E(d["short"])}: {E(d["sector"])}, {E(d["country"])} · {len(mine)} objects</summary>'
                       f'<p>{link(d)} · <a href="{d["url"]}ontology/objects.json">download objects.json</a></p>{t}</details>')
+    ex = worked(ds, objs)
     body = (f'<p class="eyebrow">Ontology · Examples</p><h1>Industrial ontology examples</h1>'
             f'<p class="lead">{E(answer)}</p>'
             f'<div class="stats"><span><b>{len(ds)}</b>object models</span><span><b>{no}</b>objects</span><span><b>{nl}</b>links</span></div>'
-            f'<h2 id="all">Every published industrial ontology example</h2>'
+            + ex
+            + f'<h2 id="all">Every published industrial ontology example</h2>'
             + table(["Operation", "Sector", "Country", "Size", "Download"], rows)
             + '<h2 id="browse">Browse each object model</h2><p class="ans">Open any operation to read its objects, the system each is anchored in, its properties and its links.</p>'
             + "".join(browse)

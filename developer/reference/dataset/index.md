@@ -58,6 +58,10 @@ objects = load_dataset("CodeNinjatools/vertical-driven-architectures", "objects"
 print(objects.filter(lambda r: r["kind"] == "event")["label"])
 ```
 
+## Browse it
+
+Every design is one row in the table of [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), and every object model is browsable on [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/).
+
 ## Made with
 
 Every design was reasoned on [Praxis](https://codeatoms.ai/praxis/), CodeNinja's platform for designing physical AI systems. Every object model imports into [Hyper Ontology](https://codeatoms.ai/hyper-ontology/), CodeNinja's ontology platform, which stands it up as a living system. Load any one with the [hyper-ontology loader](https://github.com/muhammadumar89/codeninja-research/tree/main/hyper-ontology-py): `pip install "git+https://github.com/muhammadumar89/codeninja-research#subdirectory=hyper-ontology-py"`, then `hyper-ontology show <design_id>`.
