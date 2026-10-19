@@ -275,12 +275,15 @@ def markdown_copy(p):
 def share_alias(p):
     """A fresh share address at /s/<alias>/ (18 Oct 2026). LinkedIn caches a link card for days under the page's og:url,
     so a redrawn cover never reaches it; this copy carries its own og:url, keeps rel=canonical on the real post and is
-    noindex, so search engines see one page. seo.py does not touch /s/, and the sitemap does not list it."""
+    noindex, so search engines see one page. seo.py does not touch /s/, and the sitemap does not list it; the GA4 tag is added here."""
     a = p["share_alias"]
     h = post_page(p)
     h = h.replace(f'<meta property="og:url" content="{p["url"]}">', f'<meta property="og:url" content="{BASE}/s/{a}/">')
     h = h.replace('<link rel="canonical"', '<meta name="robots" content="noindex,follow"><link rel="canonical"', 1)
     h = h.replace('src="cover.png"', f'src="{p["url"]}cover.png"').replace('src="figures/', f'src="{p["url"]}figures/').replace('href="figures/', f'href="{p["url"]}figures/')
+    from seo import GA4  # seo.py skips /s/, so the share copy carries the GA4 tag itself (Umar 19 Oct 2026)
+    if "googletagmanager.com/gtag/js" not in h:
+        h = h.replace("<head>", "<head>" + GA4, 1)
     out = ROOT / "s" / a
     out.mkdir(parents=True, exist_ok=True)
     (out / "index.html").write_text(h, encoding="utf-8")
