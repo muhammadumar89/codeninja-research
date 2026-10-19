@@ -51,5 +51,11 @@
   "description": "An open source farm data dashboard for agriculture in Pakistan: live field sensor feeds, historical datasets and an analytics repository joined in one 12 object model on PostgreSQL and PostGIS, drill-down by farm, crop cycle and season, owned in full by the operator. An open reference architecture by CodeNinja Atoms.",
   "query": "ledger pick 18 Oct 2026 (19 impressions at 4.3, 0 clicks, 28 days to 15 Oct; every query on the page anonymised by Google, so the title uses the page's own slug and glance words: farm data dashboard, open source, PostgreSQL, PostGIS)",
   "fixed": "2026-10-18"
+ },
+ "tank-gauge-integrity-pakistan": {
+  "title": "Radar Tank Gauging Integrity for a Fuel Terminal Tank Farm: Level Monitoring Design, Pakistan",
+  "description": "A tank gauging system design for a fuel terminal tank farm in Pakistan: radar level gauges on three Modbus RTU loops restored by survey-sized boosters, and a governed inventory ontology that flags stuck, distorted or swapped tank level readings before the central picture misleads anyone. Loop Integrity Watch, an open reference architecture by CodeNinja Atoms.",
+  "query": "tank gauging cluster (tier B); Google names no query for the page, so the title uses the words a terminal searcher asks (radar tank gauging, tank farm, level monitoring, fuel terminal) from the paper's own vocabulary; page at 21 impressions, position 9.6, 0 clicks, 28 days to 16 Oct 2026; rd_keywords.py pick on 19 Oct 2026",
+  "fixed": "2026-10-19"
  }
 }

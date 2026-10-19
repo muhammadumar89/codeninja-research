@@ -41,6 +41,31 @@ def write(path, title, desc, body, ld, md):
     (out / "index.md").write_text("\n".join(md) + "\n", encoding="utf-8")
 
 
+PATTERNS = [  # (pattern, what it is, test on the design's own At a glance compute text); first match wins
+    ("Frontier reasoning node", "eight 141 GB HBM-class GPUs holding an open-weight frontier model at FP8, owned or hosted in the country",
+     lambda c: "141 GB" in c),
+    ("One inference card", "48 GB PCIe inference cards, from one card to one eight-card server, at the site or in the country; no frontier model",
+     lambda c: "48 GB" in c or "L40S" in c),
+    ("No new compute", "the design runs on servers or software the operator already owns; nothing to buy",
+     lambda c: True),
+]
+
+
+def patterns(ds):
+    """Group the designs by deployment pattern, by rule from each design's own compute figure, so the table
+    answers 'which sovereign AI reference architecture fits my operation' in the first screen."""
+    out = []
+    for name, what, test in PATTERNS:
+        out.append((name, what, []))
+    for d in ds:
+        c = plain(first(d["rows"], COMPUTE)[1])
+        for name, what, test in PATTERNS:
+            if test(c):
+                next(x for x in out if x[0] == name)[2].append(d)
+                break
+    return [x for x in out if x[2]]
+
+
 def sovereign(ds, today):
     countries = Counter(d["country"] for d in ds)
     sectors = sorted({d["sector"] for d in ds})
@@ -67,7 +92,10 @@ def sovereign(ds, today):
             f'<p class="lead">{E(answer)}</p>'
             f'<div class="stats"><span><b>{n}</b>published designs</span><span><b>{len(sectors)}</b>sectors</span><span><b>{len(countries)}</b>countries</span>'
             f'<span><b>{sum(d["n_objects"] for d in ds)}</b>ontology objects</span></div>'
-            f'<h2 id="all">Every published sovereign AI reference architecture</h2>'
+            + '<h2 id="patterns">Sovereign AI reference architecture patterns</h2>'
+            + '<p class="ans">Three deployment patterns cover all ' + str(len(ds)) + ' published designs, grouped by rule from each design\'s own compute figure. Start from the one that matches the hardware your operation can own.</p>'
+            + table(["Pattern", "What runs where", "Designs"], [[f"<strong>{E(a)}</strong> ({len(g)})", E(b), ", ".join(link(d) for d in g)] for a, b, g in patterns(ds)])
+            + f'<h2 id="all">Every published sovereign AI reference architecture</h2>'
             f'<p class="ans">Newest first. The compute and cost columns are each design\'s own At a glance figures.</p>'
             + table(["Design", "Sector", "Country", "Compute", "Three-year cost", "DOI"], rows)
             + '<h2 id="contains">What each sovereign AI reference architecture contains</h2>'
@@ -91,6 +119,9 @@ def sovereign(ds, today):
           {"@context": "https://schema.org", "@type": "FAQPage", "url": f"{BASE}/{SOV}/", "mainEntity": [
               {"@type": "Question", "name": "What is a sovereign AI reference architecture?", "acceptedAnswer": {"@type": "Answer", "text": answer}}]}]
     md = ["# Sovereign AI reference architectures", "", f"Canonical: {BASE}/{SOV}/", "License: CC BY 4.0", "Publisher: CodeNinja Atoms (https://codeatoms.ai)", "", answer, "",
+          "## Sovereign AI reference architecture patterns", "", "| Pattern | What runs where | Designs |", "|---|---|---|"]
+    md += [f"| {a} ({len(g)}) | {b} | " + ", ".join(f"[{d['short']}]({d['url']})" for d in g) + " |" for a, b, g in patterns(ds)]
+    md += ["", "## Every published sovereign AI reference architecture", "",
           "| Design | Sector | Country | Compute | Three-year cost | DOI |", "|---|---|---|---|---|---|"]
     for d in ds:
         md.append(f"| [{d['short']}]({d['url']}) | {d['sector']} | {d['country']} | {plain(first(d['rows'], COMPUTE)[1])} | {plain(first(d['rows'], COST)[1])} | {d.get('doi', '')} |")

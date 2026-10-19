@@ -6,6 +6,16 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 A sovereign AI reference architecture is a complete design for running AI inside an operation on infrastructure the operator owns or controls, in its own country, with open-weight models and no third-party AI service in the serving path. CodeNinja Atoms has published 18 of them, for 8 physical-world sectors in the United States (8), Pakistan (6), Saudi Arabia (4). Each names its sources, object model, models, compute, three-year cost and the person who approves every action, and each is free to reuse under CC BY 4.0 with a DOI.
 
+## Sovereign AI reference architecture patterns
+
+| Pattern | What runs where | Designs |
+|---|---|---|
+| Frontier reasoning node (7) | eight 141 GB HBM-class GPUs holding an open-weight frontier model at FP8, owned or hosted in the country | [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/), [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/), [Structure Phase Watch](https://codeatoms.ai/structure-phase-construction-saudi-arabia/), [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/), [Feeder Firewatch](https://codeatoms.ai/wildfire-risk-distribution-us/), [Terminal Pulse](https://codeatoms.ai/truck-turn-container-terminal-us/), [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) |
+| One inference card (5) | 48 GB PCIe inference cards, from one card to one eight-card server, at the site or in the country; no frontier model | [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/), [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/), [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/), [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/), [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) |
+| No new compute (6) | the design runs on servers or software the operator already owns; nothing to buy | [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/), [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/), [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/), [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/), [Port Twin](https://codeatoms.ai/port-digital-twin-us/), [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) |
+
+## Every published sovereign AI reference architecture
+
 | Design | Sector | Country | Compute | Three-year cost | DOI |
 |---|---|---|---|---|---|
 | [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) | energy and utilities | Pakistan | One 48 GB PCIe inference GPU class card on ruggedised edge servers inside the plant perimeter, a PTP grandmaster time card and a one-way egress path; no cloud, because Pakistan has no hyperscaler region | About 22,500 US dollars to own the site envelope over three years (21,600 to 23,400), about the same as the deepest three-year AWS commitment for one L40S card in the UAE region, which could not keep the read one-way in any case (Appendix A) | 10.5281/zenodo.23365092 |
