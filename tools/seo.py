@@ -108,11 +108,17 @@ def size_imgs(h, folder):
 
 
 # ---------------------------------------------------------------- head
+# GA4 (Umar 19 Oct 2026): property codeatoms.ai under account CodeNinja Atoms, minimal data sharing, no consent banner
+GA4_ID = "G-LG6CHWP28Z"
+GA4 = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
+       f"<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());"
+       f"gtag('config','{GA4_ID}',{{allow_google_signals:false,allow_ad_personalization_signals:false}});</script>")
+
 DELIST = {"praxis-method"}
 
 
 def head_block(kind, url, title, desc, image, crumbs, md, noindex=False):
-    t = [H0,
+    t = [H0, GA4,
          '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml">',
          '<link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta name="theme-color" content="#0B0C10">',
          '<meta name="robots" content="noindex,follow">' if noindex else ('<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">' if kind != "copy" else ""),
