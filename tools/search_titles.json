@@ -57,5 +57,11 @@
   "description": "A tank gauging system design for a fuel terminal tank farm in Pakistan: radar level gauges on three Modbus RTU loops restored by survey-sized boosters, and a governed inventory ontology that flags stuck, distorted or swapped tank level readings before the central picture misleads anyone. Loop Integrity Watch, an open reference architecture by CodeNinja Atoms.",
   "query": "tank gauging cluster (tier B); Google names no query for the page, so the title uses the words a terminal searcher asks (radar tank gauging, tank farm, level monitoring, fuel terminal) from the paper's own vocabulary; page at 21 impressions, position 9.6, 0 clicks, 28 days to 16 Oct 2026; rd_keywords.py pick on 19 Oct 2026",
   "fixed": "2026-10-19"
+ },
+ "factory-fire-monitoring-saudi-arabia": {
+  "title": "Fire Alarm Panel and Fire Pump Monitoring for Factories: Remote Fire Protection Monitoring, Saudi Arabia",
+  "description": "Remote fire protection monitoring for high-risk factories in Saudi Arabia: live, read-only status of fire alarm panels, fire pumps and fire water tanks, read through panel contacts, PLC inputs and LoRaWAN into an IoT platform hosted in the Kingdom, never a write path into life-safety equipment. Factory Fire Watch, an open reference architecture by CodeNinja Atoms.",
+  "query": "ledger pick 20 Oct 2026 (page row 21 impressions at 10.2, 28 days to 17 Oct; queries anonymised by Google), cluster fire protection: lead with the equipment a searcher names (fire alarm panel, fire pump) and 'remote fire protection monitoring'",
+  "day": "2026-10-20"
  }
 }
