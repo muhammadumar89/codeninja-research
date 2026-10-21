@@ -186,8 +186,8 @@ def ontology(ds, today):
               f'<a href="{BASE}/{SOV}/">sovereign AI reference architectures</a>. Designed on <a href="{BASE}/praxis/">Praxis</a>; made living in '
               f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Updated {today}.</p>')
     title = f"Industrial Ontology Examples: {len(ds)} Object Models to Download"
-    desc = (f"{len(ds)} industrial ontology examples from real physical operations: {no} typed objects and {nl} links across energy, oil and gas, ports, "
-            "manufacturing, agriculture and more, as hyper-ontology/1 JSON under CC BY 4.0.")[:300]
+    # description only, under Bing's 160 limit (Umar, 21 Oct 2026: allowed despite the keep rule; title, H1 and body untouched)
+    desc = f"{len(ds)} industrial ontology examples from real physical operations: {no} typed objects and {nl} links, as hyper-ontology/1 JSON under CC BY 4.0."
     ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Industrial ontology examples", "headline": "Industrial ontology examples",
            "description": desc, "url": f"{BASE}/{ONT}/", "dateModified": today, "inLanguage": "en", "license": "https://creativecommons.org/licenses/by/4.0/",
            "publisher": {"@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/"},
