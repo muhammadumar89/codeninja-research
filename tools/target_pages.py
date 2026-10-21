@@ -110,8 +110,8 @@ def sovereign(ds, today):
               f'<a href="{BASE}/{ONT}/">industrial ontology examples</a>; questions by sector at <a href="{BASE}/sectors/">sectors</a>. '
               f'Designed on <a href="{BASE}/praxis/">Praxis</a>; object models load into <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Updated {today}.</p>')
     title = "Sovereign AI Reference Architectures: 18 Open Designs".replace("18", str(n))
-    desc = (f"{n} open sovereign AI reference architectures for physical operations in {', '.join(c for c, _ in countries.most_common())}: "
-            "sources, ontology, open-weight models, compute, three-year cost and human control, each with a DOI.")[:300]
+    # Bing URL Inspection flags a meta description outside 25 to 160 characters as an error (21 Oct 2026); the term leads
+    desc = f"{n} open sovereign AI reference architectures for physical operations: open-weight models, compute and three-year cost, each with a DOI."
     ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Sovereign AI reference architectures", "headline": "Sovereign AI reference architectures",
            "description": desc, "url": f"{BASE}/{SOV}/", "dateModified": today, "inLanguage": "en", "license": "https://creativecommons.org/licenses/by/4.0/",
            "publisher": {"@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/"},
