@@ -7681,6 +7681,7 @@ In every published rail and transportation design a named person makes the decis
 Canonical: https://codeatoms.ai/sovereign-ai-reference-architectures/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
+DOI: 10.5281/zenodo.23527131
 
 A sovereign AI reference architecture is a complete design for running AI inside an operation on infrastructure the operator owns or controls, in its own country, with open-weight models and no third-party AI service in the serving path. CodeNinja Atoms has published 18 of them, for 8 physical-world sectors in the United States (8), Pakistan (6), Saudi Arabia (4). Each names its sources, object model, models, compute, three-year cost and the person who approves every action, and each is free to reuse under CC BY 4.0 with a DOI.
 

@@ -13,6 +13,8 @@ from sector_pages import an, load, shell, table, link, md_inline, plain, stop, E
 
 ROOT = Path(__file__).resolve().parent.parent
 SOV, ONT = "sovereign-ai-reference-architectures", "industrial-ontology-examples"
+# the collection itself as a citable Zenodo dataset record (published 21 Oct 2026 under the 20 Oct ruling; a snapshot, the page stays the living version)
+SOV_DOI = "10.5281/zenodo.23527131"
 CSS_EXTRA = """
 .doc details{border-top:1px solid var(--rule-l);padding:14px 0}.doc details summary{cursor:pointer;color:var(--ink);font-size:18px}
 .doc .stats{display:flex;flex-wrap:wrap;gap:12px 40px;margin:28px 0 8px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-l)}
@@ -92,6 +94,7 @@ def sovereign(ds, today):
             f'<p class="lead">{E(answer)}</p>'
             f'<div class="stats"><span><b>{n}</b>published designs</span><span><b>{len(sectors)}</b>sectors</span><span><b>{len(countries)}</b>countries</span>'
             f'<span><b>{sum(d["n_objects"] for d in ds)}</b>ontology objects</span></div>'
+            f'<p class="ans">Cite the collection: <a href="https://doi.org/{SOV_DOI}">{SOV_DOI}</a> (Zenodo, CC BY 4.0, the table below as CSV).</p>'
             + '<h2 id="patterns">Sovereign AI reference architecture patterns</h2>'
             + '<p class="ans">Three deployment patterns cover all ' + str(len(ds)) + ' published designs, grouped by rule from each design\'s own compute figure. Start from the one that matches the hardware your operation can own.</p>'
             + table(["Pattern", "What runs where", "Designs"], [[f"<strong>{E(a)}</strong> ({len(g)})", E(b), ", ".join(link(d) for d in g)] for a, b, g in patterns(ds)])
@@ -112,13 +115,14 @@ def sovereign(ds, today):
     ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Sovereign AI reference architectures", "headline": "Sovereign AI reference architectures",
            "description": desc, "url": f"{BASE}/{SOV}/", "dateModified": today, "inLanguage": "en", "license": "https://creativecommons.org/licenses/by/4.0/",
            "publisher": {"@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/"},
+           "identifier": f"https://doi.org/{SOV_DOI}", "sameAs": [f"https://doi.org/{SOV_DOI}", f"https://zenodo.org/records/{SOV_DOI.rsplit('.', 1)[1]}"],
            "about": [{"@type": "Thing", "name": "sovereign AI"}, {"@type": "Thing", "name": "reference architecture"}, {"@type": "Thing", "name": "physical AI"}],
            "mainEntity": {"@type": "ItemList", "numberOfItems": n, "itemListElement": [
                {"@type": "ListItem", "position": i + 1, "item": {"@type": "TechArticle", "name": d["title"], "url": d["url"],
                                                                  **({"identifier": f"https://doi.org/{d['doi']}"} if d.get("doi") else {})}} for i, d in enumerate(ds)]}},
           {"@context": "https://schema.org", "@type": "FAQPage", "url": f"{BASE}/{SOV}/", "mainEntity": [
               {"@type": "Question", "name": "What is a sovereign AI reference architecture?", "acceptedAnswer": {"@type": "Answer", "text": answer}}]}]
-    md = ["# Sovereign AI reference architectures", "", f"Canonical: {BASE}/{SOV}/", "License: CC BY 4.0", "Publisher: CodeNinja Atoms (https://codeatoms.ai)", "", answer, "",
+    md = ["# Sovereign AI reference architectures", "", f"Canonical: {BASE}/{SOV}/", "License: CC BY 4.0", "Publisher: CodeNinja Atoms (https://codeatoms.ai)", f"DOI: {SOV_DOI}", "", answer, "",
           "## Sovereign AI reference architecture patterns", "", "| Pattern | What runs where | Designs |", "|---|---|---|"]
     md += [f"| {a} ({len(g)}) | {b} | " + ", ".join(f"[{d['short']}]({d['url']})" for d in g) + " |" for a, b, g in patterns(ds)]
     md += ["", "## Every published sovereign AI reference architecture", "",
