@@ -63,7 +63,7 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 @media (max-width:820px){.doc{padding:80px var(--gutter);font-size:16px}.doc h2{margin-top:72px}.grid{grid-template-columns:1fr}section.film.access .inner{grid-template-columns:1fr;padding:88px var(--gutter)}}
 """
 
-SHORT = {"praxis": "CodeNinja Praxis: AI That Designs Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: From Design to Living System | CodeNinja Atoms"}
+SHORT = {"praxis": "CodeNinja Praxis: AI That Designs Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: Ontology Builder for Industrial Operations | CodeNinja Atoms"}
 VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
 ACCESS = {"praxis": "Every design on this site was made on Praxis. Engineers start free; organisations talk to our commercial team.",

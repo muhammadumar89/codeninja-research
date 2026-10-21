@@ -12,6 +12,8 @@ Each folder is one paper and carries the same five things:
 | `register/models.csv` | the model and equipment register: each model, licence, placement, weight at each precision |
 | `figures/` | the paper's figures, redrawn with the operator described by class, never by name |
 
+Every published design is also listed as one of our [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), with its sector, country, compute and three-year cost, and every object model is browsable among the [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/).
+
 Read each paper online through its link below; the PDF, the object model and the register sit in its folder. Releases carry a DOI through Zenodo; cite that.
 
 ## The dataset
