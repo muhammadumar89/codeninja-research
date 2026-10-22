@@ -1,0 +1,280 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Pipeline Integrity Watch: Leak Detection, Fleet Health and Security Directive Evidence for Every Station",
+    "url": "https://codeatoms.ai/pipeline-integrity-gas-transmission-us/",
+    "doi": "10.5281/zenodo.23556374"
+  },
+  "sector": "oil-and-gas",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name: a gas transmission operator in the United States running more than 3,000 miles of pipe, more than a dozen compressor stations, several gas control centers and more than 100 compressor units, under 49 CFR Parts 191 and 192, API RP 1130 and the TSA pipeline security directives",
+  "source": "chapter 5 of the paper (the object list, its typed-link prose and the recorded form) and Figure 4, which draws the fourteen objects and thirteen typed links; link labels are read from Figure 4, except the meter station to pipeline segment link, whose label Figure 4 hides behind a card and which is labeled here 'on segment'. The two station objects were scrubbed to the same label by the platform and are relabeled Compressor Station (the station that runs compressor units) and Meter Station (the measurement record)",
+  "objects": [
+    {
+      "id": "compressor-station",
+      "label": "Compressor Station",
+      "kind": "site",
+      "anchored_in": "CMMS",
+      "properties": [
+        "Station number",
+        "State",
+        "RTU and PLC generations",
+        "Backhaul type (leased line, licensed radio, intermittent cellular)",
+        "Hazardous area classification reference"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "pipeline-segment",
+          "label": "carries"
+        },
+        {
+          "to": "ot-device",
+          "label": "hosts"
+        },
+        {
+          "to": "hazardous-area-classification",
+          "label": "classified by"
+        },
+        {
+          "to": "compressor-unit",
+          "label": "runs"
+        }
+      ]
+    },
+    {
+      "id": "meter-station",
+      "label": "Meter Station",
+      "kind": "site",
+      "anchored_in": "Historian",
+      "properties": [
+        "Station ID",
+        "Set pressure",
+        "Meter run",
+        "Remote telemetry type"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "pipeline-segment",
+          "label": "on segment"
+        },
+        {
+          "to": "remote-access-session",
+          "label": "reports via"
+        }
+      ]
+    },
+    {
+      "id": "pipeline-segment",
+      "label": "Pipeline Segment",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Segment ID",
+        "Maximum allowable operating pressure (MAOP)",
+        "Diameter and wall thickness",
+        "Class location",
+        "Inline inspection assessment date",
+        "High-consequence-area flag"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "compressor-unit",
+      "label": "Compressor Unit",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Unit ID",
+        "Type (gas turbine, reciprocating engine)",
+        "Running hours",
+        "Last overhaul date",
+        "Vibration and temperature points",
+        "Mean time between failures"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "work-order",
+          "label": "opens"
+        }
+      ]
+    },
+    {
+      "id": "ot-device",
+      "label": "OT Device",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Device class (RTU, PLC, gateway, engineering workstation)",
+        "Vendor and firmware version",
+        "Address",
+        "Approved logic fingerprint",
+        "Last-seen time"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "pipeline-controller",
+      "label": "Pipeline Controller",
+      "kind": "actor",
+      "anchored_in": "",
+      "properties": [
+        "Shift",
+        "Qualification",
+        "Roles in normal, abnormal and emergency conditions"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "alarm",
+      "label": "Alarm",
+      "kind": "event",
+      "anchored_in": "Alarm and event stream",
+      "properties": [
+        "Tag",
+        "Setpoint",
+        "Priority"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "historian",
+          "label": "sourced from"
+        },
+        {
+          "to": "leak-or-abnormal-operation-event",
+          "label": "escalates to"
+        }
+      ]
+    },
+    {
+      "id": "leak-or-abnormal-operation-event",
+      "label": "Leak or Abnormal Operation Event",
+      "kind": "event",
+      "anchored_in": "",
+      "properties": [
+        "Detection method",
+        "Estimated rate and location",
+        "CPM alarm record",
+        "Confirming controller",
+        "Work order",
+        "Regulatory report reference"
+      ],
+      "status_vocabulary": [
+        "Detected",
+        "Under investigation",
+        "Confirmed",
+        "Cleared as non-leak",
+        "Repaired"
+      ],
+      "links": [
+        {
+          "to": "pipeline-controller",
+          "label": "confirmed by"
+        },
+        {
+          "to": "work-order",
+          "label": "closes with"
+        }
+      ]
+    },
+    {
+      "id": "remote-access-session",
+      "label": "Remote Access Session",
+      "kind": "event",
+      "anchored_in": "",
+      "properties": [
+        "User",
+        "Origin",
+        "Window start"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "ot-device",
+          "label": "logged by"
+        }
+      ]
+    },
+    {
+      "id": "work-order",
+      "label": "Work Order",
+      "kind": "record",
+      "anchored_in": "CMMS",
+      "properties": [
+        "Work order number",
+        "Unit or segment",
+        "Raised by (model or person)",
+        "Owner",
+        "Due date"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "cmms",
+          "label": "held in"
+        }
+      ]
+    },
+    {
+      "id": "security-directive-control",
+      "label": "Security Directive Control",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Directive series and clause",
+        "Owner",
+        "Gap statement"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "historian",
+      "label": "Historian",
+      "kind": "system",
+      "anchored_in": "",
+      "properties": [
+        "Retention (one second data for 30 days)",
+        "Tag count"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "cmms",
+      "label": "CMMS",
+      "kind": "system",
+      "anchored_in": "",
+      "properties": [
+        "API endpoint and authentication",
+        "Equipment master"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "hazardous-area-classification",
+      "label": "Hazardous Area Classification",
+      "kind": "document",
+      "anchored_in": "",
+      "properties": [
+        "Station",
+        "Zone or division"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    }
+  ],
+  "write_paths": [
+    "the object model fed by the adapter tier; no path to a field device exists"
+  ],
+  "human_loop": "a named pipeline controller confirms or clears each leak or abnormal operation event and decides every action the assistant drafts; each work order carries an owner and a due date; each security directive control carries an owner and its gap statement"
+}

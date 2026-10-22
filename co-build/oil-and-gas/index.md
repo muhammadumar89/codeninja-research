@@ -13,6 +13,7 @@ Recommended path: start from the nearest published oil and gas design; we extend
 - [Sovereign HSE Watch: A Reference Architecture for Predictive Health, Safety and Environment Intelligence in Pakistan's Oil and Gas Operations](https://codeatoms.ai/sovereign-hse-pakistan/) (Pakistan): 12 objects, 5 models, DOI https://doi.org/10.5281/zenodo.23119714
 - [Loop Integrity Watch: Ending Distorted Radar Level Readings and Tank-to-Tank Swapping Across the Tank Farm](https://codeatoms.ai/tank-gauge-integrity-pakistan/) (Pakistan): 15 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23157967
 - [Corridor Guard: Validated DC Interference Assessment and Mitigation for Every Gas Pipeline Near the Electrode Station](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/) (Pakistan): 15 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23308093
+- [Pipeline Integrity Watch: Leak Detection, Fleet Health and Security Directive Evidence for Natural Gas Transmission in the United States](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) (United States): 14 objects, 4 models, DOI https://doi.org/10.5281/zenodo.23556374
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
 
@@ -42,7 +43,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a oil and gas design to read?
 
-Yes. 3 published oil and gas reference architectures in Pakistan, each with a DOI, an object model and a cost appendix.
+Yes. 4 published oil and gas reference architectures in Pakistan and the United States, each with a DOI, an object model and a cost appendix.
 
 Ask to co-build: https://codeatoms.ai/co-build/oil-and-gas/#ask
 Every sector: https://codeatoms.ai/co-build/

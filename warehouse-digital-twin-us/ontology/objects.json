@@ -1,0 +1,285 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Warehouse Twin Command: Live Slotting, Docks, Yards and Safety Vision for Warehousing and Intralogistics in the United States",
+    "url": "https://codeatoms.ai/warehouse-digital-twin-us/",
+    "doi": "10.5281/zenodo.23556416"
+  },
+  "sector": "warehousing-and-intralogistics",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name: a warehousing and intralogistics operator in the United States running four distribution centers with about 220 existing fixed cameras",
+  "source": "chapter 5 of the paper (the object list, anchors, status vocabularies and the recorded form of Distribution Center) and Figure 4 (properties and the 14 typed links). Figure 4 hides two link labels behind cards: SKU to Pick Task is written 'feeds' and Shift Lead to Associate 'owns the shift of', both from chapter 5 sentences ('the Pick Tasks those SKUs feed', 'the Shift Lead who owns that associate's shift'). Safety Event, Forklift, Shift Lead and Slotting Recommendation are native to the design (Safety Event digitizes what paper near-miss reports hold today).",
+  "write_paths": [
+    "the adapter tier, the ontology's only write path; no service writes the twin directly",
+    "approved slotting moves execute in the WMS, which remains the system of record"
+  ],
+  "human_loop": "a Slotting Recommendation moves Drafted, Approved, Executed, Realized or Expired and states predicted walking saved and move labor before anyone approves it; a Safety Event moves Detected, Under review, Confirmed, then Coaching scheduled, Closed or Dismissed as false, with a supervisor deciding coaching every time",
+  "objects": [
+    {
+      "id": "distribution-center",
+      "label": "Distribution Center",
+      "kind": "site",
+      "anchored_in": "the WMS site master",
+      "properties": [
+        "Square footage",
+        "Dock door count",
+        "Shift pattern",
+        "Camera count",
+        "WAN link"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dock-door",
+          "label": "has"
+        },
+        {
+          "to": "shift-lead",
+          "label": "runs"
+        },
+        {
+          "to": "camera-zone",
+          "label": "covers"
+        }
+      ]
+    },
+    {
+      "id": "dock-door",
+      "label": "Dock Door",
+      "kind": "asset",
+      "anchored_in": "the yard management spreadsheet, until the dock and yard module becomes the yard system of record",
+      "properties": [
+        "Door number",
+        "Assigned trailer",
+        "Carrier appointment"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "shift-lead",
+          "label": "assigned to"
+        }
+      ]
+    },
+    {
+      "id": "yard-trailer",
+      "label": "Yard Trailer",
+      "kind": "asset",
+      "anchored_in": "the yard management spreadsheet, until the dock and yard module becomes the yard system of record",
+      "properties": [
+        "Trailer number",
+        "Carrier",
+        "Contents"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dock-door",
+          "label": "staged at"
+        }
+      ]
+    },
+    {
+      "id": "storage-slot",
+      "label": "Storage Slot",
+      "kind": "asset",
+      "anchored_in": "the warehouse management system",
+      "properties": [
+        "Aisle",
+        "Bay",
+        "Level"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "pick-task",
+          "label": "feeds"
+        }
+      ]
+    },
+    {
+      "id": "sku",
+      "label": "SKU",
+      "kind": "material",
+      "anchored_in": "the warehouse management system",
+      "properties": [
+        "Item number",
+        "Cube",
+        "Pick velocity"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dock-door",
+          "label": "travels from"
+        },
+        {
+          "to": "pick-task",
+          "label": "feeds"
+        }
+      ]
+    },
+    {
+      "id": "open-order",
+      "label": "Open Order",
+      "kind": "record",
+      "anchored_in": "the warehouse management system",
+      "properties": [
+        "Order number",
+        "Customer",
+        "Line count"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "pick-task",
+      "label": "Pick Task",
+      "kind": "record",
+      "anchored_in": "the warehouse management system",
+      "properties": [
+        "Task id",
+        "Order",
+        "Slot"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "associate",
+          "label": "assigned to"
+        }
+      ]
+    },
+    {
+      "id": "associate",
+      "label": "Associate",
+      "kind": "person",
+      "anchored_in": "the labor management system",
+      "properties": [
+        "Employee id",
+        "Shift",
+        "Home zone"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "labor-shift",
+      "label": "Labor Shift",
+      "kind": "record",
+      "anchored_in": "the labor management system",
+      "properties": [
+        "Date",
+        "Shift",
+        "Headcount by zone"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "camera-zone",
+      "label": "Camera Zone",
+      "kind": "asset",
+      "anchored_in": "the video management system",
+      "properties": [
+        "Camera id",
+        "View",
+        "Zone type"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "safety-event",
+      "label": "Safety Event",
+      "kind": "event",
+      "anchored_in": "",
+      "properties": [
+        "Event type",
+        "Zone",
+        "Camera"
+      ],
+      "status_vocabulary": [
+        "Detected",
+        "Under review",
+        "Confirmed",
+        "Coaching scheduled",
+        "Closed",
+        "Dismissed as false"
+      ],
+      "links": [
+        {
+          "to": "camera-zone",
+          "label": "detected by"
+        },
+        {
+          "to": "associate",
+          "label": "involves"
+        }
+      ]
+    },
+    {
+      "id": "forklift",
+      "label": "Forklift",
+      "kind": "asset",
+      "anchored_in": "",
+      "properties": [
+        "Truck id",
+        "Truck class",
+        "Current operator"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "shift-lead",
+      "label": "Shift Lead",
+      "kind": "person",
+      "anchored_in": "",
+      "properties": [
+        "Name",
+        "Shift",
+        "Zones owned"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "labor-shift",
+          "label": "staffs"
+        },
+        {
+          "to": "associate",
+          "label": "owns the shift of"
+        }
+      ]
+    },
+    {
+      "id": "slotting-recommendation",
+      "label": "Slotting Recommendation",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Sku",
+        "From slot",
+        "To slot",
+        "Predicted walking saved",
+        "Move labor estimate"
+      ],
+      "status_vocabulary": [
+        "Drafted",
+        "Approved",
+        "Executed",
+        "Realized",
+        "Expired"
+      ],
+      "links": [
+        {
+          "to": "sku",
+          "label": "moves"
+        }
+      ]
+    }
+  ]
+}

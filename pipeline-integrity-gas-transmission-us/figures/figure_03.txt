@@ -1,0 +1,1 @@
+Figure 3. The layered stack: 4 sources, 3 adapter families, 14 objects, 10 services and 7 surfaces.

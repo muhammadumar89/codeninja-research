@@ -1,0 +1,286 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Wayside Trend Watch: Days of Warning Before Any Stop Alarm",
+    "url": "https://codeatoms.ai/wayside-detector-trending-rail-us/",
+    "doi": "10.5281/zenodo.23556421"
+  },
+  "sector": "rail-and-transportation",
+  "country": "United States",
+  "scenario": "the operator is described by class, never by name: a freight railroad in the United States trending 29 existing wayside detectors, a four-camera yard-entry portal and a pilot set of locomotives",
+  "source": "chapter 5 of the paper (the object list in 5.1 and its typed-link prose), Figure 4 for link labels and visible properties, the recorded form in 5.3 for Freight Car, 5.2 for the Trend Flag status ladder, and 6.2 for the reading's normalization fields. Figure 4 hides one label (Train to Freight Car) behind the AAR Interchange Record card; it is written here as 'consist' from the Train's Consist property. Properties Figure 4 truncates are listed only as far as they are legible.",
+  "objects": [
+    {
+      "id": "freight-car",
+      "label": "Freight Car",
+      "kind": "asset",
+      "anchored_in": "Railinc Umler registry and the railroad's CMMS master data",
+      "properties": [
+        "Reporting mark",
+        "Car number",
+        "Owner railroad",
+        "Home or foreign car",
+        "Car type",
+        "Capacity",
+        "Last interchange date"
+      ],
+      "status_vocabulary": [
+        "In service",
+        "Bad ordered",
+        "Set out",
+        "Shopped",
+        "Retired"
+      ],
+      "links": [
+        {
+          "to": "wheelset",
+          "label": "rides on"
+        }
+      ]
+    },
+    {
+      "id": "locomotive",
+      "label": "Locomotive",
+      "kind": "asset",
+      "anchored_in": "the railroad's maintenance system (CMMS/EAM) locomotive master data",
+      "properties": [
+        "Road number",
+        "Model",
+        "Build year"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "axle-bearing",
+      "label": "Axle Bearing (Roller Bearing)",
+      "kind": "asset",
+      "anchored_in": "the railroad's maintenance system (CMMS/EAM) master data, keyed to the serialized component",
+      "properties": [
+        "Car or locomotive id",
+        "Axle position"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "wheelset",
+      "label": "Wheelset",
+      "kind": "asset",
+      "anchored_in": "the railroad's maintenance system (CMMS/EAM) master data, keyed to the serialized component",
+      "properties": [
+        "Car or locomotive id",
+        "Axle position",
+        "Wheel diameter"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "axle-bearing",
+          "label": "paired with"
+        }
+      ]
+    },
+    {
+      "id": "traction-motor",
+      "label": "Traction Motor",
+      "kind": "asset",
+      "anchored_in": "the railroad's maintenance system (CMMS/EAM) locomotive master data",
+      "properties": [
+        "Locomotive id",
+        "Truck position",
+        "Install date"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "locomotive",
+          "label": "mounted on"
+        }
+      ]
+    },
+    {
+      "id": "wayside-detector",
+      "label": "Wayside Detector",
+      "kind": "asset",
+      "anchored_in": "wayside detector network",
+      "properties": [
+        "Subdivision",
+        "Milepost",
+        "Scan configuration"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "detector-reading",
+          "label": "produced"
+        }
+      ]
+    },
+    {
+      "id": "track-segment",
+      "label": "Track Segment",
+      "kind": "asset",
+      "anchored_in": "the railroad's track charts",
+      "properties": [
+        "Subdivision",
+        "Milepost range",
+        "Track class"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "track-geometry-exception",
+          "label": "carries"
+        },
+        {
+          "to": "detector-reading",
+          "label": "spaces"
+        }
+      ]
+    },
+    {
+      "id": "detector-reading",
+      "label": "Detector Reading",
+      "kind": "measure",
+      "anchored_in": "wayside detector network",
+      "properties": [
+        "Detector",
+        "Train",
+        "Car id",
+        "Axle position",
+        "Timestamp",
+        "Ambient temperature",
+        "Train speed",
+        "Detector calibrated bias"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "train",
+          "label": "taken by"
+        },
+        {
+          "to": "axle-bearing",
+          "label": "measures"
+        },
+        {
+          "to": "wheelset",
+          "label": "measures"
+        }
+      ]
+    },
+    {
+      "id": "trend-flag",
+      "label": "Trend Flag",
+      "kind": "record",
+      "anchored_in": "",
+      "properties": [
+        "Flagged asset",
+        "Source readings",
+        "Slope",
+        "Projected threshold crossing",
+        "Warning interval against detector spacing",
+        "Disposition",
+        "Disposer"
+      ],
+      "status_vocabulary": [
+        "Open",
+        "Confirmed",
+        "Dismissed",
+        "Work order raised"
+      ],
+      "links": [
+        {
+          "to": "detector-reading",
+          "label": "flags"
+        }
+      ]
+    },
+    {
+      "id": "work-order",
+      "label": "Work Order",
+      "kind": "record",
+      "anchored_in": "railroad maintenance system (CMMS/EAM)",
+      "properties": [
+        "Work order number",
+        "Asset",
+        "Fault code"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "trend-flag",
+          "label": "resolves"
+        }
+      ]
+    },
+    {
+      "id": "track-geometry-exception",
+      "label": "Track Geometry Exception",
+      "kind": "record",
+      "anchored_in": "contractor geometry reports, digitized into the pipeline",
+      "properties": [
+        "Segment",
+        "Parameter"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "rail-flaw-indication",
+      "label": "Rail Flaw Indication",
+      "kind": "record",
+      "anchored_in": "contractor rail flaw reports, digitized into the pipeline",
+      "properties": [
+        "Segment",
+        "Milepost",
+        "Defect type"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "aar-interchange-record",
+      "label": "AAR Interchange Record",
+      "kind": "record",
+      "anchored_in": "Railinc Umler and interchange services (read only)",
+      "properties": [
+        "Car",
+        "Owning railroad"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "freight-car",
+          "label": "files against"
+        }
+      ]
+    },
+    {
+      "id": "train",
+      "label": "Train",
+      "kind": "event",
+      "anchored_in": "wayside detector network",
+      "properties": [
+        "Symbol",
+        "Date",
+        "Consist"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "freight-car",
+          "label": "consist"
+        }
+      ]
+    }
+  ],
+  "write_paths": [
+    "the adapter tier (read only from every source, idempotent upserts)",
+    "the human disposition of a trend flag recorded through the queue surface"
+  ],
+  "human_loop": "every trend flag stays Open until a named person confirms it, dismisses it or lets it raise a work order; no flag becomes a set out, and no slow order is issued, without that person"
+}

@@ -1,0 +1,13 @@
+choice,picked,why
+Work surface model,"gpt-oss-120b, 120B MoE, MXFP4, Apache-2.0, central tier",Largest permissive US-origin open weights; GLM 5.3 set aside on the Entity List; one 141 GB card in the railroad's own data center
+Portal detector,"D-FINE, Apache-2.0, COCO checkpoints, wayside NPU box",No field-of-use restriction; Objects365 terms not cleared; runs at yard speed on the edge
+Portal OCR,"PP-OCRv6 small, 7.7M parameters, CTC head pinned",Car number becomes a join key at the edge; runs on CPU well inside 1 GB of RAM
+Trend forecasting,"Chronos-2, Apache-2.0, zero-shot, central tier",Multivariate forecasts with covariates; residual thresholding; nothing fine tuned under the system of context
+Central hardware class,"141 GB HBM GPU class, one card, one node",About 65.2 GB of MXFP4 and 16 bit weights plus a 13 GB planning reserve fits with about 63 GB spare
+Edge compute sizing,Octa-core NPU edge box sized from its streams,D-FINE and PP-OCRv6 occupy a fraction of the box; buffer and video pipeline take the rest
+Wayside sensing,"29 detectors: 22 hot box and hot wheel, 4 wheel impact load, 2 acoustic bearing, 1 wheel profile; pilot locomotive vibration and temperature sensing","The existing network is the trend corpus; new onboard sensing is pilot only, rolled out through scheduled shop visits"
+Portal sensing,"Four cameras at yard entry: left side, right side, wheel line, yard throat overview","Bought by class against pixel-density and blur-budget arithmetic; detections span car, door, wheel, brake shoe, journal box and dragging equipment"
+"Pattern: trend, do not build","Cross-detector trending over the existing 29 detectors, keyed to serialized bearings and axles","Shortens the observed gap without new detector sites, which are the railroad's capital decision"
+"Pattern: findings cross, pixels stay",Edge inference at the portal with store-and-forward buffers,"A cellular link that drops for hours cannot carry video; detections, OCR strings and evidence frames cross"
+"Pattern: advise, never act","No train control, signal or PTC interface",The single-reading stop alarm to the dispatcher stays exactly as it is; people decide every set out
+Ground,"The railroad's own data center and wayside boxes, Harbor air-gapped registry","Open weights let the operator hold its weights, its data and its decision record with no permission to renew"

@@ -172,7 +172,7 @@
       "anchored_in": "the integrity monitor",
       "properties": [
         "Tank",
-        "Event type (stuck value, swapped data, distortion,",
+        "Event type (stuck value, swapped data, distortion)",
         "Detected at",
         "Cleared by",
         "Loop affected"

@@ -1,0 +1,12 @@
+choice,picked,why
+Frontier work surface model,"Mistral Large 3 675B (Instruct), FP8, about 682 GB of weights","Apache-2.0 with no field-of-use restriction or Entity-List exposure; carries the assistant, the compliance agent and the work surface on one control-center node"
+Telemetry forecaster,"Chronos-2, about 0.48 GB at 32 bit",Zero-shot covariate forecasting with residual anomaly detection; small enough to run offline on the station edge boxes
+Camera detector,"RF-DETR Apache sizes at BF16, about 61 to 68 MB for Nano to Large, about 254 MB for 2XL",Apache-2.0 checkpoints only with the version pinned; fine-tunable on site footage and exportable to the edge NPU
+Retrieval embedding,"BGE-M3, MIT, about 1.1 GB at fp16","Hybrid dense and sparse retrieval in one pass keeps tag names, error codes and part numbers findable"
+Edge compute class,Volume-production modules in 7W to 60W envelopes,Chosen by thermal envelope for station cabinets; runs the station models offline and needs no export license for a domestic install
+Hazardous-area ground,Edge Compute Enclosures In Hazardous Areas,"Station electronics sit inside classified areas, so the enclosure class is a design input, not an afterthought"
+One-way egress,One Way Path Out Of An OT Zone and Data Diode One Way Transfer,Telemetry and evidence leave the OT zone with no return path to misconfigure
+Placement rule,When Inference Belongs At The Edge,Detection survives backhaul loss at the station; reasoning stays where the context and the people live
+Sensing,"Passive OT network taps at every station and both control centers, fixed methane point sensors at the highest risk stations, vibration sensors on compressor frames and bearing housings, discharge temperature probes, existing line pressure and flow transmitters, PTP grandmaster clocks",The physical coverage every model in this table reads
+Standing patterns,"System of Context as the primary architecture, zone-and-conduit boundary, edge-first detection, shadow mode before any controller-facing alert",Every row above was tested against these patterns before it was committed
+Ground it runs on,"Operator-owned control-center GPU node and station cabinets, K3s, Triton Inference Server, vLLM, Harbor registry","Open weights held outright on premises, inside the operator's boundary, with updates through an approved change path"

@@ -1,0 +1,12 @@
+choice,picked,why
+Frontier model,"Mistral Large 3 675B, Apache-2.0, FP8",No revenue trigger or attribution duty; one 141 GB HBM class node holds the 682 GB weights with about 350 GB KV ceiling
+Site model,"Qwen3.8-27B, Apache-2.0, one 48 GB PCIe card",About 31 GB at FP8 keeps the assistant alive in degraded mode during WAN loss
+Detection model,"RF-DETR, Apache-2.0 N to L checkpoints",XL and 2XL carry a platform license; N to L takes site fine-tuning for evaluation sets
+Tracking model,"OC-SORT, MIT, motion-only","No re-identification branch, so the safety system never becomes a surveillance system"
+Embedding model,"BGE-M3, MIT, 8,192 token window","One pass yields dense, sparse and multi-vector retrieval on a small box"
+Edge compute class,Rugged rack server with PCIe inference accelerators,"Sized per site from the measured decode-plus-inference budget on camera substreams, with headroom on both"
+Camera estate,"The existing roughly 220 fixed IP cameras, reused",Six-gate survey per camera; purpose-placed fixed additions only where a view fails
+Sizing rules,"Streams, calibration, meters, bandwidth",Size from streams not boxes; calibrate when speeds must survive challenge; budget video on the correlated peak
+Sensing,"WMS event stream, labor extracts, yard appointments, link and GPU health telemetry",The twin's feeds and the failure signals the boundary behavior depends on
+Patterns,"System of Context, camera analytics as feedback loop, baseline before anything, shadow mode",The assistant drafts and a person approves; analytics never act as a safety-rated stop
+Ground,"The operator's own hardware, open weights, in-company environment",Domestic supply engages no export pathway; only events and short clips leave each building

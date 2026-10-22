@@ -24,7 +24,7 @@ Each discrete manufacturing and automotive design prices three years of ownershi
 
 ## What ontology or object model does a discrete manufacturing and automotive AI system need?
 
-The object model is the part that makes the system an ontology rather than a pipeline: typed objects for the things in the discrete manufacturing and automotive operation, with properties, status values and typed links. Every published design ships its object model as hyper-ontology/1 JSON that loads into Hyper Ontology. Pit Camera Watch: The site, Camera Pole, Camera Head, Underground Fiber Run, Safety Gate, Operator Booth Display, Server (the operator's own system), 30-Day Footage Archive, Incident/Accident Record, The site Operator, Gate Officer, Safety Office Reviewer, Vehicle Under Test, Test Cycle, The operator's own system Power/Fiber assessment package.
+The object model is the part that makes the system an ontology rather than a pipeline: typed objects for the things in the discrete manufacturing and automotive operation, with properties, status values and typed links. Every published design ships its object model as hyper-ontology/1 JSON that loads into Hyper Ontology. Pit Camera Watch: Test Site, Camera Pole, Camera Head, Underground Fiber Run, Safety Gate, Operator Booth Display, Recorder Server, 30-Day Footage Archive, Incident/Accident Record, Booth Operator, Gate Officer, Safety Office Reviewer, Vehicle Under Test, Test Cycle, Power and Fiber Assessment Package.
 
 ## Who approves the decisions an AI system makes in discrete manufacturing and automotive?
 

@@ -19,7 +19,7 @@
   "objects": [
     {
       "id": "site",
-      "label": "The site",
+      "label": "Farm Site",
       "kind": "site",
       "anchored_in": "the operator's farm register",
       "properties": [
@@ -43,7 +43,7 @@
     },
     {
       "id": "field",
-      "label": "The field",
+      "label": "Field",
       "kind": "site",
       "anchored_in": "the operator's farm register",
       "properties": [

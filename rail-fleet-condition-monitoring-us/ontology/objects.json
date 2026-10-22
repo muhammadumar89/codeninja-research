@@ -19,7 +19,7 @@
   "objects": [
     {
       "id": "car",
-      "label": "the operator's car",
+      "label": "Commuter car",
       "kind": "asset",
       "anchored_in": "",
       "properties": [
@@ -42,7 +42,7 @@
         },
         {
           "to": "car_system_router",
-          "label": "the car system"
+          "label": "car system router"
         },
         {
           "to": "digital_input_channel",
@@ -76,7 +76,7 @@
     },
     {
       "id": "car_system_router",
-      "label": "The car system",
+      "label": "Car system router",
       "kind": "asset",
       "anchored_in": "",
       "properties": [
@@ -231,7 +231,7 @@
     },
     {
       "id": "control_center",
-      "label": "the control center mechanical desk",
+      "label": "Control center mechanical desk",
       "kind": "site",
       "anchored_in": "",
       "properties": [
@@ -244,7 +244,7 @@
     },
     {
       "id": "yard_office",
-      "label": "the yard office",
+      "label": "Yard office",
       "kind": "site",
       "anchored_in": "",
       "properties": [

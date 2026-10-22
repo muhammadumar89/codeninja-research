@@ -5,7 +5,7 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 We publish the design. You bring the operation. Together they become an object model your systems can run on.
 
-18 reference architectures are published so far, across 8 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
+21 reference architectures are published so far, across 9 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
 
 ## Sectors
 
@@ -20,7 +20,7 @@ We publish the design. You bring the operation. Together they become an object m
 - [Semiconductors](https://codeatoms.ai/co-build/semiconductors/): first design open
 - [Supply chain and logistics](https://codeatoms.ai/co-build/supply-chain-and-logistics/): first design open
 - [Agriculture and earth observation](https://codeatoms.ai/co-build/agriculture-and-earth-observation/): 3 published designs
-- [Oil and gas](https://codeatoms.ai/co-build/oil-and-gas/): 3 published designs
+- [Oil and gas](https://codeatoms.ai/co-build/oil-and-gas/): 4 published designs
 - [Warehousing and intralogistics](https://codeatoms.ai/co-build/warehousing-and-intralogistics/): first design open
 
 ## What you bring

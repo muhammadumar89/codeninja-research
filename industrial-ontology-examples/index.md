@@ -4,7 +4,64 @@ Canonical: https://codeatoms.ai/industrial-ontology-examples/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 18 published industrial ontology examples, 246 objects and 228 links in all, one per real operation across 8 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 21 published industrial ontology examples, 288 objects and 268 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+
+## Wayside Trend Watch (rail and transportation, United States)
+
+Design: https://codeatoms.ai/wayside-detector-trending-rail-us/ · JSON: https://codeatoms.ai/wayside-detector-trending-rail-us/ontology/objects.json
+
+- Freight Car (asset, in Railinc Umler registry and the railroad's CMMS master data)
+- Locomotive (asset, in the railroad's maintenance system (CMMS/EAM) locomotive master data)
+- Axle Bearing (Roller Bearing) (asset, in the railroad's maintenance system (CMMS/EAM) master data, keyed to the serialized component)
+- Wheelset (asset, in the railroad's maintenance system (CMMS/EAM) master data, keyed to the serialized component)
+- Traction Motor (asset, in the railroad's maintenance system (CMMS/EAM) locomotive master data)
+- Wayside Detector (asset, in wayside detector network)
+- Track Segment (asset, in the railroad's track charts)
+- Detector Reading (measure, in wayside detector network)
+- Trend Flag (record)
+- Work Order (record, in railroad maintenance system (CMMS/EAM))
+- Track Geometry Exception (record, in contractor geometry reports, digitized into the pipeline)
+- Rail Flaw Indication (record, in contractor rail flaw reports, digitized into the pipeline)
+- AAR Interchange Record (record, in Railinc Umler and interchange services (read only))
+- Train (event, in wayside detector network)
+
+## Warehouse Twin Command (warehousing and intralogistics, United States)
+
+Design: https://codeatoms.ai/warehouse-digital-twin-us/ · JSON: https://codeatoms.ai/warehouse-digital-twin-us/ontology/objects.json
+
+- Distribution Center (site, in the WMS site master)
+- Dock Door (asset, in the yard management spreadsheet, until the dock and yard module becomes the yard system of record)
+- Yard Trailer (asset, in the yard management spreadsheet, until the dock and yard module becomes the yard system of record)
+- Storage Slot (asset, in the warehouse management system)
+- SKU (material, in the warehouse management system)
+- Open Order (record, in the warehouse management system)
+- Pick Task (record, in the warehouse management system)
+- Associate (person, in the labor management system)
+- Labor Shift (record, in the labor management system)
+- Camera Zone (asset, in the video management system)
+- Safety Event (event)
+- Forklift (asset)
+- Shift Lead (person)
+- Slotting Recommendation (record)
+
+## Pipeline Integrity Watch (oil and gas, United States)
+
+Design: https://codeatoms.ai/pipeline-integrity-gas-transmission-us/ · JSON: https://codeatoms.ai/pipeline-integrity-gas-transmission-us/ontology/objects.json
+
+- Compressor Station (site, in CMMS)
+- Meter Station (site, in Historian)
+- Pipeline Segment (asset)
+- Compressor Unit (asset)
+- OT Device (asset)
+- Pipeline Controller (actor)
+- Alarm (event, in Alarm and event stream)
+- Leak or Abnormal Operation Event (event)
+- Remote Access Session (event)
+- Work Order (record, in CMMS)
+- Security Directive Control (record)
+- Historian (system)
+- CMMS (system)
+- Hazardous Area Classification (document)
 
 ## Turbine Island Watch (energy and utilities, Pakistan)
 
@@ -25,9 +82,9 @@ Design: https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/ · JSO
 
 Design: https://codeatoms.ai/rail-fleet-condition-monitoring-us/ · JSON: https://codeatoms.ai/rail-fleet-condition-monitoring-us/ontology/objects.json
 
-- the operator's car (asset)
+- Commuter car (asset)
 - Onboard monitoring module (asset)
-- The car system (asset)
+- Car system router (asset)
 - Digital input channel (measure)
 - Analog input channel (measure)
 - Active fault (event)
@@ -35,8 +92,8 @@ Design: https://codeatoms.ai/rail-fleet-condition-monitoring-us/ · JSON: https:
 - Alert notification (record)
 - Mechanical desk controller (actor)
 - Yard employee (person)
-- the control center mechanical desk (site)
-- the yard office (site)
+- Control center mechanical desk (site)
+- Yard office (site)
 - Slippery rail hotspot (record)
 - Notification recipient group (actor)
 
@@ -63,14 +120,14 @@ Design: https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/ · JSON:
 
 Design: https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/ · JSON: https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/ontology/objects.json
 
-- The 8-inch line (asset)
-- The 10-inch loop line (asset)
-- The original anode bed (asset)
+- 8-inch Line (asset)
+- 10-inch Loop Line (asset)
+- Original Anode Bed (asset)
 - TEG Unit (asset)
 - Anode 1 (MP-3.40) (asset)
 - Anode 2 (MP-6.97) (asset)
 - Insulating Joints PFIJ (asset)
-- The electrode station (asset)
+- Electrode Station (asset)
 - HVDC Transmission System (system, in the direct current system's configuration record, read only)
 - CP Test Point (asset)
 - Cathodic Protection System (system)
@@ -83,28 +140,28 @@ Design: https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/ · JSON: ht
 
 Design: https://codeatoms.ai/test-site-camera-monitoring-us/ · JSON: https://codeatoms.ai/test-site-camera-monitoring-us/ontology/objects.json
 
-- The site (site)
+- Test Site (site)
 - Camera Pole (asset, in the recorder's configuration under site change control)
 - Camera Head (asset, in the recorder's configuration under site change control)
 - Underground Fiber Run (asset, in the recorder's configuration under site change control)
 - Safety Gate (asset, in the recorder's configuration under site change control)
 - Operator Booth Display (asset, in the recorder's configuration under site change control)
-- Server (the operator's own system) (system, in the recorder's configuration under site change control)
+- Recorder Server (system, in the recorder's configuration under site change control)
 - 30-Day Footage Archive (record, in the recorder's configuration under site change control)
 - Incident/Accident Record (record, in the recorder's configuration under site change control)
-- The site Operator (person, in the operator's identity policy)
+- Booth Operator (person, in the operator's identity policy)
 - Gate Officer (person, in the operator's identity policy)
 - Safety Office Reviewer (person, in the operator's identity policy)
 - Vehicle Under Test (asset, in the operator's test schedule)
 - Test Cycle (event, in the operator's test schedule)
-- The operator's own system Power/Fiber assessment package (document, in the operator's own system, read only)
+- Power and Fiber Assessment Package (document, in the power and fiber works assessment process, read only)
 
 ## Baseline (agriculture and earth observation, United States)
 
 Design: https://codeatoms.ai/vegetation-mapping-lidar-us/ · JSON: https://codeatoms.ai/vegetation-mapping-lidar-us/ontology/objects.json
 
-- The site (site, in the operator's ArcGIS Enterprise)
-- The unit (site, in the operator's ArcGIS Enterprise)
+- Mapping Site (site, in the operator's ArcGIS Enterprise)
+- Land Unit (site, in the operator's ArcGIS Enterprise)
 - Watercourse (asset, in the operator's ArcGIS Enterprise)
 - Dam (asset, in the operator's ArcGIS Enterprise)
 - Flight Mission (event, in the survey firm's flight log)
@@ -143,8 +200,8 @@ Design: https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/ · JSON: h
 
 Design: https://codeatoms.ai/farm-data-dashboard-pakistan/ · JSON: https://codeatoms.ai/farm-data-dashboard-pakistan/ontology/objects.json
 
-- The site (site, in the operator's farm register)
-- The field (site, in the operator's farm register)
+- Farm Site (site, in the operator's farm register)
+- Field (site, in the operator's farm register)
 - Crop Cycle (event, in the operator's farm records)
 - Sensor Device (asset, in the site sensor feeds)
 - Sensor Reading (measure, in the site sensor feeds)

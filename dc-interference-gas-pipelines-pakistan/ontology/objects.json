@@ -19,7 +19,7 @@
   "objects": [
     {
       "id": "the-line0",
-      "label": "The 8-inch line",
+      "label": "8-inch Line",
       "kind": "asset",
       "anchored_in": "",
       "properties": [
@@ -38,7 +38,7 @@
     },
     {
       "id": "the-line",
-      "label": "The 10-inch loop line",
+      "label": "10-inch Loop Line",
       "kind": "asset",
       "anchored_in": "",
       "properties": [
@@ -57,7 +57,7 @@
     },
     {
       "id": "the-unit",
-      "label": "The original anode bed",
+      "label": "Original Anode Bed",
       "kind": "asset",
       "anchored_in": "",
       "properties": [
@@ -125,8 +125,8 @@
       "links": []
     },
     {
-      "id": "the-station",
-      "label": "The electrode station",
+      "id": "electrode-station",
+      "label": "Electrode Station",
       "kind": "asset",
       "anchored_in": "",
       "properties": [
@@ -161,7 +161,7 @@
       ],
       "links": [
         {
-          "to": "the-station",
+          "to": "electrode-station",
           "label": "terminates at"
         },
         {

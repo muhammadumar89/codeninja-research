@@ -53,6 +53,29 @@ PATTERNS = [  # (pattern, what it is, test on the design's own At a glance compu
 ]
 
 
+LAYERS = [  # bottom up, the layered stack every published design draws as its Figure 3 (pulled forward by Umar's ruling of 22 Oct 2026)
+    ("Sources", "the systems of record the operation already runs, read only; they stay the system of record"),
+    ("Sensing", "cameras, detectors and instruments, existing or added, sized from the streams they produce"),
+    ("Adapters", "one family per kind of source, owning its contract, retries and ordering; the only way data enters"),
+    ("Object model", "the operation as typed objects, properties and links (an ontology), held on infrastructure the operator controls"),
+    ("Inference", "open-weight models only, placed at the edge, the site or one in-country node by latency and link loss"),
+    ("Services", "what the design computes over the object model: forecasts, detections, joins, evidence"),
+    ("Surfaces", "where people see the result and a named person decides; actions are written one way into the owning system"),
+]
+
+
+def layers(ds):
+    """The layers section: what each layer is, with totals read from the published designs."""
+    objs, links_, models = sum(d.get("n_objects") or 0 for d in ds), sum(d.get("n_links") or 0 for d in ds), sum(d.get("n_models") or 0 for d in ds)
+    human = sum(1 for d in ds if d.get("human_loop"))
+    rows = [[f"<strong>{i + 1}. {E(a)}</strong>", E(b)] for i, (a, b) in enumerate(LAYERS)]
+    lead = (f"Every published design follows the same seven layers, bottom up. Across the {len(ds)} designs the object model layer holds "
+            f"{objs} objects and {links_} typed links, the inference layer names {models} open-weight model choices, and {human} of {len(ds)} "
+            f"designs name the person who approves each action. The sovereign boundary is what makes it sovereign: every layer runs on "
+            f"hardware the operator owns or controls, in its own country, with no third-party AI service in the serving path.")
+    return lead, rows
+
+
 def patterns(ds):
     """Group the designs by deployment pattern, by rule from each design's own compute figure, so the table
     answers 'which sovereign AI reference architecture fits my operation' in the first screen."""
@@ -98,6 +121,9 @@ def sovereign(ds, today):
             + '<h2 id="patterns">Sovereign AI reference architecture patterns</h2>'
             + '<p class="ans">Three deployment patterns cover all ' + str(len(ds)) + ' published designs, grouped by rule from each design\'s own compute figure. Start from the one that matches the hardware your operation can own.</p>'
             + table(["Pattern", "What runs where", "Designs"], [[f"<strong>{E(a)}</strong> ({len(g)})", E(b), ", ".join(link(d) for d in g)] for a, b, g in patterns(ds)])
+            + '<h2 id="layers">The layers of a sovereign AI reference architecture</h2>'
+            + f'<p class="ans">{E(layers(ds)[0])}</p>'
+            + table(["Layer", "What it holds"], layers(ds)[1])
             + f'<h2 id="all">Every published sovereign AI reference architecture</h2>'
             f'<p class="ans">Newest first. The compute and cost columns are each design\'s own At a glance figures.</p>'
             + table(["Design", "Sector", "Country", "Compute", "Three-year cost", "DOI"], rows)
@@ -125,6 +151,8 @@ def sovereign(ds, today):
     md = ["# Sovereign AI reference architectures", "", f"Canonical: {BASE}/{SOV}/", "License: CC BY 4.0", "Publisher: CodeNinja Atoms (https://codeatoms.ai)", f"DOI: {SOV_DOI}", "", answer, "",
           "## Sovereign AI reference architecture patterns", "", "| Pattern | What runs where | Designs |", "|---|---|---|"]
     md += [f"| {a} ({len(g)}) | {b} | " + ", ".join(f"[{d['short']}]({d['url']})" for d in g) + " |" for a, b, g in patterns(ds)]
+    md += ["", "## The layers of a sovereign AI reference architecture", "", layers(ds)[0], "", "| Layer | What it holds |", "|---|---|"]
+    md += [f"| {i + 1}. {a} | {b} |" for i, (a, b) in enumerate(LAYERS)]
     md += ["", "## Every published sovereign AI reference architecture", "",
           "| Design | Sector | Country | Compute | Three-year cost | DOI |", "|---|---|---|---|---|---|"]
     for d in ds:

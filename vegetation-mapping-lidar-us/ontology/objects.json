@@ -19,7 +19,7 @@
   "objects": [
     {
       "id": "site",
-      "label": "The site",
+      "label": "Mapping Site",
       "kind": "site",
       "anchored_in": "the operator's ArcGIS Enterprise",
       "properties": [
@@ -48,7 +48,7 @@
     },
     {
       "id": "unit",
-      "label": "The unit",
+      "label": "Land Unit",
       "kind": "site",
       "anchored_in": "the operator's ArcGIS Enterprise",
       "properties": [

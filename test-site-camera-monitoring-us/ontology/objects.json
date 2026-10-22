@@ -19,23 +19,23 @@
   "objects": [
     {
       "id": "the-site",
-      "label": "The site",
+      "label": "Test Site",
       "kind": "site",
       "anchored_in": "",
       "properties": [
         "Turn count",
-        "The pit access",
-        "The area",
+        "Pit access",
+        "Area",
         "Posted speed"
       ],
       "status_vocabulary": [],
       "links": [
         {
-          "to": "the-site-operator",
+          "to": "booth-operator",
           "label": "staffed by"
         },
         {
-          "to": "the-operator-s-own-system-power-fiber-assessment-package",
+          "to": "power-fiber-assessment-package",
           "label": "assessed by"
         }
       ]
@@ -139,7 +139,7 @@
     },
     {
       "id": "recorder-server",
-      "label": "Server (the operator's own system)",
+      "label": "Recorder Server",
       "kind": "system",
       "anchored_in": "the recorder's configuration under site change control",
       "properties": [
@@ -189,8 +189,8 @@
       ]
     },
     {
-      "id": "the-site-operator",
-      "label": "The site Operator",
+      "id": "booth-operator",
+      "label": "Booth Operator",
       "kind": "person",
       "anchored_in": "the operator's identity policy",
       "properties": [
@@ -271,10 +271,10 @@
       ]
     },
     {
-      "id": "the-operator-s-own-system-power-fiber-assessment-package",
-      "label": "The operator's own system Power/Fiber assessment package",
+      "id": "power-fiber-assessment-package",
+      "label": "Power and Fiber Assessment Package",
       "kind": "document",
-      "anchored_in": "the operator's own system, read only",
+      "anchored_in": "the power and fiber works assessment process, read only",
       "properties": [
         "Power loads per pole",
         "Fiber"
