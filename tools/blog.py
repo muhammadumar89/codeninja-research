@@ -281,9 +281,11 @@ def share_alias(p):
     h = h.replace(f'<meta property="og:url" content="{p["url"]}">', f'<meta property="og:url" content="{BASE}/s/{a}/">')
     h = h.replace('<link rel="canonical"', '<meta name="robots" content="noindex,follow"><link rel="canonical"', 1)
     h = h.replace('src="cover.png"', f'src="{p["url"]}cover.png"').replace('src="figures/', f'src="{p["url"]}figures/').replace('href="figures/', f'href="{p["url"]}figures/')
-    from seo import GA4  # seo.py skips /s/, so the share copy carries the GA4 tag itself (Umar 19 Oct 2026)
+    from seo import GA4, CLARITY  # seo.py skips /s/, so the share copy carries the GA4 and Clarity tags itself (Umar 19 and 22 Oct 2026)
     if "googletagmanager.com/gtag/js" not in h:
         h = h.replace("<head>", "<head>" + GA4, 1)
+    if "clarity.ms/tag/" not in h:
+        h = h.replace("<head>", "<head>" + CLARITY, 1)
     out = ROOT / "s" / a
     out.mkdir(parents=True, exist_ok=True)
     (out / "index.html").write_text(h, encoding="utf-8")
