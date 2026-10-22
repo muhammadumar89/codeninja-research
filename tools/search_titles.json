@@ -63,5 +63,11 @@
   "description": "Remote fire protection monitoring for high-risk factories in Saudi Arabia: live, read-only status of fire alarm panels, fire pumps and fire water tanks, read through panel contacts, PLC inputs and LoRaWAN into an IoT platform hosted in the Kingdom, never a write path into life-safety equipment. Factory Fire Watch, an open reference architecture by CodeNinja Atoms.",
   "query": "ledger pick 20 Oct 2026 (page row 21 impressions at 10.2, 28 days to 17 Oct; queries anonymised by Google), cluster fire protection: lead with the equipment a searcher names (fire alarm panel, fire pump) and 'remote fire protection monitoring'",
   "day": "2026-10-20"
+ },
+ "test-site-camera-monitoring-us": {
+  "title": "Camera Monitoring for a Vehicle Proving Ground: Owned L40S Recorders vs AWS g6e.xlarge",
+  "description": "Camera monitoring design for a US vehicle proving ground: owned L40S recorder hosts priced against AWS g6e.xlarge at 1.861 dollars an hour. By CodeNinja Atoms.",
+  "query": "page's only named query 'site.aws.amazon.com \"g6e.xlarge\" \"1.861\"' (10 impressions at 7.7); the page's Appendix A prices two g6e.xlarge at 1.861 dollars an hour, so the title answers it in the paper's own words; page at 15 impressions, position 7.2, 0 clicks, 28 days in Search Console read 22 Oct 2026; rd_keywords.py pick on 22 Oct 2026",
+  "fixed": "2026-10-22"
  }
 }
