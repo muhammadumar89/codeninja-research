@@ -118,7 +118,8 @@ def nav(base=""):
     return [
         ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("PADI", f"{b}padi/")]),
         ("Research", [("Reference architectures", f"{b}#research"), ("Sectors", f"{b}sectors/"),
-                      ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/")]),
+                      ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/"),
+                      ("Agentic Memory Architecture", f"{b}agentic-memory-architecture/")]),
         ("Co-build", f"{b}co-build/"),
         ("Developers", f"{b}developer/"),
     ]
@@ -170,7 +171,7 @@ def footer_links(base=""):
     b = base
     return ('<span class="flinks">'
             f'<a href="{b}about/">About</a> · <a href="{b}contact/">Contact</a> · <a href="{b}sectors/">Sectors</a> · <a href="{b}co-build/">Co-build</a> · '
-            f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}memos/">Memos</a> · <a href="{b}padi/">PADI</a> · '
+            f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}memos/">Memos</a> · <a href="{b}agentic-memory-architecture/">Agentic Memory Architecture</a> · <a href="{b}padi/">PADI</a> · '
             f'<a href="{b}sovereign-ai-reference-architectures/">Sovereign AI reference architectures</a> · <a href="{b}industrial-ontology-examples/">Industrial ontology examples</a>'
             "</span>")
 

@@ -4,7 +4,7 @@ Canonical: https://codeatoms.ai/industrial-ontology-examples/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 21 published industrial ontology examples, 288 objects and 268 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 22 published industrial ontology examples, 302 objects and 281 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
 
 ## Wayside Trend Watch (rail and transportation, United States)
 
@@ -62,6 +62,25 @@ Design: https://codeatoms.ai/pipeline-integrity-gas-transmission-us/ · JSON: ht
 - Historian (system)
 - CMMS (system)
 - Hazardous Area Classification (document)
+
+## Depot Operating Object Model (discrete manufacturing and automotive, United States)
+
+Design: https://codeatoms.ai/factory-ontology-rebuild-depot-us/ · JSON: https://codeatoms.ai/factory-ontology-rebuild-depot-us/ontology/objects.json
+
+- Power Pack (asset, in The production control system)
+- Vehicle Hull (asset, in The production control system)
+- Machine Tool (asset, in The maintenance system)
+- Power Pack Test Cell (asset, in The test cell's own software)
+- Machine Sensor (asset, in The maintenance system)
+- Edge Gateway (system, in The on-site edge box)
+- Production Work Order (record, in The production control system)
+- Maintenance Work Order (record, in The maintenance system)
+- Schedule Proposal (record, in The production control system)
+- Part Lot (material, in The inventory system)
+- Test Run (event, in The test cell's own software)
+- Run Report (document, in The test cell's own software)
+- Operator Role (actor, in The on-site identity service (Keycloak))
+- Condition Indicator (measure, in Computed in the model from the time series store)
 
 ## Turbine Island Watch (energy and utilities, Pakistan)
 

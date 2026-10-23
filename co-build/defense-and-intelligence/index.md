@@ -12,6 +12,7 @@ Recommended path: no defense and intelligence design is published yet, so the fi
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -47,7 +48,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a defense and intelligence design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first defense and intelligence design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first defense and intelligence design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/defense-and-intelligence/#ask
 Every sector: https://codeatoms.ai/co-build/

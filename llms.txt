@@ -82,6 +82,10 @@
 
 - [Compression and Reinflation](https://codeatoms.ai/memos/compression-and-reinflation/): Why we do not fine tune, and how we build physical AI systems that get better when the next model arrives A memo by Muhammad Umar, 2026-10-10. Markdown: https://codeatoms.ai/memos/compression-and-reinflation/index.md
 
+## Agentic Memory Architecture
+
+- [Agentic Memory Architecture](https://codeatoms.ai/agentic-memory-architecture/): how Praxis keeps what it learns outside the model, told as Michael Levin's bow tie: experience, nightly distillation and commissioning, the room each design assembles, and the reinforcement loop. Markdown: https://codeatoms.ai/agentic-memory-architecture/index.md
+
 ## Engineering blog
 
 - [Physical AI System Design for Supply Chain and Logistics: What the Published Designs Already Answer](https://codeatoms.ai/blog/physical-ai-system-design-for-supply-chain-and-logistics/): No supply chain design has been published in this series yet. Eight of the eighteen open reference architectures already answer the questions a logistics network asks first: one picture across the nodes from the systems they already run, gate and yard turn time, whether a terminal's inventory reading can be trusted, which vehicle in the fleet is raising a fault, what is connected to the control networks at each site, counting what moves, incidents before they happen, and what a records only study can settle before any sensor is bought. By CodeNinja Atoms, 2026-10-19. Markdown: https://codeatoms.ai/blog/physical-ai-system-design-for-supply-chain-and-logistics/index.md

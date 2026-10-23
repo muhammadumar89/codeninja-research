@@ -95,6 +95,7 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | pipeline-integrity-gas-transmission-us | oil and gas | United States | [10.5281/zenodo.23556374](https://doi.org/10.5281/zenodo.23556374) |
 | warehouse-digital-twin-us | warehousing and intralogistics | United States | [10.5281/zenodo.23556416](https://doi.org/10.5281/zenodo.23556416) |
 | wayside-detector-trending-rail-us | rail and transportation | United States | [10.5281/zenodo.23556421](https://doi.org/10.5281/zenodo.23556421) |
+| factory-ontology-rebuild-depot-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23570177](https://doi.org/10.5281/zenodo.23570177) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 

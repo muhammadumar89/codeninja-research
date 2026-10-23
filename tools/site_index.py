@@ -274,7 +274,7 @@ def main():
 {brand.SCRIPT}{FILTER}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/contact/", f"{BASE}/padi/", f"{BASE}/memos/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/", f"{BASE}/sovereign-ai-reference-architectures/", f"{BASE}/industrial-ontology-examples/"] + [f"{BASE}/co-build/"] + [f"{BASE}/co-build/{q.parent.name}/" for q in sorted((ROOT / "co-build").glob("*/index.html"))] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/memos/{q.parent.name}/" for q in sorted((ROOT / "memos").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/about/", f"{BASE}/contact/", f"{BASE}/padi/", f"{BASE}/memos/", f"{BASE}/agentic-memory-architecture/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/", f"{BASE}/sovereign-ai-reference-architectures/", f"{BASE}/industrial-ontology-examples/"] + [f"{BASE}/co-build/"] + [f"{BASE}/co-build/{q.parent.name}/" for q in sorted((ROOT / "co-build").glob("*/index.html"))] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/memos/{q.parent.name}/" for q in sorted((ROOT / "memos").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -315,6 +315,7 @@ def main():
         _ms = []
     if _ms:
         llms += ["", "## Memos", ""] + [f"- [{m['title']}]({m['url']}): {m['subtitle']} A memo by {m['author']}, {m['date']}. Markdown: {m['url']}index.md" for m in _ms]
+        llms += ["", "## Agentic Memory Architecture", "", f"- [Agentic Memory Architecture]({BASE}/agentic-memory-architecture/): how Praxis keeps what it learns outside the model, told as Michael Levin's bow tie: experience, nightly distillation and commissioning, the room each design assembles, and the reinforcement loop. Markdown: {BASE}/agentic-memory-architecture/index.md"]
     if bposts:
         llms += ["", "## Engineering blog", ""] + [f"- [{b['title']}]({b['url']}): {b['subtitle']} By {b['author']}, {b['date']}. Markdown: {b['url']}index.md" for b in bposts]
     cbs = sorted((ROOT / "co-build").glob("*/index.html"))
@@ -347,6 +348,8 @@ if __name__ == "__main__":
     co_build.main()
     import target_pages  # 16e locked Google targets: rebuilt from published data, listed in the sitemap
     target_pages.main()
+    import memory_page  # /agentic-memory-architecture/, under Research
+    memory_page.main()
     main()
     import seo  # search and AI retrieval pass: always last
     seo.main()

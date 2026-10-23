@@ -1,6 +1,76 @@
 # CodeNinja Atoms: full text
 
 > CodeNinja Atoms is building a sovereign AI operating system for the physical world. This file holds the full text of every reference architecture and method paper on https://codeatoms.ai, one after another, in Markdown. CC BY 4.0. A fully owned subsidiary of CodeNinja.
+# Agentic Memory Architecture
+
+How Praxis keeps what it learns outside the model, so the reasoning can be replaced and the memory stands.
+
+By Muhammad Umar, Cofounder, CodeNinja, October 23, 2026.
+Canonical: https://codeatoms.ai/agentic-memory-architecture/
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+
+## The model
+
+Most memory systems for software agents treat memory as storage: write a sentence, fetch the same sentence later. Fidelity in, fidelity out. Praxis is built on a different model of memory, taken from the biologist Michael Levin's 2024 paper Self-Improvising Memory in Entropy.
+Levin's claim is that living systems keep memory the way a bow tie is shaped.
+Left wing. The high dimensional past: everything that happened, in full detail, in the body and the environment that existed then.
+The waist. A narrow bottleneck the past must pass through to persist at all. The compression strips correlations and contingent detail. What survives the waist is not a record of the past but its salient pattern. Once the correlations are gone the stored pattern no longer resembles the experience that produced it, and it cannot be played back.
+Right wing. A future self decodes the compressed pattern into whatever its present context needs. That self is never the one that wrote the memory. It has a different body, a different environment and different goals, so decoding is not retrieval. It is interpretation, and Levin is explicit that creative, adaptive confabulation is the feature that makes memory useful rather than the bug that makes it unreliable.
+
+Three consequences follow, and all three matter for an engineering platform.
+- Salience over fidelity. Evolution does not optimise memory for accurate replay. It optimises for what is still actionable later. A caterpillar's memory of where food was does not survive metamorphosis as a map; it survives as a relationship that a butterfly with a rebuilt brain can act on.- Memories are messages between agents separated across time. The writer cannot know the reader's situation, so the reader must do work. Reading memory is an act of sense making by the present, not a lookup into the past.- The persistence paradox. A system that never changes becomes obsolete; a system that changes is no longer the one that remembered. Planaria regrow a head and keep learned behaviour. Centenarians keep childhood memories through decades of molecular turnover. Identity persists as a process that trades fidelity to the past for patterns that still generalise. Memory therefore cannot live in the part of the system that is replaced.
+Levin extends the bow tie to every scale, from the egg that compresses an adult body into a cell to the genome that compresses a lineage, and he calls the arrangement polycomputing: the same stored pattern computes different things for different readers, and that freedom is where new capability comes from without catastrophic forgetting.
+
+## Why it fits
+
+Praxis is a platform on which an engineer designs a physical AI system for an estate they have never seen, in a sector they may not know, and comes out with a design a ten year engineer would recognise. The model that reasons is a frontier class open weights model, self hosted. Its weights never change.
+So the platform's memory has to carry everything the model does not know and everything the platform learns, and it has to survive the model being swapped. That is the persistence paradox stated as a procurement requirement. The bow tie answers it: compress experience into patterns that do not depend on the reasoner, and let each new design read those patterns in its own context.
+
+## Left wing
+
+Everything the platform experiences enters as entries in Engram, CodeNinja's system of record for agent memory. Each entry has a source, a date and an honesty line that says what it cannot vouch for. Entries arrive through one validating door that refuses by name anything without a source, a jurisdiction where a law needs one, or a verified date. No customer of the platform is ever named in an entry.
+Four kinds of experience land there.
+ExperienceWhat an entry is- Reference: A sourced fact a builder can act on: a regulation clause, a model or hardware class, a precedent, a method, a past failure. Six lenses: rules, tooling, hardware, case studies, approach, history.- Learning: A raw sentence of domain knowledge from a talk, a paper, a build or a founder's note, with tags.- Episode: A design the platform produced, with its measured quality, and every line of feedback a person filed on it.- Ask: A question a design needed answered and the memory could not supply.
+The reference corpus holds thousands of entries across the six lenses. The learnings number in the tens of thousands. Every design episode since the platform went live is kept. The counts move every night and are not the point; the shape is.
+
+## The waist
+
+Two routines run every night and do the compression. Neither touches the model. Both write only through the door.
+Distillation. The raw learnings are folded into design briefs, one per domain tag, each a short ranked list of principles. Four operations and nothing else: merge near duplicates into one rule, resolve contradictions with the newest and most used reading winning, promote rules that good outcomes relied on and demote rules implicated in corrected ones, and mark as stale what was never used and never repeated. Every principle keeps the identifiers of the learnings it came from, so any rule on any design can be walked back to its sources. Every new brief is a new version; nothing is deleted.
+This is salience over fidelity made literal. Tens of thousands of learnings stand behind a few hundred briefs. The sentences are gone. The relationships that still bind are kept, with their provenance.
+Commissioning. The reference corpus is measured each morning against what practitioners in each sector expect it to answer, in two of the countries the platform serves. Where it falls short, writer agents stage new sourced entries and adversarial verifier agents remove what they cannot ground against the source. The door lands what survives. Superseded entries are never deleted; the new entry names what it replaces, and the planner's supersession index drops the old one from view.
+The compression ratio is the point. Thousands of rules become the handful that bind in this country and this sector. Tens of thousands of learnings become a few hundred briefs, which become twenty lines on the table when a design begins.
+
+## Right wing
+
+A design in Praxis is called a birth. Before the model is asked anything, the platform assembles a room: the context the model will reason over for this requirement and no other. Assembly is deterministic code, not a search by similarity.
+- Reference is filtered by the requirement's domain and by the country whose law binds, aged by verification date, de duplicated through supersession, and laid out under a fixed budget. Entries that fit ride in full. The rest ride as one title line each, and the model may call for any of them by name during reasoning. That call is the inflation step: a line becomes the full text only when the present design needs it.- Doctrine is read by a fit judge that marks which principles of the sector's brief and the cross sector briefs bear on this requirement. The planner receives them ranked and must cite them by number in the scope items they shaped.- The fleet record is read lesson by lesson, house scope first, then the sector's, up to a budget, together with the sector's rated past designs.- Standing memory, the project's own notes and the engineer's working preferences, rides last.
+The model then reasons once over that room, in a single conversation, carrying its own thinking from part to part, and writes the design in three parts: the architecture, the scope ledger, the contract.
+This is Levin's right wing. The same compressed principle, read by two births in different countries and sectors, produces two different scope items, because the requirement in front of the planner decides what the memory means today. The platform does not retrieve a past decision. It re decides, with the past as a message it has to interpret.
+What a reader can verify on any Praxis design: every cited principle resolves to a brief version, every brief version resolves to its source learnings, and every reference line resolves to a dated source. The design is a document whose every claim can be walked back to an entry the customer owns.
+
+## Reinforcement
+
+Levin's bow tie is a funnel. Praxis closes it into a loop, so the right wing's output becomes the next left wing's input. This is recursive self improvement on Engram, and it changes memory, never weights.
+At the design. Every birth is judged after reasoning against a rubric and filed as an episode with its score. Below a floor it is reasoned again with the verdict as a directive. A person's feedback on the design becomes lessons the next birth reads. The principles the design cited ride back to the distillation routine as outcomes, so a principle that good designs relied on rises and one that corrected designs leaned on falls. The asks a design could not answer become commissions for the corpus routine.
+At the platform. A master agent runs improvement cycles on the platform itself: it reads what the routines did and owe, reads the misses from an independent benchmark of physical AI design, changes the platform, births real public requirements on production, and files what it learned as gap records on the routines' own episodes. The routines read those at the start of their next run. The agents never talk to each other directly. They talk through Engram.
+At the substrate. Because every one of these signals is an entry in memory and not a weight, the reasoning model can be replaced and the memory stands. The platform has moved its reasoning between model providers with no change to what it remembers. New head, same memory.
+What is published about the benchmark is its results. How it scores is not published.
+
+## In pseudo code
+
+The functions named here exist. Their internals, the prompts, the judges and the thresholds are not described on this page.
+
+## Glossary
+
+TermMeaning on this page- Engram: CodeNinja's system of record for agent memory. Every entry has a source, a date and an honesty line.- The door: The single validating entry point to the memory. Refuses by name.- Brief: A versioned, ranked list of design principles for one domain tag, each principle traceable to its sources.- Room: The context assembled for one design before the model is called.- Birth: One design produced by the platform from one requirement.- Episode: The record of one design or one routine run, with its measure, feedback and gap records.- Inflation: A reference that rode into the room as a title line being expanded to full text on the model's call.
+Reference: Michael Levin, Self-Improvising Memory: A Perspective on Memories as Agential, Dynamically Reinterpreting Cognitive Glue, Entropy 26(6), 481, 2024. Read the paper.
+Read next: Compression and Reinflation, the memo this architecture grew out of, and Praxis, the platform that runs it.
+
+
+---
+
 # Don't Baptize the GPUs
 
 *Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category.*
@@ -942,6 +1012,7 @@ Recommended path: no defense and intelligence design is published yet, so the fi
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -977,7 +1048,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a defense and intelligence design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first defense and intelligence design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first defense and intelligence design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/defense-and-intelligence/#ask
 Every sector: https://codeatoms.ai/co-build/
@@ -999,7 +1070,7 @@ Recommended path: no discrete manufacturing and automotive design is published y
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
-- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -1035,7 +1106,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a discrete manufacturing and automotive design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first discrete manufacturing and automotive design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first discrete manufacturing and automotive design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/discrete-manufacturing-and-automotive/#ask
 Every sector: https://codeatoms.ai/co-build/
@@ -1155,7 +1226,7 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 We publish the design. You bring the operation. Together they become an object model your systems can run on.
 
-21 reference architectures are published so far, across 9 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
+22 reference architectures are published so far, across 9 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
 
 ## Sectors
 
@@ -1255,7 +1326,7 @@ Recommended path: no mining design is published yet, so the first one is built w
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
-- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -1291,7 +1362,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a mining design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first mining design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first mining design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/mining/#ask
 Every sector: https://codeatoms.ai/co-build/
@@ -1366,7 +1437,7 @@ Recommended path: no rail transport design is published yet, so the first one is
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
-- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -1402,7 +1473,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a rail transport design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first rail transport design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first rail transport design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/rail-transport/#ask
 Every sector: https://codeatoms.ai/co-build/
@@ -1424,7 +1495,7 @@ Recommended path: no semiconductor design is published yet, so the first one is 
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
-- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -1460,7 +1531,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a semiconductor design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first semiconductor design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first semiconductor design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/semiconductors/#ask
 Every sector: https://codeatoms.ai/co-build/
@@ -1482,7 +1553,7 @@ Recommended path: no supply chain and logistics design is published yet, so the 
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
-- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -1518,7 +1589,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a supply chain and logistics design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first supply chain and logistics design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first supply chain and logistics design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/supply-chain-and-logistics/#ask
 Every sector: https://codeatoms.ai/co-build/
@@ -1540,7 +1611,7 @@ Recommended path: no warehousing and intralogistics design is published yet, so 
 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
-- Nearest published work: [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (discrete manufacturing and automotive, United States)
+- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
 - Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (maritime and ports, United States)
@@ -1576,7 +1647,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a warehousing and intralogistics design to read?
 
-Not yet. 21 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first warehousing and intralogistics design is built with a partner.
+Not yet. 22 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first warehousing and intralogistics design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/warehousing-and-intralogistics/#ask
 Every sector: https://codeatoms.ai/co-build/
@@ -2219,6 +2290,7 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | pipeline-integrity-gas-transmission-us | oil and gas | United States | [10.5281/zenodo.23556374](https://doi.org/10.5281/zenodo.23556374) |
 | warehouse-digital-twin-us | warehousing and intralogistics | United States | [10.5281/zenodo.23556416](https://doi.org/10.5281/zenodo.23556416) |
 | wayside-detector-trending-rail-us | rail and transportation | United States | [10.5281/zenodo.23556421](https://doi.org/10.5281/zenodo.23556421) |
+| factory-ontology-rebuild-depot-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23570177](https://doi.org/10.5281/zenodo.23570177) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 
@@ -4572,7 +4644,7 @@ Canonical: https://codeatoms.ai/industrial-ontology-examples/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 21 published industrial ontology examples, 288 objects and 268 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 22 published industrial ontology examples, 302 objects and 281 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
 
 ## Wayside Trend Watch (rail and transportation, United States)
 
@@ -4630,6 +4702,25 @@ Design: https://codeatoms.ai/pipeline-integrity-gas-transmission-us/ · JSON: ht
 - Historian (system)
 - CMMS (system)
 - Hazardous Area Classification (document)
+
+## Depot Operating Object Model (discrete manufacturing and automotive, United States)
+
+Design: https://codeatoms.ai/factory-ontology-rebuild-depot-us/ · JSON: https://codeatoms.ai/factory-ontology-rebuild-depot-us/ontology/objects.json
+
+- Power Pack (asset, in The production control system)
+- Vehicle Hull (asset, in The production control system)
+- Machine Tool (asset, in The maintenance system)
+- Power Pack Test Cell (asset, in The test cell's own software)
+- Machine Sensor (asset, in The maintenance system)
+- Edge Gateway (system, in The on-site edge box)
+- Production Work Order (record, in The production control system)
+- Maintenance Work Order (record, in The maintenance system)
+- Schedule Proposal (record, in The production control system)
+- Part Lot (material, in The inventory system)
+- Test Run (event, in The test cell's own software)
+- Run Report (document, in The test cell's own software)
+- Operator Role (actor, in The on-site identity service (Keycloak))
+- Condition Indicator (measure, in Computed in the model from the time series store)
 
 ## Turbine Island Watch (energy and utilities, Pakistan)
 
@@ -8575,31 +8666,32 @@ Vehicles and people share plant roads, test tracks and yards, and the cameras, g
 
 ## What does a physical AI system for discrete manufacturing and automotive look like?
 
-A complete physical AI design for discrete manufacturing and automotive names what to sense, which existing systems to join, the object model that joins them, the models and hardware, the three-year cost and the person who approves every action. CodeNinja Atoms has published 1 such reference architecture for discrete manufacturing and automotive, each free to reuse under CC BY 4.0. Pit Camera Watch (United States): a fully on-premises camera monitoring system that puts every turn, crossing, pit entry and access point of a vehicle proving ground on footage the operator owns, with exportable clips and camera uptime it can prove.
+A complete physical AI design for discrete manufacturing and automotive names what to sense, which existing systems to join, the object model that joins them, the models and hardware, the three-year cost and the person who approves every action. CodeNinja Atoms has published 2 such reference architectures for discrete manufacturing and automotive, each free to reuse under CC BY 4.0. Pit Camera Watch (United States): a fully on-premises camera monitoring system that puts every turn, crossing, pit entry and access point of a vehicle proving ground on footage the operator owns, with exportable clips and camera uptime it can prove. Depot Operating Object Model (United States): An open reference architecture for system design in physical AI, built on ontologies for unifying factory systems at a government vehicle rebuild depot in the United States, where the inference server that runs it costs about 67,000 US dollars to own over three years. One operating object model joins the production control, inventory, maintenance and test cell systems, which never shared a key, so that a power pack failing its scripted test run can be traced the same day to the part lots, the machine that cut them and that machine's condition, and forward to the rework and the schedule it displaces. Every machine interface stays read only, and each release waits on a named person's sign-off.
 
 ## Which AI models can a discrete manufacturing and automotive operator run on its own hardware?
 
-Each published discrete manufacturing and automotive design names its models and why, and every model is open-weight or no model is used at all, so the operator can run it on hardware it owns. Pit Camera Watch: D-FINE, Apache-2.0, for retrospective search over the archive (test vehicle, support vehicle, pedestrian); about 8 to 124 MB of weights.
+Each published discrete manufacturing and automotive design names its models and why, and every model is open-weight or no model is used at all, so the operator can run it on hardware it owns. Pit Camera Watch: D-FINE, Apache-2.0, for retrospective search over the archive (test vehicle, support vehicle, pedestrian); about 8 to 124 MB of weights. Depot Operating Object Model: gpt-oss-120b (Apache-2.0, US origin, self-hosted with vLLM) for the agentic work surface and ontology maintenance; Chronos-2 (Apache-2.0) for zero-shot machine condition forecasting and residual anomaly detection; nomic-embed-text-v2-moe (Apache-2.0) for retrieval over work orders, maintenance and test reports; no training run.
 
 ## How much compute and hardware does AI in discrete manufacturing and automotive need?
 
-The compute follows from the models: the published discrete manufacturing and automotive designs size it as follows, from no new hardware to a full GPU node. Pit Camera Watch, compute: One 48 GB L40S-class card per recorder host, in the conditioned server room; nothing at the poles.
+The compute follows from the models: the published discrete manufacturing and automotive designs size it as follows, from no new hardware to a full GPU node. Pit Camera Watch, compute: One 48 GB L40S-class card per recorder host, in the conditioned server room; nothing at the poles. Depot Operating Object Model, compute: Fanless DIN-rail edge boxes beside each machine group and at the test cell, their class fixed by a phase one measurement of the vibration load; centrally, two cards of the 48 GB PCIe class air cooled in the depot's own server room on its existing power, holding the 65.2 GB checkpoint with a 1.2 planning factor, about 78.2 GB against roughly 88 GB usable.
 
 ## Is it cheaper to own AI hardware or rent cloud GPUs in discrete manufacturing and automotive?
 
-Each discrete manufacturing and automotive design prices three years of ownership in its Appendix A, with every price cited, against renting the same capacity from a cloud region at its deepest three-year commitment where hardware is bought. Pit Camera Watch: three-year cost, About 474,000 to 871,000 US dollars to own over three years, mostly camera heads; the two recorder hosts alone cost about four fifths of the deepest three-year AWS commitment, and there is no per camera license at any pole count (Appendix A).
+Each discrete manufacturing and automotive design prices three years of ownership in its Appendix A, with every price cited, against renting the same capacity from a cloud region at its deepest three-year commitment where hardware is bought. Pit Camera Watch: three-year cost, About 474,000 to 871,000 US dollars to own over three years, mostly camera heads; the two recorder hosts alone cost about four fifths of the deepest three-year AWS commitment, and there is no per camera license at any pole count (Appendix A). Depot Operating Object Model: three-year cost, About 67,000 US dollars to own the two-card server for three years (a range of 62,000 to 70,000: server, support and power), against about 104,000 dollars to rent the same card class on the deepest three-year commitment in US East and about 276,000 on demand; the cheapest rental that holds the model, one 96 GB card, is about 33,000 on that commitment, so ownership is chosen for the boundary, not the price, and renting is a price reference only because data and weights stay in the government's environment; edge boxes, sensors, cameras, time card and switches are priced by quotation (Appendix A).
 
 ## What ontology or object model does a discrete manufacturing and automotive AI system need?
 
-The object model is the part that makes the system an ontology rather than a pipeline: typed objects for the things in the discrete manufacturing and automotive operation, with properties, status values and typed links. Every published design ships its object model as hyper-ontology/1 JSON that loads into Hyper Ontology. Pit Camera Watch: Test Site, Camera Pole, Camera Head, Underground Fiber Run, Safety Gate, Operator Booth Display, Recorder Server, 30-Day Footage Archive, Incident/Accident Record, Booth Operator, Gate Officer, Safety Office Reviewer, Vehicle Under Test, Test Cycle, Power and Fiber Assessment Package.
+The object model is the part that makes the system an ontology rather than a pipeline: typed objects for the things in the discrete manufacturing and automotive operation, with properties, status values and typed links. Every published design ships its object model as hyper-ontology/1 JSON that loads into Hyper Ontology. Pit Camera Watch: Test Site, Camera Pole, Camera Head, Underground Fiber Run, Safety Gate, Operator Booth Display, Recorder Server, 30-Day Footage Archive, Incident/Accident Record, Booth Operator, Gate Officer, Safety Office Reviewer, Vehicle Under Test, Test Cycle, Power and Fiber Assessment Package. Depot Operating Object Model: Power Pack, Vehicle Hull, Machine Tool, Power Pack Test Cell, Machine Sensor, Edge Gateway, Production Work Order, Maintenance Work Order, Schedule Proposal, Part Lot, Test Run, Run Report, Operator Role, Condition Indicator.
 
 ## Who approves the decisions an AI system makes in discrete manufacturing and automotive?
 
-In every published discrete manufacturing and automotive design a named person makes the decision that changes the physical world; the system prepares it. Pit Camera Watch: Booth operators watch and decide; nothing raises an automated alarm; only the safety office can export a clip.
+In every published discrete manufacturing and automotive design a named person makes the decision that changes the physical world; the system prepares it. Pit Camera Watch: Booth operators watch and decide; nothing raises an automated alarm; only the safety office can export a clip. Depot Operating Object Model: The system proposes and a person commits: the test cell operator signs every release or return, a planner approves every maintenance work order and accepts, modifies or declines every schedule proposal, and no machine, test cell or site control is ever written to.
 
 ## Sources
 
 - [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23296077
+- [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (United States), DOI https://doi.org/10.5281/zenodo.23570177
 
 
 ---
@@ -8855,19 +8947,19 @@ License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 DOI: 10.5281/zenodo.23527131
 
-A sovereign AI reference architecture is a complete design for running AI inside an operation on infrastructure the operator owns or controls, in its own country, with open-weight models and no third-party AI service in the serving path. CodeNinja Atoms has published 21 of them, for 9 physical-world sectors in the United States (11), Pakistan (6), Saudi Arabia (4). Each names its sources, object model, models, compute, three-year cost and the person who approves every action, and each is free to reuse under CC BY 4.0 with a DOI.
+A sovereign AI reference architecture is a complete design for running AI inside an operation on infrastructure the operator owns or controls, in its own country, with open-weight models and no third-party AI service in the serving path. CodeNinja Atoms has published 22 of them, for 9 physical-world sectors in the United States (12), Pakistan (6), Saudi Arabia (4). Each names its sources, object model, models, compute, three-year cost and the person who approves every action, and each is free to reuse under CC BY 4.0 with a DOI.
 
 ## Sovereign AI reference architecture patterns
 
 | Pattern | What runs where | Designs |
 |---|---|---|
 | Frontier reasoning node (10) | eight 141 GB HBM-class GPUs holding an open-weight frontier model at FP8, owned or hosted in the country | [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/), [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/), [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/), [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/), [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/), [Structure Phase Watch](https://codeatoms.ai/structure-phase-construction-saudi-arabia/), [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/), [Feeder Firewatch](https://codeatoms.ai/wildfire-risk-distribution-us/), [Terminal Pulse](https://codeatoms.ai/truck-turn-container-terminal-us/), [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) |
-| One inference card (5) | 48 GB PCIe inference cards, from one card to one eight-card server, at the site or in the country; no frontier model | [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/), [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/), [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/), [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/), [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) |
+| One inference card (6) | 48 GB PCIe inference cards, from one card to one eight-card server, at the site or in the country; no frontier model | [Depot Operating Object Model](https://codeatoms.ai/factory-ontology-rebuild-depot-us/), [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/), [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/), [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/), [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/), [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) |
 | No new compute (6) | the design runs on servers or software the operator already owns; nothing to buy | [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/), [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/), [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/), [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/), [Port Twin](https://codeatoms.ai/port-digital-twin-us/), [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) |
 
 ## The layers of a sovereign AI reference architecture
 
-Every published design follows the same seven layers, bottom up. Across the 21 designs the object model layer holds 288 objects and 268 typed links, the inference layer names 49 open-weight model choices, and 21 of 21 designs name the person who approves each action. The sovereign boundary is what makes it sovereign: every layer runs on hardware the operator owns or controls, in its own country, with no third-party AI service in the serving path.
+Every published design follows the same seven layers, bottom up. Across the 22 designs the object model layer holds 302 objects and 281 typed links, the inference layer names 52 open-weight model choices, and 22 of 22 designs name the person who approves each action. The sovereign boundary is what makes it sovereign: every layer runs on hardware the operator owns or controls, in its own country, with no third-party AI service in the serving path.
 
 | Layer | What it holds |
 |---|---|
@@ -8886,6 +8978,7 @@ Every published design follows the same seven layers, bottom up. Across the 21 d
 | [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/) | rail and transportation | United States | At the new four-camera yard-entry portal, an octa-core NPU edge box sized from its streams, so only detections, OCR strings and short evidence frames cross a cellular link that drops for hours; centrally, one 141 GB HBM GPU class card in one node in the railroad's own data center, holding the 65.2 GB checkpoint with a 1.2 planning factor and about 63 GB to spare | About 54,000 US dollars to own the central card for three years (a range of 52,000 to 57,000, card, support and power, host server by quotation), against about 625,000 dollars to rent the smallest AWS instance that holds one such card on the deepest three-year commitment in US East and about 1.66 million on demand; the edge box, portal cameras and pilot locomotive sensing are priced by quotation (Appendix A) | 10.5281/zenodo.23556421 |
 | [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/) | warehousing and intralogistics | United States | At each site, one industrial edge server with one 48 GB PCIe inference card running vision in Triton and the site model under vLLM; centrally, one 141 GB HBM class node of eight cards, on the operator's own hardware | About 597,000 US dollars to own the twelve cards (510,000 to 689,000) before the four edge chassis, which are priced by quotation; renting the same cards in AWS US East runs about 1.86 million on demand and about 699,000 on the deepest three-year commitment (Appendix A) | 10.5281/zenodo.23556416 |
 | [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) | oil and gas | United States | At each station, volume production edge modules in 7W to 60W envelopes inside hazardous area enclosures, detecting through backhaul loss; centrally, one node of eight 141 GB HBM-class GPUs in the gas control center | About 465,000 US dollars to own the control center node for three years (432,000 to 485,000), about three quarters of the 625,000 the deepest AWS commitment in US East costs and well under the 1.66 million on demand; the station modules, enclosures, cameras, diodes and sensors are priced by quotation (Appendix A) | 10.5281/zenodo.23556374 |
+| [Depot Operating Object Model](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) | discrete manufacturing and automotive | United States | Fanless DIN-rail edge boxes beside each machine group and at the test cell, their class fixed by a phase one measurement of the vibration load; centrally, two cards of the 48 GB PCIe class air cooled in the depot's own server room on its existing power, holding the 65.2 GB checkpoint with a 1.2 planning factor, about 78.2 GB against roughly 88 GB usable | About 67,000 US dollars to own the two-card server for three years (a range of 62,000 to 70,000: server, support and power), against about 104,000 dollars to rent the same card class on the deepest three-year commitment in US East and about 276,000 on demand; the cheapest rental that holds the model, one 96 GB card, is about 33,000 on that commitment, so ownership is chosen for the boundary, not the price, and renting is a price reference only because data and weights stay in the government's environment; edge boxes, sensors, cameras, time card and switches are priced by quotation (Appendix A) | 10.5281/zenodo.23570177 |
 | [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) | energy and utilities | Pakistan | One 48 GB PCIe inference GPU class card on ruggedised edge servers inside the plant perimeter, a PTP grandmaster time card and a one-way egress path; no cloud, because Pakistan has no hyperscaler region | About 22,500 US dollars to own the site envelope over three years (21,600 to 23,400), about the same as the deepest three-year AWS commitment for one L40S card in the UAE region, which could not keep the read one-way in any case (Appendix A) | 10.5281/zenodo.23365092 |
 | [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/) | rail and transportation | United States | At the car, an EN 50155 and IEC 60571 module (8 by 8 by 8 inches, IP62, 24 to 48 VDC, CFR 238 materials); centrally, one 141 GB HBM GPU class node in a contractor-hosted US cloud | About 625,000 US dollars to run the eight-card node for three years on the deepest AWS commitment in US East, about three eighths of the 1.66 million on demand; the 225 modules are priced by quotation (Appendix A) | 10.5281/zenodo.23365118 |
 | [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) | aviation and aerospace manufacturing | United States | A fanless industrial inference computer in the cell panel and an eight-card 48 GB PCIe inference server in the facility, joined one way across a hardware data diode; an OCP Time Card grandmaster orders every stream | About 202,000 to 220,000 US dollars to own the priced classes over three years, the scanner and the server most of it; the two compute tiers alone cost about two fifths of the deepest three-year AWS commitment for eight L40S cards, which the offline requirement rules out anyway (Appendix A) | 10.5281/zenodo.23308095 |
