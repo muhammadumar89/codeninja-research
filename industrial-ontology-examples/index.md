@@ -4,7 +4,7 @@ Canonical: https://codeatoms.ai/industrial-ontology-examples/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 22 published industrial ontology examples, 302 objects and 281 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 23 published industrial ontology examples, 317 objects and 295 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
 
 ## Wayside Trend Watch (rail and transportation, United States)
 
@@ -81,6 +81,26 @@ Design: https://codeatoms.ai/factory-ontology-rebuild-depot-us/ · JSON: https:/
 - Run Report (document, in The test cell's own software)
 - Operator Role (actor, in The on-site identity service (Keycloak))
 - Condition Indicator (measure, in Computed in the model from the time series store)
+
+## Port Drone Watch (maritime and ports, Germany)
+
+Design: https://codeatoms.ai/drone-detection-dispatch-port-germany/ · JSON: https://codeatoms.ai/drone-detection-dispatch-port-germany/ontology/objects.json
+
+- Mission (event, in The drone operator's mission and fleet system)
+- Construction Work (event, in The port's works register (confirmed at the interface survey))
+- Detection (record, in Computed in the model from the drone imagery)
+- Work Item (record, in Owned by this system and pushed to the responders' existing work systems)
+- Flight Authorisation (record, in Granted by the flight approvers under the European specific category)
+- Coverage Statement (record, in Computed in the model from weather groundings)
+- Berth (site, in The port GIS berth plan)
+- Dock Station (site, in The drone operator's mission and fleet system)
+- Restricted Zone (site, in The port GIS)
+- Vessel (asset, in The vessel traffic feed (AIS/VTS))
+- Quay Asset (asset, in The port GIS asset register)
+- Drone (asset, in The drone operator's mission and fleet system)
+- Responder Role (actor, in The on-site identity service (Keycloak))
+- Drone Operator (actor, in The drone operator's service contract)
+- Weather Observation (measure, in The dock weather station or the national meteo service (to confirm, chapter 9.5))
 
 ## Turbine Island Watch (energy and utilities, Pakistan)
 

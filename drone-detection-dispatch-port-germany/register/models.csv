@@ -1,0 +1,13 @@
+choice,picked,why
+Work surface model,"GLM 5.3, 753B parameters at FP8, bespoke licence, central node in the port's own data centre","Bespoke licence permits commercial, internal use and redistribution; the command centre role is committed by the requirement; runs on the ontology and memory, not an external service"
+Per-frame closed-set detector model,"RF-DETR, Apache-2.0, dock edge tier, about 61 to 68 MB at 16 bit (Nano to Large)",Small checkpoints keep pace with the camera stream; the authority holds the weights outright; detection survives an uplink loss
+Zero-shot open-vocabulary detector model,"OWLv2, Apache-2.0, site tier, about 310 MB (base) and 875 MB (large) at 16 bit","Detects oil sheen, floating debris, smoke or vapour and damage cues on selected frames without port-specific training data"
+Evidence triage and drafting model,"Ministral 3 8B at FP8, Apache-2.0, site tier, about 12 GB","Fits the 48 GB PCIe class with room for concurrent requests; a describer and reader of evidence, never a localiser; European publisher suits an EU public buyer"
+Object tracking model,"Roboflow trackers (clean-room SORT, ByteTrack, OC-SORT, BoT-SORT), Apache-2.0, dock edge tier","Motion and association only, no re-identification branch, chosen on the port's own labelled clips"
+Frontier hardware,"141 GB HBM GPU class, eight GPUs per node, one node (1,128 GB)","753 GB of FP8 weights times the 1.2 planning factor is 904 GB, inside 1,128 GB with about 375 GB beside the weights"
+Site inference hardware,"48 GB PCIe inference server class, one to four cards, air-cooled, one server at each of the two port sites","Sized by memory class, never by product name; one card holds the site models, more cards buy concurrency"
+Edge AI compute,"GPU-class edge module at each dock, sized by the dock site survey","Rated against salt air, wind and temperature; silicon fixed only at the survey"
+Time synchronisation,OCP Time Card grandmaster with linuxptp and chrony,"Frames, telemetry and detections share one clock across tiers"
+Sensing,"Cameras as payloads on the retained drone fleet (patrol nadir, berth survey, incident response; thermal as an annual trial), dock weather station, drone GNSS and telemetry, pipeline health sensors",Detections are geo-located from telemetry against the standardised berth plan
+Pattern: governing,"System of Context, with a work surface where the authority's own people build their agents on memory","People decide every response; the loop learns through memory, not weight training"
+Pattern: boundary,"Events and evidence crops cross the boundary, not pixels","Hours of daily imagery cannot cross the dock uplink, and detection must survive its loss"

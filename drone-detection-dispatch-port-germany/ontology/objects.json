@@ -1,0 +1,313 @@
+{
+  "package": "hyper-ontology/1",
+  "designed_with": "Praxis",
+  "implemented_with": "Hyper Ontology",
+  "paper": {
+    "title": "Port Drone Watch: From Oil Sheen to Dispatched Work on the Port's Own Hardware in Germany",
+    "url": "https://codeatoms.ai/drone-detection-dispatch-port-germany/",
+    "doi": "10.5281/zenodo.23635729"
+  },
+  "sector": "maritime-and-ports",
+  "country": "Germany",
+  "scenario": "the operator is described by class, never by name: a maritime and ports authority in Germany with two port sites whose retained, docked drone network flies scheduled and on-demand missions under the European specific category, near Seveso perimeters and under GDPR",
+  "source": "chapter 5 of the paper (the object list and kinds in 5.1, the status vocabularies in 5.2, the recorded form of the Mission in 5.3) and the fourteen typed links and properties of Figure 4; anchors from Table 3, chapter 6.1 and chapter 9.5; the Drone Operator properties and status vocabulary from 10.1; the Coverage Statement vocabulary from 9.4.",
+  "objects": [
+    {
+      "id": "mission",
+      "label": "Mission",
+      "kind": "event",
+      "anchored_in": "The drone operator's mission and fleet system",
+      "properties": [
+        "Scheduled or on demand",
+        "Dock Station",
+        "Flight authorisation reference",
+        "Geofence zones crossed",
+        "Imagery hours produced"
+      ],
+      "status_vocabulary": [
+        "Planned",
+        "Authorised",
+        "In flight",
+        "Complete",
+        "Aborted",
+        "Grounded by weather"
+      ],
+      "links": [
+        {
+          "to": "dock-station",
+          "label": "launched from"
+        },
+        {
+          "to": "restricted-zone",
+          "label": "crosses"
+        },
+        {
+          "to": "flight-authorisation",
+          "label": "authorised by"
+        }
+      ]
+    },
+    {
+      "id": "construction-work",
+      "label": "Construction Work",
+      "kind": "event",
+      "anchored_in": "The port's works register (confirmed at the interface survey)",
+      "properties": [
+        "Works package",
+        "Quay",
+        "Progress observations"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "quay-asset",
+          "label": "progresses on"
+        }
+      ]
+    },
+    {
+      "id": "detection",
+      "label": "Detection",
+      "kind": "record",
+      "anchored_in": "Computed in the model from the drone imagery",
+      "properties": [
+        "Location",
+        "Confidence",
+        "Frames behind it"
+      ],
+      "status_vocabulary": [
+        "Proposed",
+        "Confirmed",
+        "Rejected",
+        "Merged"
+      ],
+      "links": [
+        {
+          "to": "mission",
+          "label": "produced by"
+        }
+      ]
+    },
+    {
+      "id": "work-item",
+      "label": "Work Item",
+      "kind": "record",
+      "anchored_in": "Owned by this system and pushed to the responders' existing work systems",
+      "properties": [
+        "Named responder role",
+        "Location",
+        "Confidence"
+      ],
+      "status_vocabulary": [
+        "Dispatched",
+        "Acknowledged",
+        "Resolved",
+        "Closed no action"
+      ],
+      "links": [
+        {
+          "to": "responder-role",
+          "label": "dispatched to"
+        }
+      ]
+    },
+    {
+      "id": "flight-authorisation",
+      "label": "Flight Authorisation",
+      "kind": "record",
+      "anchored_in": "Granted by the flight approvers under the European specific category",
+      "properties": [
+        "Mission",
+        "Zones covered",
+        "Approver"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "coverage-statement",
+      "label": "Coverage Statement",
+      "kind": "record",
+      "anchored_in": "Computed in the model from weather groundings",
+      "properties": [
+        "Area",
+        "Period",
+        "Detection classes affected"
+      ],
+      "status_vocabulary": [
+        "Published",
+        "Superseded"
+      ],
+      "links": [
+        {
+          "to": "detection",
+          "label": "declares"
+        }
+      ]
+    },
+    {
+      "id": "berth",
+      "label": "Berth",
+      "kind": "site",
+      "anchored_in": "The port GIS berth plan",
+      "properties": [
+        "Berth number",
+        "Quay",
+        "Length and draft"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "quay-asset",
+          "label": "sits on"
+        }
+      ]
+    },
+    {
+      "id": "dock-station",
+      "label": "Dock Station",
+      "kind": "site",
+      "anchored_in": "The drone operator's mission and fleet system",
+      "properties": [
+        "Site (one of two port sites)",
+        "Edge compute unit",
+        "Network path"
+      ],
+      "status_vocabulary": [],
+      "links": []
+    },
+    {
+      "id": "restricted-zone",
+      "label": "Restricted Zone",
+      "kind": "site",
+      "anchored_in": "The port GIS",
+      "properties": [
+        "Site (one of two port sites)",
+        "Geofence polygon",
+        "Approval requirements",
+        "Responder-within-minutes rule"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "responder-role",
+          "label": "escalated to"
+        }
+      ]
+    },
+    {
+      "id": "vessel",
+      "label": "Vessel",
+      "kind": "asset",
+      "anchored_in": "The vessel traffic feed (AIS/VTS)",
+      "properties": [
+        "Name",
+        "IMO number",
+        "Vessel type"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "berth",
+          "label": "occupies"
+        }
+      ]
+    },
+    {
+      "id": "quay-asset",
+      "label": "Quay Asset",
+      "kind": "asset",
+      "anchored_in": "The port GIS asset register",
+      "properties": [
+        "Asset type (quay wall, fender, bollard, lock)",
+        "Asset ID"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "flight-authorisation",
+          "label": "inspected under"
+        }
+      ]
+    },
+    {
+      "id": "drone",
+      "label": "Drone",
+      "kind": "asset",
+      "anchored_in": "The drone operator's mission and fleet system",
+      "properties": [
+        "Aircraft ID",
+        "Dock Station",
+        "Battery state"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "dock-station",
+          "label": "docked at"
+        }
+      ]
+    },
+    {
+      "id": "responder-role",
+      "label": "Responder Role",
+      "kind": "actor",
+      "anchored_in": "The on-site identity service (Keycloak)",
+      "properties": [
+        "Detection classes owned",
+        "Contact path",
+        "Shift cover"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "detection",
+          "label": "owns"
+        }
+      ]
+    },
+    {
+      "id": "drone-operator",
+      "label": "Drone Operator",
+      "kind": "actor",
+      "anchored_in": "The drone operator's service contract",
+      "properties": [
+        "Operator name",
+        "Authorisations held under the European specific category",
+        "Contract end date",
+        "Exit handover obligations"
+      ],
+      "status_vocabulary": [
+        "In contract",
+        "Notice period",
+        "Changed"
+      ],
+      "links": []
+    },
+    {
+      "id": "weather-observation",
+      "label": "Weather Observation",
+      "kind": "measure",
+      "anchored_in": "The dock weather station or the national meteo service (to confirm, chapter 9.5)",
+      "properties": [
+        "Wind speed",
+        "Visibility",
+        "Flight go or no-go basis"
+      ],
+      "status_vocabulary": [],
+      "links": [
+        {
+          "to": "flight-authorisation",
+          "label": "gates"
+        }
+      ]
+    }
+  ],
+  "write_paths": [
+    "the adapter tier (the integration adapter family, schema mapping, provenance stamping and replay into the Kafka backbone, idempotent writes into the model)",
+    "the surfaces used by authenticated responders (Keycloak identities in named roles)",
+    "work records pushed out to the responders' existing work systems",
+    "the governed berth plan layer published back to the port GIS"
+  ],
+  "human_loop": "people decide every response: a Detection stays Proposed until a responder confirms, rejects or merges it, every Work Item is acknowledged with reason codes by its named responder role, and flight approvers grant every mission; automatic acts are limited to confirmation re-flights and notification escalation"
+}
