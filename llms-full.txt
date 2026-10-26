@@ -1225,7 +1225,7 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 We publish the design. You bring the operation. Together they become an object model your systems can run on.
 
-23 reference architectures are published so far, across 9 of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.
+23 reference architectures are published so far, across 9 of the 13 sectors on the grid, in the United States, Pakistan, Saudi Arabia and Germany.
 
 ## Sectors
 
@@ -2291,6 +2291,7 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | warehouse-digital-twin-us | warehousing and intralogistics | United States | [10.5281/zenodo.23556416](https://doi.org/10.5281/zenodo.23556416) |
 | wayside-detector-trending-rail-us | rail and transportation | United States | [10.5281/zenodo.23556421](https://doi.org/10.5281/zenodo.23556421) |
 | factory-ontology-rebuild-depot-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23570177](https://doi.org/10.5281/zenodo.23570177) |
+| drone-detection-dispatch-port-germany | maritime and ports | Germany | [10.5281/zenodo.23635729](https://doi.org/10.5281/zenodo.23635729) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 
@@ -5168,6 +5169,83 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 
 ---
 
+# Industrial AI reference architecture
+
+Canonical: https://codeatoms.ai/industrial-ai-reference-architecture/
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+
+An industrial AI reference architecture is a complete design for putting AI into one industrial operation: the sources it reads, the object model that joins them, the open-weight models it runs, the compute sized from those models, the three-year cost and the named person who approves every action. CodeNinja Atoms has published 23 of them, one per real operation, across 9 sectors in the United States (12), Pakistan (6), Saudi Arabia (4), Germany (1). Each is free to reuse under CC BY 4.0 with a DOI.
+
+## An industrial AI reference architecture for each sector
+
+| Sector | Designs | Countries |
+|---|---|---|
+| agriculture and earth observation | [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/), [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/), [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/) | Pakistan, Saudi Arabia, United States |
+| aviation and aerospace manufacturing | [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) | United States |
+| discrete manufacturing and automotive | [Depot Operating Object Model](https://codeatoms.ai/factory-ontology-rebuild-depot-us/), [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/) | United States |
+| energy and utilities | [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/), [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/), [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/), [Feeder Firewatch](https://codeatoms.ai/wildfire-risk-distribution-us/) | Pakistan, Saudi Arabia, United States |
+| heavy industry and construction | [Structure Phase Watch](https://codeatoms.ai/structure-phase-construction-saudi-arabia/), [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/), [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) | Pakistan, Saudi Arabia |
+| maritime and ports | [Port Drone Watch](https://codeatoms.ai/drone-detection-dispatch-port-germany/), [Port Twin](https://codeatoms.ai/port-digital-twin-us/), [Terminal Pulse](https://codeatoms.ai/truck-turn-container-terminal-us/) | Germany, United States |
+| oil and gas | [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/), [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/), [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/), [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) | Pakistan, United States |
+| rail and transportation | [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/), [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/) | United States |
+| warehousing and intralogistics | [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/) | United States |
+
+## Industrial AI reference architecture patterns
+
+| Pattern | What runs where | Designs |
+|---|---|---|
+| Frontier reasoning node (11) | eight 141 GB HBM-class GPUs holding an open-weight frontier model at FP8, owned or hosted in the country | [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/), [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/), [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/), [Port Drone Watch](https://codeatoms.ai/drone-detection-dispatch-port-germany/), [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/), [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/), [Structure Phase Watch](https://codeatoms.ai/structure-phase-construction-saudi-arabia/), [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/), [Feeder Firewatch](https://codeatoms.ai/wildfire-risk-distribution-us/), [Terminal Pulse](https://codeatoms.ai/truck-turn-container-terminal-us/), [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) |
+| One inference card (6) | 48 GB PCIe inference cards, from one card to one eight-card server, at the site or in the country; no frontier model | [Depot Operating Object Model](https://codeatoms.ai/factory-ontology-rebuild-depot-us/), [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/), [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/), [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/), [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/), [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) |
+| No new compute (6) | the design runs on servers or software the operator already owns; nothing to buy | [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/), [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/), [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/), [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/), [Port Twin](https://codeatoms.ai/port-digital-twin-us/), [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) |
+
+## The layers of an industrial AI reference architecture
+
+Every published design follows the same seven layers, bottom up. Across the 23 designs the object model layer holds 317 objects and 295 typed links, the inference layer names 57 open-weight model choices, and 23 of 23 designs name the person who approves each action. The sovereign boundary is what makes it sovereign: every layer runs on hardware the operator owns or controls, in its own country, with no third-party AI service in the serving path.
+
+| Layer | What it holds |
+|---|---|
+| 1. Sources | the systems of record the operation already runs, read only; they stay the system of record |
+| 2. Sensing | cameras, detectors and instruments, existing or added, sized from the streams they produce |
+| 3. Adapters | one family per kind of source, owning its contract, retries and ordering; the only way data enters |
+| 4. Object model | the operation as typed objects, properties and links (an ontology), held on infrastructure the operator controls |
+| 5. Inference | open-weight models only, placed at the edge, the site or one in-country node by latency and link loss |
+| 6. Services | what the design computes over the object model: forecasts, detections, joins, evidence |
+| 7. Surfaces | where people see the result and a named person decides; actions are written one way into the owning system |
+
+## Every published industrial AI reference architecture
+
+| Design | Sector | Country | Compute | Three-year cost | DOI |
+|---|---|---|---|---|---|
+| [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/) | rail and transportation | United States | At the new four-camera yard-entry portal, an octa-core NPU edge box sized from its streams, so only detections, OCR strings and short evidence frames cross a cellular link that drops for hours; centrally, one 141 GB HBM GPU class card in one node in the railroad's own data center, holding the 65.2 GB checkpoint with a 1.2 planning factor and about 63 GB to spare | About 54,000 US dollars to own the central card for three years (a range of 52,000 to 57,000, card, support and power, host server by quotation), against about 625,000 dollars to rent the smallest AWS instance that holds one such card on the deepest three-year commitment in US East and about 1.66 million on demand; the edge box, portal cameras and pilot locomotive sensing are priced by quotation (Appendix A) | 10.5281/zenodo.23556421 |
+| [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/) | warehousing and intralogistics | United States | At each site, one industrial edge server with one 48 GB PCIe inference card running vision in Triton and the site model under vLLM; centrally, one 141 GB HBM class node of eight cards, on the operator's own hardware | About 597,000 US dollars to own the twelve cards (510,000 to 689,000) before the four edge chassis, which are priced by quotation; renting the same cards in AWS US East runs about 1.86 million on demand and about 699,000 on the deepest three-year commitment (Appendix A) | 10.5281/zenodo.23556416 |
+| [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) | oil and gas | United States | At each station, volume production edge modules in 7W to 60W envelopes inside hazardous area enclosures, detecting through backhaul loss; centrally, one node of eight 141 GB HBM-class GPUs in the gas control center | About 465,000 US dollars to own the control center node for three years (432,000 to 485,000), about three quarters of the 625,000 the deepest AWS commitment in US East costs and well under the 1.66 million on demand; the station modules, enclosures, cameras, diodes and sensors are priced by quotation (Appendix A) | 10.5281/zenodo.23556374 |
+| [Depot Operating Object Model](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) | discrete manufacturing and automotive | United States | Fanless DIN-rail edge boxes beside each machine group and at the test cell, their class fixed by a phase one measurement of the vibration load; centrally, two cards of the 48 GB PCIe class air cooled in the depot's own server room on its existing power, holding the 65.2 GB checkpoint with a 1.2 planning factor, about 78.2 GB against roughly 88 GB usable | About 67,000 US dollars to own the two-card server for three years (a range of 62,000 to 70,000: server, support and power), against about 104,000 dollars to rent the same card class on the deepest three-year commitment in US East and about 276,000 on demand; the cheapest rental that holds the model, one 96 GB card, is about 33,000 on that commitment, so ownership is chosen for the boundary, not the price, and renting is a price reference only because data and weights stay in the government's environment; edge boxes, sensors, cameras, time card and switches are priced by quotation (Appendix A) | 10.5281/zenodo.23570177 |
+| [Port Drone Watch](https://codeatoms.ai/drone-detection-dispatch-port-germany/) | maritime and ports | Germany | Three tiers on the authority's own hardware: a GPU-class edge box at each dock, sized at the dock site survey; a site server at each port site with one to four 48 GB PCIe cards; and one node of eight 141 GB HBM cards (1,128 GB) in the port's own data centre, holding 753 GB of FP8 weights with a 1.2 planning factor, 904 GB. Detection events and evidence crops cross the boundary; pixels stay at the dock | About 735,000 US dollars to own the central node and the two site servers for three years (a range of 650,000 to 845,000: servers, support and power at the Eurostat non household tariff for Germany), against about 761,000 to rent the same card classes on the deepest three-year commitment in AWS Europe (Stockholm for the eight-card node, which Frankfurt does not sell, and Frankfurt for the site cards), so ownership costs about the same there, and about 2.02 million on demand, against which ownership costs about a third. Renting is a price reference only, because the imagery, the weights and the detection history stay on hardware the port owns; dock edge boxes are priced by quotation after the survey (Appendix A) | 10.5281/zenodo.23635729 |
+| [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) | energy and utilities | Pakistan | One 48 GB PCIe inference GPU class card on ruggedised edge servers inside the plant perimeter, a PTP grandmaster time card and a one-way egress path; no cloud, because Pakistan has no hyperscaler region | About 22,500 US dollars to own the site envelope over three years (21,600 to 23,400), about the same as the deepest three-year AWS commitment for one L40S card in the UAE region, which could not keep the read one-way in any case (Appendix A) | 10.5281/zenodo.23365092 |
+| [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/) | rail and transportation | United States | At the car, an EN 50155 and IEC 60571 module (8 by 8 by 8 inches, IP62, 24 to 48 VDC, CFR 238 materials); centrally, one 141 GB HBM GPU class node in a contractor-hosted US cloud | About 625,000 US dollars to run the eight-card node for three years on the deepest AWS commitment in US East, about three eighths of the 1.66 million on demand; the 225 modules are priced by quotation (Appendix A) | 10.5281/zenodo.23365118 |
+| [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) | aviation and aerospace manufacturing | United States | A fanless industrial inference computer in the cell panel and an eight-card 48 GB PCIe inference server in the facility, joined one way across a hardware data diode; an OCP Time Card grandmaster orders every stream | About 202,000 to 220,000 US dollars to own the priced classes over three years, the scanner and the server most of it; the two compute tiers alone cost about two fifths of the deepest three-year AWS commitment for eight L40S cards, which the offline requirement rules out anyway (Appendix A) | 10.5281/zenodo.23308095 |
+| [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/) | oil and gas | Pakistan | One server-class host of the 48 GB PCIe inference GPU class inside the operator's estate; no field compute, no cloud, nothing crosses the boundary | About 19,500 US dollars to own the host over three years (18,700 to 20,200), about four fifths of the deepest three-year AWS commitment for one L40S card, which could not keep the data in Pakistan in any case (Appendix A) | 10.5281/zenodo.23308093 |
+| [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/) | discrete manufacturing and automotive | United States | One 48 GB L40S-class card per recorder host, in the conditioned server room; nothing at the poles | About 474,000 to 871,000 US dollars to own over three years, mostly camera heads; the two recorder hosts alone cost about four fifths of the deepest three-year AWS commitment, and there is no per camera license at any pole count (Appendix A) | 10.5281/zenodo.23296077 |
+| [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/) | agriculture and earth observation | United States | The operator's ArcGIS Enterprise; nothing runs in a cloud the operator does not control | No compute to price; the acquisition is priced by the survey firm against the operator's own task table (Appendix A) | 10.5281/zenodo.23186673 |
+| [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) | agriculture and earth observation | Saudi Arabia | One 48 GB L40S-class inference node inside the Kingdom; the card class needs a US export licence | About 15,200 dollars to own the node, about two thirds the deepest three-year AWS commitment, and renting would move the data outside the Kingdom (Appendix A) | 10.5281/zenodo.23186675 |
+| [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/) | agriculture and earth observation | Pakistan | Open-source PostgreSQL with PostGIS on the operator's own servers; source code and full intellectual property handed over | No hardware line to price: the cost is the integration and software work (Appendix A) | 10.5281/zenodo.23186671 |
+| [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/) | oil and gas | Pakistan | Two containers on the operator's own site application server, inside its OT boundary | No compute to price; the field equipment is priced by OEM quotation against the survey (Appendix A) | 10.5281/zenodo.23157967 |
+| [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) | energy and utilities | Saudi Arabia | No hardware bought; the study runs on the operator's own in-country servers | No hardware line to price: the cost is the assessment work itself (Appendix A) | 10.5281/zenodo.23157965 |
+| [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/) | energy and utilities | United States | One node of eight 141 GB HBM-class GPUs: 753 GB of FP8 weights, 904 GB with the 1.2 planning factor, against 1,128 GB | About 510,000 dollars to own the reasoning node, about four fifths the deepest three-year AWS commitment (Appendix A) | 10.5281/zenodo.23157957 |
+| [Structure Phase Watch](https://codeatoms.ai/structure-phase-construction-saudi-arabia/) | heavy industry and construction | Saudi Arabia | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom) | About 642,000 US dollars with support and power at the Saudi industrial tariff | 10.5281/zenodo.23126448 |
+| [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/) | heavy industry and construction | Pakistan | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom), in a dedicated data center behind an export licence checkpoint | About 4,445,000 US dollars for 300 installation points, of which the counting kits are 2,832,000 and cannot be rented; owning the frontier node costs about 686,000 against 751,000 on AWS's deepest three-year plan | 10.5281/zenodo.23126563 |
+| [Port Twin](https://codeatoms.ai/port-digital-twin-us/) | maritime and ports | United States | No equipment bought: about 1.1 GB of fp16 weights on the port's existing enterprise virtual machines | No hardware line to price: the design adds software and integration work to servers the port already runs | 10.5281/zenodo.23126431 |
+| [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) | heavy industry and construction | Saudi Arabia | None bought: the requirement asks for no server or GPU, and the field gateways carry no model runtime | About 328,000 to 439,000 US dollars with support and power; the eight-factory pilot is about 21,000 to 26,000 of equipment | 10.5281/zenodo.23126565 |
+| [Feeder Firewatch](https://codeatoms.ai/wildfire-risk-distribution-us/) | energy and utilities | United States | One node of eight 141 GB HBM-class GPUs holds GLM 5.2 at FP8 (753 GB of weights, 904 GB with headroom) | About 841,000 US dollars with support and power at the Texas industrial power price | 10.5281/zenodo.23159328 |
+| [Terminal Pulse](https://codeatoms.ai/truck-turn-container-terminal-us/) | maritime and ports | United States | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom), at about 10 kW | About 722,000 US dollars with support and power at the US industrial power price | 10.5281/zenodo.23159331 |
+| [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) | oil and gas | Pakistan | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom) | About 670,000 US dollars with support and power at Pakistan's industrial tariff | 10.5281/zenodo.23119714 |
+
+See also: [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/), [physical AI system design](https://codeatoms.ai/physical-ai-system-design/), [self-improving AI system](https://codeatoms.ai/self-improving-ai-system/).
+
+
+---
+
 # Industrial ontology examples
 
 Canonical: https://codeatoms.ai/industrial-ontology-examples/
@@ -6536,6 +6614,62 @@ PADI is CodeNinja's benchmark for system design in physical AI. It scores Praxis
 Once per RSI loop, on tasks never run before.
 
 Updated each RSI loop. Last published: RSI Loop 22, 2026-10-16. RSI Loop 23 is under way.
+
+
+---
+
+# Physical AI system design
+
+Canonical: https://codeatoms.ai/physical-ai-system-design/
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+
+Physical AI system design is the engineering of a system that senses a physical operation, reasons over it as typed objects and acts through a named person. Its decisions are what to sense, where inference runs (the edge, the site or one in-country node), the object model, the open-weight model choice, the compute sized from those models' weights, the write paths back into the operator's systems and human control. CodeNinja Atoms has published 23 worked examples of physical AI system design across 9 sectors in the United States (12), Pakistan (6), Saudi Arabia (4), Germany (1), each free to reuse under CC BY 4.0.
+
+## The six decisions in a physical AI system design
+
+| Decision | What the published designs do |
+|---|---|
+| 1. Sensing and sources | What the system reads: the operator's existing systems of record, read only, plus the cameras, detectors and instruments the operation needs. 22 of 23 designs name their sources on the first page of the paper; every design names them in the body. |
+| 2. Where inference runs | 6 of 23 designs state an edge or boundary tier in their At a glance table. By compute pattern: 11 frontier reasoning node, 6 one inference card, 6 no new compute; in every design inference stays in the operator's country. |
+| 3. The object model | 317 typed objects and 295 typed links across the 23 designs, each published as hyper-ontology/1 JSON. |
+| 4. Open-weight model choice | 57 model choices in all, each with its licence and the reason it was picked; no closed model in any serving path. |
+| 5. Sizing from the weights | 23 of 23 designs state their compute and 23 of 23 their three-year cost on the first page, sized from the models' own weights, from no new hardware to an eight-GPU node. |
+| 6. Write paths and human control | 23 of 23 designs name their write paths (how a decision is written into the owning system) and 23 of 23 name the person who approves each action that changes the physical world. |
+
+## Worked examples of physical AI system design
+
+| Design | Sector | Country | What it senses or reads | Compute |
+|---|---|---|---|---|
+| [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/) | rail and transportation | United States | An open reference architecture for system design in physical AI. | At the new four-camera yard-entry portal, an octa-core NPU edge box sized from its streams, so only detections, OCR strings and short evidence frames cross a cellular link that drops for hours; centrally, one 141 GB HBM GPU class card in one node in the railroad's own data center, holding the 65.2 GB checkpoint with a 1.2 planning factor and about 63 GB to spare |
+| [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/) | warehousing and intralogistics | United States | An open reference architecture for system design in physical AI. | At each site, one industrial edge server with one 48 GB PCIe inference card running vision in Triton and the site model under vLLM; centrally, one 141 GB HBM class node of eight cards, on the operator's own hardware |
+| [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) | oil and gas | United States | An open reference architecture for system design in physical AI. | At each station, volume production edge modules in 7W to 60W envelopes inside hazardous area enclosures, detecting through backhaul loss; centrally, one node of eight 141 GB HBM-class GPUs in the gas control center |
+| [Depot Operating Object Model](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) | discrete manufacturing and automotive | United States | An open reference architecture for system design in physical AI, built on ontologies for unifying factory systems at a government vehicle rebuild depot in the United States, where the inference server that runs it costs about 67,000 US dollars to own over three years. | Fanless DIN-rail edge boxes beside each machine group and at the test cell, their class fixed by a phase one measurement of the vibration load; centrally, two cards of the 48 GB PCIe class air cooled in the depot's own server room on its existing power, holding the 65.2 GB checkpoint with a 1.2 planning factor, about 78.2 GB against roughly 88 GB usable |
+| [Port Drone Watch](https://codeatoms.ai/drone-detection-dispatch-port-germany/) | maritime and ports | Germany | An open reference architecture for system design in physical AI, built for a maritime and ports authority in Germany that already flies a docked drone network across two port sites, where owning the inference hardware that runs it costs about 735,000 US dollars over three years. | Three tiers on the authority's own hardware: a GPU-class edge box at each dock, sized at the dock site survey; a site server at each port site with one to four 48 GB PCIe cards; and one node of eight 141 GB HBM cards (1,128 GB) in the port's own data centre, holding 753 GB of FP8 weights with a 1.2 planning factor, 904 GB. Detection events and evidence crops cross the boundary; pixels stay at the dock |
+| [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) | energy and utilities | Pakistan | An open reference architecture for system design in physical AI. | One 48 GB PCIe inference GPU class card on ruggedised edge servers inside the plant perimeter, a PTP grandmaster time card and a one-way egress path; no cloud, because Pakistan has no hyperscaler region |
+| [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/) | rail and transportation | United States | An open reference architecture for system design in physical AI. | At the car, an EN 50155 and IEC 60571 module (8 by 8 by 8 inches, IP62, 24 to 48 VDC, CFR 238 materials); centrally, one 141 GB HBM GPU class node in a contractor-hosted US cloud |
+| [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) | aviation and aerospace manufacturing | United States | a vendor-independent dieless robotic sheet metal cell that takes an aircraft structural part from CAD to a certified, serialized part with collision-free springback-compensated toolpaths, in-process metrology and a per-serial traceability record, wholly inside the facility's own boundary with no vendor cloud. | A fanless industrial inference computer in the cell panel and an eight-card 48 GB PCIe inference server in the facility, joined one way across a hardware data diode; an OCP Time Card grandmaster orders every stream |
+| [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/) | oil and gas | Pakistan | a validation-first study that digitises an operator's scanned pipeline records, verifies the corridor in the field, calibrates a direct current interference model in validated software and hands the re-runnable model over on the operator's own hardware, so every safe distance ships with its evidence. | One server-class host of the 48 GB PCIe inference GPU class inside the operator's estate; no field compute, no cloud, nothing crosses the boundary |
+| [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/) | discrete manufacturing and automotive | United States | a fully on-premises camera monitoring system that puts every turn, crossing, pit entry and access point of a vehicle proving ground on footage the operator owns, with exportable clips and camera uptime it can prove. | One 48 GB L40S-class card per recorder host, in the conditioned server room; nothing at the poles |
+| [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/) | agriculture and earth observation | United States | one summer flight of 3-inch 4-band orthoimagery and USGS Quality Level 1 LiDAR, with every tile, point cloud and elevation model bound into a site ontology, so the next season starts from a comparison instead of rediscovery. | The operator's ArcGIS Enterprise; nothing runs in a cloud the operator does not control |
+| [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) | agriculture and earth observation | Saudi Arabia | an 18-month earth observation service that screens every parcel for restricted green fodder and cultivation beyond the licensed area, checks each detection against the holding's licence, and turns the confirmed ones into case files an inspector can act on. | One 48 GB L40S-class inference node inside the Kingdom; the card class needs a US export licence |
+| [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/) | agriculture and earth observation | Pakistan | one dashboard that joins a farm's live sensor feeds, its historical datasets and a big data and analytics repository into one object model, so any farm, crop cycle or season can be drilled into, exported and reported on under role-based access. | Open-source PostgreSQL with PostGIS on the operator's own servers; source code and full intellectual property handed over |
+| [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/) | oil and gas | Pakistan | field hardware that rebuilds the signal path on three Modbus loops, and a governed inventory ontology that catches a flatlined or swapped radar gauge reading before the central inventory picture misleads anyone. | Two containers on the operator's own site application server, inside its OT boundary |
+| [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) | energy and utilities | Saudi Arabia | a records-based reliability and availability assessment that joins each plant's work orders, trip history and design documents into one reliability object model the operator owns, so every availability figure, criticality rank and root cause finding traces to its source. | No hardware bought; the study runs on the operator's own in-country servers |
+| [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/) | energy and utilities | United States | one system of context that sees every device on a utility's control networks, flags abnormal behaviour and assembles the evidence a NERC CIP audit asks for, on the operator's own hardware. | One node of eight 141 GB HBM-class GPUs: 753 GB of FP8 weights, 904 GB with the 1.2 planning factor, against 1,128 GB |
+| [Structure Phase Watch](https://codeatoms.ai/structure-phase-construction-saudi-arabia/) | heavy industry and construction | Saudi Arabia | one live model of a construction site's structure phase that forecasts schedule slips three days out and shows safety breaches as they happen, on the contractor's own hardware inside the Kingdom. | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom) |
+| [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/) | heavy industry and construction | Pakistan | cameras and a GPU industrial PC at every casting strand and cooling bed count billets, ingots, rebars and girders as they are made, publish the counts through a one-way link into one record the authority owns, and let revenue officers reconcile counted against declared production. | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom), in a dedicated data center behind an export licence checkpoint |
+| [Port Twin](https://codeatoms.ai/port-digital-twin-us/) | maritime and ports | United States | one authoritative digital twin that binds a port's operational systems, live sensor feeds and finance backbone into a thirteen-object ontology, self-hosted on the port's own virtual machines inside the continental United States. | No equipment bought: about 1.1 GB of fp16 weights on the port's existing enterprise virtual machines |
+| [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) | heavy industry and construction | Saudi Arabia | live, read-only visibility of fire alarm panels, fire pumps, fire water tanks and energy meters across an operator's highest-risk factories, read through contacts, PLC inputs and LoRaWAN into an IoT platform hosted in Saudi Arabia, with never a write path into certified life-safety equipment. | None bought: the requirement asks for no server or GPU, and the field gateways carry no model runtime |
+| [Feeder Firewatch](https://codeatoms.ai/wildfire-risk-distribution-us/) | energy and utilities | United States | a live ignition and outage risk score for every distribution feeder segment, built on the cooperative's own hardware, with every de-energisation and fast-trip change approved by a named operator. | One node of eight 141 GB HBM-class GPUs holds GLM 5.2 at FP8 (753 GB of weights, 904 GB with headroom) |
+| [Terminal Pulse](https://codeatoms.ai/truck-turn-container-terminal-us/) | maritime and ports | United States | truck turn time predicted two hours out and yard congestion seen live, at a container terminal, on the operator's own hardware with no outbound connection. | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom), at about 10 kW |
+| [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) | oil and gas | Pakistan | An open reference architecture for predicting HSE incidents at an oil and gas operator in Pakistan, on the operator's own hardware, with no data leaving the country and no third-party AI service in the serving path. | One node of eight 141 GB HBM-class GPUs holds GLM 5.3 at FP8 (753 GB of weights, 904 GB with headroom) |
+
+## Where to learn physical AI system design
+
+Design on Praxis: https://codeatoms.ai/praxis/ · PADI, the benchmark for physical AI system design: https://codeatoms.ai/padi/ · Developers: https://codeatoms.ai/developer/ · Dataset: https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures
+
+See also: [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/), [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/), [self-improving AI system](https://codeatoms.ai/self-improving-ai-system/).
 
 
 ---
@@ -9487,6 +9621,67 @@ In every published warehousing and intralogistics design a named person makes th
 ## Sources
 
 - [Warehouse Twin Command: Live Slotting, Docks, Yards and Safety Vision for Warehousing and Intralogistics in the United States](https://codeatoms.ai/warehouse-digital-twin-us/) (United States), DOI https://doi.org/10.5281/zenodo.23556416
+
+
+---
+
+# Self-improving AI system
+
+Canonical: https://codeatoms.ai/self-improving-ai-system/
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai)
+
+A self-improving AI system is a system whose output is measured on fresh tasks each loop and whose context, not its weights, is improved between loops. CodeNinja's Praxis is run as one: each RSI loop (recursive self improvement loop) measures Praxis against frontier AI on its own on the Physical AI Design Index (PADI), and the 23 designs published here are its output. Latest measured RSI loop, RSI Loop 21: Praxis platform 54.4% against frontier AI 37.7% of checks passed.
+
+## The self-improving AI system, RSI loop by RSI loop
+
+| RSI Loop | Date | Tasks | Praxis platform | Frontier AI |
+|---|---|---|---|---|
+| RSI Loop 12 | 3 Oct 2026 | 6 | 37.5% | 38.4% |
+| RSI Loop 13 | 4 Oct 2026 | 6 | 29.5% | 32.1% |
+| RSI Loop 14 | 5 Oct 2026 | 6 | 43.2% | 39.6% |
+| RSI Loop 15 | 5 Oct 2026 | 6 | 41.7% | 35.7% |
+| RSI Loop 16 | 7 Oct 2026 | 5 | 36.5% | 26.0% |
+| RSI Loop 17 | 8 Oct 2026 | 6 | 23.9% | 16.2% |
+| RSI Loop 18 | 9 Oct 2026 | 6 | 37.4% | 31.3% |
+| RSI Loop 19 | 11 Oct 2026 | 6 | 41.7% | 27.0% |
+| RSI Loop 20 | 11 Oct 2026 | 6 | 39.1% | 30.4% |
+| RSI Loop 21 | 14 Oct 2026 | 6 | 54.4% | 37.7% |
+| RSI Loop 22, blind | 16 Oct 2026 | 7 | 48.5% | 28.4% |
+
+How PADI scores, and its limitations: https://codeatoms.ai/padi/
+
+## What the self-improving AI system produced
+
+| Design | Sector | Country | Published |
+|---|---|---|---|
+| [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/) | rail and transportation | United States | 2026-10-22 |
+| [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/) | warehousing and intralogistics | United States | 2026-10-22 |
+| [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) | oil and gas | United States | 2026-10-22 |
+| [Depot Operating Object Model](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) | discrete manufacturing and automotive | United States | 2026-10-22 |
+| [Port Drone Watch](https://codeatoms.ai/drone-detection-dispatch-port-germany/) | maritime and ports | Germany | 2026-10-22 |
+| [Turbine Island Watch](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) | energy and utilities | Pakistan | 2026-10-14 |
+| [Consist Watch](https://codeatoms.ai/rail-fleet-condition-monitoring-us/) | rail and transportation | United States | 2026-10-14 |
+| [Hangar Form Cell](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) | aviation and aerospace manufacturing | United States | 2026-10-12 |
+| [Corridor Guard](https://codeatoms.ai/dc-interference-gas-pipelines-pakistan/) | oil and gas | Pakistan | 2026-10-12 |
+| [Pit Camera Watch](https://codeatoms.ai/test-site-camera-monitoring-us/) | discrete manufacturing and automotive | United States | 2026-10-11 |
+| [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/) | agriculture and earth observation | United States | 2026-10-06 |
+| [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) | agriculture and earth observation | Saudi Arabia | 2026-10-06 |
+| [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/) | agriculture and earth observation | Pakistan | 2026-10-06 |
+| [Loop Integrity Watch](https://codeatoms.ai/tank-gauge-integrity-pakistan/) | oil and gas | Pakistan | 2026-10-05 |
+| [Reliability Atlas](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) | energy and utilities | Saudi Arabia | 2026-10-05 |
+| [Grid Context Watch](https://codeatoms.ai/ot-security-cip-evidence-us/) | energy and utilities | United States | 2026-10-05 |
+| [Structure Phase Watch](https://codeatoms.ai/structure-phase-construction-saudi-arabia/) | heavy industry and construction | Saudi Arabia | 2026-10-04 |
+| [Steel Count Ledger](https://codeatoms.ai/steel-production-count-pakistan/) | heavy industry and construction | Pakistan | 2026-10-04 |
+| [Port Twin](https://codeatoms.ai/port-digital-twin-us/) | maritime and ports | United States | 2026-10-04 |
+| [Factory Fire Watch](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) | heavy industry and construction | Saudi Arabia | 2026-10-04 |
+| [Feeder Firewatch](https://codeatoms.ai/wildfire-risk-distribution-us/) | energy and utilities | United States | 2026-10-03 |
+| [Terminal Pulse](https://codeatoms.ai/truck-turn-container-terminal-us/) | maritime and ports | United States | 2026-10-03 |
+| [Sovereign HSE Watch](https://codeatoms.ai/sovereign-hse-pakistan/) | oil and gas | Pakistan | 2026-10-03 |
+
+Design on Praxis: https://codeatoms.ai/praxis/ · PADI: https://codeatoms.ai/padi/
+
+See also: [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/), [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/), [physical AI system design](https://codeatoms.ai/physical-ai-system-design/).
 
 
 ---

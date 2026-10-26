@@ -172,7 +172,8 @@ def footer_links(base=""):
     return ('<span class="flinks">'
             f'<a href="{b}about/">About</a> · <a href="{b}contact/">Contact</a> · <a href="{b}sectors/">Sectors</a> · <a href="{b}co-build/">Co-build</a> · '
             f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}memos/">Memos</a> · <a href="{b}agentic-memory-architecture/">Agentic Memory Architecture</a> · <a href="{b}padi/">PADI</a> · '
-            f'<a href="{b}sovereign-ai-reference-architectures/">Sovereign AI reference architectures</a> · <a href="{b}industrial-ontology-examples/">Industrial ontology examples</a>'
+            f'<a href="{b}sovereign-ai-reference-architectures/">Sovereign AI reference architectures</a> · <a href="{b}industrial-ontology-examples/">Industrial ontology examples</a> · '
+            f'<a href="{b}industrial-ai-reference-architecture/">Industrial AI reference architecture</a> · <a href="{b}physical-ai-system-design/">Physical AI system design</a> · <a href="{b}self-improving-ai-system/">Self-improving AI system</a>'
             "</span>")
 
 

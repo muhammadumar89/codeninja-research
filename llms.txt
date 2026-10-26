@@ -20,6 +20,9 @@
 
 - [Sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/): every published design as a sovereign reference architecture, with sector, country, compute, three-year cost and DOI. Markdown: https://codeatoms.ai/sovereign-ai-reference-architectures/index.md
 - [Industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/): every published object model, browsable, each downloadable as hyper-ontology/1 JSON. Markdown: https://codeatoms.ai/industrial-ontology-examples/index.md
+- [Industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/): every published design as an industrial AI reference architecture, by sector, with patterns, layers, compute, cost and DOI. Markdown: https://codeatoms.ai/industrial-ai-reference-architecture/index.md
+- [Physical AI system design](https://codeatoms.ai/physical-ai-system-design/): the six decisions in a physical AI system design, with counts from the published designs, and every design as a worked example. Markdown: https://codeatoms.ai/physical-ai-system-design/index.md
+- [Self-improving AI system](https://codeatoms.ai/self-improving-ai-system/): Praxis as a self-improving AI system, measured RSI loop by RSI loop on PADI against frontier AI, and the designs it produced. Markdown: https://codeatoms.ai/self-improving-ai-system/index.md
 
 ## For agents
 

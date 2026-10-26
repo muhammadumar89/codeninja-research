@@ -9,7 +9,7 @@ with nothing published yet shows its published neighbours as proof.
     python tools/co_build.py     # before site_index.py (which runs seo.py last)
 """
 import html, json, datetime
-from collections import defaultdict
+from collections import defaultdict, Counter
 from pathlib import Path
 import brand
 
@@ -309,19 +309,24 @@ def main():
         items.append(sector_page(slug, name, ds, neighbours, why, totals))
 
     covered = totals["sectors"]
+    # Countries read from the dataset, most designs first (a recorded defect: the prose once hard-coded three countries and missed Germany)
+    countries = [c for c, _k in Counter(r.get("country") for r in rows if r.get("country")).most_common()]
+    ncountries = ("one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten")[len(countries) - 1] if 0 < len(countries) <= 10 else str(len(countries))
     title = "Co-build an Ontology for Your Operation | CodeNinja Atoms"
     desc = (f"Co-build a sovereign physical AI reference architecture and object model for one of your operations with CodeNinja Atoms, "
-            f"in any of 13 sectors. {totals['designs']} designs published so far across {covered} sectors and three countries.")
+            f"in any of 13 sectors. {totals['designs']} designs published so far across {covered} sectors and {ncountries} countries.")
     body = (f'<p class="eyebrow">Co-build</p><h1>Co-build an ontology for your operation</h1>'
             f'<p class="lead">We publish the design. You bring the operation. Together they become an object model your systems can run on.</p>'
             f'<p class="rec"><strong>Recommended path.</strong> Open the page for your sector, read the nearest published design, then send the one form '
             f'with the single operation you want to make living. A sector with nothing published yet is where the first design is built with a partner.</p>'
             f'<p>CodeNinja Atoms publishes open reference architectures for physical AI: sovereign designs an operator can run on its own hardware, '
             f'under open weight licences, with the data staying where the operation requires. There are {totals["designs"]} published so far, across '
-            f'{covered} of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan. Co-building is the same work done for '
+            f'{covered} of the 13 sectors on the grid, in {clist(countries)}. Co-building is the same work done for '
             f'your operation, with the object model handed to you.</p>'
             f'<p>Every design so far is listed in one table at <a href="{BASE}/sovereign-ai-reference-architectures/">sovereign AI reference architectures</a>, '
-            f'and every object model at <a href="{BASE}/industrial-ontology-examples/">industrial ontology examples</a>.</p>'
+            f'and every object model at <a href="{BASE}/industrial-ontology-examples/">industrial ontology examples</a>. The same designs are read by sector as an '
+            f'<a href="{BASE}/industrial-ai-reference-architecture/">industrial AI reference architecture</a>, as the six decisions of '
+            f'<a href="{BASE}/physical-ai-system-design/">physical AI system design</a>, and as the output of a <a href="{BASE}/self-improving-ai-system/">self-improving AI system</a>.</p>'
             f'<ul class="sectorlist">{"".join(items)}</ul>'
             f'<h2>What this is not</h2><p>It is not a pilot that ends in a slide pack, and it is not a licence you buy before anything is designed. '
             f'It is one operation, one design document your engineers can argue with number by number, and one object model you own. '
@@ -337,7 +342,7 @@ def main():
         encoding="utf-8")
     md = ["# Co-build an ontology for your operation", "", f"Canonical: {BASE}/co-build/", "Publisher: CodeNinja Atoms (https://codeatoms.ai)", "",
           "We publish the design. You bring the operation. Together they become an object model your systems can run on.", "",
-          f"{totals['designs']} reference architectures are published so far, across {covered} of the 13 sectors on the grid, in the United States, Saudi Arabia and Pakistan.", "",
+          f"{totals['designs']} reference architectures are published so far, across {covered} of the 13 sectors on the grid, in {clist(countries)}.", "",
           "## Sectors", ""] + [f"- [{n}]({BASE}/co-build/{s}/)" + (f": {len(by.get(d, []))} published designs" if d and by.get(d) else ": first design open") for s, n, d, _w in SECTORS] + [
           "", "## What you bring", ""] + [f"- {h}: {t}" for h, t in BRING_YOU] + ["", "## What comes out", ""] + [f"- {h}: {t}" for h, t in OUT]
     (ROOT / "co-build" / "index.md").write_text("\n".join(md) + "\n", encoding="utf-8")
