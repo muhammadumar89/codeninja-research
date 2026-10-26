@@ -201,7 +201,7 @@ def foot(slug, ds):
     return (f'{F0}<footer class="atoms-foot"><div class="w"><p class="talk" style="font-size:20px;color:#F2F2F0;margin:0 0 36px">Want this design for your own operation? <a href="{brand.CONTACT}">Talk to us</a>.</p><h2>More reference architectures</h2><p class="xlink">This design is one of {len(ds)} published <a href="{BASE}/sovereign-ai-reference-architectures/">sovereign AI reference architectures</a>, each listed with its sector, country, compute and three-year cost in one table.</p><ul>{items}</ul>{sec}'
             f'<p>Part of <a href="{BASE}/">CodeNinja Atoms</a>, a sovereign AI operating system for the physical world. Designed on <a href="{BASE}/praxis/">Praxis</a>, made living with '
             f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Pages, papers, object models and data are CC BY 4.0. CodeNinja Atoms is a fully owned subsidiary of <a href="{brand.PARENT}">CodeNinja</a>.</p>'
-            f'<p>{brand.footer_links(BASE + "/")}</p>'
+            f'{brand.footer_links(BASE + "/")}'
             f"</div></footer>{F1}")
 
 

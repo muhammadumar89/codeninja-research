@@ -167,14 +167,35 @@ def header(home, links=None, access="#access"):
 
 
 def footer_links(base=""):
-    """The links the header no longer carries, kept on every page for readers and crawlers."""
+    """The site map footer: labelled columns, one per kind of page (Umar, 26 Oct 2026: arranged, never one jumbled line).
+    Sectors are read from the built /sectors/ folders, so a new sector page joins the footer by itself.
+    The <nav class="flinks"> wrapper is what rd_keywords.tiera strips before counting term use; keep the class."""
     b = base
-    return ('<span class="flinks">'
-            f'<a href="{b}about/">About</a> · <a href="{b}contact/">Contact</a> · <a href="{b}sectors/">Sectors</a> · <a href="{b}co-build/">Co-build</a> · '
-            f'<a href="{b}developer/">Developers</a> · <a href="{b}blog/">Blog</a> · <a href="{b}memos/">Memos</a> · <a href="{b}agentic-memory-architecture/">Agentic Memory Architecture</a> · <a href="{b}padi/">PADI</a> · '
-            f'<a href="{b}sovereign-ai-reference-architectures/">Sovereign AI reference architectures</a> · <a href="{b}industrial-ontology-examples/">Industrial ontology examples</a> · '
-            f'<a href="{b}industrial-ai-reference-architecture/">Industrial AI reference architecture</a> · <a href="{b}physical-ai-system-design/">Physical AI system design</a> · <a href="{b}self-improving-ai-system/">Self-improving AI system</a>'
-            "</span>")
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent / "sectors"
+    secs = sorted(q.parent.name for q in root.glob("*/index.html")) if root.exists() else []
+    sname = lambda slug: (lambda t: t[:1].upper() + t[1:])(slug.replace("-and-", " and ").replace("-", " "))
+    cols = [
+        ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("PADI", f"{b}padi/"),
+                      ("Developers", f"{b}developer/"), ("Agentic Memory Architecture", f"{b}agentic-memory-architecture/")]),
+        ("Collections", [("Sovereign AI reference architectures", f"{b}sovereign-ai-reference-architectures/"),
+                         ("Industrial ontology examples", f"{b}industrial-ontology-examples/"),
+                         ("Industrial AI reference architecture", f"{b}industrial-ai-reference-architecture/"),
+                         ("Physical AI system design", f"{b}physical-ai-system-design/"),
+                         ("Self-improving AI system", f"{b}self-improving-ai-system/")]),
+        ("Sectors", [(sname(x), f"{b}sectors/{x}/") for x in secs] + [("All sectors", f"{b}sectors/")]),
+        ("Research", [("Reference architectures", f"{b}#research"), ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/")]),
+        ("Company", [("About", f"{b}about/"), ("Co-build", f"{b}co-build/"), ("Contact", f"{b}contact/"), ("CodeNinja", PARENT)]),
+    ]
+    css = ("<style>nav.flinks{flex:1 1 100%;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px 28px;margin:40px 0 32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.14);"
+           "font:400 14px/1.45 'Inter Tight','Helvetica Neue',Arial,sans-serif;text-align:left}"
+           "nav.flinks h3{margin:0 0 14px;font:500 11px/1.2 ui-monospace,'SFMono-Regular',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#8B8E97;border:0;padding:0}"
+           "nav.flinks ul{list-style:none;margin:0;padding:0;display:block;grid-template-columns:none}nav.flinks>div{min-width:0}nav.flinks li{margin:0 0 9px;padding:0;border:0;display:block}"
+           "nav.flinks a{color:#F2F2F0;text-decoration:none}nav.flinks a:hover{text-decoration:underline}"
+           "@media (max-width:960px){nav.flinks{grid-template-columns:repeat(3,minmax(0,1fr))}}"
+           "@media (max-width:560px){nav.flinks{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}}</style>")
+    body = "".join(f'<div><h3>{h}</h3><ul>' + "".join(f'<li><a href="{u}">{t}</a></li>' for t, u in items) + "</ul></div>" for h, items in cols)
+    return f'<nav class="flinks" aria-label="Site map">{css}{body}</nav>'
 
 
 ARROW = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v11M2 7.5 7 12.5 12 7.5" stroke="currentColor" stroke-width="1"/></svg>'
