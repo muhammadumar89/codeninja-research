@@ -4,23 +4,24 @@ Canonical: https://codeatoms.ai/physical-ai-system-design/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-Physical AI system design is the engineering of a system that senses a physical operation, reasons over it as typed objects and acts through a named person. Its decisions are what to sense, where inference runs (the edge, the site or one in-country node), the object model, the open-weight model choice, the compute sized from those models' weights, the write paths back into the operator's systems and human control. CodeNinja Atoms has published 23 worked examples of physical AI system design across 9 sectors in the United States (12), Pakistan (6), Saudi Arabia (4), Germany (1), each free to reuse under CC BY 4.0.
+Physical AI system design is the engineering of a system that senses a physical operation, reasons over it as typed objects and acts through a named person. Its decisions are what to sense, where inference runs (the edge, the site or one in-country node), the object model, the open-weight model choice, the compute sized from those models' weights, the write paths back into the operator's systems and human control. CodeNinja Atoms has published 24 worked examples of physical AI system design across 10 sectors in the United States (12), Pakistan (6), Saudi Arabia (5), Germany (1), each free to reuse under CC BY 4.0.
 
 ## The six decisions in a physical AI system design
 
 | Decision | What the published designs do |
 |---|---|
-| 1. Sensing and sources | What the system reads: the operator's existing systems of record, read only, plus the cameras, detectors and instruments the operation needs. 22 of 23 designs name their sources on the first page of the paper; every design names them in the body. |
-| 2. Where inference runs | 6 of 23 designs state an edge or boundary tier in their At a glance table. By compute pattern: 11 frontier reasoning node, 6 one inference card, 6 no new compute; in every design inference stays in the operator's country. |
-| 3. The object model | 317 typed objects and 295 typed links across the 23 designs, each published as hyper-ontology/1 JSON. |
-| 4. Open-weight model choice | 57 model choices in all, each with its licence and the reason it was picked; no closed model in any serving path. |
-| 5. Sizing from the weights | 23 of 23 designs state their compute and 23 of 23 their three-year cost on the first page, sized from the models' own weights, from no new hardware to an eight-GPU node. |
-| 6. Write paths and human control | 23 of 23 designs name their write paths (how a decision is written into the owning system) and 23 of 23 name the person who approves each action that changes the physical world. |
+| 1. Sensing and sources | What the system reads: the operator's existing systems of record, read only, plus the cameras, detectors and instruments the operation needs. 23 of 24 designs name their sources on the first page of the paper; every design names them in the body. |
+| 2. Where inference runs | 6 of 24 designs state an edge or boundary tier in their At a glance table. By compute pattern: 12 frontier reasoning node, 6 one inference card, 6 no new compute; in every design inference stays in the operator's country. |
+| 3. The object model | 333 typed objects and 308 typed links across the 24 designs, each published as hyper-ontology/1 JSON. |
+| 4. Open-weight model choice | 60 model choices in all, each with its licence and the reason it was picked; no closed model in any serving path. |
+| 5. Sizing from the weights | 24 of 24 designs state their compute and 24 of 24 their three-year cost on the first page, sized from the models' own weights, from no new hardware to an eight-GPU node. |
+| 6. Write paths and human control | 24 of 24 designs name their write paths (how a decision is written into the owning system) and 24 of 24 name the person who approves each action that changes the physical world. |
 
 ## Worked examples of physical AI system design
 
 | Design | Sector | Country | What it senses or reads | Compute |
 |---|---|---|---|---|
+| [Silicon Ledger](https://codeatoms.ai/chip-design-ontology-saudi-arabia/) | semiconductors | Saudi Arabia | An open reference architecture for system design in physical AI, built for a fabless chip design company in Saudi Arabia that designs silicon in vendor design tool suites and hands tapeouts to an outside foundry, where owning the inference node that runs it costs about 569,000 US dollars over three years. | One node of eight 141 GB HBM cards (1,128 GB) in the company's own server room, holding 753 GB of FP8 weights with a 1.2 planning factor, 904 GB, at roughly ten kilowatts; no edge estate. The node is a 4A090 item for a D:4 destination, so a BIS licence determination is a phase one checkpoint, and the platform runs on the company's existing hardware until it lands. Nothing crosses outward |
 | [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/) | rail and transportation | United States | An open reference architecture for system design in physical AI. | At the new four-camera yard-entry portal, an octa-core NPU edge box sized from its streams, so only detections, OCR strings and short evidence frames cross a cellular link that drops for hours; centrally, one 141 GB HBM GPU class card in one node in the railroad's own data center, holding the 65.2 GB checkpoint with a 1.2 planning factor and about 63 GB to spare |
 | [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/) | warehousing and intralogistics | United States | An open reference architecture for system design in physical AI. | At each site, one industrial edge server with one 48 GB PCIe inference card running vision in Triton and the site model under vLLM; centrally, one 141 GB HBM class node of eight cards, on the operator's own hardware |
 | [Pipeline Integrity Watch](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) | oil and gas | United States | An open reference architecture for system design in physical AI. | At each station, volume production edge modules in 7W to 60W envelopes inside hazardous area enclosures, detecting through backhaul loss; centrally, one node of eight 141 GB HBM-class GPUs in the gas control center |

@@ -24,6 +24,7 @@ Every design here is also a row in [CodeNinjatools/vertical-driven-architectures
 
 | Paper | Sector | Country | DOI |
 |---|---|---|---|
+| [Silicon Ledger: Ontologies for Semiconductor Design From Specification to Tapeout in Saudi Arabia](chip-design-ontology-saudi-arabia/) ([read online](https://codeatoms.ai/chip-design-ontology-saudi-arabia/)) | Semiconductors | Saudi Arabia | [10.5281/zenodo.23693146](https://doi.org/10.5281/zenodo.23693146) |
 | [Port Drone Watch: From Oil Sheen to Dispatched Work on the Port's Own Hardware in Germany](drone-detection-dispatch-port-germany/) ([read online](https://codeatoms.ai/drone-detection-dispatch-port-germany/)) | Maritime and ports | Germany | [10.5281/zenodo.23635729](https://doi.org/10.5281/zenodo.23635729) |
 | [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](factory-ontology-rebuild-depot-us/) ([read online](https://codeatoms.ai/factory-ontology-rebuild-depot-us/)) | Discrete manufacturing and automotive | United States | [10.5281/zenodo.23570177](https://doi.org/10.5281/zenodo.23570177) |
 | [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](wildfire-risk-distribution-us/) ([read online](https://codeatoms.ai/wildfire-risk-distribution-us/)) | Energy and utilities | United States | [10.5281/zenodo.23159328](https://doi.org/10.5281/zenodo.23159328) |

@@ -18,6 +18,7 @@ Recommended path: no warehousing and intralogistics design is published yet, so 
 - Nearest published work: [Port Drone Watch: From Oil Sheen to Dispatched Work on the Port's Own Hardware in Germany](https://codeatoms.ai/drone-detection-dispatch-port-germany/) (maritime and ports, Germany)
 - Nearest published work: [Pipeline Integrity Watch: Leak Detection, Fleet Health and Security Directive Evidence for Natural Gas Transmission in the United States](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) (oil and gas, United States)
 - Nearest published work: [Wayside Trend Watch: Predictive Maintenance From Wayside Detectors for a Freight Railroad in the United States](https://codeatoms.ai/wayside-detector-trending-rail-us/) (rail and transportation, United States)
+- Nearest published work: [Silicon Ledger: Ontologies for Semiconductor Design From Specification to Tapeout in Saudi Arabia](https://codeatoms.ai/chip-design-ontology-saudi-arabia/) (semiconductors, Saudi Arabia)
 - Nearest published work: [Warehouse Twin Command: Live Slotting, Docks, Yards and Safety Vision for Warehousing and Intralogistics in the United States](https://codeatoms.ai/warehouse-digital-twin-us/) (warehousing and intralogistics, United States)
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
@@ -48,7 +49,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a warehousing and intralogistics design to read?
 
-Not yet. 23 designs are published across 9 other sectors, and the nearest ones are linked on this page. The first warehousing and intralogistics design is built with a partner.
+Not yet. 24 designs are published across 10 other sectors, and the nearest ones are linked on this page. The first warehousing and intralogistics design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/warehousing-and-intralogistics/#ask
 Every sector: https://codeatoms.ai/co-build/

@@ -1,0 +1,1 @@
+Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.

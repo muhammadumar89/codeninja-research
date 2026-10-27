@@ -4,7 +4,28 @@ Canonical: https://codeatoms.ai/industrial-ontology-examples/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 23 published industrial ontology examples, 317 objects and 295 links in all, one per real operation across 9 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 24 published industrial ontology examples, 333 objects and 308 links in all, one per real operation across 10 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+
+## Silicon Ledger (semiconductors, Saudi Arabia)
+
+Design: https://codeatoms.ai/chip-design-ontology-saudi-arabia/ · JSON: https://codeatoms.ai/chip-design-ontology-saudi-arabia/ontology/objects.json
+
+- Specification section (document, in The shared drives for specifications)
+- Requirement (record, in The requirements site)
+- Design block (asset, in The version control system)
+- Interface (asset, in The version control system)
+- Signal (asset, in The version control system)
+- Design assumption (record, in Engineer-entered records)
+- Verification check (record, in The version control system)
+- Test (record, in The version control system)
+- Coverage result (measure, in The simulation and regression environment)
+- Bug (record, in The bug records)
+- Waiver (record, in Engineer-entered records)
+- Design revision (event, in The version control system)
+- Engineer (actor)
+- Verification lead (actor)
+- Expert lesson (record, in A kept record of decisions and outcomes that the next decision reads)
+- Foundry handoff (event)
 
 ## Wayside Trend Watch (rail and transportation, United States)
 
