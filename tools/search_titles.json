@@ -11,10 +11,15 @@
   }
  },
  "restricted-crop-monitoring-saudi-arabia": {
-  "title": "Earth Observation for Restricted Crop Enforcement: Fodder Watch, Saudi Arabia",
-  "description": "An earth observation system design that screens farm parcels with Sentinel-2, Sentinel-1 and Landsat, turns restricted crop detections into enforceable case files, and keeps imagery, weights and detections in the Kingdom. An open reference architecture by CodeNinja Atoms.",
-  "query": "earth observation cluster (tier B, 7 named queries at positions 1 to 10); page at 35 impressions, position 5.5, 0 clicks, 28 days to 8 Oct 2026; rd_keywords.py pick on 12 Oct 2026",
-  "fixed": "2026-10-12"
+  "title": "Earth Observation Tasking for Restricted Crop Enforcement: Fodder Watch, Saudi Arabia",
+  "description": "Earth observation tasking for restricted crops: a free Sentinel and Landsat screen, satellite tasking bought only to confirm, case files kept in the Kingdom.",
+  "query": "satellite tasking scheduling earth observation systems (4 at 6.5), earth observation tasking (4 at 6.8), tasking satellite observation (3 at 4.0); page 104 impressions at 5.7, 0 clicks, Search Console 28 days to 24 Oct 2026, read 27 Oct; rd_keywords.py pick, episode 28",
+  "fixed": "2026-10-27",
+  "previous": {
+   "title": "Earth Observation for Restricted Crop Enforcement: Fodder Watch, Saudi Arabia",
+   "description": "An earth observation system design that screens farm parcels with Sentinel-2, Sentinel-1 and Landsat, turns restricted crop detections into enforceable case files, and keeps imagery, weights and detections in the Kingdom. An open reference architecture by CodeNinja Atoms.",
+   "fixed": "2026-10-12"
+  }
  },
  "blog/dont-baptize-the-gpus": {
   "title": "Don't Baptize the GPUs: Chris Olah, Anthropic and the religious question about Claude",
