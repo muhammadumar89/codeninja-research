@@ -1,0 +1,313 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia",
+  "url": "https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/",
+  "doi": "10.5281/zenodo.23889774"
+ },
+ "sector": "mining",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: an open pit mine operator in Saudi Arabia, with the pit worked by a contractor, running a haul fleet of about 35 trucks of the 100 tonne class against one shovel of the 600 tonne class, a workshop rebuild bay and a site server room on its own premises",
+ "source": "chapter 5 of the paper (the sixteen objects and their anchors in 5.1, the work order status vocabulary in 5.2, the Haul truck record in 5.3), the properties and the labelled typed links of Figure 4, the anchors and links of Table 8, and the properties chapter 2.1 gives each system of record; Tyre reading and Ground engaging tool anchors follow Table 8 as corrected (Inspection records); Shift and the three actors carry no anchor in the paper and are left empty; the work order ladder lists only the four states the paper names; Figure 4 counts fourteen links, of which the thirteen labelled ones are kept.",
+ "objects": [
+  {
+   "id": "haul-truck",
+   "label": "Haul truck",
+   "kind": "asset",
+   "anchored_in": "Fleet management and dispatch system",
+   "properties": [
+    "Unit number",
+    "100 tonne class",
+    "New or rebuild cohort",
+    "Running hours",
+    "Current haul assignment",
+    "Availability this month"
+   ],
+   "status_vocabulary": [
+    "In service",
+    "Pulled from service",
+    "In rebuild",
+    "Standby"
+   ],
+   "links": []
+  },
+  {
+   "id": "shovel",
+   "label": "Shovel",
+   "kind": "asset",
+   "anchored_in": "Fleet management and dispatch system",
+   "properties": [
+    "Unit number",
+    "600 tonne class",
+    "Bucket tooth count"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "component",
+   "label": "Component",
+   "kind": "asset",
+   "anchored_in": "The maintenance management system",
+   "properties": [
+    "Serial number",
+    "Component type",
+    "Hours since rebuild"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "haul-truck",
+     "label": "installed on"
+    },
+    {
+     "to": "rebuild",
+     "label": "hours since"
+    }
+   ]
+  },
+  {
+   "id": "haul-road-segment",
+   "label": "Haul road segment",
+   "kind": "asset",
+   "anchored_in": "The mine plan",
+   "properties": [
+    "Segment id",
+    "Grade",
+    "Length",
+    "Ramp flag",
+    "Source revision"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "haul-cycle",
+   "label": "Haul cycle",
+   "kind": "event",
+   "anchored_in": "Fleet management and dispatch system",
+   "properties": [
+    "Truck",
+    "Shovel",
+    "Dump point",
+    "Cycle time",
+    "Delay code"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shift",
+     "label": "occurred during"
+    },
+    {
+     "to": "haul-road-segment",
+     "label": "ran over"
+    }
+   ]
+  },
+  {
+   "id": "payload-record",
+   "label": "Payload record",
+   "kind": "measure",
+   "anchored_in": "Fleet management and dispatch system",
+   "properties": [
+    "Truck",
+    "Cycle",
+    "Tonnes"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "haul-cycle",
+     "label": "belongs to"
+    }
+   ]
+  },
+  {
+   "id": "telematics-alarm",
+   "label": "Telematics alarm",
+   "kind": "event",
+   "anchored_in": "The original equipment makers' telematics",
+   "properties": [
+    "Alarm code",
+    "Severity",
+    "Machine",
+    "Timestamp"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "haul-truck",
+     "label": "raised by"
+    }
+   ]
+  },
+  {
+   "id": "oil-sample",
+   "label": "Oil sample",
+   "kind": "measure",
+   "anchored_in": "The laboratory",
+   "properties": [
+    "Sample date",
+    "Component",
+    "Wear metals",
+    "Viscosity",
+    "Trend against baseline"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "component",
+     "label": "drawn from"
+    }
+   ]
+  },
+  {
+   "id": "tyre-reading",
+   "label": "Tyre reading",
+   "kind": "measure",
+   "anchored_in": "Inspection records",
+   "properties": [
+    "Truck",
+    "Position",
+    "Pressure"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "haul-truck",
+     "label": "taken on"
+    }
+   ]
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "The maintenance management system",
+   "properties": [
+    "Work order number",
+    "Component",
+    "What failed",
+    "Work done",
+    "Planner decision",
+    "Outcome"
+   ],
+   "status_vocabulary": [
+    "Drafted by agent",
+    "Approved",
+    "In progress",
+    "Overdue"
+   ],
+   "links": [
+    {
+     "to": "component",
+     "label": "opened on"
+    }
+   ]
+  },
+  {
+   "id": "rebuild",
+   "label": "Rebuild",
+   "kind": "event",
+   "anchored_in": "The maintenance management system",
+   "properties": [
+    "Component",
+    "Rebuild date",
+    "Hours at rebuild",
+    "Findings"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "component",
+     "label": "performed on"
+    }
+   ]
+  },
+  {
+   "id": "ground-engaging-tool",
+   "label": "Ground engaging tool",
+   "kind": "asset",
+   "anchored_in": "Inspection records",
+   "properties": [
+    "Tooth position on bucket"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shovel",
+     "label": "mounted on"
+    }
+   ]
+  },
+  {
+   "id": "shift",
+   "label": "Shift",
+   "kind": "event",
+   "anchored_in": "",
+   "properties": [
+    "Crew",
+    "Start and end",
+    "Mine superintendent"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "mine-superintendent",
+     "label": "overseen by"
+    }
+   ]
+  },
+  {
+   "id": "maintenance-planner",
+   "label": "Maintenance planner",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Named approver scope",
+    "Shift"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shift",
+     "label": "works"
+    }
+   ]
+  },
+  {
+   "id": "dispatcher",
+   "label": "Dispatcher",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Named approver scope",
+    "Shift",
+    "Haul redrafts approved"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "mine-superintendent",
+   "label": "Mine superintendent",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Command centre owner"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (two adapter families, the integration adapter and the telemetry adapter, read only against the five sources, stamping every fact with its source system, provenance class and a synchronized timestamp)",
+  "the write back into the fleet management and dispatch system, through which the dispatcher's approved haul redrafts reach assignments, with an audit trail on every write",
+  "the write back into the maintenance management system, through which approved work orders and rebuild records return, with an audit trail on every write",
+  "the surfaces used by the maintenance planner, the shovel operator, the dispatcher and the mine superintendent: approvals, tooth loss confirmations and escalations"
+ ],
+ "human_loop": "agents draft and named people decide: the maintenance planner approves each health ranking, the dispatcher approves each haul redraft, the shovel operator confirms each tooth loss, and the mine superintendent owns the command center and holds escalation authority; no agent stops a machine or changes a work order without a named approval, except the tooth loss stop, which follows the site safety procedure"
+}

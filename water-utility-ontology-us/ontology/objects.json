@@ -1,0 +1,304 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Industrial Data Ontology for a Water Utility in the United States",
+  "url": "https://codeatoms.ai/water-utility-ontology-us/",
+  "doi": "10.5281/zenodo.23889772"
+ },
+ "sector": "energy and utilities",
+ "country": "United States",
+ "scenario": "the operator is described by class, never by name: a municipal water utility in the United States, a state and local critical infrastructure owner and operator, which in phase one runs one treatment plant and its distribution zone (wells on an aquifer, a distribution reservoir, pump stations and lift stations, a pipe network) controlled by PLCs and RTUs over radio and leased lines, in the middle of a control system migration",
+ "source": "chapter 5 of the paper (the sixteen objects in 5.1, the Tag and Alarm status vocabularies in 5.2, the Treatment plant record in 5.3), the properties and typed links of Figure 4, and the anchors and links of Table 8; Work order is anchored in the CMMS, Sampling point and Lab result in the LIMS and Permit limit in the permit records as chapters 2 and 6 describe them (Table 8 lists twelve rows); properties Figure 4 truncates are left out; the Lab result to Permit limit label is partly covered in Figure 4 and read as 'compared to'; the Lab result to Sampling point link carries no readable label and is recorded as 'linked to'.",
+ "objects": [
+  {
+   "id": "treatment-plant",
+   "label": "Treatment plant",
+   "kind": "site",
+   "anchored_in": "GIS",
+   "properties": [
+    "Plant ID",
+    "Permit number",
+    "Service population",
+    "Process units",
+    "Distribution zone served"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "permit-limit",
+     "label": "held to"
+    }
+   ]
+  },
+  {
+   "id": "well",
+   "label": "Well",
+   "kind": "site",
+   "anchored_in": "GIS",
+   "properties": [
+    "Well ID",
+    "Aquifer",
+    "Pumping capacity"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "distribution-reservoir",
+   "label": "Distribution reservoir",
+   "kind": "site",
+   "anchored_in": "GIS",
+   "properties": [
+    "Reservoir ID",
+    "Capacity"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "pressure-zone",
+     "label": "stores for"
+    }
+   ]
+  },
+  {
+   "id": "pump-station",
+   "label": "Pump station",
+   "kind": "site",
+   "anchored_in": "GIS",
+   "properties": [
+    "Station ID",
+    "Zone served",
+    "Telemetry path (radio or leased line)"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "pressure-zone",
+     "label": "feeds"
+    },
+    {
+     "to": "rtu",
+     "label": "reports through"
+    }
+   ]
+  },
+  {
+   "id": "lift-station",
+   "label": "Lift station",
+   "kind": "site",
+   "anchored_in": "GIS",
+   "properties": [
+    "Station ID",
+    "Wet well size",
+    "Force main"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "pressure-zone",
+   "label": "Pressure zone",
+   "kind": "site",
+   "anchored_in": "GIS",
+   "properties": [
+    "Zone ID",
+    "Service connections",
+    "Hydraulic grade"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "treatment-plant",
+     "label": "served by"
+    }
+   ]
+  },
+  {
+   "id": "pump",
+   "label": "Pump",
+   "kind": "asset",
+   "anchored_in": "CMMS",
+   "properties": [
+    "Asset number",
+    "Tag",
+    "Duty or standby"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "pump-station",
+     "label": "runs at"
+    },
+    {
+     "to": "tag",
+     "label": "maps to"
+    }
+   ]
+  },
+  {
+   "id": "pipe-segment",
+   "label": "Pipe segment",
+   "kind": "asset",
+   "anchored_in": "GIS",
+   "properties": [
+    "GIS feature ID",
+    "Material",
+    "Diameter"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "pressure-zone",
+     "label": "carries for"
+    }
+   ]
+  },
+  {
+   "id": "plc",
+   "label": "PLC",
+   "kind": "asset",
+   "anchored_in": "Historian",
+   "properties": [
+    "Controller model",
+    "Original integrator",
+    "Firmware revision"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "rtu",
+   "label": "RTU",
+   "kind": "asset",
+   "anchored_in": "Historian",
+   "properties": [
+    "RTU ID",
+    "Radio channel or leased line",
+    "Scan rate"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "tag",
+   "label": "Tag",
+   "kind": "measure",
+   "anchored_in": "Historian",
+   "properties": [
+    "Tag name",
+    "Namespace (legacy or new)"
+   ],
+   "status_vocabulary": [
+    "Unmapped",
+    "Proposed",
+    "Confirmed"
+   ],
+   "links": [
+    {
+     "to": "rtu",
+     "label": "sourced from"
+    }
+   ]
+  },
+  {
+   "id": "alarm",
+   "label": "Alarm",
+   "kind": "event",
+   "anchored_in": "Historian",
+   "properties": [
+    "Alarm tag",
+    "Priority",
+    "Timestamp"
+   ],
+   "status_vocabulary": [
+    "Active",
+    "Acknowledged",
+    "Resolved"
+   ],
+   "links": [
+    {
+     "to": "tag",
+     "label": "raised on"
+    },
+    {
+     "to": "pump",
+     "label": "attaches to"
+    }
+   ]
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "CMMS",
+   "properties": [
+    "Work order number",
+    "Asset number",
+    "Type"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "pump",
+     "label": "opened on"
+    }
+   ]
+  },
+  {
+   "id": "sampling-point",
+   "label": "Sampling point",
+   "kind": "record",
+   "anchored_in": "LIMS",
+   "properties": [
+    "Sample point ID",
+    "Permit",
+    "Location"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "lab-result",
+   "label": "Lab result",
+   "kind": "record",
+   "anchored_in": "LIMS",
+   "properties": [
+    "Sample ID",
+    "Parameter",
+    "Result value"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "permit-limit",
+     "label": "compared to"
+    },
+    {
+     "to": "sampling-point",
+     "label": "linked to"
+    }
+   ]
+  },
+  {
+   "id": "permit-limit",
+   "label": "Permit limit",
+   "kind": "record",
+   "anchored_in": "Permit records",
+   "properties": [
+    "Permit ID",
+    "Parameter",
+    "Limit value"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (three adapter families: ops systems, integration and telemetry, read only against the six sources and stamping every fact with its source system, extraction method and timestamp; the historian is read only through the mirror in the demilitarized zone behind a hardware data diode)",
+  "the single write path in the platform, which ends at a confirmation record in memory and never at a system of record or toward the control network",
+  "the surfaces used by named staff (Keycloak identities): tag mapping confirmations by the engineer, alarm context confirmations by the operator on shift, and permit report approvals by the compliance manager"
+ ],
+ "human_loop": "agents draft and named staff decide: the engineer confirms each tag mapping the tag mapping agent proposes, the operator on shift confirms each alarm context pack, and the compliance manager approves the monthly permit report draft before any figure leaves the room; a monthly sampled audit of confirmed mappings logs the error rate"
+}

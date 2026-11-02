@@ -4,7 +4,7 @@ Canonical: https://codeatoms.ai/self-improving-ai-system/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-A self-improving AI system is a system whose output is measured on fresh tasks each loop and whose context, not its weights, is improved between loops. CodeNinja's Praxis is run as one: each RSI loop (recursive self improvement loop) measures Praxis against frontier AI on its own on the Physical AI Design Index (PADI), and the 24 designs published here are its output. Latest measured RSI loop, RSI Loop 21: Praxis platform 54.4% against frontier AI 37.7% of checks passed.
+A self-improving AI system is a system whose output is measured on fresh tasks each loop and whose context, not its weights, is improved between loops. CodeNinja's Praxis is run as one: each RSI loop (recursive self improvement loop) measures Praxis against frontier AI on its own on the Physical AI Design Index (PADI), and the 28 designs published here are its output. Latest measured RSI loop, RSI Loop 21: Praxis platform 54.4% against frontier AI 37.7% of checks passed.
 
 ## How a self-improving AI system works
 
@@ -35,6 +35,10 @@ How PADI scores, and its limitations: https://codeatoms.ai/padi/
 
 | Design | Sector | Country | Published |
 |---|---|---|---|
+| [Industrial Data Ontology for a Water Utility in the United States](https://codeatoms.ai/water-utility-ontology-us/) | energy and utilities | United States | 2026-11-02 |
+| [Physical AI System Design for Wafer Defect Inspection in the United States](https://codeatoms.ai/wafer-defect-inspection-us/) | semiconductors | United States | 2026-11-02 |
+| [Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/) | mining | Saudi Arabia | 2026-11-02 |
+| [Sovereign AI Architecture for a Grid Control Room in Saudi Arabia](https://codeatoms.ai/grid-control-room-saudi-arabia/) | energy and utilities | Saudi Arabia | 2026-11-02 |
 | [Silicon Ledger](https://codeatoms.ai/chip-design-ontology-saudi-arabia/) | semiconductors | Saudi Arabia | 2026-10-27 |
 | [Wayside Trend Watch](https://codeatoms.ai/wayside-detector-trending-rail-us/) | rail and transportation | United States | 2026-10-22 |
 | [Warehouse Twin Command](https://codeatoms.ai/warehouse-digital-twin-us/) | warehousing and intralogistics | United States | 2026-10-22 |

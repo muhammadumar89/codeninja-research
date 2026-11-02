@@ -1,0 +1,284 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Physical AI System Design for Wafer Defect Inspection in the United States",
+  "url": "https://codeatoms.ai/wafer-defect-inspection-us/",
+  "doi": "10.5281/zenodo.23889770"
+ },
+ "sector": "semiconductors",
+ "country": "United States",
+ "scenario": "the operator is described by class, never by name: a high volume wafer fab in the United States, owned by a commercial chipmaker, running optical inspection, electron microscope review and wafer level electrical test across hundreds of process steps, with phase one confined to one etch module and its inspection and review tools",
+ "source": "chapter 5 of the paper (the sixteen objects, their kinds and their anchors in 5.1, the Wafer record in 5.3), the properties and the twelve typed links of Figure 4, and the anchors and links of Table 8; the three actors carry no anchor in the paper and are left empty; the Yield engineer approves Hold link is drawn in Figure 4 only.",
+ "objects": [
+  {
+   "id": "wafer",
+   "label": "Wafer",
+   "kind": "material",
+   "anchored_in": "The manufacturing execution system",
+   "properties": [
+    "Wafer ID",
+    "Lot membership",
+    "Slot",
+    "Current process step"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "lot",
+     "label": "belongs to"
+    },
+    {
+     "to": "wafer-map-signature",
+     "label": "carries"
+    }
+   ]
+  },
+  {
+   "id": "lot",
+   "label": "Lot",
+   "kind": "material",
+   "anchored_in": "The manufacturing execution system",
+   "properties": [
+    "Lot ID",
+    "Product",
+    "Route"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "process-step",
+   "label": "Process step",
+   "kind": "event",
+   "anchored_in": "The manufacturing execution system",
+   "properties": [
+    "Step ID",
+    "Module",
+    "Sequence number"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "tool",
+   "label": "Tool",
+   "kind": "asset",
+   "anchored_in": "The manufacturing execution system",
+   "properties": [
+    "Tool ID",
+    "Tool type",
+    "Bay"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "chamber",
+   "label": "Chamber",
+   "kind": "asset",
+   "anchored_in": "The equipment data collection system",
+   "properties": [
+    "Chamber ID",
+    "Tool ID",
+    "Running hours since PM"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "tool",
+     "label": "sits in"
+    }
+   ]
+  },
+  {
+   "id": "recipe",
+   "label": "Recipe",
+   "kind": "record",
+   "anchored_in": "The manufacturing execution system",
+   "properties": [
+    "Recipe ID",
+    "Step",
+    "Revision"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "inspection-run",
+   "label": "Inspection run",
+   "kind": "event",
+   "anchored_in": "The inspection tools' own defect databases",
+   "properties": [
+    "Run ID",
+    "Tool",
+    "Wafer"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "tool",
+     "label": "runs on"
+    },
+    {
+     "to": "wafer",
+     "label": "inspects"
+    },
+    {
+     "to": "recipe",
+     "label": "follows"
+    }
+   ]
+  },
+  {
+   "id": "defect",
+   "label": "Defect",
+   "kind": "event",
+   "anchored_in": "The inspection tools' own defect databases",
+   "properties": [
+    "Defect ID",
+    "Wafer",
+    "Coordinates"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "wafer",
+     "label": "found on"
+    },
+    {
+     "to": "defect-class",
+     "label": "classified as"
+    },
+    {
+     "to": "defect-review-engineer",
+     "label": "confirmed by"
+    }
+   ]
+  },
+  {
+   "id": "defect-class",
+   "label": "Defect class",
+   "kind": "record",
+   "anchored_in": "The yield management system",
+   "properties": [
+    "Class name",
+    "Definition",
+    "Signature examples"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "wafer-map-signature",
+   "label": "Wafer map signature",
+   "kind": "measure",
+   "anchored_in": "The yield management system",
+   "properties": [
+    "Signature ID",
+    "Pattern type"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "wafer",
+     "label": "measured on"
+    }
+   ]
+  },
+  {
+   "id": "excursion",
+   "label": "Excursion",
+   "kind": "event",
+   "anchored_in": "The yield management system",
+   "properties": [
+    "Excursion ID",
+    "Signature",
+    "Onset time"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "hold",
+   "label": "Hold",
+   "kind": "record",
+   "anchored_in": "The manufacturing execution system",
+   "properties": [
+    "Hold ID",
+    "Lot",
+    "Reason"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "lot",
+     "label": "holds back"
+    }
+   ]
+  },
+  {
+   "id": "corrective-action",
+   "label": "Corrective action",
+   "kind": "record",
+   "anchored_in": "The yield management system",
+   "properties": [
+    "Action ID",
+    "Cause",
+    "Owner"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "defect-review-engineer",
+   "label": "Defect review engineer",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Approvals held"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "yield-engineer",
+   "label": "Yield engineer",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Approvals held",
+    "Hold approvals"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "hold",
+     "label": "approves"
+    }
+   ]
+  },
+  {
+   "id": "process-owner",
+   "label": "Process owner",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Module",
+    "Disposition approvals"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (one integration adapter family over SECS/GEM, GEM300 and EDA interfaces, read only against the five systems of record, stamping every record with its provenance and timestamp)",
+  "the approval-gated path through the manufacturing execution system interface, through which nothing reaches a system of record except an approved hold or disposition; a hold placed or released without a recorded named approval is refused in code and audited per hold",
+  "the surfaces used by the defect review engineer, the yield engineer and the process owner (Keycloak identities on site): class confirmations, hold approvals and dispositions"
+ ],
+ "human_loop": "agents draft and engineers decide: the classification agent proposes a defect class with its evidence for the defect review engineer to confirm, the excursion agent traces a wafer map signature that crosses a control limit to a chamber and drafts a hold for the yield engineer to approve, and the disposition agent drafts release, rework or scrap of a held lot for the process owner to approve"
+}

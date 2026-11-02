@@ -1,0 +1,300 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Sovereign AI Architecture for a Grid Control Room in Saudi Arabia",
+  "url": "https://codeatoms.ai/grid-control-room-saudi-arabia/",
+  "doi": "10.5281/zenodo.23889768"
+ },
+ "sector": "energy and utilities",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: a national grid operator in Saudi Arabia that runs the electricity transmission grid from regional and national control centres, with the first phase at one regional control centre through one summer, reading SCADA and EMS through a one-way replicated boundary and never sending a control command",
+ "source": "chapter 5 of the paper (the sixteen objects in 5.1, the status vocabularies in 5.2, the Substation record in 5.3), the properties and the thirteen labelled typed links of Figure 4 (its title counts fourteen; the fourteenth is drawn without a label and is left out), and the anchors and links of Table 8; the Weather cell anchor follows chapter 6.1 (weather services) and the Connected customer anchor chapter 2.2 (the connection records); Control engineer and Shift supervisor carry no anchor in the paper and are left empty; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "substation",
+   "label": "Substation",
+   "kind": "site",
+   "anchored_in": "The network (CIM export)",
+   "properties": [
+    "Voltage level",
+    "Bays",
+    "Air insulated or gas insulated",
+    "Region",
+    "Single line diagram reference"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "busbar",
+     "label": "contains"
+    }
+   ]
+  },
+  {
+   "id": "transmission-line",
+   "label": "Transmission line",
+   "kind": "asset",
+   "anchored_in": "The network (CIM export)",
+   "properties": [
+    "Voltage",
+    "Conductor type",
+    "Length in kilometres"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "substation",
+     "label": "terminates at"
+    }
+   ]
+  },
+  {
+   "id": "busbar",
+   "label": "Busbar",
+   "kind": "asset",
+   "anchored_in": "The network (CIM export)",
+   "properties": [
+    "Voltage",
+    "Bus section",
+    "Scheme"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "transformer",
+     "label": "connects"
+    }
+   ]
+  },
+  {
+   "id": "transformer",
+   "label": "Transformer",
+   "kind": "asset",
+   "anchored_in": "The asset and maintenance system",
+   "properties": [
+    "MVA rating",
+    "Vector group",
+    "Tap changer type"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "breaker",
+   "label": "Breaker",
+   "kind": "asset",
+   "anchored_in": "The asset and maintenance system",
+   "properties": [
+    "Voltage",
+    "Interruption medium",
+    "Operations count"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "transmission-line",
+     "label": "switches"
+    }
+   ]
+  },
+  {
+   "id": "protection-relay",
+   "label": "Protection relay",
+   "kind": "asset",
+   "anchored_in": "Protection settings databases",
+   "properties": [
+    "Relay model",
+    "Settings revision",
+    "Firmware version"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "transmission-line",
+     "label": "protects"
+    }
+   ]
+  },
+  {
+   "id": "alarm",
+   "label": "Alarm",
+   "kind": "event",
+   "anchored_in": "SCADA",
+   "properties": [
+    "Timestamp",
+    "Point",
+    "Priority"
+   ],
+   "status_vocabulary": [
+    "Raised",
+    "Acknowledged"
+   ],
+   "links": [
+    {
+     "to": "protection-relay",
+     "label": "references"
+    }
+   ]
+  },
+  {
+   "id": "grid-event",
+   "label": "Grid event",
+   "kind": "event",
+   "anchored_in": "EMS",
+   "properties": [
+    "Event type",
+    "Timestamp",
+    "Affected assets"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "transmission-line",
+     "label": "involves"
+    }
+   ]
+  },
+  {
+   "id": "switching-program",
+   "label": "Switching program",
+   "kind": "record",
+   "anchored_in": "The outage management system",
+   "properties": [
+    "Sequence steps",
+    "Apparatus",
+    "Drafted by agent"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Approved"
+   ],
+   "links": [
+    {
+     "to": "planned-outage",
+     "label": "executes"
+    }
+   ]
+  },
+  {
+   "id": "planned-outage",
+   "label": "Planned outage",
+   "kind": "record",
+   "anchored_in": "The outage management system",
+   "properties": [
+    "Window",
+    "Apparatus",
+    "Reason"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "transmission-line",
+     "label": "schedules"
+    }
+   ]
+  },
+  {
+   "id": "shift-log",
+   "label": "Shift log",
+   "kind": "record",
+   "anchored_in": "Shift records kept by the supervisors",
+   "properties": [
+    "Shift",
+    "Outgoing supervisor",
+    "Incoming supervisor"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shift-supervisor",
+     "label": "approved by"
+    }
+   ]
+  },
+  {
+   "id": "operating-procedure",
+   "label": "Operating procedure",
+   "kind": "document",
+   "anchored_in": "The procedures library",
+   "properties": [
+    "Procedure number",
+    "Title"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "switching-program",
+     "label": "governs"
+    }
+   ]
+  },
+  {
+   "id": "weather-cell",
+   "label": "Weather cell",
+   "kind": "measure",
+   "anchored_in": "Weather services",
+   "properties": [
+    "Cell identifier",
+    "Forecast temperature",
+    "Wind"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "transmission-line",
+     "label": "bears on"
+    }
+   ]
+  },
+  {
+   "id": "connected-customer",
+   "label": "Connected customer",
+   "kind": "actor",
+   "anchored_in": "The connection records",
+   "properties": [
+    "Connection point"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "busbar",
+     "label": "supplied through"
+    }
+   ]
+  },
+  {
+   "id": "control-engineer",
+   "label": "Control engineer",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Shift",
+    "Qualifications",
+    "Confirmations made"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "shift-supervisor",
+   "label": "Shift supervisor",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Shift",
+    "Approvals issued",
+    "Programs authorised"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (telemetry, integration and ERP adapter families, read only against the ten sources through the replicated boundary, stamping every fact with the system it came from)",
+  "the recorded confirmation or approval, written into the object model and the memory service and never into any system of record",
+  "the surfaces used by named control engineers and shift supervisors (identities issued inside the boundary): triage confirmations, switching program approvals and handover approvals"
+ ],
+ "human_loop": "agents draft and people decide: the control engineer confirms the alarm triage ranking, the shift supervisor approves every switching program draft, the incoming supervisor approves the handover, and the event analysis is prepared for the protection engineer; no agent sends a control command"
+}

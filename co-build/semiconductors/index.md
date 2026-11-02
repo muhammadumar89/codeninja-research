@@ -13,12 +13,13 @@ Recommended path: no semiconductor design is published yet, so the first one is 
 - Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
 - Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
 - Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
-- Nearest published work: [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (energy and utilities, Pakistan)
+- Nearest published work: [Sovereign AI Architecture for a Grid Control Room in Saudi Arabia](https://codeatoms.ai/grid-control-room-saudi-arabia/) (energy and utilities, Saudi Arabia)
 - Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
 - Nearest published work: [Port Drone Watch: From Oil Sheen to Dispatched Work on the Port's Own Hardware in Germany](https://codeatoms.ai/drone-detection-dispatch-port-germany/) (maritime and ports, Germany)
+- Nearest published work: [Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/) (mining, Saudi Arabia)
 - Nearest published work: [Pipeline Integrity Watch: Leak Detection, Fleet Health and Security Directive Evidence for Natural Gas Transmission in the United States](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) (oil and gas, United States)
 - Nearest published work: [Wayside Trend Watch: Predictive Maintenance From Wayside Detectors for a Freight Railroad in the United States](https://codeatoms.ai/wayside-detector-trending-rail-us/) (rail and transportation, United States)
-- Nearest published work: [Silicon Ledger: Ontologies for Semiconductor Design From Specification to Tapeout in Saudi Arabia](https://codeatoms.ai/chip-design-ontology-saudi-arabia/) (semiconductors, Saudi Arabia)
+- Nearest published work: [Physical AI System Design for Wafer Defect Inspection in the United States](https://codeatoms.ai/wafer-defect-inspection-us/) (semiconductors, United States)
 - Nearest published work: [Warehouse Twin Command: Live Slotting, Docks, Yards and Safety Vision for Warehousing and Intralogistics in the United States](https://codeatoms.ai/warehouse-digital-twin-us/) (warehousing and intralogistics, United States)
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
@@ -49,7 +50,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a semiconductor design to read?
 
-Not yet. 24 designs are published across 10 other sectors, and the nearest ones are linked on this page. The first semiconductor design is built with a partner.
+Not yet. 28 designs are published across 11 other sectors, and the nearest ones are linked on this page. The first semiconductor design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/semiconductors/#ask
 Every sector: https://codeatoms.ai/co-build/

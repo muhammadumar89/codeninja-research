@@ -4,7 +4,91 @@ Canonical: https://codeatoms.ai/industrial-ontology-examples/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 24 published industrial ontology examples, 333 objects and 308 links in all, one per real operation across 10 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 28 published industrial ontology examples, 397 objects and 360 links in all, one per real operation across 11 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+
+## Industrial Data Ontology for a Water Utility in the United States (energy and utilities, United States)
+
+Design: https://codeatoms.ai/water-utility-ontology-us/ · JSON: https://codeatoms.ai/water-utility-ontology-us/ontology/objects.json
+
+- Treatment plant (site, in GIS)
+- Well (site, in GIS)
+- Distribution reservoir (site, in GIS)
+- Pump station (site, in GIS)
+- Lift station (site, in GIS)
+- Pressure zone (site, in GIS)
+- Pump (asset, in CMMS)
+- Pipe segment (asset, in GIS)
+- PLC (asset, in Historian)
+- RTU (asset, in Historian)
+- Tag (measure, in Historian)
+- Alarm (event, in Historian)
+- Work order (record, in CMMS)
+- Sampling point (record, in LIMS)
+- Lab result (record, in LIMS)
+- Permit limit (record, in Permit records)
+
+## Physical AI System Design for Wafer Defect Inspection in the United States (semiconductors, United States)
+
+Design: https://codeatoms.ai/wafer-defect-inspection-us/ · JSON: https://codeatoms.ai/wafer-defect-inspection-us/ontology/objects.json
+
+- Wafer (material, in The manufacturing execution system)
+- Lot (material, in The manufacturing execution system)
+- Process step (event, in The manufacturing execution system)
+- Tool (asset, in The manufacturing execution system)
+- Chamber (asset, in The equipment data collection system)
+- Recipe (record, in The manufacturing execution system)
+- Inspection run (event, in The inspection tools' own defect databases)
+- Defect (event, in The inspection tools' own defect databases)
+- Defect class (record, in The yield management system)
+- Wafer map signature (measure, in The yield management system)
+- Excursion (event, in The yield management system)
+- Hold (record, in The manufacturing execution system)
+- Corrective action (record, in The yield management system)
+- Defect review engineer (actor)
+- Yield engineer (actor)
+- Process owner (actor)
+
+## Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia (mining, Saudi Arabia)
+
+Design: https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/ · JSON: https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/ontology/objects.json
+
+- Haul truck (asset, in Fleet management and dispatch system)
+- Shovel (asset, in Fleet management and dispatch system)
+- Component (asset, in The maintenance management system)
+- Haul road segment (asset, in The mine plan)
+- Haul cycle (event, in Fleet management and dispatch system)
+- Payload record (measure, in Fleet management and dispatch system)
+- Telematics alarm (event, in The original equipment makers' telematics)
+- Oil sample (measure, in The laboratory)
+- Tyre reading (measure, in Inspection records)
+- Work order (record, in The maintenance management system)
+- Rebuild (event, in The maintenance management system)
+- Ground engaging tool (asset, in Inspection records)
+- Shift (event)
+- Maintenance planner (actor)
+- Dispatcher (actor)
+- Mine superintendent (actor)
+
+## Sovereign AI Architecture for a Grid Control Room in Saudi Arabia (energy and utilities, Saudi Arabia)
+
+Design: https://codeatoms.ai/grid-control-room-saudi-arabia/ · JSON: https://codeatoms.ai/grid-control-room-saudi-arabia/ontology/objects.json
+
+- Substation (site, in The network (CIM export))
+- Transmission line (asset, in The network (CIM export))
+- Busbar (asset, in The network (CIM export))
+- Transformer (asset, in The asset and maintenance system)
+- Breaker (asset, in The asset and maintenance system)
+- Protection relay (asset, in Protection settings databases)
+- Alarm (event, in SCADA)
+- Grid event (event, in EMS)
+- Switching program (record, in The outage management system)
+- Planned outage (record, in The outage management system)
+- Shift log (record, in Shift records kept by the supervisors)
+- Operating procedure (document, in The procedures library)
+- Weather cell (measure, in Weather services)
+- Connected customer (actor, in The connection records)
+- Control engineer (actor)
+- Shift supervisor (actor)
 
 ## Silicon Ledger (semiconductors, Saudi Arabia)
 
