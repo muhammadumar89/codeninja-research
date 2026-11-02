@@ -68,7 +68,7 @@ Every design was reasoned on [Praxis](https://codeatoms.ai/praxis/), CodeNinja's
 
 ## Cite the dataset
 
-Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versions as https://doi.org/10.5281/zenodo.23160819, or this release as https://doi.org/10.5281/zenodo.23160820. The tables here on Hugging Face update daily between releases.
+Monthly snapshots carry a DOI; this is the November 2026 release. Cite all versions as https://doi.org/10.5281/zenodo.23160819, or this release as https://doi.org/10.5281/zenodo.23889945. The tables here on Hugging Face update daily between releases.
 
 ## Designs so far
 
@@ -98,6 +98,10 @@ Monthly snapshots carry a DOI; this is the October 2026 release. Cite all versio
 | factory-ontology-rebuild-depot-us | discrete manufacturing and automotive | United States | [10.5281/zenodo.23570177](https://doi.org/10.5281/zenodo.23570177) |
 | drone-detection-dispatch-port-germany | maritime and ports | Germany | [10.5281/zenodo.23635729](https://doi.org/10.5281/zenodo.23635729) |
 | chip-design-ontology-saudi-arabia | semiconductors | Saudi Arabia | [10.5281/zenodo.23693146](https://doi.org/10.5281/zenodo.23693146) |
+| grid-control-room-saudi-arabia | energy and utilities | Saudi Arabia | [10.5281/zenodo.23889768](https://doi.org/10.5281/zenodo.23889768) |
+| wafer-defect-inspection-us | semiconductors | United States | [10.5281/zenodo.23889770](https://doi.org/10.5281/zenodo.23889770) |
+| water-utility-ontology-us | energy and utilities | United States | [10.5281/zenodo.23889772](https://doi.org/10.5281/zenodo.23889772) |
+| open-pit-mine-haul-fleet-saudi-arabia | mining | Saudi Arabia | [10.5281/zenodo.23889774](https://doi.org/10.5281/zenodo.23889774) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 
