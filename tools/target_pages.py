@@ -408,6 +408,14 @@ def physical(ds, today):
     return n
 
 
+# 2 Nov 2026 (ep34, locked term "self-improving AI system", absent from the US top 30 on day seven): Google page 1 is explainers
+# (Wikipedia, Anthropic, arXiv), so the page gains the plain explanation of the loop a searcher came for; results only, never how PADI scores.
+WORKS = [("Measure on fresh tasks.", "Every loop starts with tasks the system has not seen, scored the same way for the system and for a baseline, so a gain is a gain and not memory."),
+         ("Find the gaps.", "Each failed check becomes a written gap: what was missing, where, and what would have fixed it."),
+         ("Improve the context, not the weights.", "The fixes land in what the system reasons with (documents, object models, registers, rules), so every change is readable and can be reverted."),
+         ("Measure again, blind.", "The next loop is scored on new tasks, and a held out blind set checks that the improvement carries to work the system never saw.")]
+
+
 def self_improving(ds, today):
     """/self-improving-ai-system/: the term 'self-improving AI system', a stepping stone toward 'self-improving system'. PADI results are
     loaded through padi.load() (the one loader) and shown as results only: never how PADI scores or any harness internal."""
@@ -436,6 +444,8 @@ def self_improving(ds, today):
     body = (f'<p class="eyebrow">Self-improving · AI system</p><h1>Self-improving AI system</h1>'
             f'<p class="lead">{E(answer)}</p>'
             f'<div class="stats">{stats}</div>'
+            + '<h2 id="works">How a self-improving AI system works</h2>'
+            + '<ol class="ans">' + ''.join(f'<li><b>{a}</b> {b}</li>' for a, b in WORKS) + '</ol>'
             + '<h2 id="loops">The self-improving AI system, RSI loop by RSI loop</h2>'
             + f'<p class="ans">Each row is one RSI loop: fresh tasks, both arms scored the same way, the share of checks passed. '
               f'The blind row is the evaluation on tasks the platform had never seen. How PADI scores is on the <a href="{BASE}/padi/">PADI page</a>, with its limitations; '
@@ -458,6 +468,7 @@ def self_improving(ds, today):
     ld = ld_pair(RSI, "Self-improving AI system", desc, today, ["self-improving AI system", "self-improving system", "physical AI", "AI benchmark"],
                  "What is a self-improving AI system?", answer, ds)
     md = md_head("Self-improving AI system", RSI, answer)
+    md += ["## How a self-improving AI system works", ""] + [f"{i}. **{a}** {b}" for i, (a, b) in enumerate(WORKS, 1)] + [""]
     md += ["## The self-improving AI system, RSI loop by RSI loop", ""] + (md_table(["RSI Loop", "Date", "Tasks", "Praxis platform", "Frontier AI"], pr) if pr else [f"Results: {BASE}/padi/"]) + [""]
     md += [f"How PADI scores, and its limitations: {BASE}/padi/", ""]
     md += ["## What the self-improving AI system produced", ""] + md_table(["Design", "Sector", "Country", "Published"],

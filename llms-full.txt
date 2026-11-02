@@ -10365,6 +10365,13 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 A self-improving AI system is a system whose output is measured on fresh tasks each loop and whose context, not its weights, is improved between loops. CodeNinja's Praxis is run as one: each RSI loop (recursive self improvement loop) measures Praxis against frontier AI on its own on the Physical AI Design Index (PADI), and the 24 designs published here are its output. Latest measured RSI loop, RSI Loop 21: Praxis platform 54.4% against frontier AI 37.7% of checks passed.
 
+## How a self-improving AI system works
+
+1. **Measure on fresh tasks.** Every loop starts with tasks the system has not seen, scored the same way for the system and for a baseline, so a gain is a gain and not memory.
+2. **Find the gaps.** Each failed check becomes a written gap: what was missing, where, and what would have fixed it.
+3. **Improve the context, not the weights.** The fixes land in what the system reasons with (documents, object models, registers, rules), so every change is readable and can be reverted.
+4. **Measure again, blind.** The next loop is scored on new tasks, and a held out blind set checks that the improvement carries to work the system never saw.
+
 ## The self-improving AI system, RSI loop by RSI loop
 
 | RSI Loop | Date | Tasks | Praxis platform | Frontier AI |
