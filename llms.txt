@@ -23,6 +23,7 @@
 - [Industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/): every published design as an industrial AI reference architecture, by sector, with patterns, layers, compute, cost and DOI. Markdown: https://codeatoms.ai/industrial-ai-reference-architecture/index.md
 - [Physical AI system design](https://codeatoms.ai/physical-ai-system-design/): the six decisions in a physical AI system design, with counts from the published designs, and every design as a worked example. Markdown: https://codeatoms.ai/physical-ai-system-design/index.md
 - [Self-improving AI system](https://codeatoms.ai/self-improving-ai-system/): Praxis as a self-improving AI system, measured RSI loop by RSI loop on PADI against frontier AI, and the designs it produced. Markdown: https://codeatoms.ai/self-improving-ai-system/index.md
+- [Industrial data ontology](https://codeatoms.ai/industrial-data-ontology/): what an industrial data ontology is, read from every published object model (hyper-ontology/1): object kinds, properties, anchors in source systems, typed links, and each model as JSON. Markdown: https://codeatoms.ai/industrial-data-ontology/index.md
 
 ## For agents
 

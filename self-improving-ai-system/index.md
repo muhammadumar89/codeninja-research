@@ -66,4 +66,4 @@ How PADI scores, and its limitations: https://codeatoms.ai/padi/
 
 Design on Praxis: https://codeatoms.ai/praxis/ · PADI: https://codeatoms.ai/padi/
 
-See also: [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/), [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/), [physical AI system design](https://codeatoms.ai/physical-ai-system-design/).
+See also: [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/), [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/), [physical AI system design](https://codeatoms.ai/physical-ai-system-design/), [industrial data ontology](https://codeatoms.ai/industrial-data-ontology/).

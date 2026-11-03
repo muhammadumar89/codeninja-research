@@ -54,4 +54,4 @@ Physical AI system design is the engineering of a system that senses a physical 
 
 Design on Praxis: https://codeatoms.ai/praxis/ · PADI, the benchmark for physical AI system design: https://codeatoms.ai/padi/ · Developers: https://codeatoms.ai/developer/ · Dataset: https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures
 
-See also: [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/), [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/), [self-improving AI system](https://codeatoms.ai/self-improving-ai-system/).
+See also: [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/), [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/), [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-reference-architecture/), [self-improving AI system](https://codeatoms.ai/self-improving-ai-system/), [industrial data ontology](https://codeatoms.ai/industrial-data-ontology/).

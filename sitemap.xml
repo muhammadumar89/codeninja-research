@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>https://codeatoms.ai/</loc><lastmod>2026-11-02</lastmod></url>
+  <url><loc>https://codeatoms.ai/</loc><lastmod>2026-11-03</lastmod></url>
   <url><loc>https://codeatoms.ai/praxis/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://codeatoms.ai/hyper-ontology/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://codeatoms.ai/about/</loc><lastmod>2026-11-02</lastmod></url>
@@ -12,12 +12,13 @@
   <url><loc>https://codeatoms.ai/blog/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://codeatoms.ai/developer/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://codeatoms.ai/developer/updates/</loc><lastmod>2026-11-02</lastmod></url>
-  <url><loc>https://codeatoms.ai/sovereign-ai-reference-architectures/</loc><lastmod>2026-11-02</lastmod></url>
-  <url><loc>https://codeatoms.ai/industrial-ontology-examples/</loc><lastmod>2026-11-02</lastmod></url>
-  <url><loc>https://codeatoms.ai/industrial-ai-reference-architecture/</loc><lastmod>2026-11-02</lastmod></url>
-  <url><loc>https://codeatoms.ai/physical-ai-system-design/</loc><lastmod>2026-11-02</lastmod></url>
-  <url><loc>https://codeatoms.ai/self-improving-ai-system/</loc><lastmod>2026-11-02</lastmod></url>
-  <url><loc>https://codeatoms.ai/co-build/</loc><lastmod>2026-11-02</lastmod></url>
+  <url><loc>https://codeatoms.ai/sovereign-ai-reference-architectures/</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://codeatoms.ai/industrial-ontology-examples/</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://codeatoms.ai/industrial-ai-reference-architecture/</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://codeatoms.ai/physical-ai-system-design/</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://codeatoms.ai/self-improving-ai-system/</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://codeatoms.ai/industrial-data-ontology/</loc><lastmod>2026-11-03</lastmod></url>
+  <url><loc>https://codeatoms.ai/co-build/</loc><lastmod>2026-11-03</lastmod></url>
   <url><loc>https://codeatoms.ai/co-build/agriculture-and-earth-observation/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://codeatoms.ai/co-build/aviation-manufacturing/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://codeatoms.ai/co-build/defense-and-intelligence/</loc><lastmod>2026-11-02</lastmod></url>

@@ -3,6 +3,8 @@ search term and built ONLY from published data (dataset/*.jsonl, each design's o
 At a glance table), so every new design joins both the day site_index.py runs:
     /sovereign-ai-reference-architectures/   every design as a sovereign reference architecture
     /industrial-ontology-examples/           every published object model, browsable, with downloads
+    (and since then: industrial AI reference architecture, physical AI system design, self-improving AI system,
+     and /industrial-data-ontology/, what the published object models hold, kind by kind; 3 Nov 2026)
     python tools/target_pages.py        # site_index.py runs it before main(); seo.py runs last
 """
 import json, re, datetime
@@ -15,8 +17,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SOV, ONT = "sovereign-ai-reference-architectures", "industrial-ontology-examples"
 # Three stepping-stone terms locked by Umar on 25 Oct 2026, each a page titled in the exact term, built from the same published data
 IND, PHY, RSI = "industrial-ai-reference-architecture", "physical-ai-system-design", "self-improving-ai-system"
+# A stepping stone toward the owned keyword "ontologies" (episode 35, 3 Nov 2026), beside industrial ontology examples, never replacing it
+DAT = "industrial-data-ontology"
 COLLECTIONS = [(SOV, "sovereign AI reference architectures"), (ONT, "industrial ontology examples"),
-               (IND, "industrial AI reference architecture"), (PHY, "physical AI system design"), (RSI, "self-improving AI system")]
+               (IND, "industrial AI reference architecture"), (PHY, "physical AI system design"), (RSI, "self-improving AI system"),
+               (DAT, "industrial data ontology")]
 # the collection itself as a citable Zenodo dataset record (published 21 Oct 2026 under the 20 Oct ruling; a snapshot, the page stays the living version)
 SOV_DOI = "10.5281/zenodo.23527131"
 CSS_EXTRA = """
@@ -167,7 +172,8 @@ def sovereign(ds, today):
               f'<a href="{BASE}/{ONT}/">industrial ontology examples</a>; questions by sector at <a href="{BASE}/sectors/">sectors</a>. '
               f'Designed on <a href="{BASE}/praxis/">Praxis</a>; object models load into <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. '
               f'The same designs read three other ways: <a href="{BASE}/{IND}/">industrial AI reference architecture</a>, '
-              f'<a href="{BASE}/{PHY}/">physical AI system design</a>, <a href="{BASE}/{RSI}/">self-improving AI system</a>. Updated {today}.</p>')
+              f'<a href="{BASE}/{PHY}/">physical AI system design</a>, <a href="{BASE}/{RSI}/">self-improving AI system</a>. '
+              f'The data model under each one: <a href="{BASE}/{DAT}/">industrial data ontology</a>. Updated {today}.</p>')
     title = "Sovereign AI Reference Architectures: 18 Open Designs".replace("18", str(n))
     # Bing URL Inspection flags a meta description outside 25 to 160 characters as an error (21 Oct 2026); the term leads
     desc = f"{n} open sovereign AI reference architectures for physical operations: open-weight models, compute and three-year cost, each with a DOI."
@@ -246,7 +252,8 @@ def ontology(ds, today):
             + f'<p class="src">Built from the published object models only. The designs they come from are listed at '
               f'<a href="{BASE}/{SOV}/">sovereign AI reference architectures</a>. Designed on <a href="{BASE}/praxis/">Praxis</a>; made living in '
               f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. The same designs read three other ways: <a href="{BASE}/{IND}/">industrial AI reference architecture</a>, '
-              f'<a href="{BASE}/{PHY}/">physical AI system design</a>, <a href="{BASE}/{RSI}/">self-improving AI system</a>. Updated {today}.</p>')
+              f'<a href="{BASE}/{PHY}/">physical AI system design</a>, <a href="{BASE}/{RSI}/">self-improving AI system</a>. '
+              f'What the models hold, kind by kind: <a href="{BASE}/{DAT}/">industrial data ontology</a>. Updated {today}.</p>')
     title = f"Industrial Ontology Examples: {len(ds)} Object Models to Download"
     # description only, under Bing's 160 limit (Umar, 21 Oct 2026: allowed despite the keep rule; title, H1 and body untouched)
     desc = f"{len(ds)} industrial ontology examples from real physical operations: {no} typed objects and {nl} links, as hyper-ontology/1 JSON under CC BY 4.0."
@@ -326,7 +333,7 @@ def industrial(ds, today):
               f'<a href="{BASE}/{SOV}/">sovereign AI reference architectures</a>; their object models at <a href="{BASE}/{ONT}/">industrial ontology examples</a>; '
               f'also read as <a href="{BASE}/{PHY}/">physical AI system design</a> and as the output of a <a href="{BASE}/{RSI}/">self-improving AI system</a>. '
               f'Questions by sector at <a href="{BASE}/sectors/">sectors</a>. Designed on <a href="{BASE}/praxis/">Praxis</a>; object models load into '
-              f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Updated {today}.</p>')
+              f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. The data model under each design: <a href="{BASE}/{DAT}/">industrial data ontology</a>. Updated {today}.</p>')
     title = f"Industrial AI reference architecture: {n} open designs by sector"
     desc = f"Industrial AI reference architecture: {n} open designs for real industrial operations, each with object model, open-weight models, compute and three-year cost."
     ld = ld_pair(IND, "Industrial AI reference architecture", desc, today, ["industrial AI reference architecture", "industrial AI", "reference architecture"],
@@ -393,7 +400,8 @@ def physical(ds, today):
             + f'<p class="src">Built from the published designs only: each paper\'s At a glance table and the dataset. The same designs as '
               f'<a href="{BASE}/{SOV}/">sovereign AI reference architectures</a> and as an <a href="{BASE}/{IND}/">industrial AI reference architecture</a> by sector; '
               f'their object models at <a href="{BASE}/{ONT}/">industrial ontology examples</a>; the loop that produced them at '
-              f'<a href="{BASE}/{RSI}/">self-improving AI system</a>. Questions by sector at <a href="{BASE}/sectors/">sectors</a>. Updated {today}.</p>')
+              f'<a href="{BASE}/{RSI}/">self-improving AI system</a>; the object model decision in depth at <a href="{BASE}/{DAT}/">industrial data ontology</a>. '
+              f'Questions by sector at <a href="{BASE}/sectors/">sectors</a>. Updated {today}.</p>')
     title = f"Physical AI system design: {n} worked examples"
     desc = f"Physical AI system design: {n} worked examples that sense an operation, reason over typed objects and act through a named person, with compute and cost."
     ld = ld_pair(PHY, "Physical AI system design", desc, today, ["physical AI system design", "physical AI", "system design"],
@@ -462,7 +470,8 @@ def self_improving(ds, today):
             + f'<p class="src">Results from the PADI export only; designs from the published dataset at '
               f'<a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">Hugging Face</a>. The designs are also collected as '
               f'<a href="{BASE}/{SOV}/">sovereign AI reference architectures</a>, as an <a href="{BASE}/{IND}/">industrial AI reference architecture</a> by sector and as '
-              f'<a href="{BASE}/{PHY}/">physical AI system design</a>; their object models at <a href="{BASE}/{ONT}/">industrial ontology examples</a>. Updated {today}.</p>')
+              f'<a href="{BASE}/{PHY}/">physical AI system design</a>; their object models at <a href="{BASE}/{ONT}/">industrial ontology examples</a> '
+              f'and <a href="{BASE}/{DAT}/">industrial data ontology</a>. Updated {today}.</p>')
     title = f"Self-improving AI system: Praxis measured RSI loop by RSI loop"
     desc = f"Self-improving AI system: Praxis measured RSI loop by RSI loop on PADI against frontier AI, and the {n} published designs it produced."
     ld = ld_pair(RSI, "Self-improving AI system", desc, today, ["self-improving AI system", "self-improving system", "physical AI", "AI benchmark"],
@@ -478,6 +487,114 @@ def self_improving(ds, today):
     return len(pr)
 
 
+KINDS = {  # what each object kind is, in one plain line; the counts and examples beside it are read from the published models
+    "asset": "equipment and other physical things the operation owns and maintains",
+    "record": "what the operation writes down: work orders, tickets, findings, calibrations",
+    "event": "something that happens at a time: an alarm, a fault, a mission",
+    "site": "a place the operation runs: a station, a field, a centre",
+    "actor": "a role that acts on the operation: a desk, a crew, an officer",
+    "document": "a report, letter or dataset the operation keeps",
+    "person": "a named job a person holds: the one who reads, decides or approves",
+    "measure": "a reading, sample or score taken from the operation",
+    "system": "a software or control system the model names as an object in its own right",
+    "material": "stock that moves through the operation: parts, wafers, containers",
+}
+
+
+def industrial_data(ds, today):
+    """/industrial-data-ontology/: the term 'industrial data ontology', a stepping stone toward the owned keyword 'ontologies'.
+    Built only from dataset/objects.jsonl and designs.jsonl (format hyper-ontology/1); answers what one is from the published models."""
+    objs = [json.loads(l) for l in (ROOT / "dataset" / "objects.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+    n, no = len(ds), len(objs)
+    nl = sum(len(o.get("links", [])) for o in objs)
+    named = sum(1 for o in objs for l in o.get("links", []) if l.get("label"))
+    npr = sum(len(o.get("properties", [])) for o in objs)
+    anch = sum(1 for o in objs if o.get("anchored_in"))
+    voc = sum(1 for o in objs if o.get("status_vocabulary"))
+    kinds = Counter(o.get("kind") or "object" for o in objs)
+    sectors = sorted({d["sector"] for d in ds})
+    countries = Counter(d["country"] for d in ds)
+    answer = (f"An industrial data ontology is a typed model of the data an industrial operation already holds: each asset, record, event, site and "
+              f"person becomes an object with properties and status values, anchored in the system of record that holds its data, and joined to the "
+              f"others by typed links. CodeNinja Atoms has published {n} industrial data ontologies, one per real operation across {len(sectors)} sectors "
+              f"in " + ", ".join(f"{the(c)} ({k})" for c, k in countries.most_common()) + f": {no} objects, {npr} properties and {nl} links, "
+              f"{anch} of the {no} objects anchored in a named source system. Each is hyper-ontology/1 JSON under CC BY 4.0.")
+    top = lambda k: sorted((o for o in objs if (o.get("kind") or "object") == k), key=lambda o: (-len(o.get("links", [])), -len(o.get("properties", [])), o["object_id"]))
+    def ex(k):
+        seen, out = set(), []
+        for o in top(k):  # one example per design, so the column shows range
+            if o["design_id"] not in seen:
+                seen.add(o["design_id"]); out.append(o["label"])
+            if len(out) == 3:
+                break
+        return out
+    krows = [(k, c, KINDS.get(k, ""), ex(k)) for k, c in kinds.most_common()]
+    per = []
+    for d in ds:
+        mine = [o for o in objs if o["design_id"] == d["design_id"]]
+        per.append((d, len(mine), sum(len(o.get("links", [])) for o in mine), sum(1 for o in mine if o.get("anchored_in"))))
+    body = (f'<p class="eyebrow">Ontologies · Industrial data</p><h1>Industrial data ontology</h1>'
+            f'<p class="lead">{E(answer)}</p>'
+            f'<div class="stats"><span><b>{n}</b>published ontologies</span><span><b>{no}</b>objects</span><span><b>{npr}</b>properties</span>'
+            f'<span><b>{nl}</b>links</span><span><b>{anch}</b>objects anchored in a source system</span></div>'
+            f'<p class="ans">All {no} objects are one table, objects.jsonl, in the <a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">dataset</a>; '
+            f'each design\'s model downloads as objects.json from the table below; the format is <a href="{BASE}/developer/reference/hyper-ontology-1/">hyper-ontology/1</a>.</p>'
+            + '<h2 id="kinds">What an industrial data ontology holds</h2>'
+            + f'<p class="ans">Every object has a kind. Across the {n} published models these are the kinds, most common first, with real objects from different operations.</p>'
+            + table(["Kind", "Objects", "What it is", "Examples from the published models"],
+                    [[f"<strong>{E(k)}</strong>", str(c), E(w), E(", ".join(x))] for k, c, w, x in krows])
+            + '<h2 id="parts">The parts of an industrial data ontology</h2>'
+            + table(["Part", "What it is", "In the published models"], [
+                ["<strong>Object</strong>", "one thing the operation tracks, with a kind", f"{no} objects across {n} models"],
+                ["<strong>Properties</strong>", "what the operation records about the object", f"{npr} properties"],
+                ["<strong>Anchor</strong>", "the system of record that already holds the object's data; the ontology reads it and never replaces it", f"{anch} of {no} objects name one"],
+                ["<strong>Status vocabulary</strong>", "the fixed values the object's state can take", f"{voc} of {no} objects carry one"],
+                ["<strong>Typed links</strong>", "typed relations to other objects in the same model; what makes it an ontology rather than a table", f"{nl} links, {named} of them named"]])
+            + '<h2 id="all">Every published industrial data ontology</h2>'
+            + '<p class="ans">Newest first. One model per real operation; open the design for the paper, or download the model as JSON.</p>'
+            + table(["Design", "Sector", "Country", "Objects", "Links", "Anchored", "Download", "DOI"],
+                    [[link(d), E(d["sector"]), E(d["country"]), str(a), str(b), f"{c} of {a}", f'<a href="{d["url"]}ontology/objects.json">objects.json</a>',
+                      (f'<a href="https://doi.org/{E(d["doi"])}">{E(d["doi"])}</a>' if d.get("doi") else "")] for d, a, b, c in per])
+            + '<h2 id="format">The format</h2>'
+            + f'<p class="ans">Every model is the same package, hyper-ontology/1: objects with kind, anchor, properties, status vocabulary and typed links. '
+              f'It is documented at <a href="{BASE}/developer/reference/hyper-ontology-1/">hyper-ontology/1</a>, loads with the '
+              f'<a href="{BASE}/developer/reference/loader/">Python loader</a>, and stands up as a living ontology over the operator\'s own systems in '
+              f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>.</p>'
+            + f'<p class="src">Built from the published object models only (dataset objects.jsonl and designs.jsonl). Each object model, browsable object by object, at '
+              f'<a href="{BASE}/{ONT}/">industrial ontology examples</a>; the designs they come from at <a href="{BASE}/{SOV}/">sovereign AI reference architectures</a>, '
+              f'as an <a href="{BASE}/{IND}/">industrial AI reference architecture</a> by sector and as <a href="{BASE}/{PHY}/">physical AI system design</a>. '
+              f'Designed on <a href="{BASE}/praxis/">Praxis</a>. Updated {today}.</p>')
+    title = f"Industrial Data Ontology: {n} Published Models, {no} Objects"
+    desc = f"Industrial data ontology: {n} published models of real operations, {no} typed objects and {nl} links, anchored in source systems, as hyper-ontology/1 JSON."
+    ld = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Industrial data ontology", "headline": "Industrial data ontology",
+           "description": desc, "url": f"{BASE}/{DAT}/", "dateModified": today, "inLanguage": "en", "license": "https://creativecommons.org/licenses/by/4.0/",
+           "publisher": {"@type": "Organization", "@id": f"{BASE}/#org", "name": "CodeNinja Atoms", "url": f"{BASE}/"},
+           "about": [{"@type": "Thing", "name": a} for a in ("industrial data ontology", "ontologies", "industrial ontology", "data model")],
+           "mainEntity": {"@type": "ItemList", "numberOfItems": n, "itemListElement": [
+               {"@type": "ListItem", "position": i + 1, "item": {"@type": "Dataset", "name": f"{d['short']} industrial data ontology",
+                                                                 "description": f"Industrial data ontology for {d['sector']} in {d['country']}: {a} objects, {b} links, hyper-ontology/1 JSON.",
+                                                                 "url": f"{d['url']}ontology/objects.json", "encodingFormat": "application/json",
+                                                                 "license": "https://creativecommons.org/licenses/by/4.0/", "isBasedOn": d["url"],
+                                                                 **({"identifier": f"https://doi.org/{d['doi']}"} if d.get("doi") else {})}} for i, (d, a, b, c) in enumerate(per)]}},
+          {"@context": "https://schema.org", "@type": "FAQPage", "url": f"{BASE}/{DAT}/", "mainEntity": [
+              {"@type": "Question", "name": "What is an industrial data ontology?", "acceptedAnswer": {"@type": "Answer", "text": answer}}]}]
+    md = md_head("Industrial data ontology", DAT, answer)
+    md += [f"All {no} objects as one table: objects.jsonl in https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures · format: {BASE}/developer/reference/hyper-ontology-1/", ""]
+    md += ["## What an industrial data ontology holds", ""] + md_table(["Kind", "Objects", "What it is", "Examples from the published models"],
+          [[k, c, w, ", ".join(x)] for k, c, w, x in krows]) + [""]
+    md += ["## The parts of an industrial data ontology", ""] + md_table(["Part", "What it is", "In the published models"], [
+          ["Object", "one thing the operation tracks, with a kind", f"{no} objects across {n} models"],
+          ["Properties", "what the operation records about the object", f"{npr} properties"],
+          ["Anchor", "the system of record that already holds the object's data; the ontology reads it and never replaces it", f"{anch} of {no} objects name one"],
+          ["Status vocabulary", "the fixed values the object's state can take", f"{voc} of {no} objects carry one"],
+          ["Typed links", "typed relations to other objects in the same model", f"{nl} links, {named} of them named"]]) + [""]
+    md += ["## Every published industrial data ontology", ""] + md_table(["Design", "Sector", "Country", "Objects", "Links", "Anchored", "JSON", "DOI"],
+          [[f"[{d['short']}]({d['url']})", d["sector"], d["country"], a, b, f"{c} of {a}", f"{d['url']}ontology/objects.json", d.get("doi", "")] for d, a, b, c in per])
+    md += ["", f"See also: {others_md(DAT)}."]
+    write(DAT, title, desc, body, ld, md)
+    return no
+
+
 def main():
     ds = designs()
     today = datetime.date.today().isoformat()
@@ -486,11 +603,13 @@ def main():
     ni = industrial(ds, today)
     npy = physical(ds, today)
     nl = self_improving(ds, today)
+    nd = industrial_data(ds, today)
     print(f"{SOV}/ {n} designs")
     print(f"{ONT}/ {no} objects")
     print(f"{IND}/ {ni} designs")
     print(f"{PHY}/ {npy} worked examples")
     print(f"{RSI}/ {nl} RSI loops, {len(ds)} designs")
+    print(f"{DAT}/ {nd} objects")
 
 
 if __name__ == "__main__":
