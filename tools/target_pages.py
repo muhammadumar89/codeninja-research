@@ -173,7 +173,7 @@ def sovereign(ds, today):
               f'Designed on <a href="{BASE}/praxis/">Praxis</a>; object models load into <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. '
               f'The same designs read three other ways: <a href="{BASE}/{IND}/">industrial AI reference architecture</a>, '
               f'<a href="{BASE}/{PHY}/">physical AI system design</a>, <a href="{BASE}/{RSI}/">self-improving AI system</a>. '
-              f'The data model under each one: <a href="{BASE}/{DAT}/">industrial data ontology</a>. Updated {today}.</p>')
+              f'Updated {today}.</p>')  # ep35: no body link on a page held at 3 or better (keep rule); the footer carries it
     title = "Sovereign AI Reference Architectures: 18 Open Designs".replace("18", str(n))
     # Bing URL Inspection flags a meta description outside 25 to 160 characters as an error (21 Oct 2026); the term leads
     desc = f"{n} open sovereign AI reference architectures for physical operations: open-weight models, compute and three-year cost, each with a DOI."
@@ -253,7 +253,7 @@ def ontology(ds, today):
               f'<a href="{BASE}/{SOV}/">sovereign AI reference architectures</a>. Designed on <a href="{BASE}/praxis/">Praxis</a>; made living in '
               f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. The same designs read three other ways: <a href="{BASE}/{IND}/">industrial AI reference architecture</a>, '
               f'<a href="{BASE}/{PHY}/">physical AI system design</a>, <a href="{BASE}/{RSI}/">self-improving AI system</a>. '
-              f'What the models hold, kind by kind: <a href="{BASE}/{DAT}/">industrial data ontology</a>. Updated {today}.</p>')
+              f'Updated {today}.</p>')  # ep35: no body link on a page held at 3 or better (keep rule); the footer carries it
     title = f"Industrial Ontology Examples: {len(ds)} Object Models to Download"
     # description only, under Bing's 160 limit (Umar, 21 Oct 2026: allowed despite the keep rule; title, H1 and body untouched)
     desc = f"{len(ds)} industrial ontology examples from real physical operations: {no} typed objects and {nl} links, as hyper-ontology/1 JSON under CC BY 4.0."
