@@ -281,7 +281,9 @@ def share_alias(p):
     h = h.replace(f'<meta property="og:url" content="{p["url"]}">', f'<meta property="og:url" content="{BASE}/s/{a}/">')
     h = h.replace('<link rel="canonical"', '<meta name="robots" content="noindex,follow"><link rel="canonical"', 1)
     h = h.replace('src="cover.png"', f'src="{p["url"]}cover.png"').replace('src="figures/', f'src="{p["url"]}figures/').replace('href="figures/', f'href="{p["url"]}figures/')
-    from seo import GA4, CLARITY  # seo.py skips /s/, so the share copy carries the GA4 and Clarity tags itself (Umar 19 and 22 Oct 2026)
+    from seo import GA4, CLARITY, fit_description, E as _E  # seo.py skips /s/, so the share copy carries the GA4 and Clarity tags itself (Umar 19 and 22 Oct 2026)
+    if p["description"] and len(p["description"]) > 160:  # Bing's 160 limit on the meta description, the same cut seo.py makes (3 Nov 2026)
+        h = h.replace(f'<meta name="description" content="{E(p["description"])}">', f'<meta name="description" content="{_E(fit_description(p["description"]))}">', 1)
     if "googletagmanager.com/gtag/js" not in h:
         h = h.replace("<head>", "<head>" + GA4, 1)
     if "clarity.ms/tag/" not in h:

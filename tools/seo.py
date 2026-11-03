@@ -40,6 +40,33 @@ def meta(h, name, prop=False):
     return html.unescape(m.group(1)) if m else ""
 
 
+def fit_description(d, limit=160, floor=80):
+    """Bing flags a meta description over 160 characters as an error (21 Oct 2026; 69 pages over it on 3 Nov 2026). Keep whole
+    sentences while they fit; when the first sentence alone is too long, cut it at the last clause boundary that fits and close it
+    with a full stop. Returns None when no clean cut exists, and the page then needs a meta_description in search_titles.json."""
+    d = re.sub(r"\s+", " ", d).strip()
+    if len(d) <= limit:
+        return d
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9])", d)
+    out = ""
+    for x in parts:
+        t = (out + " " + x).strip()
+        if len(t) > limit:
+            break
+        out = t
+    if len(out) >= floor:
+        return out
+    first = parts[0]
+    for sep in (": ", "; ", ", ", " and ", " with ", " for ", " on ", " in "):
+        i = first.rfind(sep, 0, limit - 1)
+        while i > 0:
+            cut = re.sub(r"\s+(and|or|the|a|an|of|to|with|for|on|in|by|from)$", "", first[:i].rstrip(" ,;:"))
+            if floor <= len(cut) + 1 <= limit:
+                return cut + "."
+            i = first.rfind(sep, 0, i)
+    return None
+
+
 def strip_block(h, a, b):
     return re.sub(re.escape(a) + r".*?" + re.escape(b), "", h, flags=re.S)
 
@@ -292,12 +319,19 @@ def main():
         url = f"{BASE}/{slug + '/' if slug else ''}"
         title = html.unescape((re.search(r"<title>(.*?)</title>", h, re.S) or [None, "CodeNinja Atoms"])[1])
         desc = meta(h, "description")
-        if slug in SEARCH:  # 16d: the words people search, on the title and description only; H1 and citation_title stay the paper's
+        if slug in SEARCH and "title" in SEARCH[slug]:  # 16d: the words people search, on the title and description only; H1 and citation_title stay the paper's
             title, desc = SEARCH[slug]["title"], SEARCH[slug]["description"]
             h = re.sub(r"<title>.*?</title>", f"<title>{E(title)}</title>", h, count=1, flags=re.S)
             h = re.sub(r'(<meta name="description" content=")[^"]*(")', lambda m: m.group(1) + E(desc) + m.group(2), h, count=1)
             h = re.sub(r'(<meta property="og:title" content=")[^"]*(")', lambda m: m.group(1) + E(title) + m.group(2), h, count=1)
             h = re.sub(r'(<meta property="og:description" content=")[^"]*(")', lambda m: m.group(1) + E(desc) + m.group(2), h, count=1)
+        # the meta description alone, under Bing's 160 (3 Nov 2026): a hand line from search_titles.json when the page has one, else the
+        # longest clean cut of the page's own description; og:description, titles, H1 and body are untouched (allowed on locked pages, ep22)
+        if len(desc) > 160 or (slug in SEARCH and SEARCH[slug].get("meta_description")):
+            short = (SEARCH.get(slug) or {}).get("meta_description") or fit_description(desc)
+            assert short and 25 <= len(short) <= 160, (slug, short)
+            desc = short
+            h = re.sub(r'(<meta name="description" content=")[^"]*(")', lambda m: m.group(1) + E(desc) + m.group(2), h, count=1)
         kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("memo" if slug.startswith("memos") else ("post" if slug.startswith("blog/") else ("dev" if slug.startswith("developer") else ("cobuild" if slug.startswith("co-build") else ("padi" if slug == "padi" else ("target" if slug in ("sovereign-ai-reference-architectures", "industrial-ontology-examples", "agentic-memory-architecture", "industrial-ai-reference-architecture", "physical-ai-system-design", "self-improving-ai-system", "industrial-data-ontology") else "page")))))))))
         if kind in ("design", "method"):
             h = deinline(h, folder, absolute=False)

@@ -1,5 +1,5 @@
 {
- "_why": "Per-page search overrides for design pages (step 16d, 11 Oct 2026). The paper's own title stays as H1 and citation_title; only the HTML <title>, the social titles and the meta description change, so the page is found by the words people actually search. One entry per fix, with the query and the ledger date, so the file is the history of 16c(b).",
+ "_why": "Per-page search overrides for design pages (step 16d, 11 Oct 2026). The paper's own title stays as H1 and citation_title; only the HTML <title>, the social titles and the meta description change, so the page is found by the words people actually search. One entry per fix, with the query and the ledger date, so the file is the history of 16c(b). A meta_description key (3 Nov 2026) sets the <meta name=\"description\"> alone, under Bing's 160 characters, where seo.fit_description cannot cut the page's own description cleanly; an entry with no title changes nothing else.",
  "ot-security-cip-evidence-us": {
   "title": "OT Security Monitoring, CISA Advisories and NERC CIP Evidence",
   "description": "From a CISA advisory on actively exploited vulnerabilities to a closed finding: OT security monitoring and NERC CIP audit evidence for a US utility, passive and one way out of the control networks, on the operator's own hardware. Grid Context Watch, an open reference architecture by CodeNinja Atoms.",
@@ -37,7 +37,9 @@
   "title": "Earth Observation for Vegetation Mapping: LiDAR and Orthoimagery Baseline, United States",
   "description": "An earth observation system design for one summer flight of 3-inch 4 band orthoimagery and Quality Level 1 LiDAR, with every tile, point cloud and elevation model bound into a site ontology the operator's own analysts work in the GIS they already run, so the next season starts from a comparison. An open reference architecture by CodeNinja Atoms.",
   "query": "earth observation cluster (tier B, 8 named queries at positions 1 to 10, none naming the page: Google anonymises them, so the title takes the cluster's word and the page's own vocabulary); page at 28 impressions, position 7.3, 0 clicks, 28 days to 12 Oct 2026; rd_keywords.py pick on 15 Oct 2026",
-  "fixed": "2026-10-15"
+  "fixed": "2026-10-15",
+  "meta_description": "Earth observation for vegetation mapping in the United States: one summer of orthoimagery and LiDAR bound into a site ontology in the operator's own GIS.",
+  "meta_fixed": "2026-11-03"
  },
  "port-digital-twin-us": {
   "title": "Port Authority Digital Twin Architecture: GIS, Sensors and Finance in One Governed Twin",
@@ -74,5 +76,40 @@
   "description": "Camera monitoring design for a US vehicle proving ground: owned L40S recorder hosts priced against AWS g6e.xlarge at 1.861 dollars an hour. By CodeNinja Atoms.",
   "query": "page's only named query 'site.aws.amazon.com \"g6e.xlarge\" \"1.861\"' (10 impressions at 7.7); the page's Appendix A prices two g6e.xlarge at 1.861 dollars an hour, so the title answers it in the paper's own words; page at 15 impressions, position 7.2, 0 clicks, 28 days in Search Console read 22 Oct 2026; rd_keywords.py pick on 22 Oct 2026",
   "fixed": "2026-10-22"
+ },
+ "": {
+  "meta_description": "CodeNinja Atoms is building a sovereign AI operating system for the physical world: open reference architectures for physical AI, designed on Praxis.",
+  "meta_fixed": "2026-11-03",
+  "why": "meta description only (Bing flags over 160 characters); title, H1 and body stay the page's own"
+ },
+ "dieless-sheet-metal-cell-aerospace-mro-us": {
+  "meta_description": "A vendor independent dieless robotic sheet metal cell for a United States aircraft MRO facility: from CAD to certified part inside its own boundary.",
+  "meta_fixed": "2026-11-03",
+  "why": "meta description only (Bing flags over 160 characters); title, H1 and body stay the page's own"
+ },
+ "factory-ontology-rebuild-depot-us": {
+  "meta_description": "One operating object model for a United States vehicle rebuild depot: every power pack, machine tool, test run and work order linked to its system of record.",
+  "meta_fixed": "2026-11-03",
+  "why": "meta description only (Bing flags over 160 characters); title, H1 and body stay the page's own"
+ },
+ "wayside-detector-trending-rail-us": {
+  "meta_description": "Predictive maintenance from wayside detectors for a United States freight railroad: every car and locomotive trended into one ranked queue that people act on.",
+  "meta_fixed": "2026-11-03",
+  "why": "meta description only (Bing flags over 160 characters); title, H1 and body stay the page's own"
+ },
+ "praxis-method": {
+  "meta_description": "How Praxis turns an operator's requirement into a complete physical AI system design through eight reasoning lenses, and what seven published designs show.",
+  "meta_fixed": "2026-11-03",
+  "why": "meta description only (Bing flags over 160 characters); title, H1 and body stay the page's own"
+ },
+ "sovereign-hse-pakistan": {
+  "meta_description": "A sovereign, on premises HSE platform for oil and gas in Pakistan: incidents, sensors, cameras and documents in one ontology, with human approved action.",
+  "meta_fixed": "2026-11-03",
+  "why": "meta description only (Bing flags over 160 characters); title, H1 and body stay the page's own"
+ },
+ "wildfire-risk-distribution-us": {
+  "meta_description": "One live distribution risk model for a United States cooperative: reclosers, meters, poles, vegetation, weather and crews in a 48 hour ignition picture.",
+  "meta_fixed": "2026-11-03",
+  "why": "meta description only (Bing flags over 160 characters); title, H1 and body stay the page's own"
  }
 }
