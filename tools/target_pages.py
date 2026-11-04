@@ -4,7 +4,8 @@ At a glance table), so every new design joins both the day site_index.py runs:
     /sovereign-ai-reference-architectures/   every design as a sovereign reference architecture
     /industrial-ontology-examples/           every published object model, browsable, with downloads
     (and since then: industrial AI reference architecture, physical AI system design, self-improving AI system,
-     and /industrial-data-ontology/, what the published object models hold, kind by kind; 3 Nov 2026)
+     and /industrial-data-ontology/, what the published object models hold, kind by kind; 3 Nov 2026;
+     and /sovereign-ai-architecture/, the layers, patterns and worked designs of the architecture itself; 4 Nov 2026)
     python tools/target_pages.py        # site_index.py runs it before main(); seo.py runs last
 """
 import json, re, datetime
@@ -19,6 +20,9 @@ SOV, ONT = "sovereign-ai-reference-architectures", "industrial-ontology-examples
 IND, PHY, RSI = "industrial-ai-reference-architecture", "physical-ai-system-design", "self-improving-ai-system"
 # A stepping stone toward the owned keyword "ontologies" (episode 35, 3 Nov 2026), beside industrial ontology examples, never replacing it
 DAT = "industrial-data-ontology"
+# The locked term "sovereign AI architecture" (4 Nov 2026): its own page, linked to and from /sovereign-ai-reference-architectures/ only through the
+# footer Collections row (keep rule on the frozen pages); deliberately not in COLLECTIONS, so the frozen pages' See also lines stay as they are
+ARC = "sovereign-ai-architecture"
 COLLECTIONS = [(SOV, "sovereign AI reference architectures"), (ONT, "industrial ontology examples"),
                (IND, "industrial AI reference architecture"), (PHY, "physical AI system design"), (RSI, "self-improving AI system"),
                (DAT, "industrial data ontology")]
@@ -595,6 +599,84 @@ def industrial_data(ds, today):
     return no
 
 
+ARC_LAYERS = [  # the same seven layers as LAYERS, bottom up, in this page's own words: (layer, what it does, who holds it)
+    ("Sources", "The databases and control systems the operation already runs. The architecture reads them and never replaces them.", "the operator, unchanged"),
+    ("Sensing", "Cameras, detectors and instruments, the ones in place plus any the design adds, sized from the data they send.", "the operator, at its sites"),
+    ("Adapters", "One adapter per kind of source. Each owns its contract, its retries and its ordering, and is the only door data comes in by.", "the operator, in its country"),
+    ("Object model", "The operation held as typed objects, properties and links: the ontology every model and person works from.", "the operator, on its own infrastructure"),
+    ("Inference", "Open weights models only, placed at the edge, at the site or on one node in the country, by latency and by what happens when the link drops.", "the operator, self hosted"),
+    ("Services", "What the architecture computes over the object model: forecasts, detections, joins and the evidence behind each.", "the operator, in its country"),
+    ("Surfaces", "Where people read the result and a named person decides. Approved actions are written one way back into the system that owns them.", "a named person at the operator"),
+]
+ARC_PATTERNS = {  # one line per deployment pattern in patterns(), in this page's own words
+    "Frontier reasoning node": "Eight 141 GB GPUs run a frontier open weights model at FP8, on a node the operator owns or one hosted in its country.",
+    "One inference card": "One 48 GB inference card, up to one server of eight, at the site or in the country. No frontier model is needed.",
+    "No new compute": "The design runs on servers and software the operator already has. Nothing new is bought.",
+}
+
+
+def sovereign_architecture(ds, today):
+    """/sovereign-ai-architecture/: the locked term 'sovereign AI architecture'. Built from published data only (designs.jsonl and each
+    design's At a glance compute figure, through layers() and patterns()); new wording, never the reference architectures page's lead."""
+    n = len(ds)
+    countries = Counter(d["country"] for d in ds)
+    sectors = sorted({d["sector"] for d in ds})
+    objs, links_, models = sum(d.get("n_objects") or 0 for d in ds), sum(d.get("n_links") or 0 for d in ds), sum(d.get("n_models") or 0 for d in ds)
+    human = sum(1 for d in ds if d.get("human_loop"))
+    pats = patterns(ds)
+    pat_of = {d["design_id"]: a for a, _b, g in pats for d in g}
+    answer = (f"A sovereign AI architecture is a way of building AI so that the models, the data and the compute all stay under the control of the "
+              f"operator that runs them: open weights models, self hosted in the operator's own country, on hardware it owns or controls, with no third "
+              f"party AI service anywhere in the serving path. It is built in seven layers, from the systems of record at the bottom to the screens where "
+              f"a named person decides at the top. CodeNinja Atoms has published {n} worked designs in this architecture, across {len(sectors)} sectors in "
+              + ", ".join(f"{the(c)} ({k})" for c, k in countries.most_common()) + ".")
+    reads = {"Object model": f"{objs} objects and {links_} typed links across {n} designs",
+             "Inference": f"{models} open weights model choices",
+             "Surfaces": f"{human} of {n} designs name the person who approves"}
+    lrows = [[f"<strong>{i + 1}. {E(a)}</strong>", E(b), E(c), E(reads.get(a, f"all {n} designs"))] for i, (a, b, c) in enumerate(ARC_LAYERS)]
+    prows = [[f"<strong>{E(a)}</strong>", E(ARC_PATTERNS.get(a, b)), str(len(g)), ", ".join(link(d) for d in g)] for a, b, g in pats]
+    wrows = [[link(d), E(d["sector"]), E(d["country"]), E(pat_of.get(d["design_id"], "")),
+              (f'<a href="https://doi.org/{E(d["doi"])}">{E(d["doi"])}</a>' if d.get("doi") else "")] for d in ds]
+    rules = [("Open weights only", f"Every model in every one of the {n} designs is open weights, with its licence named. No closed model serves a request."),
+             ("In country", "Inference, the object model and the data stay in the operator's country, on hardware it owns or controls."),
+             ("Read, never replace", "The architecture reads the systems the operation already runs and writes back only what a named person approved.")]
+    body = (f'<p class="eyebrow">Sovereign AI · Architecture</p><h1>Sovereign AI architecture</h1>'
+            f'<p class="lead">{E(answer)}</p>'
+            f'<div class="stats"><span><b>7</b>layers</span><span><b>{len(pats)}</b>deployment patterns</span><span><b>{n}</b>worked designs</span>'
+            f'<span><b>{len(sectors)}</b>sectors</span><span><b>{len(countries)}</b>countries</span></div>'
+            + '<h2 id="layers">The seven layers of a sovereign AI architecture</h2>'
+            + f'<p class="ans">Read bottom up. Each layer runs on infrastructure the operator controls; the right column is read from the {n} published designs.</p>'
+            + table(["Layer", "What it does", "Held by", "In the published designs"], lrows)
+            + '<h2 id="patterns">Sovereign AI architecture patterns</h2>'
+            + f'<p class="ans">The same seven layers deploy in {len(pats)} ways. Each design is placed by rule from its own compute figure, so the pattern is the hardware the operator has to own.</p>'
+            + table(["Pattern", "Hardware", "Designs", "Which"], prows)
+            + '<h2 id="rules">What makes an AI architecture sovereign</h2>'
+            + '<ul class="ans">' + "".join(f"<li><b>{E(a)}.</b> {E(b)}</li>" for a, b in rules) + '</ul>'
+            + '<h2 id="designs">Worked designs in a sovereign AI architecture</h2>'
+            + '<p class="ans">Newest first. Each is a complete design for one real operation, free to reuse under CC BY 4.0 with a DOI.</p>'
+            + table(["Design", "Sector", "Country", "Pattern", "DOI"], wrows)
+            + f'<p class="src">Built from the published designs only: designs.jsonl in the <a href="https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures">dataset</a> '
+              f'and each paper\'s At a glance compute figure. Each design with its compute and three year cost, side by side, at '
+              f'<a href="{BASE}/{SOV}/">sovereign AI reference architectures</a>. Designed on <a href="{BASE}/praxis/">Praxis</a>; object models load into '
+              f'<a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. Updated {today}.</p>')
+    title = "Sovereign AI Architecture: Layers, Patterns and Worked Designs | CodeNinja Atoms"
+    desc = f"Sovereign AI architecture: open weights self hosted in country, seven layers, {len(pats)} deployment patterns and {n} worked designs by sector."
+    ld = ld_pair(ARC, "Sovereign AI architecture", desc, today, ["sovereign AI architecture", "sovereign AI", "AI architecture", "open weights"],
+                 "What is a sovereign AI architecture?", answer,
+                 [{**d, "title": d["short"]} if "open source" in d["title"].lower() else d for d in ds])  # brand language: the short name where a title says open source
+    md = md_head("Sovereign AI architecture", ARC, answer)
+    md += ["## The seven layers of a sovereign AI architecture", ""] + md_table(["Layer", "What it does", "Held by", "In the published designs"],
+          [[f"{i + 1}. {a}", b, c, reads.get(a, f"all {n} designs")] for i, (a, b, c) in enumerate(ARC_LAYERS)]) + [""]
+    md += ["## Sovereign AI architecture patterns", ""] + md_table(["Pattern", "Hardware", "Designs", "Which"],
+          [[a, ARC_PATTERNS.get(a, b), len(g), ", ".join(f"[{d['short']}]({d['url']})" for d in g)] for a, b, g in pats]) + [""]
+    md += ["## What makes an AI architecture sovereign", ""] + [f"- **{a}.** {b}" for a, b in rules] + [""]
+    md += ["## Worked designs in a sovereign AI architecture", ""] + md_table(["Design", "Sector", "Country", "Pattern", "DOI"],
+          [[f"[{d['short']}]({d['url']})", d["sector"], d["country"], pat_of.get(d["design_id"], ""), d.get("doi", "")] for d in ds])
+    md += ["", f"See also: {others_md(ARC)}."]
+    write(ARC, title, desc, body, ld, md)
+    return n
+
+
 def main():
     ds = designs()
     today = datetime.date.today().isoformat()
@@ -604,12 +686,14 @@ def main():
     npy = physical(ds, today)
     nl = self_improving(ds, today)
     nd = industrial_data(ds, today)
+    na = sovereign_architecture(ds, today)
     print(f"{SOV}/ {n} designs")
     print(f"{ONT}/ {no} objects")
     print(f"{IND}/ {ni} designs")
     print(f"{PHY}/ {npy} worked examples")
     print(f"{RSI}/ {nl} RSI loops, {len(ds)} designs")
     print(f"{DAT}/ {nd} objects")
+    print(f"{ARC}/ {na} worked designs")
 
 
 if __name__ == "__main__":

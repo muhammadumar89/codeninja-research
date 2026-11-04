@@ -332,7 +332,7 @@ def main():
             assert short and 25 <= len(short) <= 160, (slug, short)
             desc = short
             h = re.sub(r'(<meta name="description" content=")[^"]*(")', lambda m: m.group(1) + E(desc) + m.group(2), h, count=1)
-        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("memo" if slug.startswith("memos") else ("post" if slug.startswith("blog/") else ("dev" if slug.startswith("developer") else ("cobuild" if slug.startswith("co-build") else ("padi" if slug == "padi" else ("target" if slug in ("sovereign-ai-reference-architectures", "industrial-ontology-examples", "agentic-memory-architecture", "industrial-ai-reference-architecture", "physical-ai-system-design", "self-improving-ai-system", "industrial-data-ontology") else "page")))))))))
+        kind = "design" if slug in dslugs else ("method" if slug.endswith("-method") else ("home" if not slug else ("sector" if slug.startswith("sectors/") else ("memo" if slug.startswith("memos") else ("post" if slug.startswith("blog/") else ("dev" if slug.startswith("developer") else ("cobuild" if slug.startswith("co-build") else ("padi" if slug == "padi" else ("target" if slug in ("sovereign-ai-reference-architectures", "industrial-ontology-examples", "agentic-memory-architecture", "industrial-ai-reference-architecture", "physical-ai-system-design", "self-improving-ai-system", "industrial-data-ontology", "sovereign-ai-architecture") else "page")))))))))
         if kind in ("design", "method"):
             h = deinline(h, folder, absolute=False)
             h = size_imgs(h, folder)
