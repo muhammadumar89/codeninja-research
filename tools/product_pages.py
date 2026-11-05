@@ -65,7 +65,7 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 
 SHORT = {"praxis": "CodeNinja Praxis: AI That Designs Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: Ontology Builder for Industrial Operations | CodeNinja Atoms",
          "hyper-pragma": "Hyper Pragma: Self-Improving Sovereign AI for Operations | CodeNinja Atoms"}
-VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard", "hyper-pragma": "port-night"}
+VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard", "hyper-pragma": "pylon-dusk"}
 FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology", "hyper-pragma": "Hyper Pragma"}
 ACCESS = {"praxis": "Every design on this site was made on Praxis. Engineers start free; organisations talk to our commercial team.",
           "hyper-ontology": "Hyper Ontology turns a Praxis design into a living system. It is in beta with a small number of teams; the way in is a Praxis account.",
@@ -95,8 +95,8 @@ def page(slug, title, desc, body, ld):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav)}
 <main>
-<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{('<h1 class="prod">' + E(HERO[slug][0]) + '</h1><p class="lede hero-line">' + E(HERO[slug][1]) + '</p>') if slug in HERO else h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta">{cta}</div></div><a class="scroll" href="#{"engineers" if slug == "praxis" else "overview"}">Scroll to explore{brand.ARROW}</a></section>
-{(film_section() + praxis_top()) if slug == "praxis" else ""}
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{('<h1 class="prod">' + E(HERO[slug][0]) + '</h1><p class="lede hero-line">' + E(HERO[slug][1]) + '</p>') if slug in HERO else h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta">{cta}</div></div><a class="scroll" href="#{"engineers" if slug == "praxis" else ("how" if slug == "hyper-pragma" else "overview")}">Scroll to explore{brand.ARROW}</a></section>
+{(film_section() + praxis_top()) if slug == "praxis" else (pragma_top() if slug == "hyper-pragma" else "")}
 <section class="light" id="overview"><div class="doc">
 {lead}
 {re.sub(r"(<table.*?</table>)", r'<div class="tw">\1</div>', body, flags=re.S)}
@@ -139,6 +139,29 @@ def praxis_top():
             f'The score is published as a trajectory, not a claim.</p><a class="btn" href="{BASE}/padi/">See PADI</a></div></section>'
             f'<section class="light" id="enterprise"><div class="pwrap"><div class="phead"><div><p class="eyebrow">For enterprises</p><h2>Sovereign and custom deployments</h2></div>'
             f'<p>For organisations that design physical AI for their own operations, or for their customers.</p></div><div class="ent">{ent}</div>'
+            f'<div class="pfoot"><a class="btn solid" href="{brand.COMMERCIAL}">{brand.TALK}</a></div></div></section>')
+
+
+PRAGMA_WALK = [("Read the ontology", "Before it acts, the agent reads what each object means, which actions your operation allows and who must approve them."),
+               ("Route the work", "Rules your ontology already governs are applied as rules. Exceptions that need judgment go to the model. Decisions that must not be delegated go to a person."),
+               ("Ask for approval", "A named person approves every action your ontology marks for approval, inside the workflow they already use."),
+               ("Act inside the workflow", "Approved actions write back through the paths your ontology allows, and nowhere else."),
+               ("Keep the record", "What the agent read, what it decided, who approved it and what happened is kept as a permanent record inside your boundary."),
+               ("Learn before the next run", "A judge grades the run against the workflow's own instructions, a lesson is written, and the next run starts with it.")]
+PRAGMA_ENT = [("For the operations head", "One governed layer that puts AI to work across the operation, measured on outcomes, not seats."),
+              ("For security and compliance", "Inference, memory and records stay inside your walls: on premises, in your private cloud or air gapped."),
+              ("For the people doing the work", "Agents that draft, check and route, while the decisions that matter stay with the person accountable for them.")]
+
+
+def pragma_top():
+    steps = "".join(f'<li><span class="n">{i:02d}</span><h3>{E(t)}</h3><p>{E(d)}</p></li>' for i, (t, d) in enumerate(PRAGMA_WALK, 1))
+    ent = "".join(f'<div><h3>{E(t)}</h3><p>{E(d)}</p></div>' for t, d in PRAGMA_ENT)
+    return (f'<section class="light" id="how"><div class="pwrap"><div class="phead"><div><p class="eyebrow">How a run works</p><h2>Six steps, every run</h2></div>'
+            f'<p>Every Hyper Pragma workflow runs the same loop. The last step is the one that makes the next run better than this one.</p></div><ol class="walk">{steps}</ol></div></section>'
+            f'<section class="light alt"><div class="pwrap pline"><p class="eyebrow">The difference</p><p class="big">Most AI workflows are configured once and stay as good as the day they were set up. '
+            f'Every Hyper Pragma workflow is graded after every run and starts the next one with what it learned.</p><a class="btn" href="#learns">How it learns</a></div></section>'
+            f'<section class="light" id="who"><div class="pwrap"><div class="phead"><div><p class="eyebrow">Who it is for</p><h2>Built for the people who run the operation</h2></div>'
+            f'<p>For banks, energy companies, utilities, industrial operators and the public sector, where the data cannot leave and the decisions must be accountable.</p></div><div class="ent">{ent}</div>'
             f'<div class="pfoot"><a class="btn solid" href="{brand.COMMERCIAL}">{brand.TALK}</a></div></div></section>')
 
 
@@ -225,14 +248,25 @@ def pragma():
     q = [("What is Hyper Pragma?", "Hyper Pragma is the AI layer that sits on top of your Hyper Ontology. It securely connects the models you run, your live operational data and your people's workflows, takes governed actions inside those workflows, and learns from every run."),
          ("How does Hyper Pragma improve itself?", "You turn self-improving memory on for a workflow. After each run a judge grades the work against the workflow's own instructions, the workflow writes a lesson, and the next run starts with its best lessons. You see every lesson and can stop using any of them."),
          ("Does Hyper Pragma train a model on our data?", "No. Nothing is trained into the model's weights. What improves is the context the model reasons over, kept as lessons in your own memory, inside your boundary."),
+         ("What happens when a better model is released?", "You swap it in. The model is a component, not the architecture: your ontology, your memory and your workflow configuration carry over, so the new model starts with everything the old one learned."),
+         ("Can Hyper Pragma work with the agents we already have?", "In most cases, yes. During the ontology work our engineers assess the agents you run today. Those that can move inside the Hyper Pragma boundary are moved; the rest are connected to the ontology as a context source while the move is planned. There is no cutover."),
          ("Can Hyper Pragma run air gapped?", "Yes. It runs where your data lives, on premises, in your private cloud or with no internet connection at all, with no runtime dependency on CodeNinja."),
+         ("Who can see what a workflow learned?", "The people you allow. Memory is kept per organisation, each agent sees only its own data, and every lesson is listed on one screen where it can be stopped."),
          ("How is Hyper Pragma sold?", "As a licence for the whole stack, or metered on tokens, so a mid market operator can start without an enterprise platform budget.")]
     body = f"""<p class="eyebrow">CodeNinja · Hyper Pragma</p>
 <h1>Hyper Pragma: put AI to work on your operations, and let it learn from every run</h1>
 <p class="lead">Hyper Pragma is the AI layer that sits on top of your <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. It securely connects the models you run, your live operational data and your people's workflows, takes governed actions inside those workflows, and gets better after every run. It is built for the person who owns the operation, and it runs inside your walls.</p>
 <div class="box"><strong>Status:</strong> used in house by CodeNinja. Organisations get access through our <a href="{brand.COMMERCIAL}">commercial team</a>, as a licence or metered on tokens.</div>
+<h2>Why AI bolted onto software does not compound</h2>
+<p>Most enterprise AI today is an agent layered on top of existing software. The agent calls a vendor's interface, logs its decisions in the vendor's environment and reasons on a model the vendor hosts. Every exception it resolves and every decision it routes teaches the vendor, not you. When a better model arrives you change a dependency; you do not improve anything you own.</p>
+<p>Hyper Pragma turns that around. The agents run inside your boundary, on models you control, over an ontology you own, and every run leaves your organisation a little smarter than the one before.</p>
 <h2>Governed actions, not chat</h2>
-<p>Before every action, an agent reads your ontology: what each object means, which actions your operation allows and who must approve them. Then it routes the work. Decisions your ontology already governs are resolved deterministically. Exceptions that need judgment go to the model. Decisions that should not be delegated go to a named person for approval. After every decision the outcome is written to memory, so the record of what was done, and why, stays with you.</p>
+<p>Before every action, an agent reads your ontology: what each object means, which actions your operation allows and who must approve them. Then it routes the work to the layer that is accurate for it, not the one that is convenient.</p>
+<table><tr><th>Route</th><th>When</th><th>Who decides</th></tr>
+<tr><td>Rule</td><td>The ontology already governs the decision</td><td>The rule, applied the same way every time</td></tr>
+<tr><td>Model</td><td>An exception that needs judgment</td><td>The model, reasoning over your ontology and citing what it read</td></tr>
+<tr><td>Person</td><td>A decision that should not be delegated</td><td>A named approver, inside the workflow they already use</td></tr></table>
+<p>After every decision the outcome is written to memory, so the record of what was done, and why, stays with you.</p>
 <h2 id="learns">It learns from every run</h2>
 <p>Every workflow in Hyper Pragma can improve itself. You turn self-improving memory on for a workflow, and from then on:</p>
 <ol><li><strong>The workflow runs</strong> as it always does, inside your boundary.</li>
@@ -240,18 +274,36 @@ def pragma():
 <li><strong>The workflow writes a lesson</strong> from the grade, with no one present.</li>
 <li><strong>The next run starts smarter</strong>, with its best lessons already in context.</li>
 <li><strong>You stay in charge</strong>: one screen shows the latest result, the judge's reason and every lesson learned, and you can stop using any lesson that is wrong.</li></ol>
-<p>Nothing is trained into the model's weights. The model stays fixed, so your audits and baselines hold; what improves is the context it reasons over. The memory lives in Hyper Engram, inside your boundary, and it is yours. The same loop is described across our published designs as a <a href="{BASE}/self-improving-ai-system/">self-improving AI system</a>.</p>
+<h3>Turning it on</h3>
+<p>You switch it on per workflow and choose when the check runs: by default two hours after the workflow, and never more than two days after it. Saving the setting creates the judge and the routine that runs the check. Nothing else to configure.</p>
+<h3>The judge</h3>
+<p>The judge is a separate reviewer, not the workflow grading itself. It scores each run from minus one to plus one against what the workflow was asked to do, and writes down its reason. When a new lesson contradicts an older one, the conflict is settled before the lesson is kept, so the memory does not argue with itself.</p>
+<h3>What the next run gets</h3>
+<p>When the workflow starts again, its best lessons are already in its context, ranked by how much they helped. Nothing has to be called or remembered by a person.</p>
+<h3>Why not fine tuning</h3>
+<p>Nothing is trained into the model's weights. The model stays fixed, so your audits and baselines hold; what improves is the context it reasons over. A lesson can be read, questioned and removed. A change baked into weights cannot. The memory lives in Hyper Engram, inside your boundary, and it is yours. The same loop is described across our published designs as a <a href="{BASE}/self-improving-ai-system/">self-improving AI system</a>.</p>
+<h2>A worked example</h2>
+<p class="muted">Illustrative, to show the loop; not a customer deployment.</p>
+<p>A utility runs a weekly workflow that reviews the maintenance backlog and drafts the next week's priorities for the planning lead. In week one the draft ranks work orders by age. The judge marks it down: the workflow's instructions say safety and supply come first, and two overdue protection relay tests sat below routine painting work. The workflow writes a lesson: rank by consequence before age. In week two the draft starts with that lesson, the relay tests come first, and the planning lead approves the list with one change, which becomes the next lesson.</p>
+<h2>Built on your ontology</h2>
+<p>Hyper Pragma does not guess what your data means. It reads <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>, which holds two layers: <strong>semantics</strong>, what every object, property and link means, and <strong>kinetics</strong>, which actions are allowed, through which write paths, with whose approval. Hyper Ontology is built on open W3C standards (RDF, OWL, SPARQL and SHACL) and exposed to agents through MCP, so there is no long configuration cycle and no lock in. Every design on this site ships an object model ready to load; <a href="{BASE}/praxis/">CodeNinja Praxis</a> writes a new one from a requirement.</p>
 <h2>Sovereign by design</h2>
-<ul><li><strong>Runs where your data lives.</strong> On premises, in your private cloud, or fully air gapped, with no runtime dependency on CodeNinja.</li>
-<li><strong>Models you control.</strong> Open weight models on your own hardware. When a better model is released you swap it in, and your ontology, memory and workflows carry over.</li>
+<ul><li><strong>Runs where your data lives.</strong> On premises, in your private cloud or a dedicated VPC, or fully air gapped, with no runtime dependency on CodeNinja. The boundary is set during scoping to match your compliance posture.</li>
+<li><strong>Models you control.</strong> Open weight frontier models on your own hardware. When a better model is released you swap it in, and your ontology, memory and workflows carry over.</li>
 <li><strong>A record of every action.</strong> What the agent read, what it decided and who approved it, kept as a permanent record of your organisation.</li>
-<li><strong>Your institution and your people.</strong> It learns from your organisation's core channels and, with each person's permission, from their own work.</li></ul>
+<li><strong>Models you can open.</strong> Because the weights run on your hardware, what the agents do can be audited inside your organisation, not taken on a vendor's word.</li></ul>
+<h2>Your institution and your people</h2>
+<p>Hyper Pragma learns from your organisation's core channels, the records, approvals and decisions that make up how the operation runs. With each person's permission it also learns from their own work, so a planner's judgment or a supervisor's precedent becomes something the organisation keeps. It models the company and the people who run it.</p>
 <h2>Where it sits</h2>
 <table><tr><th>Platform</th><th>What it does</th></tr>
 <tr><td><a href="{BASE}/praxis/">CodeNinja Praxis</a></td><td>Designs the system: a requirement in, the architecture and the object model out</td></tr>
 <tr><td><a href="{BASE}/hyper-ontology/">Hyper Ontology</a></td><td>Stands the object model up over your own systems of record</td></tr>
 <tr><td>Hyper Pragma</td><td>Puts AI to work on that model: governed actions, human approvals, and memory that improves every run</td></tr>
 <tr><td>Hyper Engram</td><td>Keeps every run, every grade and every lesson inside your boundary</td></tr></table>
+<h2>Deployed with our engineers</h2>
+<p>Our forward deployed engineers map the semantics and kinetics from how your operation actually works, build the deterministic layer on the environment you choose, and connect your models and workflows. If you already run Hyper, they extend what is there, so the work you have done compounds instead of starting over.</p>
+<h2>Commercials</h2>
+<p>You buy the whole stack as a licence, or metered on tokens, so a mid market bank or operator can start without an enterprise platform budget. <a href="{brand.COMMERCIAL}">Talk to us</a> about your operation.</p>
 <h2>Questions agents ask</h2>""" + "".join(f"<h3>{E(a)}</h3><p>{E(b)}</p>" for a, b in q)
     ld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Hyper Pragma", "applicationCategory": "BusinessApplication",
            "description": "The AI layer on top of Hyper Ontology: connects the models an organisation runs, its live operational data and its people's workflows, takes governed actions, and learns from every run with self-improving memory, inside the organisation's own boundary.",
