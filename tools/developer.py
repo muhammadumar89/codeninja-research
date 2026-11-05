@@ -36,7 +36,7 @@ CAPS = [
     {"name": "Hyper Pragma", "verb": "Run agents inside the boundary", "status": "Used in house, not yet open",
      "what": "Hyper Pragma is agent execution inside the enterprise boundary, on models the organization can change without losing what was built.",
      "build": "Agents that work on the operator's own hardware, on open-weight models the operator can swap, with the context carried across the swap.",
-     "links": []},
+     "links": [("Hyper Pragma", f"{BASE}/hyper-pragma/")]},
     {"name": "Hyper Engram", "verb": "Remember every decision", "status": "Used in house, not yet open",
      "what": "Hyper Engram is decision memory each run reads before it acts: the record of what was decided, by whom, and what worked.",
      "build": "Systems that improve run over run because every run starts by reading what earlier runs and people recorded.",

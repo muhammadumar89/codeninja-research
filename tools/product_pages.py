@@ -1,4 +1,4 @@
-"""The two product pages: Praxis and Hyper Ontology. Built from the papers on disk so the
+"""The three product pages: Praxis, Hyper Ontology and Hyper Pragma. Built from the papers on disk so the
 evidence lists stay current; rerun after every new paper.
     python tools/product_pages.py
 """
@@ -63,12 +63,14 @@ section.film.access .inner{display:grid;grid-template-columns:1fr 1fr;gap:40px 6
 @media (max-width:820px){.doc{padding:80px var(--gutter);font-size:16px}.doc h2{margin-top:72px}.grid{grid-template-columns:1fr}section.film.access .inner{grid-template-columns:1fr;padding:88px var(--gutter)}}
 """
 
-SHORT = {"praxis": "CodeNinja Praxis: AI That Designs Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: Ontology Builder for Industrial Operations | CodeNinja Atoms"}
-VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard"}
-FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology"}
+SHORT = {"praxis": "CodeNinja Praxis: AI That Designs Physical AI Systems | CodeNinja Atoms", "hyper-ontology": "Hyper Ontology: Ontology Builder for Industrial Operations | CodeNinja Atoms",
+         "hyper-pragma": "Hyper Pragma: Self-Improving Sovereign AI for Operations | CodeNinja Atoms"}
+VIDEO = {"praxis": "control-room", "hyper-ontology": "rail-yard", "hyper-pragma": "port-night"}
+FORM = {"praxis": "Praxis", "hyper-ontology": "Hyper Ontology", "hyper-pragma": "Hyper Pragma"}
 ACCESS = {"praxis": "Every design on this site was made on Praxis. Engineers start free; organisations talk to our commercial team.",
-          "hyper-ontology": "Hyper Ontology turns a Praxis design into a living system. It is in beta with a small number of teams; the way in is a Praxis account."}
-ACCESS_NOTE = {"praxis": ("Having trouble?", "Praxis"), "hyper-ontology": ("Asking about Hyper Ontology?", "Hyper Ontology")}
+          "hyper-ontology": "Hyper Ontology turns a Praxis design into a living system. It is in beta with a small number of teams; the way in is a Praxis account.",
+          "hyper-pragma": "Hyper Pragma puts AI to work on your operations through your ontology, inside your walls. Organisations start with our commercial team."}
+ACCESS_NOTE = {"praxis": ("Having trouble?", "Praxis"), "hyper-ontology": ("Asking about Hyper Ontology?", "Hyper Ontology"), "hyper-pragma": ("Asking about Hyper Pragma?", "Hyper Pragma")}
 
 
 def page(slug, title, desc, body, ld):
@@ -79,6 +81,12 @@ def page(slug, title, desc, body, ld):
         body = body.replace(m.group(0), "", 1)
     vid = lambda n, eager: (f'<img class="poster" src="../assets/video/{n}.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline preload="{"auto" if eager else "none"}" poster="../assets/video/{n}.jpg" aria-hidden="true">'
                             f'<source src="../assets/video/{n}.mp4" type="video/mp4"></video>')
+    if slug == "hyper-pragma":  # sold through the commercial team, not the free Praxis signup
+        cta = f'<a class="btn solid" href="{brand.COMMERCIAL}">{brand.TALK}</a><a class="btn" href="#learns">How it learns</a>'
+    elif slug == "praxis":
+        cta = f'<a class="btn solid" href="{brand.SIGNUP}">{brand.FREE}</a><a class="btn" href="{brand.COMMERCIAL}">{brand.TALK}</a><a class="btn" href="#watch">Watch it work</a>'
+    else:
+        cta = f'<a class="btn solid" href="{brand.SIGNUP}">{brand.FREE}</a><a class="btn" href="{brand.SIGNIN}">Sign in</a>'
     nav = brand.nav(BASE + "/")
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(SHORT.get(slug, title.split(':')[0]))}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/{slug}/">
@@ -87,7 +95,7 @@ def page(slug, title, desc, body, ld):
 """ + "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>\n' for x in ld) + f"""{brand.FONTS}{brand.JS_FLAG}<style>{brand.CSS}{CSS}</style></head>
 <body>{brand.header(BASE + "/", nav)}
 <main>
-<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{('<h1 class="prod">' + E(HERO[slug][0]) + '</h1><p class="lede hero-line">' + E(HERO[slug][1]) + '</p>') if slug in HERO else h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta"><a class="btn solid" href="{brand.SIGNUP}">{brand.FREE}</a>{f'<a class="btn" href="{brand.COMMERCIAL}">{brand.TALK}</a><a class="btn" href="#watch">Watch it work</a>' if slug == "praxis" else f'<a class="btn" href="{brand.SIGNIN}">Sign in</a>'}</div></div><a class="scroll" href="#{"engineers" if slug == "praxis" else "overview"}">Scroll to explore{brand.ARROW}</a></section>
+<section class="film hero">{vid(v, True)}<div class="inner">{eyebrow}{('<h1 class="prod">' + E(HERO[slug][0]) + '</h1><p class="lede hero-line">' + E(HERO[slug][1]) + '</p>') if slug in HERO else h1.replace("<h1>", '<h1 class="prod">', 1)}<div class="cta">{cta}</div></div><a class="scroll" href="#{"engineers" if slug == "praxis" else "overview"}">Scroll to explore{brand.ARROW}</a></section>
 {(film_section() + praxis_top()) if slug == "praxis" else ""}
 <section class="light" id="overview"><div class="doc">
 {lead}
@@ -97,7 +105,8 @@ def page(slug, title, desc, body, ld):
 </main><footer class="site"><div class="wrapf">{brand.footer_brand(BASE)}{brand.footer_links(BASE + "/")}<span>A <a href="{brand.PARENT}">CodeNinja</a> product · Pages, papers, object models and data are CC BY 4.0 · Updated {datetime.date.today().isoformat()}</span></div></footer>
 {brand.SCRIPT}</body></html>"""
 
-HERO = {"praxis": ("We are solving the biggest bottleneck in physical AI system design: deep domain expertise.", "CodeNinja Praxis brings that expertise to the hardest problems in physical AI, from mines to test tracks.")}
+HERO = {"praxis": ("We are solving the biggest bottleneck in physical AI system design: deep domain expertise.", "CodeNinja Praxis brings that expertise to the hardest problems in physical AI, from mines to test tracks."),
+        "hyper-pragma": ("Put AI to work on your operations, and let it learn from every run.", "Hyper Pragma connects the models you run, your ontology and your people's workflows inside your walls, takes governed actions, and gets better after every run.")}
 # The first hour, step by step: what an engineer does on a free account (from the platform's handoff of 8 Oct 2026).
 WALK = [("Paste a requirement", "A port terminal, a mine haul road, a warehouse: paste what the operator sent, in their own words."),
         ("Answer six questions", "Praxis asks for what the requirement leaves out, and nothing more."),
@@ -207,6 +216,50 @@ def main():
             "releaseNotes": "Beta. Access by request.", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Praxis", "url": f"{BASE}/praxis/"}}, faq(hq)]
     (ROOT / "hyper-ontology" / "index.html").write_text(page("hyper-ontology", "Hyper Ontology: turn a reference architecture into a living system",
         "Hyper Ontology is CodeNinja's ontology platform: it imports the object models Praxis designs and stands them up as a living ontology over the operator's own systems of record.", hbody, hld), encoding="utf-8")
+    pragma()
     print("product pages:", len(ds), "designs")
+
+def pragma():
+    # Hyper Pragma (Umar, 5 Nov 2026: the AI layer on the ontology, sovereign, its edge is memory that improves every run;
+    # never a copilot or an agentic workspace; no competitor named). Memory mechanics from "Engram Memory in Pragma" (15 Oct 2026).
+    q = [("What is Hyper Pragma?", "Hyper Pragma is the AI layer that sits on top of your Hyper Ontology. It securely connects the models you run, your live operational data and your people's workflows, takes governed actions inside those workflows, and learns from every run."),
+         ("How does Hyper Pragma improve itself?", "You turn self-improving memory on for a workflow. After each run a judge grades the work against the workflow's own instructions, the workflow writes a lesson, and the next run starts with its best lessons. You see every lesson and can stop using any of them."),
+         ("Does Hyper Pragma train a model on our data?", "No. Nothing is trained into the model's weights. What improves is the context the model reasons over, kept as lessons in your own memory, inside your boundary."),
+         ("Can Hyper Pragma run air gapped?", "Yes. It runs where your data lives, on premises, in your private cloud or with no internet connection at all, with no runtime dependency on CodeNinja."),
+         ("How is Hyper Pragma sold?", "As a licence for the whole stack, or metered on tokens, so a mid market operator can start without an enterprise platform budget.")]
+    body = f"""<p class="eyebrow">CodeNinja · Hyper Pragma</p>
+<h1>Hyper Pragma: put AI to work on your operations, and let it learn from every run</h1>
+<p class="lead">Hyper Pragma is the AI layer that sits on top of your <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>. It securely connects the models you run, your live operational data and your people's workflows, takes governed actions inside those workflows, and gets better after every run. It is built for the person who owns the operation, and it runs inside your walls.</p>
+<div class="box"><strong>Status:</strong> used in house by CodeNinja. Organisations get access through our <a href="{brand.COMMERCIAL}">commercial team</a>, as a licence or metered on tokens.</div>
+<h2>Governed actions, not chat</h2>
+<p>Before every action, an agent reads your ontology: what each object means, which actions your operation allows and who must approve them. Then it routes the work. Decisions your ontology already governs are resolved deterministically. Exceptions that need judgment go to the model. Decisions that should not be delegated go to a named person for approval. After every decision the outcome is written to memory, so the record of what was done, and why, stays with you.</p>
+<h2 id="learns">It learns from every run</h2>
+<p>Every workflow in Hyper Pragma can improve itself. You turn self-improving memory on for a workflow, and from then on:</p>
+<ol><li><strong>The workflow runs</strong> as it always does, inside your boundary.</li>
+<li><strong>A judge grades the run</strong> against the workflow's own instructions. There is no rubric to write.</li>
+<li><strong>The workflow writes a lesson</strong> from the grade, with no one present.</li>
+<li><strong>The next run starts smarter</strong>, with its best lessons already in context.</li>
+<li><strong>You stay in charge</strong>: one screen shows the latest result, the judge's reason and every lesson learned, and you can stop using any lesson that is wrong.</li></ol>
+<p>Nothing is trained into the model's weights. The model stays fixed, so your audits and baselines hold; what improves is the context it reasons over. The memory lives in Hyper Engram, inside your boundary, and it is yours. The same loop is described across our published designs as a <a href="{BASE}/self-improving-ai-system/">self-improving AI system</a>.</p>
+<h2>Sovereign by design</h2>
+<ul><li><strong>Runs where your data lives.</strong> On premises, in your private cloud, or fully air gapped, with no runtime dependency on CodeNinja.</li>
+<li><strong>Models you control.</strong> Open weight models on your own hardware. When a better model is released you swap it in, and your ontology, memory and workflows carry over.</li>
+<li><strong>A record of every action.</strong> What the agent read, what it decided and who approved it, kept as a permanent record of your organisation.</li>
+<li><strong>Your institution and your people.</strong> It learns from your organisation's core channels and, with each person's permission, from their own work.</li></ul>
+<h2>Where it sits</h2>
+<table><tr><th>Platform</th><th>What it does</th></tr>
+<tr><td><a href="{BASE}/praxis/">CodeNinja Praxis</a></td><td>Designs the system: a requirement in, the architecture and the object model out</td></tr>
+<tr><td><a href="{BASE}/hyper-ontology/">Hyper Ontology</a></td><td>Stands the object model up over your own systems of record</td></tr>
+<tr><td>Hyper Pragma</td><td>Puts AI to work on that model: governed actions, human approvals, and memory that improves every run</td></tr>
+<tr><td>Hyper Engram</td><td>Keeps every run, every grade and every lesson inside your boundary</td></tr></table>
+<h2>Questions agents ask</h2>""" + "".join(f"<h3>{E(a)}</h3><p>{E(b)}</p>" for a, b in q)
+    ld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Hyper Pragma", "applicationCategory": "BusinessApplication",
+           "description": "The AI layer on top of Hyper Ontology: connects the models an organisation runs, its live operational data and its people's workflows, takes governed actions, and learns from every run with self-improving memory, inside the organisation's own boundary.",
+           "url": f"{BASE}/hyper-pragma/", "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
+           "releaseNotes": "Used in house by CodeNinja. Access through the commercial team, as a licence or metered on tokens.",
+           "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"}}, faq(q)]
+    (ROOT / "hyper-pragma").mkdir(exist_ok=True)
+    (ROOT / "hyper-pragma" / "index.html").write_text(page("hyper-pragma", "Hyper Pragma: put AI to work on your operations, and let it learn from every run",
+        "Hyper Pragma is the AI layer on your ontology: governed actions inside your workflows, inside your walls, and memory that improves every run.", body, ld), encoding="utf-8")
 
 if __name__ == "__main__": main()

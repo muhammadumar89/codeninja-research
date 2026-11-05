@@ -116,7 +116,7 @@ def nav(base=""):
     An item is (label, href) for a direct tab or (label, [(label, href), ...]) for a tab that opens."""
     b = base
     return [
-        ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("PADI", f"{b}padi/")]),
+        ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("Hyper Pragma", f"{b}hyper-pragma/"), ("PADI", f"{b}padi/")]),
         ("Research", [("Reference architectures", f"{b}#research"), ("Sectors", f"{b}sectors/"),
                       ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/"),
                       ("Agentic Memory Architecture", f"{b}agentic-memory-architecture/")]),
@@ -176,7 +176,7 @@ def footer_links(base=""):
     secs = sorted(q.parent.name for q in root.glob("*/index.html")) if root.exists() else []
     sname = lambda slug: (lambda t: t[:1].upper() + t[1:])(slug.replace("-and-", " and ").replace("-", " "))
     cols = [
-        ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("PADI", f"{b}padi/"),
+        ("Platform", [("Praxis", f"{b}praxis/"), ("Hyper Ontology", f"{b}hyper-ontology/"), ("Hyper Pragma", f"{b}hyper-pragma/"), ("PADI", f"{b}padi/"),
                       ("Developers", f"{b}developer/"), ("Agentic Memory Architecture", f"{b}agentic-memory-architecture/")]),
         ("Collections", [("Sovereign AI reference architectures", f"{b}sovereign-ai-reference-architectures/"),
                          ("Industrial ontology examples", f"{b}industrial-ontology-examples/"),
