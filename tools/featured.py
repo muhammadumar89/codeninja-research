@@ -25,17 +25,16 @@ section.featured .nav button{width:36px;height:36px;border:1px solid var(--rule-
 section.featured .nav button:disabled{opacity:.35;cursor:default}section.featured .nav svg{width:14px;height:14px}
 section.featured .track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gutter);padding:0 var(--gutter);scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
 section.featured .track::-webkit-scrollbar{display:none}section.featured .track.drag{cursor:grabbing;scroll-snap-type:none}
-section.featured a.card{position:relative;flex:0 0 min(94%,1180px);aspect-ratio:1920/902;overflow:hidden;background:#0B0C10;color:#F2F2F0;text-decoration:none;scroll-snap-align:start}
-section.featured a.card img{position:absolute;inset:0;width:100%;height:100%!important;max-width:none;object-fit:cover;display:block;transition:transform .8s ease;user-select:none;-webkit-user-drag:none}
-section.featured a.card:hover img{transform:scale(1.02)}
+section.featured .card{position:relative;flex:0 0 min(94%,1180px);aspect-ratio:1920/902;overflow:hidden;background:#0B0C10;color:#F2F2F0;text-decoration:none;scroll-snap-align:start}
+section.featured .card img{position:absolute;inset:0;width:100%;height:100%!important;max-width:none;object-fit:cover;display:block;transition:transform .8s ease;user-select:none;-webkit-user-drag:none}
+
 section.featured .lbl{position:absolute;left:20px;top:20px;max-width:min(520px,calc(100% - 40px));background:rgba(20,21,27,.88);padding:16px 20px 18px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 section.featured .lbl .mono{color:#A3A6AE;margin:0 0 8px}
 section.featured .lbl h3{font:300 clamp(20px,2.1vw,28px)/1.2 var(--sans);letter-spacing:-.015em;margin:0;color:#F2F2F0}
-section.featured .lbl h3 i{font-style:normal;margin-left:8px;display:inline-block;transition:transform .2s}section.featured a.card:hover .lbl h3 i{transform:translate(3px,-3px)}
-@media (max-width:820px){section.featured{padding:24px 0 44px}section.featured .nav{display:none}section.featured a.card{flex-basis:86%;aspect-ratio:4/5}section.featured .lbl{left:12px;top:12px;padding:12px 14px 14px}}
+@media (max-width:820px){section.featured{padding:24px 0 44px}section.featured .nav{display:none}section.featured .card{flex-basis:86%;aspect-ratio:4/5}section.featured .lbl{left:12px;top:12px;padding:12px 14px 14px}}
 """
 
-JS = """<script>(function(){var r=document.getElementById('featured');if(!r)return;var t=r.querySelector('.track'),cs=[].slice.call(t.querySelectorAll('a.card')),ch=[].slice.call(r.querySelectorAll('.chips a')),pv=r.querySelector('.prev'),nx=r.querySelector('.next');
+JS = """<script>(function(){var r=document.getElementById('featured');if(!r)return;var t=r.querySelector('.track'),cs=[].slice.call(t.querySelectorAll('.card')),ch=[].slice.call(r.querySelectorAll('.chips a')),pv=r.querySelector('.prev'),nx=r.querySelector('.next');
 function cur(){var x=t.scrollLeft,b=0,d=1e9;cs.forEach(function(c,i){var q=Math.abs(c.offsetLeft-t.offsetLeft-x-0);if(q<d){d=q;b=i}});return b}
 function to(i){i=Math.max(0,Math.min(cs.length-1,i));t.scrollTo({left:cs[i].offsetLeft-cs[0].offsetLeft,behavior:'smooth'})}
 function mark(){var i=cur();ch.forEach(function(a,j){a.classList.toggle('on',j===i)});pv.disabled=t.scrollLeft<4;nx.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4}
@@ -44,14 +43,14 @@ t.addEventListener('scroll',function(){requestAnimationFrame(mark)},{passive:tru
 var down=false,sx=0,sl=0,moved=false;t.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=t.scrollLeft});
 window.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>4){moved=true;t.classList.add('drag')}t.scrollLeft=sl-dx});
 window.addEventListener('pointerup',function(){if(!down)return;down=false;if(moved){t.classList.remove('drag');to(cur())}});
-cs.forEach(function(c){c.addEventListener('click',function(e){if(moved){e.preventDefault();moved=false}})});mark()})();</script>"""
+mark()})();</script>"""
 
 
 def html_block():
     chips = "".join(f'<a href="#f{k}" class="{"on" if k == 0 else ""}">{E(a)}</a>' for k, (*_r, a) in enumerate(FEATURED))
-    cards = "".join(f'<a class="card" id="f{k}" href="{h}"><img src="assets/featured/{img}" alt="" width="1920" height="902" '
+    cards = "".join(f'<div class="card" id="f{k}"><img src="assets/featured/{img}" alt="" width="1920" height="902" '
                     f'loading="{"eager" if k < 2 else "lazy"}" decoding="async" draggable="false"><div class="lbl"><p class="mono">{E(a)}</p>'
-                    f'<h3>{E(t)}<i aria-hidden="true">↗</i></h3></div></a>' for k, (a, t, h, img, _c) in enumerate(FEATURED))
+                    f'<h3>{E(t)}</h3></div></div>' for k, (a, t, h, img, _c) in enumerate(FEATURED))
     arrow = lambda d: f'<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="{d}" stroke="currentColor" stroke-width="1.2"/></svg>'
     nav = (f'<div class="nav"><button type="button" class="prev" aria-label="Previous">{arrow("M9 2 4 7l5 5")}</button>'
            f'<button type="button" class="next" aria-label="Next">{arrow("M5 2l5 5-5 5")}</button></div>')
