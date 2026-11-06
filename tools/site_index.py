@@ -206,7 +206,7 @@ def landing(ps, sols):
     nav = brand.nav()
     return f"""{brand.header("./", nav)}
 <main>
-{film("physical-ai-montage", f'<p class="mono">CodeNinja Atoms</p><h1 class="lite">Sovereign AI for the physical world.</h1><div class="cta"><a class="btn solid" href="{brand.CONTACT}">{brand.TALK}</a><a class="btn" href="{brand.SIGNUP}">{brand.FREE}</a></div>', eager=True, cls="hero bright", tail=scroll)}
+{film("physical-ai-montage", f'<p class="mono">CodeNinja Atoms</p><h1 class="lite">Sovereign AI for the physical world.</h1>', eager=True, cls="hero bright", tail=scroll)}
 {featured.html_block()}
 <section class="light" id="intro"><div class="statement"><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
