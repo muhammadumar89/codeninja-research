@@ -6,12 +6,12 @@ import html
 
 E = lambda s: html.escape(str(s), quote=True)
 
-# (eyebrow, headline, href relative to the home page, image in assets/featured/)
+# (eyebrow, headline, href relative to the home page, image in assets/featured/, chip label)
 FEATURED = [
-    ("Sea Power", "Rebuilding Middle Eastern Sea Power", "co-build/defense-and-intelligence/", "sea-power.jpg"),
-    ("Saudi Arabia", "Bringing Intelligence to Everything That Moves in Saudi Arabia", "open-pit-mine-haul-fleet-saudi-arabia/", "saudi-arabia.jpg"),
-    ("On Device AI", "Building On Device AI Stacks to Counterbalance Proprietary AI Inference", "developer/", "on-device.jpg"),
-    ("13 Industries", "Training One System Across 13 Physical AI Industries", "sectors/", "thirteen-industries.jpg"),
+    ("Case Study · Sea Power", "Rebuilding Middle Eastern Sea Power", "co-build/defense-and-intelligence/", "sea-power.jpg", "Sea Power"),
+    ("Case Study · Saudi Arabia", "Bringing Intelligence to Every Truck in Saudi Arabia", "open-pit-mine-haul-fleet-saudi-arabia/", "saudi-trucks.jpg", "Saudi Trucks"),
+    ("On Device AI", "Deploying On Device AI Stacks to Counterbalance Proprietary AI Inference", "developer/", "on-device.jpg", "On Device AI"),
+    ("13 Industries", "Training Models for 13 Physical AI Industries", "sectors/", "thirteen-industries.jpg", "13 Industries"),
 ]
 
 CSS = """
@@ -48,10 +48,10 @@ cs.forEach(function(c){c.addEventListener('click',function(e){if(moved){e.preven
 
 
 def html_block():
-    chips = "".join(f'<a href="#f{k}" class="{"on" if k == 0 else ""}">{E(a)}</a>' for k, (a, *_r) in enumerate(FEATURED))
+    chips = "".join(f'<a href="#f{k}" class="{"on" if k == 0 else ""}">{E(a)}</a>' for k, (*_r, a) in enumerate(FEATURED))
     cards = "".join(f'<a class="card" id="f{k}" href="{h}"><img src="assets/featured/{img}" alt="" width="1920" height="902" '
                     f'loading="{"eager" if k < 2 else "lazy"}" decoding="async" draggable="false"><div class="lbl"><p class="mono">{E(a)}</p>'
-                    f'<h3>{E(t)}<i aria-hidden="true">↗</i></h3></div></a>' for k, (a, t, h, img) in enumerate(FEATURED))
+                    f'<h3>{E(t)}<i aria-hidden="true">↗</i></h3></div></a>' for k, (a, t, h, img, _c) in enumerate(FEATURED))
     arrow = lambda d: f'<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="{d}" stroke="currentColor" stroke-width="1.2"/></svg>'
     nav = (f'<div class="nav"><button type="button" class="prev" aria-label="Previous">{arrow("M9 2 4 7l5 5")}</button>'
            f'<button type="button" class="next" aria-label="Next">{arrow("M5 2l5 5-5 5")}</button></div>')
