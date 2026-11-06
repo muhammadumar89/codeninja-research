@@ -1,5 +1,5 @@
 """Featured strip under the home hero (Umar, 6 Nov 2026): a Palantir style band of topic chips
-over one large image card with a dark label box, rotating every few seconds. site_index.py calls
+over one large image card with a dark label box, scrolled sideways by hand, the next card in view. site_index.py calls
 featured.html() between the hero film and the intro. Images and credits in assets/featured/.
 """
 import html
@@ -15,40 +15,45 @@ FEATURED = [
 ]
 
 CSS = """
-section.featured{background:#EDEDEB;color:var(--ink);padding:40px var(--gutter) 72px}
-section.featured .fw{max-width:var(--max);margin:0 auto}
-section.featured .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
-section.featured .chips button{font:400 13.5px/1 var(--sans);color:var(--muted-l);background:rgba(30,31,43,.06);border:0;border-radius:0;padding:8px 11px;cursor:pointer;letter-spacing:-.005em}
-section.featured .chips button:hover{color:var(--ink)}section.featured .chips button[aria-selected=true]{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--rule-l)}
-section.featured .stage{position:relative;aspect-ratio:1920/902;overflow:hidden;background:#0B0C10}
-section.featured a.card{position:absolute;inset:0;display:block;opacity:0;transition:opacity .7s ease;pointer-events:none;color:#F2F2F0;text-decoration:none}
-section.featured a.card.on{opacity:1;pointer-events:auto}
-section.featured a.card img{position:absolute;inset:0;width:100%;height:100%!important;max-width:none;object-fit:cover;display:block;transform:scale(1.04);transition:transform 7s ease}
-section.featured a.card.on img{transform:scale(1)}
+section.featured{background:#EDEDEB;color:var(--ink);padding:40px 0 64px;overflow:hidden}
+section.featured .fhead{max-width:var(--max);margin:0 auto 22px;padding:0 var(--gutter);display:flex;align-items:center;gap:16px}
+section.featured .chips{display:flex;flex-wrap:wrap;gap:8px}
+section.featured .chips a{font:400 13.5px/1 var(--sans);color:var(--muted-l);background:rgba(30,31,43,.06);padding:8px 11px;text-decoration:none;letter-spacing:-.005em}
+section.featured .chips a:hover{color:var(--ink)}section.featured .chips a.on{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--rule-l)}
+section.featured .nav{margin-left:auto;display:flex;gap:6px}
+section.featured .nav button{width:36px;height:36px;border:1px solid var(--rule-l);background:#fff;color:var(--ink);cursor:pointer;display:grid;place-items:center;border-radius:0}
+section.featured .nav button:disabled{opacity:.35;cursor:default}section.featured .nav svg{width:14px;height:14px}
+section.featured .track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gutter);padding:0 var(--gutter);scrollbar-width:none;-ms-overflow-style:none;cursor:grab}
+section.featured .track::-webkit-scrollbar{display:none}section.featured .track.drag{cursor:grabbing;scroll-snap-type:none}
+section.featured a.card{position:relative;flex:0 0 min(94%,1180px);aspect-ratio:1920/902;overflow:hidden;background:#0B0C10;color:#F2F2F0;text-decoration:none;scroll-snap-align:start}
+section.featured a.card img{position:absolute;inset:0;width:100%;height:100%!important;max-width:none;object-fit:cover;display:block;transition:transform .8s ease;user-select:none;-webkit-user-drag:none}
+section.featured a.card:hover img{transform:scale(1.02)}
 section.featured .lbl{position:absolute;left:20px;top:20px;max-width:min(520px,calc(100% - 40px));background:rgba(20,21,27,.88);padding:16px 20px 18px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 section.featured .lbl .mono{color:#A3A6AE;margin:0 0 8px}
 section.featured .lbl h3{font:300 clamp(20px,2.1vw,28px)/1.2 var(--sans);letter-spacing:-.015em;margin:0;color:#F2F2F0}
 section.featured .lbl h3 i{font-style:normal;margin-left:8px;display:inline-block;transition:transform .2s}section.featured a.card:hover .lbl h3 i{transform:translate(3px,-3px)}
-section.featured .bars{display:flex;gap:6px;margin-top:14px}section.featured .bars span{flex:1;height:2px;background:rgba(30,31,43,.14);position:relative;overflow:hidden}
-section.featured .bars span b{position:absolute;inset:0;background:var(--ink);transform:scaleX(0);transform-origin:left}
-section.featured .bars span.done b{transform:scaleX(1)}section.featured .bars span.run b{animation:fbar 6.5s linear forwards}
-@keyframes fbar{to{transform:scaleX(1)}}
-@media (max-width:820px){section.featured{padding:24px var(--gutter) 48px}section.featured .stage{aspect-ratio:4/5}section.featured .lbl{left:12px;top:12px;padding:12px 14px 14px}}
-@media (prefers-reduced-motion:reduce){section.featured a.card,section.featured a.card img{transition:none}section.featured .bars span.run b{animation:none;transform:scaleX(1)}}
+@media (max-width:820px){section.featured{padding:24px 0 44px}section.featured .nav{display:none}section.featured a.card{flex-basis:86%;aspect-ratio:4/5}section.featured .lbl{left:12px;top:12px;padding:12px 14px 14px}}
 """
 
-JS = """<script>(function(){var r=document.getElementById('featured');if(!r)return;var cs=r.querySelectorAll('a.card'),bs=r.querySelectorAll('.chips button'),ps=r.querySelectorAll('.bars span'),i=0,t;
-function show(k){i=k;cs.forEach(function(c,j){c.classList.toggle('on',j===k)});bs.forEach(function(b,j){b.setAttribute('aria-selected',j===k?'true':'false')});ps.forEach(function(p,j){p.className='';void p.offsetWidth;p.className=j<k?'done':(j===k?'run':'')})}
-function next(){show((i+1)%cs.length)}function go(){clearInterval(t);if(!matchMedia('(prefers-reduced-motion: reduce)').matches)t=setInterval(next,6500)}
-bs.forEach(function(b,j){b.addEventListener('click',function(){show(j);go()})});r.addEventListener('mouseenter',function(){clearInterval(t)});r.addEventListener('mouseleave',go);show(0);go()})();</script>"""
+JS = """<script>(function(){var r=document.getElementById('featured');if(!r)return;var t=r.querySelector('.track'),cs=[].slice.call(t.querySelectorAll('a.card')),ch=[].slice.call(r.querySelectorAll('.chips a')),pv=r.querySelector('.prev'),nx=r.querySelector('.next');
+function cur(){var x=t.scrollLeft,b=0,d=1e9;cs.forEach(function(c,i){var q=Math.abs(c.offsetLeft-t.offsetLeft-x-0);if(q<d){d=q;b=i}});return b}
+function to(i){i=Math.max(0,Math.min(cs.length-1,i));t.scrollTo({left:cs[i].offsetLeft-cs[0].offsetLeft,behavior:'smooth'})}
+function mark(){var i=cur();ch.forEach(function(a,j){a.classList.toggle('on',j===i)});pv.disabled=t.scrollLeft<4;nx.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-4}
+ch.forEach(function(a,j){a.addEventListener('click',function(e){e.preventDefault();to(j)})});pv.addEventListener('click',function(){to(cur()-1)});nx.addEventListener('click',function(){to(cur()+1)});
+t.addEventListener('scroll',function(){requestAnimationFrame(mark)},{passive:true});
+var down=false,sx=0,sl=0,moved=false;t.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=t.scrollLeft});
+window.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>4){moved=true;t.classList.add('drag')}t.scrollLeft=sl-dx});
+window.addEventListener('pointerup',function(){if(!down)return;down=false;if(moved){t.classList.remove('drag');to(cur())}});
+cs.forEach(function(c){c.addEventListener('click',function(e){if(moved){e.preventDefault();moved=false}})});mark()})();</script>"""
 
 
 def html_block():
-    chips = "".join(f'<button type="button" role="tab" aria-selected="{"true" if k == 0 else "false"}">{E(a)}</button>'
-                    for k, (a, *_r) in enumerate(FEATURED))
-    cards = "".join(f'<a class="card{" on" if k == 0 else ""}" href="{h}"><img src="assets/featured/{img}" alt="" width="1920" height="902" '
-                    f'loading="{"eager" if k == 0 else "lazy"}" decoding="async"><div class="lbl"><p class="mono">{E(a)}</p>'
+    chips = "".join(f'<a href="#f{k}" class="{"on" if k == 0 else ""}">{E(a)}</a>' for k, (a, *_r) in enumerate(FEATURED))
+    cards = "".join(f'<a class="card" id="f{k}" href="{h}"><img src="assets/featured/{img}" alt="" width="1920" height="902" '
+                    f'loading="{"eager" if k < 2 else "lazy"}" decoding="async" draggable="false"><div class="lbl"><p class="mono">{E(a)}</p>'
                     f'<h3>{E(t)}<i aria-hidden="true">↗</i></h3></div></a>' for k, (a, t, h, img) in enumerate(FEATURED))
-    bars = "".join("<span><b></b></span>" for _ in FEATURED)
-    return (f'<style>{CSS}</style><section class="featured" id="featured" aria-label="Featured"><div class="fw">'
-            f'<div class="chips" role="tablist">{chips}</div><div class="stage">{cards}</div><div class="bars">{bars}</div></div></section>{JS}')
+    arrow = lambda d: f'<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="{d}" stroke="currentColor" stroke-width="1.2"/></svg>'
+    nav = (f'<div class="nav"><button type="button" class="prev" aria-label="Previous">{arrow("M9 2 4 7l5 5")}</button>'
+           f'<button type="button" class="next" aria-label="Next">{arrow("M5 2l5 5-5 5")}</button></div>')
+    return (f'<style>{CSS}</style><section class="featured" id="featured" aria-label="Featured"><div class="fhead">'
+            f'<div class="chips">{chips}</div>{nav}</div><div class="track">{cards}</div></section>{JS}')
