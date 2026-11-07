@@ -79,6 +79,8 @@ def write(path, title, desc, body, ld, md):
     out = ROOT / path
     out.mkdir(parents=True, exist_ok=True)
     html = shell(f"{path}/", title, desc, body, ld).replace("</style>", CSS_EXTRA + "</style>", 1)
+    if path == "sovereign-ai-reference-architectures":  # ep39 7 Nov 2026: the ep37 pre-committed revert after 2, 11, 9, absent; the term's page no longer links its near-namesake
+        html = html.replace(f'<li><a href="{BASE}/sovereign-ai-architecture/">Sovereign AI architecture</a></li>', "", 1)
     (out / "index.html").write_text(html, encoding="utf-8")
     (out / "index.md").write_text("\n".join(md) + "\n", encoding="utf-8")
 
