@@ -163,10 +163,14 @@ function touch(){el=0;paint()}function paint(){var i=cur();ch.forEach(function(a
 ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){r.addEventListener(ev,touch,{passive:true})});ch.forEach(function(a){a.addEventListener('click',touch)});pv.addEventListener('click',touch);nx.addEventListener('click',touch);
 if('IntersectionObserver' in window)new IntersectionObserver(function(es){seen=es[0].isIntersecting},{threshold:.4}).observe(t);else seen=true;
 var lt=0;function loop(ts){var dt=lt?Math.min(ts-lt,100):0;lt=ts;if(seen&&!document.hidden&&!down){el+=dt;if(el>=DWELL){el=0;var i=cur();to(i>=cs.length-1?0:i+1)}paint()}requestAnimationFrame(loop)}if(!still)requestAnimationFrame(loop);
-mark()})();</script><script>(function(){function init(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var els=[].slice.call(document.querySelectorAll('[data-rise]'));if(!els.length)return;
-els.forEach(function(e){e.style.willChange='transform,opacity'});
-function upd(){var vh=window.innerHeight;els.forEach(function(e){var top=e.parentElement.getBoundingClientRect().top,p=Math.max(0,Math.min(1,(vh-top)/(vh*.75)));e.style.transform='translate3d(0,'+((1-p)*100).toFixed(1)+'px,0)';e.style.opacity=(.7+.3*p).toFixed(3)})}
-window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
+mark()})();</script><script>(function(){function init(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var els=[].slice.call(document.querySelectorAll('[data-rise],main>section:not(.hero):not(.featured)>.wrap,main>section.film:not(.hero)>.inner'));if(!els.length)return;
+els.forEach(function(e){e.style.willChange='transform,opacity';e.style.transformOrigin='50% 0'});
+function ease(x){return 1-Math.pow(1-x,3)}
+function upd(){var vh=window.innerHeight;els.forEach(function(e){var top=e.parentElement.getBoundingClientRect().top,p=ease(Math.max(0,Math.min(1,(vh-top)/(vh*.9))));
+e.style.transform='translate3d(0,'+((1-p)*180).toFixed(1)+'px,0) scale('+(.94+.06*p).toFixed(4)+')';e.style.opacity=(.25+.75*p).toFixed(3)})}
+window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
 <section class="light" id="intro"><div class="statement" data-rise><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>

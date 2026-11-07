@@ -54,10 +54,14 @@ mark()})();</script>"""
 
 # Palantir's scroll glide: a marked layer starts 100 px low at 70% opacity and rises to rest
 # as it scrolls into view, faster than the band behind it, so the gap closes as you scroll.
-RISE_JS = """<script>(function(){function init(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var els=[].slice.call(document.querySelectorAll('[data-rise]'));if(!els.length)return;
-els.forEach(function(e){e.style.willChange='transform,opacity'});
-function upd(){var vh=window.innerHeight;els.forEach(function(e){var top=e.parentElement.getBoundingClientRect().top,p=Math.max(0,Math.min(1,(vh-top)/(vh*.75)));e.style.transform='translate3d(0,'+((1-p)*100).toFixed(1)+'px,0)';e.style.opacity=(.7+.3*p).toFixed(3)})}
-window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>"""
+RISE_JS = """<script>(function(){function init(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var els=[].slice.call(document.querySelectorAll('[data-rise],main>section:not(.hero):not(.featured)>.wrap,main>section.film:not(.hero)>.inner'));if(!els.length)return;
+els.forEach(function(e){e.style.willChange='transform,opacity';e.style.transformOrigin='50% 0'});
+function ease(x){return 1-Math.pow(1-x,3)}
+function upd(){var vh=window.innerHeight;els.forEach(function(e){var top=e.parentElement.getBoundingClientRect().top,p=ease(Math.max(0,Math.min(1,(vh-top)/(vh*.9))));
+e.style.transform='translate3d(0,'+((1-p)*180).toFixed(1)+'px,0) scale('+(.94+.06*p).toFixed(4)+')';e.style.opacity=(.25+.75*p).toFixed(3)})}
+window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>"""
 
 
 def html_block():
