@@ -18,9 +18,9 @@ CSS = """
 section.featured{background:#EDEDEB;color:var(--ink);padding:40px 0 64px;overflow:hidden}
 section.featured .fhead{max-width:var(--max);margin:0 auto 22px;padding:0 var(--gutter);display:flex;align-items:center;gap:16px}
 section.featured .chips{display:flex;flex-wrap:wrap;gap:8px}
-section.featured .chips a{font:400 13.5px/1 var(--sans);color:var(--muted-l);background:rgba(30,31,43,.06);padding:8px 11px;text-decoration:none;letter-spacing:-.005em}
-section.featured .chips a:hover{color:var(--ink)}section.featured .chips a.on{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--rule-l)}
-section.featured .chips a{position:relative;overflow:hidden}section.featured .chips a.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--ink);transform:scaleX(var(--p,0));transform-origin:left}
+section.featured .chips a{font:400 14.5px/1 var(--sans);color:var(--muted-l);background:#fff;padding:9px 12px;text-decoration:none;letter-spacing:-.005em}
+section.featured .chips a:hover{color:var(--ink)}section.featured .chips a.on{color:var(--ink);background:linear-gradient(90deg,#DADAD8 calc(var(--p,0) * 100%),#fff calc(var(--p,0) * 100%))}
+
 section.featured .nav{margin-left:auto;display:flex;gap:6px}
 section.featured .nav button{width:36px;height:36px;border:1px solid var(--rule-l);background:#fff;color:var(--ink);cursor:pointer;display:grid;place-items:center;border-radius:0}
 section.featured .nav button:disabled{opacity:.35;cursor:default}section.featured .nav svg{width:14px;height:14px}
