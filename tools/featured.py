@@ -54,13 +54,18 @@ mark()})();</script>"""
 
 # Palantir's scroll glide: a marked layer starts 100 px low at 70% opacity and rises to rest
 # as it scrolls into view, faster than the band behind it, so the gap closes as you scroll.
-RISE_JS = """<script>(function(){function init(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+RISE_JS = """<style>.shade{color:var(--muted-l)}</style><script>(function(){function init(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var els=[].slice.call(document.querySelectorAll('[data-rise],main>section:not(.hero):not(.featured)>.wrap,main>section.film:not(.hero)>.inner'));if(!els.length)return;
-els.forEach(function(e){e.style.willChange='transform,opacity';e.style.transformOrigin='50% 0'});
+var S=els.map(function(e){e.style.willChange='transform,opacity';e.style.transformOrigin='50% 0';
+ var tx=[].slice.call(e.querySelectorAll('.big,h2')).map(function(t){var cs=getComputedStyle(t),lh=parseFloat(cs.lineHeight);if(isNaN(lh))lh=parseFloat(cs.fontSize)*1.15;return {el:t,lh:lh}});
+ return {el:e,cur:-1,tgt:0,tx:tx,sh:[].slice.call(e.querySelectorAll('.shade'))}});
 function ease(x){return 1-Math.pow(1-x,3)}
-function upd(){var vh=window.innerHeight;els.forEach(function(e){var top=e.parentElement.getBoundingClientRect().top,p=ease(Math.max(0,Math.min(1,(vh-top)/(vh*.9))));
-e.style.transform='translate3d(0,'+((1-p)*180).toFixed(1)+'px,0) scale('+(.94+.06*p).toFixed(4)+')';e.style.opacity=(.25+.75*p).toFixed(3)})}
-window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()}
+function paint(o){var p=o.cur,e=o.el;e.style.transform='translate3d(0,'+((1-p)*170).toFixed(1)+'px,0) scale('+(.95+.05*p).toFixed(4)+')';e.style.opacity=(.18+.82*p).toFixed(3);
+ o.tx.forEach(function(t){t.el.style.lineHeight=(t.lh*(1+.3*(1-p))).toFixed(1)+'px'});o.sh.forEach(function(x){x.style.opacity=Math.max(0,Math.min(1,(p-.55)/.45)).toFixed(3)})}
+function measure(){var vh=window.innerHeight;S.forEach(function(o){var top=o.el.parentElement.getBoundingClientRect().top;o.tgt=ease(Math.max(0,Math.min(1,(vh-top)/(vh*.9))));if(o.cur<0||document.hidden){o.cur=o.tgt;paint(o)}})}
+var run=false;function loop(){var busy=false;S.forEach(function(o){var d=o.tgt-o.cur;if(Math.abs(d)>.0008){o.cur+=d*.11;busy=true;paint(o)}else if(d){o.cur=o.tgt;paint(o)}});if(busy)requestAnimationFrame(loop);else run=false}
+function kick(){measure();if(!run&&!document.hidden){run=true;requestAnimationFrame(loop)}}
+window.addEventListener('scroll',kick,{passive:true});window.addEventListener('resize',kick);measure()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>"""
 
 

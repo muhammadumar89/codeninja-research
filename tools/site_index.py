@@ -208,7 +208,7 @@ def landing(ps, sols):
 <main>
 {film("physical-ai-montage", f'<p class="mono">CodeNinja Atoms</p><h1 class="lite">Sovereign AI for the physical world.</h1>', eager=True, cls="hero bright", tail=scroll)}
 {featured.html_block()}
-<section class="light" id="intro"><div class="statement" data-rise><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for ports, grids, mills, plants and sites: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
+<section class="light" id="intro"><div class="statement" data-rise><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for <span class="shade">ports, grids, mills, plants and sites</span>: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
 <div class="cta"><a class="btn solid" href="#research">Read the research</a><a class="btn" href="praxis/">Praxis</a><a class="btn" href="hyper-ontology/">Hyper Ontology</a></div></div>
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
