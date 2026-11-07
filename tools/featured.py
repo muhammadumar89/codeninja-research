@@ -52,6 +52,14 @@ var lt=0;function loop(ts){var dt=lt?Math.min(ts-lt,100):0;lt=ts;if(seen&&!docum
 mark()})();</script>"""
 
 
+# Palantir's scroll glide: a marked layer starts 100 px low at 70% opacity and rises to rest
+# as it scrolls into view, faster than the band behind it, so the gap closes as you scroll.
+RISE_JS = """<script>(function(){function init(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var els=[].slice.call(document.querySelectorAll('[data-rise]'));if(!els.length)return;
+els.forEach(function(e){e.style.willChange='transform,opacity'});
+function upd(){var vh=window.innerHeight;els.forEach(function(e){var top=e.parentElement.getBoundingClientRect().top,p=Math.max(0,Math.min(1,(vh-top)/(vh*.75)));e.style.transform='translate3d(0,'+((1-p)*100).toFixed(1)+'px,0)';e.style.opacity=(.7+.3*p).toFixed(3)})}
+window.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>"""
+
+
 def html_block():
     chips = "".join(f'<a href="#f{k}" class="{"on" if k == 0 else ""}">{E(a)}</a>' for k, (*_r, a) in enumerate(FEATURED))
     cards = "".join(f'<div class="card" id="f{k}"><img src="assets/featured/{img}" alt="" width="1920" height="902" '
@@ -60,5 +68,5 @@ def html_block():
     arrow = lambda d: f'<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="{d}" stroke="currentColor" stroke-width="1.2"/></svg>'
     nav = (f'<div class="nav"><button type="button" class="prev" aria-label="Previous">{arrow("M9 2 4 7l5 5")}</button>'
            f'<button type="button" class="next" aria-label="Next">{arrow("M5 2l5 5-5 5")}</button></div>')
-    return (f'<style>{CSS}</style><section class="featured" id="featured" aria-label="Featured"><div class="fhead">'
-            f'<div class="chips">{chips}</div>{nav}</div><div class="track">{cards}</div></section>{JS}')
+    return (f'<style>{CSS}</style><section class="featured" id="featured" aria-label="Featured"><div data-rise><div class="fhead">'
+            f'<div class="chips">{chips}</div>{nav}</div><div class="track">{cards}</div></div></section>{JS}{RISE_JS}')
