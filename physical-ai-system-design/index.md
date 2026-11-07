@@ -17,6 +17,16 @@ Physical AI system design is the engineering of a system that senses a physical 
 | 5. Sizing from the weights | 28 of 28 designs state their compute and 28 of 28 their three-year cost on the first page, sized from the models' own weights, from no new hardware to an eight-GPU node. |
 | 6. Write paths and human control | 28 of 28 designs name their write paths (how a decision is written into the owning system) and 28 of 28 name the person who approves each action that changes the physical world. |
 
+## The hardware in a physical AI system design
+
+Hardware is chosen after the models and sized from their weights. The 28 designs by compute pattern:
+
+| Compute pattern | What it is | Designs |
+|---|---|---|
+| Frontier reasoning node | eight 141 GB HBM-class GPUs holding an open-weight frontier model at FP8, owned or hosted in the country | 15 |
+| One inference card | 48 GB PCIe inference cards, from one card to one eight-card server, at the site or in the country; no frontier model | 7 |
+| No new compute | the design runs on servers or software the operator already owns; nothing to buy | 6 |
+
 ## Worked examples of physical AI system design
 
 | Design | Sector | Country | What it senses or reads | Compute |

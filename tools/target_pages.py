@@ -370,6 +370,7 @@ def physical(ds, today):
     wp = sum(1 for d in ds if d.get("write_paths"))
     hl = sum(1 for d in ds if d.get("human_loop"))
     pats = {a: len(g) for a, _b, g in patterns(ds)}
+    hw = patterns(ds)  # ep39 7 Nov 2026: Google page 1 for the term is hardware vendors (nvidia, cadence, arm, synopsys, aws); the page had no hardware section
     answer = (f"Physical AI system design is the engineering of a system that senses a physical operation, reasons over it as typed objects and acts "
               f"through a named person. Its decisions are what to sense, where inference runs (the edge, the site or one in-country node), the object "
               f"model, the open-weight model choice, the compute sized from those models' weights, the write paths back into the operator's systems and "
@@ -395,6 +396,10 @@ def physical(ds, today):
             + '<h2 id="decisions">The six decisions in a physical AI system design</h2>'
             + f'<p class="ans">Every published design makes the same six decisions, in this order. The counts are read from the designs themselves.</p>'
             + table(["Decision", "What the published designs do"], [[f"<strong>{E(a)}</strong>", E(b)] for a, b in decisions])
+            + '<h2 id="hardware">The hardware in a physical AI system design</h2>'
+            + f'<p class="ans">Hardware is part of the design, chosen after the models and sized from their weights, never bought first. The {n} published designs fall into '
+              f'{len(hw)} compute patterns, grouped by rule from each design\'s own At a glance compute figure.</p>'
+            + table(["Compute pattern", "What it is", "Designs", "For example"], [[f"<strong>{E(a)}</strong>", E(b), str(len(g)), ", ".join(link(d) for d in g[:3])] for a, b, g in hw])
             + '<h2 id="examples">Worked examples of physical AI system design</h2>'
             + '<p class="ans">Newest first. What each system senses or reads is the paper\'s own one-line description; compute is its At a glance figure.</p>'
             + table(["Design", "Sector", "Country", "What it senses or reads", "Compute"], rows)
@@ -414,6 +419,7 @@ def physical(ds, today):
                  "What is physical AI system design?", answer, ds)
     md = md_head("Physical AI system design", PHY, answer)
     md += ["## The six decisions in a physical AI system design", ""] + md_table(["Decision", "What the published designs do"], decisions) + [""]
+    md += ["## The hardware in a physical AI system design", "", f"Hardware is chosen after the models and sized from their weights. The {n} designs by compute pattern:", ""] + md_table(["Compute pattern", "What it is", "Designs"], [[a, b, str(len(g))] for a, b, g in hw]) + [""]
     md += ["## Worked examples of physical AI system design", ""] + md_table(["Design", "Sector", "Country", "What it senses or reads", "Compute"],
           [[f"[{d['short']}]({d['url']})", d["sector"], d["country"], sentence(d.get("what") or d.get("summary")), plain(first(d["rows"], COMPUTE)[1])] for d in ds]) + [""]
     md += ["## Where to learn physical AI system design", "", f"Design on Praxis: {BASE}/praxis/ · PADI, the benchmark for physical AI system design: {BASE}/padi/ · "
