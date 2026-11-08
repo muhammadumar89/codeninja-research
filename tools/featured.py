@@ -32,7 +32,7 @@ section.featured .card img{position:absolute;inset:0;width:100%;height:100%!impo
 section.featured .lbl{position:absolute;left:20px;top:20px;max-width:min(520px,calc(100% - 40px));background:rgba(20,21,27,.88);padding:16px 20px 18px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 section.featured .lbl .mono{color:#A3A6AE;margin:0 0 8px}
 section.featured .lbl h3{font:300 clamp(20px,2.1vw,28px)/1.2 var(--sans);letter-spacing:-.015em;margin:0;color:#F2F2F0}
-@media (max-width:820px){section.featured{padding:24px 0 44px}section.featured .nav{display:none}section.featured .card{flex-basis:86%;aspect-ratio:4/5}section.featured .lbl{left:12px;top:12px;padding:12px 14px 14px}}
+@media (max-width:820px){section.featured{padding:24px 0 44px}section.featured .fhead{margin-bottom:16px;padding:0}section.featured .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 var(--gutter)}section.featured .chips::-webkit-scrollbar{display:none}section.featured .chips a{flex:none;font-size:14px;padding:9px 12px;white-space:nowrap}section.featured .nav{display:none}section.featured .track{gap:12px}section.featured .card{flex-basis:85%;aspect-ratio:2/3}section.featured .lbl{left:12px;top:12px;max-width:calc(100% - 24px);padding:12px 14px 14px}section.featured .lbl h3{font-size:19px}}
 """
 
 JS = """<script>(function(){var r=document.getElementById('featured');if(!r)return;var t=r.querySelector('.track'),cs=[].slice.call(t.querySelectorAll('.card')),ch=[].slice.call(r.querySelectorAll('.chips a')),pv=r.querySelector('.prev'),nx=r.querySelector('.next');

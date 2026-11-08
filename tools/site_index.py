@@ -77,6 +77,7 @@ section.film .inner.two h2{margin-bottom:0}section.film .inner.two .cta{margin-t
 .chips button{font:400 12.5px/1 var(--sans);padding:10px 14px;border:1px solid var(--rule-l);border-radius:0;background:transparent;color:var(--ink);cursor:pointer;letter-spacing:-.005em}
 .chips button:hover{border-color:var(--ink)}.chips button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .chips button span{font-family:var(--mono);font-size:10px;margin-left:8px;opacity:.6}
+.showall{margin:48px 0 0;text-align:center}.showall[hidden]{display:none}.btn.dark{border-color:var(--ink);color:var(--ink);background:transparent}.btn.dark:hover{background:var(--ink);color:var(--paper)}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:64px 32px;margin-top:40px}
 .card{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--rule-l);padding-top:16px}.card[hidden]{display:none}
 .card .media{display:block;aspect-ratio:16/10;overflow:hidden;background:#fff;border:1px solid var(--rule-l);margin-bottom:6px}
@@ -182,10 +183,10 @@ def landing(ps, sols):
     countries = sorted({p["country"] for p in ps if p["country"]}); sectors = sorted({p["sector"] for p in ps if p["sector"]})
     objs = sum(p["n_obj"] for p in ps); dois = sum(1 for p in ps if p["doi"])
     cards = "".join(
-        f'<article class="card" data-sector="{E(p["sector"])}">{_fig(p["slug"])}<span class="meta">{E(p["country"])} · {E(p["sector"])}</span>'
+        f'<article class="card" data-sector="{E(p["sector"])}" data-i="{i}">{_fig(p["slug"])}<span class="meta">{E(p["country"])} · {E(p["sector"])}</span>'
         f'<h3><a class="t" href="{p["slug"]}/">{E(p["title"].split(":")[0])}</a></h3><p>{E(p["title"].split(":",1)[1].strip() if ":" in p["title"] else p["description"])}</p>'
         f'<small><a href="{p["pdf"]}">PDF</a>' + (f' · <a href="{p["ontology"]}">object model</a>' if p["ontology"] else "")
-        + (f' · DOI <a href="https://doi.org/{p["doi"]}">{p["doi"]}</a>' if p["doi"] else "") + "</small></article>" for p in ps)
+        + (f' · DOI <a href="https://doi.org/{p["doi"]}">{p["doi"]}</a>' if p["doi"] else "") + "</small></article>" for i, p in enumerate(ps))
     chips = ('<div class="chips" role="group" aria-label="Filter by sector" hidden><button type="button" aria-pressed="true" data-f="">All<span>' + str(len(ps)) + '</span></button>'
              + "".join(f'<button type="button" aria-pressed="false" data-f="{E(s)}">{E(s[:1].upper() + s[1:])}<span>{sum(1 for p in ps if p["sector"] == s)}</span></button>' for s in sectors) + '</div>')
     if sols:
@@ -223,6 +224,7 @@ def landing(ps, sols):
 {seclinks}
 {chips}
 <div class="cards" id="research-cards">{cards}</div>
+<p class="showall" hidden><button type="button" class="btn dark" id="show-all">Show all {len(ps)} reference architectures</button></p>
 <div class="methods"><div class="head"><div><p class="mono">Methods</p><h2>How the designs are made, and how they come alive.</h2></div></div><div class="cards">{mcards}</div></div></div></section>
 {film("pylon-dusk", '<div><p class="mono">Solutions</p><h2>Published requirements, solved in the open.</h2></div><div><p class="lede">Operators publish what they need. We publish how to build it: the full solution design for a published requirement, from sensing to the living ontology.</p></div>', cls="two")}
 <section id="solutions" class="light alt"><div class="wrap">{sbody}</div></section>
@@ -241,9 +243,10 @@ def landing(ps, sols):
 
 
 # Sector chips filter the research cards; without JS the chips stay hidden and every card shows.
-FILTER = """<script>(function(){var g=document.querySelector('.chips');if(!g)return;var cs=document.querySelectorAll('#research-cards .card');g.hidden=false;
-g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var f=b.getAttribute('data-f');g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
-cs.forEach(function(c){c.hidden=!!f&&c.getAttribute('data-sector')!==f})})})();</script>"""
+FILTER = """<script>(function(){var g=document.querySelector('.chips');if(!g)return;var cs=document.querySelectorAll('#research-cards .card'),LIM=6,all=false,sa=document.getElementById('show-all'),wrap=sa&&sa.parentElement;g.hidden=false;
+function apply(f){var n=0;cs.forEach(function(c){var ok=!f||c.getAttribute('data-sector')===f;if(ok)n++;c.hidden=!ok||(!all&&!f&&n>LIM)});if(wrap)wrap.hidden=all||!!f||cs.length<=LIM}
+g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var f=b.getAttribute('data-f');g.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});apply(f)});
+if(sa)sa.addEventListener('click',function(){all=true;apply('')});apply('')})();</script>"""
 
 
 def main():
