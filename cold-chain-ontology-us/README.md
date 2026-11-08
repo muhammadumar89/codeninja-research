@@ -8,7 +8,7 @@ Lot Thread: Industrial AI for Cold Chain Traceability From Plant to Store. An in
 **Paper:** [PDF](paper/cold-chain-ontology-us.pdf) · [HTML](paper/cold-chain-ontology-us.html) · [Word](paper/cold-chain-ontology-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** to be minted on release
 
-**Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

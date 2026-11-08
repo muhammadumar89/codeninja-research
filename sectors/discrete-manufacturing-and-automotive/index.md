@@ -34,4 +34,4 @@ In every published discrete manufacturing and automotive design a named person m
 
 - [Pit Camera Watch: An On-Premises Camera Monitoring System for Every Turn, Crossing and Pit Entry on the Test Site](https://codeatoms.ai/test-site-camera-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23296077
 - [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (United States), DOI https://doi.org/10.5281/zenodo.23570177
-- [Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/) (Pakistan)
+- [Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.24048589

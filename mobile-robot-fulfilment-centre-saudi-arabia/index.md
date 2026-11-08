@@ -1,6 +1,7 @@
 # Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia
 
 Canonical: https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/
+DOI: https://doi.org/10.5281/zenodo.24048579
 PDF: https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/paper/mobile-robot-fulfilment-centre-saudi-arabia.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the problem and the join failure, the constraints and the stack
 
 ---
 
-![Figure 1. Robot Field Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Robot Field Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_01.png)
 
 Figure 1. Robot Field Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -124,7 +125,7 @@ Incident and near miss log the record the operator learns from days late today; 
 
 The building's camera recorders the existing estate carries every detection point; reuse is the design, and only detections and evidence frames are kept from it.
 
-![Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_02.png)
 
 Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -197,7 +198,7 @@ The architecture is three tiers with one spine. Below sit the systems of record,
 
 The pattern fits this site because it opens the fleet black box without opening a command path into it. The robot fleet orchestration system is a source at the bottom of the stack, never a destination; the design reads robot state, stall codes and charging queues, and nothing above the adapter tier holds credentials to write to it. The same separation delivers sovereignty, because every rung runs on site, from the NPUs of the edge units reading the reused cameras to the single 141 GB-class node in the site data room serving the reasoning model, so no frame, detection, weight or memory record crosses the building's boundary. Figure 3 shows the layered stack with the count at each layer, and every arrow points upward: sources feed adapters, adapters feed the object model, and only the services and surfaces above it compose the argument.
 
-![Figure 3. The layered stack: 6 sources, 1 adapter family, 15 objects, 10 services and 6 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 6 sources, 1 adapter family, 15 objects, 10 services and 6 surfaces.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_03.png)
 
 Figure 3. The layered stack: 6 sources, 1 adapter family, 15 objects, 10 services and 6 surfaces.
 
@@ -254,7 +255,7 @@ The fifteen objects fall into seven kinds. Of these, the zone is the one site ob
 
 The typed links are what a query walks. An incursion is evidenced by a camera view and sits inside a zone; the robots in that zone suffer stalls; a stalled robot carries a tote that fulfils an order wave with a carrier cutoff; the shift names the supervisor on duty and the person role whose badge explains the presence; a near miss references the stall and triggers a corrective action with an owner and a verification. A document store holding the same content returns documents that mention the gate; it cannot walk that chain in typed hops, it cannot enforce that every delayed wave carries a stall with an approved reroute, and it cannot answer which orders the person at a gate delayed without a join rebuilt by hand each time. Figure 4 shows every object and its typed links, with the incursion as the focal object. Table 8, printed by the platform, records each object with the source it is anchored in and its typed links.
 
-![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_04.png)
 
 Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
 
@@ -299,7 +300,7 @@ Chapter 5 described what the object model holds. This chapter describes how data
 
 All six named sources carry the same provenance class, operator-held, and the same direction, read. The warehouse management system owns orders, waves, totes and locations, and entity resolution starts from its identifiers, so the order wave to stall story is impossible without it. The robot fleet orchestration system is the black box the operator wants opened: robot state, stall and fault codes and charging queues all live there, and no command path is ever opened into it. The warehouse control system supplies the conveyor and sorter jams and faults that are half the blockage picture between the robot field and the dock. The labour management system supplies the role and shift context that turns an anonymous presence into a replenishment team member outside a maintenance window, without identifying the individual. The incident and near miss log is the record the operator learns from days late; reconciling it against live detections measures the reporting gap, and investigation guidance treats that lag as evidence lost (HSE n.d.). The building's camera recorders carry every detection point, reuse is the design, and only detections and evidence frames are kept from them. Figure 5 maps each named system, its provenance class and its adapter path.
 
-![Figure 5. The 6 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 6 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_05.png)
 
 Figure 5. The 6 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -327,7 +328,7 @@ The site tier runs on the site servers in the data room, on CPU: ingest, the bac
 
 The central tier is one self hosted node in the site data room holding GLM 5.3, and the arithmetic fixes its size: 753 billion parameters at FP8, one byte per parameter, is 753 GB of weights; a factor of 1.2 for KV cache and activations gives 904 GB the accelerators must hold; one node of eight accelerators at 141 GB each provides 1,128 GB, which leaves roughly 280 GB of KV cache ceiling. Figure 6 shows the three tiers, what runs on each, and what crosses between them.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -349,7 +350,7 @@ Five models with Apache, MIT and bespoke terms were chosen so the operator can h
 
 Chapter 7 placed the three inference tiers and sized them from the weights up. This chapter names the five models that run on them and shows why each license lets the operator hold what it runs, fine tune it and keep serving it inside the building even if every vendor relationship ends.
 
-![Figure 7. The five models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The five models, their placement, and the work each one does.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_07.png)
 
 Figure 7. The five models, their placement, and the work each one does.
 
@@ -400,7 +401,7 @@ Three phases carry the sixteen items, and each phase ends at a gate that can sto
 
 Phase 1 carries eleven items across six workstreams, Floor sensing, Building ontology, Agents and approvals, Memory, Command center, and Peak readiness. Its items include robot field incursion detection on the existing cameras, fallen tote and blocked lane detection, and stall signatures drawn from fleet telemetry, and its exit gate is incursion detection proven live on one zone against the operator's own baselines. Phase 2 carries a single item, the whole field and next site rollout, and it is earned by that evidence rather than scheduled on a calendar. Requirement coverage closes at one requirement covered, none partial and none open. Figure 8 sets the three phases, their item counts, their workstreams and their gates side by side.
 
-![Figure 8. The three phases and their gates, and coverage of the one requirement across them.](figures/figure_08.png)
+![Figure 8. The three phases and their gates, and coverage of the one requirement across them.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_08.png)
 
 Figure 8. The three phases and their gates, and coverage of the one requirement across them.
 
@@ -479,7 +480,7 @@ Chapter 10 closed the argument for keeping the intelligence inside the building.
 
 The ask was a physical AI system design for a mobile robot fulfilment center at a warehousing and intralogistics operator in Saudi Arabia, written in the operator's own voice: open the robot fleet black box, detect people inside the field on the cameras that already exist, and do it all inside the building. Praxis assigned the design to the system of context family and to the Warehousing and Intralogistics industry, which fixed the shape before any component was chosen: systems of record below, one object model in the middle, agents and surfaces above, and the work surface as part of the architecture rather than an option. What Praxis read was the operator's requirement, the model cards and license texts for every model in the register, the hardware shelf data for the edge system on chip and the accelerator class, and the regulatory reading covering the national personal data protection law, the industrial truck safety standard's zone classes and the export control position.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

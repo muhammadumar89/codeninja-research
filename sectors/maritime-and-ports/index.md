@@ -35,4 +35,4 @@ In every published maritime and ports design a named person makes the decision t
 - [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (United States), DOI https://doi.org/10.5281/zenodo.23126431
 - [Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal](https://codeatoms.ai/truck-turn-container-terminal-us/) (United States), DOI https://doi.org/10.5281/zenodo.23159331
 - [Port Drone Watch: From Oil Sheen to Dispatched Work on the Port's Own Hardware in Germany](https://codeatoms.ai/drone-detection-dispatch-port-germany/) (Germany), DOI https://doi.org/10.5281/zenodo.23635729
-- [Industrial Ontology Examples: A Port Equipment and Berth Object Model in Saudi Arabia](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/) (Saudi Arabia)
+- [Industrial Ontology Examples: A Port Equipment and Berth Object Model in Saudi Arabia](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.24048525

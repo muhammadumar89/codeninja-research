@@ -8,7 +8,7 @@ Lane Memory: A Sovereign AI Reference Architecture for Self-Improving Carrier Ex
 **Paper:** [PDF](paper/carrier-exceptions-us.pdf) · [HTML](paper/carrier-exceptions-us.html) · [Word](paper/carrier-exceptions-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** assigned on release.
 
-**Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

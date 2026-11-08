@@ -35,4 +35,4 @@ In every published agriculture and earth observation design a named person makes
 - [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.23186671
 - [Baseline: One Flight of 4 Band Orthoimagery and LiDAR for Vegetation Mapping](https://codeatoms.ai/vegetation-mapping-lidar-us/) (United States), DOI https://doi.org/10.5281/zenodo.23186673
 - [Fodder Watch: Earth Observation That Turns Restricted-Crop Detections Into Enforceable Case Files](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.23186675
-- [A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan](https://codeatoms.ai/canal-irrigation-pakistan/) (Pakistan)
+- [A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan](https://codeatoms.ai/canal-irrigation-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.24048587

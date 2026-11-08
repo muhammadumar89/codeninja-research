@@ -6,9 +6,9 @@ A [self-improving AI system](https://codeatoms.ai/self-improving-ai-system/) for
 
 **Canonical page:** https://codeatoms.ai/canal-irrigation-pakistan/
 **Paper:** [PDF](paper/canal-irrigation-pakistan.pdf) · [HTML](paper/canal-irrigation-pakistan.html) · [Word](paper/canal-irrigation-pakistan.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
-**DOI:** minted on release; cite the canonical page until then.
+**DOI:** https://doi.org/10.5281/zenodo.24048587
 
-**Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

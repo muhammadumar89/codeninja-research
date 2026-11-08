@@ -1,6 +1,7 @@
 # Industrial Data Ontology for a Cold Chain From Plant to Store in the United States
 
 Canonical: https://codeatoms.ai/cold-chain-ontology-us/
+DOI: https://doi.org/10.5281/zenodo.24048543
 PDF: https://codeatoms.ai/cold-chain-ontology-us/paper/cold-chain-ontology-us.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers, in order: the industry problem and the regulatory regimes behi
 
 ---
 
-![Figure 1. The design on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. The design on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_01.png)
 
 Figure 1. The design on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 stated the question and the clock the rule imposes on it. This chapter
 
 The plant manufacturing execution system sees the lot, its production date and its transformation events, and misses everything after the pallet leaves the line, because the license plate the warehouse issues never reaches it. The operator's own cold store warehouse management system sees license plates, dock schedules and storage locations, and misses the lot inside each pallet and the meaning of a temperature reading for the food on the dock. The third party cold store's warehouse management system sees the same things in a partner's vocabulary, and misses the operator's lot numbering entirely, which is why its records cannot be read without translation. The carriers' reefer telematics sees in transit temperature readings per reefer unit, and misses which lots were in the trailer and how long they stood on a dock before loading. The transportation management system sees shipment lines and truck assignments, and misses the pallet level composition of each shipment and the product's identity. The retailers' receiving notices see receipts and condition notes such as the soft case, and miss the pallet and lot behind each receipt and any excursion history. The quality hold and release system sees holds, releases and their approvers, and misses which other lots share the excursion that triggered a hold. The recall and complaint register sees complaints and cases, and misses the joined journey that tracing a case requires. Figure 2 sets these eight views side by side.
 
-![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_02.png)
 
 Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -184,7 +185,7 @@ Chapter 3 fixed the constraints: read only from the systems the operation alread
 
 The pattern is three layers, and the order is the design. Below sit the systems of record, eight of them from the plant manufacturing execution system to the recall and complaint register, each the sole owner of one custodian's truth, read and never written. In the middle sits one object model the operator owns, sixteen objects with typed links, built as a projection over the systems of record rather than a copy of them, so a change in a source changes the projection and nothing drifts. Above sit six services, the agents that draft work for people, and four surfaces where those people decide. The order matters because the join is the deliverable: five custodians keep five vocabularies, and no single system of record can reconcile them, so the reconciliation has to live in a layer that belongs to none of them. Figure 3 shows the layers with their counts, from eight sources and three adapter families at the bottom to four surfaces at the top. The same order places this design among sovereign reference architectures: everything above the sources runs on hardware the operator owns, and no fact crosses the boundary to a third party model service.
 
-![Figure 3. The layered stack: 8 sources, 3 adapter families, 16 objects, 6 services and 4 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 8 sources, 3 adapter families, 16 objects, 6 services and 4 surfaces.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_03.png)
 
 Figure 3. The layered stack: 8 sources, 3 adapter families, 16 objects, 6 services and 4 surfaces.
 
@@ -237,7 +238,7 @@ Chapter 4 fixed the stack's order and named its seven stages. This chapter opens
 
 The object model holds sixteen objects, each with a kind and an anchor. The materials are Product, Lot and Case; the assets are Pallet and Truck; the events are the Critical Tracking Event and the Excursion; the sites are Location and Dock; Custodian is the actor; Reefer Reading is the measure; Hold, Release, Complaint and the Traceability Record are records; and Receipt is a document. Each object is anchored in the system of record that owns it: the Lot in the plant manufacturing execution system, the Pallet in a warehouse management system, the Receipt in the retailers' receiving notices, while the Traceability Record, which carries a lot's full journey events, its production time in hours and the requester, is the one object the model itself produces. Figure 4 shows every object and the typed links between them. What the links buy is reach: given a Case, a query walks the lot reference to the Lot, through the critical tracking events to the Pallets, along their dock time to the Docks and their custodians to the Trucks, and from the Excursions to the Holds that answered them. A document store can return every document that mentions a case, but it cannot walk a join, because the relationship is not stored as a thing in its own right; a standards body ratifies assessment criteria for full chain traceability across supply chains, and those criteria interrogate the links, not the documents (GS1 2021). Table 8, printed from the plan, lists each object, the system it is anchored in and its typed links.
 
-![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_04.png)
 
 Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.
 
@@ -286,7 +287,7 @@ Chapter 5 described what the object model holds and where the human loop lives. 
 
 Every source in this design is a named system of record, read only, and each reaches the object model through one of three adapter families. The plant manufacturing execution system owns the lot and its transformation events; the own cold store warehouse management system owns license plates, dock schedules and storage locations; the third party cold store warehouse management system owns license plates and dock time in a partner's vocabulary; the carriers' reefer telematics owns the in transit temperature readings; the transportation management system owns shipment lines and truck assignments; the retailers' receiving notices own receipts and condition notes such as the soft case; the quality hold and release system owns holds and releases; and the recall and complaint register owns complaints and cases. Each carries the same provenance class, an operator or partner system of record whose data arrives as a feed, and the same direction, inbound. Figure 5 maps every named system to its class and its adapter path, and the table below sets what each system sees beside what it misses.
 
-![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_05.png)
 
 Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -312,7 +313,7 @@ There is a single inference tier in this design, and it is central. The event ba
 
 The memory arithmetic the plan holds is the sizing rule for the frontier work surface. The operator names GLM 5.3, and the rule puts its 756 GB of FP8 weights on one 141 GB class node, eight GPUs per node drawing about 10 kW, with about 280 GB of KV cache headroom left for the context the command center's conversations and citations consume; the alternatives weighed were BF16 across two nodes and a mid size model in place of the frontier work surface. The arithmetic is the rule, not a commitment: no model row survived live verification on this run, so the footprint names where it runs and the node count is derived only when a verified entry stands in the register. The document reading and embedding entries the design cites fit one to four cards of the 141 GB class on an air cooled PCIe server in the same room.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -332,7 +333,7 @@ No model survived live verification on this run, so the register holds only cata
 
 Chapter 7 ended on the boundary and its failures: inbound feeds only, a rehearsed degraded mode, and updates that arrive solely through the registry. This chapter opens the model register, which is where an industrial data ontology for the cold chain either stands on weights the operator has verified or quietly borrows credibility it has not; no model survived live verification on this run, so the register holds only catalog entries, each verified by a person on the date it carries and not rechecked live for this build.
 
-![Figure 7. The model stack as the register holds it: no entry survived live verification, so the design names classes and roles and a model is chosen at the first gate.](figures/figure_07.png)
+![Figure 7. The model stack as the register holds it: no entry survived live verification, so the design names classes and roles and a model is chosen at the first gate.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_07.png)
 
 Figure 7. The model stack as the register holds it: no entry survived live verification, so the design names classes and roles and a model is chosen at the first gate.
 
@@ -368,7 +369,7 @@ The Foundation phase carries seven items across three workstreams: ontology and 
 
 The Phase One Corridor carries nine items across four workstreams: agents and memory, command center, the phase one corridor itself, and traceability and compliance. Its items include the mapping agent with analyst confirmation, the excursion agent with quality manager approval, and the trace agent for regulator and retailer requests. The corridor runs one product family through one plant, one cold store and one retailer, and extension to other plants, retailers and families is decided at the gate, never before it. The corridor's exit gate is the design's proof point: record production inside hours instead of a week, lots joined end to end, excursions joined to exposed lots within the hour, and a rehearsed dock door event in which the retailer is told before the truck arrives. Requirement coverage stands at one requirement stated, one covered, with no partial coverage and no gap; Figure 8 sets the phases, their item counts, their gates and that coverage on one page.
 
-![Figure 8. The two phases and their gates, and coverage of the one requirement across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the one requirement across them.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the one requirement across them.
 
@@ -443,7 +444,7 @@ Chapter 10 closed the argument with ownership. This chapter opens the record of 
 
 The ask, written in the operator's voice, was an industrial data ontology for a cold chain from plant to store, driven by the federal food traceability rule and its July 2028 compliance date, with lot level critical tracking events producible within twenty four hours of a request. Praxis assigned the design to the Enterprise AI family and the Supply Chain and Logistics industry. Praxis read the corpus shelf of each lens; nothing was ranked or filtered by keyword. The domain brief gave the fragmentation problem in the operator's own terms: five custodians, five vocabularies, and quality managers holding the mapping in their heads.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/cold-chain-ontology-us/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

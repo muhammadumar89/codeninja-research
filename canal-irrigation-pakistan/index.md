@@ -1,6 +1,7 @@
 # A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan
 
 Canonical: https://codeatoms.ai/canal-irrigation-pakistan/
+DOI: https://doi.org/10.5281/zenodo.24048587
 PDF: https://codeatoms.ai/canal-irrigation-pakistan/paper/canal-irrigation-pakistan.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the industry problem and the join failure across the existing s
 
 ---
 
-![Figure 1. Canal Share Ledger on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Canal Share Ledger on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_01.png)
 
 Figure 1. Canal Share Ledger on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -124,7 +125,7 @@ Gauge reader diaries field gauge readings are the tail delivery evidence between
 
 Complaint register complaints trigger the dispute agent and are a season success measure.
 
-![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_02.png)
 
 Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -197,7 +198,7 @@ Ontologies for canal water allocation carry weight because the argument they mus
 
 The fit with this industry is a matter of fragmentation. Where different Earth observation resources are managed by different operators, coordination is documented to suffer (DOI 2015), and an irrigation department shows the same fragmentation in paper: gauge diaries, ledgers, registers and crop records sit with different offices that never join them. Readers who have met a [self-improving AI system](https://codeatoms.ai/self-improving-ai-system/) built on this pattern elsewhere will recognize the three-layer shape; what differs here is that the physical world is modeled first, so a telemetry reading becomes a measured property of a head regulator rather than a stream analyzed on its own. The middle layer is the load-bearing one: every question the operator cannot answer today is a join failure, and the join happens there or nowhere.
 
-![Figure 3. The layered stack: 8 sources, 2 adapter families, 16 objects, 6 services and 3 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 8 sources, 2 adapter families, 16 objects, 6 services and 3 surfaces.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_03.png)
 
 Figure 3. The layered stack: 8 sources, 2 adapter families, 16 objects, 6 services and 3 surfaces.
 
@@ -252,7 +253,7 @@ The model holds sixteen objects in five kinds. Five assets carry the hydraulic s
 
 The links are typed, and that is the whole difference from a document store. A Barrage commands Head Regulators; a Head Regulator reports Telemetry Readings and sets Gates; a Rotation entitles Outlets; a Release instructs a Gate and is measured at a Head Regulator; a Shortfall is judged against an Indent; a Complaint names a Distributary; Crop Area grounds an Indent's demand basis and belongs to a Season. The reach of one query shows what this buys. Asked which outlets were short of share for two consecutive rotations while the main's head met its indent, the model walks Complaint to Distributary to Rotation to Outlet, then Shortfall to Indent and Release to Telemetry Reading, in one traversal with every step carrying its provenance. A document store can hold the same fields, but it cannot walk the edges: it would need one join per source, and it would still lack the typed relation that says this shortfall is judged against that indent.
 
-![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_04.png)
 
 Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.
 
@@ -299,7 +300,7 @@ Chapter 5 described what the object model holds. This chapter describes how data
 
 Eight sources feed the design, all operator held and all read-only, and they split cleanly into two paths. The live path is the telemetry system, which measures flow depth and velocity at the main heads and some inter provincial points and sends readings every few minutes. The paper path holds everything else: the barrage and head regulator gauge records that baseline the telemetry, the indent and release ledgers that fix entitlement, the rotation schedules per distributary that define each outlet's share, the gauge reader diaries that carry the field evidence between telemetry points, the complaint register that triggers the dispute agent, and the crop and area records from the revenue department that give indents their demand basis. Figure 5 maps every named system, its provenance class and its adapter path. The fragmentation is the ordinary condition of infrastructure records: where different operators manage different observation resources, coordination is documented to suffer (DOI 2015), and the adapter tier exists so the operator never has to coordinate by hand.
 
-![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_05.png)
 
 Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -327,7 +328,7 @@ All inference in this design happens in one physical place, the circle server ro
 
 The frontier footprint is unsized on this plan, because no model stands in the register, and Chapter 8 explains why. What the plan does hold is the arithmetic for the candidate the operator names, GLM 5.3 at FP8: published FP8 weights of about 756 GB, which fit one 141 GB class node of eight GPUs, about 1,128 GB of aggregate memory, with about 280 GB left as the KV cache ceiling, the working memory that grows with the length of the context the model reads. That arithmetic is a conditional shape, not a filed footprint; it becomes one only when a verified model stands in the register, and until then no GPU count is derived from it. The small model tier is sized the other way: it is chosen by class, a 48 GB PCIe server beside the frontier node, because embedding, OCR and forecasting work is modest, continuous and must survive independently of whatever the frontier layer becomes. Figure 6 shows both tiers, what runs on each, and the boundary around them.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -353,7 +354,7 @@ No open weight model was verified live for this run, so the frontier layer is na
 
 Chapter 7 placed every tier of inference in the circle server room and left the frontier footprint unsized. This chapter explains why it was left that way: the register, and the discipline that no weights are committed until it verifies them.
 
-![Figure 7. The model stack holds no verified model yet: classes and roles stand where the names will go, with the work each one does.](figures/figure_07.png)
+![Figure 7. The model stack holds no verified model yet: classes and roles stand where the names will go, with the work each one does.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_07.png)
 
 Figure 7. The model stack holds no verified model yet: classes and roles stand where the names will go, with the work each one does.
 
@@ -400,7 +401,7 @@ Chapter 8 closed the model register with its live checks still open and the expo
 
 Phase one, the main canal prototype, carries 16 items across six workstreams: network ontology, ledger digitisation, agents and memory, command center, season pilot and the sovereign infrastructure workstream that stands up the in-country hardware. Its items include the governed canal network ontology, the telemetry historian ingestion pipeline and the paper ledger OCR digitisation with its human verification stage. The exit gate is the ontology itself: the model of barrage, main, distributary, reach, gate, outlet, rotation, indent, release and shortfall must reconcile one real week of telemetry against the ledgers before any agent is allowed to draft, so the ontology is proven on one main canal before any extension. Phase two, network extension, carries a single item, the extension of the gates to the other canals, and it opens only through that gate. The requirement register holds twenty requirements, each traced to an item and a workstream, and Figure 8 shows that coverage against the phases. Extending to several canals running together is an operations problem in its own right, and other regulated domains have reached for explicit guidance before multiple simultaneous operations are run as one (Jarus-rpas 2023).
 
-![Figure 8. The two phases and their gates, and coverage of the 20 requirements across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the 20 requirements across them.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the 20 requirements across them.
 
@@ -471,7 +472,7 @@ Chapter 10 closed the argument with ownership. This chapter opens the record beh
 
 The ask arrived in the operator's own words: a self-improving AI system for canal irrigation water allocation, owned by the operator, reading telemetry and ledgers, open weights on its own hardware in the country, getting better at drafting gate settings and spotting shortfalls every rotation from what its engineers confirm, without training a model on the fly and with nothing about its canals leaving the country. Praxis assigned the design to the Physical AI family and the Agriculture and Earth Observation industry, an assignment made by the engineer who led the project rather than a reasoned match, though the brief was still read as reasoning input. What Praxis read: the case study, tooling and recency, hardware and equipment, rules and regulations, approach and history shelves, and every record cited in the lenses below was read end to end.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/canal-irrigation-pakistan/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

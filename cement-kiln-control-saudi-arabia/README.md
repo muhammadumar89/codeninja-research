@@ -8,7 +8,7 @@ Heavy Industry & Construction Watch: One Living Picture of the Operation. A [sel
 **Paper:** [PDF](paper/cement-kiln-control-saudi-arabia.pdf) · [HTML](paper/cement-kiln-control-saudi-arabia.html) · [Word](paper/cement-kiln-control-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** assigned on release.
 
-**Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

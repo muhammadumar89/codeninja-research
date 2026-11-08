@@ -1,6 +1,7 @@
 # Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia
 
 Canonical: https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/
+DOI: https://doi.org/10.5281/zenodo.24048561
 PDF: https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/paper/composite-part-inspection-mro-saudi-arabia.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the industry problem and the join failure in the shop's systems
 
 ---
 
-![Figure 1. Damage Draft on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Damage Draft on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_01.png)
 
 Figure 1. Damage Draft on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -118,7 +119,7 @@ The maintenance information system sees the spine of the work: which part serial
 
 The question that matters crosses all six: how many fan cowls of one part number showed a disbond at the same hinge fitting in the last year, and did a standard repair apply each time. Answering it means traversing from part number to serialized part, to work order, to inspection, to scan, to damage, to damage class, to allowable limit, a path along which no system holds more than one hop, and the middle hops exist only as photographs on a traveller. Figure 2 sets the six systems side by side and shows the same convergence. The cost in practice is the one the operator stated: the same disbond on the same panel type is assessed from scratch each time, because the precedent is unreachable; repair scheme approval queues on a few senior engineers, because the precedent that would let others judge is unreachable too; engineers in training cannot be shown the shop's own history of a damage class; and turnaround time, the measure the airlines use, stretches exactly at the most skilled step. Investigators have shown the same reach matters after an event, when a maintenance data computer's records must be reconstructed by hand (NTSB 2013).
 
-![Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_02.png)
 
 Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -185,7 +186,7 @@ Chapter 3 fixed the four constraints that shape everything downstream: no data l
 
 The design uses one architectural pattern end to end: systems of record below, one governed object model in the middle, applications and agents above, all inside the shop network. The pattern fits this industry because the records below are already certified, licensed and audited, and the design has no authority to change them; an aerospace structures manufacturer of comparable scale reports its data trapped in disconnected systems, which is the condition this pattern exists to remove (RYSHE n.d.). Nothing in the design writes back to a maintenance information system, a stock system or a licensed manual; every one of them is read, joined and reasoned over, never modified. The middle layer, a single object model of the shop, is where the join happens, and because it is governed, every draft an agent produces can be traced to the record and the scan it came from. Above it sit the five services and the eight surfaces, and the agents that draft while certifying engineers decide and sign. Figure 3 shows the layered stack with the count at each layer: six named systems of record below, two adapter families as the sole path in, one object model of sixteen objects, five services, eight surfaces and six models across three inference tiers. The Federal Aviation Administration's guidance on managing software used during maintenance treats the integrity of such tooling as part of the maintenance process itself, not as an accessory to it, and the stack is built to that standard (FAA 2023). Table 7, printed by the platform from the plan, carries the layer by layer technology choices with the reason each was picked, from Apache Kafka in KRaft mode to Keycloak for on-site identity.
 
-![Figure 3. The layered stack: 7 sources, 2 adapter families, 16 objects, 5 services and 8 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 7 sources, 2 adapter families, 16 objects, 5 services and 8 surfaces.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_03.png)
 
 Figure 3. The layered stack: 7 sources, 2 adapter families, 16 objects, 5 services and 8 surfaces.
 
@@ -238,7 +239,7 @@ Chapter 4 described the stack that carries the design from records to surfaces. 
 
 The object model holds sixteen objects: Customer, Aircraft, Part Number, Part (serialized), Work Order, Task Card, Inspection, Scan, Damage, Damage Class, Allowable Limit, Repair Scheme, Material Lot, Technician Qualification, Finding and Release. Each is anchored in a system of record the shop already runs, and each carries a status vocabulary that mirrors the shop's real states, so a serialized part moves through Received, In assessment, Awaiting scheme approval, In repair, Final inspection, Released or Scrapped exactly as it does on the floor. Figure 4 shows every object and its typed links, with the Damage object in the focal position because it is where the slowest and most skilled step happens. The links are typed, which is what makes the model an argument rather than a pile of documents: a damage event points to the serialized part it sits on, the damage class it is measured against, and the scan that evidences it, while the part number points to the allowable limits that govern the comparison. The question the shop cannot ask today, how many fan cowls of one part number showed a disbond at the same hinge fitting in the last year, is answered by walking four links: from the part number to its serialized instances, to the damage events confirmed on them, to the scans and hinge fitting locations that evidence each one, and out to the findings log. A document store holds each of those facts somewhere, but it holds no path between them, and the industry's own work on a lifelong digital maintenance record argues for exactly this joined form (Aircraftit n.d.). Investigations reconstruct maintenance history from whatever fragments systems happened to keep, which is the failure a governed model prevents (NTSB 2013). Table 8, printed by the platform from the plan, lists every object with the record it is anchored in and its typed links.
 
-![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_04.png)
 
 Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.
 
@@ -283,7 +284,7 @@ Chapter 5 described what the object model holds and how its links carry an argum
 
 Seven sources feed the model: the six named systems of record plus the camera stream from the bench and scan station. The maintenance information system, which holds work orders and task cards and exposes a live API, is read through the integration adapter and is the spine every scan, damage map and scheme resolves to. The scan equipment image files, the subsurface half of every damage map, are lifted from the scanner's own computer by the file and document adapter together with whatever metadata each scan carries. The airline technical records supply serialized part identity and history, with per-airline isolation enforced at the ontology. The structural repair manuals, held as licensed digital manuals confirmed parseable at intake, supply the allowable limits and standard repair schemes, with license permission to extract confirmed in writing before go live. The material and shelf life stock system feeds material lots with cure dates, shelf life ends and accumulated out-time. The quality findings log supplies the findings that make the repeat-finding question answerable. Figure 5 shows each named system, its provenance class and its adapter path; all six systems of record carry operator provenance and read-only direction. The nondestructive testing community's own position is that shared standards are what let different digital systems exchange inspection data at all, which is the gap the adapter tier is built to close (ASNT n.d.).
 
-![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_05.png)
 
 Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -311,7 +312,7 @@ The site tier is a single card of the 48 GB PCIe inference GPU class on a server
 
 The central tier is one node of 8 GPUs of the 141 GB class, self-hosted inside the shop network with no data center and no colocation, because the boundary constraint keeps records, scans and manual content on site. The arithmetic comes from the frontier model's filed parameter count: 753 billion parameters at FP8, at one byte per parameter, give 753 GB of weights; multiplying by 1.2 for the key-value cache and activations gives 904 GB the GPUs must hold; and the node offers 8 times 141 GB, or 1,128 GB, which holds it with headroom for the cache ceiling that long drafting sessions push toward.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -333,7 +334,7 @@ Six models under permissive or bespoke terms let the operator hold every weight 
 
 Chapter 7 placed the three tiers and sized their memory from the models' filed weights. This chapter states what runs at each tier and on what terms, because the license behind a model, not its benchmark, decides whether the operator can hold the weights its inspection process comes to depend on.
 
-![Figure 7. The six models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The six models, their placement, and the work each one does.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_07.png)
 
 Figure 7. The six models, their placement, and the work each one does.
 
@@ -382,7 +383,7 @@ Phase one carries 17 items across five workstreams: One model of the shop, Physi
 
 Within phase one the order is fixed by what the shop must trust first: the baseline before the drafts, shadow mode before any draft carries weight, and a capability demonstration on reference panels before the quality system change is relied on. The quality system change under the national civil aviation regulations and the personal data protection assessment are filed in phase one, in parallel with the build, because the approval path and not the technology sets the schedule; a precedent recorded in the plan's own risk register makes exactly that point. Figure 8 shows both phases with their item counts, workstreams and gates, and carries the coverage of the 22 requirements, each traced to a workstream and a gate rather than left as a claim.
 
-![Figure 8. The two phases and their gates, and coverage of the 22 requirements across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the 22 requirements across them.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the 22 requirements across them.
 
@@ -459,7 +460,7 @@ Chapter 10 established that everything the design builds stays with the shop. Th
 
 The ask, in the operator's own words, was a physical AI system design for composite part inspection in a composite repair shop: radomes, flight control surfaces, nacelle panels, fan cowls and cabin monuments, assessed visually and with tap testing, ultrasonic scanning and thermography against allowable limits in licensed manuals. Praxis assigned the family system of context and the industry Aviation and Aerospace Manufacturing, which pinned the architecture before any component was chosen: a governed ontology over the systems of record, agents that draft while certifying engineers decide and sign, and memory of confirmed outcomes instead of any training into weights. What Praxis read was the operator's requirement, written in its own voice and dated 7 November 2026, together with the corpus shelf of each lens, and nothing beyond the published sources cited in this paper's register was consulted.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

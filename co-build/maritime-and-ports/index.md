@@ -11,7 +11,7 @@ Recommended path: start from the nearest published maritime and ports design; we
 ## What we bring
 
 - [Port Drone Watch: From Oil Sheen to Dispatched Work on the Port's Own Hardware in Germany](https://codeatoms.ai/drone-detection-dispatch-port-germany/) (Germany): 15 objects, 5 models, DOI https://doi.org/10.5281/zenodo.23635729
-- [Industrial Ontology Examples: A Port Equipment and Berth Object Model in Saudi Arabia](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/) (Saudi Arabia): 16 objects, 4 models
+- [Industrial Ontology Examples: A Port Equipment and Berth Object Model in Saudi Arabia](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/) (Saudi Arabia): 16 objects, 4 models, DOI https://doi.org/10.5281/zenodo.24048525
 - [Terminal Pulse: Predicted Truck Turn Time and Live Yard Sight for a Container Terminal](https://codeatoms.ai/truck-turn-container-terminal-us/) (United States): 12 objects, 4 models, DOI https://doi.org/10.5281/zenodo.23159331
 - [Port Twin: One Governed Digital Twin for Every Asset, Feed and Dollar](https://codeatoms.ai/port-digital-twin-us/) (United States): 13 objects, 1 models, DOI https://doi.org/10.5281/zenodo.23126431
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/

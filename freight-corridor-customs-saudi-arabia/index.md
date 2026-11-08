@@ -1,6 +1,7 @@
 # Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia
 
 Canonical: https://codeatoms.ai/freight-corridor-customs-saudi-arabia/
+DOI: https://doi.org/10.5281/zenodo.24048557
 PDF: https://codeatoms.ai/freight-corridor-customs-saudi-arabia/paper/freight-corridor-customs-saudi-arabia.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the industry problem and the join failure across the six system
 
 ---
 
-![Figure 1. Corridor Command on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Corridor Command on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_01.png)
 
 Figure 1. Corridor Command on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 stated the question and the scenario that cannot answer it. This chapt
 
 The rail operations and yard management system owns trains, wagons, yard slots and the handover, the moment the whole corridor story turns on; it cannot see the declaration state behind a wagon's box, so it schedules a train that clearance will hold. The transport management system owns the road legs and the haulier assignments; it cannot see the train each leg feeds, so a late truck is late in isolation. The customs authority's declaration and clearance interfaces own declaration state, the stall signal and the single declaration transit lanes; they cannot see the physical position of the box a declaration covers, or the slot its delay consumes. The port community system feeds own the vessel, gate and terminal events that start the story; they go quiet at the gate. The haulier telematics feeds provide road leg position and ETA; they carry no commodity, no declaration and no yard state. The container tracking system owns the container number that joins every system to one consignment; it is a register rather than a story, holding no state any other system owns. The customer service case log holds the questions asked and the answers sent; it records what was said about a consignment, not what was true of it. Figure 2 sets these seven slices side by side, and the register at the end of this chapter states each system's sees and misses in one line.
 
-![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_02.png)
 
 Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -186,7 +187,7 @@ Three layers in a fixed order. Below sit the seven systems of record, read only,
 
 The pattern fits because the owner's problem is a join failure, not a data shortage. Every fact the consignment story needs already exists inside the estate; what is missing is one place where the facts are already joined. International supply chains ordinarily depend on information moving across borders (Globaldataalliance n.d.), and this design inverts that habit for the operator's cargo, customer and declaration data, which stay in the country on the owner's own central node; there is no edge tier, and the one piece of equipment the design adds is that node, planned at about ten kilowatts of rack power and cooling in the owner's data center. An event backbone, Apache Kafka 4.3 in KRaft mode, holds the tiers together by carrying every change the adapters emit, in order. Table 7, printed by the platform from the plan, gives the layer by layer register of components and choices with the reason for each.
 
-![Figure 3. The layered stack: 7 sources, 2 adapter families, 15 objects, 7 services and 3 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 7 sources, 2 adapter families, 15 objects, 7 services and 3 surfaces.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_03.png)
 
 Figure 3. The layered stack: 7 sources, 2 adapter families, 15 objects, 7 services and 3 surfaces.
 
@@ -241,7 +242,7 @@ The model holds fifteen objects: Consignment, Container, Declaration, Train, Wag
 
 What the links buy is traversal. Ask for consignments whose declaration has sat Queried past the lane's normal time, and the model returns a path, not a list: declaration to container to consignment, to the train and the handover slot it will miss, to the road leg and haulier downstream of that miss, to the open customer case asking about the same box, and to the corridor planner who holds approval authority over that train. A document store keyed on consignment cannot make that traverse, because the joins are not in the documents; they are in the typed links, so the traversal is a query rather than a project. Many industrial ontology examples stop at naming entities, and this model earns its keep one level up, in the links between them. Table 8, printed by the platform from the plan, gives each object with the system it is anchored in and its typed links.
 
-![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_04.png)
 
 Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
 
@@ -286,7 +287,7 @@ Chapter 5 showed what the object model holds. This chapter shows how data gets i
 
 Figure 5 maps the seven named source systems and their adapter paths. The rail operations and yard management system owns trains, wagons, yard slots and the handover the whole corridor story turns on. The transport management system owns the road legs and haulier assignments the connection watch reasons over. The customs authority's declaration and clearance interfaces own declaration state and clearance events, the stall signal and the single declaration transit lanes. The port community system feeds own the vessel, gate and terminal events that start the consignment's story. The haulier telematics feeds provide the road leg position and ETA the connection watch depends on. The container tracking system owns the container number that joins every system to one consignment. The customer service case log holds the questions the answer queue drafts against and the record of answers sent. Every source carries the operator's own provenance class: each fact enters already owned by the operation, read inbound over agreed channels, with nothing scraped or purchased, and all seven are read only.
 
-![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_05.png)
 
 Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -312,7 +313,7 @@ There is one inference tier, the owner's central node in the in-country data cen
 
 The memory arithmetic comes from the sizing rule the register records, and it is stated here as that rule rather than as a committed model row, a distinction Chapter 8 carries in full. GLM 5.3, the model the requirement names, occupies about 756 GB of weights at FP8 precision, taken as 753B parameters. One node of the inference cluster class (GPU nodes for 300B to 1T parameter open weight models), with eight GPUs and about 1,038 GB of usable memory, holds those weights and leaves about 280 GB of KV cache ceiling, the working memory that determines how much concurrent context the node can serve. The node is planned at about ten kilowatts of rack power, which is ordinary data-center power and cooling rather than a field engineering problem. Figure 6 sets the placement out: one node, seven read-only source systems below it, three surfaces above it, and no second tier anywhere in the picture.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -334,7 +335,7 @@ The license decides what the owner can own, and no open weight model survived th
 
 Chapter 7 placed every agent and surface on the owner's central node and drew the boundary as inbound reads only. This chapter states what that node is licensed and sized to run, and why the register commits no weights it cannot stand behind. Figure 7 opens the chapter with the model stack: one planned slot, the work surface model class open weights, self hosted, with the model row itself marked as open work rather than a filled commitment.
 
-![Figure 7. The model stack: no committed model row; the design names classes and roles, and a model is chosen at the first gate.](figures/figure_07.png)
+![Figure 7. The model stack: no committed model row; the design names classes and roles, and a model is chosen at the first gate.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_07.png)
 
 Figure 7. The model stack: no committed model row; the design names classes and roles, and a model is chosen at the first gate.
 
@@ -376,7 +377,7 @@ Chapter 8 closed the model register and the license terms that decide whether th
 
 The rollout carries three phases and seventeen items, shown with their workstreams and gates in Figure 8. Phase 0 holds two items in two workstreams, governance and residency together with baseline and gates: residency and data protection compliance, and the phase-one baseline measurement. Nothing moves until the residency approvals close and the baseline is recorded, because a savings claim without a recorded starting point is an opinion. Phase 1 holds fourteen items in six workstreams: agents and approvals, baseline and gates, command center, corridor ontology, governance and residency, and memory and learning. Its exit gate is source system bindings and lineage: every property on every object must trace to the system of record that anchors it, and the joins must hold on one real week of production data before any agent is allowed to trigger. Phase 2 holds a single item, the extension gates to further corridors, and it spends nothing but the quarter's measured evidence. The requirement register holds fifteen requirements, each traced to a phase item, and coverage is reviewed at every gate so a gap surfaces as a gate failure rather than as a surprise.
 
-![Figure 8. The three phases and their gates, and coverage of the 15 requirements across them.](figures/figure_08.png)
+![Figure 8. The three phases and their gates, and coverage of the 15 requirements across them.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_08.png)
 
 Figure 8. The three phases and their gates, and coverage of the 15 requirements across them.
 
@@ -443,7 +444,7 @@ Chapter 10 closed the ownership argument: the model, the weights, the decision r
 
 The ask arrived written in the owner's voice: a sovereign architecture for corridor and customs operations, with open-weight models running on the owner's own hardware in the country, reading the systems of record, and nothing about consignees' cargo leaving the country or reaching a foreign model service. Praxis assigned the design to the Enterprise AI family and the Supply Chain and Logistics industry, a pin made by the forward deployed engineer on the project rather than a reasoned match, with the brief still read whole as reasoning input. Praxis read the corpus shelf of each lens, with nothing ranked or filtered by keyword, and every record the lenses cite is available on request.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

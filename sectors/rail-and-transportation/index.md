@@ -34,4 +34,4 @@ In every published rail and transportation design a named person makes the decis
 
 - [Consist Watch: Executing the Operator's Own Fault Logic Across a 225-Car Commuter Fleet](https://codeatoms.ai/rail-fleet-condition-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.23365118
 - [Wayside Trend Watch: Predictive Maintenance From Wayside Detectors for a Freight Railroad in the United States](https://codeatoms.ai/wayside-detector-trending-rail-us/) (United States), DOI https://doi.org/10.5281/zenodo.23556421
-- [Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/) (Saudi Arabia)
+- [Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.24048549

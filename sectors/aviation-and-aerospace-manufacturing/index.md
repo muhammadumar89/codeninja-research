@@ -33,5 +33,5 @@ In every published aviation and aerospace manufacturing design a named person ma
 ## Sources
 
 - [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (United States), DOI https://doi.org/10.5281/zenodo.23308095
-- [Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/) (Saudi Arabia)
-- [Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States](https://codeatoms.ai/engine-mro-shop-us/) (United States)
+- [Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.24048561
+- [Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States](https://codeatoms.ai/engine-mro-shop-us/) (United States), DOI https://doi.org/10.5281/zenodo.24048571

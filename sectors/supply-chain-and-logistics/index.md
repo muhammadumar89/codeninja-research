@@ -32,6 +32,6 @@ In every published supply chain and logistics design a named person makes the de
 
 ## Sources
 
-- [Industrial Data Ontology for a Cold Chain From Plant to Store in the United States](https://codeatoms.ai/cold-chain-ontology-us/) (United States)
-- [Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/) (Saudi Arabia)
-- [A Self-Improving AI System for Carrier Exception Handling in the United States](https://codeatoms.ai/carrier-exceptions-us/) (United States)
+- [Industrial Data Ontology for a Cold Chain From Plant to Store in the United States](https://codeatoms.ai/cold-chain-ontology-us/) (United States), DOI https://doi.org/10.5281/zenodo.24048543
+- [Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.24048557
+- [A Self-Improving AI System for Carrier Exception Handling in the United States](https://codeatoms.ai/carrier-exceptions-us/) (United States), DOI https://doi.org/10.5281/zenodo.24048585

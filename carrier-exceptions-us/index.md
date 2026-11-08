@@ -1,6 +1,7 @@
 # A Self-Improving AI System for Carrier Exception Handling in the United States
 
 Canonical: https://codeatoms.ai/carrier-exceptions-us/
+DOI: https://doi.org/10.5281/zenodo.24048585
 PDF: https://codeatoms.ai/carrier-exceptions-us/paper/carrier-exceptions-us.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ Part I states the industry problem and the join failure across the seven systems
 
 ---
 
-![Figure 1. Lane Memory on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Lane Memory on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_01.png)
 
 Figure 1. Lane Memory on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -124,7 +125,7 @@ Carrier scorecards and contracts: carrier performance history and contract terms
 
 Customer order feeds: the shipper-side origin of demand: orders link shipments to shippers and their data terms, which set the purpose-based access rules.
 
-![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_02.png)
 
 Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -194,7 +195,7 @@ Chapter 3 turned the operator's constraints into scoping decisions: no training 
 
 The pattern is the one shape that satisfies all four constraints at once: systems of record below, one governed object model in the middle, applications and agents above. The seven systems of record stay untouched at the bottom, read through their own surfaces, because the ontology is a projection over them and never a migration. In the middle, one object model of sixteen objects joins shipment to carrier to appointment to exception, so every agent reads one governed network instead of seven disconnected stores. Above it, the triage, recovery and review agents draft and coordinators confirm; that split is architecture rather than courtesy, because the requirement fixes a named approver on every action, and the published observation that recursive self-improvement is already spreading from frontier laboratories into the wider corporate ecosystem argues for the confirmation gate and the recorded decision trail being structural, not appended (Stanford 2026). The same reasoning keeps improvement out of the weights: the memory service compounds only from confirmed outcomes, which is what the requirement means by getting better every week without training a model on the fly. Figure 3 shows the layered stack with its counts: seven sources, one adapter family, sixteen objects, three models across a central tier, a site tier and an embedding tier, eight services and two surfaces, all inside the operator's facility.
 
-![Figure 3. The layered stack: 7 sources, 1 adapter family, 16 objects, 8 services and 2 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 7 sources, 1 adapter family, 16 objects, 8 services and 2 surfaces.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_03.png)
 
 Figure 3. The layered stack: 7 sources, 1 adapter family, 16 objects, 8 services and 2 surfaces.
 
@@ -247,7 +248,7 @@ Chapter 4 described the stack as a set of responsibilities. This chapter opens t
 
 The model holds sixteen objects: shipper, order, shipment, stop, appointment, carrier, driver, tracking event, exception, exception type, action, resolution, standing fix, claim, scorecard entry and exception coordinator. Each is anchored in the system of record that owns it, and the anchors matter: a shipment is a projection over the transportation management system, an appointment over the scheduling tool, a claim over the claims system, while exception type, standing fix and exception coordinator are anchored in the design itself as governed vocabularies the operator owns outright. The typed links are what make the model an argument rather than a filing cabinet: an exception is raised on a shipment, the shipment is moved by a carrier, the carrier is rated by scorecard entries, a resolution confirms the exception, and a standing fix binds a recurring exception type to a carrier on a lane. Figure 4 shows every object and every typed link, with the exception object in navy as the focal point of the desk's day. What the links buy is reach: one query can start at an exception on a late shipment, walk to its carrier's scorecard, see whether that carrier is reachable at night, cross to the stop's appointment and its change history, and end at the standing fixes and confirmed resolutions on that same lane, carrier and consignee. A document store can retrieve threads that mention a load number, but it cannot walk that path unless someone wrote the join in advance, and the recurring exceptions this design exists to kill are exactly the ones no one wrote the join for. Table 8, printed by the platform from the plan, lists each object, the system it is anchored in and its typed links, and is the register the governance service maintains.
 
-![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_04.png)
 
 Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.
 
@@ -296,7 +297,7 @@ Chapter 5 described what the object model holds. This chapter describes how data
 
 Every source in this design is of provenance class operator, held by the operator and read, never written to. The transportation management system is the primary record for shipments, stops, tenders and carrier master data, and the shipment and stop objects are projections over it, kept current by change capture. The carrier tracking and visibility platform supplies the tracking events, ETA updates and device status, and carries the earliest signal for a dark device or a late arrival. The appointment scheduling tool owns the windows the cascade prediction reasons over, and is also the target of the one gated write path, the approved appointment change request. The claims system closes the loop from unmanaged exceptions to claims. The carrier scorecards and contracts carry performance history and terms, including which carriers answer at night. The customer order feeds are the origin of demand, linking shipments to shippers and to the data terms that set purpose-based access. The email and chat threads are where most exceptions are actually worked, across tens of thousands of shipments a month and hundreds of carriers, and the archived years of those threads are what bootstraps the memory before the first live exception arrives. Figure 5 sets the seven systems beside their adapter paths into the object model.
 
-![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_05.png)
 
 Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -326,7 +327,7 @@ The site tier serves the dense Qwen3.8 27B model for high-volume thread and note
 
 The embedding tier serves Qwen3-Embedding 0.6B over threads, notes and resolutions for retrieval. Its weights occupy about 1.2 GB at BF16, about 0.6 GB at 8 bit, so it sits beside the site-tier model on the same server, and its activation memory is what grows with the 32K context window rather than with anything the desk controls. The frontier node carries the room requirement the operator's facilities team must confirm: about 15 kW of rack power per node with margin, a 10 to 35 C inlet range, and 10 RU per node.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -346,7 +347,7 @@ Three open-weight models, each held under a license that permits the operator to
 
 Chapter 7 fixed where every inference call lands; this chapter fixes what the operator is allowed to keep once it lands there. Placement is arithmetic, but ownership is a license question, and it is the licenses that decide whether the compounding value of the exception desk stays with the operator or leaks back out through a servicer's terms.
 
-![Figure 7. The three models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The three models, their placement, and the work each one does.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_07.png)
 
 Figure 7. The three models, their placement, and the work each one does.
 
@@ -395,7 +396,7 @@ Chapter 8 fixed the models and the licenses that let the operator hold its own w
 
 The rollout carries 18 items across 2 phases, and every phase ends at a gate rather than at a date. Phase 1, the pilot quarter, holds 17 items spread across six workstreams: Agent drafting and approval, Command center, Data governance, Memory and improvement, Pilot and extension, and Sovereign compute. Its items run from baselining the pilot lane group's exception measures before any draft reaches a coordinator, through building the network from the systems of record and the archived threads, ingesting and parsing the thread archive in layers with the site-tier model, standing up the facility node and the pinned model images in the on-site registry, to exercising the serving rollback once under observation. The exit gate is measured improvement on the pilot lane group against the baseline recorded at the start: time to resolve and repeat exceptions must move against that baseline before anything scales. Phase 2, network extension, holds 1 item: extend to the other lane groups, and its gate is the extension decision itself, taken on the pilot's measured record. The requirement register's 21 requirements map onto the 18 items, and Figure 8 shows the phases, their item counts, their gates and that coverage on one page.
 
-![Figure 8. The two phases and their gates, and coverage of the 21 requirements across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the 21 requirements across them.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the 21 requirements across them.
 
@@ -468,7 +469,7 @@ The conclusion gathered the design into one view and the shape it would take els
 
 The ask arrived as a requirement written in the operator's voice: a self-improving system for carrier exception handling, open weight models on the operator's own hardware, reading its systems of record and the threads, improving weekly from coordinator confirmations, without training a model on the fly and with nothing about shippers' freight leaving the operator's control. Praxis assigned the family and industry: the system of context family, in Supply Chain and Logistics, in the United States as the operator's own requirement states. What Praxis read, available on request: the requirement record carrying 21 requirements; the seven named source systems with their provenance and direction; the stack shelf with its product choices and its not-needed verdicts; the model register with footprints and licenses; the phase and workstream plan of 18 items across two phases; and the register of six failure modes with their mitigations.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/carrier-exceptions-us/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

@@ -1,6 +1,7 @@
 # Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan
 
 Canonical: https://codeatoms.ai/distribution-loss-theft-pakistan/
+DOI: https://doi.org/10.5281/zenodo.24048559
 PDF: https://codeatoms.ai/distribution-loss-theft-pakistan/paper/distribution-loss-theft-pakistan.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the operation and the problem its systems cannot answer, the co
 
 ---
 
-![Figure 1. Energy & Utilities Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Energy & Utilities Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_01.png)
 
 Figure 1. Energy & Utilities Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 fixed the question and the regimes it must satisfy. This chapter walks
 
 The consumer information and billing system sees every account with its billed units, tariff and arrears, but it cannot say which transformer feeds the premises or whether the billed units match the energy that reached it. The meter data management system sees interval load and tamper events for every smart meter, but not the billing history of the account behind that meter or what an inspection later found there. The energy audit records hold the loss percent per feeder each month and almost never per transformer, and they carry no tamper events, no inspections and no case outcomes. The geographic information system holds the topology from meter to transformer to feeder to grid station, which is the skeleton of every energy balance, but it holds no measurement at all. The outage and complaint system records outages and complaints with times and places, which is what separates a supply problem from theft, yet it cannot join either to the meters and accounts affected. The meter reading and inspection app holds field findings and photographs, but the team using it arrives without the tamper alarms or the billing history that would tell it where to look. The theft case register holds case numbers, penal sections and recovery amounts, while the evidence that would have made each case defensible was never joined to it. Figure 2 sets these seven views side by side, converging on the question none of them can answer alone.
 
-![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_02.png)
 
 Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -186,7 +187,7 @@ The pattern is the three layers with one direction of dependence that a [soverei
 
 The pattern fits because the operator's problem is a join failure, not a sensing failure: the meters already report tampering and the registers already record cases, but no system can answer which transformer, which cause, which case in one question. A middle layer that owns the join lets every system keep its role while the intelligence compounds above it, and because the agents only draft and the officers approve, nothing above the object model ever writes to a system of record directly. Figure 3 shows the layered stack with its counts: seven sources, one adapter family, fifteen objects, three models, eight services and five surfaces.
 
-![Figure 3. The layered stack: 7 sources, 1 adapter family, 15 objects, 8 services and 5 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 7 sources, 1 adapter family, 15 objects, 8 services and 5 surfaces.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_03.png)
 
 Figure 3. The layered stack: 7 sources, 1 adapter family, 15 objects, 8 services and 5 surfaces.
 
@@ -243,7 +244,7 @@ The typed links are what make the model an argument rather than a filing system.
 
 One traversal across those links answers the question field teams actually ask: every transformer on a feeder whose monthly loss percent crossed its threshold, the tamper events its meters raised in the same window, what was billed to the connections it serves, and which inspections already visited. That question crosses four systems of record, and a document store can answer it only if the words co-occur in one document, which they never do, because the tamper event lives in one system, the billing history in another and the inspection findings in a third. Table 8, printed by the platform, records each object with the system it is anchored in and its typed links.
 
-![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_04.png)
 
 Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
 
@@ -292,7 +293,7 @@ All seven sources are the operator's own commercial systems of record, provenanc
 
 The transport is split deliberately, as Figure 5 shows. The meter data management system is read through a Kafka subscription, because interval load and tamper events lose their value if they wait for a batch; billing, energy audit, geographic and outage records arrive as scheduled batch extracts, because they change on their own cycles and streaming them would add connector risk without improving a monthly transformer balance; and the field app and the theft case register are reached through mapped connectors built for their interfaces, because no packaged connector set for a distribution operator's records exists on any shelf.
 
-![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_05.png)
 
 Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -322,7 +323,7 @@ The frontier tier carries GLM 5.3, whose filed parameter count is 753 billion. A
 
 The second tier is deliberately small. The embedding model at FP16 occupies about 1.1 GB and the forecaster at FP32 about 0.48 GB, so both fit on the 48 GB card with two orders of magnitude of headroom, which is why the design gives them one server rather than two.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -344,7 +345,7 @@ Every model was chosen against its license before its accuracy.
 
 Chapter 7 placed three serving classes inside one in-country data center and showed the arithmetic that fits them there. This chapter names the three models that occupy those classes, and shows why each one's license was weighed before its accuracy: a license decides whether the operator can hold the weights at all. The model stack is small by design, and Figure 7 shows it whole: one frontier model for the work surface, one embedding model for cited retrieval, one forecaster for the energy balances that trigger every ranking. Three models, three licenses, one country. GLM 5.3 is the frontier model. Its filed parameter count is 753 billion, served at FP8, which is about 756 GB of weights and roughly 1.5 TB if served at BF16; it runs on one node of eight GPUs of the 141 GB class, in the central tier. Its role is the agentic work surface and ontology maintenance: the command center's conversational interface, the drafting of ranked causes, case files and corrections, and the upkeep of the governed object model all run on it. Its license is the GLM-5.3 bespoke license, whose terms permit commercial use, fine-tuning and redistribution, and those three permissions are exactly what an operator-owned system needs: the operator can hold the weights, serve them for its own commercial purpose, and keep serving them regardless of any vendor's fortunes.
 
-![Figure 7. The three models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The three models, their placement, and the work each one does.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_07.png)
 
 Figure 7. The three models, their placement, and the work each one does.
 
@@ -385,7 +386,7 @@ Chapter 8 fixed the model stack and the licenses that let the operator hold ever
 
 The rollout is two phases, and neither is a schedule: each phase is a set of items with an exit gate, and the gate, not a date, moves the work forward. Phase 1, one circle and one quarter, carries 15 items across six workstreams: the network and customer ontology, loss analytics, the loss and theft agents, approvals and audit, the sovereign platform, and measurement. Its items include the governed network and customer ontology, the meter and tamper event stream ingest, and the billing and network record batch extracts. Its exit gate is the billing agent drafting corrections: reading and multiplier corrections that a subdivision engineer approves and that land back in the customer information and billing system only through the recorded approval path. The phase runs on GLM 5.3 self hosted in an in-country data center, across one circle of feeders measured against a baseline, with control feeders left unchanged so the comparison stays honest. Phase 2, extending to the other circles, is a single item in the measurement workstream: the circle extension gate and the rollout plan. No other circle is touched until the four numbers that gate reads are met. Requirement coverage holds the design to the same discipline: 29 requirements trace through the two phases, so an item that serves no requirement does not enter the plan, and a requirement with no item is visible as a gap rather than silent. Figure 8 sets the phases, their item counts, their workstreams, their gates and the requirement coverage on one page.
 
-![Figure 8. The two phases and their gates, and coverage of the 29 requirements across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the 29 requirements across them.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the 29 requirements across them.
 
@@ -452,7 +453,7 @@ Chapter 10 closed the ownership argument, and every element it named, from the o
 
 The ask reached Praxis in the operator's own words: a sovereign AI architecture for loss and theft reduction at an electricity distribution company in Pakistan, with open-weight models on the operator's own hardware in the country, reading the operator's systems of record, and nothing about its customers leaving the country or reaching a foreign model service. Praxis assigned the design to the system of context family in the Energy and Utilities industry. What Praxis read: the operator's requirement document and the pinned energy and utilities brief, together with the stack shelf holding the tooling, model and hardware cards the design draws on. Nothing read was skimmed, and nothing outside it was assumed.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/distribution-loss-theft-pakistan/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

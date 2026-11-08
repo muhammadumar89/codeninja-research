@@ -1,6 +1,7 @@
 # Industrial Ontology Examples: A Port Equipment and Berth Object Model in Saudi Arabia
 
 Canonical: https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/
+DOI: https://doi.org/10.5281/zenodo.24048525
 PDF: https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/paper/port-equipment-berth-ontology-saudi-arabia.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the operation and the problem its systems cannot answer, the co
 
 ---
 
-![Figure 1. Maritime & Ports Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Maritime & Ports Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_01.png)
 
 Figure 1. Maritime & Ports Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -116,7 +117,7 @@ Chapter 1 stated the question and priced its absence. This chapter shows why non
 
 The terminal operating system holds vessel calls, moves, stowage and yard inventory, which makes it the productivity record, but it never sees the fault code that slowed the crane, the window the authority actually granted, or the commissioning state of the newest machine. The vessel scheduling and berth planning tool owns the berth plan, the quay length and the crane split, yet cannot see whether the crane it assigned is under repair. The crane and equipment control systems own machine state and fault codes, but not the move sequence around each fault or the yard pressure behind it. The maintenance management system owns work orders and component history, but not what any work order did to berth productivity. Equipment telematics carries fuel state, utilization and position, but cannot join a drift signal to the call it affected. The port authority's vessel traffic and berth window data holds the granted window, but nothing about performance inside it. The civil works and commissioning records hold the expansion's objects and the builders' cited documents, but nothing about how those objects perform once handed over. The safety incident register holds incidents, but not, on its own, the equipment component and the vessel call each incident belongs to. Figure 2 sets these slices side by side.
 
-![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_02.png)
 
 Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -186,7 +187,7 @@ Chapter 3 fixed the four constraints and the scoping decisions they force. This 
 
 The pattern is a projection, not a replacement. The eight systems of record stay below, untouched and still authoritative, each keeping its own names and its own duties. Above them sits one object model of 16 objects, filled move by move and never holding a shadow copy of any record, and above the model sit ten services, four surfaces and three models. This is the shape that sovereign AI reference architectures converge on when cargo data cannot leave the country: bind the records where they are, govern one vocabulary over them, and keep the inference inside the boundary on owned hardware. Figure 3 shows the layered stack with the count at each layer, and Table 7 names the component chosen at each layer and the reason for it.
 
-![Figure 3. The layered stack: 9 sources, 2 adapter families, 16 objects, 10 services and 4 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 9 sources, 2 adapter families, 16 objects, 10 services and 4 surfaces.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_03.png)
 
 Figure 3. The layered stack: 9 sources, 2 adapter families, 16 objects, 10 services and 4 surfaces.
 
@@ -243,7 +244,7 @@ The model holds sixteen objects in six kinds: three sites (Berth, Quay Section, 
 
 The typed links are the join the systems never made. Move carries Box and names Equipment Component; Productivity Measure names its Vessel Call; a Work Order records its berth plan effect against both Berth and Berth Window; an Incident names its Equipment Component. A query can therefore start at a berth's productivity measure, walk back through the vessel call to the individual moves and the equipment that performed them, continue to the faults that equipment raised and the work orders those faults produced, and end at the berth window the authority granted, all in one traversal. Figure 4 draws every object and every link. A document store holds each of these facts somewhere, but it cannot answer the operator's question, whether the drop was the crane, the yard, the stowage or the window, because that answer lives in the joins, and typed links are the one structure that carries them. The same traversal is why the Incident object matters: maritime accidents are documented to be underreported to official databases (NIH 2011), and an incident that joins to its equipment and its call in the same model as the fault codes is an incident that can be found.
 
-![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_04.png)
 
 Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.
 
@@ -288,7 +289,7 @@ Chapter 5 showed sixteen anchored objects with typed links between them. This ch
 
 Eight named source systems feed the model. The terminal operating system holds vessel calls, moves, stowage and yard inventory, the productivity record the ontology is built on. The vessel scheduling and berth planning tool owns the berth plan that approved drafts adjust. The crane and equipment control systems own fault codes and machine state, read through a one-way path with no write back. The maintenance management system owns work orders, and receives the ones approvals raise. Equipment telematics is the drift signal the equipment agent triggers on. The port authority's vessel traffic and berth window data supplies the granted window, one of the four ranked causes of a productivity drop. The civil works and commissioning records hold the expansion's objects and the builders' cited documents. The safety incident register feeds the Incident object, the record safety investigations are built on under the international code for casualty investigation (IMO 2008). All eight carry first-party provenance, systems the operator or its authority owns, named by role because their products are confirmed on site; all are read except the single approved write back to work orders. Figure 5 maps each system, its provenance class and its adapter path.
 
-![Figure 5. The 9 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 9 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_05.png)
 
 Figure 5. The 9 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -314,7 +315,7 @@ The committed design runs inference on three tiers, and the memory arithmetic of
 
 The terminal tier hosts GLM-5.3-Flash on a two-socket air-cooled server class in the terminal machine room, reading the builders' commissioning documents and carrying retrieval volume so the frontier node stays reserved for reasoning. The embedding tier runs BGE-M3 on the central node. A fourth tier is offered, not committed: continuous crane sensing, which would add edge compute of the fanless, sealed, sunshielded class rated for Gulf quayside heat, serving detection through OpenVINO, with a development-board measurement as the gate before any unit is fixed. Figure 6 sets the four tiers side by side, with what runs on each and what crosses between them.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -336,7 +337,7 @@ Every model was chosen against its license before its accuracy.
 
 Chapter 7 fixed where each tier runs and what each node must hold. This chapter turns to the models themselves, and to the licenses that decide whether the operator can keep what it runs: a model the operator cannot legally hold on its own hardware is not a sovereign choice, however accurate it is.
 
-![Figure 7. The three models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The three models, their placement, and the work each one does.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_07.png)
 
 Figure 7. The three models, their placement, and the work each one does.
 
@@ -381,7 +382,7 @@ Chapter 8 settled which models run, where they run and under what licenses. This
 
 The rollout is shaped by the requirement's own phasing, and Figure 8 shows it whole: three phases, 18 items, two gates, and the register of 21 requirements read against the build at every gate. Phase 1 covers two berths and carries 15 items across six workstreams: ontology and naming, agents and decisions, approvals and compliance, command center, memory and improvement, and phase one exit. Its named items include the port equipment and berth object model, the source system mappings and joins, and name reconciliation across systems. Its exit gate is the commissioning agent for expansion objects: the agent must draft commissioning records from the civil works and commissioning records for the new berth sections and cranes, and a manager must confirm them, before anything widens. Phase 2 carries two items across the offered sensing tier and terminal scale workstreams: the whole-terminal rollout and the continuous crane sensing option. Its gate is that option itself, taken on phase-one evidence rather than assumption, which is why the sensing tier is priced and quoted separately rather than built in. Phase 3 carries a single item, the group ports worked example, on the terminal scale workstream; the group's other ports inherit the worked example only when the running terminal has proven it, and that inheritance is the requirement's stated purpose, that the ontology becomes the worked example for the rest of the ports in the group.
 
-![Figure 8. The three phases and their gates, and coverage of the 21 requirements across them.](figures/figure_08.png)
+![Figure 8. The three phases and their gates, and coverage of the 21 requirements across them.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_08.png)
 
 Figure 8. The three phases and their gates, and coverage of the 21 requirements across them.
 
@@ -448,7 +449,7 @@ Chapter 10 settled where the intelligence lives. This chapter opens the record b
 
 The ask, in the operator's own words, was an industrial ontology of the terminal, owned by the operator, filled from its systems of record, with open weight models on its own hardware in the country, and nothing about customers' cargo leaving it. Praxis assigned the design to the Physical AI family and the Maritime and Ports industry, a pin made by the forwarding design engineer on this project and read as reasoning input rather than a matched conclusion. What Praxis read was the corpus shelf of each lens, and those shelves are the corpus behind every lens that follows.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

@@ -8,7 +8,7 @@ A [physical AI system design](https://codeatoms.ai/physical-ai-system-design/) f
 **Paper:** [PDF](paper/composite-part-inspection-mro-saudi-arabia.pdf) · [HTML](paper/composite-part-inspection-mro-saudi-arabia.html) · [Word](paper/composite-part-inspection-mro-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** to be minted on release
 
-**Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

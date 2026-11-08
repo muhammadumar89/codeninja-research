@@ -8,7 +8,7 @@ Fleet Condition Command: Industrial AI in Rail Maintenance the Operator Owns. On
 **Paper:** [PDF](paper/passenger-rail-fleet-saudi-arabia.pdf) · [HTML](paper/passenger-rail-fleet-saudi-arabia.html) · [Word](paper/passenger-rail-fleet-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** to be minted on release
 
-**Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

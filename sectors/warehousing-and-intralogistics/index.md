@@ -33,4 +33,4 @@ In every published warehousing and intralogistics design a named person makes th
 ## Sources
 
 - [Warehouse Twin Command: Live Slotting, Docks, Yards and Safety Vision for Warehousing and Intralogistics in the United States](https://codeatoms.ai/warehouse-digital-twin-us/) (United States), DOI https://doi.org/10.5281/zenodo.23556416
-- [Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/) (Saudi Arabia)
+- [Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.24048579

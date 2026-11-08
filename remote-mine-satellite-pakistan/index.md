@@ -1,6 +1,7 @@
 # Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan
 
 Canonical: https://codeatoms.ai/remote-mine-satellite-pakistan/
+DOI: https://doi.org/10.5281/zenodo.24048581
 PDF: https://codeatoms.ai/remote-mine-satellite-pakistan/paper/remote-mine-satellite-pakistan.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the operation and the problem its systems cannot answer, the co
 
 ---
 
-![Figure 1. Mining Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Mining Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_01.png)
 
 Figure 1. Mining Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 stated the question the operation needs answered and the regimes that 
 
 Figure 2 sets the seven systems side by side, and the prose here walks them in the order a supervisor would query them. The project controls system sees work packages, schedules and percent complete; it does not see which permits cover that work, or which consignment a delayed package is waiting on. The construction management and permit to work system sees every permit, pad and isolation with its validity window; it does not see whether the crew named on the permit is on site today, or whether the parts that work needs have arrived. The equipment telematics and maintenance system sees fault codes, running hours and work orders; it does not see which convoy carries the part each work order requires, or which pad the unit is working on. The camp and workforce management system sees every worker, camp bed and rotation due; it sees nothing about the work those workers are authorized to perform. The health, safety and environment system sees incidents and near misses and the permits they link back to; it does not see the equipment or the consignments around them. The supply and logistics tracking system sees convoys, positions and consignments against plan; it does not see the work order a consignment was bought for or the work package it serves. The site historian for power and water sees utility tags live and continuously; it sees nothing about the work those utilities exist to serve.
 
-![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_02.png)
 
 Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -186,7 +187,7 @@ The pattern is three layers. Below sit the systems of record, unchanged and stil
 
 This pattern fits because the failure the operator described is a join failure that becomes an outage failure. The corporate estate abroad is a sync target, not a dependency, so when the satellite link degrades the middle and top layers keep running on site, and the site works from its own memory instead of paper. Link loss in mining is a safety event, not an IT inconvenience: a loss of communications on an autonomous circuit put a haul truck into an excavator (Miningmonthly 2024), and mine regulators began mandating survivable communications after multiple fatality investigations (MSHA 2006). The stack treats the outage as the normal case. Table 7, printed by the platform at the end of this chapter, carries the same stack layer by layer with the component chosen at each layer and the reason for the choice.
 
-![Figure 3. The layered stack: 8 sources, 2 adapter families, 15 objects, 8 services and 4 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 8 sources, 2 adapter families, 15 objects, 8 services and 4 surfaces.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_03.png)
 
 Figure 3. The layered stack: 8 sources, 2 adapter families, 15 objects, 8 services and 4 surfaces.
 
@@ -241,7 +242,7 @@ Every object is anchored in exactly one system of record, which remains its owne
 
 The links are what a document store cannot hold. A permit names its pad and its crew; a work order traces to a work package and to the fault that raised it; a consignment rides a convoy and serves a work package or a work order; an incident links to the permit it happened under. When a supervisor asks which equipment is overdue for service, which convoy carries the parts for the work order it needs and whether the pad's permit is still valid, that is one traversal across the links, each step carrying its own last-seen stamp. In a document store each record is a self-contained page, and answering the same question means application code re-implementing every join, badly, in every surface. Table 8, printed by the platform at the end of this chapter, lists each object with the system it is anchored in and its typed links.
 
-![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_04.png)
 
 Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
 
@@ -289,7 +290,7 @@ Chapter 5 described what the object model holds. This chapter describes how data
 
 Each of the seven on-site systems of record enters the design with operator provenance: it is the operator's own system, read through a mirror, and it keeps its ownership of every record. The project controls system holds work packages and schedules. The construction management and permit to work system owns permits and isolations, which is why it stays read-only to the platform. The equipment telematics and maintenance system holds fault codes, service hours and work orders. The camp and workforce management system holds occupancy and workforce records, and its mirror is the one the outbound sync never touches. The health, safety and environment system holds incidents and near misses. The supply and logistics tracking system holds convoy positions and consignments. The site historian for power and water is the one system already on site, and its utility tags join the ontology across the plant boundary. The eighth source is the corporate estate abroad, classed as a sync target rather than a dependency. Figure 5 shows each system, its provenance class and its adapter path. The integration adapter carries record extracts from the transactional systems, and the telemetry adapter carries the historian's utility tag streams and the telematics fault code and service hour feeds.
 
-![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_05.png)
 
 Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -313,7 +314,7 @@ Chapter 6 showed every source entering through an adapter family and flowing ove
 
 Two inference tiers exist and both sit in the site server room, on the mine's own power, inside the fence; below that room the design commits no inference hardware at all. The frontier tier serves GLM 5.3, the model the operator names for reasoning, and the memory arithmetic fixes its shape. The register files GLM 5.3 at 753 billion parameters; at FP8 precision, one byte per parameter, the weights occupy 753 GB. One node of the frontier inference cluster class (GPU nodes for 300B to 1T parameter open weight models), eight cards, holds 1,128 GB, which leaves 375 GB beside the weights; the 1.2 planning factor reserves about 151 GB of that for KV cache and activations, so the node carries the model with about 280 GB of KV ceiling to spare. The rejected alternative, two nodes of the 80 GB class, offers 589 GB usable and cannot hold the weights at all, and it would drag a multi-node RDMA fabric into a remote site on its own power. The embedding tier serves BGE-M3 at FP16, about 1.1 GB as published, small enough to sit beside the frontier node on the same hardware and keep part numbers, fault codes and permit clauses retrievable. The rugged tablets are thin operators to the command center and run nothing themselves, which is why the stack carries no edge model serving row. Figure 6 sets the two tiers against the boundary: everything that reasons is inside the fence, and only mirror feeds and chosen aggregates cross it.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -333,7 +334,7 @@ Every model was chosen against its license before its accuracy.
 
 Chapter 7 placed both inference tiers in the site server room and sized the frontier node from its filed parameters. This chapter turns from where the models run to what the operator may own, because in sovereign AI reference architectures of this shape the load bearing decision is not which model scores highest but which one the operator can hold, tune and keep inside the fence. Figure 7 shows the model stack: two models, one frontier and one embedding, both served on site, both carried in the air gapped registry, and nothing rented from outside. Each was chosen against its license before its accuracy, and the register behind the choices is collected in Table 4.
 
-![Figure 7. The two models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The two models, their placement, and the work each one does.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_07.png)
 
 Figure 7. The two models, their placement, and the work each one does.
 
@@ -373,7 +374,7 @@ The rollout is a single phase with a single gate, shaped so a pause strands no w
 
 The gate is a simulated link-drop day, answered entirely from the site's own memory with the satellite egress severed. The pilot area must resolve a dozer fault, carried from a raised fault code to a drafted work order whose parts the on-site inventory can name; a permit clash between two crews on adjacent pads, held as a conflict rather than issued; and a late convoy, read from its last known position against plan, with the consignments it carries tied to the work packages waiting on them. The pilot covers one construction area and its heavy fleet, and until that day is answered from local memory, nothing the build drafts is load bearing.
 
-![Figure 8. The one phase and its gate, and coverage of the one requirement across it.](figures/figure_08.png)
+![Figure 8. The one phase and its gate, and coverage of the one requirement across it.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_08.png)
 
 Figure 8. The one phase and its gate, and coverage of the one requirement across it.
 
@@ -444,7 +445,7 @@ Chapter 10 settled ownership of the assets the build creates. This chapter opens
 
 The ask, written in the operator's own words, is a sovereign build for a remote copper and gold mine on a satellite link in Pakistan: open weight models on the operator's own hardware in the country, inside the fence, reading the site's systems locally, syncing to the corporate systems when the link allows and working fully when it does not. Praxis assigned the design to the system of context family in the Mining industry, which fixed the architectural pattern before any tool was chosen: a governed ontology as a read projection over systems of record, drafting agents above it, memory beside them. What Praxis read: the case study, tooling and recency, hardware and equipment, rules and regulations, approach and history shelves. The first principles and domain fusion reasoning drew on the brief's own doctrine.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/remote-mine-satellite-pakistan/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

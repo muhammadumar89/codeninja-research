@@ -1,6 +1,7 @@
 # A Self-Improving AI System for Cement Kiln Control in Saudi Arabia
 
 Canonical: https://codeatoms.ai/cement-kiln-control-saudi-arabia/
+DOI: https://doi.org/10.5281/zenodo.24048545
 PDF: https://codeatoms.ai/cement-kiln-control-saudi-arabia/paper/cement-kiln-control-saudi-arabia.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the operation and the problem its systems cannot answer, the co
 
 ---
 
-![Figure 1. Heavy Industry & Construction Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Heavy Industry & Construction Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_01.png)
 
 Figure 1. Heavy Industry & Construction Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 stated the question and the scenario that holds it. This chapter shows
 
 The distributed control system and its historian see every tag value, the recipe and the controller state, but not why the tags moved, because fuel chemistry, laboratory findings and operator reasons live elsewhere. The laboratory system sees raw meal and clinker chemistry against specification, but not the process conditions that produced each result. The fuel and alternative fuel feed records see lot identity, calorific value, moisture, ash and feed rate, but not what each fuel change did downstream in the kiln. The shell scanner sees the shell temperature profile and the position of a hot spot, the earliest physical sign of burning zone trouble, but not the cause or the moves that cleared it. The maintenance management system sees equipment state, work orders and refractory history, but not the process upsets that preceded each failure. The shift log sees operator actions, reason codes and handovers, the human half of every upset story, but not the hundreds of tag values behind each action. The production reporting system sees clinker tonnes and energy against plan, but not the decisions and conditions behind each figure. Figure 2 sets these seven slices side by side, and the pattern is the same in each row: the slice is faithful, complete in its own terms, and silent about everything the question joins it to.
 
-![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_02.png)
 
 Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -184,7 +185,7 @@ A self-improving AI system for kiln lines usually fails at the join between the 
 
 The architecture is three layers in a fixed order: the systems of record below, never replaced, never modified, never bulk loaded; one object model in the middle, owned by the company and held as a projection over those systems rather than a copy of them; and the applications and agents above, which draft causes, setpoints and handovers for people to confirm. The order matters because the distributed control system stays authoritative for control and its historian stays authoritative for history, so the object model only has to join what each already holds, and every capability traces to a clause the company asked for. Because the advisory layer changes how the control room works, the stack is treated as a process change and assessed with the plant's own hazard-study methods, the way revised plant-safety guidance expects AI reliability to be weighed against methods such as HAZOP (GO n.d.). Figure 3 shows the layers with their counts: seven systems of record feeding three adapter families, one object model of sixteen objects, seven services and three surfaces, with three models doing the inference.
 
-![Figure 3. The layered stack: 10 sources, 3 adapter families, 16 objects, 7 services and 3 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 10 sources, 3 adapter families, 16 objects, 7 services and 3 surfaces.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_03.png)
 
 Figure 3. The layered stack: 10 sources, 3 adapter families, 16 objects, 7 services and 3 surfaces.
 
@@ -237,7 +238,7 @@ Chapter 4 placed the object model at the center of the stack and made it the one
 
 The model holds sixteen objects: kiln line, equipment, tag, setpoint, recipe, raw meal lot, fuel lot, clinker sample and quality result, upset, operator action, shell scan, work order, shift, control room operator, shift supervisor and production manager. What makes them an argument rather than a list is the typed links: a fuel lot links to the recipe that blends it and to every upset that began during its feed, an operator action links to the setpoints it touched and to the draft it answered, and a work order links to the equipment it covers and the upsets it was raised from. Figure 4 shows all sixteen objects and their links, with the upset in navy as the focal object. A query can now walk a path no single system holds: ask for every upset that began during a fuel lot change and was followed by a clinker sample back in specification, and the model traverses upset to fuel lot to operator action to sample in one step, where a document store would need the question known in advance and the join written by hand. In published industrial ontology examples this crossing of mappings is the hard part, and it is the product here; Table 8, printed by the platform, lists every object with the system of record it is anchored in and its typed links.
 
-![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_04.png)
 
 Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.
 
@@ -282,7 +283,7 @@ Chapter 5 showed what the object model holds once data is inside it; this chapte
 
 Seven named systems feed the model, all of one provenance class: systems the company already owns and runs, read in one direction only. The distributed control system and historian supply the streaming triggers and the historian context; the laboratory system closes the loop between advice and clinker quality; the fuel and alternative fuel feed records carry the calorific value behind every drift and trigger the setpoint agent when a lot changes; the shell scanner gives the earliest physical sign of burning zone trouble; the maintenance management system joins upsets to equipment state and refractory history; the shift log holds the operator actions and handovers that are the human half of every upset story; and the production reporting system holds the clinker tonnes and energy figures that form both the baseline and the gate. Figure 5 maps each source to its adapter path and its provenance class.
 
-![Figure 5. The 10 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 10 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_05.png)
 
 Figure 5. The 10 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -310,7 +311,7 @@ The plant tier runs on the plant GPU server, on one or two PCIe cards and no hig
 
 The edge tier is the industrial octa-core SoC edge unit with a 6 TOPS NPU in a sealed fanless enclosure, served by ONNX Runtime. It holds roughly 33 degrees C of margin at the 52 C record ambient before solar gain, and it sits closest to the data. Figure 6 sets the three tiers side by side, with what runs on each and what crosses between them.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -334,7 +335,7 @@ Every model was chosen against its license before its accuracy.
 
 Chapter 7 placed each tier and showed the memory arithmetic that sizes it. This chapter turns to the models themselves and to the legal instrument that decides more than any benchmark: the license under which each weight runs.
 
-![Figure 7. The three models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The three models, their placement, and the work each one does.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_07.png)
 
 Figure 7. The three models, their placement, and the work each one does.
 
@@ -379,7 +380,7 @@ Chapter 8 settled which weights the company may hold and on what terms, from the
 
 The rollout has two phases and eighteen requirements, and every phase carries its item count, its workstreams and a gate the company can read before committing the next tranche of work. Phase One runs on one kiln line and carries sixteen items across six workstreams: One model of the kiln line, Named agents that draft, Memory that compounds, Command center, Measured improvement, and Approvals and rollout. Its opening items build the governed kiln line ontology, bind the seven systems of record read-only, and enforce the one-way control boundary; its gate stands the setpoint agent up, with drafts flowing to a named approver and an on/off comparison read in the units the national energy efficiency program itself collects. Phase Two carries a single item under the Approvals and rollout workstream, extending the system to further kiln lines and plants, and it is entered only on the phase-one evidence, with its gate set with the production manager before a second line is touched. Figure 8 sets the phases, their item counts, their gates and the requirement coverage side by side. The approvals workstream treats the advisory system as a process change and studies it the way plant risk practice studies any other change, following plant safety guidance that now extends the reliability assessment of AI to established methods such as HAZOP and FMEA (GO n.d.). Each of the eighteen requirements traces to a workstream item, so coverage is read item by item at each gate rather than asserted at the end.
 
-![Figure 8. The two phases and their gates, and coverage of the 18 requirements across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the 18 requirements across them.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the 18 requirements across them.
 
@@ -450,7 +451,7 @@ Chapter 10 closed the ownership argument: the object model, the weights, the dec
 
 The ask arrived as a requirement written in the company's voice: a self-improving AI system for cement kiln control, owned by the company, open weight models on its own hardware in the country, reading its systems of record, improving every shift from what operators confirm, without training a model on the fly and with nothing about the plants leaving the country. Praxis assigned the family Physical AI and the industry Heavy Industry and Construction; the family was selected by the FDE on the project as a pin rather than a reasoned match, and the brief was still read as reasoning input. Praxis read the case study, tooling, hardware, regulation, approach and history shelves the lenses drew on.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/cement-kiln-control-saudi-arabia/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

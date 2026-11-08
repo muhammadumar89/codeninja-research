@@ -1,6 +1,7 @@
 # Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan
 
 Canonical: https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/
+DOI: https://doi.org/10.5281/zenodo.24048589
 PDF: https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/paper/weld-assembly-quality-vehicle-plant-pakistan.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the operation and the problem its systems cannot answer, the co
 
 ---
 
-![Figure 1. Discrete Manufacturing & Automotive Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Discrete Manufacturing & Automotive Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_01.png)
 
 Figure 1. Discrete Manufacturing & Automotive Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 stated the question, the regimes and the operation. This chapter shows
 
 The manufacturing execution system owns orders, body numbers, genealogy and routing, so it knows which body is where and which vehicle it becomes, but it records nothing about the metal: no weld condition, no bead, no torque. The robot and weld controller logs own the weld point truth, the nominal positions and the weld currents, yet a controller reports what it commanded, not what the body shows, and nothing downstream of the body shop. The torque tool controllers own per-fastener torque readings with tool identity on the trim and final line, but not whether the clip or connector around that fastener is seated. The end of line test rigs own the verdict each vehicle leaves with, but not which station caused a failure. The quality management system owns defect records, repair tickets, corrective actions and audit findings, but they are written by hand, without evidence frames and without joins to lots. The supplier parts receiving records own lot identity, supplier and delivery date, but nothing about what happened to each lot inside the build. Figure 2 sets the six systems side by side, each with its sees and its misses, converging on the question none of them can answer alone.
 
-![Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_02.png)
 
 Figure 2. Six systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -186,7 +187,7 @@ The stack has three tiers. Below sit the six systems of record: the manufacturin
 
 The pattern fits because the plant's failure is a join failure, not a sensing failure. A camera at a trim station can see a missing clip, but the question the quality manager actually asks crosses every system of record at once: which supplier lot, which body numbers, which weld points, which corrective action. The design therefore puts the join in one place, the object model, and refuses to let any application build its own private copy. The ontology is a projection over the manufacturing execution system, never a replacement for it, which is what keeps the parent's audits answerable from the records of record.
 
-![Figure 3. The layered stack: 6 sources, 1 adapter family, 16 objects, 6 services and 5 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 6 sources, 1 adapter family, 16 objects, 6 services and 5 surfaces.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_03.png)
 
 Figure 3. The layered stack: 6 sources, 1 adapter family, 16 objects, 6 services and 5 surfaces.
 
@@ -241,7 +242,7 @@ Sixteen objects carry the whole argument. Vehicle, Body, Station and Operation c
 
 The links are typed, which is what separates this governed plant model from the industrial ontology examples a search usually returns: every object here is anchored in a named system of record and every link is a stated relationship, not a co-occurrence. A defect links to the body it was found on; the body links to its weld points and sealer beads; a part links to the supplier lot it arrived in; the supplier lot links to the defects counted against it and onward to the corrective action opened on it. One query can walk from a flagged weld point to the body, the operation, the shift's inspector, the lots fitted that day and the open corrective actions, in a single traversal with lineage at every hop, where a document store would force a manual rebuild across exports. That manual rebuild is what the plant does today when the parent's auditors ask why a body shop defect rate rose on a given day. The platform prints Table 8 with this chapter, listing each object, the system it is anchored in and its typed links; the recorded form of one object follows in 5.3.
 
-![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_04.png)
 
 Figure 4. The sixteen objects of the model and the typed links that let a query reach across them.
 
@@ -288,7 +289,7 @@ Chapter 5 described the sixteen objects the middle layer holds. This chapter des
 
 Six named source systems feed the model, and all six are the operator's own systems of record, read-only, classed as operator provenance. The manufacturing execution system owns orders, body numbers, genealogy and routing. The robot and weld controller logs own the weld point truth the weld check agent's flags are checked against. The torque tool controllers own per-fastener torque readings on the trim and final line. The end of line test rigs own the outcome the phase-one baseline is measured on. The quality management system owns defect records, repair tickets and corrective actions. The supplier parts receiving records own lot identity, supplier and delivery date, which is what turns a defect cluster into a supplier lot trace, the end to end chain that supplier quality frameworks in the sector treat as the baseline obligation (IAF n.d.). Figure 5 sets out the integration map: each named system, its provenance class and its adapter path into the model.
 
-![Figure 5. The 6 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 6 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_05.png)
 
 Figure 5. The 6 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -316,7 +317,7 @@ One air-cooled 48 GB PCIe inference-class server in the plant server room is the
 
 The central tier is GLM 5.3 on one node of eight 141 GB HBM GPUs, and the memory arithmetic decides it. 753B parameters at FP8 is 1 byte per parameter, so 753 GB of weights, and the 1.2 planning factor for KV cache and activations raises the requirement to 904 GB; one node of 8 x 141 GB holds 1,128 GB, leaving 375 GB beside the weights against the 151 GB the factor reserves. At the roughly 756 GB the published weights occupy, the KV cache ceiling is about 280 GB, which bounds concurrent sessions on the conversational surface rather than forcing a second node. The printed architecture table (Layer, Component, Choice, Why) carries the full stack card, and these three tiers are its inference rows.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -336,7 +337,7 @@ Every model was chosen against its license before its accuracy.
 
 Chapter 7 placed each of the four models on the tier its data and its link could carry. This chapter shows that the placement was the second decision, because every model was chosen against its license first: the license decides whether the operator can hold the weights, fine-tune them and keep them running when a vendor's attention moves on. Figure 7 stacks the four models with their specifications and their jobs.
 
-![Figure 7. The four models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The four models, their placement, and the work each one does.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_07.png)
 
 Figure 7. The four models, their placement, and the work each one does.
 
@@ -381,7 +382,7 @@ The rollout is a single phase, Phase One, carrying 15 items across six workstrea
 
 Shadow mode governs the whole phase. Every check runs alongside the manual inspection it supports, flags are drafted for a named inspector to confirm or dismiss, and no agent stops a line or rejects a supplier lot, because that authority was scoped out in Chapter 3 and stays out.
 
-![Figure 8. The one phase and its gate, and coverage of the 18 requirements across it.](figures/figure_08.png)
+![Figure 8. The one phase and its gate, and coverage of the 18 requirements across it.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_08.png)
 
 Figure 8. The one phase and its gate, and coverage of the 18 requirements across it.
 
@@ -458,7 +459,7 @@ Chapter 10 settled ownership with the operator. This chapter opens the record of
 
 The ask arrived as a requirement written in the operator's voice: physical AI at the station, with edge units and cameras at the body shop, trim and underbody exits, checking every body against the weld point list and the sealer bead, and landing every result in a governed plant ontology built from the systems of record, all inside the plant network in Pakistan. Praxis assigned it to the physical AI family in the discrete manufacturing and automotive industry. What Praxis read was the corpus shelf of each lens: the case study, tooling and recency, hardware and equipment, rules and regulations, approach and history shelves, beside the first principles domain brief.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

@@ -1,6 +1,7 @@
 # Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia
 
 Canonical: https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/
+DOI: https://doi.org/10.5281/zenodo.24048549
 PDF: https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/paper/passenger-rail-fleet-saudi-arabia.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the industry problem and the join failure across the systems of
 
 ---
 
-![Figure 1. Fleet Condition Command on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Fleet Condition Command on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_01.png)
 
 Figure 1. Fleet Condition Command on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -120,7 +121,7 @@ The builder's remote monitoring platform sees the vehicles it built: their telem
 
 The depot work orders see closures, slots and a repeat flag, but not the events that preceded the work, because those events live in the builder's words. The timetable and train running system owns diagrams, journeys, scheduled and actual times, and delays with cause codes; it sees no condition fact at all, which is exactly why a drifting converter keeps being scheduled by the timetable rather than by its health. The track condition monitoring service reports on route assets from wayside vibration data but not on the vehicles passing over them. The spare parts stock system knows part numbers, stock levels and reservations, but not what a condition case needs until someone asks it. The passenger incident log records incidents by trainset, date and category, carrying personal data under the national data protection law, but not the technical cause behind any of them. Figure 2 sets these systems side by side.
 
-![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_02.png)
 
 Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -191,7 +192,7 @@ Chapter 3 fixed the constraints and recorded what each scoping decision buys and
 
 The architectural pattern, the layered shape that [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/) in critical infrastructure converge on, has three layers whose order never changes. Below sit the ten sources: the builder remote monitoring platform, the on board diagnostic logs, the maintenance management system, the depot work orders, the timetable and train running system, the track condition monitoring service, the spare parts stock system and the passenger incident log, plus two depot camera feeds. They are read in place, never replaced, never modified and never bulk loaded. In the middle sits one governed object model of fourteen objects, a projection over those systems rather than a copy of their schemas. Above it sit six services and four surfaces, where agents draft and named engineers decide. Figure 3 shows the layers with these counts. The order fits this railway because the fleet's facts live in systems the operator cannot rewrite: one builder's platform speaks its own vocabulary, a second builder arrives with the new trainsets, and the question the operator asks, what is the one history of this door, cannot be answered by copied schemas. It needs one model in which every fact carries the source that produced it.
 
-![Figure 3. The layered stack: 10 sources, 2 adapter families, 14 objects, 6 services and 4 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 10 sources, 2 adapter families, 14 objects, 6 services and 4 surfaces.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_03.png)
 
 Figure 3. The layered stack: 10 sources, 2 adapter families, 14 objects, 6 services and 4 surfaces.
 
@@ -244,7 +245,7 @@ Chapter 4 fixed the layers and named the component at each stage. This chapter o
 
 The model holds fourteen objects. Three are assets: Trainset, anchored in the timetable and train running system; Vehicle, anchored in the builder's remote monitoring platform; and Component, anchored in the maintenance management system. Three are events: DiagnosticEvent from the on board diagnostic logs, and Journey and Delay from the timetable and train running system. Six are records: Fault and its confirmed cause, WorkOrder with its repeat flag, DepotSlot, Diagram, Incident from the passenger incident log, and ConditionCase, the focal object the design itself creates. Part is a material anchored in the spare parts stock system, and AgentDraft is a document the agents produce. Figure 4 shows every object and its typed links. The links are what make the model an argument rather than an archive: a DiagnosticEvent is raised by a Vehicle, the Component is fitted on that vehicle and numbered as a Part, the WorkOrder that closed last month is raised against the same vehicle, and the Journey and Delay on the Trainset tell whether the fault met passengers. A document store can hold the same papers and return them on a keyword search, but it cannot walk this chain with citations, because the walk needs the serial-numbered component rather than the type, and the closure record rather than a meeting note. Table 8, printed by the platform from the plan, sets out every object with the system it is anchored in and its typed links.
 
-![Figure 4. The fourteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fourteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_04.png)
 
 Figure 4. The fourteen objects of the model and the typed links that let a query reach across them.
 
@@ -289,7 +290,7 @@ Chapter 5 showed what the model holds and where the human loop lives. This chapt
 
 Ten sources enter the design, and Figure 5 sets out each with its provenance class and its adapter path. Eight are the operator's systems of record, all of provenance class operator and all read only: the builder remote monitoring platform, the primary condition source arriving in the builder's words; the on board diagnostic logs, the raw record behind the builder's events; the maintenance management system, holding faults, confirmed causes and component history; the depot work orders, whose closures the repeat-fault baseline counts against; the timetable and train running system, owning diagrams, journeys, actual times and delays; the track condition monitoring service, whose vibration based reports complete the route asset picture; the spare parts stock system, feeding part availability into each recommended depot slot; and the passenger incident log, completing the Incident object under the national data protection law. The remaining two sources are the depot camera feeds, the inspection road and the siding overview, of depot provenance and serving as context for the offered tier. Every event that enters carries its provenance class, so a claim made from builder data is distinguishable, permanently, from a claim made from depot data.
 
-![Figure 5. The 10 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 10 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_05.png)
 
 Figure 5. The 10 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -313,7 +314,7 @@ A sovereign AI reference architecture is decided less by which model answers tha
 
 Phase one has a single inference tier: the operator's data center. Telemetry arrives through the builders' documented APIs, so there is no on-vehicle serving and no edge serving to specify; the offered continuous tier would be specified to the EN 50155 class for on-vehicle electronics if taken up later, but phase one is route based as tendered and commits nothing on the vehicle. What the tier will hold is fixed even though its size is not. The work surface runs frontier class open weights, self hosted for sovereignty, on the 141 GB HBM class with eight GPUs per node, which gives about 1,038 GB of usable memory per node. The arithmetic the register applies when a model row stands: the house's named candidate, GLM 5.3 at FP8, carries about 756 GB of weights, which fits one such node and leaves roughly 280 GB as the KV cache ceiling, the memory that holds conversation state during generation. That is the smallest of the three footprints considered for the named model, and it is why the design chose FP8 on one node over BF16 across two nodes or a larger 256 to 288 GB class node. No GPU count is committed today, because no model row survived this run's live checks; Figure 6 shows the tier, what runs there and the boundary drawn around it.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -333,7 +334,7 @@ The register holds no model row that survived this run's live checks, so no weig
 
 Chapter 7 placed the reasoning in the operator's data center and left the serving layer unsized on purpose. This chapter shows what the model stack holds instead of a committed model: a register with no row that survived this run's live checks, a named candidate whose arithmetic is filed but not committed, and the rule that no weights, licenses or GPU counts are stated until a verified model stands.
 
-![Figure 7. The model stack: no model row is committed yet; the design names classes and roles and chooses a model at the first gate.](figures/figure_07.png)
+![Figure 7. The model stack: no model row is committed yet; the design names classes and roles and chooses a model at the first gate.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_07.png)
 
 Figure 7. The model stack: no model row is committed yet; the design names classes and roles and chooses a model at the first gate.
 
@@ -370,7 +371,7 @@ Chapter 8 closed the model register and the licenses: open weights the operator 
 
 Phase One, One Route, One Quarter, carries 15 items across six workstreams: Fleet ontology, Condition watching, Agents and memory, Command center, Sovereign platform, and Baseline and gates. Its items include the fleet ontology of trainset and work order, the two builders' diagnostic event ingestion, the systems of record read integration, and the rehearsed export of ontology and memory that Chapter 10 returns to. Its exit gate is the fleet ontology of trainset and work order: the object model bound to a week of real extracts from both builders, with the joins proven before any agent is built on them, because the riskiest assumption in the whole design is that two builders' vocabularies can be joined into one history a fleet engineer trusts. Phase Two, Passenger Fleet Rollout, carries a single item, new builder vocabulary onboarding in the Fleet ontology workstream: the new trainsets arrive with a new builder and new words, and the point of the ontology is that a new vocabulary is an onboarding item rather than a rebuild. The two phases carry 16 items in total, each traced against the 23 requirements in the requirement register and assessed at a gate rather than asserted up front, and extension to the freight fleet and the new trainsets is earned on the phase one gates rather than scheduled. Figure 8 sets the phases, their item counts, their gates and the coverage trace side by side.
 
-![Figure 8. The two phases and their gates, and coverage of the 23 requirements across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the 23 requirements across them.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the 23 requirements across them.
 
@@ -437,7 +438,7 @@ Chapter 10 settled who owns what the design builds. This chapter opens the recor
 
 The ask was a sovereign AI reference architecture for passenger rail fleet condition monitoring, written in the operator's voice and stating its own constraints: open weight models on the operator's own hardware in the country, reading the builders' platforms and the operator's systems of record, with nothing about the trains leaving the country or reaching a foreign model service. Praxis assigned the family Physical AI and the industry Rail and Transportation; the pin was the FDE's own decision on this project, not a reasoned match, and the brief was still read as reasoning input. What Praxis read was the corpus shelf of each lens, nothing ranked or filtered by keyword, and every precedent, rule and equipment class cited in this paper comes from that reading.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

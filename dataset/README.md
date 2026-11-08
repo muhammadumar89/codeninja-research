@@ -97,22 +97,22 @@ Monthly snapshots carry a DOI; this is the November 2026 release. Cite all versi
 | wafer-defect-inspection-us | semiconductors | United States | [10.5281/zenodo.23889770](https://doi.org/10.5281/zenodo.23889770) |
 | water-utility-ontology-us | energy and utilities | United States | [10.5281/zenodo.23889772](https://doi.org/10.5281/zenodo.23889772) |
 | open-pit-mine-haul-fleet-saudi-arabia | mining | Saudi Arabia | [10.5281/zenodo.23889774](https://doi.org/10.5281/zenodo.23889774) |
-| port-equipment-berth-ontology-saudi-arabia | maritime and ports | Saudi Arabia | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| cold-chain-ontology-us | supply chain and logistics | United States | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| cement-kiln-control-saudi-arabia | heavy industry and construction | Saudi Arabia | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| passenger-rail-fleet-saudi-arabia | rail and transportation | Saudi Arabia | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| freight-corridor-customs-saudi-arabia | supply chain and logistics | Saudi Arabia | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| distribution-loss-theft-pakistan | energy and utilities | Pakistan | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| composite-part-inspection-mro-saudi-arabia | aviation and aerospace manufacturing | Saudi Arabia | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| ot-vulnerability-utility-us | energy and utilities | United States | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| tailings-monitoring-us | mining | United States | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| engine-mro-shop-us | aviation and aerospace manufacturing | United States | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| fertilizer-plant-reliability-pakistan | heavy industry and construction | Pakistan | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| mobile-robot-fulfilment-centre-saudi-arabia | warehousing and intralogistics | Saudi Arabia | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| remote-mine-satellite-pakistan | mining | Pakistan | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| carrier-exceptions-us | supply chain and logistics | United States | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| canal-irrigation-pakistan | agriculture and earth observation | Pakistan | DOI pending (Zenodo session signed out 8 Nov 2026) |
-| weld-assembly-quality-vehicle-plant-pakistan | discrete manufacturing and automotive | Pakistan | DOI pending (Zenodo session signed out 8 Nov 2026) |
+| port-equipment-berth-ontology-saudi-arabia | maritime and ports | Saudi Arabia | [10.5281/zenodo.24048525](https://doi.org/10.5281/zenodo.24048525) |
+| cold-chain-ontology-us | supply chain and logistics | United States | [10.5281/zenodo.24048543](https://doi.org/10.5281/zenodo.24048543) |
+| cement-kiln-control-saudi-arabia | heavy industry and construction | Saudi Arabia | [10.5281/zenodo.24048545](https://doi.org/10.5281/zenodo.24048545) |
+| passenger-rail-fleet-saudi-arabia | rail and transportation | Saudi Arabia | [10.5281/zenodo.24048549](https://doi.org/10.5281/zenodo.24048549) |
+| freight-corridor-customs-saudi-arabia | supply chain and logistics | Saudi Arabia | [10.5281/zenodo.24048557](https://doi.org/10.5281/zenodo.24048557) |
+| distribution-loss-theft-pakistan | energy and utilities | Pakistan | [10.5281/zenodo.24048559](https://doi.org/10.5281/zenodo.24048559) |
+| composite-part-inspection-mro-saudi-arabia | aviation and aerospace manufacturing | Saudi Arabia | [10.5281/zenodo.24048561](https://doi.org/10.5281/zenodo.24048561) |
+| ot-vulnerability-utility-us | energy and utilities | United States | [10.5281/zenodo.24048567](https://doi.org/10.5281/zenodo.24048567) |
+| tailings-monitoring-us | mining | United States | [10.5281/zenodo.24048569](https://doi.org/10.5281/zenodo.24048569) |
+| engine-mro-shop-us | aviation and aerospace manufacturing | United States | [10.5281/zenodo.24048571](https://doi.org/10.5281/zenodo.24048571) |
+| fertilizer-plant-reliability-pakistan | heavy industry and construction | Pakistan | [10.5281/zenodo.24048577](https://doi.org/10.5281/zenodo.24048577) |
+| mobile-robot-fulfilment-centre-saudi-arabia | warehousing and intralogistics | Saudi Arabia | [10.5281/zenodo.24048579](https://doi.org/10.5281/zenodo.24048579) |
+| remote-mine-satellite-pakistan | mining | Pakistan | [10.5281/zenodo.24048581](https://doi.org/10.5281/zenodo.24048581) |
+| carrier-exceptions-us | supply chain and logistics | United States | [10.5281/zenodo.24048585](https://doi.org/10.5281/zenodo.24048585) |
+| canal-irrigation-pakistan | agriculture and earth observation | Pakistan | [10.5281/zenodo.24048587](https://doi.org/10.5281/zenodo.24048587) |
+| weld-assembly-quality-vehicle-plant-pakistan | discrete manufacturing and automotive | Pakistan | [10.5281/zenodo.24048589](https://doi.org/10.5281/zenodo.24048589) |
 
 Source files and the tool that builds these rows: https://github.com/muhammadumar89/codeninja-research (`tools/dataset_rows.py`). Each paper is also its own Hugging Face Space and dataset; this is the cumulative table.
 

@@ -1,6 +1,7 @@
 # Industrial AI Reference Architecture for Tailings Storage Facility Monitoring in the United States
 
 Canonical: https://codeatoms.ai/tailings-monitoring-us/
+DOI: https://doi.org/10.5281/zenodo.24048569
 PDF: https://codeatoms.ai/tailings-monitoring-us/paper/tailings-monitoring-us.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the industry problem and the join failure across the existing s
 
 ---
 
-![Figure 1. Section Story on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Section Story on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_01.png)
 
 Figure 1. Section Story on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 established the question the operation needs answered and the regimes 
 
 The historian is the primary live source: it sees minute-level readings for every instrument tag, and it misses which section a tag anchors, which design assumption it verifies and which deposition or storm surrounds any given reading. The satellite radar deformation reports see surface deformation across the facility each survey, and they miss everything between surveys and everything beneath the surface. The daily inspection app sees what the operator saw, in words nobody searches, and misses any join between the walk and the trends running beside it. The trigger action response plan sees thresholds per parameter and the predefined actions attached to them, and misses the pattern that spans instruments, because it fires on single instruments. The engineer of record's reports and drawings see the design basis and the section definitions, and miss live behavior entirely. The deposition and raise plans see intended events with dates and volumes, and miss the instrument response those events caused. The water balance model sees forecast pond elevation from inflows and outflows, and misses the measured divergence read against its context. The regulator's correspondence sees due dates, submissions and notices, and misses the evidence trail behind each filing. Figure 2 sets these eight slices side by side, each converging on the question none of them can answer alone.
 
-![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_02.png)
 
 Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -184,7 +185,7 @@ Chapter 3 fixed the constraints and the scoping they forced: read the systems of
 
 The design follows one pattern. The systems of record sit at the bottom, never replaced, never modified and never loaded directly. One governed object model sits in the middle, a projection over those records rather than a copy of them. The applications and agents sit above it and read only the model. Figure 3 shows the layered stack with its counts: eight source systems below, two adapter families above them, fifteen objects in the middle, four models across three inference tiers, then six services and five surfaces at the top. The pattern fits this problem because the ask is a join, not a rebuild: the owner asked to read the loggers, the historian and the reports and join them, and a new central historian or data lake would spend its budget moving data that already sits where it belongs. The projection rule keeps the middle layer small, since it holds objects and typed links rather than copies of minute-level readings, while every layer runs on hardware the owner owns, from the edge units at the logger network to the inference node in the site server room.
 
-![Figure 3. The layered stack: 8 sources, 2 adapter families, 15 objects, 6 services and 5 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 8 sources, 2 adapter families, 15 objects, 6 services and 5 surfaces.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_03.png)
 
 Figure 3. The layered stack: 8 sources, 2 adapter families, 15 objects, 6 services and 5 surfaces.
 
@@ -237,7 +238,7 @@ Chapter 4 described the stack that runs from the systems of record to the surfac
 
 The model holds fifteen objects. Two are assets: Embankment Section and Instrument. Three are events: Raise, Trigger and Deposition Event. Two are measures: Reading and Pond Level. Four are records: Trigger Level, Inspection Observation, Pattern Draft and Response Draft. Two are documents: Radar Survey and Regulator Submission. One is an actor, the Engineer of Record, and one is a system, the Water Balance Model. Figure 4 shows every object and the typed links between them. What the links buy is reach. Take the problem the owner stated: a piezometer rising slowly over a month is visible in the historian but joined to nothing. A query anchored on those readings walks to their instrument by tag, to the instrument's section, to the raise stage that section is in, to the deposition events that moved the beach toward it, to the inspection observations recorded on that section, to the radar survey that covered it, and to the matched past episodes held in memory, then returns the whole argument with citations. A document store holding the same six sources can return whatever mentions the instrument tag; it cannot walk relationships nobody wrote down, which is why the story of one section over a year is today assembled by hand. Table 8, printed with this section by the platform, lists every object with the source it is anchored in and its typed links.
 
-![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_04.png)
 
 Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
 
@@ -282,7 +283,7 @@ Chapter 5 described what the object model holds and who writes to it. This chapt
 
 Every source in this design is of operator provenance and read-only in direction. The instrumentation data logger network and its historian supplies the minute-level readings for every instrument. The satellite radar deformation reports supply the quarterly surface deformation surveys that join to instrument trends in the section story. The daily inspection app holds the operators' recorded observations, today in words nobody searches. The trigger action response plan supplies the trigger levels and predefined actions the agents draft against. The engineer of record's reports and drawings supply the design basis and the section definitions the ontology anchors on. The deposition and raise plans supply the events that explain instrument behavior. The water balance model supplies the forecast that pond level divergences are read against. The regulator's correspondence supplies the submissions, notices and due dates that are tracked as objects. Figure 5 maps each named system to its provenance class and its adapter path. The industry has reached the same conclusion from the other side: the Global Mining Guidelines Group published a guideline for sharing open data sets in mining because data held in systems that cannot be joined is data wasted (Gmggroup 2022), and China's national mine safety authority issued basic requirements for data fusion and sharing in intelligent mines (Chinamine-safety 2023). This design joins the owner's data inside its own boundary instead of publishing it.
 
-![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_05.png)
 
 Figure 5. The 8 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -310,7 +311,7 @@ The site tier runs in the site server room beside the GPU node. Chronos-2, about
 
 The central tier is the drafting tier: gpt-oss-120b served with vLLM on one node of eight 80 GB GPUs, 640 GB of memory in total. The sizing rule the design stands on files 117B parameters at INT4, 0.5 bytes per parameter, which is 58.4 GB of weights; the 1.2 planning factor reserves about 12 GB more for KV cache and activations, so the GPUs must hold 70.1 GB, and the node holds it with 582 GB to spare beside the weights. The model card files the same model as 116.8B total parameters with 5.1B active in a mixture of experts architecture at MXFP4, about 61 GB, which fits a single 80 GB GPU with headroom. Figure 6 sets the three tiers side by side, with what runs on each and what crosses between them.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -330,7 +331,7 @@ Four Apache-2.0 models, gpt-oss-120b for the work surface, Granite Tiny Time Mix
 
 Chapter 7 placed screening at the loggers and reasoning in the server room, on one node of eight 80 GB GPUs. This chapter names the four models that run on those tiers and shows why their licenses let the owner hold every weight it runs, which is the question an industrial AI reference architecture exists to answer. Figure 7 sets out the model stack: one model per tier, one license family across all of them.
 
-![Figure 7. The four models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The four models, their placement, and the work each one does.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_07.png)
 
 Figure 7. The four models, their placement, and the work each one does.
 
@@ -374,7 +375,7 @@ Chapter 8 settled the four models and the licenses that let the owner hold their
 
 Phase One binds one section of the embankment for two quarters of record, and it carries 12 items across five workstreams: the agents and memory, the facility ontology, the on-site platform, the phase one gates, and the command centre. Its exit gate is that one section's records are bound into the ontology, and its item order makes the method visible: bind one section's records, ingest logger readings with edge validation, then ingest the surveys, inspections and plans that give those readings their context. The Run phase carries 2 items under the on-site platform and the run, operate and harden workstreams, hardening the running platform and then training the tailings team and handing over. Phase Two carries a single item under the facility ontology workstream, scaling the ontology to every section, and it opens only after the Run phase has hardened what Phase One proved. Figure 8 sets the three phases side by side with their item counts, workstreams and gates. Each of the 16 requirements is traced to an item and to a gate, so coverage is a matter of record rather than assertion: an item that answers no requirement is cut, and a requirement with no item becomes an open question rather than a silent gap.
 
-![Figure 8. The three phases and their gates, and coverage of the 16 requirements across them.](figures/figure_08.png)
+![Figure 8. The three phases and their gates, and coverage of the 16 requirements across them.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_08.png)
 
 Figure 8. The three phases and their gates, and coverage of the 16 requirements across them.
 
@@ -445,7 +446,7 @@ Chapter 10 argued that the intelligence should stay with the facility that produ
 
 The ask was a requirement written in the owner's voice: a system design for monitoring a large tailings storage facility classified at a high consequence level, instrumented under the global industry standard on tailings management and under state dam safety regulation, operated by a mining company in the United States. Praxis assigned the design to the Physical AI family and the Mining industry; the family and industry pin was the designing engineer's own decision rather than a reasoned match, and the brief was still read whole as reasoning input. What Praxis read was the corpus shelf of each lens, assembled before the design was reasoned rather than from searches made to fit the conclusion.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/tailings-monitoring-us/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

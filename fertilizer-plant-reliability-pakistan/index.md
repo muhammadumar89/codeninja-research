@@ -1,6 +1,7 @@
 # Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan
 
 Canonical: https://codeatoms.ai/fertilizer-plant-reliability-pakistan/
+DOI: https://doi.org/10.5281/zenodo.24048577
 PDF: https://codeatoms.ai/fertilizer-plant-reliability-pakistan/paper/fertilizer-plant-reliability-pakistan.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the industry problem and the join failure, the constraints that
 
 ---
 
-![Figure 1. Cycle Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Cycle Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_01.png)
 
 Figure 1. Cycle Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -124,7 +125,7 @@ Laboratory system lab findings join the equipment story for product and process 
 
 Shift log the narrative record of every restart's trips and leaks, today rebuilt by hand
 
-![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_02.png)
 
 Figure 2. Eight systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -194,7 +195,7 @@ Chapter 3 settled the constraints that shape everything downstream: nothing abou
 
 The architecture is a three-layer pattern. Below sit the systems of record in the OT zone: the distributed control system and its historian, the maintenance management system, the inspection and corrosion records, the vibration monitoring system, the laboratory system, the shift log, the turnaround planning system and the gas supply notice. In the middle sits one governed object model that turns those records into a single story of equipment under cycling stress. Above it run the applications and agents: three drafting agents for restart, cycle damage and turnaround scope, five services and the reliability team's three surfaces. The layers are separated by hardware, not by policy: lidi over a hardware data diode carries the read out of the OT zone, and nothing above the diode has a path back in. The pattern fits because the problem is a join failure rather than a sensing failure, and because it keeps every tier on the operator's own hardware in Pakistan, which is the shape every sovereign industrial AI reference architecture shares. Figure 3 shows the layered stack with its counts: twelve sources, four adapter families, fourteen objects, three models, five services and three surfaces, with the frontier tier on one in-country node.
 
-![Figure 3. The layered stack: 12 sources, 4 adapter families, 14 objects, 5 services and 3 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 12 sources, 4 adapter families, 14 objects, 5 services and 3 surfaces.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_03.png)
 
 Figure 3. The layered stack: 12 sources, 4 adapter families, 14 objects, 5 services and 3 surfaces.
 
@@ -247,7 +248,7 @@ Chapter 4 put one governed object model at the middle of the stack and made it t
 
 Fourteen objects hold the story. On the asset side sit Process Unit and Equipment; on the measure side, Historian Tag, Corrosion Reading and Vibration Reading; on the event side, Trip, Restart and Thermal Cycle; on the record side, Work Order, Inspection Finding, Lab Result and Turnaround Task; on the document side, Shift Log Entry and Restart Plan. Each is anchored in a system of record: Equipment in the maintenance management system, Historian Tag and Trip in the distributed control system and its historian, Restart in the shift log, Inspection Finding and Corrosion Reading in the inspection and corrosion records, and the rest accordingly. The links are typed and directional: a Trip belongs to a Restart and is cited by a Restart Plan; a Thermal Cycle, a Work Order, an Inspection Finding and a Turnaround Task each point at the Equipment they concern; a Shift Log Entry references the Restart it narrates and the Restart Plan it supports. Figure 4 draws all fourteen objects and their links, with Equipment as the focal object. What the links buy is traversal: a query can ask for every trip on the synthesis compressor across this year's restarts, each with the shift log entry that narrates it, the work orders that followed and the vibration readings either side, and get one answer, where a document store holds all those records but cannot join them. That join failure is why reliability engineers rebuild equipment histories by hand today, and its cost is documented well beyond this plant: reviews of coronial inquiries into resources-sector fatalities trace deaths to the loss of corporate memory (Ausimm n.d.), a coroner has called the loss of workplace information after ownership changes explainable but not excusable (Ohsalert 2025), and a labor union has had to mine its own old newsletters to recover its record of past accidents (OR 2021). Cycling a plant a dozen times a year makes that loss more likely, not less. Table 8, printed by the platform, sets out each object, the system of record it is anchored in and its typed links.
 
-![Figure 4. The fourteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fourteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_04.png)
 
 Figure 4. The fourteen objects of the model and the typed links that let a query reach across them.
 
@@ -294,7 +295,7 @@ Chapter 5 defined the fourteen objects the model holds and the confirmation loop
 
 Twelve sources feed the model, and each arrives with its provenance class stamped on every record. Eight are systems of record named by the operator, all read-only: the distributed control system and its historian, the maintenance management system, the inspection and corrosion monitoring records, the vibration monitoring system on the large compressors, the laboratory system, the shift log, the turnaround planning system and the gas supply notice whose arrival triggers the restart agent. The design adds the rest as sensing feeds: the fixed camera lanes at the reformer top deck, the synthesis compressor train and the bagging plant lane, and the citation check that runs on conversational answers before they are shown. Each source is assigned to one of four adapter families, integration, telemetry, ops systems and ERP, chosen by the shape of the interface rather than by the vendor, and Figure 5 maps every source to its family, its provenance class and its path across the boundary. The shift log deserves its own note, because it is the narrative record of every restart's trips and leaks and today it is written but rarely retrieved: an inquest into a site death heard that none of the contractor's employees had read the safety manual for the machine that killed him (Constructionnews 2009), the familiar pattern of records held but never joined, which is exactly what the digitized shift log and its links exist to end.
 
-![Figure 5. The 12 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 12 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_05.png)
 
 Figure 5. The 12 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -320,7 +321,7 @@ The design runs inference in two places. A site server, air-cooled and inside th
 
 The frontier node is fixed by arithmetic rather than preference. GLM 5.3 carries 753 billion parameters, and at FP8, one byte per parameter, its weights are 753 GB; a node of eight GPUs of the 141 GB class holds 1,128 GB, leaving 375 GB beside the weights, of which the 1.2 planning factor reserves about 151 GB for KV cache and activations. At BF16 the same weights would be roughly 1.5 TB and would not fit the node. The site models are hardly a question: Chronos-2 is about 0.48 GB at 32 bit as published and about 0.24 GB at 16 bit, and BGE-M3 is about 2.27 GB at float32 and about 1.1 GB at the FP16 the design runs, so both sit beside the vision models with room to spare. The retrieval tier exists because the records it makes findable are the ones that leave with retiring engineers, and reviews of coronial inquiries tie fatalities in the resources sector to exactly that loss of corporate memory (Ausimm n.d.).
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -342,7 +343,7 @@ GLM 5.3, Chronos-2 and BGE-M3 were each verified against their published footpri
 
 Chapter 7 placed each model on the tier its data and its deadline demanded, and sized the frontier node from the weights. This chapter presents the models themselves, their published footprints and the license terms that let a fertilizer manufacturer in Pakistan hold what it runs.
 
-![Figure 7. The three models, their placement, and the work each one does.](figures/figure_07.png)
+![Figure 7. The three models, their placement, and the work each one does.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_07.png)
 
 Figure 7. The three models, their placement, and the work each one does.
 
@@ -387,7 +388,7 @@ Chapter 8 closed the model register and showed that every license in it lets the
 
 Figure 8 lays the five phases with their item counts, workstreams, exit gates and requirement coverage. Foundation and Boundary carries four items, among them the one-way historian read path, the signed zones and conduits architecture and the dedicated in-country compute sizing; its exit test is the operator's acceptance of those items, since everything downstream reads through the boundary they define. Ontology and Memory carries three items, among them the governed ontology of the cycled plant, the shift by shift ontology refresh and the route-based condition collection, and its gate is that governed ontology. Agents and Command Center carries six items, among them the restart agent with superintendent confirmation, the cycle damage agent for stress ranking and the turnaround scope agent, and its gate is the cycle damage agent ranking stress. Phase One Pilot: Ammonia Front End carries two items, the pilot itself on the ammonia front end and the synthesis compressor train spanning at least one restart, and the baseline measurement and phase gates that hold it; the pilot is gated on the operator's own four baselines. Extension Design carries one item, the extension design to urea and utilities, which stays behind its own gate until the pilot's baselines are met. The sixteen scope items are tracked across the phases, and a phase cannot close its gate while an item it carries remains open.
 
-![Figure 8. The five phases and their gates, and the scope items each one carries.](figures/figure_08.png)
+![Figure 8. The five phases and their gates, and the scope items each one carries.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_08.png)
 
 Figure 8. The five phases and their gates, and the scope items each one carries.
 
@@ -458,7 +459,7 @@ Chapter 10 closed the argument on ownership, and everything it claimed about wha
 
 The ask arrived as a requirement written in the operator's voice: an industrial AI reference architecture for fertilizer plant reliability in Pakistan, for a fertilizer manufacturer running an ammonia and urea complex on pipeline gas and imported regasified gas, cycled repeatedly by gas supply suspensions and restarted from a procedure written for a plant that was not cycled. Praxis assigned it to the heavy industry and construction family and to that industry's reliability problem. What Praxis read was recorded per lens: the case study, tooling and recency, hardware and equipment, rules and regulations, approach and history shelves, with every cited record read whole.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 

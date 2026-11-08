@@ -35,5 +35,5 @@ In every published heavy industry and construction design a named person makes t
 - [Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site](https://codeatoms.ai/structure-phase-construction-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.23126448
 - [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.23126563
 - [Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.23126565
-- [A Self-Improving AI System for Cement Kiln Control in Saudi Arabia](https://codeatoms.ai/cement-kiln-control-saudi-arabia/) (Saudi Arabia)
-- [Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/) (Pakistan)
+- [A Self-Improving AI System for Cement Kiln Control in Saudi Arabia](https://codeatoms.ai/cement-kiln-control-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.24048545
+- [Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.24048577

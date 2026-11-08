@@ -5,7 +5,7 @@
  "paper": {
   "title": "Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan",
   "url": "https://codeatoms.ai/fertilizer-plant-reliability-pakistan/",
-  "doi": ""
+  "doi": "10.5281/zenodo.24048577"
  },
  "sector": "heavy industry and construction",
  "country": "Pakistan",
@@ -17,7 +17,12 @@
    "label": "Process unit",
    "kind": "asset",
    "anchored_in": "The maintenance management system (equipment hierarchy)",
-   "properties": ["Unit name", "Unit class", "Design capacity", "Commissioning year"],
+   "properties": [
+    "Unit name",
+    "Unit class",
+    "Design capacity",
+    "Commissioning year"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -26,7 +31,11 @@
    "label": "Equipment",
    "kind": "asset",
    "anchored_in": "The maintenance management system",
-   "properties": ["Tag number", "Serial number", "Equipment class"],
+   "properties": [
+    "Tag number",
+    "Serial number",
+    "Equipment class"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -35,7 +44,11 @@
    "label": "Historian tag",
    "kind": "measure",
    "anchored_in": "The distributed control system and its historian",
-   "properties": ["Tag id", "Engineering unit", "Scan rate"],
+   "properties": [
+    "Tag id",
+    "Engineering unit",
+    "Scan rate"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -44,11 +57,21 @@
    "label": "Trip",
    "kind": "event",
    "anchored_in": "The distributed control system and its historian",
-   "properties": ["Timestamp", "Tag", "Cause code"],
+   "properties": [
+    "Timestamp",
+    "Tag",
+    "Cause code"
+   ],
    "status_vocabulary": [],
    "links": [
-    {"to": "restart", "label": "belongs to"},
-    {"to": "restart-plan", "label": "cited by"}
+    {
+     "to": "restart",
+     "label": "belongs to"
+    },
+    {
+     "to": "restart-plan",
+     "label": "cited by"
+    }
    ]
   },
   {
@@ -56,8 +79,19 @@
    "label": "Restart",
    "kind": "event",
    "anchored_in": "The shift log",
-   "properties": ["Gas restoration time", "Stable production time", "Suspension duration", "Trips count", "Leaks observed"],
-   "status_vocabulary": ["Drafted", "Confirmed by superintendent", "In progress", "Stable"],
+   "properties": [
+    "Gas restoration time",
+    "Stable production time",
+    "Suspension duration",
+    "Trips count",
+    "Leaks observed"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Confirmed by superintendent",
+    "In progress",
+    "Stable"
+   ],
    "links": []
   },
   {
@@ -65,10 +99,17 @@
    "label": "Thermal cycle",
    "kind": "event",
    "anchored_in": "Derived from the distributed control system and its historian",
-   "properties": ["Equipment", "Start timestamp", "End timestamp"],
+   "properties": [
+    "Equipment",
+    "Start timestamp",
+    "End timestamp"
+   ],
    "status_vocabulary": [],
    "links": [
-    {"to": "equipment", "label": "stresses"}
+    {
+     "to": "equipment",
+     "label": "stresses"
+    }
    ]
   },
   {
@@ -76,10 +117,17 @@
    "label": "Work order",
    "kind": "record",
    "anchored_in": "The maintenance management system",
-   "properties": ["Work order number", "Equipment", "Failure mode"],
+   "properties": [
+    "Work order number",
+    "Equipment",
+    "Failure mode"
+   ],
    "status_vocabulary": [],
    "links": [
-    {"to": "equipment", "label": "concerns"}
+    {
+     "to": "equipment",
+     "label": "concerns"
+    }
    ]
   },
   {
@@ -87,10 +135,22 @@
    "label": "Inspection finding",
    "kind": "record",
    "anchored_in": "The inspection and corrosion monitoring records",
-   "properties": ["Finding id", "Equipment", "Method"],
-   "status_vocabulary": ["Open", "Accepted", "Closed", "Brought forward"],
+   "properties": [
+    "Finding id",
+    "Equipment",
+    "Method"
+   ],
+   "status_vocabulary": [
+    "Open",
+    "Accepted",
+    "Closed",
+    "Brought forward"
+   ],
    "links": [
-    {"to": "equipment", "label": "concerns"}
+    {
+     "to": "equipment",
+     "label": "concerns"
+    }
    ]
   },
   {
@@ -98,7 +158,11 @@
    "label": "Corrosion reading",
    "kind": "measure",
    "anchored_in": "The inspection and corrosion monitoring records",
-   "properties": ["Point id", "Thickness", "Rate of loss"],
+   "properties": [
+    "Point id",
+    "Thickness",
+    "Rate of loss"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -107,10 +171,17 @@
    "label": "Vibration reading",
    "kind": "measure",
    "anchored_in": "The vibration monitoring system on the large compressors",
-   "properties": ["Machine", "Probe", "Overall value"],
+   "properties": [
+    "Machine",
+    "Probe",
+    "Overall value"
+   ],
    "status_vocabulary": [],
    "links": [
-    {"to": "equipment", "label": "measures"}
+    {
+     "to": "equipment",
+     "label": "measures"
+    }
    ]
   },
   {
@@ -118,7 +189,11 @@
    "label": "Lab result",
    "kind": "record",
    "anchored_in": "The laboratory system",
-   "properties": ["Sample id", "Parameter", "Value"],
+   "properties": [
+    "Sample id",
+    "Parameter",
+    "Value"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -127,11 +202,21 @@
    "label": "Shift log entry",
    "kind": "document",
    "anchored_in": "The shift log",
-   "properties": ["Shift date", "Author", "Free text entry"],
+   "properties": [
+    "Shift date",
+    "Author",
+    "Free text entry"
+   ],
    "status_vocabulary": [],
    "links": [
-    {"to": "restart", "label": "narrates"},
-    {"to": "restart-plan", "label": "supports"}
+    {
+     "to": "restart",
+     "label": "narrates"
+    },
+    {
+     "to": "restart-plan",
+     "label": "supports"
+    }
    ]
   },
   {
@@ -139,10 +224,17 @@
    "label": "Turnaround task",
    "kind": "record",
    "anchored_in": "The turnaround planning system",
-   "properties": ["Task id", "Equipment", "Scope line"],
+   "properties": [
+    "Task id",
+    "Equipment",
+    "Scope line"
+   ],
    "status_vocabulary": [],
    "links": [
-    {"to": "equipment", "label": "concerns"}
+    {
+     "to": "equipment",
+     "label": "concerns"
+    }
    ]
   },
   {
@@ -150,10 +242,21 @@
    "label": "Restart plan",
    "kind": "document",
    "anchored_in": "The restart agent's draft, confirmed by the shift superintendent",
-   "properties": ["Draft id", "Matched restarts cited", "Checks listed"],
-   "status_vocabulary": ["Drafted", "Confirmed", "Superseded"],
+   "properties": [
+    "Draft id",
+    "Matched restarts cited",
+    "Checks listed"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Confirmed",
+    "Superseded"
+   ],
    "links": [
-    {"to": "trip", "label": "cites"}
+    {
+     "to": "trip",
+     "label": "cites"
+    }
    ]
   }
  ],

@@ -38,5 +38,5 @@ In every published energy and utilities design a named person makes the decision
 - [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.23365092
 - [Sovereign AI Architecture for a Grid Control Room in Saudi Arabia](https://codeatoms.ai/grid-control-room-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.23889768
 - [Industrial Data Ontology for a Water Utility in the United States](https://codeatoms.ai/water-utility-ontology-us/) (United States), DOI https://doi.org/10.5281/zenodo.23889772
-- [Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan](https://codeatoms.ai/distribution-loss-theft-pakistan/) (Pakistan)
-- [A Self-Improving AI System for OT Vulnerability Management at a Utility in the United States](https://codeatoms.ai/ot-vulnerability-utility-us/) (United States)
+- [Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan](https://codeatoms.ai/distribution-loss-theft-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.24048559
+- [A Self-Improving AI System for OT Vulnerability Management at a Utility in the United States](https://codeatoms.ai/ot-vulnerability-utility-us/) (United States), DOI https://doi.org/10.5281/zenodo.24048567

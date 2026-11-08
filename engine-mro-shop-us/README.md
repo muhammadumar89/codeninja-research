@@ -8,7 +8,7 @@ An [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-ref
 **Paper:** [PDF](paper/engine-mro-shop-us.pdf) · [HTML](paper/engine-mro-shop-us.html) · [Word](paper/engine-mro-shop-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
 **DOI:** pending
 
-**Licence:** CC BY 4.0. Cite the DOI on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

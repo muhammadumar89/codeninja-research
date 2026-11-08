@@ -11,13 +11,13 @@ Recommended path: start from the nearest published energy and utilities design; 
 ## What we bring
 
 - [Turbine Island Watch: Condition Monitoring and Diagnostics for a Combined Cycle Plant in Pakistan](https://codeatoms.ai/steam-turbine-condition-monitoring-pakistan/) (Pakistan): 10 objects, 5 models, DOI https://doi.org/10.5281/zenodo.23365092
-- [Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan](https://codeatoms.ai/distribution-loss-theft-pakistan/) (Pakistan): 15 objects, 3 models
+- [Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan](https://codeatoms.ai/distribution-loss-theft-pakistan/) (Pakistan): 15 objects, 3 models, DOI https://doi.org/10.5281/zenodo.24048559
 - [Reliability Atlas: A Plant Reliability Assessment Study the Operator Can Audit](https://codeatoms.ai/plant-reliability-assessment-saudi-arabia/) (Saudi Arabia): 13 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23157965
 - [Sovereign AI Architecture for a Grid Control Room in Saudi Arabia](https://codeatoms.ai/grid-control-room-saudi-arabia/) (Saudi Arabia): 16 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23889768
 - [Feeder Firewatch: Live Ignition and Outage Risk for Every Distribution Feeder](https://codeatoms.ai/wildfire-risk-distribution-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23159328
 - [Grid Context Watch: One system of context for OT Security and NERC CIP Evidence](https://codeatoms.ai/ot-security-cip-evidence-us/) (United States): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23157957
 - [Industrial Data Ontology for a Water Utility in the United States](https://codeatoms.ai/water-utility-ontology-us/) (United States): 16 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23889772
-- [A Self-Improving AI System for OT Vulnerability Management at a Utility in the United States](https://codeatoms.ai/ot-vulnerability-utility-us/) (United States): 16 objects, 2 models
+- [A Self-Improving AI System for OT Vulnerability Management at a Utility in the United States](https://codeatoms.ai/ot-vulnerability-utility-us/) (United States): 16 objects, 2 models, DOI https://doi.org/10.5281/zenodo.24048567
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
 

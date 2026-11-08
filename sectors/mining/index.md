@@ -33,5 +33,5 @@ In every published mining design a named person makes the decision that changes 
 ## Sources
 
 - [Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/) (Saudi Arabia), DOI https://doi.org/10.5281/zenodo.23889774
-- [Industrial AI Reference Architecture for Tailings Storage Facility Monitoring in the United States](https://codeatoms.ai/tailings-monitoring-us/) (United States)
-- [Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan](https://codeatoms.ai/remote-mine-satellite-pakistan/) (Pakistan)
+- [Industrial AI Reference Architecture for Tailings Storage Facility Monitoring in the United States](https://codeatoms.ai/tailings-monitoring-us/) (United States), DOI https://doi.org/10.5281/zenodo.24048569
+- [Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan](https://codeatoms.ai/remote-mine-satellite-pakistan/) (Pakistan), DOI https://doi.org/10.5281/zenodo.24048581

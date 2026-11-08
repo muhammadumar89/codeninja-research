@@ -5,7 +5,7 @@
  "paper": {
   "title": "Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan",
   "url": "https://codeatoms.ai/remote-mine-satellite-pakistan/",
-  "doi": ""
+  "doi": "10.5281/zenodo.24048581"
  },
  "sector": "mining",
  "country": "Pakistan",
@@ -17,7 +17,12 @@
    "label": "Construction area",
    "kind": "site",
    "anchored_in": "The project controls system",
-   "properties": ["Area code", "Earthworks scope", "Active work packages", "Area supervisor"],
+   "properties": [
+    "Area code",
+    "Earthworks scope",
+    "Active work packages",
+    "Area supervisor"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -26,16 +31,29 @@
    "label": "Pad",
    "kind": "site",
    "anchored_in": "The construction management and permit to work system",
-   "properties": ["Pad number", "Parent area", "Open permits"],
+   "properties": [
+    "Pad number",
+    "Parent area",
+    "Open permits"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "construction-area", "label": "sits in"}]
+   "links": [
+    {
+     "to": "construction-area",
+     "label": "sits in"
+    }
+   ]
   },
   {
    "id": "work-package",
    "label": "Work package",
    "kind": "record",
    "anchored_in": "The project controls system",
-   "properties": ["Package number", "Scope", "Planned dates"],
+   "properties": [
+    "Package number",
+    "Scope",
+    "Planned dates"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -44,34 +62,69 @@
    "label": "Permit",
    "kind": "record",
    "anchored_in": "The construction management and permit to work system",
-   "properties": ["Permit number", "Pad", "Crew"],
+   "properties": [
+    "Permit number",
+    "Pad",
+    "Crew"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "pad", "label": "issued on"}, {"to": "crew", "label": "worked by"}]
+   "links": [
+    {
+     "to": "pad",
+     "label": "issued on"
+    },
+    {
+     "to": "crew",
+     "label": "worked by"
+    }
+   ]
   },
   {
    "id": "crew",
    "label": "Crew",
    "kind": "actor",
    "anchored_in": "The camp and workforce management system",
-   "properties": ["Crew id", "Employer", "Trade"],
+   "properties": [
+    "Crew id",
+    "Employer",
+    "Trade"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "pad", "label": "works at"}]
+   "links": [
+    {
+     "to": "pad",
+     "label": "works at"
+    }
+   ]
   },
   {
    "id": "worker",
    "label": "Worker",
    "kind": "actor",
    "anchored_in": "The camp and workforce management system",
-   "properties": ["Worker id", "Employer", "Camp bed"],
+   "properties": [
+    "Worker id",
+    "Employer",
+    "Camp bed"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "camp-occupancy", "label": "occupies"}]
+   "links": [
+    {
+     "to": "camp-occupancy",
+     "label": "occupies"
+    }
+   ]
   },
   {
    "id": "equipment-unit",
    "label": "Equipment unit",
    "kind": "asset",
    "anchored_in": "The equipment telematics and maintenance system",
-   "properties": ["Unit number", "Class", "Running hours"],
+   "properties": [
+    "Unit number",
+    "Class",
+    "Running hours"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -80,25 +133,54 @@
    "label": "Fault",
    "kind": "event",
    "anchored_in": "The equipment telematics and maintenance system",
-   "properties": ["Fault code", "Unit", "Raised at"],
+   "properties": [
+    "Fault code",
+    "Unit",
+    "Raised at"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "equipment-unit", "label": "raised on"}]
+   "links": [
+    {
+     "to": "equipment-unit",
+     "label": "raised on"
+    }
+   ]
   },
   {
    "id": "work-order",
    "label": "Work order",
    "kind": "record",
    "anchored_in": "The equipment telematics and maintenance system",
-   "properties": ["Work order number", "Unit", "Fault"],
+   "properties": [
+    "Work order number",
+    "Unit",
+    "Fault"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "work-package", "label": "belongs to"}, {"to": "fault", "label": "traces to"}, {"to": "part", "label": "requires"}]
+   "links": [
+    {
+     "to": "work-package",
+     "label": "belongs to"
+    },
+    {
+     "to": "fault",
+     "label": "traces to"
+    },
+    {
+     "to": "part",
+     "label": "requires"
+    }
+   ]
   },
   {
    "id": "part",
    "label": "Part",
    "kind": "material",
    "anchored_in": "The supply and logistics tracking system",
-   "properties": ["Part number", "On site quantity"],
+   "properties": [
+    "Part number",
+    "On site quantity"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -107,7 +189,11 @@
    "label": "Convoy",
    "kind": "asset",
    "anchored_in": "The supply and logistics tracking system",
-   "properties": ["Convoy id", "Route", "Planned arrival"],
+   "properties": [
+    "Convoy id",
+    "Route",
+    "Planned arrival"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -116,16 +202,37 @@
    "label": "Consignment",
    "kind": "material",
    "anchored_in": "The supply and logistics tracking system",
-   "properties": ["Consignment number", "Contents", "Convoy"],
+   "properties": [
+    "Consignment number",
+    "Contents",
+    "Convoy"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "convoy", "label": "carried by"}, {"to": "work-order", "label": "fulfills"}, {"to": "work-package", "label": "serves"}]
+   "links": [
+    {
+     "to": "convoy",
+     "label": "carried by"
+    },
+    {
+     "to": "work-order",
+     "label": "fulfills"
+    },
+    {
+     "to": "work-package",
+     "label": "serves"
+    }
+   ]
   },
   {
    "id": "camp-occupancy",
    "label": "Camp occupancy",
    "kind": "measure",
    "anchored_in": "The camp and workforce management system",
-   "properties": ["Date", "Beds occupied", "Contractor headcount"],
+   "properties": [
+    "Date",
+    "Beds occupied",
+    "Contractor headcount"
+   ],
    "status_vocabulary": [],
    "links": []
   },
@@ -134,16 +241,29 @@
    "label": "Incident",
    "kind": "event",
    "anchored_in": "The health, safety and environment system",
-   "properties": ["Incident id", "Severity", "Location"],
+   "properties": [
+    "Incident id",
+    "Severity",
+    "Location"
+   ],
    "status_vocabulary": [],
-   "links": [{"to": "permit", "label": "links to"}]
+   "links": [
+    {
+     "to": "permit",
+     "label": "links to"
+    }
+   ]
   },
   {
    "id": "utility-tag",
    "label": "Utility tag",
    "kind": "measure",
    "anchored_in": "The site historian for power and water",
-   "properties": ["Tag id", "Medium", "Current value"],
+   "properties": [
+    "Tag id",
+    "Medium",
+    "Current value"
+   ],
    "status_vocabulary": [],
    "links": []
   }

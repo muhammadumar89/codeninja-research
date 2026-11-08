@@ -1,6 +1,7 @@
 # Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States
 
 Canonical: https://codeatoms.ai/engine-mro-shop-us/
+DOI: https://doi.org/10.5281/zenodo.24048571
 PDF: https://codeatoms.ai/engine-mro-shop-us/paper/engine-mro-shop-us.pdf
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
@@ -53,7 +54,7 @@ The paper covers the industry problem and the join failure across the shop's sys
 
 ---
 
-![Figure 1. Critical Path Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](figures/figure_01.png)
+![Figure 1. Critical Path Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_01.png)
 
 Figure 1. Critical Path Watch on one page: the sources the operation already runs, one object model, what it computes, and the person who decides.
 
@@ -114,7 +115,7 @@ Chapter 1 stated the question and the regulatory ground it stands on. This chapt
 
 The maintenance and engineering system is the spine: it holds work orders, task cards, gates and the engine's position against them, and it is where release is recorded, yet it has no idea where any serialized part physically sits or which vendor holds it. The parts tracking and inventory system knows exactly which part is where, in stock, in repair at a vendor, on order or installed, but it does not know the gate plan or the date the airline was promised. The vendor repair order system knows a repair order is open, in work, late or closed, and it knows the vendor, but it cannot see which engine's build slot that late order is holding. The material purchasing system issues and tracks the purchase orders that follow a workscope change, without knowing the inspection finding that triggered them. The inspection findings records hold the finding, the engine manual reference, the inspector and the disposition, but not the cascade through parts, vendors and build slots that the finding sets off. The test cell data holds parameters and the pass outcome that closes an engine's story, without the parts story that explains a marginal parameter. The workscope and contract terms hold the promised date and the terms governing what the shop may decide, without any view of where the engine actually stands against that date. Figure 2 sets these seven slices side by side.
 
-![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](figures/figure_02.png)
+![Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_02.png)
 
 Figure 2. Seven systems, each seeing one part of the answer. The question needs all of them in one place at once.
 
@@ -187,7 +188,7 @@ The pattern is three layers in a fixed order. Below sit the systems of record, n
 
 The pattern fits because of what Chapter 2 showed: every system sees one slice of the engine, and the slices meet only when the engine misses its date. A stack that joined nothing would change nothing; a stack that joins the seven changes the question the shop can ask. Figure 3 shows the layered stack with the count at each layer, and it marks one further decision: there is no edge tier, because the design watches records and plans rather than the floor, and all inference runs centrally.
 
-![Figure 3. The layered stack: 7 sources, 1 adapter family, 15 objects, 7 services and 4 surfaces.](figures/figure_03.png)
+![Figure 3. The layered stack: 7 sources, 1 adapter family, 15 objects, 7 services and 4 surfaces.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_03.png)
 
 Figure 3. The layered stack: 7 sources, 1 adapter family, 15 objects, 7 services and 4 surfaces.
 
@@ -242,7 +243,7 @@ Chapter 4 placed the object model in the stack. This chapter describes what it h
 
 The 15 objects are Engine, Customer, Workscope, Gate, Module, Part, Inspection finding, Disposition, Repair order, Vendor, Purchase order, Material lot, Build slot, Test, Release. The plan implies 16 typed links, such as the link from an engine to its customer.
 
-![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](figures/figure_04.png)
+![Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_04.png)
 
 Figure 4. The fifteen objects of the model and the typed links that let a query reach across them.
 
@@ -287,7 +288,7 @@ Chapter 5 defined the fifteen objects and their typed links, the argument the sh
 
 Every source named in the design is an operational system the shop already runs, and each enters the same way: through the integration adapter, never directly. The maintenance and engineering system holds work orders, task cards, gates and build slots, and it anchors the engine, module, gate, build slot and release objects. The parts tracking and inventory system resolves serialized part instances and material lots. The vendor repair order system holds repair orders and the vendor records behind them. The material purchasing system issues purchase orders. The inspection findings records carry the findings and dispositions that trigger the workscope cascade. Test cell data closes each engine's story with parameters and pass findings. The customer workscope and contract terms hold the promised date and the terms governing what the shop may decide, and it is read only. All seven are of operator provenance, all are read, and none is written to by ingestion. Figure 5 sets each named system beside its provenance class and its adapter path. Material integrity makes this tier more than plumbing: the aviation supply chain carries a documented risk of unapproved parts, which the regulator actively works to discover and remove (FAA n.d.), and the adapter preserves each record's certification and condition properties so a quarantined lot can never silently become an installed part.
 
-![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](figures/figure_05.png)
+![Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_05.png)
 
 Figure 5. The 7 named systems, the adapter path each one takes, and the object model they all map into.
 
@@ -313,7 +314,7 @@ The design watches records and plans, not cameras: the shop floor is not sensed,
 
 The memory arithmetic fixes the tier's size. The work surface runs GLM 5.3 open weights, a frontier class model with 753 billion parameters filed, at or above the 300 billion parameter threshold that defines the frontier class. At INT4 precision each parameter occupies half a byte, so the weights alone are 376 GB. The 1.2 planning factor reserves roughly another 75 GB for the KV cache, the memory that holds conversation context so each new token does not force a recomputation of everything before it, and for activations; the GPUs must therefore hold about 452 GB in total. One node of eight 80 GB GPUs offers 640 GB of high bandwidth memory, which holds the weights with 264 GB left beside them, headroom that lets the KV cache ceiling rise with concurrent planner sessions rather than capping the number of planners who can work at once. Serving runs on vLLM, the stack's on site language model serving choice, with observability on Prometheus 3.13 LTS, Grafana and Loki.
 
-![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](figures/figure_06.png)
+![Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_06.png)
 
 Figure 6. Where each tier runs, what runs there, and the narrow set of outputs that cross the boundary.
 
@@ -333,7 +334,7 @@ One open-weight frontier model carries the work surface, and the terms of its li
 
 Chapter 7 fixed the tier and the arithmetic: one node of eight 80 GB GPUs holding a frontier class model's weights with room for the KV cache. This chapter describes the model that runs there, the terms of its license, and the register of everything the design stands on.
 
-![Figure 7. The one model, its placement, and the work it does.](figures/figure_07.png)
+![Figure 7. The one model, its placement, and the work it does.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_07.png)
 
 Figure 7. The one model, its placement, and the work it does.
 
@@ -376,7 +377,7 @@ Phase one covers one engine type and its induction line for one quarter, and it 
 
 Phase two carries 2 items, the engine type extension path and the sovereign exit rehearsal, and its gate is that rehearsal: the export of the model, the memory and the object model is practiced end to end before the shop ever needs to exercise it in earnest. Fourteen requirements govern the whole build, and each is traced to a phase item; the trace is reviewed at each gate, and a requirement with no item behind it stops the phase rather than surviving as intent.
 
-![Figure 8. The two phases and their gates, and coverage of the 14 requirements across them.](figures/figure_08.png)
+![Figure 8. The two phases and their gates, and coverage of the 14 requirements across them.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_08.png)
 
 Figure 8. The two phases and their gates, and coverage of the 14 requirements across them.
 
@@ -451,7 +452,7 @@ Chapter 10 settled who owns what the build produces. This chapter opens the reas
 
 The ask arrived as a requirement written in the operator's own words: an industrial AI reference architecture the shop owns, open weight models of United States origin on its own hardware, reading its systems of record, with nothing about airlines' engines leaving its control or reaching a third party model service. Praxis assigned the design to the Enterprise AI family and to Aviation and Aerospace Manufacturing as the industry, with the country of operation, the United States, fixed by the operator's own requirement. Praxis read the case study, tooling, hardware, rules, approach and history shelves; every count, name and figure in this paper traces to that reading.
 
-![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](figures/figure_09.png)
+![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_09.png)
 
 Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.
 
