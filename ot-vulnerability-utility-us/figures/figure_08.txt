@@ -1,0 +1,1 @@
+Figure 8. The two phases and their gates, and coverage of the one requirement across them.

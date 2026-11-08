@@ -4,7 +4,333 @@ Canonical: https://codeatoms.ai/industrial-ontology-examples/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 28 published industrial ontology examples, 397 objects and 360 links in all, one per real operation across 11 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+An industrial ontology is a typed model of a physical operation: its assets, records, events and people as objects, each with properties, status values and named links to the others, anchored in the systems that already hold the data. Below are 44 published industrial ontology examples, 643 objects and 560 links in all, one per real operation across 12 sectors. Each downloads as hyper-ontology/1 JSON under CC BY 4.0.
+
+## Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan (discrete manufacturing and automotive, Pakistan)
+
+Design: https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/ · JSON: https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/ontology/objects.json
+
+- Vehicle (asset, in Manufacturing execution system)
+- Body (asset, in Manufacturing execution system)
+- Station (site, in Manufacturing execution system)
+- Operation (event, in Manufacturing execution system)
+- Weld point (measure, in Robot and weld controller logs)
+- Sealer bead (measure, in Robot and weld controller logs)
+- Torque result (measure, in Torque tool controllers)
+- Part (asset, in Supplier parts receiving records)
+- Supplier lot (record, in Supplier parts receiving records)
+- Defect (event, in Quality management system)
+- Defect class (record, in Quality management system)
+- Repair ticket (record, in Quality management system)
+- Audit finding (record, in Quality management system)
+- Corrective action (record, in Quality management system)
+- Body shop quality inspector (actor)
+- Quality manager (actor)
+
+## Industrial AI Reference Architecture for Tailings Storage Facility Monitoring in the United States (mining, United States)
+
+Design: https://codeatoms.ai/tailings-monitoring-us/ · JSON: https://codeatoms.ai/tailings-monitoring-us/ontology/objects.json
+
+- Embankment Section (asset, in The engineer of record's reports and drawings)
+- Raise (event, in The deposition and raise plans)
+- Instrument (asset, in The instrumentation data logger network and its historian)
+- Reading (measure, in The instrumentation data logger network and its historian)
+- Trigger Level (record, in The trigger action response plan with its thresholds)
+- Trigger (event, in The trigger action response plan with its thresholds)
+- Inspection Observation (record, in The daily inspection app)
+- Deposition Event (event, in The deposition and raise plans)
+- Pond Level (measure, in The instrumentation data logger network and its historian)
+- Radar Survey (document, in The satellite radar deformation reports)
+- Pattern Draft (record, in The agents and memory service (a drafted record, not a system of record))
+- Response Draft (record, in The agents and memory service (a drafted record, not a system of record))
+- Regulator Submission (document, in The regulator's correspondence)
+- Engineer of Record (actor)
+- Water Balance Model (system, in The water balance model)
+
+## Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan (mining, Pakistan)
+
+Design: https://codeatoms.ai/remote-mine-satellite-pakistan/ · JSON: https://codeatoms.ai/remote-mine-satellite-pakistan/ontology/objects.json
+
+- Construction area (site, in The project controls system)
+- Pad (site, in The construction management and permit to work system)
+- Work package (record, in The project controls system)
+- Permit (record, in The construction management and permit to work system)
+- Crew (actor, in The camp and workforce management system)
+- Worker (actor, in The camp and workforce management system)
+- Equipment unit (asset, in The equipment telematics and maintenance system)
+- Fault (event, in The equipment telematics and maintenance system)
+- Work order (record, in The equipment telematics and maintenance system)
+- Part (material, in The supply and logistics tracking system)
+- Convoy (asset, in The supply and logistics tracking system)
+- Consignment (material, in The supply and logistics tracking system)
+- Camp occupancy (measure, in The camp and workforce management system)
+- Incident (event, in The health, safety and environment system)
+- Utility tag (measure, in The site historian for power and water)
+
+## Industrial Ontology Examples (maritime and ports, Saudi Arabia)
+
+Design: https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/ · JSON: https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/ontology/objects.json
+
+- Berth (site, in Vessel scheduling and berth planning tool)
+- Quay section (site, in Civil works and commissioning records)
+- Yard block (site, in Terminal operating system)
+- Ship to shore crane (asset, in Crane and equipment control systems)
+- Yard crane (asset, in Crane and equipment control systems)
+- Straddle carrier (asset, in Equipment telematics)
+- Equipment component (asset, in Maintenance management system)
+- Vessel call (event, in Terminal operating system)
+- Berth window (event, in Port authority vessel traffic and berth window data)
+- Fault (event, in Crane and equipment control systems)
+- Move (event, in Terminal operating system)
+- Incident (event, in Safety incident register)
+- Work order (record, in Maintenance management system)
+- Commissioning record (record, in Civil works and commissioning records)
+- Box (material, in Terminal operating system)
+- Productivity measure (measure, in Terminal operating system)
+
+## Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia (rail and transportation, Saudi Arabia)
+
+Design: https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/ · JSON: https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/ontology/objects.json
+
+- Trainset (asset, in Timetable and train running system)
+- Vehicle (asset, in Builder's remote monitoring platform)
+- Component (asset, in Maintenance management system)
+- Diagnostic event (event, in On board diagnostic logs)
+- Fault (record, in Maintenance management system)
+- Work order (record, in Depot work orders)
+- Part (material, in Spare parts stock system)
+- Depot slot (record, in Depot work orders)
+- Diagram (record, in Timetable and train running system)
+- Journey (event, in Timetable and train running system)
+- Delay (event, in Timetable and train running system)
+- Incident (record, in Passenger incident log)
+- Condition case (record, in Created by the design; the model's own write path)
+- Agent draft (document, in Created by the design; the model's own write path)
+
+## A Self-Improving AI System for OT Vulnerability Management at a Utility in the United States (energy and utilities, United States)
+
+Design: https://codeatoms.ai/ot-vulnerability-utility-us/ · JSON: https://codeatoms.ai/ot-vulnerability-utility-us/ontology/objects.json
+
+- Substation (site, in Asset inventory and configuration baseline system)
+- Protective relay (asset, in Asset inventory and configuration baseline system)
+- Engineering workstation (asset, in Asset inventory and configuration baseline system)
+- Firmware and software version (record, in Asset inventory and configuration baseline system)
+- Configuration baseline (record, in Asset inventory and configuration baseline system)
+- Vendor (actor, in Vendors' patch and advisory feeds)
+- Advisory (document, in Vendors' patch and advisory feeds)
+- Vulnerability (record, in National vulnerability advisories)
+- Applicability decision (record, in The design's own record)
+- Disposition (record, in The design's own record)
+- Change request (record, in Change management system)
+- Outage window (event, in Change management system)
+- Work order (record, in Work order system)
+- Evidence item (document, in Evidence repository for audits)
+- Auditor question (record, in Evidence repository for audits)
+- Cycle agent (actor, in The design's own record)
+
+## Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia (warehousing and intralogistics, Saudi Arabia)
+
+Design: https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/ · JSON: https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/ontology/objects.json
+
+- Zone (site, in Robot fleet orchestration system)
+- Robot (asset, in Robot fleet orchestration system)
+- Charging bay (asset, in Robot fleet orchestration system)
+- Pick station (asset, in Warehouse management system)
+- Camera view (asset, in The building's camera recorders)
+- Tote (material, in Warehouse management system)
+- Order wave (event, in Warehouse management system)
+- Shift (event, in Labour management system)
+- Incursion (event, in The design's own detections)
+- Stall (event, in The design's own detections)
+- Person role (actor, in Labour management system)
+- Near miss (record, in Incident and near miss log)
+- Corrective action (record, in Incident and near miss log)
+- Agent draft (record, in The design's own approvals service)
+- Edge unit (system, in The design's own edge tier)
+
+## Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia (supply chain and logistics, Saudi Arabia)
+
+Design: https://codeatoms.ai/freight-corridor-customs-saudi-arabia/ · JSON: https://codeatoms.ai/freight-corridor-customs-saudi-arabia/ontology/objects.json
+
+- Consignment (record, in Container tracking system)
+- Container (asset, in Container tracking system)
+- Declaration (record, in The customs authority's declaration and clearance interfaces)
+- Train (record, in Rail operations and yard management system)
+- Wagon (asset, in Rail operations and yard management system)
+- Road leg (record, in Transport management system)
+- Haulier (actor, in Transport management system)
+- Terminal (site, in Port community system feeds)
+- Dry port (site, in Rail operations and yard management system)
+- Handover slot (record, in Rail operations and yard management system)
+- Exception (event, in Raised by the design's stall detection and connection watch)
+- Customer case (record, in Customer service case log)
+- Corridor planner (actor)
+- Yard controller (actor)
+- Service desk agent (actor)
+
+## Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan (heavy industry and construction, Pakistan)
+
+Design: https://codeatoms.ai/fertilizer-plant-reliability-pakistan/ · JSON: https://codeatoms.ai/fertilizer-plant-reliability-pakistan/ontology/objects.json
+
+- Process unit (asset, in The maintenance management system (equipment hierarchy))
+- Equipment (asset, in The maintenance management system)
+- Historian tag (measure, in The distributed control system and its historian)
+- Trip (event, in The distributed control system and its historian)
+- Restart (event, in The shift log)
+- Thermal cycle (event, in Derived from the distributed control system and its historian)
+- Work order (record, in The maintenance management system)
+- Inspection finding (record, in The inspection and corrosion monitoring records)
+- Corrosion reading (measure, in The inspection and corrosion monitoring records)
+- Vibration reading (measure, in The vibration monitoring system on the large compressors)
+- Lab result (record, in The laboratory system)
+- Shift log entry (document, in The shift log)
+- Turnaround task (record, in The turnaround planning system)
+- Restart plan (document, in The restart agent's draft, confirmed by the shift superintendent)
+
+## Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States (aviation and aerospace manufacturing, United States)
+
+Design: https://codeatoms.ai/engine-mro-shop-us/ · JSON: https://codeatoms.ai/engine-mro-shop-us/ontology/objects.json
+
+- Engine (asset, in Maintenance and engineering system)
+- Customer (actor, in Customer workscope and contract terms)
+- Workscope (record, in Customer workscope and contract terms)
+- Gate (record, in Maintenance and engineering system)
+- Module (asset, in Maintenance and engineering system)
+- Part (asset, in Parts tracking and inventory system)
+- Inspection finding (event, in Inspection findings records)
+- Disposition (record, in Inspection findings records)
+- Repair order (record, in Vendor repair order system)
+- Vendor (actor, in Vendor repair order system)
+- Purchase order (record, in Material purchasing system)
+- Material lot (asset, in Parts tracking and inventory system)
+- Build slot (record, in Maintenance and engineering system)
+- Test (event, in Test cell data)
+- Release (record, in Maintenance and engineering system)
+
+## Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan (energy and utilities, Pakistan)
+
+Design: https://codeatoms.ai/distribution-loss-theft-pakistan/ · JSON: https://codeatoms.ai/distribution-loss-theft-pakistan/ontology/objects.json
+
+- Grid station (site, in The geographic information system of the network)
+- Feeder (asset, in The geographic information system of the network)
+- Transformer (asset, in The energy audit records per feeder and transformer)
+- Service connection (asset, in The customer information and billing system)
+- Meter (asset, in The meter data management system)
+- Interval load (measure, in The meter data management system)
+- Reading (record, in The customer information and billing system)
+- Billing account (record, in The customer information and billing system)
+- Tariff (record, in The customer information and billing system)
+- Inspection (event, in The meter reading and inspection app)
+- Tamper event (event, in The meter data management system)
+- Theft case (record, in The theft case register)
+- Recovery (record, in The theft case register)
+- Agent draft (document)
+- Approval (event)
+
+## Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia (aviation and aerospace manufacturing, Saudi Arabia)
+
+Design: https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/ · JSON: https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/ontology/objects.json
+
+- Customer (actor, in The technical records of each customer's parts)
+- Aircraft (asset, in The maintenance information system (work order header))
+- Part number (document, in The structural repair manuals under licence)
+- Part (serialized) (asset, in The technical records of each customer's parts)
+- Work order (record, in The maintenance information system)
+- Task card (record, in The maintenance information system)
+- Inspection (event)
+- Scan (record, in The scan equipment's own computer)
+- Damage (event)
+- Damage class (document, in The structural repair manuals under licence)
+- Allowable limit (document, in The structural repair manuals under licence)
+- Repair scheme (document, in The structural repair manuals under licence)
+- Material lot (asset, in The material and shelf life stock system)
+- Technician qualification (record)
+- Finding (record, in The quality findings log)
+- Release (record)
+
+## Industrial Data Ontology for a Cold Chain From Plant to Store in the United States (supply chain and logistics, United States)
+
+Design: https://codeatoms.ai/cold-chain-ontology-us/ · JSON: https://codeatoms.ai/cold-chain-ontology-us/ontology/objects.json
+
+- Product (material, in Plant manufacturing execution system)
+- Lot (material, in Plant manufacturing execution system)
+- Pallet (asset, in Warehouse management system)
+- Case (material, in Recall and complaint register)
+- Critical tracking event (event, in Mixed: source system per event)
+- Custodian (actor)
+- Location (site, in Warehouse management system)
+- Dock (site, in Warehouse management system)
+- Truck (asset, in Transportation management system)
+- Reefer reading (measure, in Carriers' reefer telematics)
+- Excursion (event, in The warehouse dock log or the carriers' reefer telematics)
+- Hold (record, in Quality hold and release system)
+- Release (record, in Quality hold and release system)
+- Complaint (record, in Recall and complaint register)
+- Receipt (document, in Retailers' receiving notices)
+- Traceability record (record, in Produced by the object model itself)
+
+## A Self-Improving AI System for Cement Kiln Control in Saudi Arabia (heavy industry and construction, Saudi Arabia)
+
+Design: https://codeatoms.ai/cement-kiln-control-saudi-arabia/ · JSON: https://codeatoms.ai/cement-kiln-control-saudi-arabia/ontology/objects.json
+
+- Kiln line (site, in The distributed control system and its historian)
+- Equipment (asset, in The maintenance management system)
+- Tag (measure, in The distributed control system and its historian)
+- Setpoint (measure, in The distributed control system and its historian)
+- Recipe (record, in The distributed control system and its historian)
+- Raw meal lot (record, in The laboratory system for raw meal and clinker quality)
+- Fuel lot (record, in The fuel and alternative fuel feed records)
+- Clinker sample and quality result (record, in The laboratory system for raw meal and clinker quality)
+- Upset (event, in The object model itself)
+- Operator action (event, in The shift log)
+- Shell scan (measure, in The kiln shell scanner)
+- Work order (record, in The maintenance management system)
+- Shift (record, in The shift log)
+- Control room operator (actor)
+- Shift supervisor (actor)
+- Production manager (actor)
+
+## A Self-Improving AI System for Carrier Exception Handling in the United States (supply chain and logistics, United States)
+
+Design: https://codeatoms.ai/carrier-exceptions-us/ · JSON: https://codeatoms.ai/carrier-exceptions-us/ontology/objects.json
+
+- Shipper (actor, in Customer order feeds)
+- Order (record, in Customer order feeds)
+- Shipment (record, in Transportation management system)
+- Stop (record, in Transportation management system)
+- Appointment (record, in Appointment scheduling tool)
+- Carrier (actor, in Transportation management system)
+- Driver (actor, in Carrier tracking and visibility platform)
+- Tracking event (event, in Carrier tracking and visibility platform)
+- Exception (event, in Email and chat threads)
+- Exception type (vocabulary, in The design's own governed vocabulary)
+- Action (record, in Email and chat threads)
+- Resolution (record, in Email and chat threads)
+- Standing fix (record, in The design's own governed vocabulary)
+- Claim (record, in Claims system)
+- Scorecard entry (record, in Carrier scorecards and contracts)
+- Exception coordinator (actor, in The design's own governed vocabulary)
+
+## A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan (agriculture and earth observation, Pakistan)
+
+Design: https://codeatoms.ai/canal-irrigation-pakistan/ · JSON: https://codeatoms.ai/canal-irrigation-pakistan/ontology/objects.json
+
+- Barrage (asset, in Barrage and head regulator gauge records)
+- Head regulator (asset, in The telemetry system)
+- Reach (asset, in Gauge reader diaries)
+- Gate (asset, in Indent and release ledgers)
+- Outlet (asset, in Rotation schedules per distributary)
+- Main canal (site, in Indent and release ledgers)
+- Distributary (site, in Rotation schedules per distributary)
+- Rotation (event, in Rotation schedules per distributary)
+- Shortfall (event)
+- Season (event)
+- Indent (record, in Indent and release ledgers)
+- Release (record, in Indent and release ledgers)
+- Complaint (record, in The complaint register)
+- Crop area (record, in The revenue crop records)
+- Telemetry reading (measure, in The telemetry system)
+- Gauge reading (measure, in Gauge reader diaries)
 
 ## Industrial Data Ontology for a Water Utility in the United States (energy and utilities, United States)
 

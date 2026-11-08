@@ -1,0 +1,298 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan",
+  "url": "https://codeatoms.ai/canal-irrigation-pakistan/",
+  "doi": ""
+ },
+ "sector": "agriculture and earth observation",
+ "country": "Pakistan",
+ "scenario": "the operator is described by class, never by name: a provincial irrigation department in Pakistan that takes its share of river water at barrages and head regulators and delivers it through a main canal, branches, distributaries and minors to outlets farmers share by rotation, with telemetry at the main canal heads and paper ledgers everywhere else; the first phase is one main canal and its distributaries for one cropping season, reading telemetry and ledgers and never operating a gate",
+ "source": "chapter 5 of the paper (the sixteen objects in five kinds in 5.1, the typed links in 5.1, the Shortfall status vocabulary in 5.3, the Barrage record printed in 5.3), the properties and the thirteen labelled typed links of Figure 4, and the anchors of Table 8; the figure labels the Season to Crop Area edge 'opens' where 5.1 says a Crop Area 'belongs to a Season', and the figure's label is kept; Table 8 printed no anchor for Main Canal, Reach and Gate, so Main Canal and Gate are anchored in the indent and release ledgers (the indent names its canal, the release instructs its gate) and Reach in the gauge reader diaries (the readers walk the reaches); Shortfall is computed by the shortfall agent from telemetry against the indent and Season is set by the authority's allocation, and neither is anchored in a source system in the paper, so both are left empty; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "barrage",
+   "label": "Barrage",
+   "kind": "asset",
+   "anchored_in": "Barrage and head regulator gauge records",
+   "properties": [
+    "River",
+    "Provincial share under the accord",
+    "Gauge readings",
+    "Head regulators commanded"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "head-regulator",
+     "label": "commands"
+    }
+   ]
+  },
+  {
+   "id": "head-regulator",
+   "label": "Head regulator",
+   "kind": "asset",
+   "anchored_in": "The telemetry system",
+   "properties": [
+    "Design discharge",
+    "Gate settings",
+    "Telemetry station"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "gate",
+     "label": "sets"
+    },
+    {
+     "to": "telemetry-reading",
+     "label": "reports"
+    }
+   ]
+  },
+  {
+   "id": "reach",
+   "label": "Reach",
+   "kind": "asset",
+   "anchored_in": "Gauge reader diaries",
+   "properties": [
+    "Length",
+    "Siltation state"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "gate",
+   "label": "Gate",
+   "kind": "asset",
+   "anchored_in": "Indent and release ledgers",
+   "properties": [
+    "Current setting",
+    "Last adjustment"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "outlet",
+   "label": "Outlet",
+   "kind": "asset",
+   "anchored_in": "Rotation schedules per distributary",
+   "properties": [
+    "Entitlement share",
+    "Command area",
+    "Delivery record"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "main-canal",
+   "label": "Main canal",
+   "kind": "site",
+   "anchored_in": "Indent and release ledgers",
+   "properties": [
+    "Command area",
+    "Branches",
+    "Distributary count"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "distributary",
+     "label": "branches to"
+    }
+   ]
+  },
+  {
+   "id": "distributary",
+   "label": "Distributary",
+   "kind": "site",
+   "anchored_in": "Rotation schedules per distributary",
+   "properties": [
+    "Command area",
+    "Rotation schedule",
+    "Minors"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "rotation",
+     "label": "follows"
+    }
+   ]
+  },
+  {
+   "id": "rotation",
+   "label": "Rotation",
+   "kind": "event",
+   "anchored_in": "Rotation schedules per distributary",
+   "properties": [
+    "Period",
+    "Outlets served",
+    "Entitlement per outlet"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "outlet",
+     "label": "entitles"
+    }
+   ]
+  },
+  {
+   "id": "shortfall",
+   "label": "Shortfall",
+   "kind": "event",
+   "anchored_in": "",
+   "properties": [
+    "Measured versus indent",
+    "Onset date",
+    "Likely cause",
+    "Confirmed by"
+   ],
+   "status_vocabulary": [
+    "Open",
+    "Cause drafted",
+    "Cause confirmed",
+    "Corrected"
+   ],
+   "links": [
+    {
+     "to": "indent",
+     "label": "judged against"
+    }
+   ]
+  },
+  {
+   "id": "season",
+   "label": "Season",
+   "kind": "event",
+   "anchored_in": "",
+   "properties": [
+    "Kharif or rabi",
+    "Dates",
+    "Authority's share"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "crop-area",
+     "label": "opens"
+    }
+   ]
+  },
+  {
+   "id": "indent",
+   "label": "Indent",
+   "kind": "record",
+   "anchored_in": "Indent and release ledgers",
+   "properties": [
+    "Ten day period",
+    "Canal",
+    "Requested discharge"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "crop-area",
+     "label": "draws on"
+    }
+   ]
+  },
+  {
+   "id": "release",
+   "label": "Release",
+   "kind": "record",
+   "anchored_in": "Indent and release ledgers",
+   "properties": [
+    "Released discharge",
+    "Date",
+    "Gate instruction"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "gate",
+     "label": "instructs"
+    },
+    {
+     "to": "head-regulator",
+     "label": "measured at"
+    }
+   ]
+  },
+  {
+   "id": "complaint",
+   "label": "Complaint",
+   "kind": "record",
+   "anchored_in": "The complaint register",
+   "properties": [
+    "Complainant area",
+    "Date",
+    "Distributary"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "distributary",
+     "label": "names"
+    }
+   ]
+  },
+  {
+   "id": "crop-area",
+   "label": "Crop area",
+   "kind": "record",
+   "anchored_in": "The revenue crop records",
+   "properties": [
+    "Crop",
+    "Acreage",
+    "Season"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "distributary",
+     "label": "covers"
+    }
+   ]
+  },
+  {
+   "id": "telemetry-reading",
+   "label": "Telemetry reading",
+   "kind": "measure",
+   "anchored_in": "The telemetry system",
+   "properties": [
+    "Flow depth",
+    "Velocity",
+    "Computed discharge"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "gauge-reading",
+   "label": "Gauge reading",
+   "kind": "measure",
+   "anchored_in": "Gauge reader diaries",
+   "properties": [
+    "Depth",
+    "Location",
+    "Reader"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (a telemetry adapter doing a direct historian read, and an integration adapter running the OCR pipeline over the paper sources with a human verification stage and a 2 percent failure gate on every batch), read only against the eight sources, stamping every item with source system, adapter, timestamp and verification state",
+  "the confirmation at a surface, the single write path into the object model, written into the model and the memory of confirmed causes and accepted adjustments and never into a system of record",
+  "the three surfaces used by named engineers and officers (identity issued on site): shortfall draft review with gate adjustment confirmation, indent approval before submission to the national authority, and cited dispute account drafts"
+ ],
+ "human_loop": "agents draft and people decide: the controlling engineer confirms or rejects the drafted cause and correction before any gate instruction is drafted, the indent draft is approved before it goes to the national authority, and the dispute account is drafted from cited records for the officer to send; no agent operates a gate, which stays a hand operation on telephone instructions under the department's own procedures"
+}

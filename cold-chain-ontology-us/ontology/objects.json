@@ -1,0 +1,295 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Industrial Data Ontology for a Cold Chain From Plant to Store in the United States",
+  "url": "https://codeatoms.ai/cold-chain-ontology-us/",
+  "doi": ""
+ },
+ "sector": "supply chain and logistics",
+ "country": "United States",
+ "scenario": "the operator is described by class, never by name: a refrigerated and frozen food manufacturer in the United States shipping from its plants through its own and third party cold storage to retail distribution centers and stores, preparing for the federal food traceability rule's July 2028 compliance date, with the first phase on one product family from one plant through one cold store to one retailer for one quarter, reading eight systems of record through three adapter families and never writing into any of them",
+ "source": "chapter 5 of the paper (the sixteen objects and their kinds in 5.1, the Product record in 5.3), the properties and the thirteen labelled typed links of Figure 4, and the anchors of Table 8 as completed from 5.1 and 6.1; the Custodian carries no system of record (its partners' data terms are recorded on it, 3.1) and the Traceability Record is the one object the model itself produces (5.1); properties the figure truncates are left out, and the Critical Tracking Event's three types come from 1.1.",
+ "objects": [
+  {
+   "id": "product",
+   "label": "Product",
+   "kind": "material",
+   "anchored_in": "Plant manufacturing execution system",
+   "properties": [
+    "Product family",
+    "Listed food under the traceability rule",
+    "Temperature range",
+    "Shelf life"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "lot",
+   "label": "Lot",
+   "kind": "material",
+   "anchored_in": "Plant manufacturing execution system",
+   "properties": [
+    "Lot number",
+    "Production date",
+    "Transformation event"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "pallet",
+   "label": "Pallet",
+   "kind": "asset",
+   "anchored_in": "Warehouse management system",
+   "properties": [
+    "License plate number",
+    "Dock time",
+    "Storage location"
+   ],
+   "status_vocabulary": [
+    "In freezer",
+    "On dock",
+    "In transit",
+    "Received"
+   ],
+   "links": [
+    {
+     "to": "dock",
+     "label": "docks at"
+    },
+    {
+     "to": "location",
+     "label": "stored at"
+    },
+    {
+     "to": "custodian",
+     "label": "held by"
+    }
+   ]
+  },
+  {
+   "id": "case",
+   "label": "Case",
+   "kind": "material",
+   "anchored_in": "Recall and complaint register",
+   "properties": [
+    "Case number",
+    "Complaint text",
+    "Retailer"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "complaint",
+     "label": "raised by"
+    },
+    {
+     "to": "lot",
+     "label": "references"
+    }
+   ]
+  },
+  {
+   "id": "critical-tracking-event",
+   "label": "Critical tracking event",
+   "kind": "event",
+   "anchored_in": "Mixed: source system per event",
+   "properties": [
+    "Event type (shipping, receiving or transformation)"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "location",
+     "label": "occurs at"
+    }
+   ]
+  },
+  {
+   "id": "custodian",
+   "label": "Custodian",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Custodian name",
+    "Role (plant, cold store, carrier, retailer)"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "location",
+   "label": "Location",
+   "kind": "site",
+   "anchored_in": "Warehouse management system",
+   "properties": [
+    "Site name",
+    "Custodian",
+    "Type (plant, cold store, distribution center, store)"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "custodian",
+     "label": "run by"
+    }
+   ]
+  },
+  {
+   "id": "dock",
+   "label": "Dock",
+   "kind": "site",
+   "anchored_in": "Warehouse management system",
+   "properties": [
+    "Dock door",
+    "Cold store",
+    "Dock schedule"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "truck",
+   "label": "Truck",
+   "kind": "asset",
+   "anchored_in": "Transportation management system",
+   "properties": [
+    "Carrier",
+    "Reefer unit",
+    "Telematics feed"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "reefer-reading",
+     "label": "reports"
+    }
+   ]
+  },
+  {
+   "id": "reefer-reading",
+   "label": "Reefer reading",
+   "kind": "measure",
+   "anchored_in": "Carriers' reefer telematics",
+   "properties": [
+    "Temperature",
+    "Measurement point (ambient, return air, supply air or product simulating)"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "excursion",
+   "label": "Excursion",
+   "kind": "event",
+   "anchored_in": "The warehouse dock log or the carriers' reefer telematics",
+   "properties": [
+    "Reading reference",
+    "Direction (warm or cold)",
+    "Duration"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "lot",
+     "label": "exposes"
+    }
+   ]
+  },
+  {
+   "id": "hold",
+   "label": "Hold",
+   "kind": "record",
+   "anchored_in": "Quality hold and release system",
+   "properties": [
+    "Hold reason",
+    "Exposed lots",
+    "Excursion reference"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "excursion",
+     "label": "answers"
+    }
+   ]
+  },
+  {
+   "id": "release",
+   "label": "Release",
+   "kind": "record",
+   "anchored_in": "Quality hold and release system",
+   "properties": [
+    "Release basis",
+    "Evaluator",
+    "Date"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "complaint",
+   "label": "Complaint",
+   "kind": "record",
+   "anchored_in": "Recall and complaint register",
+   "properties": [
+    "Complaint id",
+    "Case reference",
+    "Lot"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "lot",
+     "label": "references"
+    }
+   ]
+  },
+  {
+   "id": "receipt",
+   "label": "Receipt",
+   "kind": "document",
+   "anchored_in": "Retailers' receiving notices",
+   "properties": [
+    "Receipt number",
+    "Retailer",
+    "Shipment line"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "case",
+     "label": "reports"
+    }
+   ]
+  },
+  {
+   "id": "traceability-record",
+   "label": "Traceability record",
+   "kind": "record",
+   "anchored_in": "Produced by the object model itself",
+   "properties": [
+    "Lot",
+    "Full journey events",
+    "Production time (hours)",
+    "Requester"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "lot",
+     "label": "traces"
+    }
+   ]
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (integration, telemetry and EDI adapter families, read only against the eight systems of record, stamping every fact with its source system and its source key; no adapter exposes a write path)",
+  "the recorded confirmation or approval, written into the object model and the memory of confirmed joins and decisions, never by the platform into a system of record",
+  "a named person acting in the owning system: the quality manager placing or lifting a hold in the quality hold and release system, the regulatory lead sending the trace record; the platform reads the resulting state back"
+ ],
+ "human_loop": "agents draft and people decide: the mapping agent drafts the join between custodians' identifiers and the traceability analyst confirms it, the excursion agent drafts the exposed lots and the recommended hold and the quality manager approves it, the trace agent drafts the lot's full record in the rule's format and the regulatory affairs lead sends it; no agent places or lifts a hold or sends a record to a regulator without a named approval"
+}

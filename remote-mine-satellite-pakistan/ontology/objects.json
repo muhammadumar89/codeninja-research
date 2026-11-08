@@ -1,0 +1,157 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan",
+  "url": "https://codeatoms.ai/remote-mine-satellite-pakistan/",
+  "doi": ""
+ },
+ "sector": "mining",
+ "country": "Pakistan",
+ "scenario": "the operator is described by class, never by name: a mining company developing a large open pit copper and gold mine in a remote part of Pakistan, with construction under way, hundreds of permanent staff and thousands of contractors on site, reached by road and air on its own power, with one satellite link that drops in bad weather; the first phase covers one construction area and the heavy equipment fleet serving it for one quarter",
+ "source": "chapter 5 of the paper (the fifteen objects and their anchors in 5.1, the Construction area record in 5.3), the properties and the thirteen labelled typed links of Figure 4, and the anchors and links of Table 8; the camp occupancy, incident and utility tag anchors follow 5.1 and 6.1 and the incident link follows 5.1 (an incident links to the permit it happened under); the paper prints no status vocabulary for any object, so every vocabulary is left empty; the Part property the figure truncates is left out.",
+ "objects": [
+  {
+   "id": "construction-area",
+   "label": "Construction area",
+   "kind": "site",
+   "anchored_in": "The project controls system",
+   "properties": ["Area code", "Earthworks scope", "Active work packages", "Area supervisor"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "pad",
+   "label": "Pad",
+   "kind": "site",
+   "anchored_in": "The construction management and permit to work system",
+   "properties": ["Pad number", "Parent area", "Open permits"],
+   "status_vocabulary": [],
+   "links": [{"to": "construction-area", "label": "sits in"}]
+  },
+  {
+   "id": "work-package",
+   "label": "Work package",
+   "kind": "record",
+   "anchored_in": "The project controls system",
+   "properties": ["Package number", "Scope", "Planned dates"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "permit",
+   "label": "Permit",
+   "kind": "record",
+   "anchored_in": "The construction management and permit to work system",
+   "properties": ["Permit number", "Pad", "Crew"],
+   "status_vocabulary": [],
+   "links": [{"to": "pad", "label": "issued on"}, {"to": "crew", "label": "worked by"}]
+  },
+  {
+   "id": "crew",
+   "label": "Crew",
+   "kind": "actor",
+   "anchored_in": "The camp and workforce management system",
+   "properties": ["Crew id", "Employer", "Trade"],
+   "status_vocabulary": [],
+   "links": [{"to": "pad", "label": "works at"}]
+  },
+  {
+   "id": "worker",
+   "label": "Worker",
+   "kind": "actor",
+   "anchored_in": "The camp and workforce management system",
+   "properties": ["Worker id", "Employer", "Camp bed"],
+   "status_vocabulary": [],
+   "links": [{"to": "camp-occupancy", "label": "occupies"}]
+  },
+  {
+   "id": "equipment-unit",
+   "label": "Equipment unit",
+   "kind": "asset",
+   "anchored_in": "The equipment telematics and maintenance system",
+   "properties": ["Unit number", "Class", "Running hours"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "fault",
+   "label": "Fault",
+   "kind": "event",
+   "anchored_in": "The equipment telematics and maintenance system",
+   "properties": ["Fault code", "Unit", "Raised at"],
+   "status_vocabulary": [],
+   "links": [{"to": "equipment-unit", "label": "raised on"}]
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "The equipment telematics and maintenance system",
+   "properties": ["Work order number", "Unit", "Fault"],
+   "status_vocabulary": [],
+   "links": [{"to": "work-package", "label": "belongs to"}, {"to": "fault", "label": "traces to"}, {"to": "part", "label": "requires"}]
+  },
+  {
+   "id": "part",
+   "label": "Part",
+   "kind": "material",
+   "anchored_in": "The supply and logistics tracking system",
+   "properties": ["Part number", "On site quantity"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "convoy",
+   "label": "Convoy",
+   "kind": "asset",
+   "anchored_in": "The supply and logistics tracking system",
+   "properties": ["Convoy id", "Route", "Planned arrival"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "consignment",
+   "label": "Consignment",
+   "kind": "material",
+   "anchored_in": "The supply and logistics tracking system",
+   "properties": ["Consignment number", "Contents", "Convoy"],
+   "status_vocabulary": [],
+   "links": [{"to": "convoy", "label": "carried by"}, {"to": "work-order", "label": "fulfills"}, {"to": "work-package", "label": "serves"}]
+  },
+  {
+   "id": "camp-occupancy",
+   "label": "Camp occupancy",
+   "kind": "measure",
+   "anchored_in": "The camp and workforce management system",
+   "properties": ["Date", "Beds occupied", "Contractor headcount"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "incident",
+   "label": "Incident",
+   "kind": "event",
+   "anchored_in": "The health, safety and environment system",
+   "properties": ["Incident id", "Severity", "Location"],
+   "status_vocabulary": [],
+   "links": [{"to": "permit", "label": "links to"}]
+  },
+  {
+   "id": "utility-tag",
+   "label": "Utility tag",
+   "kind": "measure",
+   "anchored_in": "The site historian for power and water",
+   "properties": ["Tag id", "Medium", "Current value"],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (the integration adapter for record extracts and the telemetry adapter for tag and telematics streams), read only against the seven site systems through local mirrors, stamping every fact with its source system and the time the site last saw it",
+  "the recorded confirmation of a draft by a named person, made inside the owning system's own procedure and reconciled daily against that system's record during the pilot; never a second version of permit state beside the permit to work system",
+  "the store and forward sync across the satellite link: mirror refreshes in and chosen operational aggregates out, in stored order with idempotent replay, never the camp and workforce mirror"
+ ],
+ "human_loop": "agents draft and supervisors decide, by name: the area supervisor confirms the permit agent's shift start draft of open permits, conflicts and expired isolations per pad; the maintenance planner approves the equipment agent's work order draft and its parts check; the logistics lead approves the convoy agent's re sequencing when a convoy runs late; no agent issues a permit, closes an isolation or dispatches a convoy, and the mine manager's statutory authority is untouched"
+}

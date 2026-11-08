@@ -11,8 +11,10 @@ Recommended path: start from the nearest published heavy industry and constructi
 ## What we bring
 
 - [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (Pakistan): 14 objects, 3 models, DOI https://doi.org/10.5281/zenodo.23126563
+- [Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/) (Pakistan): 14 objects, 4 models
 - [Structure Phase Watch: Live Production, Crane and Delivery Evidence for Every Pour on a Construction Site](https://codeatoms.ai/structure-phase-construction-saudi-arabia/) (Saudi Arabia): 15 objects, 4 models, DOI https://doi.org/10.5281/zenodo.23126448
 - [Factory Fire Watch: Read-Only Smart Fire Protection Monitoring for Every High-Risk Factory](https://codeatoms.ai/factory-fire-monitoring-saudi-arabia/) (Saudi Arabia): 14 objects, 1 models, DOI https://doi.org/10.5281/zenodo.23126565
+- [A Self-Improving AI System for Cement Kiln Control in Saudi Arabia](https://codeatoms.ai/cement-kiln-control-saudi-arabia/) (Saudi Arabia): 16 objects, 3 models
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
 
@@ -42,7 +44,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a heavy industry and construction design to read?
 
-Yes. 3 published heavy industry and construction reference architectures in Pakistan and Saudi Arabia, each with a DOI, an object model and a cost appendix.
+Yes. 5 published heavy industry and construction reference architectures in Pakistan and Saudi Arabia, each with a DOI, an object model and a cost appendix.
 
 Ask to co-build: https://codeatoms.ai/co-build/heavy-industry-and-construction/#ask
 Every sector: https://codeatoms.ai/co-build/

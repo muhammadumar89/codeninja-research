@@ -4,39 +4,56 @@ Canonical: https://codeatoms.ai/industrial-data-ontology/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-An industrial data ontology is a typed model of the data an industrial operation already holds: each asset, record, event, site and person becomes an object with properties and status values, anchored in the system of record that holds its data, and joined to the others by typed links. CodeNinja Atoms has published 28 industrial data ontologies, one per real operation across 11 sectors in the United States (14), Saudi Arabia (7), Pakistan (6), Germany (1): 397 objects, 1424 properties and 360 links, 328 of the 397 objects anchored in a named source system. Each is hyper-ontology/1 JSON under CC BY 4.0.
+An industrial data ontology is a typed model of the data an industrial operation already holds: each asset, record, event, site and person becomes an object with properties and status values, anchored in the system of record that holds its data, and joined to the others by typed links. CodeNinja Atoms has published 44 industrial data ontologies, one per real operation across 12 sectors in the United States (19), Saudi Arabia (13), Pakistan (11), Germany (1): 643 objects, 2177 properties and 560 links, 556 of the 643 objects anchored in a named source system. Each is hyper-ontology/1 JSON under CC BY 4.0.
 
-All 397 objects as one table: objects.jsonl in https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures · format: https://codeatoms.ai/developer/reference/hyper-ontology-1/
+All 643 objects as one table: objects.jsonl in https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures · format: https://codeatoms.ai/developer/reference/hyper-ontology-1/
 
 ## What an industrial data ontology holds
 
 | Kind | Objects | What it is | Examples from the published models |
 |---|---|---|---|
-| asset | 112 | equipment and other physical things the operation owns and maintains | Formed structural part, Commuter car, Operating Facility / Site |
-| record | 98 | what the operation writes down: work orders, tickets, findings, calibrations | Incident/Accident Record, Batch ticket, Failure mode |
-| event | 50 | something that happens at a time: an alarm, a fault, a mission | Flight Mission, Condition Anomaly Alert, Active fault |
-| site | 30 | a place the operation runs: a station, a field, a centre | Compressor Station, Distribution Center, Farm holding |
-| actor | 24 | a role that acts on the operation: a desk, a crew, an officer | Mechanical desk controller, Field crew, Revenue field officer |
-| document | 22 | a report, letter or dataset the operation keeps | QA/QC Accuracy Report, RCA report, OEM Authorization Letter |
+| record | 180 | what the operation writes down: work orders, tickets, findings, calibrations | Disposition, Incident/Accident Record, Work order |
+| asset | 155 | equipment and other physical things the operation owns and maintains | Formed structural part, Commuter car, Operating Facility / Site |
+| event | 90 | something that happens at a time: an alarm, a fault, a mission | Flight Mission, Condition Anomaly Alert, Active fault |
+| actor | 47 | a role that acts on the operation: a desk, a crew, an officer | Control room operator, Mechanical desk controller, Customer |
+| site | 46 | a place the operation runs: a station, a field, a centre | Compressor Station, Distribution Center, Farm holding |
+| measure | 38 | a reading, sample or score taken from the operation | Monitored point, Detector Reading, Criticality index |
+| document | 35 | a report, letter or dataset the operation keeps | QA/QC Accuracy Report, Shift log entry, Agent draft |
 | person | 20 | a named job a person holds: the one who reads, decides or approves | Shift Lead, Instrumentation Technician, Worker |
-| measure | 20 | a reading, sample or score taken from the operation | Monitored point, Detector Reading, Criticality index |
-| system | 14 | a software or control system the model names as an object in its own right | HVDC Transmission System, Edge Gateway, Data Source Connection |
-| material | 7 | stock that moves through the operation: parts, wafers, containers | Spare part, Wafer, SKU |
+| system | 16 | a software or control system the model names as an object in its own right | HVDC Transmission System, Edge Gateway, Data Source Connection |
+| material | 15 | stock that moves through the operation: parts, wafers, containers | Consignment, Spare part, Wafer |
+| vocabulary | 1 |  | Exception type |
 
 ## The parts of an industrial data ontology
 
 | Part | What it is | In the published models |
 |---|---|---|
-| Object | one thing the operation tracks, with a kind | 397 objects across 28 models |
-| Properties | what the operation records about the object | 1424 properties |
-| Anchor | the system of record that already holds the object's data; the ontology reads it and never replaces it | 328 of 397 objects name one |
-| Status vocabulary | the fixed values the object's state can take | 127 of 397 objects carry one |
-| Typed links | typed relations to other objects in the same model | 360 links, 336 of them named |
+| Object | one thing the operation tracks, with a kind | 643 objects across 44 models |
+| Properties | what the operation records about the object | 2177 properties |
+| Anchor | the system of record that already holds the object's data; the ontology reads it and never replaces it | 556 of 643 objects name one |
+| Status vocabulary | the fixed values the object's state can take | 161 of 643 objects carry one |
+| Typed links | typed relations to other objects in the same model | 560 links, 536 of them named |
 
 ## Every published industrial data ontology
 
 | Design | Sector | Country | Objects | Links | Anchored | JSON | DOI |
 |---|---|---|---|---|---|---|---|
+| [Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/) | discrete manufacturing and automotive | Pakistan | 16 | 12 | 14 of 16 | https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/ontology/objects.json |  |
+| [Industrial AI Reference Architecture for Tailings Storage Facility Monitoring in the United States](https://codeatoms.ai/tailings-monitoring-us/) | mining | United States | 15 | 12 | 14 of 15 | https://codeatoms.ai/tailings-monitoring-us/ontology/objects.json |  |
+| [Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan](https://codeatoms.ai/remote-mine-satellite-pakistan/) | mining | Pakistan | 15 | 13 | 15 of 15 | https://codeatoms.ai/remote-mine-satellite-pakistan/ontology/objects.json |  |
+| [Industrial Ontology Examples](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/) | maritime and ports | Saudi Arabia | 16 | 13 | 16 of 16 | https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/ontology/objects.json |  |
+| [Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/) | rail and transportation | Saudi Arabia | 14 | 12 | 14 of 14 | https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/ontology/objects.json |  |
+| [A Self-Improving AI System for OT Vulnerability Management at a Utility in the United States](https://codeatoms.ai/ot-vulnerability-utility-us/) | energy and utilities | United States | 16 | 13 | 16 of 16 | https://codeatoms.ai/ot-vulnerability-utility-us/ontology/objects.json |  |
+| [Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/) | warehousing and intralogistics | Saudi Arabia | 15 | 13 | 15 of 15 | https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/ontology/objects.json |  |
+| [Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/) | supply chain and logistics | Saudi Arabia | 15 | 11 | 12 of 15 | https://codeatoms.ai/freight-corridor-customs-saudi-arabia/ontology/objects.json |  |
+| [Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/) | heavy industry and construction | Pakistan | 14 | 10 | 14 of 14 | https://codeatoms.ai/fertilizer-plant-reliability-pakistan/ontology/objects.json |  |
+| [Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States](https://codeatoms.ai/engine-mro-shop-us/) | aviation and aerospace manufacturing | United States | 15 | 16 | 15 of 15 | https://codeatoms.ai/engine-mro-shop-us/ontology/objects.json |  |
+| [Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan](https://codeatoms.ai/distribution-loss-theft-pakistan/) | energy and utilities | Pakistan | 15 | 14 | 13 of 15 | https://codeatoms.ai/distribution-loss-theft-pakistan/ontology/objects.json |  |
+| [Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/) | aviation and aerospace manufacturing | Saudi Arabia | 16 | 12 | 12 of 16 | https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/ontology/objects.json |  |
+| [Industrial Data Ontology for a Cold Chain From Plant to Store in the United States](https://codeatoms.ai/cold-chain-ontology-us/) | supply chain and logistics | United States | 16 | 13 | 15 of 16 | https://codeatoms.ai/cold-chain-ontology-us/ontology/objects.json |  |
+| [A Self-Improving AI System for Cement Kiln Control in Saudi Arabia](https://codeatoms.ai/cement-kiln-control-saudi-arabia/) | heavy industry and construction | Saudi Arabia | 16 | 10 | 13 of 16 | https://codeatoms.ai/cement-kiln-control-saudi-arabia/ontology/objects.json |  |
+| [A Self-Improving AI System for Carrier Exception Handling in the United States](https://codeatoms.ai/carrier-exceptions-us/) | supply chain and logistics | United States | 16 | 13 | 16 of 16 | https://codeatoms.ai/carrier-exceptions-us/ontology/objects.json |  |
+| [A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan](https://codeatoms.ai/canal-irrigation-pakistan/) | agriculture and earth observation | Pakistan | 16 | 13 | 14 of 16 | https://codeatoms.ai/canal-irrigation-pakistan/ontology/objects.json |  |
 | [Industrial Data Ontology for a Water Utility in the United States](https://codeatoms.ai/water-utility-ontology-us/) | energy and utilities | United States | 16 | 14 | 16 of 16 | https://codeatoms.ai/water-utility-ontology-us/ontology/objects.json | 10.5281/zenodo.23889772 |
 | [Physical AI System Design for Wafer Defect Inspection in the United States](https://codeatoms.ai/wafer-defect-inspection-us/) | semiconductors | United States | 16 | 12 | 13 of 16 | https://codeatoms.ai/wafer-defect-inspection-us/ontology/objects.json | 10.5281/zenodo.23889770 |
 | [Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/) | mining | Saudi Arabia | 16 | 13 | 12 of 16 | https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/ontology/objects.json | 10.5281/zenodo.23889774 |

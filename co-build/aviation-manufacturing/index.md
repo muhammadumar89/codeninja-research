@@ -10,7 +10,9 @@ Recommended path: start from the nearest published aviation manufacturing design
 
 ## What we bring
 
+- [Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/) (Saudi Arabia): 16 objects, 6 models
 - [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (United States): 14 objects, 1 models, DOI https://doi.org/10.5281/zenodo.23308095
+- [Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States](https://codeatoms.ai/engine-mro-shop-us/) (United States): 15 objects, 3 models
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
 
@@ -40,7 +42,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a aviation manufacturing design to read?
 
-Yes. 1 published aviation manufacturing reference architecture in the United States, each with a DOI, an object model and a cost appendix.
+Yes. 3 published aviation manufacturing reference architectures in Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
 
 Ask to co-build: https://codeatoms.ai/co-build/aviation-manufacturing/#ask
 Every sector: https://codeatoms.ai/co-build/

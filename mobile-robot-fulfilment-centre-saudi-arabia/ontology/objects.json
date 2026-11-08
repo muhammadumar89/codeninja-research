@@ -1,0 +1,291 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia",
+  "url": "https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/",
+  "doi": ""
+ },
+ "sector": "warehousing and intralogistics",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: a warehousing and intralogistics operator in Saudi Arabia running a robotic e-commerce fulfilment centre of roughly 400,000 square feet with more than 250 autonomous mobile robots, with the first phase on one robot field zone and its pick stations for one quarter, reading six systems of record through one read only adapter family and never opening a command path into the fleet",
+ "source": "chapter 5 of the paper (the fifteen objects and their kinds in 5.1, the human loop in 5.2, the Zone record in 5.3), the properties and the thirteen labelled typed links of Figure 4, and the anchors and links of Table 8; Camera View, Agent Draft and Edge Unit appear in Figure 4 and 5.1 but not in Table 8, so their anchors follow 5.1 (the building's camera recorders, the design's own) and their links follow Figure 4; properties the figure truncates are shortened to the whole phrase or left out; the Edge Unit status vocabulary follows chapter 7.3.",
+ "objects": [
+  {
+   "id": "zone",
+   "label": "Zone",
+   "kind": "site",
+   "anchored_in": "Robot fleet orchestration system",
+   "properties": [
+    "Zone ID and boundary in the fleet map",
+    "ISO 3691-4 zone class",
+    "Maintenance window schedule",
+    "Camera views covering it",
+    "Current slow down state",
+    "Peak wave assignment"
+   ],
+   "status_vocabulary": [
+    "Normal",
+    "Slowed",
+    "Closed",
+    "Maintenance window open"
+   ],
+   "links": [
+    {
+     "to": "camera-view",
+     "label": "covers"
+    }
+   ]
+  },
+  {
+   "id": "robot",
+   "label": "Robot",
+   "kind": "asset",
+   "anchored_in": "Robot fleet orchestration system",
+   "properties": [
+    "Fleet robot ID",
+    "Current zone and position",
+    "Battery state"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "tote",
+     "label": "carries"
+    },
+    {
+     "to": "stall",
+     "label": "suffers"
+    }
+   ]
+  },
+  {
+   "id": "charging-bay",
+   "label": "Charging bay",
+   "kind": "asset",
+   "anchored_in": "Robot fleet orchestration system",
+   "properties": [
+    "Bay ID",
+    "Queue length",
+    "Charger state and fault codes"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "pick-station",
+   "label": "Pick station",
+   "kind": "asset",
+   "anchored_in": "Warehouse management system",
+   "properties": [
+    "Station ID",
+    "Served zone",
+    "Port cycle time"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shift",
+     "label": "staffed by"
+    }
+   ]
+  },
+  {
+   "id": "camera-view",
+   "label": "Camera view",
+   "kind": "asset",
+   "anchored_in": "The building's camera recorders",
+   "properties": [
+    "Recorder and stream reference",
+    "View label"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "tote",
+   "label": "Tote",
+   "kind": "material",
+   "anchored_in": "Warehouse management system",
+   "properties": [
+    "Tote ID",
+    "Contents SKU and lot",
+    "Last known location"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "order-wave",
+     "label": "fulfils"
+    }
+   ]
+  },
+  {
+   "id": "order-wave",
+   "label": "Order wave",
+   "kind": "event",
+   "anchored_in": "Warehouse management system",
+   "properties": [
+    "Wave ID",
+    "Release time",
+    "Order count"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "shift",
+   "label": "Shift",
+   "kind": "event",
+   "anchored_in": "Labour management system",
+   "properties": [
+    "Shift ID",
+    "Start and end",
+    "Supervisor on duty"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "incursion",
+   "label": "Incursion",
+   "kind": "event",
+   "anchored_in": "The design's own detections",
+   "properties": [
+    "Zone",
+    "Entry and exit time",
+    "Camera evidence frame"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "zone",
+     "label": "inside"
+    },
+    {
+     "to": "camera-view",
+     "label": "evidenced by"
+    }
+   ]
+  },
+  {
+   "id": "stall",
+   "label": "Stall",
+   "kind": "event",
+   "anchored_in": "The design's own detections",
+   "properties": [
+    "Lane",
+    "Robots affected",
+    "Start and clear time"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "order-wave",
+     "label": "delays"
+    }
+   ]
+  },
+  {
+   "id": "person-role",
+   "label": "Person role",
+   "kind": "actor",
+   "anchored_in": "Labour management system",
+   "properties": [
+    "Pseudonymised badge reference",
+    "Shift assignment",
+    "Authorised zones"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shift",
+     "label": "works"
+    }
+   ]
+  },
+  {
+   "id": "near-miss",
+   "label": "Near miss",
+   "kind": "record",
+   "anchored_in": "Incident and near miss log",
+   "properties": [
+    "Log reference",
+    "Linked incursion or stall",
+    "Reported time"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "stall",
+     "label": "references"
+    },
+    {
+     "to": "corrective-action",
+     "label": "triggers"
+    }
+   ]
+  },
+  {
+   "id": "corrective-action",
+   "label": "Corrective action",
+   "kind": "record",
+   "anchored_in": "Incident and near miss log",
+   "properties": [
+    "Action",
+    "Owner",
+    "Due date"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "agent-draft",
+   "label": "Agent draft",
+   "kind": "record",
+   "anchored_in": "The design's own approvals service",
+   "properties": [
+    "Drafting agent (incursion, stall, shift)",
+    "Proposed action",
+    "Approver role",
+    "Approval state",
+    "Citations"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shift",
+     "label": "drafted during"
+    }
+   ]
+  },
+  {
+   "id": "edge-unit",
+   "label": "Edge unit",
+   "kind": "system",
+   "anchored_in": "The design's own edge tier",
+   "properties": [
+    "Unit ID",
+    "Camera group served",
+    "Models loaded and their versions"
+   ],
+   "status_vocabulary": [
+    "Healthy",
+    "Degraded"
+   ],
+   "links": [
+    {
+     "to": "camera-view",
+     "label": "serves"
+    }
+   ]
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (one family of read only integration adapters: change data capture for the transactional systems and stream ingest for the cameras, every message stamped with source, time and adapter version)",
+  "the approvals service: the recorded approval or rejection of an agent draft with its logged reasoning, written into the object model and the memory, never into any system of record and never into the fleet",
+  "the surfaces used by named shift supervisors, the fleet controller and the operations manager (identity served by the on site Keycloak): zone slow down approvals, clearance task and reroute request approvals, and handover confirmations"
+ ],
+ "human_loop": "agents detect and draft and people decide: the incursion agent's zone slow down and supervisor call is approved by the shift supervisor, the stall agent's clearance task and reroute request by the fleet controller, and the shift agent's handover is confirmed by the operations manager; execution is manual, no agent drives a robot or issues a motion command, and known answer probes on the review queue measure whether approvers are rubber stamping"
+}

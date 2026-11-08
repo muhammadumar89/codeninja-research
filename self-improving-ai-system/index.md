@@ -4,7 +4,7 @@ Canonical: https://codeatoms.ai/self-improving-ai-system/
 License: CC BY 4.0
 Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
-A self-improving AI system is a system whose output is measured on fresh tasks each loop and whose context, not its weights, is improved between loops. CodeNinja's Praxis is run as one: each RSI loop (recursive self improvement loop) measures Praxis against frontier AI on its own on the Physical AI Design Index (PADI), and the 28 designs published here are its output. Latest measured RSI loop, RSI Loop 21: Praxis platform 54.4% against frontier AI 37.7% of checks passed.
+A self-improving AI system is a system whose output is measured on fresh tasks each loop and whose context, not its weights, is improved between loops. CodeNinja's Praxis is run as one: each RSI loop (recursive self improvement loop) measures Praxis against frontier AI on its own on the Physical AI Design Index (PADI), and the 44 designs published here are its output. Latest measured RSI loop, RSI Loop 21: Praxis platform 54.4% against frontier AI 37.7% of checks passed.
 
 ## How a self-improving AI system works
 
@@ -35,6 +35,22 @@ How PADI scores, and its limitations: https://codeatoms.ai/padi/
 
 | Design | Sector | Country | Published |
 |---|---|---|---|
+| [Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/) | discrete manufacturing and automotive | Pakistan | 2026-11-07 |
+| [Industrial AI Reference Architecture for Tailings Storage Facility Monitoring in the United States](https://codeatoms.ai/tailings-monitoring-us/) | mining | United States | 2026-11-07 |
+| [Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan](https://codeatoms.ai/remote-mine-satellite-pakistan/) | mining | Pakistan | 2026-11-07 |
+| [Industrial Ontology Examples](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/) | maritime and ports | Saudi Arabia | 2026-11-07 |
+| [Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/) | rail and transportation | Saudi Arabia | 2026-11-07 |
+| [A Self-Improving AI System for OT Vulnerability Management at a Utility in the United States](https://codeatoms.ai/ot-vulnerability-utility-us/) | energy and utilities | United States | 2026-11-07 |
+| [Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/) | warehousing and intralogistics | Saudi Arabia | 2026-11-07 |
+| [Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/) | supply chain and logistics | Saudi Arabia | 2026-11-07 |
+| [Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/) | heavy industry and construction | Pakistan | 2026-11-07 |
+| [Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States](https://codeatoms.ai/engine-mro-shop-us/) | aviation and aerospace manufacturing | United States | 2026-11-07 |
+| [Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan](https://codeatoms.ai/distribution-loss-theft-pakistan/) | energy and utilities | Pakistan | 2026-11-07 |
+| [Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/) | aviation and aerospace manufacturing | Saudi Arabia | 2026-11-07 |
+| [Industrial Data Ontology for a Cold Chain From Plant to Store in the United States](https://codeatoms.ai/cold-chain-ontology-us/) | supply chain and logistics | United States | 2026-11-07 |
+| [A Self-Improving AI System for Cement Kiln Control in Saudi Arabia](https://codeatoms.ai/cement-kiln-control-saudi-arabia/) | heavy industry and construction | Saudi Arabia | 2026-11-07 |
+| [A Self-Improving AI System for Carrier Exception Handling in the United States](https://codeatoms.ai/carrier-exceptions-us/) | supply chain and logistics | United States | 2026-11-07 |
+| [A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan](https://codeatoms.ai/canal-irrigation-pakistan/) | agriculture and earth observation | Pakistan | 2026-11-07 |
 | [Industrial Data Ontology for a Water Utility in the United States](https://codeatoms.ai/water-utility-ontology-us/) | energy and utilities | United States | 2026-11-02 |
 | [Physical AI System Design for Wafer Defect Inspection in the United States](https://codeatoms.ai/wafer-defect-inspection-us/) | semiconductors | United States | 2026-11-02 |
 | [Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/) | mining | Saudi Arabia | 2026-11-02 |

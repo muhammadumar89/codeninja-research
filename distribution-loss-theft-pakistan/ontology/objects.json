@@ -1,0 +1,293 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan",
+  "url": "https://codeatoms.ai/distribution-loss-theft-pakistan/",
+  "doi": ""
+ },
+ "sector": "energy and utilities",
+ "country": "Pakistan",
+ "scenario": "the operator is described by class, never by name: an electricity distribution company in Pakistan serving several million customers through hundreds of grid stations and thousands of feeders, with the first phase on one circle of feeders for one quarter, reading seven systems of record through one adapter family and writing back only approved corrections and approved theft cases",
+ "source": "chapter 5 of the paper (the fifteen objects in 5.1, the draft and approval vocabularies in 5.2, the Grid station record in 5.3), the properties and the fourteen labelled typed links of Figure 4, and the anchors and links of Table 8; the Recovery anchor follows chapter 2.1 (the theft case register holds recovery amounts); Agent draft and Approval are the platform's own decision record (5.2) and carry no system of record, so their anchor is left empty; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "grid-station",
+   "label": "Grid station",
+   "kind": "site",
+   "anchored_in": "The geographic information system of the network",
+   "properties": [
+    "Grid station code",
+    "Voltage level",
+    "Feeders supplied",
+    "Circle",
+    "Subdivision"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "feeder",
+     "label": "supplies"
+    }
+   ]
+  },
+  {
+   "id": "feeder",
+   "label": "Feeder",
+   "kind": "asset",
+   "anchored_in": "The geographic information system of the network",
+   "properties": [
+    "Feeder ID",
+    "Voltage (11 kV or 33 kV)"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "transformer",
+     "label": "carries"
+    },
+    {
+     "to": "meter",
+     "label": "metered by"
+    }
+   ]
+  },
+  {
+   "id": "transformer",
+   "label": "Transformer",
+   "kind": "asset",
+   "anchored_in": "The energy audit records per feeder and transformer",
+   "properties": [
+    "Transformer number",
+    "Capacity kVA",
+    "Feeder"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "service-connection",
+     "label": "serves"
+    }
+   ]
+  },
+  {
+   "id": "service-connection",
+   "label": "Service connection",
+   "kind": "asset",
+   "anchored_in": "The customer information and billing system",
+   "properties": [
+    "Reference number",
+    "Consumer category",
+    "Tariff"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "meter",
+     "label": "carries"
+    },
+    {
+     "to": "tariff",
+     "label": "billed under"
+    }
+   ]
+  },
+  {
+   "id": "meter",
+   "label": "Meter",
+   "kind": "asset",
+   "anchored_in": "The meter data management system",
+   "properties": [
+    "Meter number",
+    "Meter multiplier"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "interval-load",
+     "label": "reports"
+    },
+    {
+     "to": "reading",
+     "label": "yields"
+    },
+    {
+     "to": "tamper-event",
+     "label": "raises"
+    }
+   ]
+  },
+  {
+   "id": "interval-load",
+   "label": "Interval load",
+   "kind": "measure",
+   "anchored_in": "The meter data management system",
+   "properties": [
+    "Timestamp",
+    "kWh per interval",
+    "Meter"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "reading",
+   "label": "Reading",
+   "kind": "record",
+   "anchored_in": "The customer information and billing system",
+   "properties": [
+    "Reading date",
+    "Units",
+    "Actual or estimated"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "billing-account",
+   "label": "Billing account",
+   "kind": "record",
+   "anchored_in": "The customer information and billing system",
+   "properties": [
+    "Account number",
+    "Billed units",
+    "Amount"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "tariff",
+     "label": "priced by"
+    }
+   ]
+  },
+  {
+   "id": "tariff",
+   "label": "Tariff",
+   "kind": "record",
+   "anchored_in": "The customer information and billing system",
+   "properties": [
+    "Tariff code",
+    "Slab rates",
+    "Consumer category"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "inspection",
+   "label": "Inspection",
+   "kind": "event",
+   "anchored_in": "The meter reading and inspection app",
+   "properties": [
+    "Inspection date",
+    "Team",
+    "Findings"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "meter",
+     "label": "visits"
+    }
+   ]
+  },
+  {
+   "id": "tamper-event",
+   "label": "Tamper event",
+   "kind": "event",
+   "anchored_in": "The meter data management system",
+   "properties": [
+    "Event type",
+    "Meter",
+    "Timestamp"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "theft-case",
+     "label": "opens"
+    }
+   ]
+  },
+  {
+   "id": "theft-case",
+   "label": "Theft case",
+   "kind": "record",
+   "anchored_in": "The theft case register",
+   "properties": [
+    "Case number",
+    "PPC section",
+    "Consumer category"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "recovery",
+     "label": "yields"
+    }
+   ]
+  },
+  {
+   "id": "recovery",
+   "label": "Recovery",
+   "kind": "record",
+   "anchored_in": "The theft case register",
+   "properties": [
+    "Amount recovered",
+    "Case reference",
+    "Arrears route"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "agent-draft",
+   "label": "Agent draft",
+   "kind": "document",
+   "anchored_in": "",
+   "properties": [
+    "Draft type",
+    "Ranked causes",
+    "Evidence citations",
+    "Model version",
+    "Confidence"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Approved",
+    "Amended",
+    "Rejected",
+    "Expired"
+   ],
+   "links": []
+  },
+  {
+   "id": "approval",
+   "label": "Approval",
+   "kind": "event",
+   "anchored_in": "",
+   "properties": [
+    "Approver role",
+    "Officer grade",
+    "Timestamp",
+    "Artifact hash",
+    "Written reason"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "agent-draft",
+     "label": "settles"
+    }
+   ]
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (one integration adapter family: a Kafka subscription for meter data, scheduled batch extracts for billing, energy audit, GIS and outage records, mapped connectors for the field app and the theft case register), stamping every fact with the system it came from",
+  "the approved correction, the single write path out of the platform: reading and multiplier corrections land in the customer information and billing system and approved theft cases land in the theft case register, each through the adapter tier and each traceable to the approval object that authorized it",
+  "the surfaces used by named subdivision engineers, inspection officers and revenue officers (identity held by Keycloak inside the boundary): the approval queue and loss boards, the case file queue, the correction queue, the printable complaint pack and the command center"
+ ],
+ "human_loop": "agents draft and people decide: the loss agent's ranked causes and inspection visits are approved by the subdivision engineer, the tamper agent's case file by the inspection officer, the billing agent's correction by the revenue officer, and the theft complaint is signed by the Grade 17 officer; no agent disconnects a customer, raises a bill or files a case without a recorded approval carrying an artifact hash and a written reason"
+}

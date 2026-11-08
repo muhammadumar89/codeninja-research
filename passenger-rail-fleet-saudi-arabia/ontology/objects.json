@@ -1,0 +1,278 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia",
+  "url": "https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/",
+  "doi": ""
+ },
+ "sector": "rail and transportation",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: a national passenger and freight railway in Saudi Arabia running long distance push pull trainsets over desert routes with depots at the ends of the line, monitored through two builders' remote platforms, with the first phase on one route for one quarter, reading the builders' platforms and the operator's systems of record and writing to none of them",
+ "source": "chapter 5 of the paper (the fourteen objects and their kinds in 5.1, the human loop in 5.2, the Trainset record in 5.3), the properties and the labelled typed links of Figure 4 (its title counts thirteen; twelve are legible and carried here, the thirteenth is drawn without a readable label and is left out), and the anchors and links of Table 8; ConditionCase and AgentDraft are the design's own objects (5.1, 5.2) and carry no system of record as anchor; the ConditionCase vocabulary is given in 5.3 as five states from Drafted to Rejected and only those two are printed, so only those two are carried; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "trainset",
+   "label": "Trainset",
+   "kind": "asset",
+   "anchored_in": "Timetable and train running system",
+   "properties": [
+    "Trainset number",
+    "Diagram",
+    "Formation",
+    "Vehicles",
+    "Morning count status"
+   ],
+   "status_vocabulary": [
+    "In service",
+    "In maintenance",
+    "Stabled",
+    "Unavailable"
+   ],
+   "links": [
+    {
+     "to": "diagram",
+     "label": "runs under"
+    }
+   ]
+  },
+  {
+   "id": "vehicle",
+   "label": "Vehicle",
+   "kind": "asset",
+   "anchored_in": "Builder's remote monitoring platform",
+   "properties": [
+    "Vehicle number",
+    "Type (locomotive or coach)"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "component",
+   "label": "Component",
+   "kind": "asset",
+   "anchored_in": "Maintenance management system",
+   "properties": [
+    "Serial number",
+    "Part number",
+    "Fitted on vehicle"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "vehicle",
+     "label": "fitted on"
+    },
+    {
+     "to": "part",
+     "label": "numbered as"
+    }
+   ]
+  },
+  {
+   "id": "diagnostic-event",
+   "label": "Diagnostic event",
+   "kind": "event",
+   "anchored_in": "On board diagnostic logs",
+   "properties": [
+    "Builder code",
+    "Source vocabulary",
+    "Timestamp"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "vehicle",
+     "label": "raised by"
+    }
+   ]
+  },
+  {
+   "id": "fault",
+   "label": "Fault",
+   "kind": "record",
+   "anchored_in": "Maintenance management system",
+   "properties": [
+    "Fault code",
+    "Confirmed cause",
+    "Confirming engineer"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "Depot work orders",
+   "properties": [
+    "Work order number",
+    "Vehicle",
+    "Depot slot",
+    "Repeat flag"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "vehicle",
+     "label": "raised against"
+    }
+   ]
+  },
+  {
+   "id": "part",
+   "label": "Part",
+   "kind": "material",
+   "anchored_in": "Spare parts stock system",
+   "properties": [
+    "Part number",
+    "Stock level",
+    "Depot"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "depot-slot",
+   "label": "Depot slot",
+   "kind": "record",
+   "anchored_in": "Depot work orders",
+   "properties": [
+    "Slot id",
+    "Depot",
+    "Window"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "vehicle",
+     "label": "reserved for"
+    },
+    {
+     "to": "diagram",
+     "label": "follows"
+    }
+   ]
+  },
+  {
+   "id": "diagram",
+   "label": "Diagram",
+   "kind": "record",
+   "anchored_in": "Timetable and train running system",
+   "properties": [
+    "Diagram code",
+    "Vehicles",
+    "Journeys"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "journey",
+   "label": "Journey",
+   "kind": "event",
+   "anchored_in": "Timetable and train running system",
+   "properties": [
+    "Journey id",
+    "Trainset",
+    "Route"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "trainset",
+     "label": "run by"
+    }
+   ]
+  },
+  {
+   "id": "delay",
+   "label": "Delay",
+   "kind": "event",
+   "anchored_in": "Timetable and train running system",
+   "properties": [
+    "Minutes",
+    "Cause code",
+    "Attribution"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "journey",
+     "label": "attributed to"
+    }
+   ]
+  },
+  {
+   "id": "incident",
+   "label": "Incident",
+   "kind": "record",
+   "anchored_in": "Passenger incident log",
+   "properties": [
+    "Incident id",
+    "Date",
+    "Trainset",
+    "Category"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "trainset",
+     "label": "recorded on"
+    }
+   ]
+  },
+  {
+   "id": "condition-case",
+   "label": "Condition case",
+   "kind": "record",
+   "anchored_in": "Created by the design; the model's own write path",
+   "properties": [
+    "Case id",
+    "Vehicle",
+    "Triggering events",
+    "Matched work orders",
+    "Recommended depot slot",
+    "Approving engineer"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Rejected"
+   ],
+   "links": [
+    {
+     "to": "vehicle",
+     "label": "opened on"
+    }
+   ]
+  },
+  {
+   "id": "agent-draft",
+   "label": "Agent draft",
+   "kind": "document",
+   "anchored_in": "Created by the design; the model's own write path",
+   "properties": [
+    "Draft type",
+    "Agent",
+    "Evidence links",
+    "Citation set",
+    "Approval state"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "diagnostic-event",
+     "label": "triggered by"
+    }
+   ]
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (integration adapters over the builders' documented APIs and the operator's systems, telemetry adapters for streams), read only against the ten sources, stamping provenance class, source vocabulary and per source clock offset on every fact",
+  "the model's own ConditionCase and AgentDraft objects, the single write path in the design; no system of record is ever written",
+  "the surfaces used by the named fleet engineer: the condition view, the diagram swap approval surface, the month end availability pack and the approval surface, with identity held by Keycloak inside the boundary"
+ ],
+ "human_loop": "agents draft and people decide: every condition case carries an approving engineer and a recommended depot slot, every agent draft carries an approval state and a citation set, nothing reaches a depot slot or a diagram swap without a named person deciding, and the platform stays advisory and non vital, touching nothing in train control"
+}

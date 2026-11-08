@@ -1,0 +1,285 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia",
+  "url": "https://codeatoms.ai/freight-corridor-customs-saudi-arabia/",
+  "doi": ""
+ },
+ "sector": "supply chain and logistics",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: a national multimodal freight and logistics operator in Saudi Arabia that runs inland corridors linking seaports to dry ports and freight yards by rail and road, with the first phase on one corridor between one seaport and one dry port for one quarter, reading seven systems of record and the customs authority's interfaces inbound only and never filing, amending or cancelling a declaration or booking",
+ "source": "chapter 5 of the paper (the fifteen objects in 5.1, the Consignment record in 5.3 with its properties and status vocabulary), the properties and the eleven labelled typed links of Figure 4, and the anchors and links of Table 8; the Declaration status vocabulary follows 5.1 (Queried) and 5.3 (Filed to Held); the dry port and the terminal are named from the requirement, which the platform scrub had replaced with placeholder labels; Exception carries no system of record and is anchored in the design's own stall detection and connection watch (7.2); the three human roles carry no anchor in the paper and are left empty",
+ "objects": [
+  {
+   "id": "consignment",
+   "label": "Consignment",
+   "kind": "record",
+   "anchored_in": "Container tracking system",
+   "properties": [
+    "Consignment id",
+    "Container number",
+    "Commodity class",
+    "Origin seaport",
+    "Destination dry port",
+    "Current hand",
+    "Story link"
+   ],
+   "status_vocabulary": [
+    "Booked",
+    "At port",
+    "Cleared",
+    "In transit rail",
+    "At dry port",
+    "Delivered",
+    "Exception"
+   ],
+   "links": [
+    {
+     "to": "container",
+     "label": "carries"
+    }
+   ]
+  },
+  {
+   "id": "container",
+   "label": "Container",
+   "kind": "asset",
+   "anchored_in": "Container tracking system",
+   "properties": [
+    "Container number",
+    "ISO code",
+    "Reefer flag"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "declaration",
+   "label": "Declaration",
+   "kind": "record",
+   "anchored_in": "The customs authority's declaration and clearance interfaces",
+   "properties": [
+    "Declaration number",
+    "Container number",
+    "Lane"
+   ],
+   "status_vocabulary": [
+    "Filed",
+    "Queried",
+    "Held"
+   ],
+   "links": [
+    {
+     "to": "container",
+     "label": "covers"
+    }
+   ]
+  },
+  {
+   "id": "train",
+   "label": "Train",
+   "kind": "record",
+   "anchored_in": "Rail operations and yard management system",
+   "properties": [
+    "Train id",
+    "Corridor",
+    "Departure slot"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "wagon",
+     "label": "hauls"
+    },
+    {
+     "to": "corridor-planner",
+     "label": "planned by"
+    }
+   ]
+  },
+  {
+   "id": "wagon",
+   "label": "Wagon",
+   "kind": "asset",
+   "anchored_in": "Rail operations and yard management system",
+   "properties": [
+    "Wagon id",
+    "Position on train",
+    "Container slot"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "container",
+     "label": "slots"
+    }
+   ]
+  },
+  {
+   "id": "road-leg",
+   "label": "Road leg",
+   "kind": "record",
+   "anchored_in": "Transport management system",
+   "properties": [
+    "Leg id",
+    "Container number",
+    "Haulier"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "container",
+     "label": "moves"
+    },
+    {
+     "to": "haulier",
+     "label": "runs under"
+    }
+   ]
+  },
+  {
+   "id": "haulier",
+   "label": "Haulier",
+   "kind": "actor",
+   "anchored_in": "Transport management system",
+   "properties": [
+    "Haulier code",
+    "Contract reference",
+    "Telematics format"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "terminal",
+   "label": "Terminal",
+   "kind": "site",
+   "anchored_in": "Port community system feeds",
+   "properties": [
+    "Terminal code",
+    "Berth",
+    "Gate events"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "dry-port",
+   "label": "Dry port",
+   "kind": "site",
+   "anchored_in": "Rail operations and yard management system",
+   "properties": [
+    "Yard code",
+    "Slot count",
+    "Dwell baseline"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "yard-controller",
+     "label": "controlled by"
+    }
+   ]
+  },
+  {
+   "id": "handover-slot",
+   "label": "Handover slot",
+   "kind": "record",
+   "anchored_in": "Rail operations and yard management system",
+   "properties": [
+    "Slot id",
+    "Train",
+    "Terminal"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "train",
+     "label": "books"
+    }
+   ]
+  },
+  {
+   "id": "exception",
+   "label": "Exception",
+   "kind": "event",
+   "anchored_in": "Raised by the design's stall detection and connection watch",
+   "properties": [
+    "Exception id",
+    "Type",
+    "Consignment"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "consignment",
+     "label": "halts"
+    }
+   ]
+  },
+  {
+   "id": "customer-case",
+   "label": "Customer case",
+   "kind": "record",
+   "anchored_in": "Customer service case log",
+   "properties": [
+    "Case id",
+    "Consignment",
+    "Question"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "consignment",
+     "label": "concerns"
+    }
+   ]
+  },
+  {
+   "id": "corridor-planner",
+   "label": "Corridor planner",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Planner id",
+    "Shift",
+    "Approval authority"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "yard-controller",
+   "label": "Yard controller",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Controller id",
+    "Shift",
+    "Re booking authority"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "service-desk-agent",
+   "label": "Service desk agent",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Desk id",
+    "Queue"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (the integration adapter on Debezium with Apache Camel and the telemetry adapter, read only against the seven sources and the customs authority's interfaces, stamping every property with its source record and timestamp)",
+  "the named approval, written into the object model and the kept record of decisions and outcomes and never into any system of record; no agent files, amends, re books or cancels a declaration or booking",
+  "the surfaces used by named corridor planners, yard controllers and service desk agents (identities and permissions held in Keycloak, scoped to the three roles): stall chase approvals, re booking approvals and cited answers sent"
+ ],
+ "human_loop": "agents draft and people decide: the corridor planner holds approval authority over stall chases and revised handover slots, the yard controller holds re booking authority over handover slots, and the service desk agent sends the cited answer; approval authority is a property of the actor objects, and a per shift alert budget and an action rate gate keep the drafts worth acting on"
+}

@@ -10,17 +10,18 @@ Recommended path: no rail transport design is published yet, so the first one is
 
 ## What we bring
 
-- Nearest published work: [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (agriculture and earth observation, Pakistan)
-- Nearest published work: [Hangar Form Cell: Dieless Robotic Sheet Metal From CAD to Certified Part Without Vendor Cloud](https://codeatoms.ai/dieless-sheet-metal-cell-aerospace-mro-us/) (aviation and aerospace manufacturing, United States)
-- Nearest published work: [Depot Operating Object Model: Ontologies for Unifying Factory Systems at a United States Vehicle Rebuild Depot](https://codeatoms.ai/factory-ontology-rebuild-depot-us/) (discrete manufacturing and automotive, United States)
-- Nearest published work: [Sovereign AI Architecture for a Grid Control Room in Saudi Arabia](https://codeatoms.ai/grid-control-room-saudi-arabia/) (energy and utilities, Saudi Arabia)
-- Nearest published work: [Steel Count Ledger: Independently Counted Production for Every Steel Mill in Pakistan](https://codeatoms.ai/steel-production-count-pakistan/) (heavy industry and construction, Pakistan)
-- Nearest published work: [Port Drone Watch: From Oil Sheen to Dispatched Work on the Port's Own Hardware in Germany](https://codeatoms.ai/drone-detection-dispatch-port-germany/) (maritime and ports, Germany)
-- Nearest published work: [Industrial AI for an Open Pit Mine Haul Fleet in Saudi Arabia](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/) (mining, Saudi Arabia)
+- Nearest published work: [A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan](https://codeatoms.ai/canal-irrigation-pakistan/) (agriculture and earth observation, Pakistan)
+- Nearest published work: [Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia](https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/) (aviation and aerospace manufacturing, Saudi Arabia)
+- Nearest published work: [Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan](https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/) (discrete manufacturing and automotive, Pakistan)
+- Nearest published work: [Sovereign AI Architecture for Distribution Loss and Theft Reduction in Pakistan](https://codeatoms.ai/distribution-loss-theft-pakistan/) (energy and utilities, Pakistan)
+- Nearest published work: [Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan](https://codeatoms.ai/fertilizer-plant-reliability-pakistan/) (heavy industry and construction, Pakistan)
+- Nearest published work: [Industrial Ontology Examples: A Port Equipment and Berth Object Model in Saudi Arabia](https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/) (maritime and ports, Saudi Arabia)
+- Nearest published work: [Sovereign AI Reference Architectures for a Remote Mine on a Satellite Link in Pakistan](https://codeatoms.ai/remote-mine-satellite-pakistan/) (mining, Pakistan)
 - Nearest published work: [Pipeline Integrity Watch: Leak Detection, Fleet Health and Security Directive Evidence for Natural Gas Transmission in the United States](https://codeatoms.ai/pipeline-integrity-gas-transmission-us/) (oil and gas, United States)
-- Nearest published work: [Wayside Trend Watch: Predictive Maintenance From Wayside Detectors for a Freight Railroad in the United States](https://codeatoms.ai/wayside-detector-trending-rail-us/) (rail and transportation, United States)
+- Nearest published work: [Sovereign AI Reference Architectures for Passenger Rail Fleet Maintenance in Saudi Arabia](https://codeatoms.ai/passenger-rail-fleet-saudi-arabia/) (rail and transportation, Saudi Arabia)
 - Nearest published work: [Physical AI System Design for Wafer Defect Inspection in the United States](https://codeatoms.ai/wafer-defect-inspection-us/) (semiconductors, United States)
-- Nearest published work: [Warehouse Twin Command: Live Slotting, Docks, Yards and Safety Vision for Warehousing and Intralogistics in the United States](https://codeatoms.ai/warehouse-digital-twin-us/) (warehousing and intralogistics, United States)
+- Nearest published work: [Sovereign AI Architecture for a Freight Corridor and Customs Clearance in Saudi Arabia](https://codeatoms.ai/freight-corridor-customs-saudi-arabia/) (supply chain and logistics, Saudi Arabia)
+- Nearest published work: [Physical AI System Design for a Mobile Robot Fulfilment Centre in Saudi Arabia](https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/) (warehousing and intralogistics, Saudi Arabia)
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
 - Hyper Ontology, which stands an object model up over the operator's own systems: https://codeatoms.ai/hyper-ontology/
 
@@ -50,7 +51,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a rail transport design to read?
 
-Not yet. 28 designs are published across 11 other sectors, and the nearest ones are linked on this page. The first rail transport design is built with a partner.
+Not yet. 44 designs are published across 12 other sectors, and the nearest ones are linked on this page. The first rail transport design is built with a partner.
 
 Ask to co-build: https://codeatoms.ai/co-build/rail-transport/#ask
 Every sector: https://codeatoms.ai/co-build/

@@ -1,0 +1,283 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Industrial AI Reference Architecture for Tailings Storage Facility Monitoring in the United States",
+  "url": "https://codeatoms.ai/tailings-monitoring-us/",
+  "doi": ""
+ },
+ "sector": "mining",
+ "country": "United States",
+ "scenario": "the operator is described by class, never by name: a mining company in the United States running one large tailings storage facility classified at a high consequence level, instrumented under the global industry standard on tailings management and under state dam safety regulation, with the first phase on one embankment section for two quarters, reading the eight systems of record through two adapter families and never writing into any of them",
+ "source": "chapter 5 of the paper (the fifteen objects and their kinds in 5.1, the status vocabularies in 5.2 and 5.3, the Embankment Section record in 5.3), the properties and the twelve labelled typed links of Figure 4, and the anchors and links of Table 8 (twelve objects; Regulator Submission, Engineer of Record and Water Balance Model are anchored from chapter 6.1 and 5.2); Pattern Draft and Response Draft are anchored in the agents and memory service that drafts them (Table 8 prints 'record'); the Engineer of Record carries no anchor in the paper and is left empty; the Trigger's status vocabulary is not printed and is left empty; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "embankment-section",
+   "label": "Embankment Section",
+   "kind": "asset",
+   "anchored_in": "The engineer of record's reports and drawings",
+   "properties": [
+    "Section ID",
+    "Raise stage",
+    "Crest elevation",
+    "Beach length",
+    "Consequence classification"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "raise",
+     "label": "raised through"
+    }
+   ]
+  },
+  {
+   "id": "raise",
+   "label": "Raise",
+   "kind": "event",
+   "anchored_in": "The deposition and raise plans",
+   "properties": [
+    "Raise number",
+    "Construction method",
+    "Date range"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "instrument",
+   "label": "Instrument",
+   "kind": "asset",
+   "anchored_in": "The instrumentation data logger network and its historian",
+   "properties": [
+    "Tag",
+    "Type",
+    "Installation date"
+   ],
+   "status_vocabulary": [
+    "Commissioned",
+    "Degraded",
+    "Offline",
+    "Retired"
+   ],
+   "links": []
+  },
+  {
+   "id": "reading",
+   "label": "Reading",
+   "kind": "measure",
+   "anchored_in": "The instrumentation data logger network and its historian",
+   "properties": [
+    "Timestamp",
+    "Value",
+    "Unit"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "instrument",
+     "label": "taken by"
+    }
+   ]
+  },
+  {
+   "id": "trigger-level",
+   "label": "Trigger Level",
+   "kind": "record",
+   "anchored_in": "The trigger action response plan with its thresholds",
+   "properties": [
+    "Parameter",
+    "Level",
+    "TARP action set"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "trigger",
+   "label": "Trigger",
+   "kind": "event",
+   "anchored_in": "The trigger action response plan with its thresholds",
+   "properties": [
+    "Instrument",
+    "Level crossed",
+    "Time"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "instrument",
+     "label": "fires on"
+    },
+    {
+     "to": "pattern-draft",
+     "label": "explained by"
+    },
+    {
+     "to": "engineer-of-record",
+     "label": "confirmed by"
+    }
+   ]
+  },
+  {
+   "id": "inspection-observation",
+   "label": "Inspection Observation",
+   "kind": "record",
+   "anchored_in": "The daily inspection app",
+   "properties": [
+    "Date",
+    "Observer",
+    "Section"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "embankment-section",
+     "label": "recorded on"
+    }
+   ]
+  },
+  {
+   "id": "deposition-event",
+   "label": "Deposition Event",
+   "kind": "event",
+   "anchored_in": "The deposition and raise plans",
+   "properties": [
+    "Date",
+    "Cell or section",
+    "Volume"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "pond-level",
+   "label": "Pond Level",
+   "kind": "measure",
+   "anchored_in": "The instrumentation data logger network and its historian",
+   "properties": [
+    "Elevation",
+    "Freeboard",
+    "Timestamp"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "radar-survey",
+   "label": "Radar Survey",
+   "kind": "document",
+   "anchored_in": "The satellite radar deformation reports",
+   "properties": [
+    "Survey date",
+    "Coverage",
+    "Deformation map"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "embankment-section",
+     "label": "covers"
+    }
+   ]
+  },
+  {
+   "id": "pattern-draft",
+   "label": "Pattern Draft",
+   "kind": "record",
+   "anchored_in": "The agents and memory service (a drafted record, not a system of record)",
+   "properties": [
+    "Trigger",
+    "Neighbouring readings cited"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Confirmed",
+    "Rejected"
+   ],
+   "links": [
+    {
+     "to": "trigger",
+     "label": "drafted for"
+    },
+    {
+     "to": "trigger-level",
+     "label": "cites"
+    },
+    {
+     "to": "deposition-event",
+     "label": "cites"
+    }
+   ]
+  },
+  {
+   "id": "response-draft",
+   "label": "Response Draft",
+   "kind": "record",
+   "anchored_in": "The agents and memory service (a drafted record, not a system of record)",
+   "properties": [
+    "TARP actions",
+    "Inspections to add",
+    "EOR notice"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "regulator-submission",
+   "label": "Regulator Submission",
+   "kind": "document",
+   "anchored_in": "The regulator's correspondence",
+   "properties": [
+    "Due date",
+    "Period covered"
+   ],
+   "status_vocabulary": [
+    "Filed"
+   ],
+   "links": [
+    {
+     "to": "engineer-of-record",
+     "label": "approved by"
+    }
+   ]
+  },
+  {
+   "id": "engineer-of-record",
+   "label": "Engineer of Record",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Firm",
+    "Written agreement",
+    "Review cadence"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "water-balance-model",
+   "label": "Water Balance Model",
+   "kind": "system",
+   "anchored_in": "The water balance model",
+   "properties": [
+    "Inflows",
+    "Outflows"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "pond-level",
+     "label": "forecasts"
+    }
+   ]
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (the telemetry adapter for the historian's live feed and the integration adapter for the seven document, plan, model and correspondence sources, read only against the eight systems of record, every source entering with its provenance class and read direction recorded)",
+  "the recorded human decision: a confirmed or rejected pattern draft, an approved response draft and an engineer of record approval on a regulator submission, written into the object model and the memory of confirmed patterns and never into any system of record",
+  "the surfaces used by the named tailings engineer, the responsible tailings facility engineer and the engineer of record (identity served on site): pattern confirmations, response approvals and submission approvals; the review board and the regulator read through read only views"
+ ],
+ "human_loop": "agents draft and engineers decide: the pattern agent's draft is confirmed by the tailings engineer, the response agent's draft is approved by the responsible tailings facility engineer, and the reporting agent's surveillance report and regulator submission are reviewed and approved by the engineer of record; the existing trigger action response plan alarm path keeps firing untouched and no agent changes a threshold, a deposition plan or a submission without a named approval"
+}

@@ -11,6 +11,7 @@ Recommended path: start from the nearest published agriculture and earth observa
 ## What we bring
 
 - [Field Ledger: An Open Source Agriculture Data Dashboard the Operator Fully Owns](https://codeatoms.ai/farm-data-dashboard-pakistan/) (Pakistan): 12 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23186671
+- [A Self-Improving AI System for Canal Irrigation Water Allocation in Pakistan](https://codeatoms.ai/canal-irrigation-pakistan/) (Pakistan): 16 objects, 4 models
 - [Fodder Watch: Earth Observation That Turns Restricted-Crop Detections Into Enforceable Case Files](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/) (Saudi Arabia): 14 objects, 2 models, DOI https://doi.org/10.5281/zenodo.23186675
 - [Baseline: One Flight of 4 Band Orthoimagery and LiDAR for Vegetation Mapping](https://codeatoms.ai/vegetation-mapping-lidar-us/) (United States): 16 objects, 0 models, DOI https://doi.org/10.5281/zenodo.23186673
 - Praxis, the platform every design is made on: https://codeatoms.ai/praxis/
@@ -42,7 +43,7 @@ That is your rule, not ours. Every published design is sovereign by default: ope
 
 ### Is there already a agriculture and earth observation design to read?
 
-Yes. 3 published agriculture and earth observation reference architectures in Pakistan, Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
+Yes. 4 published agriculture and earth observation reference architectures in Pakistan, Saudi Arabia and the United States, each with a DOI, an object model and a cost appendix.
 
 Ask to co-build: https://codeatoms.ai/co-build/agriculture-and-earth-observation/#ask
 Every sector: https://codeatoms.ai/co-build/

@@ -1,0 +1,1 @@
+Figure 8. The one phase and its gate, and coverage of the 18 requirements across it.

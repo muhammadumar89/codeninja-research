@@ -1,0 +1,171 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "A Self-Improving AI System for Carrier Exception Handling in the United States",
+  "url": "https://codeatoms.ai/carrier-exceptions-us/",
+  "doi": ""
+ },
+ "sector": "supply chain and logistics",
+ "country": "United States",
+ "scenario": "the operator is described by class, never by name: a third party logistics provider in the United States managing truckload and less than truckload freight for shippers across a network of contracted carriers, with the first phase on one regional lane group for one quarter, reading seven systems of record and the email and chat threads through one adapter family and writing only the approved appointment change request into the scheduling tool",
+ "source": "chapter 5 of the paper (the sixteen objects in 5.1, the three status vocabularies in 5.2, the Shipper record in 5.3), the properties and the thirteen labelled typed links of Figure 4, and the anchors and links of Table 8 (completed with the four rows the generator cut: Standing Fix, Claim, Scorecard Entry and Exception Coordinator, anchored by chapter 5.1 and linked by Figure 4); properties the figure truncates are left out; the exception's risk band and cascade stops follow chapter 5.3.",
+ "objects": [
+  {
+   "id": "shipper",
+   "label": "Shipper",
+   "kind": "actor",
+   "anchored_in": "Customer order feeds",
+   "properties": ["Shipper account", "Service agreement", "Data terms", "Notification preference", "Required sign-off level"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "order",
+   "label": "Order",
+   "kind": "record",
+   "anchored_in": "Customer order feeds",
+   "properties": ["Order number", "Shipper", "Commodities"],
+   "status_vocabulary": [],
+   "links": [{"to": "shipper", "label": "belongs to"}]
+  },
+  {
+   "id": "shipment",
+   "label": "Shipment",
+   "kind": "record",
+   "anchored_in": "Transportation management system",
+   "properties": ["Shipment ID", "Load number", "Mode (truckload or less than truckload)"],
+   "status_vocabulary": [],
+   "links": [{"to": "carrier", "label": "moved by"}]
+  },
+  {
+   "id": "stop",
+   "label": "Stop",
+   "kind": "record",
+   "anchored_in": "Transportation management system",
+   "properties": ["Sequence", "Consignee", "Appointment reference"],
+   "status_vocabulary": [],
+   "links": [{"to": "appointment", "label": "carries"}]
+  },
+  {
+   "id": "appointment",
+   "label": "Appointment",
+   "kind": "record",
+   "anchored_in": "Appointment scheduling tool",
+   "properties": ["Appointment ID", "Stop", "Window"],
+   "status_vocabulary": [],
+   "links": [{"to": "stop", "label": "serves"}]
+  },
+  {
+   "id": "carrier",
+   "label": "Carrier",
+   "kind": "actor",
+   "anchored_in": "Transportation management system",
+   "properties": ["MC / DOT number", "Contract terms", "Lanes served"],
+   "status_vocabulary": [],
+   "links": [{"to": "scorecard-entry", "label": "rated by"}]
+  },
+  {
+   "id": "driver",
+   "label": "Driver",
+   "kind": "actor",
+   "anchored_in": "Carrier tracking and visibility platform",
+   "properties": ["Carrier", "Hours of service status", "Remaining drive time"],
+   "status_vocabulary": [],
+   "links": [{"to": "carrier", "label": "drives for"}]
+  },
+  {
+   "id": "tracking-event",
+   "label": "Tracking event",
+   "kind": "event",
+   "anchored_in": "Carrier tracking and visibility platform",
+   "properties": ["Timestamp", "Position", "Heading and speed"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "exception",
+   "label": "Exception",
+   "kind": "event",
+   "anchored_in": "Email and chat threads",
+   "properties": ["Exception type", "Shipment", "Raised at", "Risk band", "Cascade stops"],
+   "status_vocabulary": ["New", "Triaged", "Recovery drafted", "Approved", "Resolved", "Became claim"],
+   "links": [
+    {"to": "shipment", "label": "raised on"},
+    {"to": "exception-type", "label": "classed as"},
+    {"to": "exception-coordinator", "label": "assigned to"}
+   ]
+  },
+  {
+   "id": "exception-type",
+   "label": "Exception type",
+   "kind": "vocabulary",
+   "anchored_in": "The design's own governed vocabulary",
+   "properties": ["Type code", "Definition", "Typical causes"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "action",
+   "label": "Action",
+   "kind": "record",
+   "anchored_in": "Email and chat threads",
+   "properties": ["Draft", "Approver", "Sent at"],
+   "status_vocabulary": ["Drafted", "Awaiting approval", "Approved", "Sent", "Acknowledged", "Declined"],
+   "links": [{"to": "exception", "label": "responds to"}]
+  },
+  {
+   "id": "resolution",
+   "label": "Resolution",
+   "kind": "record",
+   "anchored_in": "Email and chat threads",
+   "properties": ["What was done", "Time from exception"],
+   "status_vocabulary": ["Proposed", "Confirmed", "Promoted to standing fix"],
+   "links": [{"to": "exception", "label": "confirms"}]
+  },
+  {
+   "id": "standing-fix",
+   "label": "Standing fix",
+   "kind": "record",
+   "anchored_in": "The design's own governed vocabulary",
+   "properties": ["Lane", "Carrier", "Consignee"],
+   "status_vocabulary": [],
+   "links": [{"to": "carrier", "label": "binds"}]
+  },
+  {
+   "id": "claim",
+   "label": "Claim",
+   "kind": "record",
+   "anchored_in": "Claims system",
+   "properties": ["Claim number", "Shipment", "Amount"],
+   "status_vocabulary": [],
+   "links": [{"to": "shipment", "label": "settles against"}]
+  },
+  {
+   "id": "scorecard-entry",
+   "label": "Scorecard entry",
+   "kind": "record",
+   "anchored_in": "Carrier scorecards and contracts",
+   "properties": ["Carrier", "Period", "On time percentage"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "exception-coordinator",
+   "label": "Exception coordinator",
+   "kind": "actor",
+   "anchored_in": "The design's own governed vocabulary",
+   "properties": ["Shift", "Approval authority"],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (one integration adapter family: change capture on the transactional systems, governed pulls on the feeds and threads, read only against the seven sources, carrying provenance, ordering, scope and conformity on every record)",
+  "the approved appointment change request, written from the action object into the scheduling tool's request surface only after a named coordinator's approval, the one operational write in the design",
+  "the recorded confirmation, approval, resolution and standing fix, written into the object model and the memory service and never into any other system of record",
+  "the carrier message and the shipper notice, sent through email on the action object's approved path and never before approval"
+ ],
+ "human_loop": "agents draft and coordinators decide: the triage agent's type, cause, cascade and matching past resolution are confirmed by the exception coordinator; the recovery agent's carrier message, appointment change request and shipper notice are approved by the coordinator; the review agent's recurring exceptions and proposed standing fix are approved by the operations manager; every approver is recorded on the action object, confirmations are tested with known answer probes and a weekly sample, and no agent re tenders a load, changes an appointment or sends a notice on its own"
+}

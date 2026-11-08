@@ -5,21 +5,21 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 We publish the design. You bring the operation. Together they become an object model your systems can run on.
 
-28 reference architectures are published so far, across 11 of the 13 sectors on the grid, in the United States, Saudi Arabia, Pakistan and Germany.
+44 reference architectures are published so far, across 12 of the 13 sectors on the grid, in the United States, Saudi Arabia, Pakistan and Germany.
 
 ## Sectors
 
 - [Mining](https://codeatoms.ai/co-build/mining/): first design open
 - [Discrete manufacturing and automotive](https://codeatoms.ai/co-build/discrete-manufacturing-and-automotive/): first design open
-- [Energy and utilities](https://codeatoms.ai/co-build/energy-and-utilities/): 6 published designs
-- [Maritime and ports](https://codeatoms.ai/co-build/maritime-and-ports/): 3 published designs
+- [Energy and utilities](https://codeatoms.ai/co-build/energy-and-utilities/): 8 published designs
+- [Maritime and ports](https://codeatoms.ai/co-build/maritime-and-ports/): 4 published designs
 - [Rail transport](https://codeatoms.ai/co-build/rail-transport/): first design open
-- [Aviation manufacturing](https://codeatoms.ai/co-build/aviation-manufacturing/): 1 published designs
+- [Aviation manufacturing](https://codeatoms.ai/co-build/aviation-manufacturing/): 3 published designs
 - [Defense and intelligence](https://codeatoms.ai/co-build/defense-and-intelligence/): first design open
-- [Heavy industry and construction](https://codeatoms.ai/co-build/heavy-industry-and-construction/): 3 published designs
+- [Heavy industry and construction](https://codeatoms.ai/co-build/heavy-industry-and-construction/): 5 published designs
 - [Semiconductors](https://codeatoms.ai/co-build/semiconductors/): first design open
 - [Supply chain and logistics](https://codeatoms.ai/co-build/supply-chain-and-logistics/): first design open
-- [Agriculture and earth observation](https://codeatoms.ai/co-build/agriculture-and-earth-observation/): 3 published designs
+- [Agriculture and earth observation](https://codeatoms.ai/co-build/agriculture-and-earth-observation/): 4 published designs
 - [Oil and gas](https://codeatoms.ai/co-build/oil-and-gas/): 4 published designs
 - [Warehousing and intralogistics](https://codeatoms.ai/co-build/warehousing-and-intralogistics/): first design open
 

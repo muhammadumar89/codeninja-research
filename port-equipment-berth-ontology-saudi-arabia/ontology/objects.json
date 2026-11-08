@@ -1,0 +1,288 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Industrial Ontology Examples: A Port Equipment and Berth Object Model in Saudi Arabia",
+  "url": "https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/",
+  "doi": ""
+ },
+ "sector": "maritime and ports",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: a container terminal operator in Saudi Arabia with a terminal expansion under way that lengthens the quay, deepens the berths and adds ship to shore cranes and a yard block, with the first phase on two berths, their cranes and the yard blocks that serve them for one quarter, reading eight systems of record through two adapter families and writing back only through named approvals",
+ "source": "chapter 5 of the paper (the sixteen objects and their six kinds in 5.1, the Berth record in 5.3), the properties of Figure 4 (properties the figure truncates are left out), and the anchors and typed links of Table 8, which lists twelve of the sixteen objects; the Box and Incident anchors follow 5.1, the Commissioning record anchor chapter 6.1 (the civil works and commissioning records hold the expansion's objects) and the Productivity measure anchor chapter 2.1 (the terminal operating system is the productivity record); the Productivity measure link (measures) and the Incident link (names) follow 5.1 and Figure 4; no status vocabulary is printed for any object, so every list is empty",
+ "objects": [
+  {
+   "id": "berth",
+   "label": "Berth",
+   "kind": "site",
+   "anchored_in": "Vessel scheduling and berth planning tool",
+   "properties": [
+    "Berth ID",
+    "Quay length",
+    "Dredged depth",
+    "Crane split"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "berth-window",
+     "label": "grants"
+    }
+   ]
+  },
+  {
+   "id": "quay-section",
+   "label": "Quay section",
+   "kind": "site",
+   "anchored_in": "Civil works and commissioning records",
+   "properties": [
+    "Section ID",
+    "Length",
+    "Dredged depth"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "commissioning-record",
+     "label": "carries"
+    }
+   ]
+  },
+  {
+   "id": "yard-block",
+   "label": "Yard block",
+   "kind": "site",
+   "anchored_in": "Terminal operating system",
+   "properties": [
+    "Block ID",
+    "Slots",
+    "Occupancy"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "ship-to-shore-crane",
+   "label": "Ship to shore crane",
+   "kind": "asset",
+   "anchored_in": "Crane and equipment control systems",
+   "properties": [
+    "Crane ID"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "commissioning-record",
+     "label": "commissioned by"
+    },
+    {
+     "to": "fault",
+     "label": "raises"
+    }
+   ]
+  },
+  {
+   "id": "yard-crane",
+   "label": "Yard crane",
+   "kind": "asset",
+   "anchored_in": "Crane and equipment control systems",
+   "properties": [
+    "Crane ID",
+    "Block served",
+    "Stacking height"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "yard-block",
+     "label": "serves"
+    }
+   ]
+  },
+  {
+   "id": "straddle-carrier",
+   "label": "Straddle carrier",
+   "kind": "asset",
+   "anchored_in": "Equipment telematics",
+   "properties": [
+    "Unit ID",
+    "Fuel or battery state",
+    "Utilization"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "equipment-component",
+   "label": "Equipment component",
+   "kind": "asset",
+   "anchored_in": "Maintenance management system",
+   "properties": [
+    "Component ID"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "vessel-call",
+   "label": "Vessel call",
+   "kind": "event",
+   "anchored_in": "Terminal operating system",
+   "properties": [
+    "IMO number",
+    "ETA",
+    "ETD"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "berth",
+     "label": "occupies"
+    }
+   ]
+  },
+  {
+   "id": "berth-window",
+   "label": "Berth window",
+   "kind": "event",
+   "anchored_in": "Port authority vessel traffic and berth window data",
+   "properties": [
+    "Window start",
+    "Window end",
+    "Granting authority"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "fault",
+   "label": "Fault",
+   "kind": "event",
+   "anchored_in": "Crane and equipment control systems",
+   "properties": [
+    "Fault code",
+    "Raised at",
+    "Component"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "vessel-call",
+     "label": "slows"
+    }
+   ]
+  },
+  {
+   "id": "move",
+   "label": "Move",
+   "kind": "event",
+   "anchored_in": "Terminal operating system",
+   "properties": [
+    "Move ID",
+    "Box",
+    "From"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "box",
+     "label": "carries"
+    },
+    {
+     "to": "equipment-component",
+     "label": "uses"
+    }
+   ]
+  },
+  {
+   "id": "incident",
+   "label": "Incident",
+   "kind": "event",
+   "anchored_in": "Safety incident register",
+   "properties": [
+    "Incident ID",
+    "Date",
+    "Location"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "equipment-component",
+     "label": "names"
+    }
+   ]
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "Maintenance management system",
+   "properties": [
+    "Work order number",
+    "Asset",
+    "Raised by"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "berth",
+     "label": "affects"
+    },
+    {
+     "to": "berth-window",
+     "label": "affects"
+    }
+   ]
+  },
+  {
+   "id": "commissioning-record",
+   "label": "Commissioning record",
+   "kind": "record",
+   "anchored_in": "Civil works and commissioning records",
+   "properties": [
+    "Record ID",
+    "Object",
+    "Builder"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "box",
+   "label": "Box",
+   "kind": "material",
+   "anchored_in": "Terminal operating system",
+   "properties": [
+    "Container number",
+    "ISO size type",
+    "Weight"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "productivity-measure",
+   "label": "Productivity measure",
+   "kind": "measure",
+   "anchored_in": "Terminal operating system",
+   "properties": [
+    "Measure name",
+    "Value"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "vessel-call",
+     "label": "measures"
+    }
+   ]
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (an integration adapter over APIs and read only views, a telemetry adapter into the time series store behind a hardware data diode), read only against the eight sources, stamping every event with its source, provenance class and read time",
+  "the named approval, the single write path out of the ontology: an approved work order lands in the maintenance management system under the confirmer's name, and an approved berth plan adjustment lands in the vessel scheduling and berth planning tool",
+  "the surfaces used by named operations managers, engineering managers and the expansion project engineer (identity issued on site): productivity cause confirmations, work order approvals and commissioning record approvals"
+ ],
+ "human_loop": "agents draft and managers decide: the productivity agent's ranked causes are confirmed by the operations manager, the equipment agent's work order and berth plan effect are approved by the engineering manager, and the commissioning agent's objects are approved by the expansion project engineer; no agent dispatches equipment or writes to a control system"
+}

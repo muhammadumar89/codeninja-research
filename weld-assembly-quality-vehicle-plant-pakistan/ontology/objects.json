@@ -1,0 +1,299 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Physical AI System Design for Weld and Assembly Quality in a Vehicle Plant in Pakistan",
+  "url": "https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/",
+  "doi": ""
+ },
+ "sector": "discrete manufacturing and automotive",
+ "country": "Pakistan",
+ "scenario": "the operator is described by class, never by name: a vehicle assembly company in Pakistan starting production of new energy vehicles at a new plant sized for about 25,000 vehicles a year on one shift, assembling kits from the parent company with a rising share of locally made parts, with the first phase at the body shop station exits and one trim line segment, reading six systems of record through one integration adapter family and writing back only approved records to the quality management system",
+ "source": "chapter 5 of the paper (the sixteen objects in 5.1, the status vocabularies in 5.2, the Vehicle record in 5.3), the properties and the twelve labelled typed links of Figure 4 (its title counts thirteen; the link drawn between the quality manager and the body shop quality inspector carries no label and is left out), and the anchors and links of Table 8; the audit finding and corrective action anchors follow 5.1 (the quality management system) and the corrective action link follows Figure 4 (opened on); the two people carry no anchor in the paper and are left empty; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "vehicle",
+   "label": "Vehicle",
+   "kind": "asset",
+   "anchored_in": "Manufacturing execution system",
+   "properties": [
+    "VIN",
+    "Model and variant",
+    "Kit lot",
+    "End of line result"
+   ],
+   "status_vocabulary": [
+    "In build",
+    "Complete",
+    "Hold",
+    "Released"
+   ],
+   "links": []
+  },
+  {
+   "id": "body",
+   "label": "Body",
+   "kind": "asset",
+   "anchored_in": "Manufacturing execution system",
+   "properties": [
+    "Body number",
+    "Weld point count",
+    "Sealer result"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "weld-point",
+     "label": "carries"
+    },
+    {
+     "to": "sealer-bead",
+     "label": "carries"
+    },
+    {
+     "to": "body-shop-quality-inspector",
+     "label": "inspected by"
+    }
+   ]
+  },
+  {
+   "id": "station",
+   "label": "Station",
+   "kind": "site",
+   "anchored_in": "Manufacturing execution system",
+   "properties": [
+    "Station id",
+    "Zone",
+    "Line"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "operation",
+   "label": "Operation",
+   "kind": "event",
+   "anchored_in": "Manufacturing execution system",
+   "properties": [
+    "Operation id",
+    "Start and end time",
+    "Body number"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "body",
+     "label": "works on"
+    }
+   ]
+  },
+  {
+   "id": "weld-point",
+   "label": "Weld point",
+   "kind": "measure",
+   "anchored_in": "Robot and weld controller logs",
+   "properties": [
+    "Weld point id",
+    "Nominal position",
+    "Weld current"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "body-shop-quality-inspector",
+     "label": "checked by"
+    }
+   ]
+  },
+  {
+   "id": "sealer-bead",
+   "label": "Sealer bead",
+   "kind": "measure",
+   "anchored_in": "Robot and weld controller logs",
+   "properties": [
+    "Bead id",
+    "Nominal path",
+    "Anomaly score"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "torque-result",
+   "label": "Torque result",
+   "kind": "measure",
+   "anchored_in": "Torque tool controllers",
+   "properties": [
+    "Fastener id",
+    "Nominal torque",
+    "Measured torque"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "part",
+   "label": "Part",
+   "kind": "asset",
+   "anchored_in": "Supplier parts receiving records",
+   "properties": [
+    "Part number",
+    "Localisation status",
+    "Local value addition"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "supplier-lot",
+     "label": "arrives in"
+    }
+   ]
+  },
+  {
+   "id": "supplier-lot",
+   "label": "Supplier lot",
+   "kind": "record",
+   "anchored_in": "Supplier parts receiving records",
+   "properties": [
+    "Lot id",
+    "Supplier",
+    "Delivery date"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "defect",
+     "label": "accumulates"
+    },
+    {
+     "to": "defect-class",
+     "label": "traced to"
+    }
+   ]
+  },
+  {
+   "id": "defect",
+   "label": "Defect",
+   "kind": "event",
+   "anchored_in": "Quality management system",
+   "properties": [
+    "Defect id",
+    "Class",
+    "Body number"
+   ],
+   "status_vocabulary": [
+    "Flagged",
+    "Confirmed",
+    "Dismissed"
+   ],
+   "links": [
+    {
+     "to": "defect-class",
+     "label": "classified as"
+    },
+    {
+     "to": "body",
+     "label": "found on"
+    }
+   ]
+  },
+  {
+   "id": "defect-class",
+   "label": "Defect class",
+   "kind": "record",
+   "anchored_in": "Quality management system",
+   "properties": [
+    "Class code",
+    "Description",
+    "Parent standard clause"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "repair-ticket",
+   "label": "Repair ticket",
+   "kind": "record",
+   "anchored_in": "Quality management system",
+   "properties": [
+    "Ticket id",
+    "Defect reference",
+    "Repair bay minutes"
+   ],
+   "status_vocabulary": [
+    "Draft",
+    "Approved"
+   ],
+   "links": [
+    {
+     "to": "defect",
+     "label": "resolves"
+    }
+   ]
+  },
+  {
+   "id": "audit-finding",
+   "label": "Audit finding",
+   "kind": "record",
+   "anchored_in": "Quality management system",
+   "properties": [
+    "Finding id",
+    "Auditor",
+    "Clause"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "corrective-action",
+   "label": "Corrective action",
+   "kind": "record",
+   "anchored_in": "Quality management system",
+   "properties": [
+    "Action id",
+    "Supplier lot reference",
+    "Owner"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "supplier-lot",
+     "label": "opened on"
+    }
+   ]
+  },
+  {
+   "id": "body-shop-quality-inspector",
+   "label": "Body shop quality inspector",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Shift"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "quality-manager",
+   "label": "Quality manager",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Approval authority",
+    "Open corrective actions"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the integration adapter family (Debezium change data capture from the MES and QMS databases, collectors for controller and rig logs, one way transfer out of a network zone), read only against the six sources, with identity resolved once in the ontology and every event stamped from the PTP grandmaster",
+  "the station edge units, which write detections, evidence frames and ontology records across the plant backbone and keep only the result and the evidence frame",
+  "the approved record, the single write path back into a system of record: confirmed findings flow to the quality management system through the adapter, never around it",
+  "the surfaces used by the named body shop quality inspector and quality manager (identities issued inside the plant network): station confirmations, repair ticket approvals and corrective action approvals"
+ ],
+ "human_loop": "agents check and draft, people decide: a flagged weld point or missing clip is a Defect in the state Flagged until the body shop quality inspector moves it to Confirmed or Dismissed at the station terminal; a repair ticket exists in Draft until the quality manager approves it; a corrective action opens only under the quality manager's authority; no agent stops a line or rejects a supplier lot"
+}

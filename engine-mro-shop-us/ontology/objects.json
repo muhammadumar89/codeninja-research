@@ -1,0 +1,313 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Industrial AI Reference Architecture for an Engine MRO Shop Floor in the United States",
+  "url": "https://codeatoms.ai/engine-mro-shop-us/",
+  "doi": ""
+ },
+ "sector": "aviation and aerospace manufacturing",
+ "country": "United States",
+ "scenario": "the operator is described by class, never by name: an aircraft engine maintenance, repair and overhaul shop in the United States that serves airlines and lessors, carrying hundreds of engines in work and tens of thousands of parts in flow, with the first phase on one engine type and its induction line for one quarter, reading seven systems of record through one integration adapter family and writing back only after a named approval",
+ "source": "chapter 5 of the paper (the fifteen objects in 5.1, the Engine record in 5.3), the properties and the sixteen labelled typed links of Figure 4, the anchors and links of Table 8 (twelve rows; Build slot, Test and Release follow chapter 6.1, which anchors the engine, module, gate, build slot and release objects in the maintenance and engineering system and the test in the test cell data); the Engine status vocabulary is the 5.3 record, the Part and Repair order vocabularies are chapter 2.1 and the Material lot's quarantined status is chapter 10.1; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "engine",
+   "label": "Engine",
+   "kind": "asset",
+   "anchored_in": "Maintenance and engineering system",
+   "properties": [
+    "Serial number",
+    "Engine type",
+    "Customer",
+    "Workscope",
+    "Promised release date",
+    "Gate position"
+   ],
+   "status_vocabulary": [
+    "Inducted",
+    "Disassembled",
+    "In repair",
+    "In assembly",
+    "In test",
+    "Released"
+   ],
+   "links": [
+    {
+     "to": "customer",
+     "label": "Customer"
+    },
+    {
+     "to": "workscope",
+     "label": "Workscope"
+    },
+    {
+     "to": "gate",
+     "label": "Gate position"
+    }
+   ]
+  },
+  {
+   "id": "customer",
+   "label": "Customer",
+   "kind": "actor",
+   "anchored_in": "Customer workscope and contract terms",
+   "properties": [
+    "Contract terms",
+    "Promised date",
+    "Notification preferences"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "workscope",
+   "label": "Workscope",
+   "kind": "record",
+   "anchored_in": "Customer workscope and contract terms",
+   "properties": [
+    "Scope items",
+    "Approval status",
+    "Change history"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "gate",
+   "label": "Gate",
+   "kind": "record",
+   "anchored_in": "Maintenance and engineering system",
+   "properties": [
+    "Gate number",
+    "Planned date",
+    "Actual date"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "engine",
+     "label": "Engine"
+    }
+   ]
+  },
+  {
+   "id": "module",
+   "label": "Module",
+   "kind": "asset",
+   "anchored_in": "Maintenance and engineering system",
+   "properties": [
+    "Module type",
+    "Parent engine",
+    "Disposition"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "engine",
+     "label": "Parent engine"
+    },
+    {
+     "to": "disposition",
+     "label": "Disposition"
+    },
+    {
+     "to": "repair-order",
+     "label": "Repair route"
+    }
+   ]
+  },
+  {
+   "id": "part",
+   "label": "Part",
+   "kind": "asset",
+   "anchored_in": "Parts tracking and inventory system",
+   "properties": [
+    "Serial number",
+    "Part number",
+    "Current location"
+   ],
+   "status_vocabulary": [
+    "In stock",
+    "In repair",
+    "On order",
+    "Installed"
+   ],
+   "links": [
+    {
+     "to": "module",
+     "label": "Module"
+    }
+   ]
+  },
+  {
+   "id": "inspection-finding",
+   "label": "Inspection finding",
+   "kind": "event",
+   "anchored_in": "Inspection findings records",
+   "properties": [
+    "Finding description",
+    "Engine manual reference",
+    "Inspector"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "engine",
+     "label": "Engine manual"
+    }
+   ]
+  },
+  {
+   "id": "disposition",
+   "label": "Disposition",
+   "kind": "record",
+   "anchored_in": "Inspection findings records",
+   "properties": [
+    "Disposition type",
+    "Approver",
+    "Basis"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "repair-order",
+   "label": "Repair order",
+   "kind": "record",
+   "anchored_in": "Vendor repair order system",
+   "properties": [
+    "Vendor",
+    "Part",
+    "Promised date"
+   ],
+   "status_vocabulary": [
+    "Open",
+    "In work",
+    "Late",
+    "Closed"
+   ],
+   "links": [
+    {
+     "to": "vendor",
+     "label": "Vendor"
+    },
+    {
+     "to": "part",
+     "label": "Part"
+    }
+   ]
+  },
+  {
+   "id": "vendor",
+   "label": "Vendor",
+   "kind": "actor",
+   "anchored_in": "Vendor repair order system",
+   "properties": [
+    "Approved services",
+    "On-time record",
+    "Lead times"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "purchase-order",
+   "label": "Purchase order",
+   "kind": "record",
+   "anchored_in": "Material purchasing system",
+   "properties": [
+    "Material",
+    "Quantity",
+    "Need date"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "material-lot",
+     "label": "Material"
+    }
+   ]
+  },
+  {
+   "id": "material-lot",
+   "label": "Material lot",
+   "kind": "asset",
+   "anchored_in": "Parts tracking and inventory system",
+   "properties": [
+    "Lot number",
+    "Condition",
+    "Certification"
+   ],
+   "status_vocabulary": [
+    "Quarantined"
+   ],
+   "links": []
+  },
+  {
+   "id": "build-slot",
+   "label": "Build slot",
+   "kind": "record",
+   "anchored_in": "Maintenance and engineering system",
+   "properties": [
+    "Engine",
+    "Slot date",
+    "Stand"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "engine",
+     "label": "Engine"
+    }
+   ]
+  },
+  {
+   "id": "test",
+   "label": "Test",
+   "kind": "event",
+   "anchored_in": "Test cell data",
+   "properties": [
+    "Engine",
+    "Test cell",
+    "Parameters"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "engine",
+     "label": "Engine"
+    },
+    {
+     "to": "build-slot",
+     "label": "Test cell booking"
+    }
+   ]
+  },
+  {
+   "id": "release",
+   "label": "Release",
+   "kind": "record",
+   "anchored_in": "Maintenance and engineering system",
+   "properties": [
+    "Engine",
+    "Return to service date",
+    "Approving person"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "engine",
+     "label": "Engine"
+    }
+   ]
+  }
+ ],
+ "write_paths": [
+  "the integration adapter tier (one family, one adapter per source, change data capture and interface reads, read only against the seven systems of record, carrying the source system, record identifier and capture position onto every object it touches)",
+  "the agent write back into a system of record, which runs only after a named person approves the draft, with an audit trail",
+  "the surfaces used by named planners, materials managers, customer program managers and quality staff (the command center, the approval queue, the vendor queue and the quality queue): confirmations, approvals and the memory of confirmed outcomes"
+ ],
+ "human_loop": "agents draft and people decide: the engine planner confirms the critical path draft, the customer program manager approves the workscope cascade, the materials manager approves the vendor chase or the alternative, and no agent changes a workscope, places an order, moves a build slot or notifies an airline without a named approval"
+}

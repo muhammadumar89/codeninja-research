@@ -1,0 +1,1 @@
+Figure 7. The model stack: no model row is committed yet; the design names classes and roles and chooses a model at the first gate.

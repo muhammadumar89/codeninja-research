@@ -1,0 +1,19 @@
+choice,picked,why
+Reasoning model,"GLM 5.3, class open weights, self hosted, frontier class, taken as 753B parameters at FP8 (about 756 GB of weights); named in the requirement, not yet committed in the register","The requirement names it; open weights on the owner's own hardware keep every answer in country; the register records the row as open work because no open weight model was verified live on this run, and weights are committed only when a verified model stands in the register"
+License fallback model,GLM 5.2 under MIT,Escapes the GLM 5.3 licence trigger for a corporate group running a Model as a Service business above 10 billion US dollars; the owner's corporate group is checked at phase zero
+Frontier hardware,"141 GB HBM GPU class, eight GPUs per node, one node (about 1,038 GB of usable memory)","Holds about 756 GB of FP8 weights with about 280 GB of KV cache ceiling; phase one is sized on one node and the extension gates scale it; two 80 GB class nodes and BF16 on a 256 GB class node were set aside"
+Frontier footprint sizing rule,"Model GPU footprint sizing rule, vLLM and SGLang",Fixes the node count from weights, usable memory and KV ceiling before any purchase; the node is planned at about ten kilowatts of rack power and cooling
+Node count rule,GLM 5.3 node count by GPU class,One node of eight 141 GB class GPUs for the phase one corridor; scaling is decided at the extension gates rather than assumed
+Export licence,Determination against ECCN 3A090 and 4A090 before any GPU class is quoted,Saudi Arabia sits in Country Groups D:3 and D:4; the 141 GB class ships only under licence; the checkpoint sits in phase zero before purchase
+Event backbone,Apache Kafka 4.3 in KRaft mode,Carries every change the adapters emit in order; partitions keyed on the container number; at least once delivery with idempotent handlers; retained logs are the replay and recovery path
+Adapters,"Two families: the integration adapter on Debezium with Apache Camel, and the telemetry adapter for the haulier feeds",Every source enters behind one guarantee of lineage, ordering and staleness flags; nothing is written back
+Ontology store,Hyper Ontology v0.9,Holds the corridor ontology as a projection over the seven systems of record, never a copy
+Time series store class,"InfluxDB 3 Core, TimescaleDB or QuestDB, chosen later",The choice waits on the phase one corridor's measured event volumes
+Registry,"Harbor, air gapped artifact and model registry",Weights and artifacts enter only through the registry and are verified before anything is served
+Identity,Keycloak,Permissions scoped to the three human roles; logistics data leaks from inside as well as outside
+Time synchronisation,Chrony,Disciplines the clocks that event ordering depends on; a GNSS grandmaster class is added only if the software answer proves insufficient
+Observability,"Prometheus, Grafana and Loki",Observe the running system; staleness flags and the per interface cadence are published in the command center
+Sensing,"None; records and telematics only, no cameras and no new positioning hardware",The corridor is watched through declarations, slots, gate events and haulier telematics ETAs rather than instruments
+Pattern: memory,"A kept record of decisions and outcomes that the next decision reads, nothing trained into weights",The requirement asks for improvement without training a model on the fly; every confirmed stall cause and accepted re booking is kept
+Pattern: join,Weekly join success gate at 95 per cent with failures triaged by source system,The container number is the one key that crosses all seven systems; a join failing silently is worse than no join
+Pattern: boundary,"The owner's own hardware in an in country data center; inbound reads only; no third party model service; egress monitoring at the boundary",Cargo, customer and declaration data stay in the country; haulier telematics that transit a foreign cloud are a phase zero covenant question

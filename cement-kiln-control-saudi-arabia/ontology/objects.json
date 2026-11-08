@@ -1,0 +1,278 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "A Self-Improving AI System for Cement Kiln Control in Saudi Arabia",
+  "url": "https://codeatoms.ai/cement-kiln-control-saudi-arabia/",
+  "doi": ""
+ },
+ "sector": "heavy industry and construction",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: a cement company in Saudi Arabia running several integrated plants, each with a preheater and precalciner kiln line of several thousand tonnes of clinker a day, with the first phase on one kiln line at one plant for one quarter, reading the seven systems of record through a one-way boundary and never writing to the control system",
+ "source": "chapter 5 of the paper (the sixteen objects in 5.1, the status vocabularies in 5.2, the Kiln line record in 5.3), the properties and the labelled typed links of Figure 4 (its title counts eleven; nine are labelled, the recipe to fuel lot link is drawn without a label and taken from Table 8, and the eleventh is not drawn), and the anchors and links of Table 8; the Shift anchor follows Table 3 (the shift log holds actions and handovers); the upset and the three people are anchored in the model itself (5.2); properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "kiln-line",
+   "label": "Kiln line",
+   "kind": "site",
+   "anchored_in": "The distributed control system and its historian",
+   "properties": [
+    "Line number",
+    "Design tonnes per day of clinker",
+    "Thermal energy per tonne",
+    "Stable band definition"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "clinker-sample",
+     "label": "produces"
+    }
+   ]
+  },
+  {
+   "id": "equipment",
+   "label": "Equipment",
+   "kind": "asset",
+   "anchored_in": "The maintenance management system",
+   "properties": [
+    "Equipment tag",
+    "Kiln position",
+    "Running hours"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "tag",
+     "label": "carries"
+    },
+    {
+     "to": "kiln-line",
+     "label": "sits on"
+    }
+   ]
+  },
+  {
+   "id": "tag",
+   "label": "Tag",
+   "kind": "measure",
+   "anchored_in": "The distributed control system and its historian",
+   "properties": [
+    "Tag name",
+    "Unit",
+    "Scan rate"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "setpoint",
+   "label": "Setpoint",
+   "kind": "measure",
+   "anchored_in": "The distributed control system and its historian",
+   "properties": [
+    "Setpoint name",
+    "Current value",
+    "Owning controller"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "recipe",
+   "label": "Recipe",
+   "kind": "record",
+   "anchored_in": "The distributed control system and its historian",
+   "properties": [
+    "Raw mix target",
+    "Fuel mix ratio"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "raw-meal-lot",
+     "label": "specifies"
+    },
+    {
+     "to": "fuel-lot",
+     "label": "blends"
+    },
+    {
+     "to": "clinker-sample",
+     "label": "targets"
+    }
+   ]
+  },
+  {
+   "id": "raw-meal-lot",
+   "label": "Raw meal lot",
+   "kind": "record",
+   "anchored_in": "The laboratory system for raw meal and clinker quality",
+   "properties": [
+    "Lot id",
+    "Chemistry",
+    "Feed start"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "fuel-lot",
+   "label": "Fuel lot",
+   "kind": "record",
+   "anchored_in": "The fuel and alternative fuel feed records",
+   "properties": [
+    "Lot id",
+    "Calorific value",
+    "Moisture"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "clinker-sample",
+   "label": "Clinker sample and quality result",
+   "kind": "record",
+   "anchored_in": "The laboratory system for raw meal and clinker quality",
+   "properties": [
+    "Sample id",
+    "Sample time"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "upset",
+   "label": "Upset",
+   "kind": "event",
+   "anchored_in": "The object model itself",
+   "properties": [
+    "Trigger tags",
+    "Start",
+    "End"
+   ],
+   "status_vocabulary": [
+    "Open",
+    "Cause drafted",
+    "Cause confirmed",
+    "Recovered",
+    "Closed"
+   ],
+   "links": []
+  },
+  {
+   "id": "operator-action",
+   "label": "Operator action",
+   "kind": "event",
+   "anchored_in": "The shift log",
+   "properties": [
+    "Operator",
+    "Time",
+    "Setpoints touched"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "shell-scan",
+   "label": "Shell scan",
+   "kind": "measure",
+   "anchored_in": "The kiln shell scanner",
+   "properties": [
+    "Scan time",
+    "Shell temperature profile",
+    "Hot spot position"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "The maintenance management system",
+   "properties": [
+    "Work order number",
+    "Equipment",
+    "Description"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "equipment",
+     "label": "covers"
+    }
+   ]
+  },
+  {
+   "id": "shift",
+   "label": "Shift",
+   "kind": "record",
+   "anchored_in": "The shift log",
+   "properties": [
+    "Shift id",
+    "Crew",
+    "Start"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "control-room-operator",
+   "label": "Control room operator",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Shift",
+    "Years on the kiln"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "shift-supervisor",
+     "label": "reports to"
+    },
+    {
+     "to": "shift",
+     "label": "works"
+    },
+    {
+     "to": "kiln-line",
+     "label": "runs"
+    }
+   ]
+  },
+  {
+   "id": "shift-supervisor",
+   "label": "Shift supervisor",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Shift"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "production-manager",
+   "label": "Production manager",
+   "kind": "actor",
+   "anchored_in": "",
+   "properties": [
+    "Name",
+    "Plant"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (integration, telemetry and ops systems adapter families, read only against the seven systems of record through the one-way boundary, stamping every record with provenance and receipt time)",
+  "a named person confirming, rejecting or annotating a draft, written into the object model and the decision record and never into any system of record",
+  "the surfaces used by named control room operators, shift supervisors and the production manager (identity issued inside the boundary): cause confirmations, setpoint draft approvals and shift handover confirmations"
+ ],
+ "human_loop": "agents draft and people decide: the control room operator confirms the upset agent's cause and recovery draft, the shift supervisor approves the setpoint agent's draft, and the production manager confirms the shift agent's handover and energy and quality comparison; operators and supervisors make every setpoint change and no agent writes to the control system"
+}

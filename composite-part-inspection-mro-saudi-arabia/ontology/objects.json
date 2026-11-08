@@ -1,0 +1,302 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Physical AI System Design for Composite Part Inspection in an Aviation MRO in Saudi Arabia",
+  "url": "https://codeatoms.ai/composite-part-inspection-mro-saudi-arabia/",
+  "doi": ""
+ },
+ "sector": "aviation and aerospace manufacturing",
+ "country": "Saudi Arabia",
+ "scenario": "the operator is described by class, never by name: an aircraft maintenance, repair and overhaul provider in Saudi Arabia serving commercial single aisle and wide body fleets, whose composite repair shop repairs radomes, flight control surfaces, nacelle panels, fan cowls and cabin monuments, with the first phase on fan cowls and nacelle panels for one quarter, reading six systems of record and the bench cameras through two adapter families and never writing into a system of record",
+ "source": "chapter 5 of the paper (the sixteen objects in 5.1, the part status vocabulary in 5.1, the confirmation, approval and release states in 5.2, the Customer record in 5.3), the properties and the twelve labelled typed links of Figure 4, and the anchors and links of Table 8 (which prints twelve of the sixteen rows); the Material Lot anchor follows chapter 6.1 (the material and shelf life stock system) and the Finding anchor chapter 2.1 (the quality findings log); Inspection, Damage, Technician Qualification and Release carry no anchor in the paper and are left empty; properties the figure truncates are left out.",
+ "objects": [
+  {
+   "id": "customer",
+   "label": "Customer",
+   "kind": "actor",
+   "anchored_in": "The technical records of each customer's parts",
+   "properties": [
+    "Customer code",
+    "Fleet types",
+    "Bilateral recognition basis",
+    "Release certificate format"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "release",
+     "label": "receives"
+    }
+   ]
+  },
+  {
+   "id": "aircraft",
+   "label": "Aircraft",
+   "kind": "asset",
+   "anchored_in": "The maintenance information system (work order header)",
+   "properties": [
+    "Registration",
+    "Manufacturer serial number",
+    "Operator"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "part-number",
+   "label": "Part number",
+   "kind": "document",
+   "anchored_in": "The structural repair manuals under licence",
+   "properties": [
+    "Part number",
+    "Panel type"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "allowable-limit",
+     "label": "limited by"
+    }
+   ]
+  },
+  {
+   "id": "part-serialized",
+   "label": "Part (serialized)",
+   "kind": "asset",
+   "anchored_in": "The technical records of each customer's parts",
+   "properties": [
+    "Serial number",
+    "Part number",
+    "Current work order"
+   ],
+   "status_vocabulary": [
+    "Received",
+    "In assessment",
+    "Awaiting scheme approval",
+    "In repair",
+    "Final inspection",
+    "Released",
+    "Scrapped"
+   ],
+   "links": [
+    {
+     "to": "part-number",
+     "label": "instantiates"
+    }
+   ]
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "The maintenance information system",
+   "properties": [
+    "Work order number",
+    "Task cards",
+    "Customer"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "part-serialized",
+     "label": "opens for"
+    },
+    {
+     "to": "customer",
+     "label": "placed by"
+    },
+    {
+     "to": "task-card",
+     "label": "breaks into"
+    }
+   ]
+  },
+  {
+   "id": "task-card",
+   "label": "Task card",
+   "kind": "record",
+   "anchored_in": "The maintenance information system",
+   "properties": [
+    "Card number",
+    "Task description",
+    "Technician"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "technician-qualification",
+     "label": "requires"
+    }
+   ]
+  },
+  {
+   "id": "inspection",
+   "label": "Inspection",
+   "kind": "event",
+   "anchored_in": "",
+   "properties": [
+    "Inspection type",
+    "Inspector",
+    "Date"
+   ],
+   "status_vocabulary": [],
+   "links": [
+    {
+     "to": "part-serialized",
+     "label": "examines"
+    },
+    {
+     "to": "work-order",
+     "label": "belongs to"
+    }
+   ]
+  },
+  {
+   "id": "scan",
+   "label": "Scan",
+   "kind": "record",
+   "anchored_in": "The scan equipment's own computer",
+   "properties": [
+    "Scan file reference",
+    "Method",
+    "Scanner identity"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "damage",
+   "label": "Damage",
+   "kind": "event",
+   "anchored_in": "",
+   "properties": [
+    "Location on part",
+    "Extent",
+    "Depth"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Confirmed",
+    "Amended",
+    "Rejected"
+   ],
+   "links": [
+    {
+     "to": "part-serialized",
+     "label": "located on"
+    },
+    {
+     "to": "damage-class",
+     "label": "classified as"
+    },
+    {
+     "to": "scan",
+     "label": "evidenced by"
+    }
+   ]
+  },
+  {
+   "id": "damage-class",
+   "label": "Damage class",
+   "kind": "document",
+   "anchored_in": "The structural repair manuals under licence",
+   "properties": [
+    "Class code",
+    "Definition",
+    "Standard repair applicability"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "allowable-limit",
+   "label": "Allowable limit",
+   "kind": "document",
+   "anchored_in": "The structural repair manuals under licence",
+   "properties": [
+    "Limit value",
+    "Units",
+    "Part number applicability"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "repair-scheme",
+   "label": "Repair scheme",
+   "kind": "document",
+   "anchored_in": "The structural repair manuals under licence",
+   "properties": [
+    "Scheme reference",
+    "Material kit"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Approved",
+    "Superseded"
+   ],
+   "links": []
+  },
+  {
+   "id": "material-lot",
+   "label": "Material lot",
+   "kind": "asset",
+   "anchored_in": "The material and shelf life stock system",
+   "properties": [
+    "Lot number",
+    "Material specification",
+    "Cure date"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "technician-qualification",
+   "label": "Technician qualification",
+   "kind": "record",
+   "anchored_in": "",
+   "properties": [
+    "Technician name"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "finding",
+   "label": "Finding",
+   "kind": "record",
+   "anchored_in": "The quality findings log",
+   "properties": [
+    "Finding id",
+    "Part serial",
+    "Description"
+   ],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "release",
+   "label": "Release",
+   "kind": "record",
+   "anchored_in": "",
+   "properties": [
+    "Release reference",
+    "Certifying staff",
+    "Signature method"
+   ],
+   "status_vocabulary": [
+    "Drafted",
+    "Signed"
+   ],
+   "links": []
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (an integration adapter against the maintenance information system API and a file and document adapter lifting scanner exports and parseable manual content, read only against the six systems of record, recording the system, timestamp and extraction method on arrival, with per customer isolation applied as data lands)",
+  "the bench and scan station edge units, whose damage map drafts, measurements and evidence images enter the object model as agent drafts and never as confirmed records",
+  "a named person's confirmation, approval or signature, the single write path that moves an object past its drafted status, written into the object model and the memory of confirmed outcomes and never into any system of record"
+ ],
+ "human_loop": "agents map and draft and certifying engineers sign: the certifying engineer confirms, amends or rejects the damage mapping agent's draft and its classification against the manual, the design engineer approves or supersedes the repair drafting agent's scheme, material kit and qualification, and certifying staff sign the release paperwork the release agent drafts; no agent classifies damage as repairable or releases a part"
+}

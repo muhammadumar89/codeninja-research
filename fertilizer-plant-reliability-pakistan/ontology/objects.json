@@ -1,0 +1,166 @@
+{
+ "package": "hyper-ontology/1",
+ "designed_with": "Praxis",
+ "implemented_with": "Hyper Ontology",
+ "paper": {
+  "title": "Industrial AI Reference Architecture for Fertilizer Plant Reliability in Pakistan",
+  "url": "https://codeatoms.ai/fertilizer-plant-reliability-pakistan/",
+  "doi": ""
+ },
+ "sector": "heavy industry and construction",
+ "country": "Pakistan",
+ "scenario": "the operator is described by class, never by name: a fertilizer manufacturer in Pakistan running an ammonia and urea complex on pipeline gas and imported regasified gas, cycled repeatedly in 2026 by gas supply suspensions, with the first phase on the ammonia front end and the synthesis compressor train for one quarter including at least one restart, reading the historian through a hardware data diode and never writing to the control system",
+ "source": "chapter 5 of the paper (the fourteen objects and their kinds in 5.1, the status vocabularies in 5.2, the Process Unit record in 5.3), the properties and the ten typed links of Figure 4, the anchors and links of Table 8 (with the Turnaround Task and Restart Plan rows added from Figure 4), and the restart properties named in 9.2; the Thermal Cycle is derived from the historian stream and the Restart Plan is the restart agent's draft, so neither has a system of record; properties the figure truncates are completed from the text where the text names them and left out otherwise.",
+ "objects": [
+  {
+   "id": "process-unit",
+   "label": "Process unit",
+   "kind": "asset",
+   "anchored_in": "The maintenance management system (equipment hierarchy)",
+   "properties": ["Unit name", "Unit class", "Design capacity", "Commissioning year"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "equipment",
+   "label": "Equipment",
+   "kind": "asset",
+   "anchored_in": "The maintenance management system",
+   "properties": ["Tag number", "Serial number", "Equipment class"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "historian-tag",
+   "label": "Historian tag",
+   "kind": "measure",
+   "anchored_in": "The distributed control system and its historian",
+   "properties": ["Tag id", "Engineering unit", "Scan rate"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "trip",
+   "label": "Trip",
+   "kind": "event",
+   "anchored_in": "The distributed control system and its historian",
+   "properties": ["Timestamp", "Tag", "Cause code"],
+   "status_vocabulary": [],
+   "links": [
+    {"to": "restart", "label": "belongs to"},
+    {"to": "restart-plan", "label": "cited by"}
+   ]
+  },
+  {
+   "id": "restart",
+   "label": "Restart",
+   "kind": "event",
+   "anchored_in": "The shift log",
+   "properties": ["Gas restoration time", "Stable production time", "Suspension duration", "Trips count", "Leaks observed"],
+   "status_vocabulary": ["Drafted", "Confirmed by superintendent", "In progress", "Stable"],
+   "links": []
+  },
+  {
+   "id": "thermal-cycle",
+   "label": "Thermal cycle",
+   "kind": "event",
+   "anchored_in": "Derived from the distributed control system and its historian",
+   "properties": ["Equipment", "Start timestamp", "End timestamp"],
+   "status_vocabulary": [],
+   "links": [
+    {"to": "equipment", "label": "stresses"}
+   ]
+  },
+  {
+   "id": "work-order",
+   "label": "Work order",
+   "kind": "record",
+   "anchored_in": "The maintenance management system",
+   "properties": ["Work order number", "Equipment", "Failure mode"],
+   "status_vocabulary": [],
+   "links": [
+    {"to": "equipment", "label": "concerns"}
+   ]
+  },
+  {
+   "id": "inspection-finding",
+   "label": "Inspection finding",
+   "kind": "record",
+   "anchored_in": "The inspection and corrosion monitoring records",
+   "properties": ["Finding id", "Equipment", "Method"],
+   "status_vocabulary": ["Open", "Accepted", "Closed", "Brought forward"],
+   "links": [
+    {"to": "equipment", "label": "concerns"}
+   ]
+  },
+  {
+   "id": "corrosion-reading",
+   "label": "Corrosion reading",
+   "kind": "measure",
+   "anchored_in": "The inspection and corrosion monitoring records",
+   "properties": ["Point id", "Thickness", "Rate of loss"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "vibration-reading",
+   "label": "Vibration reading",
+   "kind": "measure",
+   "anchored_in": "The vibration monitoring system on the large compressors",
+   "properties": ["Machine", "Probe", "Overall value"],
+   "status_vocabulary": [],
+   "links": [
+    {"to": "equipment", "label": "measures"}
+   ]
+  },
+  {
+   "id": "lab-result",
+   "label": "Lab result",
+   "kind": "record",
+   "anchored_in": "The laboratory system",
+   "properties": ["Sample id", "Parameter", "Value"],
+   "status_vocabulary": [],
+   "links": []
+  },
+  {
+   "id": "shift-log-entry",
+   "label": "Shift log entry",
+   "kind": "document",
+   "anchored_in": "The shift log",
+   "properties": ["Shift date", "Author", "Free text entry"],
+   "status_vocabulary": [],
+   "links": [
+    {"to": "restart", "label": "narrates"},
+    {"to": "restart-plan", "label": "supports"}
+   ]
+  },
+  {
+   "id": "turnaround-task",
+   "label": "Turnaround task",
+   "kind": "record",
+   "anchored_in": "The turnaround planning system",
+   "properties": ["Task id", "Equipment", "Scope line"],
+   "status_vocabulary": [],
+   "links": [
+    {"to": "equipment", "label": "concerns"}
+   ]
+  },
+  {
+   "id": "restart-plan",
+   "label": "Restart plan",
+   "kind": "document",
+   "anchored_in": "The restart agent's draft, confirmed by the shift superintendent",
+   "properties": ["Draft id", "Matched restarts cited", "Checks listed"],
+   "status_vocabulary": ["Drafted", "Confirmed", "Superseded"],
+   "links": [
+    {"to": "trip", "label": "cites"}
+   ]
+  }
+ ],
+ "write_paths": [
+  "the adapter tier (integration, telemetry, ops systems and ERP adapter families, read only against the eight named systems of record and the sensing feeds, crossing the OT boundary through a hardware data diode carrying a one way file transfer, stamping every record with its source system and provenance class)",
+  "the confirmation loop above the model: every status change carries a named person and a timestamp, and an agent's output stays a draft until someone with authority confirms it; nothing writes back through the diode and nothing is written into a system of record",
+  "the memory of confirmed restart causes and accepted inspections, which every run reads before it acts and which never updates model weights"
+ ],
+ "human_loop": "agents draft and people decide, by name: the shift superintendent confirms every step of the restart plan, the reliability engineer approves the cycle damage draft and the inspections it brings forward, and the turnaround manager approves the scope additions; the standing written procedure stays the restart authority until measured agreement, and no agent writes to the control system"
+}
