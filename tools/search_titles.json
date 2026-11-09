@@ -1,13 +1,13 @@
 {
  "_why": "Per-page search overrides for design pages (step 16d, 11 Oct 2026). The paper's own title stays as H1 and citation_title; only the HTML <title>, the social titles and the meta description change, so the page is found by the words people actually search. One entry per fix, with the query and the ledger date, so the file is the history of 16c(b). A meta_description key (3 Nov 2026) sets the <meta name=\"description\"> alone, under Bing's 160 characters, where seo.fit_description cannot cut the page's own description cleanly; an entry with no title changes nothing else.",
  "ot-security-cip-evidence-us": {
-  "title": "OT Security Monitoring, CISA Advisories and NERC CIP Evidence",
-  "description": "From a CISA advisory on actively exploited vulnerabilities to a closed finding: OT security monitoring and NERC CIP audit evidence for a US utility, passive and one way out of the control networks, on the operator's own hardware. Grid Context Watch, an open reference architecture by CodeNinja Atoms.",
-  "query": "OT security, NERC CIP (tier A) plus the page's two largest named queries, 'cisa advisory critical vulnerability' (4 at 18.0) and 'actively exploited vulnerability zero-day' (2 at 21.5); page at 145 impressions, position 6.5, 0 clicks, 28 days to 13 Oct 2026. The paper cites the CISA advisories on exploited PLCs three times.",
-  "fixed": "2026-10-16",
+  "title": "OT Security Monitoring, Real Time CIP Sensors and NERC CIP Evidence",
+  "description": "Real time CIP sensors to NERC CIP audit evidence: OT security monitoring for a US utility, passive and one way out of the control networks.",
+  "query": "OT security, NERC CIP (tier A) plus the page's named human query 'real time cip sensors' (3 at 35.0) and 'real-time cip sensors' (2 at 43.5); page at 257 impressions, position 7.4, 0 clicks, 28 days to 9 Nov 2026.",
+  "fixed": "2026-11-09",
   "previous": {
-   "title": "OT Security Monitoring and NERC CIP Evidence: Grid Context Watch",
-   "fixed": "2026-10-11"
+   "title": "OT Security Monitoring, CISA Advisories and NERC CIP Evidence",
+   "fixed": "2026-10-16"
   }
  },
  "restricted-crop-monitoring-saudi-arabia": {
