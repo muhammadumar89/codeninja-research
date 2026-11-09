@@ -264,6 +264,76 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 
 ---
 
+# An Industrial Data Ontology for Freight Wagon Records in Pakistan
+
+*The requirement, in the operator's own voice: one governed model of the freight wagon fleet built from paper registers and builders' files, named agents that draft and officers who decide, and open weight models self hosted in Pakistan.*
+
+Canonical: https://codeatoms.ai/blog/industrial-data-ontology-freight-wagon-records-pakistan/
+Author: CodeNinja Atoms, Research distribution
+Published: 2026-11-09
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
+An industrial data ontology, for a freight wagon fleet, is one governed model of what a wagon is and what happens to it, filled from the operator's own registers and files, with every fact tied to the register page, ledger entry or builder's document it came from. This post publishes the requirement we put to [CodeNinja Praxis](https://codeatoms.ai/praxis/) for such a model: a rail freight operator in Pakistan, described by class, asking for a single queryable truth about its wagons where today there are paper registers in many hands. How we define and build these models is on the [industrial data ontology](https://codeatoms.ai/industrial-data-ontology/) page.
+
+## Why a wagon fleet
+
+The operator's freight fleet carries petroleum, containers, coal, fertilizer, wheat and rock phosphate across a national network. Public reporting on the operator puts its freight business at over eight million tonnes moved last financial year, and hundreds of new high capacity wagons are being inducted in 2026, some imported and some built locally, alongside an ageing legacy fleet. Wagons are maintained at divisional sick lines and periodically overhauled at central workshops, and the new wagons arrive from two builders with their own documentation and spares.
+
+Each wagon has a history of examinations, repairs, wheel turnings, brake overhauls and component changes. That history exists, but it lives in workshop registers, divisional ledgers and, for the newest wagons, the builders' delivery files. So the operator cannot answer a simple question about a wagon. Which wagons of one batch have had a bogie component changed twice. Which wagons are due for periodic overhaul this quarter, and where are they. Which wagons were in the consist of the last three derailments. Each answer is a week of clerks' work across several workshops and ledgers kept in different words.
+
+Two pressures make this urgent. New wagons are arriving with warranty terms the operator cannot enforce, because it cannot produce the maintenance history the builder asks for within the notice period. And the supervisors who know each workshop's registers by heart are retiring, taking the index in their heads with them.
+
+## The systems of record
+
+The rolling stock register, the workshop job cards and registers, the divisional examination books, the stores ledgers for components and spares, the builders' delivery and warranty documents, the train running records, and the accident and derailment inquiry files. Every fact the system holds is tied back to one of them, with its date and the workshop that wrote it.
+
+## What the operator asks for
+
+1. **An industrial data ontology** of the freight fleet, owned by the operator: one governed model of what a wagon is and what happens to it, filled from the registers and the builders' files, with open weight models on the operator's own hardware in the country reading the paper and the ledgers, and nothing about the fleet leaving the country or reaching a foreign model service.
+2. **The ontology itself.** Wagon, wagon type, batch, builder, bogie, wheelset, brake assembly, coupler, component serial, examination, repair, overhaul, job card, store issue, warranty claim, consist, journey, incident and location, each fact tied to its source register, page or file.
+3. **Named agents that draft, officers who decide.** A register reading agent, triggered by a scanned register page or a builder's file, drafts the wagon facts it contains in the ontology's terms with the page cited, confirmed by the workshop records clerk. An overhaul due agent, triggered by month start, drafts the wagons due for periodic overhaul with their last known location and open repairs, approved by the divisional mechanical engineer. A warranty agent, triggered by a component failure on a new wagon, drafts the claim with the maintenance history the builder requires, approved by the chief mechanical engineer's office.
+4. **Memory.** Every confirmed reading and every accepted claim is kept, so the next register page and the next claim are read better, without training a model on the fly.
+5. **A command centre** for the mechanical department: the fleet by type, batch, overhaul status and location, registers digitised by workshop, agent drafts awaiting confirmation, and a conversational interface that answers in English and Urdu with citations to the register page.
+6. **The model named.** Reasoning runs on GLM 5.3 open weights, self hosted on the operator's own hardware in Pakistan.
+
+## The rules that bind
+
+- **In country.** Fleet records never leave the operator's network. Models are open weights on hardware the operator owns. No third party model service.
+- **Rules.** The railway's general and subsidiary rules on rolling stock examination, the public procurement rules that govern the builders' contracts and warranties, the national data protection rules for staff records appearing in the registers, and the audit requirements of the national audit office. The design names the approvals it needs.
+- **Registers remain the record.** The ontology cites the register. It does not replace it until the department says so, and no agent closes a job card or files a claim without a named approval.
+- **People decide.** Agents read and draft. Clerks, engineers and officers confirm.
+
+## What success looks like
+
+Phase one covers one wagon type, the new high capacity wagons from both builders, and the two workshops that maintain them, for one quarter. It is measured against a baseline of days to answer a wagon history question, overhaul due lists produced on time, warranty claims accepted by the builders, and register pages digitised with confirmed accuracy. The event the design is tested on is a bogie component failing on a wagon from the newest batch, with the full history drafted from the registers and the claim filed within the builder's notice period.
+
+## What makes it an industrial data ontology
+
+Three things separate this from a document scanning project.
+
+The objects are typed, not imaged. A scanned register is a picture of a fact. The ontology holds the fact itself, a wheel turning on a named wagon on a date at a named workshop, as an object a query can reach, with the scan as its citation. More patterns of this kind are collected as [industrial ontology examples](https://codeatoms.ai/industrial-ontology-examples/).
+
+The model is owned and governed by the operator. The vocabulary of wagon, batch, overhaul and claim is the operator's own, written down once and enforced everywhere, so two workshops that kept the same fact in different words now write it the same way.
+
+The ontology is where agents and people meet. Every agent drafts in the ontology's terms and every officer confirms against the cited page, so each confirmed reading becomes memory that improves the next one, in context, never by retraining weights.
+
+## Questions the design must answer
+
+1. What runs where on the operator's hardware, the hardware class and size, and the three year cost computed from the models' own weights.
+2. How the ontology is built from paper registers, ledgers and builders' files and kept current job card by job card.
+3. How a register reading and a warranty draft are explained to a clerk and to the audit office.
+4. How confirmed outcomes become memory that improves the next reading.
+5. Phase one's gates for extending to the legacy fleet and the other workshops.
+
+The published designs that already answer parts of this, asset registers and maintenance history among them, are collected as [physical AI system design](https://codeatoms.ai/physical-ai-system-design/) and as [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/). Every object model is in the [Vertical-Driven Architectures dataset](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures).
+
+## About CodeNinja
+
+CodeNinja is a Middle Eastern-American artificial intelligence lab focused on building self-improving systems. We are reinventing knowledge work to close the loop between vertical AI use cases and the generalized intelligence that fuels it, accelerating the path toward organizational superintelligence.
+
+
+---
+
 # Own or Rent the GPUs
 
 *Seven published reference architectures, priced the same way, say owning the reasoning node costs between about half and nearly all of the deepest three year cloud commitment. Not a tenth.*
@@ -646,6 +716,76 @@ CodeNinja is a Middle Eastern-American artificial intelligence lab focused on bu
 
 ---
 
+# A Physical AI System Design for a Semiconductor Assembly and Test Line in Pakistan
+
+*The requirement, in the operator's own voice: edge units that read the inspection cameras at every critical station, one governed ontology of the line, named agents that classify and trace while engineers decide, and memory that makes every confirmed outcome improve the next one.*
+
+Canonical: https://codeatoms.ai/blog/physical-ai-system-design-semiconductor-assembly-test-pakistan/
+Author: CodeNinja Atoms, Research distribution
+Published: 2026-11-09
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
+A physical AI system design, for a semiconductor assembly and test line, is one where the system's eyes sit at the stations themselves: edge units beside the bonders, moulders and markers read the inspection cameras as packages pass, classify what they see, and feed one governed model of the line that agents reason over and engineers decide from. This post publishes the requirement we put to [CodeNinja Praxis](https://codeatoms.ai/praxis/) for such a system: a semiconductor assembly and test operator in Pakistan, described by class only, building a new outsourced semiconductor assembly and test (OSAT) line under the national semiconductor roadmap, with its first packaging and test line commissioning in 2026. The published designs of this kind are collected on the [physical AI system design](https://codeatoms.ai/physical-ai-system-design/) page.
+
+## Why an assembly and test line
+
+Wafers arrive diced from fabs abroad. The line attaches die to substrates or lead frames, wire bonds or flip chip bonds them, moulds, marks and singulates the packages, then tests them electrically and inspects them before shipment. The pilot line is sized for a few hundred thousand packages a month in the first year across two or three package families, with a path to tens of millions a year if anchor customers commit.
+
+Back end yield is decided by things that are hard to see and easy to miss: a lifted wire, a cracked die edge, a void under the die attach, a smeared mark, a bent lead. The inspection stations image every package, but they raise far more alerts than a small quality team can review, and a tuned rule that catches one package family misses the next. When an anchor customer rejects a lot, engineers rebuild the story by hand across the bonder log, the mould recipe, the test bin map and the inspection images, which takes days and often ends without a confirmed cause.
+
+This is a new line with a new team. The judgement of the few experienced engineers hired from abroad lives in their heads and leaves with them. A physical AI system is how that judgement becomes a property of the line instead of a property of the people.
+
+## The systems of record
+
+The manufacturing execution system, the equipment data collection on each bonder, moulder and tester, the automated optical inspection stations' own result databases, the test cell's data logs, the quality management system and the customer return log. Every fact the system uses is tied back to one of them.
+
+## What the operator asks for
+
+1. **Physical AI at the station.** Edge units beside the die attach, wire bond, mould and marking stations, on the CodeNinja on device AI stack, that read the inspection cameras as packages pass, classify each defect candidate and keep nothing but the classified result and the evidence frame. The design says which stations get a camera, what each camera looks for and what runs on the unit.
+2. **One model of the line.** A governed ontology of lot, substrate, die, package, station, recipe, bonder head, mould tool, inspection run, defect, defect class, test bin, hold, customer return and corrective action, each fact tied to its source system.
+3. **Named agents that draft, engineers who decide.** A classification agent, triggered by a new defect candidate, proposes the class with its evidence frame, confirmed by the quality engineer. An excursion agent, triggered by a defect rate crossing its control limit on one station, traces the likely recipe, tool or material lot and drafts a hold, approved by the process engineer. A return agent, triggered by a customer return, assembles the lot's full history and drafts the eight discipline report for the quality manager to approve.
+4. **Memory.** Every confirmed class and every traced cause is kept so the next classification and the next trace are better, without training a model on the fly.
+5. **A command centre** for the quality and process team with station defect rates, open holds, agent drafts and a conversational interface that answers with citations.
+6. **The model named.** Reasoning runs on GLM 5.3 open weights, self hosted on the operator's own servers in Pakistan.
+
+## The rules that bind
+
+- **Inside the plant.** Customer die images, recipes and test data never leave the operator's network. Models are open weights on hardware the operator owns. No third party model service.
+- **Rules.** The anchor customers' confidentiality and data protection terms, the export control conditions attached to the equipment and die the line receives, the national data protection rules, and the automotive and consumer quality standards the customers audit against. The design names the approvals it needs.
+- **Systems first.** Read from the execution system, the inspection databases and the equipment logs. No agent places or releases a hold without a named approval.
+- **People decide.** Agents classify and draft; engineers confirm.
+
+## What success looks like
+
+The first phase covers one package family on one line for one quarter, measured against a baseline of false alert rate, escapes found at final test or by the customer, time from excursion onset to hold, and engineer review hours per lot. The event the design is tested on is one wire bonder drifting and producing lifted wires across three lots, caught at the station, traced and held before the lots reach test.
+
+## What makes it a physical AI system design
+
+Three things separate this from an inspection dashboard.
+
+The intelligence is at the machine. The edge unit beside the bonder classifies the frame while the package is still in reach, so an excursion is caught at the station where it starts, not at final test or at the customer, lots later.
+
+The physical line and the record of it are one model. A lifted wire is not an image in one database and a bin code in another; it is a defect, on a package, from a bonder head, under a recipe, inside a lot, and the agents trace along those relations the way an experienced engineer would.
+
+The outcome feeds back. Every class the quality engineer confirms and every cause the process engineer accepts is written into memory that the next classification and the next trace must read, so the line's judgement compounds with every lot instead of leaving with the engineers who carry it.
+
+## Questions the design must answer
+
+1. Which stations carry cameras, what runs on each edge unit and on the plant servers, and the hardware class, size and three year cost of each, computed from the models' own weights.
+2. How the line ontology is built from the operator's systems and kept current lot by lot.
+3. How a classification and an excursion trace are explained to an engineer and to a customer auditor.
+4. How confirmed outcomes become memory that improves the next result.
+5. The first phase's gates for extending to the next package family and the next line.
+
+The published designs that already answer parts of this, vision at the station and plant quality among them, are collected as [physical AI system design](https://codeatoms.ai/physical-ai-system-design/) and as [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/). Every object model is in the [Vertical-Driven Architectures dataset](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures).
+
+## About CodeNinja
+
+CodeNinja is a Middle Eastern-American artificial intelligence lab focused on building self-improving systems. We are reinventing knowledge work to close the loop between vertical AI use cases and the generalized intelligence that fuels it, accelerating the path toward organizational superintelligence.
+
+
+---
+
 # A Self-Improving AI System for a Gas Compressor Fleet in Saudi Arabia
 
 *The requirement, in the operator's own voice: one governed ontology of every compression train, named agents that draft and people who decide, and a loop that learns from every closed work order through memory, never by retraining weights.*
@@ -772,6 +912,146 @@ The model is the fourth decision, and twice out of three it turns out not to be 
 ---
 
 *The three designs, their object models as JSON, their model registers and their sourced cost appendices are free to reuse under CC BY 4.0: [Field Ledger](https://codeatoms.ai/farm-data-dashboard-pakistan/), [Baseline](https://codeatoms.ai/vegetation-mapping-lidar-us/), [Fodder Watch](https://codeatoms.ai/restricted-crop-monitoring-saudi-arabia/). All three were designed on [CodeNinja Praxis](https://codeatoms.ai/praxis/) and their object models import into [Hyper Ontology](https://codeatoms.ai/hyper-ontology/). Operations are described by class, never by name.*
+
+
+---
+
+# A Sovereign AI Architecture for Refinery Operations Knowledge in Saudi Arabia
+
+*The requirement, in the operator's own voice: one governed ontology of the whole refinery, named agents that draft and shift engineers who decide, open weight models self hosted in country, and memory that makes every trip analysis better than the last.*
+
+Canonical: https://codeatoms.ai/blog/sovereign-ai-architecture-refinery-operations-knowledge-saudi-arabia/
+Author: CodeNinja Atoms, Research distribution
+Published: 2026-11-09
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
+A sovereign AI architecture, for a refinery, is one the operator owns end to end: open weight models running on hardware the operator controls inside Saudi Arabia, reading the refinery's own systems of record, with nothing about the plant leaving the country or reaching a foreign model service. This post publishes the requirement we put to [CodeNinja Praxis](https://codeatoms.ai/praxis/) for such a system: a refining operator in Saudi Arabia, described by class alone, that wants the judgement of its best shift engineers turned into operations knowledge the whole plant can use. The published designs of this kind are collected as [sovereign AI architecture](https://codeatoms.ai/sovereign-ai-architecture/) reference pages.
+
+## Why a refinery
+
+The refinery runs crude distillation, hydrocracking, hydrotreating, reforming, sulphur recovery and utilities around the clock, with a control room per complex and a shift engineer responsible for each. Refineries of this class process several hundred thousand barrels a day, by public reporting on plants of the class in the country, and run a major turnaround every few years with thousands of contractor workers on site.
+
+The shift engineers are asked questions no single system answers. Why did the hydrocracker trip in the same way twice this year. What did the last turnaround find in this exchanger bank. Which procedure change was made after the last sulphur unit upset, and did it work. The answers exist, in the historian, in a shift log, in a change record and in an incident report, and a good engineer spends a night shift joining them.
+
+The urgency is generational. Half the senior shift engineers retire within five years, and the new engineers inherit the systems but not the judgement. During a turnaround the problem doubles: thousands of findings arrive in days, and the engineers who can read them are out on the plant.
+
+## The systems of record
+
+The distributed control system and its historian, the alarm and event journal, the operating procedures and shift logs, the maintenance management system, the management of change records, the incident and near miss system, the laboratory information system and the turnaround planning system. Every fact the system uses is tied back to one of them.
+
+## What the operator asks for
+
+1. **A sovereign AI architecture owned by the operator.** Open weight models on the operator's own hardware in the country, reading the systems of record, with nothing about the plant leaving the country or reaching a foreign model service.
+2. **One model of the plant.** A governed ontology of unit, equipment, tag, alarm, procedure, shift log entry, work order, change, incident, lab result, finding and turnaround task, each fact tied to its source system, so an exchanger has one history across the historian, the work orders and the findings.
+3. **Named agents that draft, engineers who decide.** A trip analyst, triggered by a unit trip, drafts the sequence of events with the matching earlier trips and the changes made since, confirmed by the shift engineer. A handover agent, triggered by shift end, drafts the handover from the alarms, logs and work orders of the shift for the outgoing engineer to confirm. A findings agent, triggered by a turnaround inspection finding, drafts the matching history and the recommended disposition for the turnaround engineer to approve.
+4. **Memory.** Every confirmed cause and every accepted disposition is kept so the next analysis is better, without training a model on the fly.
+5. **A command centre** for shift engineers, showing open trips, handovers, findings waiting and agent drafts, with a conversational interface that answers with citations.
+6. **The model named.** Reasoning runs on GLM 5.3 open weights, self hosted on the operator's own hardware in Saudi Arabia.
+
+## The rules that bind
+
+- **In country.** Plant data never leaves the operator's network. Models are open weights on hardware the operator owns. No third party model service.
+- **Rules.** The national critical infrastructure cybersecurity controls for operational technology, the process safety management rules, the operator's own management of change procedure, and the national data protection law. The design names the approvals it needs.
+- **Read only on control systems.** The architecture reads the historian and journals through the existing one way path. It never writes to the control system, and no agent changes a setpoint, a procedure or a work order without a named approval.
+- **People decide.** Agents draft; engineers confirm.
+
+## What success looks like
+
+The first phase covers one complex and its control room for one quarter, including the turnaround if it falls in the quarter, measured against a baseline of hours to a confirmed trip sequence, handover completeness, repeat trips with the same cause, and findings dispositioned per day during the turnaround. The simulated event the design is tested on is a hydrocracker recycle compressor trip at night, with the matching trip from last year and the change made after it found and shown to the shift engineer within minutes.
+
+## What makes it a sovereign AI architecture
+
+Three things separate this from a cloud analytics subscription.
+
+The weights live with the plant. Reasoning runs on open weight models on hardware the operator owns inside Saudi Arabia, so the capability cannot be priced up, switched off or routed abroad by a vendor, and nothing about the plant crosses the border to a model service.
+
+The knowledge is the operator's object model, not a vendor's index. The ontology of units, tags, procedures, changes, incidents and findings is governed by the operator and tied fact by fact to the systems of record, so it outlives any one supplier and any one model.
+
+The judgement stays auditable and in country. Every confirmed cause and accepted disposition is a cited record an engineer and a process safety auditor can read, kept as memory on the same sovereign hardware, so the plant's hardest earned knowledge accumulates where it was earned.
+
+## Questions the design must answer
+
+1. What runs where on the operator's hardware, the hardware class and size, and the three year cost computed from the models' own weights.
+2. How the plant ontology is built from the systems of record and kept current shift by shift.
+3. How a trip sequence and a finding disposition are explained to a shift engineer and to a process safety auditor.
+4. How confirmed outcomes become memory that improves the next analysis.
+5. The first phase's gates for extending to the other complexes.
+
+The published designs that already answer parts of this, refinery and process plant operations among them, are collected as [physical AI system design](https://codeatoms.ai/physical-ai-system-design/) and as [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/). Every object model is in the [Vertical-Driven Architectures dataset](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures).
+
+## About CodeNinja
+
+CodeNinja is a Middle Eastern-American artificial intelligence lab focused on building self-improving systems. We are reinventing knowledge work to close the loop between vertical AI use cases and the generalized intelligence that fuels it, accelerating the path toward organizational superintelligence.
+
+
+---
+
+# A Sovereign AI Reference Architecture for a Container Terminal in Pakistan
+
+*The requirement, in the operator's own voice: one governed ontology of every box from discharge to gate, named agents that draft the chases and the stack moves while planners decide, and open weight models on hardware the operator owns in the country.*
+
+Canonical: https://codeatoms.ai/blog/sovereign-ai-reference-architecture-container-terminal-pakistan/
+Author: CodeNinja Atoms, Research distribution
+Published: 2026-11-09
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
+A sovereign AI reference architecture, for a container terminal, is a complete system design the operator owns end to end: open weight models running on hardware inside the country, reasoning over the terminal's own systems of record, with nothing about customers' cargo leaving the country or reaching a foreign model service. This post publishes the requirement we put to [CodeNinja Praxis](https://codeatoms.ai/praxis/) for such a system: a container terminal operator at a major seaport in Pakistan, described by class only, under pressure from the government's programme to cut container dwell time by two thirds. The architectures that answer requirements like this one are collected on the [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/) page.
+
+## Why a container terminal
+
+A container terminal moves boxes between ships, the yard and the road gate, with the customs authority clearing cargo on the premises and off dock yards taking the overflow. Terminals of this class in Pakistan see container dwell of around a week against a national target of two days, gate queues that stretch into the city, and periodic backlogs of hundreds of boxes that make the news. Trucks now need tracking devices fitted before they can carry cargo out, which has added hours to gate turnaround.
+
+Every box that overstays has a reason, and the operator learns it late: a release the shipping line has not sent, a customs hold nobody chased, a consignee who has not booked a truck, a yard stack that buries the box under newer arrivals. The gate backs up when the yard cannot deliver boxes in appointment order, and the yard cannot plan when it does not know which boxes will clear today.
+
+The planners know the lines, the agents and the cargo types that overstay most. None of that knowledge is written anywhere, so each planner starts the shift from a fresh list. And when the trade bodies or the port authority ask why a box took nine days to leave, the answer is assembled from four systems by hand.
+
+## The systems of record
+
+There are seven: the terminal operating system, the gate operating system and its cameras, the customs authority's clearance messages, the shipping lines' manifests and releases, the yard equipment telematics, the truck appointment system and the off dock transfer log. Every fact the system uses is tied back to one of them.
+
+## What the operator asks for
+
+1. **A sovereign AI reference architecture.** Open weight models on hardware the operator owns in Pakistan, reading the terminal's systems and the customs authority's messages, with nothing about customers' cargo leaving the country or reaching a foreign model service.
+2. **One model of the operation.** A governed ontology of vessel call, container, consignee, agent, line, release, customs state, hold, yard position, stack, appointment, truck, gate transaction, dwell and off dock transfer, each fact tied to its source system, so one box has one story from discharge to gate.
+3. **Named agents that draft, planners who decide.** An overstay agent, triggered by a box passing half its free time without a clearance step, drafts the chase to the line, the agent or the authority and the recommended off dock transfer, approved by the yard planner. A stack agent, triggered by the next day's clearances, drafts the housekeeping moves that put tomorrow's deliveries on top, approved by the yard superintendent. A gate agent, triggered by an appointment queue crossing its threshold, drafts the lane and slot changes for the gate supervisor to approve.
+4. **Memory.** Every confirmed overstay cause and every accepted housekeeping plan is kept, so the next plan is better, without training a model on the fly.
+5. **A command centre** for the planning team, with boxes ranked by dwell and cause, chases open, housekeeping drafts, gate queue state, agent drafts awaiting approval, and a conversational interface that answers with citations.
+6. **The model named.** Reasoning runs on GLM 5.3 open weights, self hosted on the operator's own hardware in Pakistan.
+
+## The rules that bind
+
+- **In country.** Cargo, customer and gate camera data never leave the operator's network. Models are open weights on hardware the operator owns. No third party model service.
+- **Rules.** The port authority's concession terms, the customs authority's clearance rules and message formats, the national data protection rules for gate cameras and drivers, and the shipping lines' data terms. The design names the approvals it needs.
+- **Systems first.** The system reads from the terminal, gate and customs systems. No agent moves a box, releases a hold or changes an appointment without a named approval.
+- **People decide.** Agents watch and draft; planners and supervisors confirm.
+
+## What success looks like
+
+Phase one covers import containers on one yard block and one gate complex for one quarter, measured against a baseline of median dwell days, boxes over seven days, housekeeping moves per delivered box and gate turnaround minutes. The event the design is tested on is a shipping line's release file arriving late for forty boxes due out tomorrow: seen, chased, and the stack replanned overnight so the morning appointments still clear.
+
+## What makes it a sovereign reference architecture
+
+Three things separate this from a terminal analytics product bought off the shelf.
+
+The data never leaves. Cargo manifests name customers and their goods, and gate cameras record trucks and drivers. All of it stays on the operator's network in Pakistan, and the models that reason over it are open weights on hardware the operator owns, never a third party model service that another jurisdiction can switch off or read.
+
+The design is owned, not rented. The architecture must say what runs where on the operator's hardware, the hardware class and size, and the three year cost, so the operator can buy, run and replace every part of it. That is what makes it a reference: another terminal in the country facing the same dwell targets can take the same design.
+
+The authority can audit it. Because every fact in the ontology is tied to its source system, an overstay chase or a housekeeping plan can be explained line by line to a planner, to the port authority and to the trade bodies asking why a box took nine days.
+
+## Questions the design must answer
+
+1. What runs where on the operator's hardware, the hardware class and size, and the three year cost computed from the models' own weights.
+2. How the terminal ontology is built from the operator's systems and the authority's messages, and kept current move by move.
+3. How an overstay chase and a housekeeping plan are explained to a planner and to the port authority.
+4. How confirmed outcomes become memory that improves the next plan.
+5. Phase one's gates for extending to export containers and the other yard blocks.
+
+The published designs this requirement sits beside are collected as [physical AI system design](https://codeatoms.ai/physical-ai-system-design/) and as [sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/). Every object model is in the [Vertical-Driven Architectures dataset](https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures).
+
+## About CodeNinja
+
+CodeNinja is a Middle Eastern-American artificial intelligence lab focused on building self-improving systems. We are reinventing knowledge work to close the loop between vertical AI use cases and the generalized intelligence that fuels it, accelerating the path toward organizational superintelligence.
 
 
 ---
