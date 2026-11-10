@@ -1,0 +1,2 @@
+# Image credits
+- `plant.jpg`: "Lighted Buildings Near Body of Water", photo by Johannes Plenio, Pexels id 3105242, https://www.pexels.com/photo/lighted-buildings-near-body-of-water-3105242/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 as a process plant at dusk with no legible operator name, sign or equipment maker logo. Used as the post's cover and share image.

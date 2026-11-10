@@ -126,6 +126,10 @@ def cover(p):
     # Optional photo cover (Umar, 18 Oct 2026): front matter "cover_photo" names an image in blog/<slug>/; it fills the
     # tile under a left-to-right dark wash so the title stays readable. Posts without it keep the grid and rings.
     photo = p.get("cover_photo")
+    # Real photo covers are the rule from 10 Nov 2026 (Umar): a newer post without one stops the build instead of
+    # silently getting the abstract tile. Older posts keep their tiles until they are given a photo.
+    if not photo and p.get("date", "") >= "2026-11-10":
+        raise SystemExit(f"blog: {p['slug']} has no cover_photo; every post from 10 Nov 2026 needs a real physical-world photo cover")
     if photo:  # keep the title on two lines in the dark half, clear of the subject on the right
         fs, mw = min(fs, 100), "18ch"
     backdrop = (f'<div style="position:absolute;inset:0;background:url({E(photo)}) {E(p.get("cover_position", "center"))}/cover no-repeat"></div>'
