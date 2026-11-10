@@ -6,7 +6,7 @@ A physical AI system design for weld and assembly quality in a vehicle plant in 
 
 **Canonical page:** https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/
 **Paper:** [PDF](paper/weld-assembly-quality-vehicle-plant-pakistan.pdf) · [HTML](paper/weld-assembly-quality-vehicle-plant-pakistan.html) · [Word](paper/weld-assembly-quality-vehicle-plant-pakistan.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
-**DOI:** assigned on release.
+**DOI:** [10.5281/zenodo.24048589](https://doi.org/10.5281/zenodo.24048589)
 
 **Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 

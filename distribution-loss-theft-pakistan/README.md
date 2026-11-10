@@ -6,7 +6,7 @@ A [sovereign AI architecture](https://codeatoms.ai/sovereign-ai-architecture/) f
 
 **Canonical page:** https://codeatoms.ai/distribution-loss-theft-pakistan/
 **Paper:** [PDF](paper/distribution-loss-theft-pakistan.pdf) · [HTML](paper/distribution-loss-theft-pakistan.html) · [Word](paper/distribution-loss-theft-pakistan.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
-**DOI:** to be minted on release
+**DOI:** [10.5281/zenodo.24048559](https://doi.org/10.5281/zenodo.24048559)
 
 **Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 

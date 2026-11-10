@@ -6,7 +6,7 @@ A [sovereign AI architecture](https://codeatoms.ai/sovereign-ai-architecture/) f
 
 **Canonical page:** https://codeatoms.ai/freight-corridor-customs-saudi-arabia/
 **Paper:** [PDF](paper/freight-corridor-customs-saudi-arabia.pdf) · [HTML](paper/freight-corridor-customs-saudi-arabia.html) · [Word](paper/freight-corridor-customs-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
-**DOI:** to be minted on release
+**DOI:** [10.5281/zenodo.24048557](https://doi.org/10.5281/zenodo.24048557)
 
 **Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
