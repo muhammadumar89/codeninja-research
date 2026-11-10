@@ -13,6 +13,9 @@
  ],
  "audience": "For engineers and their coding agents who build on the open dataset of physical AI system designs and want to know what is in it this week, what is new and where the gaps are.",
  "description": "Weekly dataset note: 28 designs, 397 ontology objects, 290 register rows, 11 of 13 sectors, 5 new designs, the November release and the empty cells.",
+ "cover_photo": "steelworks.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Bence Szemerey on Pexels (https://www.pexels.com/photo/6804258/), Pexels License",
  "cover_line": "Weekly note on the open dataset",
  "cluster": "dataset",
  "owned_keyword": "ontologies"

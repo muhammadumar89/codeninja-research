@@ -1,0 +1,2 @@
+# Image credits
+- `logistics.jpg`: "Aerial View of Logistics Center", photo by Marcin Jozwiak, Pexels id 2804929, https://www.pexels.com/photo/aerial-view-of-logistics-center-2804929/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 as trucks and trailers parked at a distribution centre's yard and docks, seen from directly above; trailer roofs are blank and no company name, sign, licence plate or face can be read. Used as the post's cover and share image.

@@ -14,6 +14,9 @@
  "audience": "For a semiconductor fab or packaging and test plant's operations, facilities, EHS or OT security lead, and the engineers who would build with them, deciding what a first physical AI system should hold.",
  "description": "A semiconductor sector guide built from nine published open reference architectures: which design answers a governed twin of the operation from existing systems, equipment condition with advice that never trips, OT security monitoring with compliance evidence, deterministic gauge integrity on bulk tanks, read only fire and life safety monitoring, owned camera footage of people near equipment, incident prediction on self hosted models, independent counting of what leaves and a records only reliability study, what every one of them keeps constant, and what a first semiconductor design would have to name.",
  "cluster": "semiconductors",
+ "cover_photo": "package.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by ed br on Pexels (https://www.pexels.com/photo/37052613/), Pexels License",
  "cover_line": "Nine of the eighteen open reference architectures already answer the first questions a fab asks"
 }
 ---

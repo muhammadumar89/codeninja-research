@@ -1,0 +1,2 @@
+# Image credits
+- `server.jpg`: "Computer server in data center room", photo by panumas nikhomkhai, Pexels id 17489156, https://www.pexels.com/photo/computer-server-in-data-center-room-17489156/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 as the front of a server in a data center room, with a blank badge and no legible maker logo, label or text. Used as the post's cover and share image.

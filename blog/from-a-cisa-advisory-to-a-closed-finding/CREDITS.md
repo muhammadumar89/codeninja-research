@@ -1,0 +1,2 @@
+# Image credits
+- `substation.jpg`: "Power Plant during Dusk", photo by Kindel Media, Pexels id 9889066, https://www.pexels.com/photo/power-plant-during-dusk-9889066/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 as an electrical substation at dusk seen through a security fence, with no legible operator name, sign, equipment maker logo or person. Used as the post's cover and share image.

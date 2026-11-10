@@ -1,0 +1,2 @@
+# Image credits
+- `package.jpg`: "Close-Up of a Modern Microprocessor Circuit Board", photo by ed br, Pexels id 37052613, https://www.pexels.com/photo/close-up-of-a-modern-microprocessor-circuit-board-37052613/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 because it shows macro of the underside of a packaged processor (substrate lands and capacitors); no part number, maker mark or logo is visible. Used as the post's cover and share image.

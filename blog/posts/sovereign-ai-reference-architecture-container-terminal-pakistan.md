@@ -13,6 +13,9 @@
  ],
  "audience": "For yard planners, gate supervisors and operations managers at a container terminal, and the engineers and coding agents who would build a sovereign AI reference architecture with them.",
  "description": "Sovereign AI reference architecture for a container terminal in Pakistan: the requirement, the systems of record, the agents, the rules that bind and the questions a design must answer.",
+ "cover_photo": "quay-cranes.jpg",
+ "cover_position": "center",
+ "cover_credit": "Photo by Soly Moses on Pexels (https://www.pexels.com/photo/39483489/), Pexels License",
  "cover_line": "A requirement for a sovereign AI reference architecture",
  "cluster": "sovereign AI reference architectures",
  "owned_keyword": "sovereign AI reference architectures"

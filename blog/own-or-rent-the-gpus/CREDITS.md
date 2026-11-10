@@ -1,0 +1,2 @@
+# Image credits
+- `racks.jpg`: "Data Center Server Racks with Active Equipment", photo by panumas nikhomkhai, Pexels id 37730212, https://www.pexels.com/photo/data-center-server-racks-with-active-equipment-37730212/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 as rack mounted servers in a data center with one unit pulled out; the small vent labels are blurred and illegible and there is no maker logo. Used as the post's cover and share image.

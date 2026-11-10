@@ -1,0 +1,2 @@
+# Image credits
+- `line.jpg`: "Production Line of Computer Elements", photo by Andrey Matveev, Pexels id 5554948, https://www.pexels.com/photo/production-line-of-computer-elements-5554948/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 because it shows assembled boards in trays on a production line; only handwritten tray numbers and generic board test point labels, no company name, logo, chip marking or person. Used as the post's cover and share image.

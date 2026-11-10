@@ -1,0 +1,2 @@
+# Image credits
+- `forklift.jpg`: "Orange and Black Fork Lift", photo by Ani Set, Pexels id 8760709, https://www.pexels.com/photo/orange-and-black-fork-lift-8760709/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 because it shows a forklift and a pallet truck in an empty warehouse bay; the only sticker on the mast carries safety pictograms, no maker name, logo, sign or person. Used as the post's cover and share image.

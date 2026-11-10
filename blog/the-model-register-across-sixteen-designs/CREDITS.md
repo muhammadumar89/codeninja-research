@@ -1,0 +1,2 @@
+# Image credits
+- `racks.jpg`: "Server Racks on Data Center", photo by Brett Sayles, Pexels id 4508751, https://www.pexels.com/photo/server-racks-on-data-center-4508751/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 because it shows a row of closed server racks with cabling in a data hall and no legible vendor name, logo or signage, and no people. Used as the post's cover and share image.

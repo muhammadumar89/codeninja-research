@@ -1,0 +1,2 @@
+# Image credits
+- `quay-cranes.jpg`: "Sunset View of Industrial Cargo Cranes by Sea", photo by Soly Moses, Pexels id 39483489, https://www.pexels.com/photo/sunset-view-of-industrial-cargo-cranes-by-sea-39483489/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 because it shows a row of ship to shore container cranes in haze at sunset, with no legible terminal name, shipping line logo, crane number or maker mark, and no people. Used as the post's cover and share image.

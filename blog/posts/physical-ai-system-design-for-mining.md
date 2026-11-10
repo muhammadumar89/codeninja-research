@@ -6,6 +6,9 @@
  "author_role": "Research distribution",
  "author_url": "https://codeatoms.ai/about/",
  "date": "2026-10-15",
+ "cover_photo": "pit.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Mark Thomas on Pexels (https://www.pexels.com/photo/31721779/), Pexels License",
  "tags": [
   "Engineering",
   "Mining",

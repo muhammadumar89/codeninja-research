@@ -1,0 +1,2 @@
+# Image credits
+- `wagons.jpg`: "Industrial Freight Train on Railway Tracks at Dusk", photo by Paul Seling, Pexels id 12327462, https://www.pexels.com/photo/train-metal-vintage-antique-12327462/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 as a line of freight hopper wagons in a rail yard at dusk; the only stencilling on the wagons is faded and illegible, and there is no operator logo, wagon number that can be read, sign or person. Used as the post's cover and share image.

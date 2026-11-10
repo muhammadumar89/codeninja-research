@@ -6,6 +6,9 @@
  "author_role": "Co-founder, CodeNinja",
  "author_url": "https://codeatoms.ai/about/#muhammad-umar-bilal",
  "date": "2026-10-06",
+ "cover_photo": "server.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by panumas nikhomkhai on Pexels (https://www.pexels.com/photo/17489156/), Pexels License",
  "tags": [
   "Engineering",
   "Sovereign AI"

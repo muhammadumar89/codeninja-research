@@ -1,0 +1,2 @@
+# Image credits
+- `pit.jpg`: "Massive Open-Pit Mine with Haul Trucks", photo by Mark Thomas, Pexels id 31721779, https://www.pexels.com/photo/massive-open-pit-mine-with-haul-trucks-31721779/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Chosen 10 Nov 2026 because it shows aerial view of an open pit with haul trucks on the ramps; the trucks are too small for any maker mark to be legible, and there is no sign, site name or person. Used as the post's cover and share image.

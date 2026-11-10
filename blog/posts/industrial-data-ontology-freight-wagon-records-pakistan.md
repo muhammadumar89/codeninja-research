@@ -13,6 +13,9 @@
  ],
  "audience": "For mechanical department engineers at a rail freight operator, and the engineers and coding agents who would build an industrial data ontology with them.",
  "description": "Industrial data ontology for freight wagon records in Pakistan: the requirement, the systems of record, the agents, the rules and the questions a design must answer.",
+ "cover_photo": "wagons.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Paul Seling on Pexels (https://www.pexels.com/photo/12327462/), Pexels License",
  "cover_line": "A requirement for an industrial data ontology",
  "cluster": "ontologies",
  "owned_keyword": "ontologies"

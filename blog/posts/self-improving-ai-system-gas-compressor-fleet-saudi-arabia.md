@@ -13,6 +13,9 @@
  ],
  "audience": "For reliability and maintenance engineers at a gas processing plant, and the engineers and coding agents who would build a self-improving AI system with them.",
  "description": "Self-improving AI system for a gas compressor fleet in Saudi Arabia: the requirement, the outcome loop, the agents, the rules and the questions a design must answer.",
+ "cover_photo": "gas-plant.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Yuri Shkoda on Pexels (https://www.pexels.com/photo/13100561/), Pexels License",
  "cover_line": "A requirement for a self-improving AI system",
  "cluster": "self-improving system",
  "owned_keyword": "self-improving system"

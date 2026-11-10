@@ -13,6 +13,9 @@
  ],
  "audience": "For shift engineers, process safety and turnaround teams at an integrated refinery, and the engineers and coding agents who would build a sovereign AI architecture with them.",
  "description": "Sovereign AI architecture for refinery operations knowledge in Saudi Arabia: the requirement, the systems of record, the agents, the rules that bind and the questions a design must answer.",
+ "cover_photo": "refinery.jpg",
+ "cover_position": "center",
+ "cover_credit": "Photo by 龔 月強 on Pexels (https://www.pexels.com/photo/5884386/), Pexels License",
  "cover_line": "A requirement for a sovereign AI architecture",
  "cluster": "sovereign AI",
  "owned_keyword": "sovereign AI"

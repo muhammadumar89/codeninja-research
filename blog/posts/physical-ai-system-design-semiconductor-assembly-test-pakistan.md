@@ -13,6 +13,9 @@
  ],
  "audience": "For quality and process engineers at a semiconductor assembly and test plant, and the engineers and coding agents who would build a physical AI system with them.",
  "description": "Physical AI system design for a semiconductor assembly and test line in Pakistan: the requirement, the stations, the agents, the rules and the questions a design must answer.",
+ "cover_photo": "line.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Andrey Matveev on Pexels (https://www.pexels.com/photo/5554948/), Pexels License",
  "cover_line": "A requirement for a physical AI system design",
  "cluster": "physical AI",
  "owned_keyword": "physical AI"

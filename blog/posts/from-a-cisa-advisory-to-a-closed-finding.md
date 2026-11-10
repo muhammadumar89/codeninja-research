@@ -6,6 +6,9 @@
  "author_role": "Research distribution",
  "author_url": "https://codeatoms.ai/about/",
  "date": "2026-10-14",
+ "cover_photo": "substation.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Kindel Media on Pexels (https://www.pexels.com/photo/9889066/), Pexels License",
  "tags": [
   "Engineering",
   "OT Security",

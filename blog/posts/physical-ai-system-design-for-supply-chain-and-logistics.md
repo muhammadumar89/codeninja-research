@@ -14,6 +14,9 @@
  "audience": "For a logistics operator, carrier, terminal or distribution network's operations, fleet, safety or OT security lead, and the engineers who would build with them, deciding what a first physical AI system should hold.",
  "description": "A supply chain and logistics sector guide built from eight published open reference architectures: which design answers a governed twin across nodes from existing systems, truck turn time at the gate and yard, deterministic inventory integrity at a fuel terminal, fleet fault logic executed on the vehicle, OT security monitoring with compliance evidence, independent counting of what moves, incident prediction on self hosted models and a records only reliability study, what every one of them keeps constant, and what a first supply chain design would have to name.",
  "cluster": "supply chain and logistics",
+ "cover_photo": "logistics.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Marcin Jozwiak on Pexels (https://www.pexels.com/photo/2804929/), Pexels License",
  "cover_line": "Eight of the eighteen open reference architectures already answer the first questions a logistics network asks"
 }
 ---

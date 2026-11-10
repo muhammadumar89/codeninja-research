@@ -14,6 +14,9 @@
  "audience": "For a warehouse or distribution center's operations, safety or engineering lead, and the engineers who would build with them, deciding what a first physical AI system should hold.",
  "description": "A warehousing and intralogistics sector guide built from nine published open reference architectures: which design answers a governed twin of the operation from existing systems, truck turn time at the gate and yard, people and vehicles on camera, fleet fault logic and fixed equipment condition, read only fire and life safety monitoring, independent counting of what leaves and a records only reliability study, what every one of them keeps constant, and what a first warehousing design would have to name.",
  "cluster": "warehousing and intralogistics",
+ "cover_photo": "forklift.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Ani Set on Pexels (https://www.pexels.com/photo/8760709/), Pexels License",
  "cover_line": "Nine of the eighteen open reference architectures already answer the first questions a warehouse asks"
 }
 ---

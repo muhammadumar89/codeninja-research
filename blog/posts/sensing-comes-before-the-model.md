@@ -6,6 +6,9 @@
  "author_role": "Research distribution",
  "author_url": "https://codeatoms.ai/about/",
  "date": "2026-10-11",
+ "cover_photo": "fields.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by Despoina Apostolidou on Pexels (https://www.pexels.com/photo/38269477/), Pexels License",
  "tags": [
   "Engineering",
   "Earth observation",

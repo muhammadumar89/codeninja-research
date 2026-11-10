@@ -6,6 +6,9 @@
  "author_role": "Research distribution",
  "author_url": "https://codeatoms.ai/about/",
  "date": "2026-10-10",
+ "cover_photo": "racks.jpg",
+ "cover_position": "right center",
+ "cover_credit": "Photo by panumas nikhomkhai on Pexels (https://www.pexels.com/photo/37730212/), Pexels License",
  "tags": [
   "Engineering",
   "Sovereign AI",
