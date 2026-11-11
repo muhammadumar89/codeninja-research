@@ -6,9 +6,9 @@ A [physical AI system design](https://codeatoms.ai/physical-ai-system-design/) f
 
 **Canonical page:** https://codeatoms.ai/mobile-robot-fulfilment-centre-saudi-arabia/
 **Paper:** [PDF](paper/mobile-robot-fulfilment-centre-saudi-arabia.pdf) · [HTML](paper/mobile-robot-fulfilment-centre-saudi-arabia.html) · [Word](paper/mobile-robot-fulfilment-centre-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
-**DOI:** not yet assigned
+**DOI:** [10.5281/zenodo.24048579](https://doi.org/10.5281/zenodo.24048579)
 
-**Licence:** CC BY 4.0. Cite the canonical page, or the DOI once the release carries one.
+**Licence:** CC BY 4.0. Cite the canonical page or the DOI.
 
 ## At a glance
 

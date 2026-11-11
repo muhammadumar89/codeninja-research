@@ -175,6 +175,13 @@ def shell(path, title, desc, body, ld):
 {brand.SCRIPT}</body></html>"""
 
 
+# A covered sector's page is titled for its top named human query (16d step 4, 20 Oct 2026 ruling), never by hand:
+# sector -> (title lead, H1, the question as the searcher typed it). Added 11 Nov 2026 (ep43).
+QUERY_TITLES = {
+    "maritime and ports": ("How Ports and Terminals Use Physical AI", "How ports and terminals use physical AI",
+                           "How are ports and terminals using physical AI?"),
+}
+
 def main():
     by = load()
     today = datetime.date.today().isoformat()
@@ -185,13 +192,16 @@ def main():
         name = sector[:1].upper() + sector[1:]
         qs = qa(sector, ds)
         countries = sorted({d["country"] for d in ds})
-        title = f"Physical AI for {name}: Questions Answered | CodeNinja Atoms"
+        qt = QUERY_TITLES.get(sector)
+        title = (f"{qt[0]}: {name} Questions Answered | CodeNinja Atoms" if qt else f"Physical AI for {name}: Questions Answered | CodeNinja Atoms")
         desc = (f"How to design sovereign physical AI for {sector}: models, compute, three-year cost, ontology and human control, "
                 f"answered from {len(ds)} published reference architectures ({', '.join(countries)}).")[:300]
         toc = "".join(f'<li><a href="#q{i+1}">{E(q)}</a></li>' for i, (q, *_rest) in enumerate(qs))
         secs = "".join(f'<section id="q{i+1}"><h2>{E(q)}</h2><p class="ans">{E(lead)}</p>{body}</section>' for i, (q, lead, body, _t) in enumerate(qs))
-        body = (f'<p class="eyebrow">Sector · {E(name)}</p><h1>Physical AI for {E(sector)}</h1>'
-                f'<p class="lead">{E(WHY.get(sector, ""))} These are the questions engineers ask first, answered from {len(ds)} published CodeNinja Atoms reference architecture{"s" if len(ds) != 1 else ""}.</p>'
+        h1 = qt[1] if qt else f"Physical AI for {sector}"
+        ask = f"{qt[2]} " if qt else ""
+        body = (f'<p class="eyebrow">Sector · {E(name)}</p><h1>{E(h1)}</h1>'
+                f'<p class="lead">{E(ask)}{E(WHY.get(sector, ""))} These are the questions engineers ask first, answered from {len(ds)} published CodeNinja Atoms reference architecture{"s" if len(ds) != 1 else ""}.</p>'
                 f'<ol class="toc">{toc}</ol>{secs}'
                 f'<p class="src">Every answer on this page is drawn from the papers linked in it: each paper\'s At a glance table, model register and cost appendix. '
                 f'Full text for agents: <a href="{BASE}/llms-full.txt">llms-full.txt</a>. Designed on <a href="{BASE}/praxis/">Praxis</a>; object models load into <a href="{BASE}/hyper-ontology/">Hyper Ontology</a>.</p>')
