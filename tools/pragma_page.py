@@ -85,6 +85,100 @@ box-shadow:0 16px 40px rgba(33,20,66,.16),0 4px 10px rgba(33,20,66,.07);overflow
 """
 
 PAGE_CSS = """
+/* banner: Pragma on a laptop, drawn in code (no photography): the product's own home screen, then a real recorded run */
+.phero{position:relative;overflow:hidden;height:100vh;min-height:640px;max-height:1200px;color:#fff;background:#060509}
+.phero .bg{position:absolute;inset:0;background:
+ radial-gradient(42% 46% at 58% 34%,rgba(124,86,255,.30),rgba(6,5,9,0) 72%),
+ radial-gradient(30% 34% at 86% 8%,rgba(169,139,255,.14),rgba(6,5,9,0) 70%),
+ radial-gradient(26% 30% at 10% 22%,rgba(90,60,200,.12),rgba(6,5,9,0) 70%),
+ linear-gradient(180deg,#09070f 0,#110d1b 44%,#1a1526 58%,#120f1b 100%)}
+.phero .bg::before{content:"";position:absolute;left:0;right:0;top:46%;bottom:0;background:radial-gradient(48% 52% at 57% 18%,rgba(170,140,255,.20),rgba(0,0,0,0) 72%),linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.03) 22%,rgba(0,0,0,.45))}
+.phero .bg::after{content:"";position:absolute;inset:0;opacity:.18;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.phero .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 80% at 55% 42%,rgba(0,0,0,0) 50%,rgba(0,0,0,.55) 100%)}
+.phero .stage{--lw:min(50vw,84vh,1000px);position:absolute;left:57%;top:49%;width:var(--lw);height:calc(var(--lw) * .646);transform:translate(-50%,-50%);perspective:calc(var(--lw) * 3.4);perspective-origin:50% -10%}
+.phero .lap{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(-26deg) rotateY(-21deg);transition:transform 1.8s cubic-bezier(.2,.7,.1,1),opacity 1.2s}
+.phero.pre .lap{opacity:0;transform:translateY(7%) rotateX(-18deg) rotateY(-36deg)}
+/* lid: aluminium rim, black glass, notch, screen */
+.phero .lid{position:absolute;inset:0;transform-origin:50% 100%;transform:rotateX(12deg);transform-style:preserve-3d}
+.phero .lid .glass{position:absolute;inset:0;border-radius:calc(var(--lw) * .02) calc(var(--lw) * .02) calc(var(--lw) * .006) calc(var(--lw) * .006);background:#050407;
+ box-shadow:0 0 0 calc(var(--lw) * .0018) #7a7288,0 0 0 calc(var(--lw) * .0042) #2a2632,0 0 0 calc(var(--lw) * .0055) #57506a,0 calc(var(--lw) * -.002) calc(var(--lw) * .03) rgba(150,120,255,.25)}
+.phero .lid .back{position:absolute;inset:0;border-radius:inherit;transform:translateZ(calc(var(--lw) * -.006));background:#3a3445;border-radius:calc(var(--lw) * .02)}
+.phero .scr{position:absolute;left:1.9%;right:1.9%;top:2.6%;bottom:3.9%;overflow:hidden;border-radius:calc(var(--lw) * .009) calc(var(--lw) * .009) calc(var(--lw) * .002) calc(var(--lw) * .002);background:#f8f7fb}
+.phero .scr::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(112deg,rgba(255,255,255,.22) 0,rgba(255,255,255,.04) 26%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 70%,rgba(255,255,255,.06) 100%),linear-gradient(0deg,rgba(40,20,90,.10),rgba(40,20,90,0) 30%)}
+.phero .lid .lbl{position:absolute;left:0;right:0;bottom:.9%;text-align:center;font:500 calc(var(--lw) * .0075) 'Inter',sans-serif;letter-spacing:.08em;color:#4c4558}
+/* base: keyboard, speaker grilles, trackpad, the screen's light falling on it, a front edge */
+.phero .base{position:absolute;left:-1.2%;right:-1.2%;top:100%;height:68%;transform-origin:50% 0;transform:rotateX(90deg);transform-style:preserve-3d;border-radius:calc(var(--lw) * .006) calc(var(--lw) * .006) calc(var(--lw) * .028) calc(var(--lw) * .028);
+ background:linear-gradient(180deg,#24202c 0,#35303f 18%,#3d3748 60%,#463f52 100%);box-shadow:inset 0 0 0 calc(var(--lw) * .0014) rgba(255,255,255,.16),inset 0 calc(var(--lw) * .004) calc(var(--lw) * .01) rgba(0,0,0,.5)}
+.phero .base::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(60% 46% at 50% 0,rgba(205,195,255,.20),rgba(205,195,255,0) 70%)}
+.phero .base .hinge{position:absolute;left:12%;right:12%;top:0;height:1.8%;background:linear-gradient(180deg,#0c0a10,#1d1a24);border-radius:0 0 calc(var(--lw) * .003) calc(var(--lw) * .003)}
+.phero .kb{position:absolute;left:16.5%;right:16.5%;top:5.6%;height:43%;display:flex;flex-direction:column;gap:1.3%;padding:.9%;border-radius:calc(var(--lw) * .004);background:#0f0d13;box-shadow:inset 0 0 calc(var(--lw) * .006) rgba(0,0,0,.8)}
+.phero .kb .r{display:flex;gap:.55%;flex:1}.phero .kb .r.f{flex:.58}
+.phero .kb .k{flex:1;border-radius:calc(var(--lw) * .0018);background:linear-gradient(180deg,#1c1a22,#141218);box-shadow:inset 0 calc(var(--lw) * .0007) 0 rgba(255,255,255,.08),0 calc(var(--lw) * .0008) 0 rgba(0,0,0,.6);position:relative}
+.phero .kb .k b{position:absolute;left:18%;top:14%;width:22%;height:16%;border-radius:1px;background:rgba(230,225,245,.30)}
+.phero .kb .ar{display:flex;flex-direction:column;gap:7%;flex:1}.phero .kb .ar .k{flex:1}
+.phero .spk{position:absolute;top:5.6%;height:43%;width:11.5%;background-image:radial-gradient(circle,rgba(0,0,0,.75) 32%,rgba(0,0,0,0) 36%);background-size:calc(var(--lw) * .006) calc(var(--lw) * .006);opacity:.9}.phero .spk.l{left:3.2%}.phero .spk.r{right:3.2%}
+.phero .tp{position:absolute;left:28%;right:28%;top:53%;height:39%;border-radius:calc(var(--lw) * .008);background:linear-gradient(170deg,#4a4357,#3c3647);box-shadow:inset 0 0 0 calc(var(--lw) * .0012) rgba(255,255,255,.14),inset 0 calc(var(--lw) * -.004) calc(var(--lw) * .01) rgba(0,0,0,.18)}
+.phero .tp::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(80% 60% at 40% 0,rgba(210,200,255,.16),rgba(0,0,0,0) 70%)}
+.phero .base .lip{position:absolute;left:43%;right:43%;bottom:0;height:1.6%;border-radius:calc(var(--lw) * .006) calc(var(--lw) * .006) 0 0;background:#1d1a24}
+.phero .base .front{position:absolute;left:1.6%;right:1.6%;bottom:0;height:calc(var(--lw) * .016);transform-origin:50% 100%;transform:rotateX(-90deg) translateY(100%);background:linear-gradient(180deg,#6c6379,#2a2533 70%,#141118);border-radius:0 0 calc(var(--lw) * .02) calc(var(--lw) * .02)}
+.phero .shd{position:absolute;left:-10%;right:-14%;top:92%;height:88%;transform-origin:50% 0;transform:rotateX(90deg) translateZ(calc(var(--lw) * -.018));background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.85),rgba(0,0,0,0) 72%);filter:blur(calc(var(--lw) * .024))}
+.phero .glow{position:absolute;left:-30%;right:-30%;top:100%;height:110%;transform-origin:50% 0;transform:rotateX(90deg) translateZ(calc(var(--lw) * -.019));background:radial-gradient(40% 36% at 50% 10%,rgba(150,120,255,.32),rgba(0,0,0,0) 72%);filter:blur(calc(var(--lw) * .03))}
+/* the Pragma screen: Pragma's own tokens, drawn at 1280 by 828 and scaled to fit */
+.phero .ui{position:absolute;left:0;top:0;width:1280px;height:828px;transform-origin:0 0;font:400 14px/1.45 'Inter',system-ui,sans-serif;color:#211b2c;background:#f8f7fb;display:flex;flex-direction:column}
+.phero .ui .mb{position:relative;flex:none;height:30px;display:flex;align-items:center;gap:20px;padding:0 18px;background:rgba(236,233,244,.96);border-bottom:1px solid rgba(33,27,44,.06);font:500 13px 'Inter',sans-serif;color:#2c2538}
+.phero .ui .mb .ap{width:12px;height:14px;border-radius:5px 5px 6px 6px;background:#2c2538}.phero .ui .mb b{font-weight:600}.phero .ui .mb span{font-weight:400}.phero .ui .mb .rt{margin-left:auto;display:flex;gap:16px;align-items:center}
+.phero .ui .mb .notch{position:absolute;left:50%;top:0;width:186px;height:32px;margin-left:-93px;background:#050407;border-radius:0 0 12px 12px}
+.phero .ui .app{flex:1;display:grid;grid-template-columns:244px 1fr;min-height:0}
+.phero .ui .sb{margin:10px 0 10px 10px;background:#fff;border:1px solid rgba(33,27,44,.08);border-radius:14px;padding:12px 10px 10px;display:flex;flex-direction:column;gap:1px;overflow:hidden}
+.phero .ui .sb .tl{display:flex;gap:7px;align-items:center;height:22px;margin:0 0 6px 4px;font:500 10px 'JetBrains Mono',monospace;color:#8c82a3}.phero .ui .sb .tl i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.phero .ui .sb .tl i+i{background:#febc2e}.phero .ui .sb .tl i+i+i{background:#28c840}.phero .ui .sb .tl b{margin-left:24px;font-weight:500;letter-spacing:.08em}
+.phero .ui .sb a{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:8px;color:#211b2c;font-size:13.5px;text-decoration:none}.phero .ui .sb a.nw{color:#5200ff;font-weight:500}.phero .ui .sb a i{width:13px;height:13px;border:1.5px solid #8c82a3;border-radius:3.5px;flex:none}.phero .ui .sb a.nw i{border-color:#5200ff;border-radius:50%}
+.phero .ui .sb h6{margin:14px 9px 4px;font:500 10px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#8c82a3;display:flex;justify-content:space-between}.phero .ui .sb h6 span{letter-spacing:0;font-weight:400}
+.phero .ui .sb .tk{display:flex;align-items:center;gap:9px;padding:5px 9px;font-size:13px;border-radius:8px}.phero .ui .sb .tk::before{content:"";width:6px;height:6px;border-radius:50%;background:#5200ff;flex:none}.phero .ui .sb .tk em{margin-left:auto;font-style:normal;font-size:11px;color:#8c82a3}
+.phero .ui .sb .tk.run{background:rgba(82,0,255,.07)}.phero .ui .sb .tk.run::before{animation:phb 1.2s ease-in-out infinite}
+.phero .ui .sb .ol{display:flex;align-items:center;gap:9px;padding:5px 9px;font-size:13px;color:#5d5176;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.phero .ui .sb .ol::before{content:"";width:7px;height:7px;border-radius:50%;border:1.3px solid #b3abc6;flex:none}
+.phero .ui .sb .ft{margin-top:auto;border-top:1px solid rgba(33,27,44,.08);padding:10px 9px 2px;display:flex;flex-direction:column;gap:10px;font-size:13px}.phero .ui .sb .ft span{display:flex;align-items:center;gap:9px}.phero .ui .sb .ft b{width:24px;height:24px;border-radius:50%;background:#efedf5;color:#5200ff;display:grid;place-items:center;font:600 10px 'Inter',sans-serif}
+.phero .ui .mn{position:relative;min-width:0}
+.phero .ui .hm,.phero .ui .cv{position:absolute;inset:0;transition:opacity .55s,transform .55s}
+.phero .ui .hm{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 70px 50px}
+.phero .ui.chat .hm{opacity:0;transform:translateY(-14px);pointer-events:none}.phero .ui .cv{opacity:0;transform:translateY(14px)}.phero .ui.chat .cv{opacity:1;transform:none}
+.phero .ui .mk{width:36px;height:29px;fill:#5200ff;margin-bottom:20px}
+.phero .ui .hm h2{margin:0;font:500 40px/1.22 'Space Grotesk',system-ui,sans-serif;letter-spacing:-.025em;text-align:center;max-width:19em;min-height:2.44em}
+.phero .ui .ul{width:76px;height:2px;background:#5200ff;margin:16px 0 34px;transform-origin:0 50%;transition:transform .8s .2s}.phero.pre .ui .ul{transform:scaleX(0)}
+.phero .ui .cp{width:680px;background:#fff;border:1px solid rgba(33,27,44,.12);border-radius:16px;box-shadow:0 10px 30px rgba(33,27,44,.07);padding:16px 18px 12px}
+.phero .ui .cp .q{min-height:46px;font-size:15.5px;color:#211b2c}.phero .ui .cp .q.ph{color:#8c82a3}.phero .ui .cu{display:inline-block;width:1.6px;height:17px;background:#5200ff;vertical-align:-3px;margin-left:1px;animation:phb 1s steps(2) infinite}
+.phero .ui .cp .rw{display:flex;align-items:center;gap:16px;color:#8c82a3;font-size:12px}.phero .ui .cp .rw .hi{margin-left:auto}.phero .ui .cp .rw .go{width:28px;height:28px;border-radius:8px;background:#efedf5;display:grid;place-items:center;color:#8c82a3;font-size:14px;transition:background .3s,color .3s,transform .3s}.phero .ui .cp .rw .go.on{background:#5200ff;color:#fff;transform:scale(1.08)}
+.phero .ui .hn{margin:12px 0 20px;font:400 11px 'JetBrains Mono',monospace;color:#8c82a3}
+.phero .ui .ch{display:flex;gap:9px}.phero .ui .ch span{display:flex;align-items:center;gap:7px;padding:7px 14px;border:1px solid rgba(33,27,44,.12);border-radius:99px;background:#fff;font-size:12.5px}.phero .ui .ch span.c::before{content:"";width:7px;height:7px;border-radius:50%;background:#0f8a5f}
+/* the run */
+.phero .ui .cv{display:flex;flex-direction:column;padding:10px 10px 10px 0}
+.phero .ui .cv .hd{flex:none;display:flex;align-items:center;gap:12px;height:46px;padding:0 18px}.phero .ui .cv .hd b{font:600 15px 'Space Grotesk',sans-serif}.phero .ui .cv .hd .tg{padding:3px 10px;border-radius:99px;background:#efedf5;color:#5d5176;font-size:11.5px}.phero .ui .cv .hd .sm{margin-left:auto;display:flex;align-items:center;gap:7px;padding:4px 12px;border-radius:99px;background:rgba(82,0,255,.09);color:#5200ff;font:500 11.5px 'Inter',sans-serif}.phero .ui .cv .hd .sm::before{content:"";width:7px;height:7px;border-radius:50%;background:#5200ff}
+.phero .ui .cv .bd{flex:1;min-height:0;display:grid;grid-template-columns:1fr 300px;gap:12px}
+.phero .ui .cv .cl{background:#fff;border:1px solid rgba(33,27,44,.08);border-radius:14px;padding:18px 22px;overflow:hidden;display:flex;flex-direction:column;gap:8px;justify-content:flex-end}
+.phero .ui .cl>*{flex:none}.phero .ui .st{opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s;max-height:0;overflow:hidden}.phero .ui .st.on{opacity:1;transform:none;max-height:200px;overflow:visible}
+.phero .ui .us{align-self:flex-end;max-width:72%;padding:10px 14px;border-radius:14px 14px 4px 14px;background:#5200ff;color:#fff;font-size:14px}
+.phero .ui .mem{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:99px;background:rgba(82,0,255,.08);color:#5200ff;font:500 12px 'Inter',sans-serif;align-self:flex-start}
+.phero .ui .sd{font-size:13.5px;color:#211b2c;max-width:92%}
+.phero .ui .tc{display:flex;align-items:center;gap:10px;padding:7px 12px;border:1px solid rgba(33,27,44,.09);border-radius:10px;background:#fbfafd;font:400 12.5px 'JetBrains Mono',monospace;color:#5d5176}
+.phero .ui .tc::before{content:"";width:8px;height:8px;border-radius:2px;background:#5200ff;opacity:.75;flex:none}.phero .ui .tc em{font-style:normal;color:#8c82a3}.phero .ui .tc .ok{margin-left:2px;color:#0f8a5f;font-family:'Inter',sans-serif;font-size:12px}
+.phero .ui .wo{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.phero .ui .wo div{border:1px solid rgba(15,138,95,.35);background:rgba(15,138,95,.06);border-radius:10px;padding:10px 12px;font-size:12.5px}.phero .ui .wo b{display:block;font:600 13.5px 'Space Grotesk',sans-serif;color:#0f8a5f}.phero .ui .wo span{color:#5d5176;font-family:'JetBrains Mono',monospace;font-size:11px}
+.phero .ui .fin{font-weight:600;font-size:14px}
+.phero .ui .rp{background:#fff;border:1px solid rgba(33,27,44,.08);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.phero .ui .rp h5{margin:0 0 4px;font:500 10.5px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#8c82a3}
+.phero .ui .rp .rr{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(33,27,44,.07);font-size:13px;color:#5d5176}.phero .ui .rp .rr b{font:600 20px 'Space Grotesk',sans-serif;color:#211b2c;transition:color .3s}.phero .ui .rp .rr b.bump{color:#5200ff}
+.phero .ui .rp .jd{margin-top:auto;border-radius:12px;padding:14px;background:#211b2c;color:#fff;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}.phero .ui .rp .jd.on{opacity:1;transform:none}.phero .ui .rp .jd small{display:block;font:500 10px 'JetBrains Mono',monospace;letter-spacing:.1em;color:#a98bff}.phero .ui .rp .jd b{display:block;font:600 30px 'Space Grotesk',sans-serif;margin:4px 0}.phero .ui .rp .jd p{margin:8px 0 0;font-size:12px;line-height:1.4;color:rgba(255,255,255,.78)}
+@keyframes phb{50%{opacity:.25}}
+.phero .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(6,5,9,.94) 0,rgba(6,5,9,.45) 24%,rgba(6,5,9,0) 44%),linear-gradient(180deg,rgba(6,5,9,.6) 0,rgba(6,5,9,0) 16%)}
+.phero .hcopy{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:0 clamp(16px,3vw,44px) clamp(18px,3vw,40px)}
+.phero .wmark{display:flex;align-items:center;gap:clamp(12px,1.6vw,26px);margin:0;font:300 clamp(72px,13.5vw,232px)/.78 var(--sans);letter-spacing:-.06em;color:#fff;transition:opacity 1s .3s,transform 1s .3s}.phero.pre .wmark{opacity:0;transform:translateY(18px)}
+.phero .wmark svg{height:.66em;width:auto;fill:#fff;flex:none;transform:translateY(.02em)}
+.phero .hs{display:flex;flex-direction:column;gap:14px;max-width:300px;padding-bottom:8px;font:400 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.86)}
+.phero .hs p{margin:0;padding-left:12px;border-left:1px solid rgba(255,255,255,.45)}.phero .hs .dim{color:rgba(255,255,255,.55)}.phero .hs .lk{border-left-color:#a98bff}.phero .hs a{color:#fff;text-decoration:none}.phero .hs a:hover{color:#a98bff}
+.phero .scroll{position:absolute;left:50%;bottom:14px;width:46px;height:8px;margin-left:-23px;border:1px solid rgba(255,255,255,.5);border-radius:99px}
+@media (max-width:900px){.phero{height:90vh;min-height:600px}.phero .stage{--lw:min(82vw,60vh);left:47%;top:34%}.phero .hcopy{flex-direction:column;align-items:flex-start;gap:18px}.phero .hs{max-width:none}.phero .scroll{display:none}}
+/* the wall of operations, moved below the Learning Loop: one platform for every operation */
+.pwall.strip{width:100%;height:min(56.25vw,92vh);min-height:460px;max-height:none}
+.pwall.strip .wcopy h2{margin:0;font:300 clamp(36px,5.4vw,84px)/1 var(--sans);letter-spacing:-.045em;color:#fff;max-width:13ch}
+
 body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 .pg .wrap2{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
 .pwall{position:relative;overflow:hidden;height:100vh;min-height:640px;max-height:1100px;background:#0b0c10;color:#fff}
@@ -405,6 +499,26 @@ document.querySelectorAll('[data-rv]').forEach(function(s){rio.observe(s)});
 var rail=document.querySelectorAll('.drail nav a');if(rail.length){var hs=[].map.call(rail,function(a){return document.getElementById(a.getAttribute('href').slice(1))});
  function spy(){var y=innerHeight*.3,k=0;hs.forEach(function(h,j){if(h&&h.getBoundingClientRect().top<y)k=j});rail.forEach(function(a,j){a.classList.toggle('on',j===k)})}
  addEventListener('scroll',spy,{passive:true});spy()}
+
+/* banner: the laptop settles, Pragma's home screen types its line, a request goes in, and the recorded run plays on the screen */
+var ph=document.querySelector('.phero');if(ph){var scr=ph.querySelector('.scr'),ui=ph.querySelector('.ui'),h2=ui.querySelector('.hm h2'),q=ui.querySelector('.cp .q'),go=ui.querySelector('.go'),lap=ph.querySelector('.lap'),
+  sts=[].slice.call(ui.querySelectorAll('.st')),jd=ui.querySelector('.jd'),cnt={};[].forEach.call(ui.querySelectorAll('.rr b'),function(b){cnt[b.getAttribute('data-k')]=b});
+ function fitS(){var k=scr.clientWidth/1280;ui.style.transform='scale('+k+')';ui.style.height=(scr.clientHeight/k)+'px'}fitS();addEventListener('resize',fitS);if(window.ResizeObserver)new ResizeObserver(fitS).observe(scr);
+ var H=h2.getAttribute('data-t'),P=q.getAttribute('data-t'),G=q.textContent,T=[];
+ function at(f,ms){T.push(setTimeout(f,ms))}
+ function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+ function setc(k,v){var b=cnt[k];if(!b)return;b.textContent=v;b.classList.add('bump');setTimeout(function(){b.classList.remove('bump')},500)}
+ function reset(){sts.forEach(function(e){e.classList.remove('on')});jd.classList.remove('on');for(var k in cnt)cnt[k].textContent=cnt[k].getAttribute('data-0');ui.classList.remove('chat');q.classList.add('ph');q.textContent=G}
+ function run(){reset();var i=0;
+  at(function typ(){q.classList.remove('ph');q.innerHTML=esc(P.slice(0,i))+'<span class="cu"></span>';if(i<P.length){i+=1;at(typ,30)}else at(send,500)},1400);
+  function send(){go.classList.add('on');at(function(){go.classList.remove('on');ui.classList.add('chat');var t=500,n=0;
+   sts.forEach(function(e){var d=+(e.getAttribute('data-d')||650);t+=d;at(function(){e.classList.add('on');if(e.classList.contains('tc'))setc('acts',++n);var c=e.getAttribute('data-set');if(c){c.split(';').forEach(function(x){var kv=x.split('=');setc(kv[0],kv[1])})}if(e.classList.contains('fin'))jd.classList.add('on')},t)});
+   at(run,t+6500)},650)}}
+ if(still){h2.textContent=H;ph.classList.remove('pre');ui.classList.add('chat');sts.forEach(function(e){e.classList.add('on')});jd.classList.add('on')}
+ else{h2.textContent='';requestAnimationFrame(function(){requestAnimationFrame(function(){ph.classList.remove('pre')})});
+  setTimeout(function(){var i=0;(function n(){h2.textContent=H.slice(0,i);if(i<H.length){i+=2;setTimeout(n,26)}else{h2.textContent=H;run()}})()},900);
+  /* as the page scrolls, the laptop turns a little toward the reader */
+  addEventListener('scroll',function(){var p=Math.min(1,Math.max(0,scrollY/innerHeight));lap.style.transform='rotateX('+(-26+9*p)+'deg) rotateY('+(-21+9*p)+'deg) translateY('+(p*-4)+'%)'},{passive:true})}}
 /* banner: a wall of operations; across it the loop keeps running: a run starts, it is graded, a lesson is kept */
 var wall=document.querySelector('.pwall');if(wall){var vd=wall.querySelector('.wv'),wg=wall.querySelector('.wg'),cells=[].slice.call(wg.children);
  function fit(){var W=wall.clientWidth,H=wall.clientHeight,k=Math.max(W/1920,H/1080),w=1920*k,h=1080*k;wg.style.width=w+'px';wg.style.height=h+'px';wg.style.left=(W-w)/2+'px';wg.style.top=(H-h)/2+'px';wg.style.setProperty('--cx',Math.max(0,(w-W)/2)+'px')}
@@ -506,16 +620,69 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
         for i, (h, ps, w, a) in enumerate(feats))
     ents = "".join(f"<div><h4>{E(a)}</h4><p>{E(b)}</p></div>" for a, b in ENT)
     tiles = "".join(f'<div class="wc"><span class="op">{E(t)}</span><span class="chip"></span></div>' for t in WALL)
-    body = (f'<main class="pg"><section class="pwall"><video class="wv" autoplay muted loop playsinline preload="auto" poster="/assets/video/pragma-wall.jpg">'
+    sched = [t["name"] for t in fleet if t.get("enabled")][:6]
+    times = ["9:48 pm", "9:42 pm", "9:32 pm", "9:26 pm", "9:21 pm", "9:10 pm"]
+    older = ["Haul truck CAS alert triage", "Weekly fleet audit", "Shift handover summary", "Collision evidence pack",
+             "Supervisor alert explanations", "Telemetry fault review", "Near miss trend by pit", "SLA breach check", "Work order backlog by asset", "Proximity events, last 24 hours"]
+    ask = "Run the fault scan: open a work order for every new fault, cite the records, and skip duplicates."
+    calls = [x for x in demo["run"]["steps"] if x["k"] == "call"]
+    best = max([e for e in mem.get("episodes", []) if e.get("lessons_read")] or mem.get("episodes", [{}]), key=lambda e: (e.get("score", 0), e.get("tool_calls", 0)))
+    nles = len(mem.get("lessons", []))
+    kb_rows = [("f", [2] + [1] * 13), ("", [1] * 13 + [2]), ("", [1.5] + [1] * 12 + [1.5]), ("", [1.8] + [1] * 11 + [2.2]), ("", [2.35] + [1] * 10 + [2.65]), ("", [1, 1, 1, 1.25, 5.5, 1.25, 1, "ar"])]
+    def keys(ws):
+        out = ""
+        for w in ws:
+            if w == "ar":
+                out += '<div class="k" style="flex:1"></div><div class="ar" style="flex:1"><div class="k"></div><div class="k"></div></div><div class="k" style="flex:1"></div>'
+            else:
+                out += f'<div class="k" style="flex:{w}"><b></b></div>'
+        return out
+    kb = "".join(f'<div class="r {c}">{keys(ws)}</div>' for c, ws in kb_rows)
+    steps = [f'<div class="st us" data-d="300">{E(ask)}</div>', f'<div class="st mem" data-d="700" data-set="les={nles}">Read {nles} lessons from Engram · pragma_context</div>']
+    said = {4: "I have the alerts. Now the open work orders, to check for duplicates.", 8: "Every earlier fault is already cited. Two cameras have new faults with no work order."}
+    for j, c in enumerate(calls[:9]):
+        steps.append(f'<div class="st tc" data-d="520">{E(c["t"])}{" <em>· " + E(c["q"]) + "</em>" if c.get("q") else ""}<span class="ok">✓</span></div>')
+        if j in said:
+            steps.append(f'<div class="st sd" data-d="650">{E(said[j])}</div>')
+    steps.append('<div class="st tc" data-d="600" data-set="wos=1">create work order<span class="ok">✓</span></div>')
+    steps.append('<div class="st tc" data-d="450" data-set="wos=2">create work order<span class="ok">✓</span></div>')
+    steps.append('<div class="st wo" data-d="500"><div><b>MFS-115 · High</b>Camera F, two degraded alerts<br><span>cites 742b7b0f · dbd4018d</span></div><div><b>MFS-116 · High</b>Camera q, two degraded alerts<br><span>cites 3613140b · 02850eb4</span></div></div>')
+    steps.append('<div class="st sd fin" data-d="700" data-set="flt=16;dup=14">Faults found: 16 | Work orders created: 2 | Skipped as duplicate: 14</div>')
+    lesson = (mem.get("lessons") or [{"text": ""}])[0]["text"]
+    lesson = lesson if len(lesson) < 120 else lesson[:117].rsplit(" ", 1)[0] + "…"
+    score = best.get("score", 1.0)
+    rp = ('<div class="rp"><h5>THIS RUN</h5>'
+          f'<div class="rr">Lessons read<b data-k="les" data-0="0">0</b></div><div class="rr">Governed actions<b data-k="acts" data-0="0">0</b></div>'
+          '<div class="rr">Faults found<b data-k="flt" data-0="·">·</b></div><div class="rr">Work orders created<b data-k="wos" data-0="0">0</b></div><div class="rr">Skipped as duplicate<b data-k="dup" data-0="·">·</b></div>'
+          f'<div class="jd"><small>JUDGE · {E(mem.get("judge_model", "glm-5.3"))}</small><b>{"+" if score > 0 else ""}{score:.2f}</b>{E(str(best.get("verdict", "strong")).capitalize())}, against the workflow\'s own instructions<p>Lesson kept: {E(lesson)}</p></div></div>')
+    ui = ('<div class="ui" aria-hidden="true"><div class="mb"><span class="ap"></span><b>Hyper Desktop</b><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span><span class="rt"><span>⌁</span><span>◐</span><span>Wed 9:48 PM</span></span><i class="notch"></i></div>'
+          '<div class="app"><div class="sb"><div class="tl"><i></i><i></i><i></i><b>BETA</b></div>'
+          '<a class="nw"><i></i>New chat</a><a><i></i>Chats</a><a><i></i>Projects</a><a><i></i>Artifacts</a><a><i></i>Tasks</a>'
+          '<h6>SCHEDULED <span>View all</span></h6>' + "".join(f'<div class="tk{" run" if n == mtask else ""}">{E(n)}<em>{times[k]}</em></div>' for k, n in enumerate(sched))
+          + '<h6>OLDER</h6>' + "".join(f'<div class="ol">{E(o)}</div>' for o in older)
+          + '<div class="ft"><span>Connectors</span><span><b>OP</b>Operator</span></div></div>'
+          f'<div class="mn"><div class="hm"><svg class="mk" viewBox="0 0 38 30"><path d="{MARK}"/></svg>'
+          '<h2 data-t="The fastest path to system of context and mechanistic interpretability">The fastest path to system of context and mechanistic interpretability</h2><div class="ul"></div>'
+          f'<div class="cp"><div class="q ph" data-t="{E(ask)}">Good evening, what are we building?</div><div class="rw"><span>⌕</span><span>✎</span><span class="hi">◔ High</span><span class="go">↑</span></div></div>'
+          '<div class="hn">Enter to send · Shift + Enter for a new line · / for skills</div>'
+          '<div class="ch"><span class="c">Mining Ontology</span><span class="c">Engram</span><span>Write</span><span>Code</span><span>Brainstorm</span></div></div>'
+          f'<div class="cv"><div class="hd"><b>{E(mtask)}</b><span class="tg">Maintainer · Mining GOLD Copper</span><span class="sm">Self-Improving Memory on</span></div>'
+          f'<div class="bd"><div class="cl">{"".join(steps)}</div>{rp}</div></div></div></div></div>')
+    hero = ('<section class="phero pre"><div class="bg"></div><div class="stage" aria-hidden="true"><div class="lap"><div class="glow"></div><div class="shd"></div>'
+            f'<div class="base"><div class="hinge"></div><div class="spk l"></div><div class="kb">{kb}</div><div class="spk r"></div><div class="tp"></div><div class="lip"></div><div class="front"></div></div>'
+            f'<div class="lid"><div class="back"></div><div class="glass"></div><div class="scr">{ui}</div><div class="lbl">Hyper Desktop</div></div></div></div><div class="vig"></div><div class="shade"></div>'
+            f'<div class="hcopy"><h1 class="wmark" aria-label="Hyper Pragma"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Pragma</span></h1>'
+            '<div class="hs"><p>Hyper Pragma<br><span class="dim">Agents on your ontology</span></p><p>Put AI to work on your operations, and let it learn from every run</p>'
+            f'<p class="dim">One platform for every operation</p><p class="lk"><a href="{brand.COMMERCIAL}">{brand.TALK} →</a></p></div></div><div class="scroll" aria-hidden="true"></div></section>')
+    wall = (f'<section class="pwall strip"><video class="wv" autoplay muted loop playsinline preload="metadata" poster="/assets/video/pragma-wall.jpg">'
             f'<source src="/assets/video/pragma-wall.mp4" type="video/mp4"></video><div class="wg" aria-hidden="true">{tiles}</div><div class="wsh"></div>'
-            f'<div class="wcopy"><h1 class="wmark" aria-label="Hyper Pragma"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Pragma</span></h1>'
-            '<div class="wside"><p>Put AI to work on your operations, and let it learn from every run.</p><p class="dim">One platform for every operation.</p>'
-            f'<p class="dim">Hyper Pragma · CodeNinja</p><a class="btn wh" href="{brand.COMMERCIAL}">{brand.TALK}</a></div></div></section>'
+            '<div class="wcopy"><h2>One platform for every operation.</h2><div class="wside"><p>Mines, ports, plants, grids and rail yards. Every run starts, is graded, and keeps a lesson.</p></div></div></section>')
+    body = (f'<main class="pg">{hero}'
             '<section class="pstate" data-rv><div class="ps-top"><span>Hyper <i>{</i> Pragma <i>}</i></span>'
             f'<a href="{brand.COMMERCIAL}">{brand.TALK}</a></div>'
             '<h2 class="ps-h"><span data-type>Agents that teach themselves.</span><span class="m" data-type>Recursive self improvement for your operations.</span></h2>'
             '<div class="ps-foot"><p>Every workflow runs, is graded against its own instructions, and starts the next run with what it learned.</p><a href="#beyond">Scroll to explore ↓</a></div></section>'
-            f'{beyond}{numbered}'
+            f'{beyond}{wall}{numbered}'
             f'<section class="blk" data-rv><div class="wrap2"><div class="bh"><div><p class="eyebrow">Who it is for</p><h2 data-type>Built for the people who run the operation.</h2></div>'
             f'<p>For banks, energy companies, utilities, industrial operators and the public sector, where the data cannot leave and the decisions must be accountable.</p></div><div class="ents">{ents}</div></div></section>'
             f'<section class="close" data-rv><div class="wrap2"><h2 data-type>Every run leaves your operation a little smarter.</h2><a class="btn dk" href="{brand.COMMERCIAL}">{brand.TALK}</a></div></section>'
