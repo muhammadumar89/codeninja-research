@@ -171,7 +171,10 @@ body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 .pg .feat{display:grid;grid-template-columns:1fr 1fr;gap:28px 64px;align-items:start;margin-bottom:40px}.pg .feat h3{font:300 clamp(32px,3.6vw,52px)/1.05 var(--sans);letter-spacing:-.03em;margin:0;color:var(--ink)}
 .pg .feat p{font:300 19px/1.55 var(--sans);color:var(--muted-l);margin:0}.pg .feat p+p{margin-top:14px}
 .pg .feat-stage{max-width:1000px}
-.pg .fsec{padding:110px 0}.pg .fgrid{display:grid;grid-template-columns:minmax(280px,.6fr) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:start;max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+.pg .fsec{padding:110px 0}
+@media (min-width:1101px){.pg .fsec.pinned{padding:0}.pg .fsec.pinned .fpin{height:calc(100vh + var(--steps,3) * 32vh)}
+ .pg .fsec.pinned .fstick{position:sticky;top:var(--hdr,84px);height:calc(100vh - var(--hdr,84px));display:flex;align-items:center}
+ .pg .fsec.pinned .fgrid{width:100%;transform-origin:50% 50%}.pg .fsec.pinned .fside{position:static}}.pg .fgrid{display:grid;grid-template-columns:minmax(280px,.6fr) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:start;max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
 .pg .fside{position:sticky;top:120px}.pg .fside h3{font:300 clamp(34px,3.7vw,58px)/1.04 var(--sans);letter-spacing:-.035em;margin:0 0 26px;color:var(--ink)}
 .pg .fside .fp p{font:300 18px/1.55 var(--sans);color:var(--muted-l);margin:0}.pg .fside .fp p+p{margin-top:14px}
 .pg .fstage{min-width:0}.pg .fstage .pw{border-radius:14px}.pg .fstage .pw .app{min-height:470px}
@@ -365,7 +368,7 @@ var tb=document.getElementById('beyond');if(tb){var bs=tb.querySelectorAll('.tab
  /* pinned: each tab is four scroll steps (the whole screen, then A, B, C); you cannot pass a tab before its focus is done */
  var SUB=4;
  var hd=document.querySelector('.topwrap')||document.querySelector('header.top');
- function hdr(){var b=hd?Math.round(hd.getBoundingClientRect().bottom):84;if(b!==tb._hdr){tb._hdr=b;tb.style.setProperty('--hdr',Math.max(60,b)+'px')}}
+ function hdr(){var b=hd?Math.round(hd.getBoundingClientRect().bottom):84;if(b!==tb._hdr){tb._hdr=b;document.documentElement.style.setProperty('--hdr',Math.max(60,b)+'px')}}
  function onScroll(){hdr();if(!mq.matches){ps.forEach(function(g){g._manual=false});return}var r=pin.getBoundingClientRect(),R=range(),p=Math.min(.9999,Math.max(0,-r.top/R)),n=ps.length,
   st=Math.floor(p*n*SUB),k=Math.floor(st/SUB),sub=st%SUB,g=ps[k];
   bs.forEach(function(b,j){b.lastChild.style.width=(j<k?100:j>k?0:Math.min(100,(p*n-k)*100))+'%'});
@@ -374,6 +377,19 @@ var tb=document.getElementById('beyond');if(tb){var bs=tb.querySelectorAll('.tab
  addEventListener('scroll',onScroll,{passive:true});
  bs.forEach(function(b,j){b.addEventListener('click',function(){if(mq.matches){var top=pin.getBoundingClientRect().top+scrollY;scrollTo({top:top+range()*(j+.3/SUB)/ps.length,behavior:'smooth'})}else show(j)})});
  ps[0].classList.add('on');onScroll()}
+/* numbered sections lock like the Learning Loop: the whole screen, then A, B, C; the page moves on only after the last point */
+(function(){var secs=[].slice.call(document.querySelectorAll('.fsec')),wide=matchMedia('(min-width:1101px)');if(!secs.length)return;
+ var hb=document.querySelector('.topwrap')||document.querySelector('header.top');
+ function hdrH(){var b=hb?Math.round(hb.getBoundingClientRect().bottom):84;document.documentElement.style.setProperty('--hdr',Math.max(60,b)+'px')}
+ function fit(sec){var st=sec.querySelector('.fstick'),gr=sec.querySelector('.fgrid'),n=gr.querySelectorAll('.abc li').length;
+  sec.style.setProperty('--steps',n+1);gr.style.transform='';sec.classList.remove('pinned');gr._manual=false;
+  if(!wide.matches||still)return;sec.classList.add('pinned');var avail=st.clientHeight-30,h=gr.scrollHeight,k=Math.min(1,avail/h);
+  if(k<.8){sec.classList.remove('pinned');return}gr.style.transform=k<1?'scale('+k.toFixed(3)+')':'';gr._manual=true;gr._sub=-1}
+ function fitAll(){hdrH();secs.forEach(fit);step()}
+ function step(){secs.forEach(function(sec){if(!sec.classList.contains('pinned'))return;var pin=sec.querySelector('.fpin'),st=sec.querySelector('.fstick'),gr=sec.querySelector('.fgrid'),
+   n=gr.querySelectorAll('.abc li').length+1,R=pin.offsetHeight-st.offsetHeight,p=Math.min(.9999,Math.max(0,-pin.getBoundingClientRect().top/R)),sub=Math.floor(p*n);
+   if(sub===gr._sub)return;gr._sub=sub;if(sub===0){gr._hold=Infinity;mark(gr)}else{gr._hold=0;pick(gr,sub-1)}})}
+ fitAll();addEventListener('scroll',step,{passive:true});addEventListener('resize',fitAll);addEventListener('load',fitAll);if(document.fonts)document.fonts.ready.then(fitAll)})();
 /* section reveal, the way the reference platform pages do it */
 function split(h){if(h._sp)return;h._sp=1;var t=h.textContent;h.setAttribute('aria-label',t);h.textContent='';
  t.split(' ').forEach(function(w,i){if(i)h.appendChild(document.createTextNode(' '));var ws=el('span','w');ws.setAttribute('aria-hidden','true');
@@ -484,9 +500,9 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
              ("Inside your walls", [("The agents, the models, the memory and the record of every action run where your data lives: on premises, in your private cloud or air gapped.", ".bx"),
                                     ("Open weight frontier models on your own hardware. When a better one is released you swap it in, and the ontology, the memory and the workflows carry over.", ".mn > .st")], boundary_view(), "proj")]
     numbered = "".join(
-        f'<section class="blk fsec" data-rv><div class="fgrid fgroup" data-hold="1700"><div class="fside"><div class="num">' + "".join(f'<b>[0.{j + 1}]</b>' if j == i else f'<span>0.{j + 1}</span>' for j in range(4)).replace("</b><span>", "</b><i></i><span>").replace("</span><span>", "</span><i></i><span>")
+        f'<section class="blk fsec" data-rv><div class="fpin"><div class="fstick"><div class="fgrid fgroup" data-hold="1700"><div class="fside"><div class="num">' + "".join(f'<b>[0.{j + 1}]</b>' if j == i else f'<span>0.{j + 1}</span>' for j in range(4)).replace("</b><span>", "</b><i></i><span>").replace("</span><span>", "</span><i></i><span>")
         + f'</div><h3 data-type>{E(h)}</h3><ol class="abc fp">' + "".join(f'<li data-hl="{E(sel)}"><b>{"ABCD"[j]}</b><p>{E(t)}</p></li>' for j, (t, sel) in enumerate(ps))
-        + f'</ol></div><div class="fstage">{window(w, a, fleet)}</div></div></section>'
+        + f'</ol></div><div class="fstage">{window(w, a, fleet)}</div></div></div></div></section>'
         for i, (h, ps, w, a) in enumerate(feats))
     ents = "".join(f"<div><h4>{E(a)}</h4><p>{E(b)}</p></div>" for a, b in ENT)
     tiles = "".join(f'<div class="wc"><span class="op">{E(t)}</span><span class="chip"></span></div>' for t in WALL)
