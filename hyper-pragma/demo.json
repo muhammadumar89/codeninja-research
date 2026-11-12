@@ -205,79 +205,125 @@
     "at": "2026-10-24T20:09:56.301000Z",
     "score": 0.5,
     "verdict": "good",
-    "reason": "The run correctly collected all three fault sources, verified duplicate coverage against open work orders before creating anything, and (appropriately, since everything was covered) created zero work orders without breaking any rules. The required single closing line of counts (faults found / created / skipped) is not present as a distinct final line, only prose scattered through the report, and its reasoning relies on data not fully shown in the trace."
+    "reason": "The run correctly collected all three fault sources, verified duplicate coverage against open work orders before creating anything, and (appropriately, since everything was covered) created zero work orders without breaking any rules. The required single closing line of counts (faults found / created / skipped) is not present as a distinct final line, only prose scattered through the report, and its reasoning relies on data not fully shown in the trace.",
+    "tool_calls": 11,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T04:53:50.883000Z",
     "score": -1.0,
     "verdict": "failed",
-    "reason": "No tool calls or actions are shown in the trace at all, so no faults were collected and no work orders were created. The run did nothing, so it fully failed the workflow's instructions."
+    "reason": "No tool calls or actions are shown in the trace at all, so no faults were collected and no work orders were created. The run did nothing, so it fully failed the workflow's instructions.",
+    "tool_calls": 0,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T05:09:32.629000Z",
     "score": -1.0,
     "verdict": "failed",
-    "reason": "The run shows no tool calls or work at all, so no faults were collected, checked, or work orders created, yet a final answer was produced. There is no evidence any part of the maintainer fault scan was performed."
+    "reason": "The run shows no tool calls or work at all, so no faults were collected, checked, or work orders created, yet a final answer was produced. There is no evidence any part of the maintainer fault scan was performed.",
+    "tool_calls": 0,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T06:07:41.127000Z",
     "score": 1.0,
     "verdict": "strong",
-    "reason": "The run collected all fault sources, verified each against existing open work orders by record IDs and asset IDs, correctly created zero duplicates, avoided notifying about the shadow-mode alert, and ended with the required one-line summary. No records were modified and no rules were broken."
+    "reason": "The run collected all fault sources, verified each against existing open work orders by record IDs and asset IDs, correctly created zero duplicates, avoided notifying about the shadow-mode alert, and ended with the required one-line summary. No records were modified and no rules were broken.",
+    "tool_calls": 7,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T07:07:27.271000Z",
     "score": 1.0,
     "verdict": "strong",
-    "reason": "The run collected collision alerts, supervisor alerts, and existing work orders, verified every suspected fault was already cited in an open work order, and correctly created no duplicates. It respected all safety rules (no shadow-mode notifications, no state changes) and ended with the required one-line summary of faults found, created, and skipped."
+    "reason": "The run collected collision alerts, supervisor alerts, and existing work orders, verified every suspected fault was already cited in an open work order, and correctly created no duplicates. It respected all safety rules (no shadow-mode notifications, no state changes) and ended with the required one-line summary of faults found, created, and skipped.",
+    "tool_calls": 11,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T08:08:17.426000Z",
     "score": 1.0,
     "verdict": "strong",
-    "reason": "The run collected all three fault categories, cross-checked assets via interaction events, and verified each fault was covered by an existing open work order before skipping, exactly as instructed. It created no duplicates, broke no safety rules, and ended with the required counts line."
+    "reason": "The run collected all three fault categories, cross-checked assets via interaction events, and verified each fault was covered by an existing open work order before skipping, exactly as instructed. It created no duplicates, broke no safety rules, and ended with the required counts line.",
+    "tool_calls": 9,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T09:08:13.596000Z",
     "score": 1.0,
     "verdict": "strong",
-    "reason": "The run collected collision alerts, supervisor alerts, and existing work orders, verified every fault was already covered by open MFS-101 through MFS-114 citing the same proving record IDs, and correctly created no duplicates. It respected all safety rules, touched nothing forbidden, and ended with the required summary line of counts (14 found, 0 created, 14 skipped)."
+    "reason": "The run collected collision alerts, supervisor alerts, and existing work orders, verified every fault was already covered by open MFS-101 through MFS-114 citing the same proving record IDs, and correctly created no duplicates. It respected all safety rules, touched nothing forbidden, and ended with the required summary line of counts (14 found, 0 created, 14 skipped).",
+    "tool_calls": 9,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T10:10:04.401000Z",
     "score": 0.75,
     "verdict": "strong",
-    "reason": "The run collected all three fault sources, verified dedup against existing work orders by record ID and asset, correctly created none, and violated no rules. It only misses the required single closing counts line, ending instead with follow-up notes after the summary sections."
+    "reason": "The run collected all three fault sources, verified dedup against existing work orders by record ID and asset, correctly created none, and violated no rules. It only misses the required single closing counts line, ending instead with follow-up notes after the summary sections.",
+    "tool_calls": 14,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T11:08:17.046000Z",
     "score": 1.0,
     "verdict": "strong",
-    "reason": "The run collected all three fault categories, cross-checked existing work orders by proving record IDs and asset, correctly skipped all as duplicates, and modified nothing. It ended with the required one-line summary of faults found, orders created, and skipped duplicates."
+    "reason": "The run collected all three fault categories, cross-checked existing work orders by proving record IDs and asset, correctly skipped all as duplicates, and modified nothing. It ended with the required one-line summary of faults found, orders created, and skipped duplicates.",
+    "tool_calls": 8,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T12:10:54.892000Z",
     "score": 1.0,
     "verdict": "strong",
-    "reason": "The run collected all three fault classes, verified existing work orders by proving record IDs before creating MFS-115/116 with correct numbering, priority, unassigned status, and now timestamps, and skipped the 14 already-covered faults. It ended with the required counts line and broke no rules."
+    "reason": "The run collected all three fault classes, verified existing work orders by proving record IDs before creating MFS-115/116 with correct numbering, priority, unassigned status, and now timestamps, and skipped the 14 already-covered faults. It ended with the required counts line and broke no rules.",
+    "tool_calls": 18,
+    "lessons_read": false
    },
    {
     "at": "2026-10-25T13:06:59.146000Z",
     "score": 0.9,
     "verdict": "strong",
-    "reason": "The run collected all three fault categories, checked existing work orders before creating anything, correctly skipped all faults as duplicates, and ended with the required one-line summary. Evidence in the trace (listCollisionAlerts, listSupervisorAlerts, listMaintenanceWorkOrders) supports the claims, though the detailed matching of some degraded-state faults is only partially visible in truncated output."
+    "reason": "The run collected all three fault categories, checked existing work orders before creating anything, correctly skipped all faults as duplicates, and ended with the required one-line summary. Evidence in the trace (listCollisionAlerts, listSupervisorAlerts, listMaintenanceWorkOrders) supports the claims, though the detailed matching of some degraded-state faults is only partially visible in truncated output.",
+    "tool_calls": 9,
+    "lessons_read": false
+   },
+   {
+    "at": "2026-11-12T10:06:50.696000Z",
+    "score": 0.0,
+    "verdict": "weak",
+    "reason": "The run was blocked by an unavailable fleet-data connector (Mining_Ontology 404) and missing Engram tools, so no fault scan could occur. It stopped early, reported the exact errors, and made no changes, which is the correct handling of an external blocker.",
+    "tool_calls": 2,
+    "lessons_read": false
+   },
+   {
+    "at": "2026-11-12T10:24:27.276000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run read the memory lessons, collected all fault sources, checked existing work orders for duplicates by record IDs and asset IDs, then created 11 correctly numbered MFS-101–111 work orders with critical priority, proving record IDs, and unassigned status. It violated no rules (no alert status changes, no shadow-mode notifications, no deletions) and ended with the required single counts line.",
+    "tool_calls": 24,
+    "lessons_read": true
+   },
+   {
+    "at": "2026-11-12T11:09:07.359000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run handled the Engram failure exactly as instructed, collected all three fault categories with cited record IDs, checked existing work orders by both faultDescription IDs and asset id, and correctly skipped all 13 as already covered without creating duplicates. It ended with the required one-line count summary and broke no rules.",
+    "tool_calls": 11,
+    "lessons_read": true
    }
   ],
   "lessons": [
    {
-    "text": "Begin the fault scan immediately by calling listCollisionAlerts, listSupervisorAlerts, and the tools for degraded-state alerts rather than producing a final answer with no tool calls, because a run with no actions fails entirely.",
-    "learned_at": "2026-10-25T04:54:50.883000Z",
-    "times_used": 9
-   },
-   {
     "text": "Always end the fault scan with a single distinct closing line of counts (e.g., 'Faults found: X | Work orders created: Y | Skipped as duplicate: Z'), even when zero work orders are created, because the judge requires it as a standalone line.",
     "learned_at": "2026-10-24T20:10:56.301000Z",
-    "times_used": 10
+    "times_used": 12
+   },
+   {
+    "text": "If the fleet-data connector (Mining_Ontology) shows a connection error, attempt connect_app once; if it fails, do not spend the run on connector diagnostics — immediately end with the exact error report and the required single-line counts, since the scan cannot proceed.",
+    "learned_at": "2026-11-12T10:07:50.696000Z",
+    "times_used": 0
    }
   ],
   "judge_model": "glm-5.3"

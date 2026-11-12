@@ -85,8 +85,31 @@ box-shadow:0 16px 40px rgba(33,20,66,.16),0 4px 10px rgba(33,20,66,.07);overflow
 """
 
 PAGE_CSS = """
-body{background:#f4f4f2}html.js header.top:not(.solid):not(.open){background:rgba(11,12,16,.94);border-bottom-color:var(--rule-d)}main.pg{background:#f4f4f2;color:var(--ink)}
+body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 .pg .wrap2{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+.pban{position:relative;overflow:hidden;background:#07060b;color:#fff;min-height:min(100vh,940px);display:flex;align-items:center;padding:150px 0 90px}
+.pban::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 72% 48%,rgba(82,0,255,.38),transparent 70%),radial-gradient(40% 50% at 12% 90%,rgba(82,0,255,.16),transparent 70%)}
+.pban::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 70% at 60% 50%,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(70% 70% at 60% 50%,#000 30%,transparent 80%)}
+.pban .wrap2{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:center;width:100%}
+.pban .eyebrow{color:rgba(255,255,255,.55)}
+.pban h1{font:200 clamp(64px,9.5vw,148px)/.92 var(--sans);letter-spacing:-.05em;margin:18px 0 26px;color:#fff}
+.pban .lede{font:300 clamp(20px,1.9vw,27px)/1.35 var(--sans);color:rgba(255,255,255,.78);max-width:24ch;margin:0 0 34px}
+.pban .cta{display:flex;gap:10px;flex-wrap:wrap}.pban .btn.wh{background:#fff;color:#07060b;border-color:#fff}.pban .btn.wl{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}.pban .btn.wl:hover{border-color:#fff}
+.pban .meta{display:flex;justify-content:flex-start;gap:22px;flex-wrap:wrap;margin-top:44px;font:400 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.loop{position:relative;width:min(520px,100%);aspect-ratio:1;margin-left:auto}
+.loop svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.loop .rg{fill:none;stroke:rgba(255,255,255,.14);stroke-width:1}.loop .rg2{fill:none;stroke:rgba(255,255,255,.07);stroke-width:1;stroke-dasharray:2 6}
+.loop .arc{fill:none;stroke:url(#lg);stroke-width:2.5;stroke-linecap:round;transform-origin:260px 260px;animation:larc 6s linear infinite}
+.loop .nd circle{fill:#07060b;stroke:rgba(255,255,255,.35);stroke-width:1.2;transition:all .35s}.loop .nd text{fill:rgba(255,255,255,.6);font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;transition:fill .35s}
+.loop .nd.on circle{fill:#5200ff;stroke:#a98bff;filter:drop-shadow(0 0 10px rgba(130,90,255,.9))}.loop .nd.on text{fill:#fff}
+.loop .core{position:absolute;inset:27% 22%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px}
+.loop .core .k{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#a98bff}
+.loop .core .v{font:300 clamp(15px,1.5vw,19px)/1.35 var(--sans);color:#fff;transition:opacity .35s,transform .35s}.loop .core .v.out{opacity:0;transform:translateY(6px)}
+.loop .core .s{font:400 10.5px var(--mono);color:rgba(255,255,255,.45)}
+@keyframes larc{from{transform:rotate(-180deg)}to{transform:rotate(180deg)}}
+@media (max-width:900px){.pban{min-height:0;padding:120px 0 64px}.pban .wrap2{grid-template-columns:1fr}.loop{margin:10px auto 0;width:min(400px,100%)}}
+@media (prefers-reduced-motion:reduce){.loop .arc{animation:none}}
+.pw{position:relative}.pw .hl{position:absolute;pointer-events:none;border:2px solid #5200ff;border-radius:10px;box-shadow:0 0 0 4px rgba(82,0,255,.14),0 6px 24px rgba(82,0,255,.22);opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);z-index:5}.pw .hl.on{opacity:1}
 .pg .hero2{padding:168px 0 72px;text-align:center}.pg .hero2 .eyebrow{color:var(--muted-l)}
 .pg .hero2 h1{font:200 clamp(40px,5.2vw,78px)/1.02 var(--sans);letter-spacing:-.035em;margin:20px auto 22px;max-width:19ch;color:var(--ink)}
 .pg .hero2 .lede{font:300 clamp(18px,1.6vw,22px)/1.45 var(--sans);color:var(--muted-l);max-width:52ch;margin:0 auto 30px}
@@ -168,9 +191,9 @@ def memory_view(mem) -> str:
                  for i, l in enumerate(mem.get("lessons", [])[:3]))
     return (f'<div class="mt" style="margin-bottom:3px">Tasks · <span style="font-family:var(--pf-m)">{E(mem["task"])}</span></div><h4>Self-Improving Memory</h4>'
             f'<div class="cd st"><span class="ok">● Connected</span><span>Judge <b>{E(mem.get("judge_model", "glm-5.3"))}</b></span><span>Runs scored <b>{len(eps)}</b></span></div>'
-            f'<div class="cd"><h5>Latest result</h5><div style="font-size:11.5px">Run on {fmt(last["at"])} scored <span class="sc {last["verdict"]}">{last["verdict"].title()}</span> '
+            f'<div class="cd lr"><h5>Latest result</h5><div style="font-size:11.5px">Run on {fmt(last["at"])} scored <span class="sc {last["verdict"]}">{last["verdict"].title()}</span> '
             f'<span class="mt">({last["score"]:+.2f} on a scale from -1 to +1)</span></div><div class="mt" style="margin-top:3px">{E(last["reason"])}</div><div class="sp">{bars}</div></div>'
-            f'<div class="cd"><h5>What it learned</h5><div class="mt">The next run starts with up to 5 of these lessons.</div>{ls}</div>')
+            f'<div class="cd lw"><h5>What it learned</h5><div class="mt">The next run starts with up to 5 of these lessons.</div>{ls}</div>')
 
 
 def turnon_view(task: str) -> str:
@@ -216,15 +239,15 @@ function chat(box){if(!box||!D.run)return;var steps=D.run.steps,i=0,t=null;
   if(i>=steps.length){var a=el('div','wo','<b>MFS-115</b><span>Fixed camera F · repeated degraded state · 2 proving clips</span><span class="pill">high</span>');box.appendChild(a);
    box.appendChild(el('div','wo','<b>MFS-116</b><span>Fixed camera q · lens dust · 2 proving clips</span><span class="pill">high</span>'));
    box.appendChild(el('div','a','<b>16 faults found, 2 work orders created, 14 skipped as duplicates.</b> No alert closed, nobody notified about shadow mode alerts, both orders left unassigned for a person.'));
-   t=setTimeout(function(){i=0;step()},9000);trim();return}
+   t=setTimeout(function(){i=0;step()},6000);trim();return}
   var s=steps[i++];
-  if(s.k==='call'){var c=el('div','c',esc(s.t)+(s.q?' <q>'+esc(s.q)+'</q>':''));box.appendChild(c);setTimeout(function(){c.classList.add('dn')},700);t=setTimeout(step,still?0:900)}
-  else{box.appendChild(el('div','a',md(short(s.t))));t=setTimeout(step,still?0:2300)}trim()}
+  if(s.k==='call'){var c=el('div','c',esc(s.t)+(s.q?' <q>'+esc(s.q)+'</q>':''));c.dataset.k=/ontology|contract/.test(s.t)?'onto':/open work orders/.test(s.t)?'dedup':/create work order/.test(s.t)?'act':'';box.appendChild(c);setTimeout(function(){c.classList.add('dn')},380);t=setTimeout(step,still?0:520)}
+  else{box.appendChild(el('div','a',md(short(s.t))));t=setTimeout(step,still?0:1300)}trim()}
  function trim(){box.scrollTop=box.scrollHeight}
  box._start=function(){clearTimeout(t);i=0;step()};box._stop=function(){clearTimeout(t)}}
 /* fleet: one task after another picks up its run */
 function fleet(w){if(!w)return;var rows=[].slice.call(w.querySelectorAll('.tk')),k=0,t=null;
- function tick(){rows.forEach(function(r){r.classList.remove('run');var s=r.querySelector('[data-s]');if(s&&s.dataset.d)s.textContent=s.dataset.d});var r=rows[k%rows.length];var s=r.querySelector('[data-s]');if(s){s.dataset.d=s.dataset.d||s.textContent;s.textContent='Running…'}r.classList.add('run');k++;t=setTimeout(tick,1800)}
+ function tick(){rows.forEach(function(r){r.classList.remove('run');var s=r.querySelector('[data-s]');if(s&&s.dataset.d)s.textContent=s.dataset.d});var r=rows[k%rows.length];var s=r.querySelector('[data-s]');if(s){s.dataset.d=s.dataset.d||s.textContent;s.textContent='Running…'}r.classList.add('run');k++;t=setTimeout(tick,1100)}
  w._start=function(){clearTimeout(t);tick()};w._stop=function(){clearTimeout(t)}}
 document.querySelectorAll('[data-chat]').forEach(chat);
 document.querySelectorAll('.pw').forEach(function(w){if(w.querySelector('.fleet'))fleet(w)});
@@ -236,9 +259,39 @@ document.querySelectorAll('.pw').forEach(function(w){io.observe(w)});
 var tb=document.getElementById('beyond');if(tb){var bs=tb.querySelectorAll('.tabs2 button'),ps=tb.querySelectorAll('.tp'),ct=null;
  function show(k){bs.forEach(function(b,j){b.setAttribute('aria-selected',j===k?'true':'false')});ps.forEach(function(p,j){p.classList.toggle('on',j===k);
   var w=p.querySelector('.pw');if(j===k&&w){w.classList.remove('live');void w.offsetWidth;w.classList.add('live')}});cycle(ps[k])}
- function cycle(p){clearInterval(ct);var li=p.querySelectorAll('.abc li'),n=0;function on(){li.forEach(function(l,j){l.classList.toggle('dim',j!==n)});n=(n+1)%li.length}on();ct=setInterval(on,3200)}
+ var hov=false,ht=null;
+ function mark(p){var w=p.querySelector('.pw'),li=p.querySelectorAll('.abc li'),a=p._n||0;if(!w)return;var h=w.querySelector('.hl');if(!h){h=el('i','hl');w.appendChild(h)}
+  var sel=li[a]&&li[a].dataset.hl,wr=w.getBoundingClientRect(),box=w.querySelector('.ch'),br=box?box.getBoundingClientRect():null,r=null;
+  if(sel)w.querySelectorAll(sel).forEach(function(e){var q=e.getBoundingClientRect();if(!q.width)return;
+   if(br&&box.contains(e)){if(q.bottom<br.top+4||q.top>br.bottom-4)return;q={left:q.left,right:q.right,top:Math.max(q.top,br.top),bottom:Math.min(q.bottom,br.bottom)}}
+   r=r?{left:Math.min(r.left,q.left),right:Math.max(r.right,q.right),top:Math.min(r.top,q.top),bottom:Math.max(r.bottom,q.bottom)}:{left:q.left,right:q.right,top:q.top,bottom:q.bottom}});
+  if(!r){h.classList.remove('on');return}var pd=5;h.style.left=(r.left-wr.left-pd)+'px';h.style.top=(r.top-wr.top-pd)+'px';h.style.width=(r.right-r.left+2*pd)+'px';h.style.height=(r.bottom-r.top+2*pd)+'px';h.classList.add('on')}
+ function pick(p,n){p._n=n;p.querySelectorAll('.abc li').forEach(function(l,j){l.classList.toggle('dim',j!==n)});mark(p)}
+ function cycle(p){clearInterval(ct);clearInterval(ht);var li=p.querySelectorAll('.abc li');pick(p,0);
+  ct=setInterval(function(){if(!hov)pick(p,((p._n||0)+1)%li.length)},2600);ht=setInterval(function(){mark(p)},120)}
+ ps.forEach(function(p){p.querySelectorAll('.abc li').forEach(function(l,j){l.addEventListener('mouseenter',function(){hov=true;pick(p,j)});l.addEventListener('mouseleave',function(){hov=false})})});
  bs.forEach(function(b,j){b.addEventListener('click',function(){show(j)})});show(0)}
+/* banner: the learning loop, stage by stage, on the real run */
+var lp=document.querySelector('.loop');if(lp&&D.memory){var eps=D.memory.episodes||[],live=eps.filter(function(e){return e.lessons_read}).sort(function(a,b){return (b.score-a.score)||(b.tool_calls-a.tool_calls)}),e=live[0]||eps[eps.length-1],ls=D.memory.lessons||[];
+ var nd=lp.querySelectorAll('.nd'),k=lp.querySelector('.core .k'),v=lp.querySelector('.core .v'),sm=lp.querySelector('.core .s'),st=0;
+ function cut(x,n){return x.length>n?x.slice(0,n-1).replace(/\s+\S*$/,'')+'…':x}
+ var S=[['Run',D.memory.task+' reads its lessons, then scans the fleet',(e?e.tool_calls:0)+' governed actions'],
+  ['Judge',e?('Scored '+(e.score>0?'+':'')+e.score.toFixed(2)+' · '+e.verdict.charAt(0).toUpperCase()+e.verdict.slice(1)):'Scored against its own instructions','judge on '+(D.memory.judge_model||'glm-5.3')],
+  ['Lesson',ls[0]?cut(ls[0].text,96):'One lesson from the grade','kept in Engram'],
+  ['Next run','Starts with its best '+Math.min(5,ls.length||5)+' lessons',eps.length+' runs graded so far']];
+ function go(){nd.forEach(function(n,j){n.classList.toggle('on',j===st)});v.classList.add('out');setTimeout(function(){k.textContent=S[st][0];v.textContent=S[st][1];sm.textContent=S[st][2];v.classList.remove('out')},still?0:220)}
+ go();if(!still)setInterval(function(){var n=Math.floor(performance.now()/1500)%4;if(n!==st){st=n;go()}},100)}   /* one clock with the arc: its head is at each node every 1.5 s */
 })();</script>"""
+
+
+LOOP_SVG = ('<div class="loop" aria-label="The learning loop: run, judge, lesson, next run">'
+            '<svg viewBox="0 0 520 520"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5200ff" stop-opacity="0"/><stop offset="1" stop-color="#b9a2ff"/></linearGradient></defs>'
+            '<circle class="rg2" cx="260" cy="260" r="236"/><circle class="rg" cx="260" cy="260" r="190"/>'
+            '<circle class="arc" cx="260" cy="260" r="190" stroke-dasharray="300 894"/>'
+            + "".join(f'<g class="nd"><circle cx="{x}" cy="{y}" r="9"/><text x="{tx}" y="{ty}" text-anchor="{a}">{t}</text></g>'
+                      for x, y, tx, ty, a, t in ((260, 70, 260, 44, "middle", "Run"), (450, 260, 470, 264, "start", "Judge"),
+                                                (260, 450, 260, 484, "middle", "Lesson"), (70, 260, 50, 264, "end", "Next run")))
+            + '</svg><div class="core"><div class="k">Run</div><div class="v"></div><div class="s"></div></div></div>')
 
 
 ENT = [("For the operations head", "One governed layer that puts AI to work across the operation, measured on outcomes, not seats."),
@@ -250,20 +303,19 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
     demo = json.loads((ROOT / "hyper-pragma" / "demo.json").read_text())
     fleet, mem, rules = demo["fleet"], demo["memory"], demo["rules"]
     mtask = mem.get("task", "fault-to-work-order")
-    hero = window(fleet_view(fleet, mtask), "task", fleet, "pw-hero")
     tab = lambda i, title, inner, active, abc: (
         f'<div class="tp{" on" if i == 0 else ""}"><div>{window(inner, active, fleet)}</div><ol class="abc">'
-        + "".join(f'<li><b>{"ABC"[j]}</b><p>{E(x)}</p></li>' for j, x in enumerate(abc)) + "</ol></div>")
-    tabs = [("Agents at work", chat_view(), "chat", ["Before it acts, the agent reads the ontology: what each object means, and which actions it may take.",
-                                                     "It checks what already exists, so it never opens a second work order for a fault that has one.",
-                                                     "It acts through the ontology's own actions, cites the records that prove the fault, and leaves the decisions for a person."]),
-            ("Scheduled fleet", fleet_view(fleet, mtask), "task", ["Each agent has one job: watch, triage, gather evidence, maintain, guard the SLA, audit.",
-                                                                    "They run on their own schedule, every 30 minutes to once a week, inside your walls.",
-                                                                    "Every agent carries the same hard rules, so none of them closes an alert or deletes a record."]),
-            ("Self-Improving Memory", memory_view(mem), "task", ["After each run a judge grades the work against the workflow's own instructions, from -1 to +1, with a reason.",
-                                                                  "The workflow writes a lesson from the grade, and its next run starts with its best five.",
-                                                                  "Every lesson is on one screen, and a person can stop using any of them."])]
-    beyond = ("<section class=\"blk\" id=\"beyond\"><div class=\"wrap2\"><div class=\"bh\"><div><p class=\"eyebrow\">Beyond chat</p><h2>Agents that run the operation, and learn from every run.</h2></div>"
+        + "".join(f'<li data-hl="{E(x[1])}"><b>{"ABC"[j]}</b><p>{E(x[0])}</p></li>' for j, x in enumerate(abc)) + "</ol></div>")
+    tabs = [("Agents at work", chat_view(), "chat", [("Before it acts, the agent reads the ontology: what each object means, and which actions it may take.", ".c[data-k=onto]"),
+                                                     ("It checks what already exists, so it never opens a second work order for a fault that has one.", ".c[data-k=dedup]"),
+                                                     ("It acts through the ontology's own actions, cites the records that prove the fault, and leaves the decisions for a person.", ".wo,.c[data-k=act]")]),
+            ("Scheduled fleet", fleet_view(fleet, mtask), "task", [("Each agent has one job: watch, triage, gather evidence, maintain, guard the SLA, audit.", ".tk .d"),
+                                                                    ("They run on their own schedule, every 30 minutes to once a week, inside your walls.", ".tk .w"),
+                                                                    ("Every agent carries the same hard rules, so none of them closes an alert or deletes a record.", ".tk.run")]),
+            ("Self-Improving Memory", memory_view(mem), "task", [("After each run a judge grades the work against the workflow's own instructions, from -1 to +1, with a reason.", ".cd.lr"),
+                                                                  ("The workflow writes a lesson from the grade, and its next run starts with its best five.", ".cd.lw .ls"),
+                                                                  ("Every lesson is on one screen, and a person can stop using any of them.", ".ls .bt.dg")])]
+    beyond = ("<section class=\"blk\" id=\"beyond\"><div class=\"wrap2\"><div class=\"bh\"><div><p class=\"eyebrow\">Learning Loop</p><h2>Agents that run the operation, and learn from every run.</h2></div>"
               "<p>Hyper Pragma turns AI in your workflows into agents that read your ontology, take governed actions, and get better after every run.</p></div>"
               '<div class="tabs2" role="tablist">' + "".join(f'<button type="button" role="tab" aria-selected="{"true" if i == 0 else "false"}">{E(t[0])}</button>' for i, t in enumerate(tabs)) + "</div>"
               + "".join(tab(i, *t) for i, t in enumerate(tabs)) + f'<p class="src">Recorded from Pragma: {E(demo["source"])}.</p></div></section>')
@@ -280,11 +332,12 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
         + f'</div><div class="feat"><h3>{E(h)}</h3><div>{"".join(f"<p>{E(p)}</p>" for p in ps)}</div></div><div class="feat-stage">{window(w, a, fleet)}</div></div></section>'
         for i, (h, ps, w, a) in enumerate(feats))
     ents = "".join(f"<div><h4>{E(a)}</h4><p>{E(b)}</p></div>" for a, b in ENT)
-    body = (f'<main class="pg"><section class="hero2"><div class="wrap2"><p class="eyebrow">CodeNinja · Hyper Pragma</p>'
-            '<h1>Put AI to work on your operations, and let it learn from every run.</h1>'
-            '<p class="lede">The AI layer on your ontology. Agents that take governed actions inside your workflows, inside your walls, and get better after every run.</p>'
-            f'<div class="cta"><a class="btn dk" href="{brand.COMMERCIAL}">{brand.TALK}</a><a class="btn ln" href="#beyond">See it work</a></div>'
-            f'<div class="stage">{hero}</div><div class="meta"><span>Sovereign</span><span>Open weight models</span><span>Self-Improving Memory</span><span>Air gap ready</span></div></div></section>'
+    body = (f'<main class="pg"><section class="pban"><div class="wrap2"><div><p class="eyebrow">CodeNinja · Hyper Pragma</p>'
+            '<h1>Pragma</h1>'
+            '<p class="lede">Put AI to work on your operations, and let it learn from every run.</p>'
+            f'<div class="cta"><a class="btn wh" href="{brand.COMMERCIAL}">{brand.TALK}</a><a class="btn wl" href="#beyond">See it work</a></div>'
+            '<div class="meta"><span>Sovereign</span><span>Open weight models</span><span>Self-Improving Memory</span><span>Air gap ready</span></div></div>'
+            f'{LOOP_SVG}</div></section>'
             f'{beyond}{numbered}'
             f'<section class="blk"><div class="wrap2"><div class="bh"><div><p class="eyebrow">Who it is for</p><h2>Built for the people who run the operation.</h2></div>'
             f'<p>For banks, energy companies, utilities, industrial operators and the public sector, where the data cannot leave and the decisions must be accountable.</p></div><div class="ents">{ents}</div></div></section>'
@@ -305,4 +358,4 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
             + f'{brand.FONTS}<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">'
             f'{brand.JS_FLAG}<style>{brand.CSS}{PAGE_CSS}{PCSS}</style>{head_extra}</head><body>{brand.header(BASE + "/", nav)}{body}'
             f'<footer class="site"><div class="wrapf">{brand.footer_brand(BASE + "/")}{brand.footer_links(BASE + "/")}<span>CodeNinja Atoms is part of <a href="{brand.PARENT}">CodeNinja</a></span></div></footer>'
-            f'<script>window.PRAGMA_DEMO={json.dumps({"run": demo["run"]}, ensure_ascii=False)};</script>{JS}{brand.SCRIPT}</body></html>')
+            f'<script>window.PRAGMA_DEMO={json.dumps({"run": demo["run"], "memory": {"task": mem.get("task"), "judge_model": mem.get("judge_model"), "lessons": [{"text": l["text"]} for l in mem.get("lessons", [])], "episodes": [{k: e.get(k) for k in ("score", "verdict", "tool_calls", "lessons_read")} for e in mem.get("episodes", [])]}}, ensure_ascii=False)};</script>{JS}{brand.SCRIPT}</body></html>')
