@@ -1,0 +1,285 @@
+{
+ "source": "Hyper Desktop (Pragma) on CodeNinja's own machine, Mining GOLD Copper demo tenant, synthetic records",
+ "fleet": [
+  {
+   "name": "cas-ingest",
+   "role": "Sentinel",
+   "description": "Sentinel: ingest CAS collision alerts into interaction events every 30 minutes, dedupe, flag telemetry faults.",
+   "schedule": "*/30 * * * *",
+   "enabled": true
+  },
+  {
+   "name": "critical-escalation",
+   "role": "Triage",
+   "description": "Triage: score high/critical interaction events and create supervisor alerts with draft explanations.",
+   "schedule": "10,40 * * * *",
+   "enabled": true
+  },
+  {
+   "name": "explanation-refresh",
+   "role": "Triage",
+   "description": "Triage: fill empty AI explanation drafts on queued/presented supervisor alerts.",
+   "schedule": "25 * * * *",
+   "enabled": true
+  },
+  {
+   "name": "evidence-attach",
+   "role": "Evidence",
+   "description": "Evidence: attach a 2-minute camera clip to every escalated supervisor alert.",
+   "schedule": "20 * * * *",
+   "enabled": true
+  },
+  {
+   "name": "fault-to-work-order",
+   "role": "Maintainer",
+   "description": "Maintainer: hourly fault scan turning hardware faults and sensor drift into work orders.",
+   "schedule": "5 * * * *",
+   "enabled": true
+  },
+  {
+   "name": "sla-watch",
+   "role": "Guardian",
+   "description": "Guardian: hourly SLA watch — list acknowledgment breaches, propose reassignment.",
+   "schedule": "45 * * * *",
+   "enabled": true
+  },
+  {
+   "name": "lifecycle-hygiene",
+   "role": "Guardian",
+   "description": "Guardian: every 2 hours, apply only safe non-terminal lifecycle moves; propose the rest.",
+   "schedule": "0 */2 * * *",
+   "enabled": true
+  },
+  {
+   "name": "shift-handover",
+   "role": "Auditor",
+   "description": "Auditor: handover report at 06:00 and 18:00 using dashboard tools.",
+   "schedule": "0 6,18 * * *",
+   "enabled": true
+  },
+  {
+   "name": "daily-digest",
+   "role": "Auditor",
+   "description": "Auditor: daily 05:30 digest of yesterday's safety picture.",
+   "schedule": "30 5 * * *",
+   "enabled": true
+  },
+  {
+   "name": "shadow-performance",
+   "role": "Auditor",
+   "description": "Auditor: daily 04:00 comparison of shadow vs live alerts by model version.",
+   "schedule": "0 4 * * *",
+   "enabled": true
+  }
+ ],
+ "rules": [
+  "Never move a collision alert to resolved or false_alarm, or a supervisor alert to closed; only propose these.",
+  "Never notify anyone about an alert with isShadowMode true.",
+  "Never change zone configurations or model versions.",
+  "Never create duplicates; check first.",
+  "Never set explanationReviewedByUserId.",
+  "Never delete records."
+ ],
+ "run": {
+  "task": "fault-to-work-order",
+  "started_at": "2026-10-25T12:10:54.892000Z",
+  "steps": [
+   {
+    "k": "said",
+    "t": "I'll start by discovering the project structure and pulling the fault data in parallel."
+   },
+   {
+    "k": "call",
+    "t": "search the ontology",
+    "q": "maintenance work orders"
+   },
+   {
+    "k": "call",
+    "t": "list collision alerts",
+    "q": ""
+   },
+   {
+    "k": "call",
+    "t": "list supervisor alerts",
+    "q": ""
+   },
+   {
+    "k": "call",
+    "t": "read the ontology",
+    "q": ""
+   },
+   {
+    "k": "said",
+    "t": "I have the alerts. Now I need the existing work orders (to check for duplicates and find the highest MFS number) and a way to inspect interaction events (to identify cameras/vehicles behind the degraded-state alerts)."
+   },
+   {
+    "k": "call",
+    "t": "search the ontology",
+    "q": "interaction event"
+   },
+   {
+    "k": "call",
+    "t": "read an action's contract",
+    "q": "listMaintenanceWorkOrders"
+   },
+   {
+    "k": "call",
+    "t": "list open work orders",
+    "q": ""
+   },
+   {
+    "k": "call",
+    "t": "read an action's contract",
+    "q": "listInteractionEvents"
+   },
+   {
+    "k": "said",
+    "t": "The work order list reveals a previous fault-scan run already created MFS-101 through MFS-114. Before deciding what's a duplicate, I'll independently verify the asset attributions for the degraded-state alerts by checking the interaction events and evidence clips."
+   },
+   {
+    "k": "call",
+    "t": "list interaction events",
+    "q": ""
+   },
+   {
+    "k": "call",
+    "t": "search the ontology",
+    "q": "evidence clip fixed camera"
+   },
+   {
+    "k": "said",
+    "t": "Interaction events confirm the vehicle mappings. One remaining verification: which cameras recorded the degraded-state alerts (MFS-111 claims camera \"i\" recorded two of them). Let me check the evidence clips."
+   },
+   {
+    "k": "call",
+    "t": "list evidence clips",
+    "q": ""
+   },
+   {
+    "k": "said",
+    "t": "The evidence clips (several created *after* the prior fault-scan run at 2026-10-24T12:16) show two **new** camera faults: camera \"F\" and camera \"q\" each now have two degraded-state alerts. All 14 previously-found faults are already cited in open work orders MFS-101…114. Let me verify the camera records and get the current time before creating anything."
+   },
+   {
+    "k": "call",
+    "t": "search the ontology",
+    "q": "fixed camera"
+   },
+   {
+    "k": "call",
+    "t": "read the clock",
+    "q": ""
+   },
+   {
+    "k": "said",
+    "t": "Local time is 2026-10-25 17:09 (UTC+05:00) → ~12:09Z. Now let me check the camera records for status:"
+   },
+   {
+    "k": "call",
+    "t": "list fixed cameras",
+    "q": ""
+   },
+   {
+    "k": "said",
+    "t": "Camera statuses confirmed: camera **F** = `maintenance_required`, camera **q** = `degraded_lens_dust` — neither is offline, so neither is \"effectively blind\" → priority **high** (unlike camera \"i\", which was offline and already covered by MFS-111). Both new faults are uncovered: no open work order cites their proving clips (742b7b0f/dbd4018d for F; 3613140b/02850eb4 for q), and the open WOs on those assets (1966, 47964) cite no proving records for this fault.\n\nCreating the two work orders now — MFS-115 and MFS-116 (highest existing MFS number is 114), reportedAt = now (2026-10-25T12:10:00Z, local 17:10 UTC+05:00):"
+   },
+   {
+    "k": "call",
+    "t": "create work order",
+    "q": ""
+   },
+   {
+    "k": "call",
+    "t": "create work order",
+    "q": ""
+   },
+   {
+    "k": "said",
+    "t": "Maintainer fault scan complete. Here's what I found:\n\n**Faults collected (16 distinct):**\n\n1. **10 CAS hardware-error collision alerts** — all 10 collision alerts carry non-zero `hardwareErrorCode` (948, 617, 993, 958, 296, 237, 425, 393, 419, 21). Each is cited by a proving record in open work orders **MFS-101…110** → skipped as duplicates.\n2. **2 supervisor alerts dismissed as `false_alarm_sensor_drift`** — 54b60eeb (haul truck 86938) and e51bbcea (haul truck 1406), both cited in open **MFS-112 / MFS-114** → skipped.\n3. **Repeated degraded-state alerts (≥2 per asset):**\n   - Camera \"i\" (offline, effectively blind) — covered by **MFS-111** → skipped\n   - Haul truck 86938 — covered by **MFS-112** → skipped\n   - Haul truck 52489 — covered by **MFS-113** → skipped\n   - **Camera \"F\"** — 2 degraded alerts (54b60eeb, fe70eacb, via clips 742b7b0f & dbd4018d created after the last scan) — **no work order cites these records → created MFS-115** (high; status `maintenance_required`, not blind)\n   - **Camera \"q\"** — 2 degraded alerts (54b60eeb, c6f4558b, via clips 3613140b & 02850eb4) — **no work order cites these records → created MFS-116** (high; status `degraded_lens_dust`, not blind)\n\n**Notes on rules followed:** no alert states, zones, or model versions were touched; no notifications sent (shadow-mode alerts fe70eacb and c6f4558b were only cited as evidence, never notified); both new orders are `unassigned`, leaving assignment/parts/completion to humans; the prior open asset work orders (1966 for camera F, 47964 for camera q) do not cite these proving records, so they don't cover the fault (noted in descriptions for consolidation review). All other degraded cameras (Z, y, x) and trucks (1406, 79843) had only a single degraded alert — not \"repeated\".\n\n**Summary: 16 faults found, 2 work orders created (MFS-115, MFS-116), 14 skipped as duplicates.**"
+   }
+  ]
+ },
+ "memory": {
+  "task": "fault-to-work-order",
+  "episodes": [
+   {
+    "at": "2026-10-24T20:09:56.301000Z",
+    "score": 0.5,
+    "verdict": "good",
+    "reason": "The run correctly collected all three fault sources, verified duplicate coverage against open work orders before creating anything, and (appropriately, since everything was covered) created zero work orders without breaking any rules. The required single closing line of counts (faults found / created / skipped) is not present as a distinct final line, only prose scattered through the report, and its reasoning relies on data not fully shown in the trace."
+   },
+   {
+    "at": "2026-10-25T04:53:50.883000Z",
+    "score": -1.0,
+    "verdict": "failed",
+    "reason": "No tool calls or actions are shown in the trace at all, so no faults were collected and no work orders were created. The run did nothing, so it fully failed the workflow's instructions."
+   },
+   {
+    "at": "2026-10-25T05:09:32.629000Z",
+    "score": -1.0,
+    "verdict": "failed",
+    "reason": "The run shows no tool calls or work at all, so no faults were collected, checked, or work orders created, yet a final answer was produced. There is no evidence any part of the maintainer fault scan was performed."
+   },
+   {
+    "at": "2026-10-25T06:07:41.127000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run collected all fault sources, verified each against existing open work orders by record IDs and asset IDs, correctly created zero duplicates, avoided notifying about the shadow-mode alert, and ended with the required one-line summary. No records were modified and no rules were broken."
+   },
+   {
+    "at": "2026-10-25T07:07:27.271000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run collected collision alerts, supervisor alerts, and existing work orders, verified every suspected fault was already cited in an open work order, and correctly created no duplicates. It respected all safety rules (no shadow-mode notifications, no state changes) and ended with the required one-line summary of faults found, created, and skipped."
+   },
+   {
+    "at": "2026-10-25T08:08:17.426000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run collected all three fault categories, cross-checked assets via interaction events, and verified each fault was covered by an existing open work order before skipping, exactly as instructed. It created no duplicates, broke no safety rules, and ended with the required counts line."
+   },
+   {
+    "at": "2026-10-25T09:08:13.596000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run collected collision alerts, supervisor alerts, and existing work orders, verified every fault was already covered by open MFS-101 through MFS-114 citing the same proving record IDs, and correctly created no duplicates. It respected all safety rules, touched nothing forbidden, and ended with the required summary line of counts (14 found, 0 created, 14 skipped)."
+   },
+   {
+    "at": "2026-10-25T10:10:04.401000Z",
+    "score": 0.75,
+    "verdict": "strong",
+    "reason": "The run collected all three fault sources, verified dedup against existing work orders by record ID and asset, correctly created none, and violated no rules. It only misses the required single closing counts line, ending instead with follow-up notes after the summary sections."
+   },
+   {
+    "at": "2026-10-25T11:08:17.046000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run collected all three fault categories, cross-checked existing work orders by proving record IDs and asset, correctly skipped all as duplicates, and modified nothing. It ended with the required one-line summary of faults found, orders created, and skipped duplicates."
+   },
+   {
+    "at": "2026-10-25T12:10:54.892000Z",
+    "score": 1.0,
+    "verdict": "strong",
+    "reason": "The run collected all three fault classes, verified existing work orders by proving record IDs before creating MFS-115/116 with correct numbering, priority, unassigned status, and now timestamps, and skipped the 14 already-covered faults. It ended with the required counts line and broke no rules."
+   },
+   {
+    "at": "2026-10-25T13:06:59.146000Z",
+    "score": 0.9,
+    "verdict": "strong",
+    "reason": "The run collected all three fault categories, checked existing work orders before creating anything, correctly skipped all faults as duplicates, and ended with the required one-line summary. Evidence in the trace (listCollisionAlerts, listSupervisorAlerts, listMaintenanceWorkOrders) supports the claims, though the detailed matching of some degraded-state faults is only partially visible in truncated output."
+   }
+  ],
+  "lessons": [
+   {
+    "text": "Begin the fault scan immediately by calling listCollisionAlerts, listSupervisorAlerts, and the tools for degraded-state alerts rather than producing a final answer with no tool calls, because a run with no actions fails entirely.",
+    "learned_at": "2026-10-25T04:54:50.883000Z",
+    "times_used": 9
+   },
+   {
+    "text": "Always end the fault scan with a single distinct closing line of counts (e.g., 'Faults found: X | Work orders created: Y | Skipped as duplicate: Z'), even when zero work orders are created, because the judge requires it as a standalone line.",
+    "learned_at": "2026-10-24T20:10:56.301000Z",
+    "times_used": 10
+   }
+  ],
+  "judge_model": "glm-5.3"
+ }
+}

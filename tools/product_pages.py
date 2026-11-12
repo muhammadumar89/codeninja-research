@@ -311,7 +311,11 @@ def pragma():
            "releaseNotes": "Used in house by CodeNinja. Access through the commercial team, as a licence or metered on tokens.",
            "isRelatedTo": {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"}}, faq(q)]
     (ROOT / "hyper-pragma").mkdir(exist_ok=True)
-    (ROOT / "hyper-pragma" / "index.html").write_text(page("hyper-pragma", "Hyper Pragma: put AI to work on your operations, and let it learn from every run",
-        "Hyper Pragma is the AI layer on your ontology: governed actions inside your workflows, inside your walls, and memory that improves every run.", body, ld), encoding="utf-8")
+    # Umar, 12 Nov 2026: a demonstration page in Pragma's own design system (tools/pragma_page.py);
+    # this long text stays below the demonstrations as the in depth read for people and answer engines.
+    import pragma_page
+    depth = re.sub(r'^<p class="eyebrow">.*?</p>\s*<h1>.*?</h1>\s*', '', body, count=1, flags=re.S)
+    depth = '<p class="eyebrow">In depth</p><h2 style="margin-top:12px">How Hyper Pragma works</h2>' + depth
+    (ROOT / "hyper-pragma" / "index.html").write_text(pragma_page.build(depth, faq(q)), encoding="utf-8")
 
 if __name__ == "__main__": main()
