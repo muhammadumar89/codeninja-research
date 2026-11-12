@@ -145,11 +145,17 @@ body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 .pg .bh h2{font:300 clamp(36px,4.4vw,64px)/1.02 var(--sans);letter-spacing:-.03em;margin:10px 0 0;color:var(--ink)}
 .pg .bh p{font:300 19px/1.5 var(--sans);color:var(--muted-l);margin:0;max-width:44ch}
 .pg #beyond{padding-bottom:40px}.pg #beyond .bh{margin-bottom:10px}
-@media (min-width:901px){.pg .pin{height:calc(100vh + 150vh)}.pg .stick{position:sticky;top:84px;height:calc(100vh - 84px);display:flex;align-items:center}.pg .stick .wrap2{width:100%}
+@media (min-width:901px){.pg .pin{height:calc(100vh + 150vh)}.pg .stick{position:sticky;top:84px;height:calc(100vh - 84px);display:flex;align-items:center}.pg .stick .wrap2{width:100%;transform-origin:50% 50%}
+ .pg .unpinned .pin{height:auto}.pg .unpinned .stick{position:static;height:auto;display:block}
  .pg .tabs2 button{position:relative;overflow:hidden}.pg .tabs2 button i{position:absolute;left:0;bottom:0;height:2px;background:#5200ff;width:0}}
 .pg .tabs2{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}.pg .tabs2 button{font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;border:1px solid var(--rule-l);background:transparent;color:var(--muted-l);cursor:pointer;border-radius:0}
 .pg .tabs2 button[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.pg .tp{display:none;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:40px;align-items:start}.pg .tp.on{display:grid}
+.pg .tps{display:grid}
+.pg .tp{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:40px;align-items:start;opacity:0;visibility:hidden;transform:translateY(22px);pointer-events:none;
+ transition:opacity .55s ease,transform .75s cubic-bezier(.16,1,.3,1),visibility 0s linear .55s}
+.pg .tp.on{opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:opacity .65s ease .12s,transform .85s cubic-bezier(.16,1,.3,1) .12s,visibility 0s}
+.pg .tp .abc li{transition:opacity .45s}.pg .tp:not(.on) .abc{opacity:.0}
+.pg .tabs2 button{transition:background .35s,color .35s,border-color .35s}
 .pg .abc{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}.pg .abc li{display:grid;grid-template-columns:34px 1fr;gap:4px 12px;padding:18px 0;border-bottom:1px solid var(--rule-l);transition:opacity .3s}
 .pg .abc li b{font:500 12px var(--mono);color:var(--ink);border:1px solid var(--ink);width:24px;height:24px;display:grid;place-items:center}.pg .abc li p{margin:0;font:400 16px/1.5 var(--sans);color:var(--ink)}
 .pg .abc li.dim{opacity:.38}
@@ -157,10 +163,10 @@ body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 .pg .feat{display:grid;grid-template-columns:1fr 1fr;gap:28px 64px;align-items:start;margin-bottom:40px}.pg .feat h3{font:300 clamp(32px,3.6vw,52px)/1.05 var(--sans);letter-spacing:-.03em;margin:0;color:var(--ink)}
 .pg .feat p{font:300 19px/1.55 var(--sans);color:var(--muted-l);margin:0}.pg .feat p+p{margin-top:14px}
 .pg .feat-stage{max-width:1000px}
-.pg .fsec{padding:110px 0}.pg .fgrid{display:grid;grid-template-columns:minmax(300px,.62fr) minmax(0,1fr);gap:56px;align-items:start;padding-left:max(var(--gutter),calc((100vw - 1240px) / 2 + var(--gutter)))}
+.pg .fsec{padding:110px 0}.pg .fgrid{display:grid;grid-template-columns:minmax(280px,.6fr) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:start;max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
 .pg .fside{position:sticky;top:120px}.pg .fside h3{font:300 clamp(34px,3.7vw,58px)/1.04 var(--sans);letter-spacing:-.035em;margin:0 0 26px;color:var(--ink)}
 .pg .fside .fp p{font:300 18px/1.55 var(--sans);color:var(--muted-l);margin:0}.pg .fside .fp p+p{margin-top:14px}
-.pg .fstage .pw{border-radius:14px 0 0 14px;border-right:0}.pg .fstage .pw .app{min-height:470px}
+.pg .fstage{min-width:0}.pg .fstage .pw{border-radius:14px}.pg .fstage .pw .app{min-height:470px}
 .pg .num b+i{flex:1 1 auto}
 .pg .fside .abc li{padding:15px 0}.pg .fside .abc li p{font:300 17px/1.5 var(--sans)}
 /* the reveal: lines draw in, numbers fade up, the heading types itself, the paragraphs follow */
@@ -168,7 +174,8 @@ body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 [data-rv].rv .num i{transform:none}[data-rv].rv .num b,[data-rv].rv .num span{opacity:.84;transform:none;transition-delay:.45s}[data-rv].rv .num b{opacity:1}
 [data-type] .ch{opacity:0;transition:opacity .18s}[data-type] .ch.v{opacity:1}[data-type] .w{display:inline-block;white-space:nowrap}
 [data-rv] .fp li,[data-rv] .bh p{opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}[data-rv].rv2 .fp li,[data-rv].rv2 .bh p{opacity:1;transform:none}[data-rv].rv2 .fp li.dim{opacity:.38}
-[data-rv] .fstage .pw{opacity:0;transform:translateX(40px);transition:opacity .9s,transform 1.1s cubic-bezier(.16,1,.3,1)}[data-rv].rv .fstage .pw{opacity:1;transform:none}
+[data-rv] .fstage .pw{opacity:0;transform:translateY(28px);transition:opacity .9s,transform 1.1s cubic-bezier(.16,1,.3,1)}[data-rv].rv .fstage .pw{opacity:1;transform:none}
+@media (max-width:1100px){.pg .fgrid{grid-template-columns:1fr;gap:30px}.pg .fside{position:static}}
 @media (max-width:900px){.pg .fgrid{grid-template-columns:1fr;padding:0 var(--gutter);gap:30px}.pg .fside{position:static}.pg .fstage .pw{border-radius:14px;border-right:1px solid rgba(33,27,44,.14)}}
 @media (prefers-reduced-motion:reduce){[data-rv] *{transition:none!important}}
 .pg .ents{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink)}.pg .ents div{padding:26px 28px 26px 0;border-bottom:1px solid var(--rule-l)}
@@ -191,7 +198,7 @@ body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 .pg .depth .doc h2{font:300 32px/1.1 var(--sans);letter-spacing:-.02em;margin:56px 0 16px;color:var(--ink)}.pg .depth .doc h3{font:500 17px var(--sans);margin:28px 0 8px;color:var(--ink)}
 .pg .depth .doc p,.pg .depth .doc li{font:400 17px/1.65 var(--sans);color:rgba(30,31,43,.86)}.pg .depth .doc a{color:var(--ink)}
 .pg .depth .doc table{width:100%;border-collapse:collapse;font-size:15px;margin:16px 0}.pg .depth .doc th,.pg .depth .doc td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--rule-l);vertical-align:top}
-@media (max-width:900px){.pg .bh,.pg .feat,.pg .tp.on{grid-template-columns:1fr}.pg .ents{grid-template-columns:1fr}.pg .hero2{padding:120px 0 48px}.pg section.blk{padding:80px 0}}
+@media (max-width:900px){.pg .bh,.pg .feat,.pg .tp,.pg .tp.on{grid-template-columns:1fr}.pg .ents{grid-template-columns:1fr}.pg .hero2{padding:120px 0 48px}.pg section.blk{padding:80px 0}}
 """
 
 ICON = {"new": '<path d="M12 5v14M5 12h14"/>', "chat": '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
@@ -311,14 +318,14 @@ document.querySelectorAll('.pw').forEach(function(w){io.observe(w)});
    the rest dimmed, the callout's letter on the screen. One per group: a tab panel or a numbered section. */
 function mark(g){var w=g.querySelector('.pw'),li=g.querySelectorAll('.abc li'),a=g._n||0;if(!w)return;var h=w.querySelector('.hl');
  if(!h){h=el('i','hl full','<b></b>');w.appendChild(h)}h.firstChild.textContent='ABCD'.charAt(a);
- var wr=w.getBoundingClientRect(),full=Date.now()<(g._hold||0),r=null;
+ var wr=w.getBoundingClientRect(),z=(wr.width/w.offsetWidth)||1,full=Date.now()<(g._hold||0),r=null;
  if(!full){var sel=li[a]&&li[a].dataset.hl,box=w.querySelector('.ch'),br=box?box.getBoundingClientRect():null;
   if(sel)w.querySelectorAll(sel).forEach(function(e){var q=e.getBoundingClientRect();if(!q.width)return;
    if(br&&box.contains(e)){if(q.bottom<br.top+4||q.top>br.bottom-4)return;q={left:q.left,right:q.right,top:Math.max(q.top,br.top),bottom:Math.min(q.bottom,br.bottom)}}
    r=r?{left:Math.min(r.left,q.left),right:Math.max(r.right,q.right),top:Math.min(r.top,q.top),bottom:Math.max(r.bottom,q.bottom)}:{left:q.left,right:q.right,top:q.top,bottom:q.bottom}})}
- if(!r){h.style.left='0px';h.style.top='0px';h.style.width=wr.width+'px';h.style.height=wr.height+'px';h.classList.remove('on');h.classList.add('full');return}
- var pd=6,L=Math.max(18,r.left-wr.left-pd),T=Math.max(18,r.top-wr.top-pd);
- h.style.left=L+'px';h.style.top=T+'px';h.style.width=Math.min(wr.width-L-4,r.right-wr.left+pd-L)+'px';h.style.height=Math.min(wr.height-T-4,r.bottom-wr.top+pd-T)+'px';h.classList.remove('full');h.classList.add('on')}
+ var W=w.offsetWidth,H=w.offsetHeight;if(!r){h.style.left='0px';h.style.top='0px';h.style.width=W+'px';h.style.height=H+'px';h.classList.remove('on');h.classList.add('full');return}
+ var pd=6,L=Math.max(18,(r.left-wr.left)/z-pd),T=Math.max(18,(r.top-wr.top)/z-pd);
+ h.style.left=L+'px';h.style.top=T+'px';h.style.width=Math.min(W-L-4,(r.right-wr.left)/z+pd-L)+'px';h.style.height=Math.min(H-T-4,(r.bottom-wr.top)/z+pd-T)+'px';h.classList.remove('full');h.classList.add('on')}
 function intro(g){var w=g.querySelector('.pw'),h=w&&w.querySelector('.hl');g._hold=Date.now()+(still?0:+(g.dataset.hold||900));
  if(h){h.style.transition='none';h.classList.remove('on');h.classList.add('full');h.style.left='0px';h.style.top='0px';h.style.width='100%';h.style.height='100%';void h.offsetWidth;h.style.transition=''}mark(g)}
 function pick(g,n){g._n=n;g.querySelectorAll('.abc li').forEach(function(l,j){l.classList.toggle('dim',j!==n)});mark(g)}
@@ -335,12 +342,16 @@ groups.forEach(function(g){fio.observe(g)});
 var tb=document.getElementById('beyond');if(tb){var bs=tb.querySelectorAll('.tabs2 button'),ps=tb.querySelectorAll('.tp'),cur=0;
  function show(k){cur=k;bs.forEach(function(b,j){b.setAttribute('aria-selected',j===k?'true':'false')});ps.forEach(function(p,j){p.classList.toggle('on',j===k);
   var w=p.querySelector('.pw');if(j===k&&w){w.classList.remove('live');void w.offsetWidth;w.classList.add('live')}if(j!==k)stopF(p)});startF(ps[k])}
- var pin=tb.querySelector('.pin'),stick=tb.querySelector('.stick'),mq=matchMedia('(min-width:901px)');
+ var pin=tb.querySelector('.pin'),stick=tb.querySelector('.stick'),inner=stick.querySelector('.wrap2'),mq0=matchMedia('(min-width:901px)'),mq={matches:false};
+ function fitPin(){inner.style.transform='';tb.classList.remove('unpinned');if(!mq0.matches){mq.matches=false;return}
+  var avail=stick.clientHeight-24,h=inner.scrollHeight,k=Math.min(1,avail/h);
+  if(k<.8){tb.classList.add('unpinned');mq.matches=false;return}mq.matches=true;inner.style.transform=k<1?'scale('+k.toFixed(3)+')':''}
+ fitPin();addEventListener('resize',function(){fitPin();onScroll()});
  bs.forEach(function(b){b.appendChild(el('i'))});
  function range(){return pin.offsetHeight-stick.offsetHeight}
  function onScroll(){if(!mq.matches)return;var r=pin.getBoundingClientRect(),R=range(),p=Math.min(1,Math.max(0,-r.top/R)),n=ps.length,k=Math.min(n-1,Math.floor(p*n));
   bs.forEach(function(b,j){b.lastChild.style.width=(j<k?100:j>k?0:Math.min(100,(p*n-k)*100))+'%'});if(k!==cur)show(k)}
- addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
+ addEventListener('scroll',onScroll,{passive:true});
  bs.forEach(function(b,j){b.addEventListener('click',function(){if(mq.matches){var top=pin.getBoundingClientRect().top+scrollY;scrollTo({top:top+range()*(j+.15)/ps.length,behavior:'smooth'})}else show(j)})});
  ps[0].classList.add('on');onScroll()}
 /* section reveal, the way the reference platform pages do it */
@@ -441,7 +452,7 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
     beyond = ("<section class=\"blk\" id=\"beyond\" data-rv><div class=\"wrap2\"><div class=\"bh\"><div><p class=\"eyebrow\">Learning Loop</p><h2 data-type>Agents that run the operation, and learn from every run.</h2></div>"
               "<p>Hyper Pragma turns AI in your workflows into agents that read your ontology, take governed actions, and get better after every run.</p></div></div>"
               '<div class="pin"><div class="stick"><div class="wrap2"><div class="tabs2" role="tablist">' + "".join(f'<button type="button" role="tab" aria-selected="{"true" if i == 0 else "false"}">{E(t[0])}</button>' for i, t in enumerate(tabs)) + "</div>"
-              + "".join(tab(i, *t) for i, t in enumerate(tabs)) + f'<p class="src">Recorded from Pragma: {E(demo["source"])}.</p></div></div></div></section>')
+              + '<div class="tps">' + "".join(tab(i, *t) for i, t in enumerate(tabs)) + '</div>' + f'<p class="src">Recorded from Pragma: {E(demo["source"])}.</p></div></div></div></section>')
     feats = [("Built on your ontology", [("An agent never guesses what a record means. It reads the ontology first: every object, every link, and the actions your operation allows.", ".ob"),
                                          ("The rules travel with the agent. Every agent in this mining safety fleet carries the same rules, enforced on every run.", ".rl")], ontology_view(rules), "art"),
              ("Turn on Self-Improving Memory", [("One switch per workflow. Saving it creates the judge and a permanent memory routine for that workflow.", ".ft .pr"),
