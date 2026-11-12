@@ -109,7 +109,15 @@ body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 @keyframes larc{from{transform:rotate(-180deg)}to{transform:rotate(180deg)}}
 @media (max-width:900px){.pban{min-height:0;padding:120px 0 64px}.pban .wrap2{grid-template-columns:1fr}.loop{margin:10px auto 0;width:min(400px,100%)}}
 @media (prefers-reduced-motion:reduce){.loop .arc{animation:none}}
-.pw{position:relative}.pw .hl{position:absolute;pointer-events:none;border:2px solid #5200ff;border-radius:10px;box-shadow:0 0 0 4px rgba(82,0,255,.14),0 6px 24px rgba(82,0,255,.22);opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);z-index:5}.pw .hl.on{opacity:1}
+.pw{position:relative}
+.pw .hl{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;border:2px solid #7d5cff;border-radius:12px;z-index:5;opacity:0;
+ box-shadow:0 0 0 9999px rgba(12,9,22,0),0 0 0 4px rgba(82,0,255,0);
+ transition:left .8s cubic-bezier(.65,0,.35,1),top .8s cubic-bezier(.65,0,.35,1),width .8s cubic-bezier(.65,0,.35,1),height .8s cubic-bezier(.65,0,.35,1),box-shadow .7s ease,border-color .5s,opacity .4s}
+.pw .hl.on{opacity:1;box-shadow:0 0 0 9999px rgba(12,9,22,.46),0 0 0 4px rgba(82,0,255,.2)}
+.pw .hl.full{opacity:1;border-color:rgba(125,92,255,.55);box-shadow:0 0 0 9999px rgba(12,9,22,0),0 0 0 4px rgba(82,0,255,0)}
+.pw .hl b{position:absolute;left:-15px;top:-15px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(140deg,#9a7dff,#5200ff);color:#fff;font:500 13px var(--pf-m);border:2px solid rgba(255,255,255,.75);box-shadow:0 4px 16px rgba(82,0,255,.5);transform:scale(1);transition:transform .35s cubic-bezier(.34,1.56,.64,1) .45s}
+.pw .hl.full b{transform:scale(0);transition-delay:0s}
+.pg .abc li b{border-radius:50%}
 .pg .hero2{padding:168px 0 72px;text-align:center}.pg .hero2 .eyebrow{color:var(--muted-l)}
 .pg .hero2 h1{font:200 clamp(40px,5.2vw,78px)/1.02 var(--sans);letter-spacing:-.035em;margin:20px auto 22px;max-width:19ch;color:var(--ink)}
 .pg .hero2 .lede{font:300 clamp(18px,1.6vw,22px)/1.45 var(--sans);color:var(--muted-l);max-width:52ch;margin:0 auto 30px}
@@ -131,6 +139,19 @@ body{background:#f4f4f2}main.pg{background:#f4f4f2;color:var(--ink)}
 .pg .feat{display:grid;grid-template-columns:1fr 1fr;gap:28px 64px;align-items:start;margin-bottom:40px}.pg .feat h3{font:300 clamp(32px,3.6vw,52px)/1.05 var(--sans);letter-spacing:-.03em;margin:0;color:var(--ink)}
 .pg .feat p{font:300 19px/1.55 var(--sans);color:var(--muted-l);margin:0}.pg .feat p+p{margin-top:14px}
 .pg .feat-stage{max-width:1000px}
+.pg .fsec{padding:110px 0}.pg .fgrid{display:grid;grid-template-columns:minmax(300px,.62fr) minmax(0,1fr);gap:56px;align-items:start;padding-left:max(var(--gutter),calc((100vw - 1240px) / 2 + var(--gutter)))}
+.pg .fside{position:sticky;top:120px}.pg .fside h3{font:300 clamp(34px,3.7vw,58px)/1.04 var(--sans);letter-spacing:-.035em;margin:0 0 26px;color:var(--ink)}
+.pg .fside .fp p{font:300 18px/1.55 var(--sans);color:var(--muted-l);margin:0}.pg .fside .fp p+p{margin-top:14px}
+.pg .fstage .pw{border-radius:14px 0 0 14px;border-right:0}.pg .fstage .pw .app{min-height:470px}
+.pg .num b+i{flex:1 1 auto}
+/* the reveal: lines draw in, numbers fade up, the heading types itself, the paragraphs follow */
+[data-rv] .num i{transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.65,0,.35,1)}[data-rv] .num b,[data-rv] .num span{opacity:0;transform:translateY(5px);transition:opacity .5s,transform .5s}
+[data-rv].rv .num i{transform:none}[data-rv].rv .num b,[data-rv].rv .num span{opacity:.84;transform:none;transition-delay:.45s}[data-rv].rv .num b{opacity:1}
+[data-type] .ch{opacity:0;transition:opacity .18s}[data-type] .ch.v{opacity:1}[data-type] .w{display:inline-block;white-space:nowrap}
+[data-rv] .fp p,[data-rv] .bh p{opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}[data-rv].rv2 .fp p,[data-rv].rv2 .bh p{opacity:1;transform:none}
+[data-rv] .fstage .pw{opacity:0;transform:translateX(40px);transition:opacity .9s,transform 1.1s cubic-bezier(.16,1,.3,1)}[data-rv].rv .fstage .pw{opacity:1;transform:none}
+@media (max-width:900px){.pg .fgrid{grid-template-columns:1fr;padding:0 var(--gutter);gap:30px}.pg .fside{position:static}.pg .fstage .pw{border-radius:14px;border-right:1px solid rgba(33,27,44,.14)}}
+@media (prefers-reduced-motion:reduce){[data-rv] *{transition:none!important}}
 .pg .ents{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink)}.pg .ents div{padding:26px 28px 26px 0;border-bottom:1px solid var(--rule-l)}
 .pg .ents h4{font:500 15px var(--sans);margin:0 0 8px;color:var(--ink)}.pg .ents p{margin:0;color:var(--muted-l);font-size:15px;line-height:1.55}
 .pg .close{text-align:center;padding:140px 0}.pg .close h2{font:200 clamp(40px,5vw,76px)/1.02 var(--sans);letter-spacing:-.035em;margin:0 auto 28px;max-width:16ch;color:var(--ink)}
@@ -260,17 +281,37 @@ var tb=document.getElementById('beyond');if(tb){var bs=tb.querySelectorAll('.tab
  function show(k){bs.forEach(function(b,j){b.setAttribute('aria-selected',j===k?'true':'false')});ps.forEach(function(p,j){p.classList.toggle('on',j===k);
   var w=p.querySelector('.pw');if(j===k&&w){w.classList.remove('live');void w.offsetWidth;w.classList.add('live')}});cycle(ps[k])}
  var hov=false,ht=null;
- function mark(p){var w=p.querySelector('.pw'),li=p.querySelectorAll('.abc li'),a=p._n||0;if(!w)return;var h=w.querySelector('.hl');if(!h){h=el('i','hl');w.appendChild(h)}
-  var sel=li[a]&&li[a].dataset.hl,wr=w.getBoundingClientRect(),box=w.querySelector('.ch'),br=box?box.getBoundingClientRect():null,r=null;
-  if(sel)w.querySelectorAll(sel).forEach(function(e){var q=e.getBoundingClientRect();if(!q.width)return;
-   if(br&&box.contains(e)){if(q.bottom<br.top+4||q.top>br.bottom-4)return;q={left:q.left,right:q.right,top:Math.max(q.top,br.top),bottom:Math.min(q.bottom,br.bottom)}}
-   r=r?{left:Math.min(r.left,q.left),right:Math.max(r.right,q.right),top:Math.min(r.top,q.top),bottom:Math.max(r.bottom,q.bottom)}:{left:q.left,right:q.right,top:q.top,bottom:q.bottom}});
-  if(!r){h.classList.remove('on');return}var pd=5;h.style.left=(r.left-wr.left-pd)+'px';h.style.top=(r.top-wr.top-pd)+'px';h.style.width=(r.right-r.left+2*pd)+'px';h.style.height=(r.bottom-r.top+2*pd)+'px';h.classList.add('on')}
+ /* the frame: starts around the whole screen, then shrinks onto what the active callout is about, the rest dimmed */
+ function mark(p){var w=p.querySelector('.pw'),li=p.querySelectorAll('.abc li'),a=p._n||0;if(!w)return;var h=w.querySelector('.hl');
+  if(!h){h=el('i','hl full','<b></b>');w.appendChild(h)}h.firstChild.textContent='ABC'.charAt(a);
+  var wr=w.getBoundingClientRect(),full=Date.now()<(p._hold||0),r=null;
+  if(!full){var sel=li[a]&&li[a].dataset.hl,box=w.querySelector('.ch'),br=box?box.getBoundingClientRect():null;
+   if(sel)w.querySelectorAll(sel).forEach(function(e){var q=e.getBoundingClientRect();if(!q.width)return;
+    if(br&&box.contains(e)){if(q.bottom<br.top+4||q.top>br.bottom-4)return;q={left:q.left,right:q.right,top:Math.max(q.top,br.top),bottom:Math.min(q.bottom,br.bottom)}}
+    r=r?{left:Math.min(r.left,q.left),right:Math.max(r.right,q.right),top:Math.min(r.top,q.top),bottom:Math.max(r.bottom,q.bottom)}:{left:q.left,right:q.right,top:q.top,bottom:q.bottom}})}
+  if(!r){h.style.left='0px';h.style.top='0px';h.style.width=wr.width+'px';h.style.height=wr.height+'px';h.classList.remove('on');h.classList.add('full');return}
+  var pd=6,L=Math.max(18,r.left-wr.left-pd),T=Math.max(18,r.top-wr.top-pd);
+  h.style.left=L+'px';h.style.top=T+'px';h.style.width=Math.min(wr.width-L-4,r.right-wr.left+pd-L)+'px';h.style.height=Math.min(wr.height-T-4,r.bottom-wr.top+pd-T)+'px';h.classList.remove('full');h.classList.add('on')}
+ function intro(p){var w=p.querySelector('.pw'),h=w&&w.querySelector('.hl');p._hold=Date.now()+(still?0:900);
+  if(h){h.style.transition='none';h.classList.remove('on');h.classList.add('full');h.style.left='0px';h.style.top='0px';h.style.width='100%';h.style.height='100%';void h.offsetWidth;h.style.transition=''}mark(p)}
  function pick(p,n){p._n=n;p.querySelectorAll('.abc li').forEach(function(l,j){l.classList.toggle('dim',j!==n)});mark(p)}
- function cycle(p){clearInterval(ct);clearInterval(ht);var li=p.querySelectorAll('.abc li');pick(p,0);
-  ct=setInterval(function(){if(!hov)pick(p,((p._n||0)+1)%li.length)},2600);ht=setInterval(function(){mark(p)},120)}
- ps.forEach(function(p){p.querySelectorAll('.abc li').forEach(function(l,j){l.addEventListener('mouseenter',function(){hov=true;pick(p,j)});l.addEventListener('mouseleave',function(){hov=false})})});
+ function cycle(p){clearInterval(ct);clearInterval(ht);var li=p.querySelectorAll('.abc li');p._n=0;intro(p);pick(p,0);
+  ct=setInterval(function(){if(!hov&&Date.now()>(p._hold||0))pick(p,((p._n||0)+1)%li.length)},3000);ht=setInterval(function(){mark(p)},120)}
+ ps.forEach(function(p){p.querySelectorAll('.abc li').forEach(function(l,j){l.addEventListener('mouseenter',function(){hov=true;p._hold=0;pick(p,j)});l.addEventListener('mouseleave',function(){hov=false})})});
+ /* each time the section comes on screen, the frame starts wide again */
+ var tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&e.target.classList.contains('on'))cycle(e.target)})},{threshold:.45});ps.forEach(function(p){tio.observe(p)});
  bs.forEach(function(b,j){b.addEventListener('click',function(){show(j)})});show(0)}
+/* section reveal, the way the reference platform pages do it */
+function split(h){if(h._sp)return;h._sp=1;var t=h.textContent;h.setAttribute('aria-label',t);h.textContent='';
+ t.split(' ').forEach(function(w,i){if(i)h.appendChild(document.createTextNode(' '));var ws=el('span','w');ws.setAttribute('aria-hidden','true');
+  w.split('').forEach(function(c){ws.appendChild(el('span','ch',esc(c)))});h.appendChild(ws)})}
+document.querySelectorAll('[data-type]').forEach(split);
+function reveal(sec){if(sec._rv)return;sec._rv=1;sec.classList.add('rv');var hs=sec.querySelectorAll('[data-type]');
+ if(still){sec.querySelectorAll('.ch').forEach(function(c){c.classList.add('v')});sec.classList.add('rv2');return}
+ var cs=[].concat.apply([],[].map.call(hs,function(h){return [].slice.call(h.querySelectorAll('.ch'))})),i=0,d=sec.querySelector('.num')?650:200;
+ setTimeout(function tick(){var n=Math.min(cs.length,i+2);for(;i<n;i++)cs[i].classList.add('v');if(i<cs.length)setTimeout(tick,60);else setTimeout(function(){sec.classList.add('rv2')},120)},d)}
+var rio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal(e.target);rio.unobserve(e.target)}})},{threshold:.18,rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('[data-rv]').forEach(function(s){rio.observe(s)});
 /* banner: the learning loop, stage by stage, on the real run */
 var lp=document.querySelector('.loop');if(lp&&D.memory){var eps=D.memory.episodes||[],live=eps.filter(function(e){return e.lessons_read}).sort(function(a,b){return (b.score-a.score)||(b.tool_calls-a.tool_calls)}),e=live[0]||eps[eps.length-1],ls=D.memory.lessons||[];
  var nd=lp.querySelectorAll('.nd'),k=lp.querySelector('.core .k'),v=lp.querySelector('.core .v'),sm=lp.querySelector('.core .s'),st=0;
@@ -315,7 +356,7 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
             ("Self-Improving Memory", memory_view(mem), "task", [("After each run a judge grades the work against the workflow's own instructions, from -1 to +1, with a reason.", ".cd.lr"),
                                                                   ("The workflow writes a lesson from the grade, and its next run starts with its best five.", ".cd.lw .ls"),
                                                                   ("Every lesson is on one screen, and a person can stop using any of them.", ".ls .bt.dg")])]
-    beyond = ("<section class=\"blk\" id=\"beyond\"><div class=\"wrap2\"><div class=\"bh\"><div><p class=\"eyebrow\">Learning Loop</p><h2>Agents that run the operation, and learn from every run.</h2></div>"
+    beyond = ("<section class=\"blk\" id=\"beyond\" data-rv><div class=\"wrap2\"><div class=\"bh\"><div><p class=\"eyebrow\">Learning Loop</p><h2 data-type>Agents that run the operation, and learn from every run.</h2></div>"
               "<p>Hyper Pragma turns AI in your workflows into agents that read your ontology, take governed actions, and get better after every run.</p></div>"
               '<div class="tabs2" role="tablist">' + "".join(f'<button type="button" role="tab" aria-selected="{"true" if i == 0 else "false"}">{E(t[0])}</button>' for i, t in enumerate(tabs)) + "</div>"
               + "".join(tab(i, *t) for i, t in enumerate(tabs)) + f'<p class="src">Recorded from Pragma: {E(demo["source"])}.</p></div></section>')
@@ -328,8 +369,8 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
              ("Inside your walls", ["The agents, the models, the memory and the record of every action run where your data lives: on premises, in your private cloud or air gapped.",
                                     "Open weight frontier models on your own hardware. When a better one is released, you swap it in, and the ontology, the memory and the workflows carry over."], boundary_view(), "proj")]
     numbered = "".join(
-        f'<section class="blk"><div class="wrap2"><div class="num">' + "".join(f'<b>[0.{j + 1}]</b>' if j == i else f'<span>0.{j + 1}</span>' for j in range(4)).replace("</b><span>", "</b><i></i><span>").replace("</span><span>", "</span><i></i><span>")
-        + f'</div><div class="feat"><h3>{E(h)}</h3><div>{"".join(f"<p>{E(p)}</p>" for p in ps)}</div></div><div class="feat-stage">{window(w, a, fleet)}</div></div></section>'
+        f'<section class="blk fsec" data-rv><div class="fgrid"><div class="fside"><div class="num">' + "".join(f'<b>[0.{j + 1}]</b>' if j == i else f'<span>0.{j + 1}</span>' for j in range(4)).replace("</b><span>", "</b><i></i><span>").replace("</span><span>", "</span><i></i><span>")
+        + f'</div><h3 data-type>{E(h)}</h3><div class="fp">{"".join(f"<p>{E(p)}</p>" for p in ps)}</div></div><div class="fstage">{window(w, a, fleet)}</div></div></section>'
         for i, (h, ps, w, a) in enumerate(feats))
     ents = "".join(f"<div><h4>{E(a)}</h4><p>{E(b)}</p></div>" for a, b in ENT)
     body = (f'<main class="pg"><section class="pban"><div class="wrap2"><div><p class="eyebrow">CodeNinja · Hyper Pragma</p>'
@@ -339,9 +380,9 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
             '<div class="meta"><span>Sovereign</span><span>Open weight models</span><span>Self-Improving Memory</span><span>Air gap ready</span></div></div>'
             f'{LOOP_SVG}</div></section>'
             f'{beyond}{numbered}'
-            f'<section class="blk"><div class="wrap2"><div class="bh"><div><p class="eyebrow">Who it is for</p><h2>Built for the people who run the operation.</h2></div>'
+            f'<section class="blk" data-rv><div class="wrap2"><div class="bh"><div><p class="eyebrow">Who it is for</p><h2 data-type>Built for the people who run the operation.</h2></div>'
             f'<p>For banks, energy companies, utilities, industrial operators and the public sector, where the data cannot leave and the decisions must be accountable.</p></div><div class="ents">{ents}</div></div></section>'
-            f'<section class="close"><div class="wrap2"><h2>Every run leaves your operation a little smarter.</h2><a class="btn dk" href="{brand.COMMERCIAL}">{brand.TALK}</a></div></section>'
+            f'<section class="close" data-rv><div class="wrap2"><h2 data-type>Every run leaves your operation a little smarter.</h2><a class="btn dk" href="{brand.COMMERCIAL}">{brand.TALK}</a></div></section>'
             f'<section class="depth"><div class="doc">{depth_html}</div></section></main>')
     ld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Hyper Pragma", "applicationCategory": "BusinessApplication",
            "description": "The AI layer on top of Hyper Ontology: agents that take governed actions inside an organisation's workflows, inside its walls, with Self-Improving Memory that grades every run and keeps lessons.",
