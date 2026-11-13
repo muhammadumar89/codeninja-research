@@ -200,6 +200,7 @@ def landing(ps, sols):
                  '<li><b>The living system.</b> The object model packaged for Hyper Ontology, ready to stand up over the operator\'s own systems.</li></ul>')
     seclinks = '<p class="serif" style="margin:-8px 0 28px;font-size:17px">Questions answered by sector: ' + ' · '.join(f'<a href="sectors/{x.replace(" and ", "-and-").replace(" ", "-")}/">{E(x)}</a>' for x in sectors) + '</p>'
     seclinks += '<p class="serif" style="margin:-16px 0 28px;font-size:17px">All of them in one table: <a href="sovereign-ai-reference-architectures/">sovereign AI reference architectures</a> · every object model: <a href="industrial-ontology-examples/">industrial ontology examples</a> · by sector: <a href="industrial-ai-reference-architecture/">industrial AI reference architecture</a> · the six decisions: <a href="physical-ai-system-design/">physical AI system design</a> · the loop behind them: <a href="self-improving-ai-system/">self-improving AI system</a> · the data model under them: <a href="industrial-data-ontology/">industrial data ontology</a></p>'
+    seclinks += '<p class="serif" style="margin:-16px 0 28px;font-size:17px">The fields they belong to: <a href="physical-ai/">physical AI</a> · <a href="industrial-ai/">industrial AI</a> · <a href="ontologies/">ontologies</a> · <a href="self-improving-systems/">self-improving systems</a></p>'
     scroll = f'<a class="scroll" href="#intro">Scroll to explore{brand.ARROW}</a>'
     import padi
     padi_html, padi_css = padi.home_block()
@@ -278,7 +279,7 @@ def main():
 {brand.SCRIPT}{FILTER}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/hyper-pragma/", f"{BASE}/about/", f"{BASE}/contact/", f"{BASE}/padi/", f"{BASE}/memos/", f"{BASE}/agentic-memory-architecture/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/", f"{BASE}/sovereign-ai-reference-architectures/", f"{BASE}/industrial-ontology-examples/", f"{BASE}/industrial-ai-reference-architecture/", f"{BASE}/physical-ai-system-design/", f"{BASE}/self-improving-ai-system/", f"{BASE}/industrial-data-ontology/", f"{BASE}/sovereign-ai-architecture/"] + [f"{BASE}/co-build/"] + [f"{BASE}/co-build/{q.parent.name}/" for q in sorted((ROOT / "co-build").glob("*/index.html"))] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/memos/{q.parent.name}/" for q in sorted((ROOT / "memos").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
+    urls = [f"{BASE}/", f"{BASE}/praxis/", f"{BASE}/hyper-ontology/", f"{BASE}/hyper-pragma/", f"{BASE}/about/", f"{BASE}/contact/", f"{BASE}/padi/", f"{BASE}/memos/", f"{BASE}/agentic-memory-architecture/", f"{BASE}/sectors/", f"{BASE}/blog/", f"{BASE}/developer/", f"{BASE}/developer/updates/", f"{BASE}/sovereign-ai-reference-architectures/", f"{BASE}/industrial-ontology-examples/", f"{BASE}/industrial-ai-reference-architecture/", f"{BASE}/physical-ai-system-design/", f"{BASE}/self-improving-ai-system/", f"{BASE}/industrial-data-ontology/", f"{BASE}/sovereign-ai-architecture/", f"{BASE}/physical-ai/", f"{BASE}/industrial-ai/", f"{BASE}/ontologies/", f"{BASE}/self-improving-systems/"] + [f"{BASE}/co-build/"] + [f"{BASE}/co-build/{q.parent.name}/" for q in sorted((ROOT / "co-build").glob("*/index.html"))] + [f"{BASE}/developer/reference/{q.parent.name}/" for q in sorted((ROOT / "developer" / "reference").glob("*/index.html"))] + [f"{BASE}/sectors/{q.parent.name}/" for q in sorted((ROOT / "sectors").glob("*/index.html"))] + [f"{BASE}/blog/{q.parent.name}/" for q in sorted((ROOT / "blog").glob("*/index.html"))] + [f"{BASE}/memos/{q.parent.name}/" for q in sorted((ROOT / "memos").glob("*/index.html"))] + [f"{BASE}/{p['slug']}/" for p in ps] + [p["pdf"] for p in ps if p["pdf"]]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     entries = "".join(f"""  <entry><title>{html.escape(p['title'])}</title><link href="{BASE}/{p['slug']}/"/><id>{BASE}/{p['slug']}/</id><updated>{p['date']}T00:00:00Z</updated><summary>{html.escape(p['description'])}</summary></entry>\n""" for p in ps)
@@ -294,6 +295,11 @@ def main():
             f"- [Hyper Ontology]({BASE}/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.", "",
             f"- [Hyper Pragma]({BASE}/hyper-pragma/): the AI layer on top of Hyper Ontology. It connects the models an organisation runs, its live operational data and its people's workflows, takes governed actions with named human approvals, and learns from every run with self-improving memory, inside the organisation's own boundary. Used in house; access through the commercial team.",
             f"- [PADI, the Physical AI Design Index]({BASE}/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: {BASE}/padi/index.md", "",
+            "## Topics", "",
+            f"- [Physical AI]({BASE}/physical-ai/): what physical AI is, where it runs, how a physical AI system is designed, and every published design by sector. Markdown: {BASE}/physical-ai/index.md",
+            f"- [Industrial AI]({BASE}/industrial-ai/): what industrial AI is, its use cases by sector and its architecture, from the published designs. Markdown: {BASE}/industrial-ai/index.md",
+            f"- [Ontologies]({BASE}/ontologies/): what an ontology is, what it contains, and every published ontology of a real operation as hyper-ontology/1 JSON. Markdown: {BASE}/ontologies/index.md",
+            f"- [Self-improving systems]({BASE}/self-improving-systems/): how self-improving systems work, what makes them safe to run, and Praxis measured loop by loop on PADI. Markdown: {BASE}/self-improving-systems/index.md", "",
             "## Collections", "",
             f"- [Sovereign AI reference architectures]({BASE}/sovereign-ai-reference-architectures/): every published design as a sovereign reference architecture, with sector, country, compute, three-year cost and DOI. Markdown: {BASE}/sovereign-ai-reference-architectures/index.md",
             f"- [Industrial ontology examples]({BASE}/industrial-ontology-examples/): every published object model, browsable, each downloadable as hyper-ontology/1 JSON. Markdown: {BASE}/industrial-ontology-examples/index.md",
@@ -358,6 +364,8 @@ if __name__ == "__main__":
     co_build.main()
     import target_pages  # 16e locked Google targets: rebuilt from published data, listed in the sitemap
     target_pages.main()
+    import owned_pages  # 16e0 owned keyword pages (physical AI, industrial AI, ontologies, self-improving systems; 13 Nov 2026)
+    owned_pages.main()
     import memory_page  # /agentic-memory-architecture/, under Research
     memory_page.main()
     main()

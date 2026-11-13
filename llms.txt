@@ -17,6 +17,13 @@
 - [Hyper Pragma](https://codeatoms.ai/hyper-pragma/): the AI layer on top of Hyper Ontology. It connects the models an organisation runs, its live operational data and its people's workflows, takes governed actions with named human approvals, and learns from every run with self-improving memory, inside the organisation's own boundary. Used in house; access through the commercial team.
 - [PADI, the Physical AI Design Index](https://codeatoms.ai/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: https://codeatoms.ai/padi/index.md
 
+## Topics
+
+- [Physical AI](https://codeatoms.ai/physical-ai/): what physical AI is, where it runs, how a physical AI system is designed, and every published design by sector. Markdown: https://codeatoms.ai/physical-ai/index.md
+- [Industrial AI](https://codeatoms.ai/industrial-ai/): what industrial AI is, its use cases by sector and its architecture, from the published designs. Markdown: https://codeatoms.ai/industrial-ai/index.md
+- [Ontologies](https://codeatoms.ai/ontologies/): what an ontology is, what it contains, and every published ontology of a real operation as hyper-ontology/1 JSON. Markdown: https://codeatoms.ai/ontologies/index.md
+- [Self-improving systems](https://codeatoms.ai/self-improving-systems/): how self-improving systems work, what makes them safe to run, and Praxis measured loop by loop on PADI. Markdown: https://codeatoms.ai/self-improving-systems/index.md
+
 ## Collections
 
 - [Sovereign AI reference architectures](https://codeatoms.ai/sovereign-ai-reference-architectures/): every published design as a sovereign reference architecture, with sector, country, compute, three-year cost and DOI. Markdown: https://codeatoms.ai/sovereign-ai-reference-architectures/index.md

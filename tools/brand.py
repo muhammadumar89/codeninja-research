@@ -187,7 +187,9 @@ def footer_links(base=""):
                          ("Industrial data ontology", f"{b}industrial-data-ontology/"),
                          ("Sovereign AI architecture", f"{b}sovereign-ai-architecture/")]),
         ("Sectors", [(sname(x), f"{b}sectors/{x}/") for x in secs] + [("All sectors", f"{b}sectors/")]),
-        ("Research", [("Reference architectures", f"{b}#research"), ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/")]),
+        ("Research", [("Physical AI", f"{b}physical-ai/"), ("Industrial AI", f"{b}industrial-ai/"), ("Ontologies", f"{b}ontologies/"),
+                      ("Self-improving systems", f"{b}self-improving-systems/"),  # owned keyword pages (Umar, 13 Nov 2026)
+                      ("Reference architectures", f"{b}#research"), ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/")]),
         ("Company", [("About", f"{b}about/"), ("Co-build", f"{b}co-build/"), ("Contact", f"{b}contact/"), ("CodeNinja", PARENT)]),
     ]
     css = ("<style>nav.flinks{flex:1 1 100%;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px 28px;margin:40px 0 32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.14);"
