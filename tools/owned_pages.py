@@ -18,6 +18,11 @@ PAI, IAI, ONTS, SIS = "physical-ai", "industrial-ai", "ontologies", "self-improv
 OWNED = [(PAI, "Physical AI"), (IAI, "Industrial AI"), (ONTS, "Ontologies"), (SIS, "Self-improving systems")]
 
 
+def brand_items(ds):
+    """Brand language: a design whose title says open source is listed by its short name (as on /sovereign-ai-architecture/)."""
+    return [{**d, "title": d["short"]} if "open source" in d["title"].lower() else d for d in ds]
+
+
 def where(countries):
     return ", ".join(f"{the(c)} ({k})" for c, k in countries.most_common())
 
@@ -82,7 +87,7 @@ def physical_ai(ds, today):
             + src(PAI, today))
     title = f"Physical AI: what it is, how it is designed, and {n} open designs"
     desc = f"Physical AI senses the physical world, reasons over it and acts through a named person. What it is, where it runs, and {n} open designs."
-    ld = ld_pair(PAI, "Physical AI", desc, today, ["physical AI", "embodied AI", "industrial AI"], "What is physical AI?", answer, ds)
+    ld = ld_pair(PAI, "Physical AI", desc, today, ["physical AI", "embodied AI", "industrial AI"], "What is physical AI?", answer, brand_items(ds))
     md = md_head("Physical AI", PAI, answer)
     md += ["## What physical AI does, sector by sector", ""] + md_table(["Sector", "Countries", "Designs"],
           [[s, w, ", ".join(f"[{d['short']}]({d['url']})" for d in g)] for s, g, w in secs]) + [""]
@@ -119,7 +124,7 @@ def industrial_ai(ds, today):
             + src(IAI, today))
     title = f"Industrial AI: use cases, architecture and {n} open designs by sector"
     desc = f"Industrial AI reads an operation's own systems, joins them in one object model and puts each decision before its owner. {n} open designs."
-    ld = ld_pair(IAI, "Industrial AI", desc, today, ["industrial AI", "AI in manufacturing", "industrial AI reference architecture"], "What is industrial AI?", answer, ds)
+    ld = ld_pair(IAI, "Industrial AI", desc, today, ["industrial AI", "AI in manufacturing", "industrial AI reference architecture"], "What is industrial AI?", answer, brand_items(ds))
     md = md_head("Industrial AI", IAI, answer)
     md += ["## Industrial AI use cases by sector", ""] + md_table(["Sector", "Countries", "Industrial AI use cases"],
           [[s, w, ", ".join(f"[{d['short']}]({d['url']})" for d in g)] for s, g, w in secs]) + [""]
@@ -166,7 +171,7 @@ def ontologies(ds, today):
             + src(ONTS, today))
     title = f"Ontologies: what they are, what they contain, and {n} open examples"
     desc = f"Ontologies are typed models of a domain: objects, properties and links. What they contain, and {n} open ontologies of real operations."
-    ld = ld_pair(ONTS, "Ontologies", desc, today, ["ontologies", "ontology", "knowledge graph", "industrial ontology"], "What is an ontology?", answer, ds)
+    ld = ld_pair(ONTS, "Ontologies", desc, today, ["ontologies", "ontology", "knowledge graph", "industrial ontology"], "What is an ontology?", answer, brand_items(ds))
     md = md_head("Ontologies", ONTS, answer)
     md += ["## What an ontology contains", ""] + md_table(["Kind", "What it is", "Objects"], [[k, KINDS.get(k, ""), c] for k, c in kinds.most_common()]) + [""]
     md += ["## Ontology examples by sector", ""] + md_table(["Sector", "Objects", "Ontologies"],
@@ -207,7 +212,7 @@ def self_improving_systems(ds, today):
     title = "Self-improving systems: how they work, and one measured in the open"
     desc = "Self-improving systems measure their output, find gaps and improve their context. How they work, what makes them safe, and one measured in the open."
     ld = ld_pair(SIS, "Self-improving systems", desc, today, ["self-improving systems", "self-improving system", "recursive self improvement"],
-                 "What is a self-improving system?", answer, ds)
+                 "What is a self-improving system?", answer, brand_items(ds))
     md = md_head("Self-improving systems", SIS, answer)
     md += ["## How self-improving systems work", ""] + [f"{i}. **{a}** {b}" for i, (a, b) in enumerate(WORKS, 1)] + [""]
     md += steps_md([(RSI, "Self-improving AI system", "Praxis loop by loop"), ("padi", "PADI", "the benchmark")])
