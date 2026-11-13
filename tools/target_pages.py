@@ -357,6 +357,17 @@ def industrial(ds, today):
     return n
 
 
+PHY_STEPS = [  # ep45 13 Nov 2026: the method every published design follows, in the term's own words
+    "Name the operation and the one decision the system must improve, and the person who owns it.",
+    "List what the operation already records and what it must sense: systems of record read only, plus cameras, detectors and instruments.",
+    "Model the operation as typed objects and links (the ontology) before choosing any model.",
+    "Choose open-weight models for each task, with the licence and the reason for each pick.",
+    "Decide where inference runs (the edge, the site or one in-country node) and size the compute from the models' own weights.",
+    "Write the paths back into the operator's systems and name who approves every action that changes the physical world.",
+    "Price it over three years and measure it against the operation's own baseline before it scales.",
+]
+
+
 def physical(ds, today):
     """/physical-ai-system-design/: the term 'physical AI system design', a stepping stone toward 'physical AI'."""
     n = len(ds)
@@ -393,6 +404,8 @@ def physical(ds, today):
             f'<p class="lead">{E(answer)}</p>'
             f'<div class="stats"><span><b>{n}</b>worked examples</span><span><b>{len(sectors)}</b>sectors</span><span><b>{len(countries)}</b>countries</span>'
             f'<span><b>{objs}</b>typed objects</span><span><b>{models}</b>open-weight model choices</span></div>'
+            + '<h2 id="how">How to do physical AI system design, step by step</h2>'  # ep45 13 Nov 2026: page 1 (cadence, voxel51, ey, aws, nvidia, arm) answers 'how'; the page only listed what
+            + '<ol class="ans">' + "".join(f"<li>{E(s)}</li>" for s in PHY_STEPS) + '</ol>'
             + '<h2 id="decisions">The six decisions in a physical AI system design</h2>'
             + f'<p class="ans">Every published design makes the same six decisions, in this order. The counts are read from the designs themselves.</p>'
             + table(["Decision", "What the published designs do"], [[f"<strong>{E(a)}</strong>", E(b)] for a, b in decisions])
@@ -418,6 +431,7 @@ def physical(ds, today):
     ld = ld_pair(PHY, "Physical AI system design", desc, today, ["physical AI system design", "physical AI", "system design"],
                  "What is physical AI system design?", answer, ds)
     md = md_head("Physical AI system design", PHY, answer)
+    md += ["## How to do physical AI system design, step by step", ""] + [f"{i + 1}. {s}" for i, s in enumerate(PHY_STEPS)] + [""]
     md += ["## The six decisions in a physical AI system design", ""] + md_table(["Decision", "What the published designs do"], decisions) + [""]
     md += ["## The hardware in a physical AI system design", "", f"Hardware is chosen after the models and sized from their weights. The {n} designs by compute pattern:", ""] + md_table(["Compute pattern", "What it is", "Designs"], [[a, b, str(len(g))] for a, b, g in hw]) + [""]
     md += ["## Worked examples of physical AI system design", ""] + md_table(["Design", "Sector", "Country", "What it senses or reads", "Compute"],

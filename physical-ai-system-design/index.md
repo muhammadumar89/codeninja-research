@@ -6,6 +6,16 @@ Publisher: CodeNinja Atoms (https://codeatoms.ai)
 
 Physical AI system design is the engineering of a system that senses a physical operation, reasons over it as typed objects and acts through a named person. Its decisions are what to sense, where inference runs (the edge, the site or one in-country node), the object model, the open-weight model choice, the compute sized from those models' weights, the write paths back into the operator's systems and human control. CodeNinja Atoms has published 44 worked examples of physical AI system design across 12 sectors in the United States (19), Saudi Arabia (13), Pakistan (11), Germany (1), each free to reuse under CC BY 4.0.
 
+## How to do physical AI system design, step by step
+
+1. Name the operation and the one decision the system must improve, and the person who owns it.
+2. List what the operation already records and what it must sense: systems of record read only, plus cameras, detectors and instruments.
+3. Model the operation as typed objects and links (the ontology) before choosing any model.
+4. Choose open-weight models for each task, with the licence and the reason for each pick.
+5. Decide where inference runs (the edge, the site or one in-country node) and size the compute from the models' own weights.
+6. Write the paths back into the operator's systems and name who approves every action that changes the physical world.
+7. Price it over three years and measure it against the operation's own baseline before it scales.
+
 ## The six decisions in a physical AI system design
 
 | Decision | What the published designs do |
