@@ -237,8 +237,11 @@ def main():
             "description": "CodeNinja's ontology platform: imports the object models Praxis designs and stands them up as a living ontology over the operator's own systems of record.",
             "url": f"{BASE}/hyper-ontology/", "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
             "releaseNotes": "Beta. Access by request.", "isRelatedTo": {"@type": "SoftwareApplication", "name": "Praxis", "url": f"{BASE}/praxis/"}}, faq(hq)]
-    (ROOT / "hyper-ontology" / "index.html").write_text(page("hyper-ontology", "Hyper Ontology: turn a reference architecture into a living system",
-        "Hyper Ontology is CodeNinja's ontology platform: it imports the object models Praxis designs and stands them up as a living ontology over the operator's own systems of record.", hbody, hld), encoding="utf-8")
+    # Umar, 13 Nov 2026: a drawn product page for decision makers, and Start Building opens the developer portal
+    import ontology_page, ontology_dev
+    (ROOT / "hyper-ontology" / "index.html").write_text(ontology_page.build(hbody, faq(hq)), encoding="utf-8")
+    (ROOT / "hyper-ontology" / "developers").mkdir(exist_ok=True)
+    (ROOT / "hyper-ontology" / "developers" / "index.html").write_text(ontology_dev.build(), encoding="utf-8")
     pragma()
     print("product pages:", len(ds), "designs")
 
