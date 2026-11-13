@@ -57,59 +57,69 @@ class Iso:
         return self.slab(x, y, s, s, z + h, h, cls)
 
 
-def hero_svg():
-    """The stack: Atlas sources at the bottom, governance, kinetics, the ontology of objects and links on top,
-    and the applications and agents that work on it floating above."""
-    I = Iso(470, 420)
-    W = 400
+def twin_svg():
+    """The digital twin: the mine in plan view on the left, mirrored into its ontology on the right.
+    Trucks run the haul road; what the site does flows across the mirror into the objects that mean it."""
     o = []
-    # bottom to top
-    o.append('<g class="ly l0">' + I.slab(0, 0, W, W, 0, 16, "slab"))
-    for i in range(6):
-        for j in range(6):
-            o.append(I.box(30 + i * 60, 30 + j * 60, 0, 22, 10 + ((i * 7 + j * 3) % 4) * 6, "cube"))
-    o.append("</g>")
-    o.append('<g class="ly l1">' + I.slab(0, 0, W, W, 74, 14, "slab"))
-    for i in range(13):
-        for j in range(13):
-            a, b = I.p(20 + i * 30, 20 + j * 30, 74)
-            on = (i * 5 + j * 11) % 7 in (0, 3)
-            o.append(f'<ellipse class="dot{" on" if on else ""}" cx="{a:.1f}" cy="{b:.1f}" rx="5.2" ry="2.6"/>')
-    o.append("</g>")
-    o.append('<g class="ly l2">' + I.slab(0, 0, W, W, 142, 14, "slab"))
-    for k, inset in enumerate((40, 80, 120)):
-        o.append(f'<polygon class="track t{k}" points="{I.pts((inset, inset, 142), (W - inset, inset, 142), (W - inset, W - inset, 142), (inset, W - inset, 142))}"/>')
-    o.append("</g>")
-    # the ontology plane
-    o.append('<g class="ly l3">' + I.slab(0, 0, W, W, 226, 16, "slab top"))
-    nodes = {"Haul Truck": (70, 80), "Shovel Loader": (60, 210), "Person on Foot": (80, 330), "Interaction Event": (200, 150),
-             "Collision Alert": (320, 70), "Work Order": (200, 290), "Fixed Camera": (330, 200), "Evidence Clip": (320, 320), "Work Permit": (190, 40)}
-    links = [("Haul Truck", "Interaction Event"), ("Shovel Loader", "Interaction Event"), ("Person on Foot", "Interaction Event"), ("Interaction Event", "Collision Alert"),
-             ("Interaction Event", "Evidence Clip"), ("Fixed Camera", "Evidence Clip"), ("Haul Truck", "Work Order"), ("Fixed Camera", "Work Order"),
-             ("Work Permit", "Haul Truck"), ("Collision Alert", "Fixed Camera")]
-    for k, (a, b) in enumerate(links):
-        p1, p2 = I.p(*nodes[a], 226), I.p(*nodes[b], 226)
-        o.append(f'<line class="lk" x1="{p1[0]:.1f}" y1="{p1[1]:.1f}" x2="{p2[0]:.1f}" y2="{p2[1]:.1f}"/>'
-                 f'<line class="lk fl" style="animation-delay:{k * .7:.1f}s" x1="{p1[0]:.1f}" y1="{p1[1]:.1f}" x2="{p2[0]:.1f}" y2="{p2[1]:.1f}"/>')
-    for k, (n, (x, y)) in enumerate(nodes.items()):
-        a, b = I.p(x, y, 226)
-        o.append(f'<g class="nd" style="animation-delay:{k * .9:.1f}s"><ellipse class="pk" cx="{a:.1f}" cy="{b:.1f}" rx="27" ry="13.5"/>'
-                 + I.box(x - 9, y - 9, 226, 18, 16, "ncube") + f'<text x="{a:.1f}" y="{b + 28:.1f}">{E(n)}</text></g>')
-    o.append("</g>")
-    # applications and agents floating above
-    cards = [("ANALYTICS", 40, 150), ("WORKFLOWS", 150, 10), ("AGENTS", 270, 130)]
-    targets = ["Work Order", "Haul Truck", "Interaction Event"]
-    for k, ((lab, x, y), tg) in enumerate(zip(cards, targets)):
-        tx, ty = nodes[tg]
-        a1, b1 = I.p(x + 45, y + 45, 380)
-        a2, b2 = I.p(tx, ty, 244)
-        o.append(f'<path class="drop" d="M{a1:.1f},{b1:.1f} C{a1:.1f},{(b1 + b2) / 2:.1f} {a2:.1f},{(b1 + b2) / 2:.1f} {a2:.1f},{b2:.1f}"/>')
-        o.append(f'<g class="card c{k}">' + f'<polygon class="cd" points="{I.pts((x, y, 380), (x + 90, y, 380), (x + 90, y + 90, 380), (x, y + 90, 380))}"/>')
-        for r in range(4):
-            o.append(f'<polyline class="cl" points="{I.pts((x + 12, y + 18 + r * 16, 380), (x + 12 + (60 - r * 9), y + 18 + r * 16, 380))}"/>')
-        tx2, ty2 = I.p(x + 92, y - 2, 380)
-        o.append(f'<text class="ct" x="{tx2:.1f}" y="{ty2 - 6:.1f}">{lab}</text></g>')
-    return f'<svg class="iso" viewBox="0 90 940 770" role="img" aria-label="Hyper Ontology as a stack: Atlas sources, governance, kinetics, the ontology of objects and links, and the applications and agents on top">{"".join(o)}</svg>'
+    W, H = 1440, 820
+    # survey grid: crosses every 80 units, coordinates on the top edge
+    for x in range(80, W, 80):
+        for y in range(120, H, 80):
+            o.append(f'<path class="gx" d="M{x - 4},{y} h8 M{x},{y - 4} v8"/>')
+        o.append(f'<text class="gc" x="{x}" y="112" text-anchor="middle">E{4000 + x * 2}</text>')
+    # pit contours
+    cx, cy = 330, 330
+    for k, r in enumerate(range(54, 300, 34)):
+        pts = []
+        for a in range(0, 361, 8):
+            t = math.radians(a)
+            rr = r * (1 + .07 * math.sin(3 * t + k * .4) + .045 * math.cos(5 * t - k * .3))
+            pts.append(f"{cx + rr * math.cos(t):.1f},{cy + .66 * rr * math.sin(t):.1f}")
+        o.append(f'<polygon class="ct{" ct2" if k % 3 == 2 else ""}" points="{" ".join(pts)}"/>')
+    o.append(f'<text class="lb" x="{cx}" y="{cy + 6}" text-anchor="middle">PIT 3 · RL 1140</text>')
+    road = "M330,352 C390,420 470,300 540,372 S600,500 650,520"
+    o.append(f'<path class="road" d="{road}"/><path class="road2" d="{road}"/>')
+    o.append('<text class="lb" x="560" y="330">HAUL ROAD</text>')
+    # shovel at the pit face, crusher at the road's end, camera on the road, a person on foot
+    o.append('<g class="gl"><rect x="300" y="362" width="26" height="14" rx="2"/><path d="M326,366 l16,-10 l8,6"/><text class="lb" x="262" y="396">SHOVEL 02</text></g>')
+    o.append('<g class="gl"><rect x="648" y="508" width="40" height="30" rx="2"/><path d="M652,508 l8,-14 h20 l8,14"/><text class="lb" x="640" y="556">CRUSHER</text></g>')
+    o.append('<g class="gl"><polygon class="cone" points="486,446 560,384 586,420"/><circle cx="486" cy="446" r="7"/><text class="lb" x="430" y="470">CAM 07</text></g>')
+    o.append('<g class="gl"><circle cx="604" cy="430" r="4"/><path d="M604,434 v10 M598,438 h12 M604,444 l-5,8 M604,444 l5,8"/><text class="lb" x="616" y="446">PERSON</text></g>')
+    for k in range(3):
+        o.append(f'<g class="trk"><rect x="-11" y="-6" width="22" height="12" rx="2"/><rect class="cab" x="5" y="-6" width="6" height="12" rx="1"/>'
+                 f'<animateMotion dur="15s" begin="{-k * 5}s" repeatCount="indefinite" rotate="auto" path="{road}"/></g>')
+    o.append('<text class="lb hd" x="80" y="160">THE OPERATION</text>')
+    # the mirror
+    o.append('<path class="mir" d="M720,140 V640"/><text class="lb hd" x="736" y="160">THE TWIN · HYPER ONTOLOGY</text>')
+    # the ontology side
+    N = {"Shovel Loader": (900, 240), "Haul Truck": (1100, 220), "Person on Foot": (1300, 260), "Fixed Camera": (880, 380), "Interaction Event": (1100, 360),
+         "Collision Alert": (1300, 410), "Evidence Clip": (1060, 460), "Crusher Dump Pocket": (900, 520), "Maintenance Work Order": (1250, 515)}
+    E2 = [("Shovel Loader", "Interaction Event"), ("Haul Truck", "Interaction Event"), ("Person on Foot", "Interaction Event"), ("Interaction Event", "Collision Alert"),
+          ("Interaction Event", "Evidence Clip"), ("Fixed Camera", "Evidence Clip"), ("Haul Truck", "Maintenance Work Order"), ("Fixed Camera", "Maintenance Work Order"), ("Haul Truck", "Crusher Dump Pocket")]
+    for a, b in E2:
+        (x1, y1), (x2, y2) = N[a], N[b]
+        o.append(f'<path class="oe" d="M{x1},{y1} C{(x1 + x2) / 2},{y1} {(x1 + x2) / 2},{y2} {x2},{y2}"/>')
+    # what the site does crosses the mirror
+    feeds = [((340, 368), "Shovel Loader"), ((520, 360), "Haul Truck"), ((604, 430), "Person on Foot"), ((486, 446), "Fixed Camera"), ((668, 522), "Crusher Dump Pocket")]
+    for k, ((x, y), n) in enumerate(feeds):
+        tx, ty = N[n]
+        d = f"M{x},{y} C{x + 160},{y - 40} {tx - 200},{ty} {tx - 96},{ty}"
+        o.append(f'<path class="feed" d="{d}"/><circle class="pk" r="3"><animateMotion dur="{3.2 + k * .45:.2f}s" begin="{k * .6:.1f}s" repeatCount="indefinite" path="{d}"/></circle>')
+    for k, (n, (x, y)) in enumerate(N.items()):
+        w = max(150, len(n) * 8 + 40)
+        hot = " hot" if n in ("Interaction Event", "Collision Alert") else ""
+        o.append(f'<g class="on{hot}" style="animation-delay:{k * .4:.1f}s"><rect x="{x - w / 2}" y="{y - 17}" width="{w}" height="34" rx="6"/>'
+                 f'<circle cx="{x - w / 2 + 16}" cy="{y}" r="4"/><text x="{x - w / 2 + 28}" y="{y + 4.5}">{E(n)}</text></g>')
+    return (f'<svg class="twin" viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMin slice" role="img" '
+            f'aria-label="A digital twin: a mine in plan view, with haul trucks on the road, mirrored into the ontology objects that describe it">{"".join(o)}</svg>')
+
+
+def glyph(kind):
+    g = {"sem": '<rect x="6" y="10" width="40" height="28" rx="4"/><path d="M12,20 h20 M12,27 h14"/><rect class="v" x="34" y="4" width="22" height="10" rx="5"/><rect class="v" x="40" y="34" width="20" height="10" rx="5"/>',
+         "kin": '<circle cx="10" cy="24" r="7"/><circle cx="32" cy="24" r="7"/><circle class="v" cx="54" cy="24" r="7"/><path d="M17,24 h8 M39,24 h8"/>',
+         "fun": '<path d="M6,40 h54 M6,40 V6"/><rect class="v" x="12" y="26" width="8" height="14"/><rect class="v" x="26" y="16" width="8" height="24"/><rect class="v" x="40" y="22" width="8" height="18"/>',
+         "gov": '<path d="M32,4 l22,8 v12 c0,12 -10,20 -22,24 c-12,-4 -22,-12 -22,-24 v-12 z"/><path class="vs" d="M22,26 l7,7 l13,-14"/>'}[kind]
+    return f'<svg class="gly" viewBox="0 0 64 50" aria-hidden="true">{g}</svg>'
 
 
 def living_svg():
@@ -235,113 +245,148 @@ def kinetics_box(data):
             '<ol class="klog" id="klog" aria-live="polite"><li class="ok">MFS 115 created in <b>unassigned</b>, the lifecycle\'s initial state</li></ol></div></div>')
 
 
+TYPE_CSS = r"""
+html.js [data-type] .tc{opacity:0}html.js [data-type] .tc.v,[data-type] .tc.v{opacity:1;transition:opacity .14s}[data-type] .tw{display:inline-block;white-space:nowrap}
+.tcu{display:inline-block;width:.07em;height:.86em;margin-left:.05em;vertical-align:-.04em;background:currentColor;animation:tblink .7s steps(2) infinite}
+@keyframes tblink{50%{opacity:0}}
+[data-type] em{font-style:normal;background:linear-gradient(currentColor,currentColor) 0 96%/0 .06em no-repeat;transition:background-size .8s cubic-bezier(.3,.7,.2,1) .1s}[data-type].done em{background-size:100% .06em}
+html.js [data-after]{opacity:0;transform:translateY(10px);transition:opacity .6s,transform .6s}html.js [data-after].in{opacity:1;transform:none}
+"""
+
+TYPE_JS = r"""<script>(function(){var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* headings type themselves in, a caret riding the last letter; highlighted words are underlined once typed; the text under them follows */
+function split(h){h.setAttribute('aria-label',h.textContent);(function walk(n){[].slice.call(n.childNodes).forEach(function(c){
+ if(c.nodeType===3){var f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(function(w){if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(w));return}
+  var ws=document.createElement('span');ws.className='tw';ws.setAttribute('aria-hidden','true');w.split('').forEach(function(ch){var s=document.createElement('span');s.className='tc';s.textContent=ch;ws.appendChild(s)});f.appendChild(ws)});c.parentNode.replaceChild(f,c)}
+ else if(c.nodeType===1)walk(c)})})(h)}
+var hs=[].slice.call(document.querySelectorAll('[data-type]'));hs.forEach(split);
+function after(h){var sec=h.closest('section')||document;[].forEach.call(sec.querySelectorAll('[data-after]'),function(e,i){setTimeout(function(){e.classList.add('in')},i*140)})}
+function run(h){if(h._r)return;h._r=1;var cs=[].slice.call(h.querySelectorAll('.tc'));if(still){cs.forEach(function(c){c.classList.add('v')});h.classList.add('done');after(h);return}
+ var cu=document.createElement('i');cu.className='tcu';cu.setAttribute('aria-hidden','true');var i=0,sp=cs.length>60?3:2;
+ (function tick(){var n=Math.min(cs.length,i+sp);for(;i<n;i++)cs[i].classList.add('v');var last=cs[i-1];if(last&&last.parentNode)last.parentNode.insertBefore(cu,last.nextSibling);
+  if(i<cs.length)setTimeout(tick,32);else{h.classList.add('done');after(h);setTimeout(function(){cu.remove()},900)}})()}
+if(!('IntersectionObserver' in window)){hs.forEach(run);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target)}})},{threshold:0,rootMargin:'0px 0px -18% 0px'});hs.forEach(function(h){io.observe(h)})})();</script>"""
+
 CSS = r"""
-.og{--plum:#140d1f;--plum2:#1d1430;--vi:#5b2bff;--vi2:#9b85ff;--lav:#efecfa;--lav2:#e4dff8;--ink:#17131f;--mut:#5f5873;--rl:rgba(23,19,31,.12);background:#f7f6fb;color:var(--ink)}
-.og a{color:inherit}
-.og .wrap3{max-width:1240px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
-.og .eb{display:inline-flex;align-items:center;gap:8px;font:500 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}.og .eb::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink)}
-.og h2.big{font:300 clamp(34px,4.4vw,64px)/1.06 var(--sans);letter-spacing:-.035em;margin:16px auto 0;max-width:21ch}.og h2.big em{font-style:normal;color:var(--vi)}
-.og .lead2{font:300 clamp(18px,1.5vw,21px)/1.5 var(--sans);color:var(--mut);max-width:56ch;margin:18px 0 0}
-/* hero */
-.oh{position:relative;overflow:hidden;min-height:100vh;background:radial-gradient(60% 60% at 68% 36%,rgba(91,43,255,.28),rgba(20,13,31,0) 70%),linear-gradient(180deg,#0d0816,var(--plum) 60%,#0b0712);color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
-.oh .iso{position:absolute;right:max(-40px,calc(50% - 720px));top:clamp(104px,13vh,140px);width:min(58vw,880px,calc((100vh - 150px) * 1.22));height:auto}
+.og{--plum:#120b1c;--vi:#5b2bff;--vi2:#a48fff;--ink:#17131f;--mut:#5f5873;--rl:rgba(23,19,31,.13);--paper:#fbfaf7;background:#f1efe9;color:var(--ink)}
+.og a{color:inherit}.og .wrap3{max-width:1240px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+/* section index, the way a drawing set is indexed */
+.og .sx{display:flex;align-items:center;gap:12px;font:500 11.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}.og .sx b{font-weight:500;color:var(--vi)}.og .sx::after{content:"";flex:0 0 64px;height:1px;background:currentColor;opacity:.5}
+.og .hh{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:end;margin-bottom:34px}
+.og h2.big{font:300 clamp(34px,4.3vw,62px)/1.05 var(--sans);letter-spacing:-.035em;margin:18px 0 0;max-width:17ch}.og h2.big em{color:var(--vi)}
+.og .lead2{font:300 clamp(17px,1.4vw,20px)/1.55 var(--sans);color:var(--mut);margin:0;max-width:46ch}
+/* hero: the digital twin */
+.oh{position:relative;overflow:hidden;min-height:100vh;background:radial-gradient(50% 60% at 78% 40%,rgba(91,43,255,.22),rgba(18,11,28,0) 70%),radial-gradient(40% 50% at 22% 36%,rgba(164,143,255,.10),rgba(18,11,28,0) 70%),var(--plum);color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
+.oh .twin{position:absolute;left:0;top:0;width:100%;height:100%}
+.twin .gx{stroke:rgba(200,185,255,.22);stroke-width:1}.twin .gc{font:400 9px var(--mono);fill:rgba(200,185,255,.35);letter-spacing:.06em}
+.twin .ct{fill:none;stroke:rgba(169,139,255,.28);stroke-width:1}.twin .ct2{stroke:rgba(169,139,255,.5)}
+.twin .road{fill:none;stroke:rgba(255,255,255,.18);stroke-width:12;stroke-linecap:round}.twin .road2{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1;stroke-dasharray:6 6}
+.twin .lb{font:500 10px var(--mono);fill:rgba(225,215,255,.7);letter-spacing:.12em}.twin .hd{fill:#fff;font-size:11px;letter-spacing:.18em}
+.twin .gl rect,.twin .gl path,.twin .gl circle{fill:none;stroke:#e9e4ff;stroke-width:1.3}.twin .cone{fill:rgba(164,143,255,.16)!important;stroke:rgba(164,143,255,.5)!important;animation:ocone 3s ease-in-out infinite}
+.twin .trk rect{fill:#ffd166;stroke:#120b1c;stroke-width:1}.twin .trk .cab{fill:#fff}
+.twin .mir{stroke:rgba(255,255,255,.45);stroke-dasharray:2 6}
+.twin .oe{fill:none;stroke:rgba(190,170,255,.4);stroke-width:1.2}.twin .feed{fill:none;stroke:rgba(255,209,102,.28);stroke-dasharray:3 5}.twin .pk{fill:#ffd166}
+.twin .on rect{fill:rgba(255,255,255,.05);stroke:rgba(200,185,255,.55)}.twin .on circle{fill:#a48fff}.twin .on text{font:500 13px var(--sans);fill:#fff}
+.twin .on.hot rect{animation:ohot 7s ease-in-out infinite}.twin .on.hot circle{fill:#ffd166}
+@keyframes ohot{0%,62%,100%{fill:rgba(255,255,255,.05);stroke:rgba(200,185,255,.55)}70%,84%{fill:rgba(91,43,255,.75);stroke:#c8b9ff}}
+@keyframes ocone{50%{opacity:.55}}
 .oh .hc{position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;padding:0 clamp(16px,3vw,44px) clamp(20px,3.2vw,44px)}
 .oh .wm{display:flex;align-items:center;gap:clamp(12px,1.5vw,24px);margin:0;font:300 clamp(70px,12.5vw,214px)/.8 var(--sans);letter-spacing:-.06em}.oh .wm svg{height:.64em;width:auto;fill:#fff}
-.oh .side{max-width:320px;display:flex;flex-direction:column;gap:14px;padding-bottom:8px;font:400 11px/1.45 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85)}
-.oh .side p{margin:0;padding-left:12px;border-left:1px solid rgba(255,255,255,.4)}.oh .side .dim{color:rgba(255,255,255,.55)}.oh .side .lk{border-left-color:var(--vi2)}.oh .side a{text-decoration:none;color:#fff}.oh .side a:hover{color:var(--vi2)}
-.oh .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(11,7,18,.9) 0,rgba(11,7,18,.2) 34%,rgba(11,7,18,0) 50%)}
-.iso .slab{stroke:rgba(205,190,255,.55);stroke-width:1;stroke-linejoin:round}.iso .slab.st{fill:rgba(40,26,66,.92)}.iso .slab.sl{fill:rgba(26,17,44,.95)}.iso .slab.sr{fill:rgba(33,22,55,.95)}
-.iso .top.st{fill:rgba(56,36,98,.95);stroke:rgba(190,170,255,.8)}
-.iso .cube{stroke:rgba(190,170,255,.45);stroke-width:.8}.iso .cube.st{fill:#2e2050}.iso .cube.sl{fill:#1c1332}.iso .cube.sr{fill:#251a41}
-.iso .dot{fill:none;stroke:rgba(190,170,255,.4);stroke-width:.8}.iso .dot.on{fill:#cfc3ff;stroke:none}
-.iso .track{fill:none;stroke:rgba(190,170,255,.45);stroke-dasharray:3 6;animation:odash 6s linear infinite}.iso .track.t1{animation-duration:9s;animation-direction:reverse}.iso .track.t2{stroke:#9b85ff;stroke-dasharray:14 10}
-.iso .lk{stroke:rgba(200,185,255,.45);stroke-width:1.1}.iso .lk.fl{stroke:#b6a4ff;stroke-width:2;stroke-dasharray:10 160;animation:odash 4.5s linear infinite}
-.iso .pk{fill:rgba(91,43,255,.18);stroke:rgba(200,185,255,.6)}.iso .ncube.st{fill:#cfc3ff}.iso .ncube.sl{fill:#7b62e8}.iso .ncube.sr{fill:#9b85ff}.iso .ncube{stroke:#fff;stroke-width:.6}
-.iso text{font:500 10.5px var(--mono);fill:rgba(255,255,255,.82);text-anchor:middle;letter-spacing:.02em}
-.iso .nd{animation:oglow 8s ease-in-out infinite}.iso .nd .pk{transition:fill .4s}
-.iso .card{animation:obob 6s ease-in-out infinite}.iso .card.c1{animation-delay:-2s}.iso .card.c2{animation-delay:-4s}
-.iso .cd{fill:rgba(244,240,255,.95);stroke:#fff}.iso .cl{fill:none;stroke:#7b62e8;stroke-width:2}.iso .ct{font:600 10px var(--mono);fill:#fff;letter-spacing:.14em;text-anchor:start}
-.iso .drop{fill:none;stroke:rgba(200,185,255,.55);stroke-dasharray:2 4}
-@keyframes odash{to{stroke-dashoffset:-170}}@keyframes obob{50%{transform:translateY(-8px)}}@keyframes oglow{0%,70%,100%{opacity:.82}80%{opacity:1;filter:drop-shadow(0 0 8px #9b85ff)}}
+.oh .tblk{display:grid;grid-template-columns:auto auto;border:1px solid rgba(255,255,255,.4);font:400 10.5px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;min-width:330px;margin-bottom:8px;background:rgba(18,11,28,.55)}
+.oh .tblk>*{padding:8px 11px;border-bottom:1px solid rgba(255,255,255,.25)}.oh .tblk>:nth-child(odd){border-right:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.5)}.oh .tblk>:nth-last-child(-n+2){border-bottom:0}
+.oh .tblk a{text-decoration:none;color:#fff}.oh .tblk a:hover{color:#ffd166}.oh .tblk .acts{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;padding:0;border-right:0!important;color:#fff!important}.oh .tblk .acts a{padding:11px;text-align:center}.oh .tblk .acts a+a{border-left:1px solid rgba(255,255,255,.25);background:#fff;color:var(--plum)}
+.oh .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(18,11,28,.95) 0,rgba(18,11,28,.35) 30%,rgba(18,11,28,0) 46%)}
 /* statement */
-.ost{background:#fff;padding:clamp(90px,12vw,170px) 0;text-align:center}.ost p{font:300 clamp(30px,3.9vw,58px)/1.14 var(--sans);letter-spacing:-.03em;max-width:24ch;margin:0 auto}.ost em{font-style:normal;color:var(--vi)}
-.ost .sub{font:300 clamp(17px,1.4vw,20px)/1.5 var(--sans);color:var(--mut);max-width:58ch;margin:28px auto 0;letter-spacing:0}
-/* lavender panels */
-.opan{padding:clamp(60px,7vw,100px) 0}.opan .pbox{background:var(--lav);border-radius:6px;padding:clamp(40px,5vw,70px) clamp(18px,4vw,60px) clamp(30px,4vw,50px);text-align:center;
- background-image:linear-gradient(30deg,rgba(91,43,255,.05) 1px,transparent 1px),linear-gradient(150deg,rgba(91,43,255,.05) 1px,transparent 1px);background-size:38px 22px}
-.living{width:100%;height:auto;margin-top:34px}
+.ost{background:var(--paper);padding:clamp(90px,12vw,170px) 0;border-bottom:1px solid var(--rl)}.ost .wrap3{display:grid;grid-template-columns:200px 1fr;gap:40px}
+.ost p.st{font:300 clamp(30px,3.8vw,56px)/1.12 var(--sans);letter-spacing:-.03em;margin:0;max-width:22ch}.ost p.st em{color:var(--vi)}
+.ost .sub{font:300 clamp(17px,1.4vw,20px)/1.55 var(--sans);color:var(--mut);max-width:56ch;margin:26px 0 0}
+/* drawing sheets */
+.osec{padding:clamp(56px,6vw,90px) 0 0}
+.sheet{position:relative;background:var(--paper);border:1px solid rgba(23,19,31,.5);padding:clamp(28px,4vw,54px) clamp(16px,3.4vw,48px) 70px;
+ background-image:linear-gradient(rgba(91,43,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(91,43,255,.045) 1px,transparent 1px);background-size:24px 24px}
+.sheet::before,.sheet::after{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--ink)}.sheet::before{left:-6px;top:-6px;border-right:0;border-bottom:0}.sheet::after{right:-6px;bottom:-6px;border-left:0;border-top:0}
+.sheet .tb{position:absolute;right:0;bottom:0;display:flex;border-top:1px solid rgba(23,19,31,.5);border-left:1px solid rgba(23,19,31,.5);font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--paper)}
+.sheet .tb span{padding:8px 12px;border-right:1px solid rgba(23,19,31,.25)}.sheet .tb span:last-child{border-right:0;color:var(--vi)}
+.living{width:100%;height:auto;margin-top:10px}
 .living text{font:400 12px var(--sans);fill:var(--ink)}.living .h{font:600 14px var(--sans)}.living .s{font:400 11px var(--sans);fill:var(--mut)}
 .living .mon rect,.living .mon path{fill:#fff;stroke:var(--ink);stroke-width:1.2}.living .mon .sc{fill:#fbfaff;stroke:rgba(23,19,31,.3)}
 .living .spark{fill:none;stroke:#e5484d;stroke-width:2}.living .lim{stroke:#e5484d;stroke-dasharray:4 4}
 .living .wf rect{fill:#fff;stroke:var(--ink)}.living .wf .pu{fill:var(--vi);stroke:var(--vi)}.living .wf .w{fill:#fff}.living .wf path{stroke:var(--ink);fill:none}.living .wf text{font-size:11px}
 .living .ag{fill:#fff;stroke:rgba(23,19,31,.25)}.living text.s.r{font-weight:600;fill:#e5484d}
-.living .plane{fill:rgba(255,255,255,.7);stroke:var(--ink);stroke-width:1.3}.living .pedge{fill:url(#none);fill:rgba(23,19,31,.1);stroke:var(--ink)}
+.living .plane{fill:rgba(255,255,255,.75);stroke:var(--ink);stroke-width:1.3}.living .pedge{fill:rgba(23,19,31,.1);stroke:var(--ink)}
 .living .e{stroke:rgba(23,19,31,.18);stroke-width:1.2}.living .e.hot{stroke:var(--vi);stroke-width:1.8}
 .living .el rect{fill:#ebe6ff;stroke:rgba(91,43,255,.35)}.living .el text{font:500 10px var(--sans);fill:var(--vi)}
 .living .on ellipse{fill:#ebe6ff;stroke:rgba(91,43,255,.4)}.living .on path,.living .on rect,.living .on circle{fill:#fff;stroke:var(--ink);stroke-width:1.1}.living .on text{font-size:11.5px}
 .living .base rect,.living .base path,.living .base polyline{fill:#fff;stroke:var(--ink);stroke-width:1.1}.living .base polyline{fill:none}.living .base text{font-size:11px}
 .living .wire{fill:none;stroke:rgba(23,19,31,.28);stroke-dasharray:2 4}.living .pk2{fill:var(--vi)}
-.olg{display:flex;justify-content:center;flex-wrap:wrap;gap:22px;margin-top:20px;font:400 12.5px var(--sans);color:var(--mut)}.olg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:0}
-/* cards */
-.ocards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px}.ocards.c3{grid-template-columns:repeat(3,1fr)}
-.ocard{background:#fff;border-radius:6px;padding:26px 26px 22px;display:flex;flex-direction:column;min-height:220px}
-.ocard h3{font:400 21px/1.25 var(--sans);letter-spacing:-.01em;color:var(--vi);margin:0 0 10px}.ocard p{font:400 15px/1.5 var(--sans);color:var(--mut);margin:0}
-.ocard .more{margin-top:auto;padding-top:20px;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink)}.ocard .more:hover{color:var(--vi)}
-.ohead{background:#fff;border-radius:6px;padding:clamp(60px,7vw,100px) 20px;text-align:center}
-.ochips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 14px;margin:0 auto;max-width:900px}.ochips span{border:1px solid var(--ink);padding:7px 14px;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;background:#fff;transition:background .3s,color .3s}
-.ochips span.on{background:var(--ink);color:#fff}
+.olg{display:flex;flex-wrap:wrap;gap:22px;margin-top:14px;font:400 12.5px var(--sans);color:var(--mut)}.olg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px}
+/* spec sheets */
+.specs{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--ink);border-bottom:1px solid var(--rl)}
+.spec{padding:22px 20px 24px;border-right:1px solid var(--rl);display:flex;flex-direction:column;gap:10px;position:relative;transition:background .3s}.spec:last-child{border-right:0}.spec:hover{background:#fff}
+.spec .no{font:500 11px var(--mono);color:var(--mut);letter-spacing:.1em}.spec .ct2{position:absolute;right:18px;top:18px;font:500 11px var(--mono);color:var(--vi);background:#ebe6ff;padding:3px 8px;border-radius:99px}
+.spec h3{font:400 22px/1.2 var(--sans);letter-spacing:-.015em;margin:4px 0 0}.spec p{margin:0;color:var(--mut);font:400 15px/1.55 var(--sans)}.spec a{margin-top:auto;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--vi)}
+.gly{width:64px;height:50px}.gly rect,.gly circle,.gly path{fill:none;stroke:var(--ink);stroke-width:1.5}.gly .v{fill:#ebe6ff;stroke:var(--vi)}.gly .vs{stroke:var(--vi);stroke-width:2.2}
+/* bill of materials */
+.bom{width:100%;border-collapse:collapse;margin-top:30px;font:400 14.5px var(--sans);background:var(--paper)}.bom th{text-align:left;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);padding:10px 12px;border-bottom:2px solid var(--ink)}
+.bom td{padding:12px;border-bottom:1px solid var(--rl)}.bom td.q{font:500 22px var(--sans);color:var(--vi);font-variant-numeric:tabular-nums;width:90px}.bom td.f{font:400 12.5px var(--mono);color:var(--mut)}.bom td.i{font:500 12px var(--mono);color:var(--mut);width:46px}
+.bom tr{transition:background .25s}.bom tr:hover{background:#fff}
 /* explorer */
-.xbox{display:grid;grid-template-columns:1fr 360px;gap:0;background:#fff;border-radius:6px;overflow:hidden;margin-top:34px;text-align:left;border:1px solid var(--rl)}
+.xbox{display:grid;grid-template-columns:1fr 360px;background:#fff;overflow:hidden;margin-top:10px;border:1px solid rgba(23,19,31,.35)}
 .xmap{padding:22px 22px 14px;border-right:1px solid var(--rl);min-width:0}.xq label{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
-.xq input{width:100%;font:400 16px var(--sans);padding:12px 14px;border:1px solid var(--rl);border-radius:8px;background:#fbfaff;color:var(--ink)}.xq input:focus{outline:2px solid var(--vi);outline-offset:0}
+.xq input{width:100%;font:400 16px var(--sans);padding:12px 14px;border:1px solid var(--rl);border-radius:2px;background:var(--paper);color:var(--ink)}.xq input:focus{outline:2px solid var(--vi);outline-offset:0}
 .xq p{min-height:20px;margin:8px 0 0;font:400 13px var(--sans);color:var(--vi)}
 .xsvg{width:100%;height:auto;margin-top:6px}.xh{font:500 10px var(--mono);letter-spacing:.12em;fill:var(--mut)}
 .xe{fill:none;stroke:rgba(23,19,31,.13);stroke-width:1.2;transition:stroke .3s,stroke-width .3s}.xe.on{stroke:var(--vi);stroke-width:2.2}
 .xn{cursor:pointer}.xn rect{fill:#fff;stroke:rgba(23,19,31,.3);transition:fill .25s,stroke .25s}.xn text{font:500 13px var(--sans);fill:var(--ink);pointer-events:none}
 .xn.lc rect{stroke:var(--vi);stroke-width:1.5}.xn:hover rect,.xn:focus rect{stroke:var(--vi);outline:none}.xn.nb rect{fill:#efeaff}.xn.sel rect{fill:var(--vi);stroke:var(--vi)}.xn.sel text{fill:#fff}.xn.dim text{opacity:.4}.xn.dim rect{stroke-opacity:.35}
 .xleg{display:flex;gap:18px;font:400 12px var(--sans);color:var(--mut);margin:4px 0 0}.xleg i{display:inline-block;width:16px;height:10px;border-radius:5px;margin-right:6px;vertical-align:-1px;border:1.5px solid var(--vi)}.xleg i.b{background:#efeaff;border-color:rgba(23,19,31,.3)}
-.xd{padding:24px 22px;background:#fbfaff;font:400 14px/1.5 var(--sans);overflow:auto;max-height:640px}
+.xd{padding:24px 22px;background:var(--paper);font:400 14px/1.5 var(--sans);overflow:auto;max-height:640px}
 .xd h4{font:500 22px/1.2 var(--sans);margin:0 0 4px;letter-spacing:-.01em}.xd .dm{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--vi)}.xd p{color:var(--mut);margin:10px 0 0}
 .xd h5{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:20px 0 8px;padding-top:14px;border-top:1px solid var(--rl)}
 .xd .sy{display:flex;flex-wrap:wrap;gap:6px}.xd .sy span{padding:4px 10px;border-radius:99px;background:#ebe6ff;color:var(--vi);font-size:12.5px}
 .xd ul{list-style:none;margin:0;padding:0}.xd li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dashed var(--rl);font-size:13px}.xd li code{font:400 12px var(--mono);color:var(--ink)}.xd li span{color:var(--mut);font:400 11.5px var(--mono)}
 .xd li a{color:var(--vi);text-decoration:none;cursor:pointer}
 /* kinetics */
-.kbox{display:grid;grid-template-columns:1.25fr 1fr;background:#fff;border-radius:6px;overflow:hidden;border:1px solid var(--rl);margin-top:34px;text-align:left}
+.kbox{display:grid;grid-template-columns:1.25fr 1fr;background:#fff;overflow:hidden;border:1px solid rgba(23,19,31,.35);margin-top:10px}
 .kl{border-right:1px solid var(--rl)}.kh{display:flex;gap:10px;align-items:baseline;padding:14px 18px;background:#412356;color:#fff;font:400 13px var(--sans)}.kh span{color:rgba(255,255,255,.65);font:400 12px var(--mono)}
 .ksvg{width:100%;height:auto;display:block;padding:10px;background-image:radial-gradient(rgba(23,19,31,.12) 1px,transparent 1px);background-size:16px 16px}
 .ks rect{fill:#fff;stroke:rgba(23,19,31,.4);stroke-width:1.2;transition:fill .3s,stroke .3s}.ks.init rect{stroke:var(--vi);stroke-width:2}.ks.term rect{stroke-width:2}.ks text{font:500 13px var(--mono);fill:var(--ink)}
 .ks.cur rect{fill:var(--vi);stroke:var(--vi)}.ks.cur text{fill:#fff}
-.ke{fill:none;stroke:rgba(23,19,31,.3);stroke-width:1.2;transition:stroke .3s}.ke.fire{stroke:var(--vi);stroke-width:2.4}#ar path{fill:rgba(23,19,31,.45)}
-#ktok{fill:#ffd166;stroke:#17131f;stroke-width:1.5;opacity:0}
+.ke{fill:none;stroke:rgba(23,19,31,.3);stroke-width:1.2;transition:stroke .3s}.ke.fire{stroke:var(--vi);stroke-width:2.4}#ar path{fill:rgba(23,19,31,.45)}#ktok{display:none}
 .kr{padding:22px}.kk{margin:0 0 12px;font:400 15px var(--sans)}.kbs{display:flex;flex-wrap:wrap;gap:8px}
-.kb{font:500 13px var(--sans);padding:9px 14px;border-radius:8px;border:1px solid rgba(23,19,31,.2);background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s}.kb:hover{border-color:var(--vi)}
+.kb{font:500 13px var(--sans);padding:9px 14px;border-radius:2px;border:1px solid rgba(23,19,31,.25);background:#fff;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s}.kb:hover{border-color:var(--vi)}
 .kb.ok{background:#ebe6ff;border-color:var(--vi)}.kb.raw{margin-top:10px;border-style:dashed}.kb.rs{margin:10px 0 0 8px;color:var(--mut)}
-.klog{list-style:none;margin:16px 0 0;padding:0;font:400 12.5px/1.45 var(--mono);max-height:260px;overflow:auto}.klog li{padding:8px 10px;border-radius:6px;margin-bottom:6px;background:#f5f3fb}
+.klog{list-style:none;margin:16px 0 0;padding:0;font:400 12.5px/1.45 var(--mono);max-height:260px;overflow:auto}.klog li{padding:8px 10px;margin-bottom:6px;background:#f5f3fb}
 .klog li.ok{border-left:3px solid #0f8a5f}.klog li.no{border-left:3px solid #e5484d;background:#fff4f4}.klog li.lock{border-left:3px solid #b0740f;background:#fffaf0}
 /* atlas and agentic studio */
-.otwo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}.ofig{background:#fff;border-radius:6px;padding:26px;display:flex;flex-direction:column}
+.otwo{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(23,19,31,.35);background:#fff}.ofig{padding:26px;display:flex;flex-direction:column}.ofig+.ofig{border-left:1px solid var(--rl)}
 .ofig svg{width:100%;height:auto;margin:6px 0 18px}.ofig h3{font:400 24px/1.2 var(--sans);letter-spacing:-.02em;margin:0 0 8px}.ofig h3 em{font-style:normal;color:var(--vi)}.ofig p{margin:0;color:var(--mut);font:400 15px/1.55 var(--sans)}
 .ofig svg text{font:400 11px var(--sans);fill:var(--ink)}.ofig svg .m{font:500 9.5px var(--mono);letter-spacing:.1em;fill:var(--mut)}
 .ofig svg rect,.ofig svg path,.ofig svg circle{fill:#fff;stroke:var(--ink);stroke-width:1.1}.ofig svg .v{fill:var(--vi);stroke:var(--vi)}.ofig svg .vt{fill:#fff}.ofig svg .w{fill:none;stroke:rgba(23,19,31,.3);stroke-dasharray:2 4}
 .ofig svg .lv{fill:#ebe6ff;stroke:rgba(91,43,255,.45)}.ofig svg .g{fill:#0f8a5f;stroke:none}
+.engine{display:grid;grid-template-columns:repeat(3,1fr);margin-top:24px;border-top:2px solid var(--ink)}.engine div{padding:22px 22px 0 0}.engine div+div{padding-left:22px;border-left:1px solid var(--rl)}
+.engine h3{font:400 21px/1.25 var(--sans);margin:0 0 8px}.engine h3 b{display:block;font:500 11px var(--mono);color:var(--vi);letter-spacing:.1em;margin-bottom:8px}.engine p{margin:0;color:var(--mut);font:400 15px/1.55 var(--sans)}
 /* code teaser */
-.ocode{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;background:var(--plum);color:#fff;border-radius:6px;padding:clamp(30px,5vw,64px);margin-top:24px;text-align:left}
-.ocode h3{font:300 clamp(28px,3vw,42px)/1.1 var(--sans);letter-spacing:-.03em;margin:0 0 16px}.ocode h3 em{font-style:normal;color:var(--vi2)}.ocode p{color:rgba(255,255,255,.72);font:400 16px/1.55 var(--sans);margin:0 0 12px}
-.ocode pre{margin:0;background:#0b0712;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:18px 20px;overflow:auto;font:400 12.5px/1.6 var(--mono);color:#e9e4ff}
-.ocode .k{color:#b69cff}.ocode .s{color:#7ee2b8}.ocode .c{color:#8a809f}.ocode a.btn{display:inline-block;margin-top:10px;background:#fff;color:var(--ink);text-decoration:none;font:500 14px var(--sans);padding:12px 18px;border-radius:2px}
-/* call to action */
-.octa{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:20px 0 90px}.octa a{display:flex;justify-content:space-between;align-items:flex-start;min-height:150px;padding:20px 22px;text-decoration:none;font:300 clamp(30px,3.2vw,46px)/1 var(--sans);letter-spacing:-.03em;transition:background .25s}
-.octa a.t{background:#dcdae3;color:var(--ink)}.octa a.t:hover{background:#cfccd9}.octa a.s{background:var(--ink);color:#fff}.octa a.s:hover{background:#2a2335}.octa a span{font-size:.8em}
+.ocode{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;background:var(--plum);color:#fff;padding:clamp(30px,5vw,64px)}
+.ocode h3{font:300 clamp(28px,3vw,42px)/1.1 var(--sans);letter-spacing:-.03em;margin:14px 0 16px}.ocode h3 em{color:var(--vi2)}.ocode p{color:rgba(255,255,255,.72);font:400 16px/1.55 var(--sans);margin:0 0 12px}
+.ocode .sx{color:rgba(255,255,255,.6)}.ocode .sx b{color:var(--vi2)}
+.ocode pre{margin:0;background:#0b0712;border:1px solid rgba(255,255,255,.12);padding:18px 20px;overflow:auto;font:400 12.5px/1.6 var(--mono);color:#e9e4ff}
+.ocode .k{color:#b69cff}.ocode .s{color:#7ee2b8}.ocode .c{color:#8a809f}.ocode a.btn{display:inline-block;margin-top:10px;background:#ffd166;color:var(--ink);text-decoration:none;font:500 14px var(--sans);padding:12px 18px}
+/* the closing title block */
+.octa{margin:clamp(56px,6vw,90px) auto 90px;display:grid;grid-template-columns:1fr 1fr 1.2fr 1.2fr;border:1.5px solid var(--ink);background:var(--paper)}
+.octa>div{padding:16px 18px;border-right:1px solid var(--rl);font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}.octa>div b{display:block;margin-top:8px;font:400 18px var(--sans);letter-spacing:0;text-transform:none;color:var(--ink)}
+.octa a{display:flex;justify-content:space-between;align-items:flex-end;min-height:130px;padding:18px 20px;text-decoration:none;font:300 clamp(28px,2.8vw,40px)/1 var(--sans);letter-spacing:-.03em;transition:background .25s}
+.octa a.t{color:var(--ink)}.octa a.t:hover{background:#fff}.octa a.s{background:var(--ink);color:#fff}.octa a.s:hover{background:var(--vi)}
 /* in depth */
-.odep{background:#fff;border-top:1px solid var(--rl);padding:90px 0 110px}.odep .dg{display:grid;grid-template-columns:280px 1fr;gap:60px}.odep .doc{font:400 17px/1.65 var(--sans);color:#2a2533;max-width:760px}
+.odep{background:var(--paper);border-top:1px solid var(--rl);padding:90px 0 110px}.odep .dg{display:grid;grid-template-columns:280px 1fr;gap:60px}.odep .doc{font:400 17px/1.65 var(--sans);color:#2a2533;max-width:760px}
 .odep .doc h1{display:none}.odep .doc h2{max-width:none;font:400 28px/1.2 var(--sans);letter-spacing:-.02em;margin:46px 0 14px;color:var(--ink)}.odep .doc table{width:100%;border-collapse:collapse;font-size:15px}.odep .doc td,.odep .doc th{border-bottom:1px solid var(--rl);padding:10px 8px;text-align:left;vertical-align:top}
-.odep .doc .eyebrow{display:none}.odep .doc .box{background:var(--lav);padding:16px 18px;border-radius:6px}.odep .doc a{color:var(--vi)}
-.odep aside{position:sticky;top:110px;align-self:start}.odep aside h2{font:300 34px/1.05 var(--sans);letter-spacing:-.03em;margin:10px 0 0}
-@media (max-width:1000px){.xbox,.kbox,.ocode,.otwo{grid-template-columns:1fr}.xmap,.kl{border-right:0;border-bottom:1px solid var(--rl)}.ocards.c3{grid-template-columns:1fr}.odep .dg{grid-template-columns:1fr}.odep aside{position:static}}
-@media (max-width:760px){.ocards,.octa{grid-template-columns:1fr}.oh .iso{width:118vw;right:-12vw;top:120px}.oh .hc{flex-direction:column;align-items:flex-start}.oh .side{max-width:none}.living{min-width:760px}.opan .scrollx{overflow-x:auto}}
-@media (prefers-reduced-motion:reduce){.iso *,.living *{animation:none!important}}
-"""
+.odep .doc .eyebrow{display:none}.odep .doc .box{background:#fff;border:1px solid var(--rl);padding:16px 18px}.odep .doc a{color:var(--vi)}
+.odep aside{position:sticky;top:110px;align-self:start}.odep aside h2{font:300 34px/1.05 var(--sans);letter-spacing:-.03em;margin:14px 0 0}
+@media (max-width:1000px){.xbox,.kbox,.ocode,.otwo,.og .hh,.ost .wrap3{grid-template-columns:1fr}.ofig+.ofig{border-left:0;border-top:1px solid var(--rl)}.xmap,.kl{border-right:0;border-bottom:1px solid var(--rl)}.specs{grid-template-columns:1fr 1fr}.spec:nth-child(2){border-right:0}.engine{grid-template-columns:1fr}.engine div+div{padding-left:0;border-left:0;border-top:1px solid var(--rl)}.odep .dg{grid-template-columns:1fr}.odep aside{position:static}.octa{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.specs,.octa{grid-template-columns:1fr}.spec{border-right:0;border-bottom:1px solid var(--rl)}.oh .twin{width:200%;left:-8%}.oh .hc{flex-direction:column;align-items:flex-start}.oh .tblk{min-width:0;width:100%}.living{min-width:760px}.scrollx{overflow-x:auto}.sheet .tb span:nth-child(2){display:none}.bom td.f{display:none}}
+@media (prefers-reduced-motion:reduce){.twin *,.living *{animation:none!important}}
+""" + TYPE_CSS
 
 JS = r"""<script>(function(){
 var D=window.HYPER_ONTOLOGY||{objects:[]},O={};D.objects.forEach(function(o){O[o.id]=o});
@@ -375,8 +420,9 @@ function add(c,t){var li=document.createElement('li');li.className=c;li.innerHTM
 var raw=document.getElementById('kraw');if(raw)raw.addEventListener('click',function(){add('lock','<b>update</b> orderStatus stripped from the payload. A governed state only changes through a transition.')});
 var rs=document.getElementById('krs');if(rs)rs.addEventListener('click',function(){cur='unassigned';log.innerHTML='';add('ok','MFS 115 created in <b>unassigned</b>, the lifecycle\'s initial state');[].forEach.call(document.querySelectorAll('.ke'),function(e){e.classList.remove('fire')});paint()});
 if(log)paint();
-/* the chips light up one after another, the way the platform's parts work together */
-var ch=[].slice.call(document.querySelectorAll('.ochips span')),ci=0;if(ch.length&&!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(function(){ch.forEach(function(c,j){c.classList.toggle('on',j===ci)});ci=(ci+1)%ch.length},900);
+/* the bill of materials counts itself up when it comes into view */
+var bom=document.querySelector('.bom');if(bom&&'IntersectionObserver' in window){var bo=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;bo.disconnect();
+ [].forEach.call(bom.querySelectorAll('td.q'),function(td,k){var n=+td.getAttribute('data-n'),t0=performance.now()+k*90;td.textContent='0';(function f(t){var p=Math.min(1,Math.max(0,(t-t0)/900));td.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)})},{threshold:.3});bo.observe(bom)}
 })();</script>"""
 
 
@@ -407,8 +453,20 @@ def studio_svg():
 
 
 def depth_block(depth_html: str) -> str:
-    return (f'<section class="odep"><div class="wrap3 dg"><aside><span class="eb">In depth</span><h2>How Hyper Ontology works</h2></aside>'
+    return (f'<section class="odep"><div class="wrap3 dg"><aside>{sx(7, "In depth")}<h2 data-type>How Hyper Ontology works</h2></aside>'
             f'<div class="doc">{depth_html}</div></div></section>')
+
+
+def sx(n, label):
+    return f'<span class="sx"><b>§{n:02d}</b>{E(label)}</span>'
+
+
+def sheet(inner, no, title):
+    return f'<div class="sheet">{inner}<div class="tb"><span>Sheet {no:02d}</span><span>{E(title)}</span><span>Mining GOLD Copper</span></div></div>'
+
+
+def head(n, label, h2, lead):
+    return f'<div class="hh"><div>{sx(n, label)}<h2 class="big" data-type>{h2}</h2></div><p class="lead2" data-after>{lead}</p></div>'
 
 
 def build(depth_html: str, faq_ld: dict) -> str:
@@ -416,47 +474,58 @@ def build(depth_html: str, faq_ld: dict) -> str:
     objs = data["objects"]
     n_obj, n_link = len(objs), sum(len(o["links"]) for o in objs)
     n_syn = sum(len(o["syn"]) for o in objs)
+    n_prop = sum(len(o["props"]) for o in objs)
     n_lc = sum(len(o["lifecycles"]) for o in objs)
-    chips = ["Objects", "Properties", "Links", "Synonyms", "Lifecycles", "Transitions", "Functions", "Roles", "MCP tools", "Atlas sources", "Agents", "Export as code"]
-    hero = ('<section class="oh">' + hero_svg() + '<div class="shade"></div><div class="hc">'
+    n_tr = sum(len(l["transitions"]) for o in objs for l in o["lifecycles"])
+    n_fn = sum(len(o["functions"]) for o in objs)
+    hero = ('<section class="oh">' + twin_svg() + '<div class="shade"></div><div class="hc">'
             f'<h1 class="wm" aria-label="Hyper Ontology"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Ontology</span></h1>'
-            '<div class="side"><p>Hyper Ontology<br><span class="dim">The digital twin of your organization</span></p>'
-            '<p>One model of your operation that people and agents decide on, inside your walls</p>'
-            f'<p class="dim">Exported as code you own</p><p class="lk"><a href="{DEV}">Start building →</a></p><p class="lk"><a href="{brand.COMMERCIAL}">{brand.TALK} →</a></p></div></div></section>')
-    statement = ('<section class="ost"><div class="wrap3"><span class="eb">Hyper Ontology</span>'
-                 '<p style="margin-top:22px"><em>Hyper Ontology</em> encodes the data, logic, actions and rules of your operation, so every person and every agent works on one reality.</p>'
-                 '<p class="sub">Not a diagram on a wall. A running system: objects that mean the same thing in every application, state that only changes through governed transitions, and an endpoint every agent reads before it acts.</p></div></section>')
-    living = ('<section class="opan"><div class="wrap3"><div class="pbox"><span class="eb">Overview</span><h2 class="big">Run your operation as <em>one living model.</em></h2>'
-              '<p class="lead2" style="margin-left:auto;margin-right:auto">Your systems feed it from below. Analytics, workflows and agents act on it from above. What one of them changes, every other one sees.</p>'
-              '<div class="scrollx">' + living_svg() + '</div><div class="olg"><span><i style="background:#5b2bff"></i>An agent or a person acted</span><span><i style="background:#e5484d"></i>Something drifted past its limit</span><span><i style="background:rgba(23,19,31,.3)"></i>Data moving</span></div></div></div></section>')
-    model = ('<section class="opan" style="padding-top:0"><div class="wrap3"><div class="ohead"><span class="eb">Ontology language</span><h2 class="big">Model the parts of every <em>decision.</em></h2></div>'
-             '<div class="ocards">'
-             '<div class="ocard"><h3>Semantics: encode what everything means.</h3><p>Every object, property and link written down once, with the names the business really uses. A repair ticket and a service order resolve to the same Maintenance Work Order, for a person and for an agent.</p><a class="more" href="#explore">Explore the ontology</a></div>'
-             '<div class="ocard"><h3>Kinetics: model how the operation moves.</h3><p>Lifecycles say which states a record can be in and which moves are allowed between them. The server enforces them: no screen, script or agent can skip a step.</p><a class="more" href="#kinetics">Move a work order</a></div>'
-             '<div class="ocard"><h3>Functions: capture the logic.</h3><p>The numbers the operation runs on, computed in one place: insights, dashboard measures and statuses derived on read, each callable by name by any application or agent.</p><a class="more" href="' + DEV + '#functions">Read more</a></div>'
-             '<div class="ocard"><h3>Governance: one rulebook for people and agents.</h3><p>Roles decide who sees which object, which property and which action. An agent sees exactly what its role allows, and nothing it was never granted.</p><a class="more" href="' + DEV + '#agents">Read more</a></div>'
-             '</div><div class="pbox" style="margin-top:24px;padding:46px 20px"><div class="ochips">' + "".join(f"<span>{c}</span>" for c in chips) + '</div></div></div></section>')
-    explore = (f'<section class="opan" id="explore" style="padding-top:0"><div class="wrap3"><div class="pbox"><span class="eb">Semantics</span><h2 class="big">One mine. <em>{n_obj} objects.</em> One meaning each.</h2>'
-               f'<p class="lead2" style="margin-left:auto;margin-right:auto">This is the Mining GOLD Copper ontology, built in Hyper Studio: {n_obj} objects, {n_link} links and {n_syn} business synonyms across five domains. Click any object, or ask for it by the name your teams use.</p>'
-               + explorer(data) + '</div></div></section>')
-    kin = (f'<section class="opan" id="kinetics" style="padding-top:0"><div class="wrap3"><div class="pbox"><span class="eb">Kinetics</span><h2 class="big">State only moves the way <em>you allow.</em></h2>'
-           '<p class="lead2" style="margin-left:auto;margin-right:auto">A maintenance work order can only be assigned when it is unassigned, and only completed when work is in progress. Try a move that breaks the rule. The platform refuses it, the same way it refuses an agent.</p>'
-           + kinetics_box(data) + '</div></div></section>')
-    engine = ('<section class="opan" style="padding-top:0"><div class="wrap3"><div class="ohead"><span class="eb">Ontology engine</span><h2 class="big"><em>Connect what you have.</em> Put agents to work on it.</h2></div>'
-              '<div class="otwo"><div class="ofig"><h3><em>Atlas</em> connects the systems you already run.</h3>' + atlas_svg() +
+            '<div class="tblk"><span>Product</span><span>Hyper Ontology</span><span>Drawing</span><span>The digital twin of your organization</span>'
+            '<span>Runs</span><span>Inside your walls</span><span>Delivered</span><span>As code you own</span>'
+            f'<div class="acts"><a href="{brand.COMMERCIAL}">{brand.TALK} →</a><a href="{DEV}">Start building →</a></div></div></div></section>')
+    statement = ('<section class="ost"><div class="wrap3"><div>' + sx(0, "The idea") + '</div><div>'
+                 '<p class="st" data-type>Every operation already has a twin. It is scattered across a dozen systems and a hundred heads. <em>Hyper Ontology</em> writes it down once.</p>'
+                 '<p class="sub" data-after>The data, the logic, the actions and the rules of your operation, in one model that people and agents decide on. Not a diagram on a wall: a running system, exported as code you own.</p></div></div></section>')
+    living = ('<section class="osec"><div class="wrap3">' + head(1, "Overview", "Run your operation as <em>one living model.</em>",
+              "Your systems feed it from below. Analytics, workflows and agents act on it from above. What one of them changes, every other one sees.")
+              + sheet('<div class="scrollx">' + living_svg() + '</div><div class="olg"><span><i style="background:#5b2bff"></i>An agent or a person acted</span><span><i style="background:#e5484d"></i>Something drifted past its limit</span><span><i style="background:rgba(23,19,31,.3)"></i>Data moving</span></div>', 1, "Living ontology")
+              + '</div></section>')
+    specs = [("01", "sem", f"{n_syn} synonyms", "Semantics", "Every object, property and link written down once, in the words the business uses. A repair ticket and a service order resolve to the same Maintenance Work Order, for a person and for an agent.", "#explore", "Explore the objects"),
+             ("02", "kin", f"{n_tr} transitions", "Kinetics", "Lifecycles say which states a record can be in and which moves are allowed. The server enforces them: no screen, script or agent can skip a step.", "#kinetics", "Move a work order"),
+             ("03", "fun", f"{n_fn} functions", "Functions", "The numbers the operation runs on, computed in one place and callable by name by any application or agent.", DEV + "#functions", "Read the docs"),
+             ("04", "gov", "4 agent tools", "Governance", "Roles decide who sees which object, property and action. An agent sees exactly what its role allows, through four tools, and nothing it was never granted.", DEV + "#agents", "Read the docs")]
+    spec_html = '<div class="specs">' + "".join(f'<div class="spec"><span class="no">{no}</span><span class="ct2">{E(c)}</span>{glyph(g)}<h3>{h}</h3><p>{E(t)}</p><a href="{u}">{a} →</a></div>' for no, g, c, h, t, u, a in specs) + "</div>"
+    bom_rows = [("Objects", n_obj, "src/mcp/manifest.ts"), ("Properties", n_prop, "src/models/*.ts"), ("Typed links", n_link, "manifest.ts · links"),
+                ("Business synonyms", n_syn, "manifest.ts · synonyms"), ("Lifecycles", n_lc, "src/kinetics/*.ts"), ("Governed transitions", n_tr, "src/kinetics/*.ts"),
+                ("Functions", n_fn, "manifest.ts · functions"), ("Agent meta tools", 4, "src/mcp/gateway.ts")]
+    bom = ('<table class="bom"><thead><tr><th>Item</th><th>Part</th><th>Qty</th><th>Where it lives in your repository</th></tr></thead><tbody>'
+           + "".join(f'<tr><td class="i">{k + 1:02d}</td><td>{E(a)}</td><td class="q" data-n="{b}">{b}</td><td class="f">{E(c)}</td></tr>' for k, (a, b, c) in enumerate(bom_rows)) + "</tbody></table>")
+    model = ('<section class="osec"><div class="wrap3">' + head(2, "Ontology language", "Model every part of <em>a decision.</em>",
+             "Four layers, each one a part you can point at in your own code. Below is the bill of materials of one real ontology, counted from its export.")
+             + spec_html + bom + '</div></section>')
+    explore = ('<section class="osec" id="explore"><div class="wrap3">' + head(3, "Semantics", f"One mine. {n_obj} objects. <em>One meaning each.</em>",
+               f"The Mining GOLD Copper ontology, built in Hyper Studio: {n_obj} objects, {n_link} links and {n_syn} business synonyms across five domains. Click an object, or ask for it by the name your teams use.")
+               + sheet(explorer(data), 3, "Semantics") + '</div></section>')
+    kin = ('<section class="osec" id="kinetics"><div class="wrap3">' + head(4, "Kinetics", "State only moves <em>the way you allow.</em>",
+           "A work order can only be assigned while it is unassigned, and only completed while work is in progress. Try a move that breaks the rule: the platform refuses it, the same way it refuses an agent.")
+           + sheet(kinetics_box(data), 4, "Kinetics") + '</div></section>')
+    engine = ('<section class="osec"><div class="wrap3">' + head(5, "Ontology engine", "Connect what you have. <em>Put agents to work on it.</em>",
+              "Atlas brings the systems you already run onto the ontology. Agentic Studio runs the agents that work on it. Both export with your application.")
+              + '<div class="otwo"><div class="ofig"><h3><em>Atlas</em> connects the systems you already run.</h3>' + atlas_svg() +
               '<p>Maintenance, fleet, safety and video systems stay where they are. Atlas maps their records onto the ontology\'s objects and keeps them in step, so the model is the operation and not a copy of it.</p></div>'
               '<div class="ofig"><h3><em>Agentic Studio</em> runs the agents that work on it.</h3>' + studio_svg() +
-              f'<p>Managed agents bound to objects, governed by the same roles and kinetics as people. Every run is graded and the agent keeps what it learned. They ship with your application, and they get better with every run, the way <a href="{BASE}/hyper-pragma/">Hyper Pragma</a> does.</p></div></div>'
-              '<div class="ocards c3"><div class="ocard"><h3>One reality for every reader and writer.</h3><p>Applications, analytics and agents read and write the same objects, through the same rules, so a decision made in one place is true everywhere.</p></div>'
-              '<div class="ocard"><h3>Inside your walls.</h3><p>The ontology, its data and its agents run where your data lives: on premises, in your private cloud or air gapped, on models you host yourself.</p></div>'
-              '<div class="ocard"><h3>Yours to keep.</h3><p>Publish and the whole system exports as code: the ontology, its kinetics, its endpoint for agents and its applications. Nothing about your operation is locked in anyone else\'s cloud.</p></div></div></div></section>')
-    code = ('<section class="opan" style="padding-top:0"><div class="wrap3"><div class="ocode"><div><span class="eb" style="color:rgba(255,255,255,.6)">Ontology toolchain</span>'
-            '<h3 style="margin-top:14px">Treat your ontology <em>as a codebase.</em></h3><p>Every Hyper application exports its ontology as a typed manifest beside the code that enforces it. Your engineers review it, version it and run it like any other part of the stack.</p>'
+              f'<p>Managed agents bound to objects, governed by the same roles and kinetics as people. Every run is graded and the agent keeps what it learned, the way <a href="{BASE}/hyper-pragma/">Hyper Pragma</a> does.</p></div></div>'
+              '<div class="engine"><div><h3><b>ONE REALITY</b>For every reader and writer.</h3><p>Applications, analytics and agents read and write the same objects through the same rules, so a decision made in one place is true everywhere.</p></div>'
+              '<div><h3><b>SOVEREIGN</b>Inside your walls.</h3><p>The ontology, its data and its agents run where your data lives: on premises, in your private cloud or air gapped, on models you host yourself.</p></div>'
+              '<div><h3><b>YOURS</b>To keep.</h3><p>Publish and the whole system exports as code: the ontology, its kinetics, its endpoint for agents and its applications. Nothing about your operation is held in anyone else\'s cloud.</p></div></div></div></section>')
+    code = ('<section class="osec"><div class="wrap3"><div class="ocode"><div>' + sx(6, "Ontology toolchain") +
+            '<h3 data-type>Treat your ontology <em>as a codebase.</em></h3><p data-after>Every Hyper application exports its ontology as a typed manifest beside the code that enforces it. Your engineers review it, version it and run it like any other part of the stack.</p>'
             f'<a class="btn" href="{DEV}">Start building →</a></div>'
             '<pre><span class="c">// src/mcp/manifest.ts, generated by Hyper Studio</span>\n{\n  <span class="k">apiName</span>: <span class="s">"maintenance-work-order"</span>,\n  <span class="k">synonyms</span>: [<span class="s">"Repair Ticket"</span>, <span class="s">"Service Order"</span>],\n'
             '  <span class="k">semanticDomain</span>: <span class="s">"Operations and Maintenance"</span>,\n  <span class="k">links</span>: [{ <span class="k">to</span>: <span class="s">"haul-truck"</span>, <span class="k">phrase</span>: <span class="s">"belongs to"</span> }],\n'
             '  <span class="k">lifecycles</span>: [{\n    <span class="k">stateField</span>: <span class="s">"orderStatus"</span>,\n    <span class="k">transitions</span>: [{ <span class="k">label</span>: <span class="s">"Assign"</span>,\n      <span class="k">from</span>: [<span class="s">"unassigned"</span>], <span class="k">to</span>: <span class="s">"assigned"</span>,\n      <span class="k">tool</span>: <span class="s">"assignMaintenanceWorkOrder"</span> }]\n  }]\n}</pre></div></div></section>')
-    cta = f'<section><div class="wrap3 octa"><a class="t" href="{brand.COMMERCIAL}">Talk to us <span>→</span></a><a class="s" href="{DEV}">Start Building <span>→</span></a></div></section>'
+    cta = (f'<section><div class="wrap3"><div class="octa"><div>Project<b>Hyper Ontology</b></div><div>Approved by<b>Your engineers</b></div>'
+           f'<a class="t" href="{brand.COMMERCIAL}">{brand.TALK} <span>→</span></a><a class="s" href="{DEV}">Start building <span>→</span></a></div></div></section>')
     body = f'<main class="og">{hero}{statement}{living}{model}{explore}{kin}{engine}{code}{cta}{depth_block(depth_html)}</main>'
     title = "Hyper Ontology: The Digital Twin of Your Organization, Exported as Code | CodeNinja Atoms"
     desc = "Hyper Ontology encodes the data, logic, actions and rules of an operation, so people and agents work on one reality inside their own walls. Semantics, kinetics, Atlas and Agentic Studio, exported as code you own."
@@ -466,7 +535,7 @@ def build(depth_html: str, faq_ld: dict) -> str:
                            "Functions: insights and dashboard measures", "Atlas: legacy sources connected in place", "Agentic Studio: managed agents with memory",
                            "Ontology as code: generated manifest.ts and full source export", "MCP endpoint for agents"],
            "isRelatedTo": [{"@type": "SoftwareApplication", "name": "Hyper Pragma", "url": f"{BASE}/hyper-pragma/"}, {"@type": "WebPage", "name": "Hyper Ontology for developers", "url": DEV}]}, faq_ld]
-    return shell(title, desc, f"{BASE}/hyper-ontology/", ld, CSS, body, JS)
+    return shell(title, desc, f"{BASE}/hyper-ontology/", ld, CSS, body, JS + TYPE_JS)
 
 
 def shell(title, desc, url, ld, css, body, js, extra_head=""):
