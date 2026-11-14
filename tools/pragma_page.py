@@ -170,7 +170,7 @@ PAGE_CSS = """
 .phero .shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(6,5,9,.94) 0,rgba(6,5,9,.45) 24%,rgba(6,5,9,0) 44%),linear-gradient(180deg,rgba(6,5,9,.6) 0,rgba(6,5,9,0) 16%)}
 .phero .hcopy{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:0 clamp(16px,3vw,44px) clamp(18px,3vw,40px)}
 .phero .wmark{display:flex;align-items:center;gap:clamp(12px,1.6vw,26px);margin:0;font:300 clamp(72px,13.5vw,232px)/.78 var(--sans);letter-spacing:-.06em;color:#fff;transition:opacity 1s .3s,transform 1s .3s}.phero.pre .wmark{opacity:0;transform:translateY(18px)}
-.phero .wmark svg{height:.66em;width:auto;fill:#fff;flex:none;transform:translateY(.02em)}
+.phero .wtag{margin:clamp(12px,1.4vw,20px) 0 0 .2em;font:400 clamp(14px,1.2vw,18px)/1.4 var(--sans);letter-spacing:.005em;color:rgba(255,255,255,.72);transition:opacity 1s .6s}.phero.pre .wtag{opacity:0}.phero .wmark svg{height:.66em;width:auto;fill:#fff;flex:none;transform:translateY(.02em)}
 .phero .hs{display:flex;flex-direction:column;gap:14px;max-width:300px;padding-bottom:8px;font:400 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.86)}
 .phero .hs p{margin:0;padding-left:12px;border-left:1px solid rgba(255,255,255,.45)}.phero .hs .dim{color:rgba(255,255,255,.55)}.phero .hs .lk{border-left-color:#a98bff}.phero .hs a{color:#fff;text-decoration:none}.phero .hs a:hover{color:#a98bff}
 .phero .scroll{position:absolute;left:50%;bottom:14px;width:46px;height:8px;margin-left:-23px;border:1px solid rgba(255,255,255,.5);border-radius:99px}
@@ -671,7 +671,7 @@ def build(depth_html: str, faq_ld: dict, head_extra: str = "") -> str:
     hero = ('<section class="phero pre"><div class="bg"></div><div class="stage" aria-hidden="true"><div class="lap"><div class="glow"></div><div class="shd"></div>'
             f'<div class="base"><div class="hinge"></div><div class="spk l"></div><div class="kb">{kb}</div><div class="spk r"></div><div class="tp"></div><div class="lip"></div><div class="front"></div></div>'
             f'<div class="lid"><div class="back"></div><div class="glass"></div><div class="scr">{ui}</div><div class="lbl">Hyper Desktop</div></div></div></div><div class="vig"></div><div class="shade"></div>'
-            f'<div class="hcopy"><h1 class="wmark" aria-label="Hyper Pragma"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Pragma</span></h1>'
+            f'<div class="hcopy"><div class="wmb"><h1 class="wmark" aria-label="Hyper Pragma"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Pragma</span></h1><p class="wtag">Dedicated inference for your sovereign AI models.</p></div>'
             '<div class="hs"><p>Hyper Pragma<br><span class="dim">Agents on your ontology</span></p><p>Put AI to work on your operations, and let it learn from every run</p>'
             f'<p class="dim">One platform for every operation</p><p class="lk"><a href="{brand.COMMERCIAL}">{brand.TALK} →</a></p></div></div><div class="scroll" aria-hidden="true"></div></section>')
     wall = (f'<section class="pwall strip"><video class="wv" autoplay muted loop playsinline preload="metadata" poster="/assets/video/pragma-wall.jpg">'

@@ -292,7 +292,7 @@ CSS = r"""
 @keyframes ohot{0%,62%,100%{fill:rgba(255,255,255,.05);stroke:rgba(200,185,255,.55)}70%,84%{fill:rgba(91,43,255,.75);stroke:#c8b9ff}}
 @keyframes ocone{50%{opacity:.55}}
 .oh .hc{position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;padding:0 clamp(16px,3vw,44px) clamp(20px,3.2vw,44px)}
-.oh .wm{display:flex;align-items:center;gap:clamp(12px,1.5vw,24px);margin:0;font:300 clamp(70px,12.5vw,214px)/.8 var(--sans);letter-spacing:-.06em}.oh .wm svg{height:.64em;width:auto;fill:#fff}
+.oh .wm{display:flex;align-items:center;gap:clamp(12px,1.5vw,24px);margin:0;font:300 clamp(70px,12.5vw,214px)/.8 var(--sans);letter-spacing:-.06em}.oh .wtag{margin:clamp(12px,1.4vw,20px) 0 0 .2em;font:400 clamp(14px,1.2vw,18px)/1.4 var(--sans);letter-spacing:.005em;color:rgba(255,255,255,.72)}.oh .wm svg{height:.64em;width:auto;fill:#fff}
 .oh .tblk{display:grid;grid-template-columns:auto auto;border:1px solid rgba(255,255,255,.4);font:400 10.5px/1.35 var(--mono);letter-spacing:.08em;text-transform:uppercase;min-width:330px;margin-bottom:8px;background:rgba(18,11,28,.55)}
 .oh .tblk>*{padding:8px 11px;border-bottom:1px solid rgba(255,255,255,.25)}.oh .tblk>:nth-child(odd){border-right:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.5)}.oh .tblk>:nth-last-child(-n+2){border-bottom:0}
 .oh .tblk a{text-decoration:none;color:#fff}.oh .tblk a:hover{color:#ffd166}.oh .tblk .acts{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;padding:0;border-right:0!important;color:#fff!important}.oh .tblk .acts a{padding:11px;text-align:center}.oh .tblk .acts a+a{border-left:1px solid rgba(255,255,255,.25);background:#fff;color:var(--plum)}
@@ -479,7 +479,7 @@ def build(depth_html: str, faq_ld: dict) -> str:
     n_tr = sum(len(l["transitions"]) for o in objs for l in o["lifecycles"])
     n_fn = sum(len(o["functions"]) for o in objs)
     hero = ('<section class="oh">' + twin_svg() + '<div class="shade"></div><div class="hc">'
-            f'<h1 class="wm" aria-label="Hyper Ontology"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Ontology</span></h1>'
+            f'<div class="wmb"><h1 class="wm" aria-label="Hyper Ontology"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Ontology</span></h1><p class="wtag">Dedicated inference for your sovereign AI models.</p></div>'
             '<div class="tblk"><span>Product</span><span>Hyper Ontology</span><span>Drawing</span><span>The digital twin of your organization</span>'
             '<span>Runs</span><span>Inside your walls</span><span>Delivered</span><span>As code you own</span>'
             f'<div class="acts"><a href="{brand.COMMERCIAL}">{brand.TALK} →</a><a href="{DEV}">Start building →</a></div></div></div></section>')
