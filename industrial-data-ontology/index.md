@@ -34,6 +34,10 @@ All 643 objects as one table: objects.jsonl in https://huggingface.co/datasets/C
 | Status vocabulary | the fixed values the object's state can take | 161 of 643 objects carry one |
 | Typed links | typed relations to other objects in the same model | 560 links, 536 of them named |
 
+## ISO 15926 and the Industrial Data Ontology (IDO)
+
+Searchers for this term often mean the Industrial Data Ontology (IDO), a W3C OWL 2 upper ontology for industrial data from the POSC Caesar Association. It began as ISO 15926 part 14, an OWL 2 adaptation of the ISO 15926-2 data model, and continues in the ISO 23726 Ontology Based Interoperability series as part 3. IDO is an upper ontology: it defines the general classes (objects, activities, qualities, lifecycle) that any plant or asset model can be classed under. The models on this page are operational ontologies: each names the specific objects one real operation tracks, anchored in its own source systems. The two layers fit together: an upper ontology such as IDO says what kind of thing an object is in general, and an operational model says which objects this operation actually runs on. The published models use their own kinds and do not import IDO classes. IDO: https://rds.posccaesar.org/ontology/lis14/
+
 ## Every published industrial data ontology
 
 | Design | Sector | Country | Objects | Links | Anchored | JSON | DOI |
