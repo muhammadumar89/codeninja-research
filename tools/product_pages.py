@@ -243,6 +243,9 @@ def main():
     (ROOT / "hyper-ontology" / "developers").mkdir(exist_ok=True)
     (ROOT / "hyper-ontology" / "developers" / "index.html").write_text(ontology_dev.build(), encoding="utf-8")
     pragma()
+    import engram_page  # Umar, 19 Nov 2026: Hyper Engram, learning without changing weights
+    (ROOT / "hyper-engram").mkdir(exist_ok=True)
+    (ROOT / "hyper-engram" / "index.html").write_text(engram_page.build(), encoding="utf-8")
     print("product pages:", len(ds), "designs")
 
 def pragma():
