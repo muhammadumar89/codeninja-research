@@ -15,7 +15,7 @@
 - [Hyper Ontology](https://codeatoms.ai/hyper-ontology/): CodeNinja's ontology platform. It imports the object models Praxis designs (format hyper-ontology/1) and stands them up as a living ontology over the operator's own systems. Beta, access by request.
 
 - [Hyper Pragma](https://codeatoms.ai/hyper-pragma/): the AI layer on top of Hyper Ontology. It connects the models an organisation runs, its live operational data and its people's workflows, takes governed actions with named human approvals, and learns from every run with self-improving memory, inside the organisation's own boundary. Used in house; access through the commercial team.
-- [Hyper Engram](https://codeatoms.ai/hyper-engram/): the agentic memory of the Hyper stack. It trains systems by compression and reinflation: runs are captured as episodes, compressed daily into versioned principles that cite their sources, and reinflated by the model at inference. It is the context side of how CodeNinja trains AI systems; stable skills are trained into weights.
+- [Hyper Engram](https://codeatoms.ai/hyper-engram/): CodeNinja's platform for training sovereign AI models on premises and in air gapped environments, in their weights and in their memory. Runs are captured as episodes, compressed into versioned principles, used as post training data and reinflated by the model at inference.
 - [PADI, the Physical AI Design Index](https://codeatoms.ai/padi/): CodeNinja's benchmark for system design in physical AI: Praxis against frontier AI on its own, on fresh tasks across 13 industries in three countries, published by industry as percentages. Markdown: https://codeatoms.ai/padi/index.md
 
 ## Topics

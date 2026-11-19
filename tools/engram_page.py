@@ -1,7 +1,7 @@
 """Hyper Engram: /hyper-engram/, the agentic memory of the Hyper stack, told the way a research lab would.
 
-Umar, 19 Nov 2026: a training lab's platform page (same day, second ruling: never say we do not train weights;
-we train both, context first in this loop, and the first question with a customer is what goes in context and what in weights), in our design system, that tells the world how we train
+Umar, 19 Nov 2026: a training lab's platform page (same day: never say we do not train weights; then: professional platform language,
+no "we train both" talk. Engram trains sovereign open weights models in their weights and their memory, on premises and air gapped), in our design system, that tells the world how we train
 systems by compression and reinflation without changing weights. Sources: the memo Compression and Reinflation
 (10 Oct 2026) and The Recursive Learning Loop (internal). Public rules kept here:
   - results are public, the PADI scoring method never is (numbers come from padi.load(), the same export /padi/ uses)
@@ -107,6 +107,7 @@ def glyph(k):
     g = {"cap": '<rect x="6" y="8" width="52" height="10"/><rect x="6" y="22" width="52" height="10"/><rect class="v" x="6" y="36" width="52" height="10"/>',
          "cmp": '<path d="M4,6 L28,22 L28,30 L4,46 Z"/><path class="v" d="M36,22 L60,6 L60,46 L36,30 Z"/><circle class="vs" cx="32" cy="26" r="3"/>',
          "rei": '<rect x="6" y="6" width="24" height="18"/><path class="vs" d="M34,15 L44,15 M40,11 L44,15 L40,19"/><rect class="v" x="46" y="6" width="14" height="18"/><path d="M6,32 L58,32 M6,40 L44,40 M6,48 L36,48"/>',
+         "trn": '<circle cx="10" cy="12" r="4"/><circle cx="10" cy="40" r="4"/><circle class="v" cx="32" cy="8" r="4"/><circle class="v" cx="32" cy="26" r="4"/><circle class="v" cx="32" cy="44" r="4"/><circle cx="54" cy="26" r="4"/><path d="M14,12 L28,8 M14,12 L28,26 M14,40 L28,26 M14,40 L28,44 M36,8 L50,26 M36,26 L50,26 M36,44 L50,26"/>',
          "rec": '<circle cx="32" cy="26" r="20"/><circle class="v" cx="32" cy="26" r="9"/><path class="vs" d="M32,2 L32,10 M32,42 L32,50 M8,26 L16,26 M48,26 L56,26"/>'}[k]
     return f'<svg class="gly" viewBox="0 0 64 52" aria-hidden="true">{g}</svg>'
 
@@ -264,14 +265,14 @@ def build():
     bl = (j or {}).get("blind") or (j or {}).get("latest") or {}
     hero = ('<section class="oh eh">' + bowtie_svg() + '<div class="shade"></div><div class="hc">'
             f'<div class="wmb"><h1 class="wm" aria-label="Hyper Engram"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Engram</span></h1><p class="wtag">Dedicated inference for your sovereign AI models.</p></div>'
-            '<div class="tblk"><span>Product</span><span>Hyper Engram</span><span>Method</span><span>Compression and reinflation</span>'
-            '<span>Trains</span><span>Context and weights</span><span>Memory</span><span>Inside your walls</span>'
+            '<div class="tblk"><span>Product</span><span>Hyper Engram</span><span>Trains</span><span>Sovereign AI models</span>'
+            '<span>Into</span><span>Weights and memory</span><span>Runs</span><span>On premises · air gapped</span>'
             f'<div class="acts"><a href="{brand.COMMERCIAL}">{brand.TALK} →</a><a href="#research">Read the research →</a></div></div></div></section>')
-    statement = ('<section class="ost"><div class="wrap3"><div>' + sx(0, "The thesis") + '</div><div>'
-                 '<p class="st" data-type>Every operation has something to teach its AI. The first question we ask is <em>what belongs in context and what belongs in the weights.</em> We train both.</p>'
-                 '<p class="sub" data-after>Hyper Engram is the agentic memory of the Hyper stack. It is the loop that trains a system run after run: every run, outcome and correction is written back, compressed into versioned principles every morning, and reinflated by the model into the next problem it meets. A lesson learned today changes tomorrow\'s behaviour.</p></div></div></section>')
-    loop = ('<section class="osec"><div class="wrap3">' + head(1, "The learning loop", "A system that improves itself, <em>one loop at a time.</em>",
-            "One master agent runs each RSI Loop. Two routines learn on their own every morning. None of them speak to each other directly: they read and write one memory, and that memory is what the planner reasons over.")
+    statement = ('<section class="ost"><div class="wrap3"><div>' + sx(0, "Overview") + '</div><div>'
+                 '<p class="st" data-type>Train sovereign AI models <em>in their weights and in their memory,</em> on premises and in air gapped environments.</p>'
+                 '<p class="sub" data-after>Hyper Engram turns the work an operation does into training signal for the open weights models it hosts. Runs, outcomes and corrections are captured as episodes, compressed into versioned principles and applied two ways: post training into the model\'s weights, and agentic memory the model reads at inference. Training data, weights and memory never leave the perimeter.</p></div></div></section>')
+    loop = ('<section class="osec"><div class="wrap3">' + head(1, "The learning loop", "Recursive improvement, <em>one loop at a time.</em>",
+            "A master agent runs each RSI Loop. Two routines distil and verify what was learned every day. They never call each other directly: each reads and writes one shared memory, which the model reasons over at inference.")
             + '<div class="sheet"><div class="scrollx">' + loop_svg() + '</div><div class="tb"><span>Sheet 01</span><span>Recursive learning loop</span><span>Hyper Engram</span></div></div>'
             '<div class="rail">'
             + "".join(f'<div data-after><b>{a}</b><strong>{h}</strong>{t}</div>' for a, h, t in [
@@ -280,16 +281,16 @@ def build():
                 ("E", "Benchmark", "Fresh tasks against frontier AI on its own."), ("F", "Premortem", "Would the design have caught a real incident?"),
                 ("G", "Feed the routines", "Every finding written into memory for its owner."), ("H", "Close", "What the loop learned, read first by the next one.")])
             + '</div></div></section>')
-    stages = [("01", "cap", "Capture", "Every run is training data.", "Every run is kept as an episode: what it did, what it measured, and what went wrong with how it worked. Nothing is thrown away."),
-              ("02", "cmp", "Compress", "Distillation, every morning.", "Every morning a routine distils raw learnings into versioned principles. Many observations become one. Contradictions are resolved. What never mattered fades."),
-              ("03", "rei", "Reinterpret", "A second reader, every time.", "A later reader, usually the master agent, finds what a run missed and writes a rule for next time onto that run's own episode. An adversarial verifier checks every writer."),
-              ("04", "rec", "Reinflate", "Context at inference.", "When a new problem arrives the model reads the compressed memory and expands it into this place, these laws, these people. The same lesson becomes a different design each time.")]
+    stages = [("01", "cap", "Capture", "Every run becomes training data.", "Each run is kept as an episode with its outcome, its feedback and the corrections a reviewer made, inside your perimeter."),
+              ("02", "cmp", "Compress", "Distillation into principles.", "Daily routines distil raw learnings into versioned principles that cite their sources. Contradictions are resolved and what never mattered fades."),
+              ("03", "trn", "Train", "Into the weights.", "Curated episodes and principles become post training data for the open weights models you host, trained on your own hardware."),
+              ("04", "rec", "Reinflate", "Into memory, at inference.", "The model reads the compressed memory and expands it into the problem in front of it: this site, these regulations, these people.")]
     stage_html = ('<div class="specs">' + "".join(f'<div class="spec"><span class="no">{no}</span>{glyph(g)}<h3>{h}</h3><p><strong>{E(s)}</strong> {E(t)}</p></div>' for no, g, h, s, t in stages) + '</div>')
-    platform = ('<section class="osec"><div class="wrap3">' + head(2, "Platform", "Four stages. <em>One training loop.</em>",
-                "Data, training, evaluation and serving, rebuilt for systems that work in the real world: capture, compression, reinterpretation and reinflation. The training signal lands where the model reads it, so a lesson is in use the next morning.")
+    platform = ('<section class="osec"><div class="wrap3">' + head(2, "Platform", "Four stages. <em>One training platform.</em>",
+                "Capture, compress, train and reinflate. Every stage runs inside your perimeter, on premises or air gapped, on models you host.")
                 + stage_html + '</div></section>')
     night = ('<section class="osec"><div class="wrap3">' + head(3, "Reinterpretation", "Learned tonight. <em>Used tomorrow morning.</em>",
-             "Every routine begins its run by reading the feedback and gap records on its newest episodes, before it does anything else. That intake is the whole trick: behaviour changes without anyone touching the code.")
+             "Each routine opens its run by reading the feedback and gap records on its newest episodes. A rule recorded today changes tomorrow\'s behaviour, with no code change.")
              + '<div class="night"><ol class="steps">'
              + "".join(f'<li data-after><time>{a}</time><div><h3>{h}</h3><p>{t}</p></div></li>' for a, h, t in [
                  ("Day 1", "A run misses something", "A design senses the warning a real incident would have started with, and never says who must act on it."),
@@ -303,7 +304,7 @@ def build():
              '<div class="parts"><div><b>EPISODE</b>What the run did and measured.</div><div><b>FEEDBACK</b>What was wrong with how it worked, with a verdict.</div><div><b>GAP RECORDS</b>What a later reader found it missed.</div></div>'
              '<p>Every learner in the system, from the routines to the fleet, keeps its episodes in this one shape, so any reader can correct any writer.</p></div></div></div></section>')
     bench_s = ('<section class="osec" id="bench-s"><div class="wrap3">' + head(4, "Compression bench", "Compress once. <em>Reinflate anywhere.</em>",
-               "Try it. Eight raw learnings become one principle, and the principle becomes a design for a mine, a contact centre or a hospital it never saw.")
+               "Eight raw learnings are compressed into one principle, which the model reinflates into designs for operations it has never seen.")
                + '<div class="sheet">' + bench() + '<div class="tb"><span>Sheet 04</span><span>Compression and reinflation</span><span>Illustrative</span></div></div></div></section>')
     rows = [("Best for", "Stable skills used at high volume", "Knowledge that changes every month"),
             ("A new regulation arrives", "Joins the next training run", "One new entry, verified and live within hours"),
@@ -311,9 +312,9 @@ def build():
             ("A stronger base model arrives", "The training run is repeated on it", "The memory carries over on day one"),
             ("Undoing a lesson", "Roll back to an earlier checkpoint", "Retire one versioned principle"),
             ("Where it runs", "Inside your perimeter, on models you host", "Inside your perimeter, on your infrastructure")]
-    vs = ('<section class="osec"><div class="wrap3">' + head(5, "Context and weights", "Two places to train. <em>We decide per lesson.</em>",
-          "On every engagement we first work out how much of what the system must learn belongs in context and how much in the weights, then train each where it pays. This loop is the context side, and it runs every day.")
-          + '<table class="cwt"><thead><tr><th></th><th>Trained into the weights</th><th>Trained into context, with Engram</th></tr></thead><tbody>'
+    vs = ('<section class="osec"><div class="wrap3">' + head(5, "Weights and memory", "Two training targets. <em>One platform.</em>",
+          "Engram places each lesson where it does the most good. Stable skills used at volume are trained into the weights. Knowledge that changes with the operation is kept in memory, where it stays current, readable and reversible.")
+          + '<table class="cwt"><thead><tr><th></th><th>Into the weights</th><th>Into memory</th></tr></thead><tbody>'
           + "".join(f'<tr><td>{E(a)}</td><td>{E(b)}</td><td>{E(c)}</td></tr>' for a, b, c in rows) + '</tbody></table></div></section>')
     ev = ""
     if j:
@@ -321,22 +322,22 @@ def build():
         n_t = bl.get("tasks")
         tile_ahead = f'<div><b>{tasks_ahead}<span>of {n_t}</span></b><p>Unseen tasks where Praxis came out ahead</p></div>' if tasks_ahead is not None and n_t else ""
         ev = ('<section class="osec"><div class="wrap3">' + head(6, "Evidence", "Measured <em>every loop.</em>",
-              "Praxis, the platform Engram trains, is measured on PADI, our benchmark for physical AI system design, against frontier AI on its own, on fresh tasks every RSI Loop.")
+              "Praxis, trained on Engram, is measured on PADI, our benchmark for physical AI system design, against frontier AI on its own, on fresh tasks every RSI Loop.")
               + '<div class="ev"><div class="tiles">'
               f'<div><b class="v">{bl.get("platform_pct")}%</b><p>Praxis, RSI Loop {bl.get("cycle")}, blind</p></div>'
               f'<div><b>{bl.get("bare_pct")}%</b><p>Frontier AI on its own, same tasks</p></div>' + tile_ahead +
               f'<div><b>{j["benchmark"]["sectors_measured"]}</b><p>Industries measured, in three countries</p></div></div>'
               '<div class="chartw"><div class="key"><span><i></i>Praxis platform</span><span><i class="f"></i>Frontier AI on its own</span></div><div class="sc">' + chart(j) + '</div>'
               f'<p>Checks passed as a share of checks judged, each RSI Loop. Loop {bl.get("cycle")} is a blind evaluation on tasks the platform had never seen; earlier loops reused some tasks and show the trend. Results are public; the method stays private. <a href="{BASE}/padi/">Every figure on PADI →</a></p></div></div></div></section>')
-    laws = [("Every lesson in its place", "Each lesson is trained where it does the most good: into the context the model reads, or into the weights when a skill is stable and used at volume."),
+    laws = [("Train where it belongs", "Stable skills go into the weights. Knowledge that changes goes into memory."),
             ("Meaning, never keywords", "Any decision about what a sentence means is put to a model and stored. Keyword scoring is banned."),
             ("Every claim stands on a source", "An entry needs a dated source. A principle needs the learnings it was distilled from."),
             ("Evaluation stays blind", "Held out tasks are never shown to the planner. Incident cases never feed the memory."),
             ("Two agents, two views", "Every writer has an adversarial verifier. Nothing verifies its own output."),
             ("The record is the context", "Commits, episodes and gap records carry the why. A session that lost its memory reads the log first."),
             ("Every release is reversible", "Each RSI Loop is tagged. A bad change is reverted by its own commit, a bad principle by its own version."),
-            ("The memory is yours", "It lives in your perimeter, on models you host, and it survives every model you replace.")]
-    laws_s = ('<section class="osec"><div class="wrap3">' + head(7, "Laws", "Eight rules <em>no loop may break.</em>", "They hold across every phase and every agent. A change that would bend one stops and waits for a person.")
+            ("Sovereign by design", "Training data, weights and memory stay in your perimeter, on premises or air gapped.")]
+    laws_s = ('<section class="osec"><div class="wrap3">' + head(7, "Principles", "Eight rules <em>every loop keeps.</em>", "They hold across every phase and every agent. A change that would bend one stops for human review.")
               + '<div class="laws">' + "".join(f'<div data-after><b>{k + 1:02d}</b><h3>{E(h)}</h3><p>{E(t)}</p></div>' for k, (h, t) in enumerate(laws)) + '</div></div></section>')
     res = [(MEMO, "Memo", "Compression and Reinflation", "Compression, reinflation, and why what a system learns should survive the next model.", "Muhammad Umar · 10 Oct 2026"),
            (f"{BASE}/agentic-memory-architecture/", "Architecture", "Agentic Memory Architecture", "Memory told as a bow tie: experience, a waist of nightly distillation, and context assembled for each design.", "23 Oct 2026"),
@@ -344,25 +345,25 @@ def build():
            (f"{BASE}/hyper-pragma/", "Product", "Memory at work in Hyper Pragma", "The same memory inside a product: every run graded, every lesson visible, every lesson revocable.", "Hyper stack")]
     res_s = ('<section class="osec" id="research"><div class="wrap3">' + head(8, "Research", "Read how <em>it works.</em>", "The argument, the architecture, the measurements and the product, each on its own page.")
              + '<div class="res">' + "".join(f'<a href="{u}"><span class="ty">{t}</span><h3>{E(h)}</h3><p>{E(p)}</p><span class="dt">{E(d)} →</span></a>' for u, t, h, p, d in res) + '</div></div></section>')
-    cta = (f'<section><div class="wrap3"><div class="octa"><div>Project<b>Hyper Engram</b></div><div>Trains<b>Every run</b></div>'
+    cta = (f'<section><div class="wrap3"><div class="octa"><div>Project<b>Hyper Engram</b></div><div>Trains<b>Weights and memory</b></div>'
            f'<a class="t" href="{brand.COMMERCIAL}">{brand.TALK} <span>→</span></a><a class="s" href="{MEMO}">Read the memo <span>→</span></a></div></div></section>')
-    faq = [("What is Hyper Engram?", "Hyper Engram is the agentic memory of CodeNinja's Hyper stack. It keeps every run, outcome and correction, compresses them into versioned principles, and gives them back to the model as context when it reasons. It is the loop that trains Praxis and Hyper Pragma, run after run."),
-           ("How does Hyper Engram train a system?", "Runs are captured as episodes, daily routines compress them into principles that cite their sources, later readers file what a run missed as rules for next time, and at inference the model reinterprets the compressed memory for the problem in front of it."),
+    faq = [("What is Hyper Engram?", "Hyper Engram is CodeNinja's platform for training sovereign AI models on premises and in air gapped environments. It trains open weights models in their weights and in their memory, from the runs, outcomes and corrections of the operation they serve."),
+           ("How does Hyper Engram train a model?", "Runs are captured as episodes and compressed daily into versioned principles that cite their sources. Curated episodes and principles become post training data for the model's weights, and the same principles form an agentic memory the model reads at inference."),
            ("What is compression and reinflation?", "Compression turns many observations into one small principle, resolving contradictions and dropping what never mattered. Reinflation is the model expanding that principle into a new situation: a different country, operation or set of people. The idea follows Michael Levin's work on self improvising memory in living systems."),
-           ("Do you also train model weights?", "Yes, where it pays. On every engagement we first decide how much of what the system must learn belongs in context and how much in the weights. Engram trains the context side every day; stable skills used at high volume are trained into the weights of models the customer hosts."),
-           ("What happens when a better model is released?", "It is swapped in. What Engram holds is not stored in the model, so it carries over and the new model starts with everything the system learned in context."),
-           ("Where does the memory live?", "Inside the customer's perimeter, on their infrastructure, under their control, including air gapped deployments on models they host themselves.")]
+           ("What goes into the weights and what into memory?", "Stable skills used at high volume are trained into the weights, where they are fastest and cheapest to serve. Knowledge that changes with the operation, such as regulations, equipment and procedures, is kept in memory, where it is current within hours and can be read and reversed."),
+           ("What happens when a better base model is released?", "It is swapped in. The memory carries over unchanged, and the curated training data is applied to the new base model."),
+           ("Where does Hyper Engram run?", "Inside the customer's perimeter: on premises, in a private cloud or fully air gapped, on models the customer hosts. Training data, weights and memory never leave it.")]
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
     depth = ('<section class="odep"><div class="wrap3 dg"><aside>' + sx(9, "In depth") + '<h2 data-type>Questions about Hyper Engram</h2></aside><div class="doc">'
              + "".join(f'<h2>{E(q)}</h2><p>{E(a)}</p>' for q, a in faq) + '</div></div></section>')
     data = f'<script>window.ENGRAM_PRINCIPLE={json.dumps(PRINCIPLE)};window.ENGRAM_PLACES={json.dumps(PLACES)};</script>'
     body = f'<main class="og eg">{hero}{statement}{loop}{platform}{night}{bench_s}{vs}{ev}{laws_s}{res_s}{cta}{depth}</main>{data}'
-    title = "Hyper Engram: How We Train AI Systems, Run After Run | CodeNinja Atoms"
-    desc = "Hyper Engram is the loop that trains AI systems by compression and reinflation: every run is captured, distilled and reinflated into the next one."
+    title = "Hyper Engram: Train Sovereign AI Models On Premises and Air Gapped | CodeNinja Atoms"
+    desc = "Hyper Engram trains sovereign AI models in their weights and in their memory, on premises and in air gapped environments, from every run of the operation."
     ld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Hyper Engram", "applicationCategory": "DeveloperApplication", "description": desc, "url": URL,
            "creator": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com"},
            "featureList": ["Episodes with feedback and gap records", "Daily distillation into versioned principles", "Adversarial verification of every writer",
-                           "Context and weight training, decided per lesson", "Memory carried across model upgrades", "Runs inside the customer's perimeter"],
+                           "Post training of open weights models on your hardware", "Agentic memory by compression and reinflation", "Memory carried across model upgrades", "Runs inside the customer's perimeter"],
            "isRelatedTo": [{"@type": "SoftwareApplication", "name": "Hyper Pragma", "url": f"{BASE}/hyper-pragma/"}, {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
                            {"@type": "Article", "name": "Compression and Reinflation", "url": MEMO}]}, faq_ld]
     return shell(title, desc, URL, ld, OCSS + CSS, body, JS + TYPE_JS)
