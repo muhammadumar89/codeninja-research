@@ -19,6 +19,78 @@ URL = f"{BASE}/hyper-engram/"
 MEMO = f"{BASE}/memos/compression-and-reinflation/"
 
 
+# The hero: a living context graph (Umar, 19 Nov 2026, after the context graph on a company builder's site:
+# "Context is the moat" is what this page must show). Agents and domains cluster around one shared memory;
+# each scene captures work in one agent cluster, compresses it into a versioned brief at the centre, trains,
+# and reinflates it into a domain the work never touched. Labels are illustrative, never Engram counts.
+CLUSTERS = ["AGENTS · PLANNING", "DOMAIN · MINING", "AGENTS · RESEARCH", "DOMAIN · PORTS", "AGENTS · BUILD", "DOMAIN · FINANCE",
+            "AGENTS · BENCHMARK", "DOMAIN · ENERGY", "AGENTS · PREMORTEM", "DOMAIN · DEFENCE", "AGENTS · FIELD", "DOMAIN · CONTACT CENTRES",
+            "AGENTS · REVIEW", "DOMAIN · HEALTH", "AGENTS · PRICING", "DOMAIN · PUBLIC SECTOR"]
+SCENES = [
+    (6, ["blind evaluation", "gap record", "missed requirement", "premortem note"], "ROUTING v7", 1, ["haul road design", "shift handover", "warning ownership"]),
+    (10, ["site walkthrough", "operator correction", "tender clause"], "CITATIONS v4", 3, ["berth planning", "customs hold", "crane schedule"]),
+    (4, ["design review", "failed build", "reviewer feedback", "sizing check"], "SIZING v9", 13, ["ward capacity", "triage queue", "records access"]),
+    (2, ["new regulation", "standard update", "source check"], "COMPLIANCE v5", 7, ["permit to work", "emissions report", "outage plan"]),
+    (8, ["failure story", "risk owner", "rollback plan"], "RELEASES v6", 15, ["case backlog", "citizen request", "records retention"]),
+]
+
+GRAPH_JS = r"""<script>(function(){
+var cv=document.getElementById('cg');if(!cv||!cv.getContext)return;
+var D=window.ENGRAM_GRAPH,x=cv.getContext('2d'),st=document.getElementById('cgst'),st2=document.getElementById('cgst2'),host=cv.parentElement;
+var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function rng(a){return function(){a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+var r=rng(11),N=[],E=[],CL=[];function g(){return (r()+r()+r()-1.5)/1.5}
+D.c.forEach(function(nm,i){var a=i/D.c.length*Math.PI*2-Math.PI/2+(r()-.5)*.28,d=(i%2?.9:.64)+(r()-.5)*.14,o={x:Math.cos(a)*d,y:Math.sin(a)*d,n:[],nm:nm};
+ var k=14+Math.floor(r()*9);for(var j=0;j<k;j++){N.push({x:o.x+g()*.15,y:o.y+g()*.15,c:i,p:r()*6.283,s:1.1+r()*1.5});o.n.push(N.length-1)}CL.push(o)});
+N.forEach(function(a,i){var s=CL[a.c].n.filter(function(j){return j!==i}).map(function(j){var b=N[j];return[j,(a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y)]}).sort(function(p,q){return p[1]-q[1]});
+ for(var k=0;k<2;k++)E.push([i,s[k][0],0]);if(r()<.42){var j=Math.floor(r()*N.length);if(N[j].c!==a.c)E.push([i,j,1])}if(r()<.1)E.push([i,-1,2])});
+CL.forEach(function(o){var s=o.n.slice().sort(function(p,q){return N[p].y-N[q].y});o.pick=function(k){var out=[];for(var j=0;j<k;j++)out.push(s[Math.round(j*(s.length-1)/Math.max(1,k-1))]);return out}});
+var W,H,cx,cy,Rx,Ry,mob,dpr;
+function size(){dpr=Math.min(2,window.devicePixelRatio||1);W=host.clientWidth;H=host.clientHeight;cv.width=W*dpr;cv.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);mob=W<760;
+ if(mob){cx=W*.5;cy=H*.47;Rx=W*.4;Ry=Math.min(H*.12,W*.3)}else{cx=W*.53;cy=H*.45;Rx=Math.min(W*.3,560);Ry=Math.min(H*.27,300)}}
+size();window.addEventListener('resize',size);
+function P(i,t){if(i<0)return[cx,cy];var n=N[i];return[cx+(n.x+Math.sin(t*.00035+n.p)*.012)*Rx,cy+(n.y+Math.cos(t*.0003+n.p)*.012)*Ry]}
+function C(i){var o=CL[i];return[cx+o.x*Rx,cy+o.y*Ry]}
+function cl(v){return v<0?0:v>1?1:v}function ramp(t,a,b){return cl((t-a)/(b-a))}
+var M=[];function spawn(){var e=E[Math.floor(Math.random()*E.length)];M.push({e:e,t:0,v:.00025+Math.random()*.0004})}
+var T=9000,t0=performance.now(),last=t0,on=true,sc=0;
+var SC=D.s.map(function(q){return{src:q[0],sl:q[1],br:q[2],dst:q[3],dl:q[4],sn:CL[q[0]].pick(q[1].length),dn:CL[q[3]].pick(q[4].length)}});
+var mono='500 10px ui-monospace,"IBM Plex Mono",Menlo,monospace',box='400 12px ui-monospace,"IBM Plex Mono",Menlo,monospace';
+function boxes(ci,nodes,labs,a,col,t){if(a<=0||mob)return;var c=C(ci),side=CL[ci].x>=0?1:-1,k=labs.length,X0=c[0]+side*(mob?.18:.34)*Rx;x.font=mob?'400 10.5px ui-monospace,Menlo,monospace':box;
+ labs.forEach(function(l,j){var w=x.measureText(l).width+16,h=mob?20:22,by=c[1]+(j-(k-1)/2)*(h+9),bx=side>0?X0:X0-w;bx=Math.max(8,Math.min(W-w-8,bx));by=Math.max(118,Math.min(H*.74,by));
+  var p=P(nodes[j],t),ex=side>0?bx:bx+w;x.globalAlpha=a;x.strokeStyle=col;x.lineWidth=1;x.beginPath();x.moveTo(p[0],p[1]);x.lineTo(p[0],by);x.lineTo(ex,by);x.stroke();
+  x.fillStyle='rgba(13,8,21,.92)';x.fillRect(bx,by-h/2,w,h);x.strokeRect(bx+.5,by-h/2+.5,w-1,h-1);x.fillStyle='#fff';x.textBaseline='middle';x.fillText(l,bx+8,by+1);
+  x.beginPath();x.arc(p[0],p[1],4.2,0,6.283);x.fillStyle=col;x.fill();x.beginPath();x.arc(p[0],p[1],8+Math.sin(t*.006)*1.5,0,6.283);x.strokeStyle=col;x.globalAlpha=a*.5;x.stroke()});x.globalAlpha=1}
+function pulses(nodes,inward,k,col,t){if(k<=0||k>=1)return;nodes.forEach(function(ni,j){var q=cl(k*1.25-j*.08);if(q<=0||q>=1)return;var a=P(ni,t),b=[cx,cy],u=inward?q:1-q,e=u*u*(3-2*u);
+ var px=a[0]+(b[0]-a[0])*e,py=a[1]+(b[1]-a[1])*e;x.strokeStyle=col;x.globalAlpha=.55;x.lineWidth=1.2;x.beginPath();x.moveTo(a[0],a[1]);x.lineTo(b[0],b[1]);x.stroke();
+ x.globalAlpha=1;x.fillStyle=col;x.beginPath();x.arc(px,py,3.2,0,6.283);x.fill();x.globalAlpha=.25;x.beginPath();x.arc(px,py,8,0,6.283);x.fill()});x.globalAlpha=1}
+var PH=['01 CAPTURE','02 COMPRESS','03 TRAIN','04 REINFLATE'],lastS='';
+function frame(now){if(!on){last=now;return requestAnimationFrame(frame)}
+ var t=RM?4000:Math.max(0,now-t0),dt=Math.min(50,now-last);last=now;var u=RM?6000:t%T,S=SC[RM?0:Math.floor(t/T)%SC.length];
+ var sa=ramp(u,0,500)*(1-ramp(u,5200,6000)),da=ramp(u,5600,6100)*(1-ramp(u,8200,8900)),ba=ramp(u,3500,3900)*(1-ramp(u,8200,8900));
+ if(RM){sa=0;da=1;ba=1}
+ x.clearRect(0,0,W,H);x.lineWidth=1;
+ for(var i=0;i<E.length;i++){var e=E[i],a=P(e[0],t),b=P(e[1],t),hs=N[e[0]].c===S.src,hd=N[e[0]].c===S.dst;
+  x.strokeStyle=e[2]===2?'rgba(200,185,255,.05)':hs&&sa>0?'rgba(182,156,255,'+(.08+.4*sa)+')':hd&&da>0?'rgba(255,209,102,'+(.07+.35*da)+')':e[2]?'rgba(200,185,255,.07)':'rgba(200,185,255,.13)';
+  x.beginPath();x.moveTo(a[0],a[1]);x.lineTo(b[0],b[1]);x.stroke()}
+ if(!RM){while(M.length<(mob?18:42))spawn();x.fillStyle='rgba(200,185,255,.85)';M=M.filter(function(m){m.t+=m.v*dt;if(m.t>=1)return false;var a=P(m.e[0],t),b=P(m.e[1],t);x.beginPath();x.arc(a[0]+(b[0]-a[0])*m.t,a[1]+(b[1]-a[1])*m.t,1.3,0,6.283);x.fill();return true})}
+ for(i=0;i<N.length;i++){var n=N[i],p=P(i,t);x.fillStyle=n.c===S.src&&sa>0?'rgba(190,168,255,'+(.55+.45*sa)+')':n.c===S.dst&&da>0?'rgba(255,209,102,'+(.5+.5*da)+')':'rgba(164,143,255,.62)';x.beginPath();x.arc(p[0],p[1],n.s,0,6.283);x.fill()}
+ x.font=mono;x.textBaseline='alphabetic';CL.forEach(function(o,i){var c=C(i),act=(i===S.src&&sa>0)||(i===S.dst&&da>0);if(mob&&!act)return;var lab=o.nm;x.fillStyle=act?'rgba(255,255,255,.95)':'rgba(225,215,255,.42)';if(mob){x.textAlign='center';x.fillText(lab,Math.max(70,Math.min(W-70,c[0])),c[1]+(o.y<0?-.34:.42)*Ry);return}x.textAlign=o.x>=0?'left':'right';
+  x.fillText(lab,c[0]+(o.x>=0?-.06:.06)*Rx,c[1]-.19*Ry)});x.textAlign='left';
+ if(!RM){pulses(S.sn,true,ramp(u,2200,3600),'#c8b9ff',t);pulses(S.dn,false,ramp(u,4600,5800),'#ffd166',t)}
+ var tw=ramp(u,3600,4600);if(tw>0&&tw<1&&!RM){x.strokeStyle='rgba(255,209,102,'+(1-tw)*.8+')';x.lineWidth=1.4;x.beginPath();x.ellipse(cx,cy,10+tw*Rx*.55,10+tw*Ry*.55,0,0,6.283);x.stroke();x.lineWidth=1}
+ x.beginPath();x.arc(cx,cy,15+Math.sin(t*.003)*1.5,0,6.283);x.strokeStyle='rgba(255,255,255,.45)';x.stroke();x.beginPath();x.arc(cx,cy,7,0,6.283);x.fillStyle='#fff';x.fill();
+ x.font=mono;x.textAlign='center';x.fillStyle='rgba(255,255,255,.85)';x.fillText('ONE SHARED MEMORY',cx,cy+34);
+ if(ba>0){x.globalAlpha=ba;x.font='600 11px ui-monospace,Menlo,monospace';var bt='BRIEF · '+S.br,bw=x.measureText(bt).width+20;x.fillStyle='rgba(13,8,21,.92)';x.fillRect(cx-bw/2,cy-48,bw,24);x.strokeStyle='#ffd166';x.strokeRect(cx-bw/2+.5,cy-47.5,bw-1,23);x.fillStyle='#fff';x.textBaseline='middle';x.fillText(bt,cx,cy-35.5);x.textBaseline='alphabetic';x.globalAlpha=1}
+ x.textAlign='left';
+ boxes(S.src,S.sn,S.sl,sa,'rgba(200,185,255,.95)',t);boxes(S.dst,S.dn,S.dl,da,'#ffd166',t);
+ if(st){var ph=u<2200?0:u<3600?1:u<4600?2:3,lab=PH[ph]+'<br>'+[CL[S.src].nm,'brief · '+S.br,'into weights and memory',CL[S.dst].nm][ph];if(RM)lab='04 REINFLATE<br>'+CL[S.dst].nm;if(lab!==lastS){st.innerHTML=lab;if(st2)st2.innerHTML=lab.replace('<br>',' · ');lastS=lab}}
+ if(!RM)requestAnimationFrame(frame)}
+if('IntersectionObserver'in window)new IntersectionObserver(function(es){on=es[0].isIntersecting}).observe(host);
+requestAnimationFrame(frame);if(RM)window.addEventListener('resize',function(){requestAnimationFrame(frame)});
+})();</script>"""
+
+
 def bowtie_svg():
     """The hero: experience pours in from the left, is compressed at the waist into one versioned principle,
     and is reinflated on the right into designs for places the memory never saw."""
@@ -170,13 +242,20 @@ def chart(j):
 CSS = r"""
 .eg{--amb:#ffd166}
 .oh.eh{background:radial-gradient(38% 50% at 50% 44%,rgba(91,43,255,.26),rgba(18,11,28,0) 70%),#0d0815}
-.oh .bow{position:absolute;left:0;top:0;width:100%;height:100%}
+.oh .cg{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.cgh{position:absolute;left:clamp(16px,3vw,44px);top:clamp(96px,13vh,132px);max-width:340px;pointer-events:none}
+.cgh .ey{font:500 10.5px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin:0 0 14px}.cgh .ey::before{content:"";display:inline-block;width:5px;height:5px;background:#a48fff;margin-right:9px;vertical-align:1px}
+.cgh .cgt{font:300 clamp(30px,3vw,46px)/1.05 var(--sans);letter-spacing:-.03em;margin:0 0 14px;color:#fff}.cgh .d{font:400 15px/1.5 var(--sans);color:rgba(255,255,255,.7);margin:0}
+.cgc{position:absolute;right:clamp(16px,3vw,44px);top:clamp(96px,13vh,132px);width:250px;border:1px solid rgba(255,255,255,.35);background:rgba(13,8,21,.62);padding:14px 16px;font:400 10.5px/1.6 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.cgc b{display:block;font-weight:500;color:#fff;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,.2)}.cgc p{margin:0 0 8px}
+.cgm{display:none}.cgs{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.2);color:#ffd166;min-height:3.2em}
+.bowsheet{background:radial-gradient(38% 50% at 50% 44%,rgba(91,43,255,.26),rgba(18,11,28,0) 70%),#0d0815;margin-bottom:26px;overflow-x:auto}.bwi{position:relative;aspect-ratio:16/9;min-width:820px}.bwi .bow{position:absolute;left:0;top:0;width:100%;height:100%}
 .bow .sil{fill:url(#bwf);stroke:rgba(200,185,255,.22);stroke-width:1}.bow .tick{stroke:rgba(200,185,255,.3)}
 .bow .fib{fill:none;stroke:rgba(190,170,255,.07);stroke-width:1}.bow .fib.r{stroke:rgba(255,209,102,.08)}
 .bow .pt{fill:#c8b9ff}.bow .pt.r{fill:#ffd166}
 .bow .lb{font:500 10.5px var(--mono);letter-spacing:.16em;fill:rgba(225,215,255,.55)}
 .bow .hd{font:500 12px var(--mono);letter-spacing:.3em;fill:#fff}.bow .sub{font:400 13px var(--sans);fill:rgba(255,255,255,.55)}
-.bow .halo{animation:ehalo 4s ease-in-out infinite;transform-origin:800px 400px}
+.bow .halo{animation:ehalo 4s ease-in-out infinite;transform-origin:800px 400px;transform-box:view-box}
 .bow .waist rect{fill:#0d0815;stroke:#ffd166;stroke-width:1.2}.bow .w1{font:600 11px var(--mono);letter-spacing:.14em;fill:#fff}.bow .w2{font:400 10px var(--mono);fill:#ffd166}
 .bow .tg circle{fill:#ffd166}.bow .tg text{font:400 17px var(--sans);fill:#fff}.bow .tg text.c{font:500 10px var(--mono);letter-spacing:.14em;fill:rgba(255,255,255,.5)}
 .bow .lock rect{fill:rgba(13,8,21,.8);stroke:rgba(255,255,255,.3)}.bow .lock text{font:500 10px var(--mono);letter-spacing:.16em;fill:rgba(255,255,255,.75)}
@@ -242,7 +321,7 @@ CSS = r"""
 .res a{display:flex;flex-direction:column;gap:10px;padding:22px;text-decoration:none;min-height:230px;transition:background .25s}.res a+a{border-left:1px solid var(--rl)}.res a:hover{background:#fff}
 .res .ty{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--vi)}.res h3{font:400 22px/1.2 var(--sans);letter-spacing:-.015em;margin:0}.res p{margin:0;color:var(--mut);font:400 14.5px/1.5 var(--sans)}.res .dt{margin-top:auto;font:400 12px var(--mono);color:var(--mut)}
 @media (max-width:1000px){.night,.ev,.bench{grid-template-columns:1fr}.bench>div+div{border-left:0;border-top:1px solid var(--rl)}.tiles{border-right:0;border-bottom:1px solid var(--rl)}.rail{grid-template-columns:repeat(4,1fr)}.rail div:nth-child(5){border-left:0;padding-left:0}.laws,.res{grid-template-columns:1fr 1fr}.laws div:not(:nth-child(4n+1)){padding-left:0;border-left:0}.laws div:nth-child(even){padding-left:20px;border-left:1px solid var(--rl)}.res a:nth-child(3){border-left:0}.res a:nth-child(n+3){border-top:1px solid var(--rl)}}
-@media (max-width:760px){.rail,.laws,.res,.parts{grid-template-columns:1fr}.rail div+div,.parts div+div{border-left:0;padding-left:0;border-top:1px solid var(--rl)}.laws div:nth-child(even){padding-left:0;border-left:0}.res a+a{border-left:0;border-top:1px solid var(--rl)}.oh .bow{width:230%;left:-65%}.cwt td:first-child{width:auto}.cwt{font-size:14px}.steps li{grid-template-columns:1fr;gap:4px}}
+@media (max-width:760px){.rail,.laws,.res,.parts{grid-template-columns:1fr}.rail div+div,.parts div+div{border-left:0;padding-left:0;border-top:1px solid var(--rl)}.laws div:nth-child(even){padding-left:0;border-left:0}.res a+a{border-left:0;border-top:1px solid var(--rl)}.cgc{display:none}.cgh{max-width:none;right:16px;top:84px}.cgm{display:block;margin:12px 0 0;font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#ffd166}.cgh .d{font-size:14px}.cwt td:first-child{width:auto}.cwt{font-size:14px}.steps li{grid-template-columns:1fr;gap:4px}}
 @media (prefers-reduced-motion:reduce){.bow *,.loop *{animation:none!important}}
 """
 
@@ -263,7 +342,10 @@ def build():
     import json, padi
     j = padi.load()
     bl = (j or {}).get("blind") or (j or {}).get("latest") or {}
-    hero = ('<section class="oh eh">' + bowtie_svg() + '<div class="shade"></div><div class="hc">'
+    hero = ('<section class="oh eh"><canvas id="cg" class="cg" role="img" aria-label="Context graph: agent and domain clusters around one shared memory. Work captured in one cluster is compressed into a versioned brief, trained, and reinflated into another domain."></canvas><div class="shade"></div>'
+            '<div class="cgh"><p class="ey">Why it compounds</p><p class="cgt">Context is the moat.</p><p class="d">Every operation can host the same open weights models. Context is what compounds.</p><p class="cgm" id="cgst2">01 CAPTURE</p></div>'
+            '<aside class="cgc"><b>Many agents. One memory.</b><p>Every agent works on its own. None of them starts from zero.</p><p>Runs compress into principles. Principles reinflate into new work.</p><p>Every run trains the system.</p><div class="cgs" id="cgst">01 CAPTURE</div></aside>'
+            '<div class="hc">'
             f'<div class="wmb"><h1 class="wm" aria-label="Hyper Engram"><svg viewBox="0 0 38 30" aria-hidden="true"><path d="{MARK}"/></svg><span>Engram</span></h1><p class="wtag">Dedicated inference for your sovereign AI models.</p></div>'
             '<div class="tblk"><span>Product</span><span>Hyper Engram</span><span>Trains</span><span>Sovereign AI models</span>'
             '<span>Into</span><span>Weights and memory</span><span>Runs</span><span>On premises · air gapped</span>'
@@ -288,7 +370,7 @@ def build():
     stage_html = ('<div class="specs">' + "".join(f'<div class="spec"><span class="no">{no}</span>{glyph(g)}<h3>{h}</h3><p><strong>{E(s)}</strong> {E(t)}</p></div>' for no, g, h, s, t in stages) + '</div>')
     platform = ('<section class="osec"><div class="wrap3">' + head(2, "Platform", "Four stages. <em>One training platform.</em>",
                 "Capture, compress, train and reinflate. Every stage runs inside your perimeter, on premises or air gapped, on models you host.")
-                + stage_html + '</div></section>')
+                + '<div class="bowsheet"><div class="bwi">' + bowtie_svg() + '</div></div>' + stage_html + '</div></section>')
     night = ('<section class="osec"><div class="wrap3">' + head(3, "Reinterpretation", "Learned tonight. <em>Used tomorrow morning.</em>",
              "Each routine opens its run by reading the feedback and gap records on its newest episodes. A rule recorded today changes tomorrow\'s behaviour, with no code change.")
              + '<div class="night"><ol class="steps">'
@@ -356,7 +438,7 @@ def build():
     faq_ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
     depth = ('<section class="odep"><div class="wrap3 dg"><aside>' + sx(9, "In depth") + '<h2 data-type>Questions about Hyper Engram</h2></aside><div class="doc">'
              + "".join(f'<h2>{E(q)}</h2><p>{E(a)}</p>' for q, a in faq) + '</div></div></section>')
-    data = f'<script>window.ENGRAM_PRINCIPLE={json.dumps(PRINCIPLE)};window.ENGRAM_PLACES={json.dumps(PLACES)};</script>'
+    data = f'<script>window.ENGRAM_PRINCIPLE={json.dumps(PRINCIPLE)};window.ENGRAM_PLACES={json.dumps(PLACES)};window.ENGRAM_GRAPH={json.dumps({"c": CLUSTERS, "s": SCENES})};</script>'
     body = f'<main class="og eg">{hero}{statement}{loop}{platform}{night}{bench_s}{vs}{ev}{laws_s}{res_s}{cta}{depth}</main>{data}'
     title = "Hyper Engram: Train Sovereign AI Models On Premises and Air Gapped | CodeNinja Atoms"
     desc = "Hyper Engram trains sovereign AI models in their weights and in their memory, on premises and in air gapped environments, from every run of the operation."
@@ -366,4 +448,4 @@ def build():
                            "Post training of open weights models on your hardware", "Agentic memory by compression and reinflation", "Memory carried across model upgrades", "Runs inside the customer's perimeter"],
            "isRelatedTo": [{"@type": "SoftwareApplication", "name": "Hyper Pragma", "url": f"{BASE}/hyper-pragma/"}, {"@type": "SoftwareApplication", "name": "Hyper Ontology", "url": f"{BASE}/hyper-ontology/"},
                            {"@type": "Article", "name": "Compression and Reinflation", "url": MEMO}]}, faq_ld]
-    return shell(title, desc, URL, ld, OCSS + CSS, body, JS + TYPE_JS)
+    return shell(title, desc, URL, ld, OCSS + CSS, body, JS + GRAPH_JS + TYPE_JS)
