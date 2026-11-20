@@ -238,7 +238,7 @@ def landing(ps, sols):
 <li><b><a href="llms.txt">llms.txt</a></b> · <a href="feed.xml">Atom feed</a> · <a href="sitemap.xml">sitemap</a></li>
 <li><b><a href="https://zenodo.org/communities/physical-ai-reference-architectures">Zenodo community</a></b><br>every paper with its DOI, in one place</li>
 <li><b><a href="https://github.com/muhammadumar89/codeninja-research">Source files on GitHub</a></b><br>papers, packages, the package format and the loader</li></ul></div></div></section>
-{film("desert-flare", f'<div class="split"><div><p class="mono">Praxis</p><h2>Design for the physical world.</h2><p class="lede">Every design here was made on Praxis. Engineers start free; organisations talk to our commercial team about sovereign and custom deployments.</p></div><div>{brand.access_block()}</div></div>', cls="access", sid="access")}
+{film("desert-flare", f'<div class="split"><div><p class="mono">Praxis</p><h2>Design for the physical world.</h2><p class="lede">Every design here was made on Praxis. Talk to our team about sovereign and custom deployments.</p></div><div><div class="join"><div class="cta"><a class="btn solid" href="{brand.CONTACT}">{brand.TALK}</a><a class="btn" href="{brand.SIGNIN}">Sign in</a></div></div></div></div>', cls="access", sid="access")}
 </main>
 <footer class="site"><div class="wrapf">{brand.footer_brand("./")}{brand.footer_links()}<span>CodeNinja Atoms is part of <a href="{brand.PARENT}">CodeNinja</a> · Sovereign AI for physical operations</span><span>Papers, object models and data CC BY 4.0 · <a href="assets/video/CREDITS.md">Video credits</a></span></div></footer>"""
 

@@ -123,13 +123,14 @@ def nav(base=""):
                       ("Agentic Memory Architecture", f"{b}agentic-memory-architecture/")]),
         ("Co-build", f"{b}co-build/"),
         ("Developers", f"{b}developer/"),
+        ("About", f"{b}about/"),  # Umar, 20 Nov 2026: About moves from the footer to the header
     ]
 
 
 def nav_flat(base=""):
     """The four destinations for a strip that cannot open a menu (the bar on a design page)."""
     b = base
-    return [("Research", f"{b}#research"), ("Praxis", f"{b}praxis/"), ("Co-build", f"{b}co-build/"), ("Developers", f"{b}developer/")]
+    return [("Research", f"{b}#research"), ("Praxis", f"{b}praxis/"), ("Co-build", f"{b}co-build/"), ("Developers", f"{b}developer/"), ("About", f"{b}about/")]
 
 
 def announce():
@@ -148,6 +149,7 @@ def announce():
 
 
 def header(home, links=None, access="#access"):
+    # Umar, 20 Nov 2026: no "Unlock free access" in the header; Sign in + Talk to us only.
     """Fixed header: logo left, four tabs, white rectangular access button.
     links defaults to the canonical nav; an item whose href is a list becomes a tab that opens."""
     if links is None:
@@ -161,9 +163,9 @@ def header(home, links=None, access="#access"):
                        f'</button><div class="menu" id="m{i}">{items}</div></div>')
         else:
             out.append(f'<a class="tab" href="{href}">{label}</a>')
-    nav_html = "".join(out) + f'<a class="m-only" href="{SIGNUP}">{FREE}</a><a class="m-only" href="{SIGNIN}">Sign in</a>'
+    nav_html = "".join(out) + f'<a class="m-only" href="{SIGNIN}">Sign in</a>'
     return (f'<div class="topwrap">{announce()}<header class="top">{header_brand(home)}<nav class="links" id="site-nav" aria-label="Primary">{nav_html}</nav>'
-            f'<div class="acts"><a class="signin" href="{SIGNIN}">Sign in</a><a class="btn-line" href="{SIGNUP}">{FREE}</a><a class="btn-white" href="{CONTACT}">{TALK}</a>'
+            f'<div class="acts"><a class="signin" href="{SIGNIN}">Sign in</a><a class="btn-white" href="{CONTACT}">{TALK}</a>'
             f'<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button></div></header></div>')
 
 

@@ -215,7 +215,7 @@ BAR_CSS = (".atoms-bar{position:sticky;top:0;z-index:50;display:flex;align-items
 def bar():
     nav = brand.nav_flat(BASE + "/")  # a one line strip: no menus, so the four destinations flat
     return (f'{B0}<style>{BAR_CSS}</style><div class="atoms-bar">{brand.header_brand(BASE + "/")}'
-            f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a href="{brand.SIGNUP}">{brand.FREE}</a><a class="join" href="{brand.CONTACT}">{brand.TALK}</a></nav></div>{B1}')
+            f'<nav aria-label="CodeNinja Atoms">' + "".join(f'<a href="{u}">{t}</a>' for t, u in nav) + f'<a href="{brand.SIGNIN}">Sign in</a><a class="join" href="{brand.CONTACT}">{brand.TALK}</a></nav></div>{B1}')
 
 
 def foot(slug, ds):
