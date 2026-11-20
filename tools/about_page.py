@@ -20,7 +20,7 @@ MISSION = [
 # Order fixed by Umar (20 Nov 2026): Umar (Founder), Mukhtar, Adil, Ibrar.
 LEADERS = [
     {"slug": "muhammad-umar-bilal", "name": "Muhammad Umar", "title": "Founder",
-     "bio": "Mr. Umar is the founder of CodeNinja. He works on Hyper Ontologies, the memory and interpretability layer underneath CodeNinja's enterprise AI deployments, and is the author of the Own the Loop research series.",
+     "bio": "Muhammad Umar is a founder of CodeNinja Atoms and one of the co-founders of CodeNinja, the parent company of CodeNinja Atoms. He works on Hyper Ontologies, the memory and interpretability layer underneath CodeNinja's enterprise AI deployments, and is the author of the Own the Loop research series.",
      "link": "https://www.linkedin.com/in/muhammadumargiki/"},
     {"slug": "mukhtar-ahmad-baig", "name": "Mukhtar Ahmad Baig", "title": "Co-Founder and Chief Executive Officer",
      "bio": "Mr. Baig is one of the co-founders of CodeNinja and serves as its Chief Executive Officer. CodeNinja began as an engineering firm in Lahore in 2014 and now builds systems for enterprises, governments and critical operations across the United States and the Gulf.",
