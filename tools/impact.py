@@ -114,7 +114,7 @@ CSS = """
 .impact .ichips{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin:0 0 36px}
 .impact .ichips button{font:400 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;border:1px solid transparent;background:rgba(30,31,43,.07);color:var(--ink);cursor:pointer}
 .impact .ichips button:hover{border-color:var(--ink)}.impact .ichips button[aria-pressed="true"]{background:transparent;border-color:var(--ink)}
-.impact .cards{display:grid;grid-template-columns:repeat(3,1fr)}
+.impact .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0;padding:0;border:0}
 .impact .ic{border-left:1px solid var(--rule-l);border-top:1px solid var(--rule-l);padding:32px 28px 40px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column}
 .impact .ic:nth-child(-n+3){border-top:0}
 .impact .ic[hidden]{display:none}
