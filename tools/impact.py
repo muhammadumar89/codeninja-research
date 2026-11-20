@@ -161,8 +161,8 @@ def section(videos=None, prefix=""):
             f'<a class="ic" href="https://www.youtube.com/watch?v={E(v["id"])}" target="_blank" rel="noopener" data-t="{E(" ".join(t.lower().replace(" ", "-") for t in tg))}"{" hidden" if i >= SHOW else ""}>'
             f'<div class="im"><img src="{prefix}assets/impact/{E(v["id"])}.jpg" alt="" loading="lazy" width="1280" height="720"><i class="play" aria-hidden="true"></i></div>'
             f'<p class="meta">{E(meta)}</p><h3>{E(clean(v["title"]))}</h3><div class="tg">{"".join(f"<span>{E(t)}</span>" for t in tg)}</div></a>')
-    return (f'<section id="impact" class="impact" aria-label="Impact Studies"><div class="igrid"><div class="rail"><p class="eyb">Impact Studies</p>'
-            f'<h2>Sovereign AI, one operation at a time.</h2>'
+    return (f'<section id="impact" class="impact" aria-label="Impact Studies"><div class="igrid"><div class="rail"><p class="eyb">Videos</p>'
+            f'<h2>Impact Studies</h2>'
             f'<div class="ichips">{"".join(chips)}</div><a class="btn dark" href="{CHANNEL}" target="_blank" rel="noopener">See all</a></div>'
             f'<div class="cards">{"".join(cards)}</div></div></section>{JS}')
 
