@@ -169,6 +169,12 @@ def header(home, links=None, access="#access"):
             f'<button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button></div></header></div>')
 
 
+# Where CodeNinja Atoms publishes (Umar, 20 Nov 2026). YouTube is the company channel; X and LinkedIn are Muhammad Umar's own accounts.
+SOCIAL = (("YouTube", "https://www.youtube.com/@codeninjaatoms"), ("X", "https://x.com/Umargik"),
+          ("LinkedIn", "https://www.linkedin.com/in/muhammadumargiki/"))
+IDENTITY = "A Middle Eastern American sovereign AI company for air gapped physical AI operations."
+
+
 def footer_links(base=""):
     """The site map footer: labelled columns, one per kind of page (Umar, 26 Oct 2026: arranged, never one jumbled line).
     Sectors are read from the built /sectors/ folders, so a new sector page joins the footer by itself.
@@ -193,8 +199,9 @@ def footer_links(base=""):
                       ("Self-improving systems", f"{b}self-improving-systems/"),  # owned keyword pages (Umar, 13 Nov 2026)
                       ("Reference architectures", f"{b}#research"), ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/")]),
         ("Company", [("About", f"{b}about/"), ("Co-build", f"{b}co-build/"), ("Contact", f"{b}contact/"), ("CodeNinja", PARENT)]),
+        ("Follow", list(SOCIAL)),  # Umar, 20 Nov 2026: the site links back to the films and the channels
     ]
-    css = ("<style>nav.flinks{flex:1 1 100%;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px 28px;margin:40px 0 32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.14);"
+    css = ("<style>nav.flinks{flex:1 1 100%;width:100%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px 28px;margin:40px 0 32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.14);"
            "font:400 14px/1.45 'Inter Tight','Helvetica Neue',Arial,sans-serif;text-align:left}"
            "nav.flinks h3{margin:0 0 14px;font:500 11px/1.2 ui-monospace,'SFMono-Regular',Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#8B8E97;border:0;padding:0}"
            "nav.flinks ul{list-style:none;margin:0;padding:0;display:block;grid-template-columns:none}nav.flinks>div{min-width:0}nav.flinks li{margin:0 0 9px;padding:0;border:0;display:block}"

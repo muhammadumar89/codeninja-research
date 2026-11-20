@@ -132,13 +132,13 @@ SITE_ID = "https://codeatoms.ai/#website"
 def identity_ld():
     org = {"@context": "https://schema.org", "@type": "Organization", "@id": ORG_ID, "name": "CodeNinja Atoms", "url": "https://codeatoms.ai/",
            "logo": {"@type": "ImageObject", "url": "https://codeatoms.ai/icon-512.png", "width": 512, "height": 512},
-           "description": "CodeNinja Atoms is building a sovereign AI operating system for the physical world: open reference architectures for physical AI, Praxis for designing them and Hyper Ontology for making them living.",
+           "description": "CodeNinja Atoms is a Middle Eastern American sovereign AI company for air gapped physical AI operations. It is building a sovereign AI operating system for the physical world: open reference architectures for physical AI, Praxis for designing them and Hyper Ontology for making them living.",
            "parentOrganization": {"@type": "Organization", "name": "CodeNinja", "url": "https://codeninjaconsulting.com", "sameAs": "https://www.wikidata.org/wiki/Q141718224"},
            "alternateName": ["CodeNinja Atoms Research", "codeatoms.ai"],
            "disambiguatingDescription": ("CodeNinja Atoms publishes open reference architectures for AI in physical operations and builds "
                                          "CodeNinja Praxis and Hyper Ontology. It is a subsidiary of CodeNinja (codeninjaconsulting.com) and is "
                                          "unrelated to any other company or product whose name contains the word Atoms."),
-           "sameAs": ["https://codeninjaconsulting.com", "https://github.com/muhammadumar89",
+           "sameAs": ["https://codeninjaconsulting.com", "https://www.youtube.com/@codeninjaatoms", "https://github.com/muhammadumar89",
                       "https://github.com/muhammadumar89/codeninja-research", "https://huggingface.co/CodeNinjatools",
                       "https://zenodo.org/communities/physical-ai-reference-architectures",
                       "https://huggingface.co/datasets/CodeNinjatools/vertical-driven-architectures",
@@ -208,7 +208,7 @@ def landing(ps, sols):
     nav = brand.nav()
     return f"""{brand.header("./", nav)}
 <main>
-{film("physical-ai-montage", f'<p class="mono">CodeNinja Atoms</p><h1 class="lite">Sovereign AI for the physical world.</h1>', eager=True, cls="hero bright", tail=scroll)}
+{film("physical-ai-montage", f'<p class="mono">CodeNinja Atoms</p><h1 class="lite">Sovereign AI for the physical world.</h1><p class="lede identity">{E(brand.IDENTITY)}</p>', eager=True, cls="hero bright", tail=scroll)}
 {featured.html_block()}
 <section class="light" id="intro"><div class="statement" data-rise><p class="sub" style="margin:0 0 20px">CodeNinja Atoms is building a sovereign AI operating system for the physical world.</p><p class="big">Sovereign system designs for <span class="shade">ports, grids, mills, plants and sites</span>: what to sense, where each model runs, what the object model holds, what it costs and who approves every action.</p>
 <p class="sub">Designed on Praxis. Made living with Hyper Ontology. Open papers, open object models, open data.</p>
