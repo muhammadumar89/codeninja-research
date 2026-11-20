@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import brand, featured
+import brand, featured, impact
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://codeatoms.ai"
@@ -155,8 +155,8 @@ def identity_ld():
     video = {"@context": "https://schema.org", "@type": "VideoObject", "name": "Praxis in three minutes",
              "description": "Muhammad Umar, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.",
              "thumbnailUrl": "https://codeatoms.ai/assets/video/praxis-walkthrough.jpg", "contentUrl": "https://codeatoms.ai/assets/video/praxis-walkthrough.mp4",
-             "uploadDate": "2026-10-08", "duration": "PT3M1S", "embedUrl": "https://codeatoms.ai/#watch", "publisher": {"@id": ORG_ID}}
-    return [org, site, faq, video]
+             "uploadDate": "2026-10-08", "duration": "PT3M1S", "embedUrl": "https://codeatoms.ai/praxis/#watch", "publisher": {"@id": ORG_ID}}
+    return [org, site, faq, video, impact.ld()]
 
 
 def film(video, inner, eager=False, cls="", sid="", tail=""):
@@ -216,9 +216,7 @@ def landing(ps, sols):
 <div class="strip"><div><b>{len(ps)}</b><span>reference architectures</span></div><div><b>{len(sectors)}</b><span>sectors of physical operations</span></div><div><b>{len(countries)}</b><span>countries: {E(', '.join(countries))}</span></div><div><b>{objs}</b><span>ontology objects published</span></div><div><b>{dois}</b><span>DOIs, all CC BY 4.0</span></div></div></section>
 {padi_html}
 {film("control-room", '<div><p class="mono">Praxis</p><h2>Autonomy in physical operations.</h2></div><div><p class="lede">CodeNinja Praxis brings that expertise to the hardest problems in physical AI, from mines to test tracks.</p><div class="cta"><a class="btn" href="praxis/">Praxis</a></div></div>', cls="two")}
-<section id="watch" class="watch"><div class="wrap"><div class="head"><div><p class="mono">Praxis in three minutes</p><h2>Watch it work</h2></div>
-<p class="lede">Muhammad Umar, cofounder of CodeNinja, walks through Praxis on an open pit mine requirement: the ask goes in, and out come the system design, the architecture, a live simulation and the proposal.</p></div>
-<video controls playsinline preload="none" poster="assets/video/praxis-walkthrough.jpg" width="1280" height="720"><source src="assets/video/praxis-walkthrough.mp4" type="video/mp4"></video></div></section>
+{impact.section()}
 {film("rail-yard", '<div><p class="mono">Hyper Ontology</p><h2>From a reference architecture to a living system.</h2></div><div><p class="lede">Every design ships its object model as a package. Hyper Ontology imports it and stands it up over the operator\'s own systems of record: objects, typed links and actions that sense, decide, act and learn.</p><div class="cta"><a class="btn" href="hyper-ontology/">How it becomes living</a></div></div>', cls="two")}
 <section id="research" class="light"><div class="wrap"><div class="head"><div><p class="mono">Research · Vertical-Driven Architectures</p><h2>One operation, one design, end to end.</h2></div>
 <p class="serif">Each paper is a complete reference architecture for one real operation, written so an engineer, or their coding agent, can build it. Operators are described by class, never by name.</p></div>
@@ -274,7 +272,7 @@ def main():
 {brand.FONTS}{brand.JS_FLAG}
 <script type="application/ld+json">{json.dumps(ld)}</script>
 {idld}
-<style>{brand.CSS}{CSS}</style></head><body>
+<style>{brand.CSS}{CSS}{impact.CSS}</style></head><body>
 {landing(ps, sols)}
 {brand.SCRIPT}{FILTER}
 </body></html>"""
@@ -351,6 +349,7 @@ def main():
 if __name__ == "__main__":
     import memos  # first: every page's announcement bar reads the newest memo
     memos.main()
+    impact.refresh()  # Impact Studies: newest channel videos and thumbnails for the home page
     import sector_pages  # sector question pages first: the sitemap lists them
     sector_pages.main()
     import blog  # engineering blog: the sitemap and llms.txt list its posts
