@@ -23,13 +23,13 @@ LEADERS = [
      "bio": "Muhammad Umar is a founder of CodeNinja Atoms and one of the co-founders of CodeNinja, the parent company of CodeNinja Atoms. He works on Hyper Ontologies, the memory and interpretability layer underneath CodeNinja's enterprise AI deployments, and is the author of the Own the Loop research series.",
      "link": "https://www.linkedin.com/in/muhammadumargiki/"},
     {"slug": "mukhtar-ahmad-baig", "name": "Mukhtar Ahmad Baig", "title": "Co-Founder and Chief Executive Officer",
-     "bio": "Mukhtar Ahmad Baig is one of the co-founders of CodeNinja, the parent company of CodeNinja Atoms, and serves as Chief Executive Officer of both companies. CodeNinja began as an engineering firm in Lahore in 2014 and now builds systems for enterprises, governments and critical operations across the United States and the Gulf.",
+     "bio": "Mukhtar Ahmad Baig is Co-Founder and Chief Executive Officer of CodeNinja Atoms and one of the co-founders of CodeNinja, its parent company. He leads the company and its work with the governments and enterprises that deploy sovereign AI in their physical operations.",
      "link": "https://www.linkedin.com/in/mukhtarahmadbaig/"},
     {"slug": "adil-khalil", "name": "Adil Khalil", "title": "Co-Founder and Chief Technology Officer",
-     "bio": "Adil Khalil is one of the co-founders of CodeNinja, the parent company of CodeNinja Atoms, and serves as Chief Technology Officer of both companies, responsible for the engineering behind CodeNinja Atoms' sovereign systems.",
+     "bio": "Adil Khalil is Co-Founder and Chief Technology Officer of CodeNinja Atoms and one of the co-founders of CodeNinja, its parent company. He leads the engineering behind the Hyper platform and the sovereign systems CodeNinja Atoms deploys on premises and air gapped.",
      "link": "https://www.linkedin.com/in/adilkhalil/"},
     {"slug": "ibrar-hussain", "name": "Ibrar Hussain", "title": "Co-Founder and Chief Product Officer",
-     "bio": "Ibrar Hussain is one of the co-founders of CodeNinja, the parent company of CodeNinja Atoms, and serves as Chief Product Officer of both companies. Mr. Hussain holds a B.S. in Computer Science from the University of the Punjab.",
+     "bio": "Ibrar Hussain is Co-Founder and Chief Product Officer of CodeNinja Atoms and one of the co-founders of CodeNinja, its parent company. He leads product across Praxis and the Hyper platform.",
      "link": "https://pk.linkedin.com/in/helloibrar"},
 ]
 
