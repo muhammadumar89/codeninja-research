@@ -6,9 +6,9 @@ One of the [industrial ontology examples](https://codeatoms.ai/industrial-ontolo
 
 **Canonical page:** https://codeatoms.ai/port-equipment-berth-ontology-saudi-arabia/
 **Paper:** [PDF](paper/port-equipment-berth-ontology-saudi-arabia.pdf) · [HTML](paper/port-equipment-berth-ontology-saudi-arabia.html) · [Word](paper/port-equipment-berth-ontology-saudi-arabia.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
-**DOI:** not yet minted; cite the canonical page.
+**DOI:** [10.5281/zenodo.24048525](https://doi.org/10.5281/zenodo.24048525)
 
-**Licence:** CC BY 4.0. Cite the DOI once it is minted on the release, or the canonical page.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 

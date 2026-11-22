@@ -6,9 +6,9 @@ An [industrial AI reference architecture](https://codeatoms.ai/industrial-ai-ref
 
 **Canonical page:** https://codeatoms.ai/tailings-monitoring-us/
 **Paper:** [PDF](paper/tailings-monitoring-us.pdf) · [HTML](paper/tailings-monitoring-us.html) · [Word](paper/tailings-monitoring-us.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
-**DOI:** not yet minted
+**DOI:** [10.5281/zenodo.24048569](https://doi.org/10.5281/zenodo.24048569)
 
-**Licence:** CC BY 4.0. Cite the canonical page, or the DOI once it is minted.
+**Licence:** CC BY 4.0. Cite the DOI or the canonical page.
 
 ## At a glance
 
