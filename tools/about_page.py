@@ -70,7 +70,7 @@ def main():
 <figure><img src="img/{p['slug']}.jpg" alt="{E(p['name'])}" width="900" height="750" loading="{'eager' if i == 0 else 'lazy'}"></figure></article>
 """ for i, p in enumerate(LEADERS))
     out = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About CodeNinja Atoms: Sovereign AI for the Physical World, Mission and Leadership</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/about/">
+<title>About CodeNinja Atoms: Sovereign AI for the Physical World</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{BASE}/about/">
 <meta property="og:type" content="website"><meta property="og:title" content="About CodeNinja Atoms: Sovereign AI for the Physical World"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{BASE}/about/">
 <meta property="og:image" content="{BASE}/about/img/{LEADERS[0]['slug']}.jpg">
 <script type="application/ld+json">{json.dumps(page_ld, ensure_ascii=False)}</script>
