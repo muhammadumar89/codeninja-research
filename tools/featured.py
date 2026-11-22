@@ -8,7 +8,7 @@ E = lambda s: html.escape(str(s), quote=True)
 
 # (eyebrow, headline, href relative to the home page, image in assets/featured/, chip label)
 FEATURED = [
-    ("Case Study · Sea Power", "Rebuilding Middle Eastern Sea Power", "co-build/defense-and-intelligence/", "sea-power.jpg", "Sea Power"),
+    ("Case Study · National Infrastructure", "Rebuilding Middle Eastern National Infrastructure", "co-build/defense-and-intelligence/", "national-infrastructure.jpg", "National Infrastructure"),
     ("Case Study · Saudi Arabia", "Bringing Intelligence to Every Truck in Saudi Arabia", "open-pit-mine-haul-fleet-saudi-arabia/", "saudi-trucks.jpg", "Saudi Trucks"),
     ("On Device AI", "Deploying On Device AI Stacks to Defend Against Hardware Cyber Attacks", "developer/", "on-device.jpg", "On Device AI"),
     ("13 Industries", "Training Models for 13 Physical AI Industries", "sectors/", "thirteen-industries.jpg", "13 Industries"),
