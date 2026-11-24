@@ -1,0 +1,3 @@
+# Image credits
+- `hangar.jpg`: "Retro propeller aircraft parked in airdrome shed", photo by Daniel Torobekov, Pexels id 5262808, https://www.pexels.com/photo/retro-propeller-aircraft-parked-in-airdrome-shed-5262808/ . Pexels License (https://www.pexels.com/license/): free for commercial use, attribution not required, modification permitted. Cropped on 24 Nov 2026 to remove a printed bag at the left edge; no registration, operator name, sign or maker logo remains. Used as the post's cover and share image.
+- `figures/robot-cell.jpg`: "A Robot Industrial Machine Grinding a Steel", photo by alex, Pexels id 11951215, https://www.pexels.com/photo/a-robot-industrial-machine-grinding-a-steel-11951215/ . Pexels License, as above. No legible maker logo, sign or site name.
