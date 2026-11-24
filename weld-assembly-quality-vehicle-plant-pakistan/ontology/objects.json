@@ -9,7 +9,7 @@
  },
  "sector": "discrete manufacturing and automotive",
  "country": "Pakistan",
- "scenario": "the operator is described by class, never by name: a vehicle assembly company in Pakistan starting production of new energy vehicles at a new plant sized for about 25,000 vehicles a year on one shift, assembling kits from the parent company with a rising share of locally made parts, with the first phase at the body shop station exits and one trim line segment, reading six systems of record through one integration adapter family and writing back only approved records to the quality management system",
+ "scenario": "the operator is described by class, never by name: a vehicle assembly plant in Pakistan, assembling kits from the parent company with a rising share of locally made parts, with the first phase at the body shop station exits and one trim line segment, reading six systems of record through one integration adapter family and writing back only approved records to the quality management system",
  "source": "chapter 5 of the paper (the sixteen objects in 5.1, the status vocabularies in 5.2, the Vehicle record in 5.3), the properties and the twelve labelled typed links of Figure 4 (its title counts thirteen; the link drawn between the quality manager and the body shop quality inspector carries no label and is left out), and the anchors and links of Table 8; the audit finding and corrective action anchors follow 5.1 (the quality management system) and the corrective action link follows Figure 4 (opened on); the two people carry no anchor in the paper and are left empty; properties the figure truncates are left out.",
  "objects": [
   {

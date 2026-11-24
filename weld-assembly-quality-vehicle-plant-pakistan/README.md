@@ -2,7 +2,7 @@
 
 *VERTICAL-DRIVEN ARCHITECTURES · DISCRETE MANUFACTURING & AUTOMOTIVE · DESIGNED WITH CODENINJA PRAXIS · NOVEMBER 2026*
 
-A physical AI system design for weld and assembly quality in a vehicle plant in Pakistan, published under the series title Discrete Manufacturing & Automotive Watch: One Living Picture of the Operation. A sovereign reference architecture for a vehicle assembly company starting production of new energy vehicles: triggered cameras and edge units at the body shop, trim and underbody station exits checking every body, one governed plant ontology of sixteen objects over six read only sources, three agents that named inspectors and managers confirm, and GLM 5.3 self hosted on one node in the plant's own server room.
+A physical AI system design for weld and assembly quality in a vehicle plant in Pakistan, published under the series title Discrete Manufacturing & Automotive Watch: One Living Picture of the Operation. A sovereign reference architecture for a vehicle assembly plant in Pakistan: triggered cameras and edge units at the body shop, trim and underbody station exits checking every body, one governed plant ontology of sixteen objects over six read only sources, three agents that named inspectors and managers confirm, and GLM 5.3 self hosted on one node in the plant's own server room.
 
 **Canonical page:** https://codeatoms.ai/weld-assembly-quality-vehicle-plant-pakistan/
 **Paper:** [PDF](paper/weld-assembly-quality-vehicle-plant-pakistan.pdf) · [HTML](paper/weld-assembly-quality-vehicle-plant-pakistan.html) · [Word](paper/weld-assembly-quality-vehicle-plant-pakistan.docx) · [Appendix A, what ownership costs over three years](paper/appendix_a_cost.md)
