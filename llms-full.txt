@@ -205,6 +205,130 @@ Learn more at [https://codeatoms.ai](https://codeatoms.ai)
 
 ---
 
+# AI for Mine Haul Truck Maintenance: Keep a Retiring Planner's Judgement
+
+*The people who know which truck will fail next are leaving the mines. An AI the mine owns, on a server on site, can keep that judgement and hand it to the next planner.*
+
+Canonical: https://codeatoms.ai/blog/ai-for-mine-haul-truck-maintenance/
+Author: Muhammad Umar, Cofounder, CodeNinja Atoms
+Published: 2026-11-24
+License: CC BY 4.0
+Publisher: CodeNinja Atoms (https://codeatoms.ai), a fully owned subsidiary of CodeNinja
+Watch the 90 second video: [AI for Mine Haul Truck Maintenance](https://www.youtube.com/watch?v=1yTh2BpGBlU)
+
+A 25 year old truck driver died at a Kentucky surface mine on Nov 9.
+
+Police said his truck failed on the haul road.
+
+## The problem
+
+He was leaving the mine in Harlan County just after seven in the morning.
+No other vehicle was involved. A state trooper said something on the truck malfunctioned and it lost control.
+
+The site was closed while state mine safety inspectors, the state police and federal mine safety officials investigate.
+It was Kentucky's second coal mining death this year.
+
+A truck does not fail out of nowhere.
+It leaves signs first, and someone has to read them.
+
+The people who know which truck will fail next are leaving.
+A federal energy official expects US mining to lose half its workers to retirement in ten years.
+
+## How it is done today
+
+Today, a veteran maintenance planner keeps the trucks safe.
+
+They read oil results, alarms and repairs, and know which truck needs the shop.
+
+A rising metal count in an oil sample.
+An alarm that came back twice this week.
+A part rebuilt sooner than it should have been.
+
+None of it means much alone. Together, it tells a planner which truck to pull.
+
+## Why it is hard
+
+That judgement is hard to pass on.
+
+The records sit in five systems, and the pattern lives in one head.
+
+Imagine five people each holding one page of the same letter.
+None of them can read it. Only the planner has seen every page, so only the planner knows what it says.
+
+When the planner retires, the pattern walks out the gate.
+
+## This is work AI can do.
+
+It can join every alarm, oil sample and repair and flag which part on which truck fails next.
+
+It reads the whole letter at once, every page, for every truck, every shift.
+And it shows the records behind each call, so a person can check it.
+
+![A planner at a diagnostic screen beside a truck in the shop: the person who asks the AI and approves the work order.](https://codeatoms.ai/blog/ai-for-mine-haul-truck-maintenance/figures/planner-screen.jpg)
+
+## What the mine needs
+
+For that, the mine needs its own AI on a server on site.
+
+A young planner asks in plain words, sees what a veteran would, and approves each work order.
+
+The AI drafts the ranking and the reasons.
+The maintenance planner approves each health ranking and each work order. The dispatcher approves any change to the haul plan.
+No agent stops a machine or changes a work order without a named approval.
+
+The AI does the reading. A person signs for it.
+
+## Why own it, not rent it
+
+Owning it matters for two reasons.
+
+A mine's fleet records are its business and should not leave the site.
+
+And an AI you rent learns for its vendor.
+An AI you own learns for you, and every repair makes the next call sharper.
+
+Every work order that closes teaches it what that alarm really meant on that truck.
+When a better model ships, the mine swaps it in and keeps every lesson.
+
+So it runs inside the mine, air gapped where needed, on open weight models and software it owns.
+
+![Haul trucks on the winding roads of an open pit mine.](https://codeatoms.ai/blog/ai-for-mine-haul-truck-maintenance/figures/haul-road.jpg)
+
+## The reference architecture
+
+We published the design for an open pit mine in Saudi Arabia; the same pattern fits a US mine.
+It is an open [reference architecture for an open pit mine haul fleet](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/), written for a pit with about 35 trucks and one 600 tonne class shovel.
+
+In short:
+
+- **Sources.** Five systems, all read only: the fleet management and dispatch system, the equipment makers' telematics, the maintenance management system, the oil laboratory and the mine plan. The only writes back are approved work orders and approved haul changes, each with an audit trail.
+- **One record per truck.** Sixteen kinds of object with thirteen links, from the haul truck, component and haul road segment to the alarm, oil sample, tyre reading, work order and rebuild, joined on one fleet model.
+- **Models.** Four open models on the mine's own hardware: one reasons and answers the planner in plain words, one forecasts telemetry and oil trends, one finds the records behind every answer so each call cites its evidence, and one watches the shovel bucket for lost teeth.
+- **Compute.** One server of eight GPU cards in the site server room, at roughly ten kilowatts, with small heat rated computers on the trucks and at the shovel. Nothing leaves the site; updates arrive one way through a hardware data diode.
+- **Cost.** About 556,000 US dollars to own the reasoning server for three years, against about 751,000 to rent the same eight cards on the cheapest three year cloud commitment. Owning costs about three quarters of renting, and the records never cross a border.
+- **Who approves.** The maintenance planner approves each health ranking, the dispatcher each haul change, the shovel operator each lost tooth, and the mine superintendent holds escalation.
+- **Rollout.** Four phases, ending in a six month measured run on one pit's fleet against the mine's own numbers for unplanned downtime, time between failures and cost per tonne.
+
+The design, its object model and its model register are free to reuse under CC BY 4.0.
+
+## The close
+
+A truck that fails on the haul road gave warnings first.
+The planner who could read them is about to retire.
+
+A mine that owns its AI keeps that judgement on site, hands it to the next planner, and gets better with every repair.
+
+That is what [physical AI](https://codeatoms.ai/physical-ai/) is for.
+
+Source: [Harlan County mine closed after fatal coal truck accident, Kentucky Today](https://www.kentuckytoday.com/news/harlan-county-mine-closed-after-fatal-coal-truck-accident/article_3f2d6f0d-d979-4af5-b548-0e374453f39c.html)
+
+Reference architecture: [https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/](https://codeatoms.ai/open-pit-mine-haul-fleet-saudi-arabia/)
+
+Learn more at [https://codeatoms.ai](https://codeatoms.ai)
+
+
+---
+
 # Don't Baptize the GPUs
 
 *Why AI systems should be measured by running them, trained to seek truth and owned by the organizations that depend on them, rather than blessed into a theological category.*
@@ -8676,13 +8800,13 @@ PART II · CHAPTER 3
 
 ## Sovereignty and Export Control Shape Everything Downstream
 
-Open weights of United States origin on the shop's own hardware, export-controlled technical data fenced as an ontology property, every decision left to a named person, and a first gate that can stop the work cheaply, together fix the shape of everything the design does.
+Open weight models hosted on the shop's own hardware, export-controlled technical data fenced as an ontology property, every decision left to a named person, and a first gate that can stop the work cheaply, together fix the shape of everything the design does.
 
 Chapter 2 showed the join failure: seven slices and no place where they meet. Four goals now fix the shape of the fix before any component is chosen, because in this industry each goal is hard in a way that removes whole families of architecture before the stack is even discussed.
 
 ### 3.1  Sovereign Operation on the Shop's Own Hardware
 
-The first goal is the boundary the operator set in its own words: engine, airline and vendor data never leave the shop's hardware, the models are open weights of United States origin, and no third party model service is ever in the path. This is hard in this industry because the work surface needs a frontier model, and a frontier model is a physical commitment: the design's model carries 753 billion parameters, which at INT4 precision occupies 376 GB of weights, held with headroom for the key-value cache and activations on one node of eight GPUs of the 80 GB class. A hosted service would make that someone else's problem and the operator's exposure, so the design instead owns the arithmetic, the room, the power and the support contracts as part of its own ground, served on site with vLLM.
+The first goal is the boundary the operator set in its own words: engine, airline and vendor data never leave the shop's hardware, the models are open weights the shop hosts itself inside the facility, and no third party model service is ever in the path. This is hard in this industry because the work surface needs a frontier model, and a frontier model is a physical commitment: the design's model carries 753 billion parameters, which at INT4 precision occupies 376 GB of weights, held with headroom for the key-value cache and activations on one node of eight GPUs of the 80 GB class. A hosted service would make that someone else's problem and the operator's exposure, so the design instead owns the arithmetic, the room, the power and the support contracts as part of its own ground, served on site with vLLM.
 
 ### 3.2  Export Control Fenced in the Data Model
 
@@ -8719,7 +8843,7 @@ Table 2 · What the Design Chose Against
 | Ingestion | Event driven reads via APIs and change data capture | Batch extracts, which leave the ontology stale between runs and put drafts on bad data |
 | Improvement | Memory that the next plan reads before it acts | Fine tuning, which the pinned architecture forbids and the requirement answers with memory instead |
 | Write back | Agent write back after named approval with an audit trail | Manual transcription, which recreates the cascade by hand the design exists to remove |
-| Model service | Open weights of United States origin served on site | A third party model service, which would carry engine data outside the boundary the operator set |
+| Model service | Open weights the shop hosts itself, served on site | A third party model service, which would carry engine data outside the boundary the operator set |
 | Scope | One engine type, one quarter, a gate that stops extension cheaply | An estate wide rollout at once, which spends everything before the first proof |
 | Out of scope | Record replacement, cameras, weight training, automatic airline notification | The design reads records and drafts decisions; replacing, sensing, training and notifying would each add cost and risk the first gate exists to avoid |
 
@@ -8798,7 +8922,7 @@ Figure 4. The fifteen objects of the model and the typed links that let a query 
 
 ### 5.2  The Human Loop and the Hosting Posture
 
-Customer, engine and vendor data never leave the shop's hardware; models are open weights of United States origin; no third party model service.
+Customer, engine and vendor data never leave the shop's hardware; models are open weights the shop hosts itself inside the facility; no third party model service.
 
 ### 5.3  One Object in Its Recorded Form
 
@@ -8999,7 +9123,7 @@ Chapter 10 settled who owns what the build produces. This chapter opens the reas
 
 ### 11.1  Contextualizing the Ask
 
-The ask arrived as a requirement written in the operator's own words: an industrial AI reference architecture the shop owns, open weight models of United States origin on its own hardware, reading its systems of record, with nothing about airlines' engines leaving its control or reaching a third party model service. Praxis assigned the design to the Enterprise AI family and to Aviation and Aerospace Manufacturing as the industry, with the country of operation, the United States, fixed by the operator's own requirement. Praxis read the case study, tooling, hardware, rules, approach and history shelves; every count, name and figure in this paper traces to that reading.
+The ask arrived as a requirement written in the operator's own words: an industrial AI reference architecture the shop owns, open weight models it hosts itself on its own hardware, reading its systems of record, with nothing about airlines' engines leaving its control or reaching a third party model service. Praxis assigned the design to the Enterprise AI family and to Aviation and Aerospace Manufacturing as the industry, with the country of operation, the United States, fixed by the operator's own requirement. Praxis read the case study, tooling, hardware, rules, approach and history shelves; every count, name and figure in this paper traces to that reading.
 
 ![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_09.png)
 

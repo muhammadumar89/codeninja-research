@@ -127,13 +127,13 @@ PART II · CHAPTER 3
 
 ## Sovereignty and Export Control Shape Everything Downstream
 
-Open weights of United States origin on the shop's own hardware, export-controlled technical data fenced as an ontology property, every decision left to a named person, and a first gate that can stop the work cheaply, together fix the shape of everything the design does.
+Open weight models hosted on the shop's own hardware, export-controlled technical data fenced as an ontology property, every decision left to a named person, and a first gate that can stop the work cheaply, together fix the shape of everything the design does.
 
 Chapter 2 showed the join failure: seven slices and no place where they meet. Four goals now fix the shape of the fix before any component is chosen, because in this industry each goal is hard in a way that removes whole families of architecture before the stack is even discussed.
 
 ### 3.1  Sovereign Operation on the Shop's Own Hardware
 
-The first goal is the boundary the operator set in its own words: engine, airline and vendor data never leave the shop's hardware, the models are open weights of United States origin, and no third party model service is ever in the path. This is hard in this industry because the work surface needs a frontier model, and a frontier model is a physical commitment: the design's model carries 753 billion parameters, which at INT4 precision occupies 376 GB of weights, held with headroom for the key-value cache and activations on one node of eight GPUs of the 80 GB class. A hosted service would make that someone else's problem and the operator's exposure, so the design instead owns the arithmetic, the room, the power and the support contracts as part of its own ground, served on site with vLLM.
+The first goal is the boundary the operator set in its own words: engine, airline and vendor data never leave the shop's hardware, the models are open weights the shop hosts itself inside the facility, and no third party model service is ever in the path. This is hard in this industry because the work surface needs a frontier model, and a frontier model is a physical commitment: the design's model carries 753 billion parameters, which at INT4 precision occupies 376 GB of weights, held with headroom for the key-value cache and activations on one node of eight GPUs of the 80 GB class. A hosted service would make that someone else's problem and the operator's exposure, so the design instead owns the arithmetic, the room, the power and the support contracts as part of its own ground, served on site with vLLM.
 
 ### 3.2  Export Control Fenced in the Data Model
 
@@ -170,7 +170,7 @@ Table 2 · What the Design Chose Against
 | Ingestion | Event driven reads via APIs and change data capture | Batch extracts, which leave the ontology stale between runs and put drafts on bad data |
 | Improvement | Memory that the next plan reads before it acts | Fine tuning, which the pinned architecture forbids and the requirement answers with memory instead |
 | Write back | Agent write back after named approval with an audit trail | Manual transcription, which recreates the cascade by hand the design exists to remove |
-| Model service | Open weights of United States origin served on site | A third party model service, which would carry engine data outside the boundary the operator set |
+| Model service | Open weights the shop hosts itself, served on site | A third party model service, which would carry engine data outside the boundary the operator set |
 | Scope | One engine type, one quarter, a gate that stops extension cheaply | An estate wide rollout at once, which spends everything before the first proof |
 | Out of scope | Record replacement, cameras, weight training, automatic airline notification | The design reads records and drafts decisions; replacing, sensing, training and notifying would each add cost and risk the first gate exists to avoid |
 
@@ -249,7 +249,7 @@ Figure 4. The fifteen objects of the model and the typed links that let a query 
 
 ### 5.2  The Human Loop and the Hosting Posture
 
-Customer, engine and vendor data never leave the shop's hardware; models are open weights of United States origin; no third party model service.
+Customer, engine and vendor data never leave the shop's hardware; models are open weights the shop hosts itself inside the facility; no third party model service.
 
 ### 5.3  One Object in Its Recorded Form
 
@@ -450,7 +450,7 @@ Chapter 10 settled who owns what the build produces. This chapter opens the reas
 
 ### 11.1  Contextualizing the Ask
 
-The ask arrived as a requirement written in the operator's own words: an industrial AI reference architecture the shop owns, open weight models of United States origin on its own hardware, reading its systems of record, with nothing about airlines' engines leaving its control or reaching a third party model service. Praxis assigned the design to the Enterprise AI family and to Aviation and Aerospace Manufacturing as the industry, with the country of operation, the United States, fixed by the operator's own requirement. Praxis read the case study, tooling, hardware, rules, approach and history shelves; every count, name and figure in this paper traces to that reading.
+The ask arrived as a requirement written in the operator's own words: an industrial AI reference architecture the shop owns, open weight models it hosts itself on its own hardware, reading its systems of record, with nothing about airlines' engines leaving its control or reaching a third party model service. Praxis assigned the design to the Enterprise AI family and to Aviation and Aerospace Manufacturing as the industry, with the country of operation, the United States, fixed by the operator's own requirement. Praxis read the case study, tooling, hardware, rules, approach and history shelves; every count, name and figure in this paper traces to that reading.
 
 ![Figure 9. From the ask to the design: the family and industry Praxis assigned, the eight lenses and what each cited, the patterns adopted and set aside, and the equipment the design lands on.](https://codeatoms.ai/engine-mro-shop-us/figures/figure_09.png)
 
