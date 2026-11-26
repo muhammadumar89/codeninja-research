@@ -1,13 +1,14 @@
-"""Infinity Founders (Umar, 26 Nov 2026): a positioning page at /infinity-founders/ and a founder application
-at /infinity-founders/apply/. Copy from Umar's "Infinity Founders Page Brief" (26 Nov 2026) with his three edits:
+"""Infinity Founders (Umar, 26 Nov 2026): a positioning page at /infinity-founders/ and a short "Talk to us" form
+at /infinity-founders/talk-to-us/ (Umar, 26 Nov 2026: never an application process; every button says "Talk to us",
+never "Apply"; /infinity-founders/apply/ now forwards to the form). Copy from Umar's "Infinity Founders Page Brief" (26 Nov 2026) with his three edits:
 the section that compared us with partner programs states what Infinity Founders is (never what it is not), every
-mention names CodeNinja Atoms, and applications go to hello@ through the same inbound route as the contact form
-(the Lambda gives them the subject "Infinity Founders application"). The Praxis /infinity panel is a separate thing
+mention names CodeNinja Atoms, and messages go to hello@ through the same inbound route as the contact form
+(the Lambda gives them the subject "Infinity Founders: <name> (<company>)"). The Praxis /infinity panel is a separate thing
 and is not linked or touched from here.
 
 Design: the site's physical AI language. Full bleed real world film bands (assets/video), the scroll rise
 (featured.RISE_JS), rules that draw in, bars that fill to the PADI numbers and a step line that runs as you
-reach it. Every primary button goes to the apply page.
+reach it. Every primary button says "Talk to us" and goes to the form.
     python tools/infinity_page.py
 """
 import html, json, datetime
@@ -17,7 +18,8 @@ import brand, featured
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://codeatoms.ai"
 E = lambda s: html.escape(str(s), quote=True)
-APPLY = f"{BASE}/infinity-founders/apply/"
+APPLY = f"{BASE}/infinity-founders/talk-to-us/"
+TALK = "Talk to us"
 TITLE = "Infinity Founders | CodeNinja Atoms"
 DESC = "Build your forward deployed engineering company for physical AI. You lead. We build. We deliver."
 
@@ -38,7 +40,7 @@ GET = [("platforms", "Platforms", "The CodeNinja Atoms platforms, including Prax
        ("sales", "Sales engine", "The playbooks, pipeline systems and go to market machinery we use to win physical AI customers.", False),
        ("investment", "Investment", "Capital to help you launch and roll out, so the first customer is not limited by your balance sheet.", False)]
 
-STEPS = [("Apply.", "Tell us who you are, the industry you know and the region you want to serve."),
+STEPS = [("Talk to us.", "Tell us who you are, the industry you know and the region you want to serve."),
          ("Shape your company.", "Together we pick your vertical, your first target accounts and your offer."),
          ("Win your first major customer.", "CodeNinja Atoms engineering teams work under your leadership to design, pitch and close it."),
          ("Roll it out together.", "We deploy side by side, then you scale on the same platform with each new customer.")]
@@ -221,7 +223,7 @@ def shell(path, title, desc, body, ld, og_image, extra_css=""):
 
 def main_page():
     p, f = padi_numbers()
-    apply_btn = f'<a class="btn solid" href="{APPLY}">Apply as a founder</a>'
+    apply_btn = f'<a class="btn solid" href="{APPLY}">{TALK}</a>'
     sells = "".join(f'<div class="draw"><span class="n">0{i + 1}</span><h3>{E(t)}</h3><p>{E(d)}</p></div>' for i, (t, d) in enumerate(SELLS))
     gets = "".join(f'<article class="get{" key" if key else ""}"><div class="im"><img src="{BASE}/assets/infinity/{img}.jpg" alt="" loading="lazy" decoding="async" width="960" height="600"></div>'
                    f'<p class="n">0{i + 1}</p><h3>{E(t)}</h3><p>{E(d)}</p></article>' for i, (img, t, d, key) in enumerate(GET))
@@ -262,7 +264,7 @@ def main_page():
 <section class="light" id="companies"><div class="wrap">{head("Built to own", "Infinity Founders builds companies.", "You are the founder and the CEO. CodeNinja Atoms is the platform, the engineering bench and the capital behind you.")}
 <div class="cmp" role="table" aria-label="Partner program compared with Infinity Founders">{cmp}</div></div></section>
 
-<section class="light alt" id="who"><div class="wrap"><div class="split" data-rise><div><p class="eyebrow">Who we are looking for</p><h2>Founders who know an industry from the inside.</h2><div class="cta"><a class="btn solid" href="{APPLY}">Apply as a founder</a></div></div>
+<section class="light alt" id="who"><div class="wrap"><div class="split" data-rise><div><p class="eyebrow">Who we are looking for</p><h2>Founders who know an industry from the inside.</h2><div class="cta"><a class="btn solid" href="{APPLY}">{TALK}</a></div></div>
 <ul class="list">{looking}</ul></div></div></section>
 
 <section class="light" id="faq"><div class="wrap"><div class="split"><div><p class="eyebrow">Questions</p><h2>What founders ask first.</h2></div><div class="faq">{faq}</div></div></div></section>
@@ -272,7 +274,7 @@ def main_page():
 {featured.RISE_JS}{REVEAL}"""
     ld = [{"@context": "https://schema.org", "@type": "WebPage", "name": TITLE, "url": f"{BASE}/infinity-founders/", "description": DESC,
            "isPartOf": {"@id": f"{BASE}/#website"}, "publisher": {"@id": f"{BASE}/#org"},
-           "potentialAction": {"@type": "ApplyAction", "name": "Apply as a founder", "target": APPLY}},
+           "potentialAction": {"@type": "CommunicateAction", "name": TALK, "target": APPLY}},
           {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "CodeNinja Atoms", "item": f"{BASE}/"},
@@ -329,19 +331,19 @@ def apply_page():
 {radios("fulltime", "Are you building full time?", ["Yes", "Within 3 months", "Exploring"], required=False)}
 {radios("investment", "Will you need investment to launch?", ["Yes", "No", "Not sure"], required=False)}
 <label class="full"><span class="req">Why you, and why this industry?</span><textarea name="why" required maxlength="1000"></textarea><span class="count" data-for="why">0 / 1000</span></label>
-<label class="consent"><input type="checkbox" name="consent" required><span>I agree to be contacted by CodeNinja Atoms about my application.</span></label>
+<label class="consent"><input type="checkbox" name="consent" required><span>I agree to be contacted by CodeNinja Atoms about Infinity Founders.</span></label>
 <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 <p class="status" role="status" aria-live="polite"></p>
-<button type="submit" data-label="Submit application">Submit application</button>
-<p class="note">Goes straight to the Infinity Founders team. Nothing is published, and we only use your details to review your application and reply.</p>
+<button type="submit" data-label="Send">Send</button>
+<p class="note">Goes straight to the Infinity Founders team. Nothing is published, and we only use your details to reply.</p>
 </form>"""
     # The Lambda takes name, email, company, role and message; every other answer rides in the message, one per line.
     fields = ("{kind:'infinity-founders',name:f.fullname.value,email:f.email.value,company:f.rolecompany.value,role:f.industry.value+' · '+f.region.value,"
-              "message:['Infinity Founders application','','LinkedIn: '+f.linkedin.value,'Country and city: '+f.location.value,'Current role and company: '+f.rolecompany.value,"
+              "message:['Infinity Founders: talk to us',','LinkedIn: '+f.linkedin.value,'Country and city: '+f.location.value,'Current role and company: '+f.rolecompany.value,"
               "'Industry: '+f.industry.value,'Region to serve: '+f.region.value,'Background: '+v('background'),'First customer in mind: '+(v('customer')||'not answered'),"
               "(f.customerdesc.value&&v('customer')==='Yes'?'First customer: '+f.customerdesc.value:null),'Building full time: '+(v('fulltime')||'not answered'),'Needs investment: '+(v('investment')||'not answered'),"
               "'','Why you, and why this industry?',f.why.value,'','Consent to be contacted: yes'].filter(function(x){return x!==null}).join('\\n')}")
-    sent = ('<div class="sent"><p class="eyebrow">Received</p><h3>Thank you. Your application is with the Infinity Founders team.</h3>'
+    sent = ('<div class="sent"><p class="eyebrow">Received</p><h3>Thank you. Your message is with the Infinity Founders team.</h3>'
             '<p>We will be in touch within two weeks.</p></div>')
     script = brand.post_script("founder-form", fields, sent=sent)
     # Before the shared submit handler: radio reader, the conditional field, the character count, and the browser's own
@@ -353,32 +355,37 @@ var w=f.why,c=f.querySelector('.count');w.addEventListener('input',function(){c.
 f.addEventListener('submit',function(e){var s=f.querySelector('.status');if(!f.checkValidity()){e.preventDefault();e.stopImmediatePropagation();
 var bad=f.querySelector(':invalid');s.textContent='Please complete every required field'+(bad&&bad.name==='consent'?', including consent to be contacted.':'.');if(bad)bad.focus();if(f.reportValidity)f.reportValidity()}},true)})();</script>"""
     body = f"""<main><div class="apply">
-<div class="side"><p class="eyebrow">Infinity Founders</p><h1>Apply to Infinity Founders</h1>
-<p class="lede">Tell us about you and the industry you want to transform. We read every application and reply within two weeks.</p>
+<div class="side"><p class="eyebrow">Infinity Founders</p><h1>Talk to us</h1>
+<p class="lede">Tell us about you and the industry you want to transform. We read every message and reply within two weeks.</p>
 <p class="aside">You lead. We build. We deliver. <a href="{BASE}/infinity-founders/">Read how Infinity Founders works</a>.</p>
 <div class="ph"><img src="{BASE}/assets/video/infinity-field.jpg" alt="" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" poster="{BASE}/assets/video/infinity-field.jpg" aria-hidden="true"><source src="{BASE}/assets/video/infinity-field.mp4" type="video/mp4"></video></div></div>
 <div>{form}</div>
 </div></main>
 {pre}{script}"""
-    ld = [{"@context": "https://schema.org", "@type": "WebPage", "name": "Apply to Infinity Founders", "url": APPLY,
-           "description": "Apply to Infinity Founders: tell us about you and the industry you want to transform. We read every application and reply within two weeks.",
+    ld = [{"@context": "https://schema.org", "@type": "WebPage", "name": "Talk to us about Infinity Founders", "url": APPLY,
+           "description": "Talk to us about Infinity Founders: tell us about you and the industry you want to transform. We read every message and reply within two weeks.",
            "isPartOf": {"@id": f"{BASE}/#website"}, "publisher": {"@id": f"{BASE}/#org"}},
           {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
               {"@type": "ListItem", "position": 1, "name": "CodeNinja Atoms", "item": f"{BASE}/"},
               {"@type": "ListItem", "position": 2, "name": "Infinity Founders", "item": f"{BASE}/infinity-founders/"},
-              {"@type": "ListItem", "position": 3, "name": "Apply", "item": APPLY}]}]
-    return shell("/infinity-founders/apply/", "Apply to Infinity Founders | CodeNinja Atoms",
-                 "Apply to Infinity Founders. Tell us about you and the industry you want to transform. We read every application and reply within two weeks.",
+              {"@type": "ListItem", "position": 3, "name": TALK, "item": APPLY}]}]
+    return shell("/infinity-founders/talk-to-us/", "Talk to us | Infinity Founders | CodeNinja Atoms",
+                 "Talk to us about Infinity Founders. Tell us about you and the industry you want to transform. We read every message and reply within two weeks.",
                  body.replace(f"{BASE}/assets/", "../../assets/"), ld, "infinity-field", ACSS)
 
 
 def main():
     d = ROOT / "infinity-founders"
+    (d / "talk-to-us").mkdir(parents=True, exist_ok=True)
     (d / "apply").mkdir(parents=True, exist_ok=True)
     a, b = main_page(), apply_page()
+    # The first address (live a few hours on 26 Nov 2026) forwards to the form, never a dead link.
+    (d / "apply" / "index.html").write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Talk to us | Infinity Founders</title>'
+                                            f'<link rel="canonical" href="{APPLY}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url={APPLY}">'
+                                            f'</head><body><p><a href="{APPLY}">Talk to us about Infinity Founders</a></p></body></html>', encoding="utf-8")
     (d / "index.html").write_text(a, encoding="utf-8")
-    (d / "apply" / "index.html").write_text(b, encoding="utf-8")
-    print("infinity-founders/index.html", len(a), "· infinity-founders/apply/index.html", len(b))
+    (d / "talk-to-us" / "index.html").write_text(b, encoding="utf-8")
+    print("infinity-founders/index.html", len(a), "· infinity-founders/talk-to-us/index.html", len(b))
 
 
 if __name__ == "__main__":
