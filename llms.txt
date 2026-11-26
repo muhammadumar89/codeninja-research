@@ -208,4 +208,5 @@
 - Each design page also has a Markdown copy at its address plus `index.md`, for example https://codeatoms.ai/wildfire-risk-distribution-us/index.md
 - [About CodeNinja Atoms](https://codeatoms.ai/about/): mission and executive leadership
 - [Contact](https://codeatoms.ai/contact/): talk to the CodeNinja team, one short form answered by email
+- [Infinity Founders](https://codeatoms.ai/infinity-founders/): build your forward deployed engineering company for physical AI on CodeNinja Atoms; apply at https://codeatoms.ai/infinity-founders/apply/
 <!--/full-->

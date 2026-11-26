@@ -84,7 +84,7 @@ form.access .hp{position:absolute;left:-9999px}form.access button:disabled{opaci
 footer.site{background:var(--night);color:var(--muted-d);border-top:1px solid var(--rule-d);padding:56px var(--gutter) 48px;font-size:13px}
 footer.site .wrapf{max-width:var(--max);margin:0 auto;display:flex;gap:24px 40px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
 footer.site .wrapf>span{max-width:46ch}footer.site .flinks{max-width:none}footer.site .flinks a{color:var(--on-dark);text-decoration:none}footer.site .flinks a:hover{text-decoration:underline}
-@media (max-width:900px){header.top nav.links{gap:20px}}
+header.top nav.links a,header.top nav.links button.tab,header.top .acts a{white-space:nowrap}@media (max-width:1180px){header.top nav.links{gap:22px}}@media (max-width:1060px){header.top nav.links{gap:16px}header.top nav.links a,header.top nav.links button.tab{font-size:13.5px}}@media (max-width:1000px){a.brand .flags{display:none}header.top .acts{gap:14px}}@media (max-width:900px){header.top nav.links{gap:12px}header.top nav.links a,header.top nav.links button.tab{font-size:13px}header.top .acts a.signin{display:none}}
 @media (max-width:640px){.annbar{padding:10px 14px;font-size:12.5px;gap:6px}.annbar .full{display:none}}
 @media (max-width:820px){:root{--gutter:16px}
 header.top{padding:14px var(--gutter);gap:12px}header.top .acts{margin-left:auto}.logo{height:18px}a.brand span.atoms{font-size:17.5px;line-height:18px}
@@ -123,6 +123,7 @@ def nav(base=""):
                       ("Agentic Memory Architecture", f"{b}agentic-memory-architecture/")]),
         ("Co-build", f"{b}co-build/"),
         ("Developers", f"{b}developer/"),
+        ("Infinity Founders", f"{b}infinity-founders/"),  # Umar, 26 Nov 2026: founders build FDE companies on CodeNinja Atoms
         ("About", f"{b}about/"),  # Umar, 20 Nov 2026: About moves from the footer to the header
     ]
 
@@ -130,7 +131,7 @@ def nav(base=""):
 def nav_flat(base=""):
     """The four destinations for a strip that cannot open a menu (the bar on a design page)."""
     b = base
-    return [("Research", f"{b}#research"), ("Praxis", f"{b}praxis/"), ("Co-build", f"{b}co-build/"), ("Developers", f"{b}developer/"), ("About", f"{b}about/")]
+    return [("Research", f"{b}#research"), ("Praxis", f"{b}praxis/"), ("Co-build", f"{b}co-build/"), ("Developers", f"{b}developer/"), ("Infinity Founders", f"{b}infinity-founders/"), ("About", f"{b}about/")]
 
 
 def announce():
@@ -198,7 +199,7 @@ def footer_links(base=""):
         ("Research", [("Physical AI", f"{b}physical-ai/"), ("Industrial AI", f"{b}industrial-ai/"), ("Ontologies", f"{b}ontologies/"),
                       ("Self-improving systems", f"{b}self-improving-systems/"),  # owned keyword pages (Umar, 13 Nov 2026)
                       ("Reference architectures", f"{b}#research"), ("Dataset", f"{b}#data"), ("Blog", f"{b}blog/"), ("Memos", f"{b}memos/")]),
-        ("Company", [("About", f"{b}about/"), ("Co-build", f"{b}co-build/"), ("Contact", f"{b}contact/"), ("CodeNinja", PARENT)]),
+        ("Company", [("About", f"{b}about/"), ("Infinity Founders", f"{b}infinity-founders/"), ("Co-build", f"{b}co-build/"), ("Contact", f"{b}contact/"), ("CodeNinja", PARENT)]),
         ("Follow", list(SOCIAL)),  # Umar, 20 Nov 2026: the site links back to the films and the channels
     ]
     css = ("<style>nav.flinks{flex:1 1 100%;width:100%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:32px 28px;margin:40px 0 32px;padding-top:32px;border-top:1px solid rgba(255,255,255,.14);"
@@ -248,15 +249,19 @@ def access_block(note="Having trouble?", subject="Praxis"):
             f'<p class="fallback">{note} <a href="{CONTACT}">Contact us</a>.</p></div>')
 
 
-def post_script(form_id, fields_js):
+def post_script(form_id, fields_js, sent=None):
     """Submit a form.access to CONTACT_API and answer on the page. fields_js is a JS object literal over `f`
     (the form) giving name, email, company, role and message. The hidden `website` field and the time on the
-    page let the Lambda drop bots; a failure names INBOX so nobody is left without a way through."""
+    page let the Lambda drop bots; a failure names INBOX so nobody is left without a way through.
+    sent, when given, is the HTML shown after a successful send (plain text only, no quotes needed escaping)."""
+    sent_js = ("'" + sent.replace("\\", "\\\\").replace("'", "\\'") + "'") if sent else (
+        "'<div class=\"sent\"><p class=\"eyebrow\">Received</p><h3>Thank you. Your message is with the CodeNinja team.</h3>"
+        "<p>A person reads every request and replies by email to '+d.email.replace(/[<>&\"]/g,'')+'.</p></div>'")
     return f"""<script>(function(){{var f=document.getElementById('{form_id}');if(!f)return;var t0=Date.now(),s=f.querySelector('.status'),b=f.querySelector('button[type=submit]');
 f.addEventListener('submit',function(e){{e.preventDefault();var d={fields_js};d.website=f.website?f.website.value:'';d.elapsed=Date.now()-t0;d.page=location.href;
 b.disabled=true;b.textContent='Sending';s.textContent='';
 fetch('{CONTACT_API}',{{method:'POST',headers:{{'content-type':'application/json'}},body:JSON.stringify(d)}}).then(function(r){{return r.json()}}).then(function(j){{
-if(j.ok){{f.outerHTML='<div class="sent"><p class="eyebrow">Received</p><h3>Thank you. Your message is with the CodeNinja team.</h3><p>A person reads every request and replies by email to '+d.email.replace(/[<>&"]/g,'')+'.</p></div>';return}}
+if(j.ok){{f.outerHTML={sent_js};return}}
 s.textContent=j.error||'Something went wrong. Please email {INBOX}.';b.disabled=false;b.textContent=b.dataset.label}})
 .catch(function(){{s.textContent='We could not send your message. Please email {INBOX}.';b.disabled=false;b.textContent=b.dataset.label}})}});}})();</script>"""
 
