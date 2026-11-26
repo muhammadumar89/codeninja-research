@@ -42,7 +42,7 @@ GET = [("platforms", "Platforms", "The CodeNinja Atoms platforms, including Prax
 
 STEPS = [("Talk to us.", "Tell us who you are, the industry you know and the region you want to serve."),
          ("Shape your company.", "Together we pick your vertical, your first target accounts and your offer."),
-         ("Win your first major customer.", "CodeNinja Atoms engineering teams work under your leadership to design, pitch and close it."),
+         ("Let's win your first customer together.", "You lead the relationship. CodeNinja Atoms engineering teams design, pitch and close it alongside you."),
          ("Roll it out together.", "We deploy side by side, then you scale on the same platform with each new customer.")]
 
 COMPARE = [("Resell a vendor's product", "Build and own your company"),
